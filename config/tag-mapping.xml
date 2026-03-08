@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag-mapping>
+    <ways>
+        <osm-tag key="highway" value="motorway" zoom-appear="6" />
+        <osm-tag key="highway" value="trunk" zoom-appear="7" />
+        <osm-tag key="highway" value="primary" zoom-appear="8" />
+        <osm-tag key="highway" value="secondary" zoom-appear="9" />
+        <osm-tag key="highway" value="tertiary" zoom-appear="10" />
+        <osm-tag key="highway" value="unclassified" zoom-appear="12" />
+        <osm-tag key="highway" value="residential" zoom-appear="12" />
+        <osm-tag key="highway" value="service" zoom-appear="13" />
+        <osm-tag key="highway" value="track" zoom-appear="12" />
+        <osm-tag key="highway" value="path" zoom-appear="12" />
+        <osm-tag key="highway" value="footway" zoom-appear="12" />
+        <osm-tag key="highway" value="bridleway" zoom-appear="12" />
+        <osm-tag key="highway" value="steps" zoom-appear="14" />
+        <osm-tag key="waterway" value="river" zoom-appear="10" />
+        <osm-tag key="waterway" value="stream" zoom-appear="13" />
+        <osm-tag key="natural" value="water" zoom-appear="8" />
+        <osm-tag key="natural" value="wood" zoom-appear="10" />
+        <osm-tag key="natural" value="peak" zoom-appear="11" />
+        <osm-tag key="landuse" value="forest" zoom-appear="10" />
+        <osm-tag key="landuse" value="residential" zoom-appear="12" />
+        <osm-tag key="contour" value="elevation_major" zoom-appear="12" />
+        <osm-tag key="contour" value="elevation_minor" zoom-appear="14" />
+        <osm-tag key="contour" value="elevation" zoom-appear="12" />
+    </ways>
+    <nodes>
+        <osm-tag key="natural" value="peak" zoom-appear="11" />
+        <osm-tag key="place" value="city" zoom-appear="6" />
+        <osm-tag key="place" value="town" zoom-appear="9" />
+        <osm-tag key="place" value="village" zoom-appear="11" />
+    </nodes>
+</tag-mapping>

@@ -1,0 +1,129 @@
+name: Build and Release Maps
+
+on:
+  schedule:
+    - cron: '0 2 1 * *'
+  workflow_dispatch:
+
+jobs:
+  build-maps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y osmium-tool default-jre wget
+
+      - name: Download Osmosis
+        run: |
+          wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
+          unzip -q osmosis-0.49.2.zip -d osmosis
+          chmod +x osmosis/bin/osmosis
+
+      - name: Convert all regions
+        run: |
+          mkdir -p output
+          python3 - << 'PYEOF'
+          import json, os, subprocess, sys
+
+          with open('config/regions.json') as f:
+              regions = json.load(f)
+
+          tag_conf = os.path.abspath('config/tag-mapping.xml')
+          osmosis = os.path.abspath('osmosis/bin/osmosis')
+          failed = []
+
+          for region in regions:
+              rid     = region['id']
+              name    = region['name']
+              pbf_url = region['pbf']
+              pbf      = f"/tmp/{rid}.osm.pbf"
+              filtered = f"/tmp/{rid}_filtered.osm.pbf"
+              out_map  = f"output/{rid}.map"
+
+              print(f"\n=== {name} ===")
+
+              r = subprocess.run(['wget', '-q', '-O', pbf, pbf_url])
+              if r.returncode != 0:
+                  print(f"FAILED download {rid}"); failed.append(rid); continue
+
+              r = subprocess.run([
+                  'osmium', 'tags-filter', pbf,
+                  'w/highway', 'w/path', 'w/footway', 'w/bridleway',
+                  'w/track', 'w/waterway', 'w/natural', 'w/landuse', 'w/contour',
+                  '-o', filtered, '--overwrite'
+              ])
+              if r.returncode != 0:
+                  print(f"FAILED filter {rid}"); failed.append(rid); os.remove(pbf); continue
+
+              r = subprocess.run([
+                  osmosis, '--rb', filtered,
+                  '--mapfile-writer', f'file={out_map}',
+                  'zoom-interval-conf=10,0,17',
+                  f'tag-conf-file={tag_conf}'
+              ], capture_output=True, text=True)
+
+              if r.returncode != 0 or not os.path.exists(out_map):
+                  print(f"FAILED convert {rid}: {r.stderr[-300:]}"); failed.append(rid)
+              else:
+                  size = os.path.getsize(out_map) / 1024 / 1024
+                  print(f"Done: {out_map} ({size:.1f} MB)")
+
+              for f in [pbf, filtered]:
+                  if os.path.exists(f): os.remove(f)
+
+          if failed:
+              print(f"\nFAILED: {failed}"); sys.exit(1)
+          PYEOF
+
+      - name: Generate index.json
+        run: |
+          python3 - << 'PYEOF'
+          import json, os
+          from datetime import datetime
+
+          with open('config/regions.json') as f:
+              regions = json.load(f)
+
+          base_url = "https://github.com/${{ github.repository }}/releases/download/maps-latest"
+          index = {"updated": datetime.now().strftime('%Y-%m-%d'), "regions": []}
+
+          for region in regions:
+              map_file = f"output/{region['id']}.map"
+              if os.path.exists(map_file):
+                  index["regions"].append({
+                      "id": region["id"],
+                      "name": region["name"],
+                      "path": region["path"],
+                      "url": f"{base_url}/{region['id']}.map",
+                      "size": os.path.getsize(map_file)
+                  })
+
+          with open('output/index.json', 'w') as f:
+              json.dump(index, f, indent=2)
+          print(f"index.json: {len(index['regions'])} regions")
+          PYEOF
+
+      - name: Delete existing maps-latest release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete maps-latest --yes 2>/dev/null || true
+          git push --delete origin maps-latest 2>/dev/null || true
+
+      - name: Create maps-latest release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create maps-latest \
+            --title "Maps - $(date +'%B %Y')" \
+            --notes "Auto-generated lightweight .map files for WristNav. Updated monthly." \
+            --latest \
+            output/*.map \
+            output/index.json
