@@ -36,6 +36,17 @@ jobs:
           # Set heap
           echo "JAVACMD_OPTIONS=-Xmx3g" >> $GITHUB_ENV
 
+      - name: Debug plugin
+        run: |
+          echo "=== Plugin dir contents ==="
+          ls -la $HOME/.openstreetmap/osmosis/plugins/ || echo "Dir missing"
+          echo "=== JAR manifest ==="
+          jar tf $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar | grep -i "plugin\|conf\|META" | head -20
+          echo "=== osmosis-plugins.conf ==="
+          jar xf $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar META-INF/osmosis-plugins.conf 2>/dev/null && cat META-INF/osmosis-plugins.conf || echo "Not found"
+          echo "=== Test osmosis help ==="
+          $OSMOSIS_HOME/bin/osmosis --help 2>&1 | grep -i "mapfile\|mw\|plugin" | head -10
+
       - name: Convert all regions
         run: |
           mkdir -p output
