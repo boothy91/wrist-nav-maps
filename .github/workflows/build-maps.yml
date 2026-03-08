@@ -25,10 +25,9 @@ jobs:
           wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
-          # Download mapsforge map-writer plugin
-          wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar"             -O /tmp/mapsforge-map-writer.jar
-          # Set JAVACMD_OPTIONS to include the plugin jar in classpath
-          echo "JAVACMD_OPTIONS=-Xmx2g -cp /tmp/mapsforge-map-writer.jar" >> $GITHUB_ENV
+          # Download mapsforge map-writer plugin into osmosis lib dir
+          wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar"             -O osmosis_install/osmosis-0.49.2/lib/mapsforge-map-writer.jar
+          echo "JAVACMD_OPTIONS=-Xmx2g" >> $GITHUB_ENV
           echo "OSMOSIS_BIN=osmosis_install/osmosis-0.49.2/bin/osmosis" >> $GITHUB_ENV
 
       - name: Debug Osmosis structure
