@@ -90,18 +90,6 @@
     "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/east-yorkshire-with-hull-latest.osm.pbf"
   },
   {
-    "id": "enfield",
-    "name": "Enfield",
-    "path": "europe/united-kingdom/england/london/enfield",
-    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/london/enfield-latest.osm.pbf"
-  },
-  {
-    "id": "england",
-    "name": "England",
-    "path": "europe/united-kingdom/england",
-    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england-latest.osm.pbf"
-  },
-  {
     "id": "essex",
     "name": "Essex",
     "path": "europe/united-kingdom/england/essex",
