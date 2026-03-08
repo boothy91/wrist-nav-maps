@@ -41,7 +41,8 @@ jobs:
           gh release create maps-north-america \
             --title "Maps - North America - $(date +'%B %Y')" \
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
-            --latest=false
+            --latest=false \
+            --draft=false
 
       - name: Convert regions
         env:
