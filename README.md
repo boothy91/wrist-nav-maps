@@ -1,41 +1,56 @@
-# WristNav Maps
+# wrist-nav-maps
 
-Auto-generated `.map` files for [WristNav](https://github.com/Boothy91/Wrist-Nav-Source) — a standalone Wear OS hiking and trail running navigation app.
+Auto-generated lightweight Mapsforge `.map` files for [WristNav](https://github.com/boothy91/wrist-nav-maps), built monthly from OpenStreetMap data via Geofabrik.
 
-## How it works
+Maps are filtered to hiking/navigation relevant data only (highways, paths, waterways, natural features) keeping file sizes small for Wear OS storage.
 
-A GitHub Action runs on the 1st of every month:
-1. Downloads PBF data from [Geofabrik](https://download.geofabrik.de)
-2. Filters to hiking-relevant tags (highways, paths, waterways, contours etc.)
-3. Converts to Mapsforge `.map` format using Osmosis
-4. Publishes all maps as assets on the `maps-latest` release
+## Downloads
 
-## Download
+Each region group has a permanent release URL. Maps are rebuilt monthly.
 
-Maps are available on the [latest release](../../releases/tag/maps-latest).
+| Region | Index | Release Tag |
+|--------|-------|-------------|
+| Africa | [index.json](https://github.com/boothy91/wrist-nav-maps/releases/download/maps-africa/index.json) | `maps-africa` |
+| Asia | [index.json](https://github.com/boothy91/wrist-nav-maps/releases/download/maps-asia/index.json) | `maps-asia` |
+| Europe (A-L) | [index.json](https://github.com/boothy91/wrist-nav-maps/releases/download/maps-europe-1/index.json) | `maps-europe-1` |
+| Europe (M-Z) | [index.json](https://github.com/boothy91/wrist-nav-maps/releases/download/maps-europe-2/index.json) | `maps-europe-2` |
+| Europe - UK | [index.json](https://github.com/boothy91/wrist-nav-maps/releases/download/maps-europe-uk/index.json) | `maps-europe-uk` |
+| North America | [index.json](https://github.com/boothy91/wrist-nav-maps/releases/download/maps-north-america/index.json) | `maps-north-america` |
+| Others | [index.json](https://github.com/boothy91/wrist-nav-maps/releases/download/maps-others/index.json) | `maps-others` |
 
-Direct URL pattern:
+## Example URLs
+
 ```
-https://github.com/Boothy91/wrist-nav-maps/releases/download/maps-latest/{region-id}.map
-```
+# South Yorkshire
+https://github.com/boothy91/wrist-nav-maps/releases/download/maps-europe-uk/south-yorkshire.map
 
-## Index
+# Bayern
+https://github.com/boothy91/wrist-nav-maps/releases/download/maps-europe-1/bayern.map
 
-The `index.json` file lists all available maps with URLs and file sizes:
-```
-https://github.com/Boothy91/wrist-nav-maps/releases/download/maps-latest/index.json
-```
-
-## Adding regions
-
-Edit `config/regions.json` to add new regions. Each entry needs:
-```json
-{
-  "id": "south-yorkshire",
-  "name": "South Yorkshire",
-  "path": "europe/united-kingdom/england",
-  "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/south-yorkshire-latest.osm.pbf"
-}
+# Index for UK maps
+https://github.com/boothy91/wrist-nav-maps/releases/download/maps-europe-uk/index.json
 ```
 
-Then trigger the workflow manually via Actions → Build and Release Maps → Run workflow.
+## Map Coverage
+
+- **512 regions** across 9 continents
+- Includes countries, states, and sub-regions where available
+- Smallest available granularity used where possible (e.g. UK counties, German Bezirke)
+
+## Build Schedule
+
+| Workflow | Schedule |
+|----------|----------|
+| Africa | 1st of month |
+| Asia | 2nd of month |
+| Europe (A-L) | 3rd of month |
+| Europe (M-Z) | 4th of month |
+| Europe - UK | 5th of month |
+| North America | 6th of month |
+| Others | 7th of month |
+
+## Data Sources
+
+- OSM data: [Geofabrik](https://download.geofabrik.de)
+- Map format: [Mapsforge](https://github.com/mapsforge/mapsforge)
+- Map writer: mapsforge-map-writer 0.21.0
