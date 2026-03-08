@@ -1,0 +1,398 @@
+[
+  {
+    "id": "american-oceania",
+    "name": "American Oceania",
+    "path": "australia-oceania/american-oceania",
+    "pbf": "https://download.geofabrik.de/australia-oceania/american-oceania-latest.osm.pbf"
+  },
+  {
+    "id": "antarctica",
+    "name": "Antarctica",
+    "path": "antarctica",
+    "pbf": "https://download.geofabrik.de/antarctica-latest.osm.pbf"
+  },
+  {
+    "id": "argentina",
+    "name": "Argentina",
+    "path": "south-america/argentina",
+    "pbf": "https://download.geofabrik.de/south-america/argentina-latest.osm.pbf"
+  },
+  {
+    "id": "australia",
+    "name": "Australia",
+    "path": "australia-oceania/australia",
+    "pbf": "https://download.geofabrik.de/australia-oceania/australia-latest.osm.pbf"
+  },
+  {
+    "id": "australia-oceania",
+    "name": "Australia and Oceania",
+    "path": "australia-oceania",
+    "pbf": "https://download.geofabrik.de/australia-oceania-latest.osm.pbf"
+  },
+  {
+    "id": "bahamas",
+    "name": "Bahamas",
+    "path": "central-america/bahamas",
+    "pbf": "https://download.geofabrik.de/central-america/bahamas-latest.osm.pbf"
+  },
+  {
+    "id": "belize",
+    "name": "Belize",
+    "path": "central-america/belize",
+    "pbf": "https://download.geofabrik.de/central-america/belize-latest.osm.pbf"
+  },
+  {
+    "id": "bolivia",
+    "name": "Bolivia",
+    "path": "south-america/bolivia",
+    "pbf": "https://download.geofabrik.de/south-america/bolivia-latest.osm.pbf"
+  },
+  {
+    "id": "brazil",
+    "name": "Brazil",
+    "path": "south-america/brazil",
+    "pbf": "https://download.geofabrik.de/south-america/brazil-latest.osm.pbf"
+  },
+  {
+    "id": "central-america",
+    "name": "Central America",
+    "path": "central-america",
+    "pbf": "https://download.geofabrik.de/central-america-latest.osm.pbf"
+  },
+  {
+    "id": "central-fed-district",
+    "name": "Central Federal District",
+    "path": "russia/central-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/central-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "centro-oeste",
+    "name": "Centro-Oeste",
+    "path": "south-america/brazil/centro-oeste",
+    "pbf": "https://download.geofabrik.de/south-america/brazil/centro-oeste-latest.osm.pbf"
+  },
+  {
+    "id": "chile",
+    "name": "Chile",
+    "path": "south-america/chile",
+    "pbf": "https://download.geofabrik.de/south-america/chile-latest.osm.pbf"
+  },
+  {
+    "id": "colombia",
+    "name": "Colombia",
+    "path": "south-america/colombia",
+    "pbf": "https://download.geofabrik.de/south-america/colombia-latest.osm.pbf"
+  },
+  {
+    "id": "cook-islands",
+    "name": "Cook Islands",
+    "path": "australia-oceania/cook-islands",
+    "pbf": "https://download.geofabrik.de/australia-oceania/cook-islands-latest.osm.pbf"
+  },
+  {
+    "id": "costa-rica",
+    "name": "Costa Rica",
+    "path": "central-america/costa-rica",
+    "pbf": "https://download.geofabrik.de/central-america/costa-rica-latest.osm.pbf"
+  },
+  {
+    "id": "crimean-fed-district",
+    "name": "Crimean Federal District",
+    "path": "russia/crimean-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/crimean-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "cuba",
+    "name": "Cuba",
+    "path": "central-america/cuba",
+    "pbf": "https://download.geofabrik.de/central-america/cuba-latest.osm.pbf"
+  },
+  {
+    "id": "ecuador",
+    "name": "Ecuador",
+    "path": "south-america/ecuador",
+    "pbf": "https://download.geofabrik.de/south-america/ecuador-latest.osm.pbf"
+  },
+  {
+    "id": "el-salvador",
+    "name": "El Salvador",
+    "path": "central-america/el-salvador",
+    "pbf": "https://download.geofabrik.de/central-america/el-salvador-latest.osm.pbf"
+  },
+  {
+    "id": "far-eastern-fed-district",
+    "name": "Far Eastern Federal District",
+    "path": "russia/far-eastern-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/far-eastern-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "fiji",
+    "name": "Fiji",
+    "path": "australia-oceania/fiji",
+    "pbf": "https://download.geofabrik.de/australia-oceania/fiji-latest.osm.pbf"
+  },
+  {
+    "id": "guatemala",
+    "name": "Guatemala",
+    "path": "central-america/guatemala",
+    "pbf": "https://download.geofabrik.de/central-america/guatemala-latest.osm.pbf"
+  },
+  {
+    "id": "guyana",
+    "name": "Guyana",
+    "path": "south-america/guyana",
+    "pbf": "https://download.geofabrik.de/south-america/guyana-latest.osm.pbf"
+  },
+  {
+    "id": "haiti-and-domrep",
+    "name": "Haiti and Dominican Republic",
+    "path": "central-america/haiti-and-domrep",
+    "pbf": "https://download.geofabrik.de/central-america/haiti-and-domrep-latest.osm.pbf"
+  },
+  {
+    "id": "honduras",
+    "name": "Honduras",
+    "path": "central-america/honduras",
+    "pbf": "https://download.geofabrik.de/central-america/honduras-latest.osm.pbf"
+  },
+  {
+    "id": "ile-de-clipperton",
+    "name": "\u00cele de Clipperton",
+    "path": "australia-oceania/ile-de-clipperton",
+    "pbf": "https://download.geofabrik.de/australia-oceania/ile-de-clipperton-latest.osm.pbf"
+  },
+  {
+    "id": "jamaica",
+    "name": "Jamaica",
+    "path": "central-america/jamaica",
+    "pbf": "https://download.geofabrik.de/central-america/jamaica-latest.osm.pbf"
+  },
+  {
+    "id": "kaliningrad",
+    "name": "Kaliningrad",
+    "path": "russia/kaliningrad",
+    "pbf": "https://download.geofabrik.de/russia/kaliningrad-latest.osm.pbf"
+  },
+  {
+    "id": "kiribati",
+    "name": "Kiribati",
+    "path": "australia-oceania/kiribati",
+    "pbf": "https://download.geofabrik.de/australia-oceania/kiribati-latest.osm.pbf"
+  },
+  {
+    "id": "marshall-islands",
+    "name": "Marshall Islands",
+    "path": "australia-oceania/marshall-islands",
+    "pbf": "https://download.geofabrik.de/australia-oceania/marshall-islands-latest.osm.pbf"
+  },
+  {
+    "id": "micronesia",
+    "name": "Micronesia",
+    "path": "australia-oceania/micronesia",
+    "pbf": "https://download.geofabrik.de/australia-oceania/micronesia-latest.osm.pbf"
+  },
+  {
+    "id": "nauru",
+    "name": "Nauru",
+    "path": "australia-oceania/nauru",
+    "pbf": "https://download.geofabrik.de/australia-oceania/nauru-latest.osm.pbf"
+  },
+  {
+    "id": "new-caledonia",
+    "name": "New Caledonia",
+    "path": "australia-oceania/new-caledonia",
+    "pbf": "https://download.geofabrik.de/australia-oceania/new-caledonia-latest.osm.pbf"
+  },
+  {
+    "id": "new-zealand",
+    "name": "New Zealand",
+    "path": "australia-oceania/new-zealand",
+    "pbf": "https://download.geofabrik.de/australia-oceania/new-zealand-latest.osm.pbf"
+  },
+  {
+    "id": "nicaragua",
+    "name": "Nicaragua",
+    "path": "central-america/nicaragua",
+    "pbf": "https://download.geofabrik.de/central-america/nicaragua-latest.osm.pbf"
+  },
+  {
+    "id": "niue",
+    "name": "Niue",
+    "path": "australia-oceania/niue",
+    "pbf": "https://download.geofabrik.de/australia-oceania/niue-latest.osm.pbf"
+  },
+  {
+    "id": "nordeste",
+    "name": "Nordeste",
+    "path": "south-america/brazil/nordeste",
+    "pbf": "https://download.geofabrik.de/south-america/brazil/nordeste-latest.osm.pbf"
+  },
+  {
+    "id": "norte",
+    "name": "Norte",
+    "path": "south-america/brazil/norte",
+    "pbf": "https://download.geofabrik.de/south-america/brazil/norte-latest.osm.pbf"
+  },
+  {
+    "id": "north-caucasus-fed-district",
+    "name": "North Caucasus Federal District",
+    "path": "russia/north-caucasus-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/north-caucasus-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "northwestern-fed-district",
+    "name": "Northwestern Federal District",
+    "path": "russia/northwestern-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/northwestern-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "palau",
+    "name": "Palau",
+    "path": "australia-oceania/palau",
+    "pbf": "https://download.geofabrik.de/australia-oceania/palau-latest.osm.pbf"
+  },
+  {
+    "id": "panama",
+    "name": "Panama",
+    "path": "central-america/panama",
+    "pbf": "https://download.geofabrik.de/central-america/panama-latest.osm.pbf"
+  },
+  {
+    "id": "papua-new-guinea",
+    "name": "Papua New Guinea",
+    "path": "australia-oceania/papua-new-guinea",
+    "pbf": "https://download.geofabrik.de/australia-oceania/papua-new-guinea-latest.osm.pbf"
+  },
+  {
+    "id": "paraguay",
+    "name": "Paraguay",
+    "path": "south-america/paraguay",
+    "pbf": "https://download.geofabrik.de/south-america/paraguay-latest.osm.pbf"
+  },
+  {
+    "id": "peru",
+    "name": "Peru",
+    "path": "south-america/peru",
+    "pbf": "https://download.geofabrik.de/south-america/peru-latest.osm.pbf"
+  },
+  {
+    "id": "pitcairn-islands",
+    "name": "Pitcairn Islands",
+    "path": "australia-oceania/pitcairn-islands",
+    "pbf": "https://download.geofabrik.de/australia-oceania/pitcairn-islands-latest.osm.pbf"
+  },
+  {
+    "id": "polynesie-francaise",
+    "name": "Polyn\u00e9sie fran\u00e7aise (French Polynesia)",
+    "path": "australia-oceania/polynesie-francaise",
+    "pbf": "https://download.geofabrik.de/australia-oceania/polynesie-francaise-latest.osm.pbf"
+  },
+  {
+    "id": "russia",
+    "name": "Russian Federation",
+    "path": "russia",
+    "pbf": "https://download.geofabrik.de/russia-latest.osm.pbf"
+  },
+  {
+    "id": "samoa",
+    "name": "Samoa",
+    "path": "australia-oceania/samoa",
+    "pbf": "https://download.geofabrik.de/australia-oceania/samoa-latest.osm.pbf"
+  },
+  {
+    "id": "siberian-fed-district",
+    "name": "Siberian Federal District",
+    "path": "russia/siberian-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/siberian-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "solomon-islands",
+    "name": "Solomon Islands",
+    "path": "australia-oceania/solomon-islands",
+    "pbf": "https://download.geofabrik.de/australia-oceania/solomon-islands-latest.osm.pbf"
+  },
+  {
+    "id": "south-america",
+    "name": "South America",
+    "path": "south-america",
+    "pbf": "https://download.geofabrik.de/south-america-latest.osm.pbf"
+  },
+  {
+    "id": "south-fed-district",
+    "name": "South Federal District",
+    "path": "russia/south-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/south-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "sudeste",
+    "name": "Sudeste",
+    "path": "south-america/brazil/sudeste",
+    "pbf": "https://download.geofabrik.de/south-america/brazil/sudeste-latest.osm.pbf"
+  },
+  {
+    "id": "sul",
+    "name": "Sul",
+    "path": "south-america/brazil/sul",
+    "pbf": "https://download.geofabrik.de/south-america/brazil/sul-latest.osm.pbf"
+  },
+  {
+    "id": "suriname",
+    "name": "Suriname",
+    "path": "south-america/suriname",
+    "pbf": "https://download.geofabrik.de/south-america/suriname-latest.osm.pbf"
+  },
+  {
+    "id": "tokelau",
+    "name": "Tokelau",
+    "path": "australia-oceania/tokelau",
+    "pbf": "https://download.geofabrik.de/australia-oceania/tokelau-latest.osm.pbf"
+  },
+  {
+    "id": "tonga",
+    "name": "Tonga",
+    "path": "australia-oceania/tonga",
+    "pbf": "https://download.geofabrik.de/australia-oceania/tonga-latest.osm.pbf"
+  },
+  {
+    "id": "tuvalu",
+    "name": "Tuvalu",
+    "path": "australia-oceania/tuvalu",
+    "pbf": "https://download.geofabrik.de/australia-oceania/tuvalu-latest.osm.pbf"
+  },
+  {
+    "id": "ural-fed-district",
+    "name": "Ural Federal District",
+    "path": "russia/ural-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/ural-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "uruguay",
+    "name": "Uruguay",
+    "path": "south-america/uruguay",
+    "pbf": "https://download.geofabrik.de/south-america/uruguay-latest.osm.pbf"
+  },
+  {
+    "id": "vanuatu",
+    "name": "Vanuatu",
+    "path": "australia-oceania/vanuatu",
+    "pbf": "https://download.geofabrik.de/australia-oceania/vanuatu-latest.osm.pbf"
+  },
+  {
+    "id": "venezuela",
+    "name": "Venezuela",
+    "path": "south-america/venezuela",
+    "pbf": "https://download.geofabrik.de/south-america/venezuela-latest.osm.pbf"
+  },
+  {
+    "id": "volga-fed-district",
+    "name": "Volga Federal District",
+    "path": "russia/volga-fed-district",
+    "pbf": "https://download.geofabrik.de/russia/volga-fed-district-latest.osm.pbf"
+  },
+  {
+    "id": "wallis-et-futuna",
+    "name": "Wallis et Futuna",
+    "path": "australia-oceania/wallis-et-futuna",
+    "pbf": "https://download.geofabrik.de/australia-oceania/wallis-et-futuna-latest.osm.pbf"
+  }
+]

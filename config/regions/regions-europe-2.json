@@ -1,0 +1,392 @@
+[
+  {
+    "id": "andalucia",
+    "name": "Andaluc\u00eda",
+    "path": "europe/spain/andalucia",
+    "pbf": "https://download.geofabrik.de/europe/spain/andalucia-latest.osm.pbf"
+  },
+  {
+    "id": "aragon",
+    "name": "Arag\u00f3n",
+    "path": "europe/spain/aragon",
+    "pbf": "https://download.geofabrik.de/europe/spain/aragon-latest.osm.pbf"
+  },
+  {
+    "id": "asturias",
+    "name": "Asturias",
+    "path": "europe/spain/asturias",
+    "pbf": "https://download.geofabrik.de/europe/spain/asturias-latest.osm.pbf"
+  },
+  {
+    "id": "cantabria",
+    "name": "Cantabria",
+    "path": "europe/spain/cantabria",
+    "pbf": "https://download.geofabrik.de/europe/spain/cantabria-latest.osm.pbf"
+  },
+  {
+    "id": "castilla-la-mancha",
+    "name": "Castilla-La Mancha",
+    "path": "europe/spain/castilla-la-mancha",
+    "pbf": "https://download.geofabrik.de/europe/spain/castilla-la-mancha-latest.osm.pbf"
+  },
+  {
+    "id": "castilla-y-leon",
+    "name": "Castilla y Le\u00f3n",
+    "path": "europe/spain/castilla-y-leon",
+    "pbf": "https://download.geofabrik.de/europe/spain/castilla-y-leon-latest.osm.pbf"
+  },
+  {
+    "id": "cataluna",
+    "name": "Catalu\u00f1a",
+    "path": "europe/spain/cataluna",
+    "pbf": "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf"
+  },
+  {
+    "id": "ceuta",
+    "name": "Ceuta",
+    "path": "europe/spain/ceuta",
+    "pbf": "https://download.geofabrik.de/europe/spain/ceuta-latest.osm.pbf"
+  },
+  {
+    "id": "dolnoslaskie",
+    "name": "Wojew\u00f3dztwo dolno\u015bl\u0105skie<br />(Lower Silesian Voivodeship)",
+    "path": "europe/poland/dolnoslaskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/dolnoslaskie-latest.osm.pbf"
+  },
+  {
+    "id": "drenthe",
+    "name": "Drenthe",
+    "path": "europe/netherlands/drenthe",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/drenthe-latest.osm.pbf"
+  },
+  {
+    "id": "extremadura",
+    "name": "Extremadura",
+    "path": "europe/spain/extremadura",
+    "pbf": "https://download.geofabrik.de/europe/spain/extremadura-latest.osm.pbf"
+  },
+  {
+    "id": "flevoland",
+    "name": "Flevoland",
+    "path": "europe/netherlands/flevoland",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/flevoland-latest.osm.pbf"
+  },
+  {
+    "id": "friesland",
+    "name": "Friesland",
+    "path": "europe/netherlands/friesland",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/friesland-latest.osm.pbf"
+  },
+  {
+    "id": "galicia",
+    "name": "Galicia",
+    "path": "europe/spain/galicia",
+    "pbf": "https://download.geofabrik.de/europe/spain/galicia-latest.osm.pbf"
+  },
+  {
+    "id": "gelderland",
+    "name": "Gelderland",
+    "path": "europe/netherlands/gelderland",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/gelderland-latest.osm.pbf"
+  },
+  {
+    "id": "groningen",
+    "name": "Groningen",
+    "path": "europe/netherlands/groningen",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/groningen-latest.osm.pbf"
+  },
+  {
+    "id": "islas-baleares",
+    "name": "Islas Baleares",
+    "path": "europe/spain/islas-baleares",
+    "pbf": "https://download.geofabrik.de/europe/spain/islas-baleares-latest.osm.pbf"
+  },
+  {
+    "id": "kujawsko-pomorskie",
+    "name": "Wojew\u00f3dztwo kujawsko-pomorskie<br />(Kuyavian-Pomeranian Voivodeship)",
+    "path": "europe/poland/kujawsko-pomorskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/kujawsko-pomorskie-latest.osm.pbf"
+  },
+  {
+    "id": "la-rioja",
+    "name": "La Rioja",
+    "path": "europe/spain/la-rioja",
+    "pbf": "https://download.geofabrik.de/europe/spain/la-rioja-latest.osm.pbf"
+  },
+  {
+    "id": "limburg",
+    "name": "Limburg",
+    "path": "europe/netherlands/limburg",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/limburg-latest.osm.pbf"
+  },
+  {
+    "id": "lodzkie",
+    "name": "Wojew\u00f3dztwo \u0142\u00f3dzkie<br />(\u0141\u00f3d\u017a Voivodeship)",
+    "path": "europe/poland/lodzkie",
+    "pbf": "https://download.geofabrik.de/europe/poland/lodzkie-latest.osm.pbf"
+  },
+  {
+    "id": "lubelskie",
+    "name": "Wojew\u00f3dztwo lubelskie<br />(Lublin Voivodeship)",
+    "path": "europe/poland/lubelskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/lubelskie-latest.osm.pbf"
+  },
+  {
+    "id": "lubuskie",
+    "name": "Wojew\u00f3dztwo lubuskie<br />(Lubusz Voivodeship)",
+    "path": "europe/poland/lubuskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/lubuskie-latest.osm.pbf"
+  },
+  {
+    "id": "macedonia",
+    "name": "Macedonia",
+    "path": "europe/macedonia",
+    "pbf": "https://download.geofabrik.de/europe/macedonia-latest.osm.pbf"
+  },
+  {
+    "id": "madrid",
+    "name": "Madrid",
+    "path": "europe/spain/madrid",
+    "pbf": "https://download.geofabrik.de/europe/spain/madrid-latest.osm.pbf"
+  },
+  {
+    "id": "malopolskie",
+    "name": "Wojew\u00f3dztwo ma\u0142opolskie<br />(Lesser Poland Voivodeship)",
+    "path": "europe/poland/malopolskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/malopolskie-latest.osm.pbf"
+  },
+  {
+    "id": "malta",
+    "name": "Malta",
+    "path": "europe/malta",
+    "pbf": "https://download.geofabrik.de/europe/malta-latest.osm.pbf"
+  },
+  {
+    "id": "mazowieckie",
+    "name": "Wojew\u00f3dztwo mazowieckie<br />(Mazovian Voivodeship)",
+    "path": "europe/poland/mazowieckie",
+    "pbf": "https://download.geofabrik.de/europe/poland/mazowieckie-latest.osm.pbf"
+  },
+  {
+    "id": "melilla",
+    "name": "Melilla",
+    "path": "europe/spain/melilla",
+    "pbf": "https://download.geofabrik.de/europe/spain/melilla-latest.osm.pbf"
+  },
+  {
+    "id": "moldova",
+    "name": "Moldova",
+    "path": "europe/moldova",
+    "pbf": "https://download.geofabrik.de/europe/moldova-latest.osm.pbf"
+  },
+  {
+    "id": "monaco",
+    "name": "Monaco",
+    "path": "europe/monaco",
+    "pbf": "https://download.geofabrik.de/europe/monaco-latest.osm.pbf"
+  },
+  {
+    "id": "montenegro",
+    "name": "Montenegro",
+    "path": "europe/montenegro",
+    "pbf": "https://download.geofabrik.de/europe/montenegro-latest.osm.pbf"
+  },
+  {
+    "id": "murcia",
+    "name": "Murcia",
+    "path": "europe/spain/murcia",
+    "pbf": "https://download.geofabrik.de/europe/spain/murcia-latest.osm.pbf"
+  },
+  {
+    "id": "navarra",
+    "name": "Navarra",
+    "path": "europe/spain/navarra",
+    "pbf": "https://download.geofabrik.de/europe/spain/navarra-latest.osm.pbf"
+  },
+  {
+    "id": "netherlands",
+    "name": "Netherlands",
+    "path": "europe/netherlands",
+    "pbf": "https://download.geofabrik.de/europe/netherlands-latest.osm.pbf"
+  },
+  {
+    "id": "noord-brabant",
+    "name": "Noord-Brabant",
+    "path": "europe/netherlands/noord-brabant",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/noord-brabant-latest.osm.pbf"
+  },
+  {
+    "id": "noord-holland",
+    "name": "Noord-Holland",
+    "path": "europe/netherlands/noord-holland",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/noord-holland-latest.osm.pbf"
+  },
+  {
+    "id": "norway",
+    "name": "Norway",
+    "path": "europe/norway",
+    "pbf": "https://download.geofabrik.de/europe/norway-latest.osm.pbf"
+  },
+  {
+    "id": "opolskie",
+    "name": "Wojew\u00f3dztwo opolskie<br />(Opole Voivodeship)",
+    "path": "europe/poland/opolskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/opolskie-latest.osm.pbf"
+  },
+  {
+    "id": "overijssel",
+    "name": "Overijssel",
+    "path": "europe/netherlands/overijssel",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/overijssel-latest.osm.pbf"
+  },
+  {
+    "id": "pais-vasco",
+    "name": "Pa\u00eds Vasco",
+    "path": "europe/spain/pais-vasco",
+    "pbf": "https://download.geofabrik.de/europe/spain/pais-vasco-latest.osm.pbf"
+  },
+  {
+    "id": "podkarpackie",
+    "name": "Wojew\u00f3dztwo podkarpackie<br />(Subcarpathian Voivodeship)",
+    "path": "europe/poland/podkarpackie",
+    "pbf": "https://download.geofabrik.de/europe/poland/podkarpackie-latest.osm.pbf"
+  },
+  {
+    "id": "podlaskie",
+    "name": "Wojew\u00f3dztwo podlaskie<br />(Podlaskie Voivodeship)",
+    "path": "europe/poland/podlaskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/podlaskie-latest.osm.pbf"
+  },
+  {
+    "id": "poland",
+    "name": "Poland",
+    "path": "europe/poland",
+    "pbf": "https://download.geofabrik.de/europe/poland-latest.osm.pbf"
+  },
+  {
+    "id": "pomorskie",
+    "name": "Wojew\u00f3dztwo pomorskie<br />(Pomeranian Voivodeship)",
+    "path": "europe/poland/pomorskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/pomorskie-latest.osm.pbf"
+  },
+  {
+    "id": "portugal",
+    "name": "Portugal",
+    "path": "europe/portugal",
+    "pbf": "https://download.geofabrik.de/europe/portugal-latest.osm.pbf"
+  },
+  {
+    "id": "romania",
+    "name": "Romania",
+    "path": "europe/romania",
+    "pbf": "https://download.geofabrik.de/europe/romania-latest.osm.pbf"
+  },
+  {
+    "id": "serbia",
+    "name": "Serbia",
+    "path": "europe/serbia",
+    "pbf": "https://download.geofabrik.de/europe/serbia-latest.osm.pbf"
+  },
+  {
+    "id": "slaskie",
+    "name": "Wojew\u00f3dztwo \u015bl\u0105skie<br />(Silesian Voivodeship)",
+    "path": "europe/poland/slaskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/slaskie-latest.osm.pbf"
+  },
+  {
+    "id": "slovakia",
+    "name": "Slovakia",
+    "path": "europe/slovakia",
+    "pbf": "https://download.geofabrik.de/europe/slovakia-latest.osm.pbf"
+  },
+  {
+    "id": "slovenia",
+    "name": "Slovenia",
+    "path": "europe/slovenia",
+    "pbf": "https://download.geofabrik.de/europe/slovenia-latest.osm.pbf"
+  },
+  {
+    "id": "spain",
+    "name": "Spain",
+    "path": "europe/spain",
+    "pbf": "https://download.geofabrik.de/europe/spain-latest.osm.pbf"
+  },
+  {
+    "id": "sweden",
+    "name": "Sweden",
+    "path": "europe/sweden",
+    "pbf": "https://download.geofabrik.de/europe/sweden-latest.osm.pbf"
+  },
+  {
+    "id": "swietokrzyskie",
+    "name": "Wojew\u00f3dztwo \u015bwi\u0119tokrzyskie<br />(\u015awi\u0119tokrzyskie Voivodeship)",
+    "path": "europe/poland/swietokrzyskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/swietokrzyskie-latest.osm.pbf"
+  },
+  {
+    "id": "switzerland",
+    "name": "Switzerland",
+    "path": "europe/switzerland",
+    "pbf": "https://download.geofabrik.de/europe/switzerland-latest.osm.pbf"
+  },
+  {
+    "id": "turkey",
+    "name": "Turkey",
+    "path": "europe/turkey",
+    "pbf": "https://download.geofabrik.de/europe/turkey-latest.osm.pbf"
+  },
+  {
+    "id": "ukraine",
+    "name": "Ukraine (with Crimea)",
+    "path": "europe/ukraine",
+    "pbf": "https://download.geofabrik.de/europe/ukraine-latest.osm.pbf"
+  },
+  {
+    "id": "united-kingdom",
+    "name": "United Kingdom",
+    "path": "europe/united-kingdom",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom-latest.osm.pbf"
+  },
+  {
+    "id": "utrecht",
+    "name": "Utrecht",
+    "path": "europe/netherlands/utrecht",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/utrecht-latest.osm.pbf"
+  },
+  {
+    "id": "valencia",
+    "name": "Valencia",
+    "path": "europe/spain/valencia",
+    "pbf": "https://download.geofabrik.de/europe/spain/valencia-latest.osm.pbf"
+  },
+  {
+    "id": "warminsko-mazurskie",
+    "name": "Wojew\u00f3dztwo warmi\u0144sko-mazurskie<br />(Warmian-Masurian Voivodeship)",
+    "path": "europe/poland/warminsko-mazurskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/warminsko-mazurskie-latest.osm.pbf"
+  },
+  {
+    "id": "wielkopolskie",
+    "name": "Wojew\u00f3dztwo wielkopolskie<br />(Greater Poland Voivodeship)",
+    "path": "europe/poland/wielkopolskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/wielkopolskie-latest.osm.pbf"
+  },
+  {
+    "id": "zachodniopomorskie",
+    "name": "Wojew\u00f3dztwo zachodniopomorskie<br />(West Pomeranian Voivodeship)",
+    "path": "europe/poland/zachodniopomorskie",
+    "pbf": "https://download.geofabrik.de/europe/poland/zachodniopomorskie-latest.osm.pbf"
+  },
+  {
+    "id": "zeeland",
+    "name": "Zeeland",
+    "path": "europe/netherlands/zeeland",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/zeeland-latest.osm.pbf"
+  },
+  {
+    "id": "zuid-holland",
+    "name": "Zuid-Holland",
+    "path": "europe/netherlands/zuid-holland",
+    "pbf": "https://download.geofabrik.de/europe/netherlands/zuid-holland-latest.osm.pbf"
+  }
+]

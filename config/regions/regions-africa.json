@@ -1,0 +1,344 @@
+[
+  {
+    "id": "africa",
+    "name": "Africa",
+    "path": "africa",
+    "pbf": "https://download.geofabrik.de/africa-latest.osm.pbf"
+  },
+  {
+    "id": "algeria",
+    "name": "Algeria",
+    "path": "africa/algeria",
+    "pbf": "https://download.geofabrik.de/africa/algeria-latest.osm.pbf"
+  },
+  {
+    "id": "angola",
+    "name": "Angola",
+    "path": "africa/angola",
+    "pbf": "https://download.geofabrik.de/africa/angola-latest.osm.pbf"
+  },
+  {
+    "id": "benin",
+    "name": "Benin",
+    "path": "africa/benin",
+    "pbf": "https://download.geofabrik.de/africa/benin-latest.osm.pbf"
+  },
+  {
+    "id": "botswana",
+    "name": "Botswana",
+    "path": "africa/botswana",
+    "pbf": "https://download.geofabrik.de/africa/botswana-latest.osm.pbf"
+  },
+  {
+    "id": "burkina-faso",
+    "name": "Burkina Faso",
+    "path": "africa/burkina-faso",
+    "pbf": "https://download.geofabrik.de/africa/burkina-faso-latest.osm.pbf"
+  },
+  {
+    "id": "burundi",
+    "name": "Burundi",
+    "path": "africa/burundi",
+    "pbf": "https://download.geofabrik.de/africa/burundi-latest.osm.pbf"
+  },
+  {
+    "id": "cameroon",
+    "name": "Cameroon",
+    "path": "africa/cameroon",
+    "pbf": "https://download.geofabrik.de/africa/cameroon-latest.osm.pbf"
+  },
+  {
+    "id": "canary-islands",
+    "name": "Canary Islands",
+    "path": "africa/canary-islands",
+    "pbf": "https://download.geofabrik.de/africa/canary-islands-latest.osm.pbf"
+  },
+  {
+    "id": "cape-verde",
+    "name": "Cape Verde",
+    "path": "africa/cape-verde",
+    "pbf": "https://download.geofabrik.de/africa/cape-verde-latest.osm.pbf"
+  },
+  {
+    "id": "central-african-republic",
+    "name": "Central African Republic",
+    "path": "africa/central-african-republic",
+    "pbf": "https://download.geofabrik.de/africa/central-african-republic-latest.osm.pbf"
+  },
+  {
+    "id": "chad",
+    "name": "Chad",
+    "path": "africa/chad",
+    "pbf": "https://download.geofabrik.de/africa/chad-latest.osm.pbf"
+  },
+  {
+    "id": "comores",
+    "name": "Comores",
+    "path": "africa/comores",
+    "pbf": "https://download.geofabrik.de/africa/comores-latest.osm.pbf"
+  },
+  {
+    "id": "congo-brazzaville",
+    "name": "Congo (Republic/Brazzaville)",
+    "path": "africa/congo-brazzaville",
+    "pbf": "https://download.geofabrik.de/africa/congo-brazzaville-latest.osm.pbf"
+  },
+  {
+    "id": "congo-democratic-republic",
+    "name": "Congo (Democratic Republic/Kinshasa)",
+    "path": "africa/congo-democratic-republic",
+    "pbf": "https://download.geofabrik.de/africa/congo-democratic-republic-latest.osm.pbf"
+  },
+  {
+    "id": "djibouti",
+    "name": "Djibouti",
+    "path": "africa/djibouti",
+    "pbf": "https://download.geofabrik.de/africa/djibouti-latest.osm.pbf"
+  },
+  {
+    "id": "egypt",
+    "name": "Egypt",
+    "path": "africa/egypt",
+    "pbf": "https://download.geofabrik.de/africa/egypt-latest.osm.pbf"
+  },
+  {
+    "id": "equatorial-guinea",
+    "name": "Equatorial Guinea",
+    "path": "africa/equatorial-guinea",
+    "pbf": "https://download.geofabrik.de/africa/equatorial-guinea-latest.osm.pbf"
+  },
+  {
+    "id": "eritrea",
+    "name": "Eritrea",
+    "path": "africa/eritrea",
+    "pbf": "https://download.geofabrik.de/africa/eritrea-latest.osm.pbf"
+  },
+  {
+    "id": "ethiopia",
+    "name": "Ethiopia",
+    "path": "africa/ethiopia",
+    "pbf": "https://download.geofabrik.de/africa/ethiopia-latest.osm.pbf"
+  },
+  {
+    "id": "gabon",
+    "name": "Gabon",
+    "path": "africa/gabon",
+    "pbf": "https://download.geofabrik.de/africa/gabon-latest.osm.pbf"
+  },
+  {
+    "id": "ghana",
+    "name": "Ghana",
+    "path": "africa/ghana",
+    "pbf": "https://download.geofabrik.de/africa/ghana-latest.osm.pbf"
+  },
+  {
+    "id": "guinea",
+    "name": "Guinea",
+    "path": "africa/guinea",
+    "pbf": "https://download.geofabrik.de/africa/guinea-latest.osm.pbf"
+  },
+  {
+    "id": "guinea-bissau",
+    "name": "Guinea-Bissau",
+    "path": "africa/guinea-bissau",
+    "pbf": "https://download.geofabrik.de/africa/guinea-bissau-latest.osm.pbf"
+  },
+  {
+    "id": "ivory-coast",
+    "name": "Ivory Coast",
+    "path": "africa/ivory-coast",
+    "pbf": "https://download.geofabrik.de/africa/ivory-coast-latest.osm.pbf"
+  },
+  {
+    "id": "kenya",
+    "name": "Kenya",
+    "path": "africa/kenya",
+    "pbf": "https://download.geofabrik.de/africa/kenya-latest.osm.pbf"
+  },
+  {
+    "id": "lesotho",
+    "name": "Lesotho",
+    "path": "africa/lesotho",
+    "pbf": "https://download.geofabrik.de/africa/lesotho-latest.osm.pbf"
+  },
+  {
+    "id": "liberia",
+    "name": "Liberia",
+    "path": "africa/liberia",
+    "pbf": "https://download.geofabrik.de/africa/liberia-latest.osm.pbf"
+  },
+  {
+    "id": "libya",
+    "name": "Libya",
+    "path": "africa/libya",
+    "pbf": "https://download.geofabrik.de/africa/libya-latest.osm.pbf"
+  },
+  {
+    "id": "madagascar",
+    "name": "Madagascar",
+    "path": "africa/madagascar",
+    "pbf": "https://download.geofabrik.de/africa/madagascar-latest.osm.pbf"
+  },
+  {
+    "id": "malawi",
+    "name": "Malawi",
+    "path": "africa/malawi",
+    "pbf": "https://download.geofabrik.de/africa/malawi-latest.osm.pbf"
+  },
+  {
+    "id": "mali",
+    "name": "Mali",
+    "path": "africa/mali",
+    "pbf": "https://download.geofabrik.de/africa/mali-latest.osm.pbf"
+  },
+  {
+    "id": "mauritania",
+    "name": "Mauritania",
+    "path": "africa/mauritania",
+    "pbf": "https://download.geofabrik.de/africa/mauritania-latest.osm.pbf"
+  },
+  {
+    "id": "mauritius",
+    "name": "Mauritius",
+    "path": "africa/mauritius",
+    "pbf": "https://download.geofabrik.de/africa/mauritius-latest.osm.pbf"
+  },
+  {
+    "id": "morocco",
+    "name": "Morocco",
+    "path": "africa/morocco",
+    "pbf": "https://download.geofabrik.de/africa/morocco-latest.osm.pbf"
+  },
+  {
+    "id": "mozambique",
+    "name": "Mozambique",
+    "path": "africa/mozambique",
+    "pbf": "https://download.geofabrik.de/africa/mozambique-latest.osm.pbf"
+  },
+  {
+    "id": "namibia",
+    "name": "Namibia",
+    "path": "africa/namibia",
+    "pbf": "https://download.geofabrik.de/africa/namibia-latest.osm.pbf"
+  },
+  {
+    "id": "niger",
+    "name": "Niger",
+    "path": "africa/niger",
+    "pbf": "https://download.geofabrik.de/africa/niger-latest.osm.pbf"
+  },
+  {
+    "id": "nigeria",
+    "name": "Nigeria",
+    "path": "africa/nigeria",
+    "pbf": "https://download.geofabrik.de/africa/nigeria-latest.osm.pbf"
+  },
+  {
+    "id": "rwanda",
+    "name": "Rwanda",
+    "path": "africa/rwanda",
+    "pbf": "https://download.geofabrik.de/africa/rwanda-latest.osm.pbf"
+  },
+  {
+    "id": "saint-helena-ascension-and-tristan-da-cunha",
+    "name": "Saint Helena, Ascension, and Tristan da Cunha",
+    "path": "africa/saint-helena-ascension-and-tristan-da-cunha",
+    "pbf": "https://download.geofabrik.de/africa/saint-helena-ascension-and-tristan-da-cunha-latest.osm.pbf"
+  },
+  {
+    "id": "sao-tome-and-principe",
+    "name": "Sao Tome and Principe",
+    "path": "africa/sao-tome-and-principe",
+    "pbf": "https://download.geofabrik.de/africa/sao-tome-and-principe-latest.osm.pbf"
+  },
+  {
+    "id": "senegal-and-gambia",
+    "name": "Senegal and Gambia",
+    "path": "africa/senegal-and-gambia",
+    "pbf": "https://download.geofabrik.de/africa/senegal-and-gambia-latest.osm.pbf"
+  },
+  {
+    "id": "seychelles",
+    "name": "Seychelles",
+    "path": "africa/seychelles",
+    "pbf": "https://download.geofabrik.de/africa/seychelles-latest.osm.pbf"
+  },
+  {
+    "id": "sierra-leone",
+    "name": "Sierra Leone",
+    "path": "africa/sierra-leone",
+    "pbf": "https://download.geofabrik.de/africa/sierra-leone-latest.osm.pbf"
+  },
+  {
+    "id": "somalia",
+    "name": "Somalia",
+    "path": "africa/somalia",
+    "pbf": "https://download.geofabrik.de/africa/somalia-latest.osm.pbf"
+  },
+  {
+    "id": "south-africa",
+    "name": "South Africa",
+    "path": "africa/south-africa",
+    "pbf": "https://download.geofabrik.de/africa/south-africa-latest.osm.pbf"
+  },
+  {
+    "id": "south-africa-and-lesotho",
+    "name": "South Africa (includes Lesotho)",
+    "path": "africa/south-africa-and-lesotho",
+    "pbf": "https://download.geofabrik.de/africa/south-africa-and-lesotho-latest.osm.pbf"
+  },
+  {
+    "id": "south-sudan",
+    "name": "South Sudan",
+    "path": "africa/south-sudan",
+    "pbf": "https://download.geofabrik.de/africa/south-sudan-latest.osm.pbf"
+  },
+  {
+    "id": "sudan",
+    "name": "Sudan",
+    "path": "africa/sudan",
+    "pbf": "https://download.geofabrik.de/africa/sudan-latest.osm.pbf"
+  },
+  {
+    "id": "swaziland",
+    "name": "Swaziland",
+    "path": "africa/swaziland",
+    "pbf": "https://download.geofabrik.de/africa/swaziland-latest.osm.pbf"
+  },
+  {
+    "id": "tanzania",
+    "name": "Tanzania",
+    "path": "africa/tanzania",
+    "pbf": "https://download.geofabrik.de/africa/tanzania-latest.osm.pbf"
+  },
+  {
+    "id": "togo",
+    "name": "Togo",
+    "path": "africa/togo",
+    "pbf": "https://download.geofabrik.de/africa/togo-latest.osm.pbf"
+  },
+  {
+    "id": "tunisia",
+    "name": "Tunisia",
+    "path": "africa/tunisia",
+    "pbf": "https://download.geofabrik.de/africa/tunisia-latest.osm.pbf"
+  },
+  {
+    "id": "uganda",
+    "name": "Uganda",
+    "path": "africa/uganda",
+    "pbf": "https://download.geofabrik.de/africa/uganda-latest.osm.pbf"
+  },
+  {
+    "id": "zambia",
+    "name": "Zambia",
+    "path": "africa/zambia",
+    "pbf": "https://download.geofabrik.de/africa/zambia-latest.osm.pbf"
+  },
+  {
+    "id": "zimbabwe",
+    "name": "Zimbabwe",
+    "path": "africa/zimbabwe",
+    "pbf": "https://download.geofabrik.de/africa/zimbabwe-latest.osm.pbf"
+  }
+]

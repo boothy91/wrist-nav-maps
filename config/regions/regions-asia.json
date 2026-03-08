@@ -1,0 +1,566 @@
+[
+  {
+    "id": "afghanistan",
+    "name": "Afghanistan",
+    "path": "asia/afghanistan",
+    "pbf": "https://download.geofabrik.de/asia/afghanistan-latest.osm.pbf"
+  },
+  {
+    "id": "anhui",
+    "name": "Anhui",
+    "path": "asia/china/anhui",
+    "pbf": "https://download.geofabrik.de/asia/china/anhui-latest.osm.pbf"
+  },
+  {
+    "id": "armenia",
+    "name": "Armenia",
+    "path": "asia/armenia",
+    "pbf": "https://download.geofabrik.de/asia/armenia-latest.osm.pbf"
+  },
+  {
+    "id": "asia",
+    "name": "Asia",
+    "path": "asia",
+    "pbf": "https://download.geofabrik.de/asia-latest.osm.pbf"
+  },
+  {
+    "id": "azerbaijan",
+    "name": "Azerbaijan",
+    "path": "asia/azerbaijan",
+    "pbf": "https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf"
+  },
+  {
+    "id": "bangladesh",
+    "name": "Bangladesh",
+    "path": "asia/bangladesh",
+    "pbf": "https://download.geofabrik.de/asia/bangladesh-latest.osm.pbf"
+  },
+  {
+    "id": "beijing",
+    "name": "Beijing",
+    "path": "asia/china/beijing",
+    "pbf": "https://download.geofabrik.de/asia/china/beijing-latest.osm.pbf"
+  },
+  {
+    "id": "bhutan",
+    "name": "Bhutan",
+    "path": "asia/bhutan",
+    "pbf": "https://download.geofabrik.de/asia/bhutan-latest.osm.pbf"
+  },
+  {
+    "id": "cambodia",
+    "name": "Cambodia",
+    "path": "asia/cambodia",
+    "pbf": "https://download.geofabrik.de/asia/cambodia-latest.osm.pbf"
+  },
+  {
+    "id": "central-zone",
+    "name": "Central Zone",
+    "path": "asia/india/central-zone",
+    "pbf": "https://download.geofabrik.de/asia/india/central-zone-latest.osm.pbf"
+  },
+  {
+    "id": "china",
+    "name": "China",
+    "path": "asia/china",
+    "pbf": "https://download.geofabrik.de/asia/china-latest.osm.pbf"
+  },
+  {
+    "id": "chongqing",
+    "name": "Chongqing",
+    "path": "asia/china/chongqing",
+    "pbf": "https://download.geofabrik.de/asia/china/chongqing-latest.osm.pbf"
+  },
+  {
+    "id": "chubu",
+    "name": "Ch\u016bbu region",
+    "path": "asia/japan/chubu",
+    "pbf": "https://download.geofabrik.de/asia/japan/chubu-latest.osm.pbf"
+  },
+  {
+    "id": "chugoku",
+    "name": "Ch\u016bgoku region",
+    "path": "asia/japan/chugoku",
+    "pbf": "https://download.geofabrik.de/asia/japan/chugoku-latest.osm.pbf"
+  },
+  {
+    "id": "east-timor",
+    "name": "East Timor",
+    "path": "asia/east-timor",
+    "pbf": "https://download.geofabrik.de/asia/east-timor-latest.osm.pbf"
+  },
+  {
+    "id": "eastern-zone",
+    "name": "Eastern Zone",
+    "path": "asia/india/eastern-zone",
+    "pbf": "https://download.geofabrik.de/asia/india/eastern-zone-latest.osm.pbf"
+  },
+  {
+    "id": "fujian",
+    "name": "Fujian",
+    "path": "asia/china/fujian",
+    "pbf": "https://download.geofabrik.de/asia/china/fujian-latest.osm.pbf"
+  },
+  {
+    "id": "gansu",
+    "name": "Gansu",
+    "path": "asia/china/gansu",
+    "pbf": "https://download.geofabrik.de/asia/china/gansu-latest.osm.pbf"
+  },
+  {
+    "id": "gcc-states",
+    "name": "GCC States",
+    "path": "asia/gcc-states",
+    "pbf": "https://download.geofabrik.de/asia/gcc-states-latest.osm.pbf"
+  },
+  {
+    "id": "guangdong",
+    "name": "Guangdong (with Hong Kong and Macau)",
+    "path": "asia/china/guangdong",
+    "pbf": "https://download.geofabrik.de/asia/china/guangdong-latest.osm.pbf"
+  },
+  {
+    "id": "guangxi",
+    "name": "Guangxi",
+    "path": "asia/china/guangxi",
+    "pbf": "https://download.geofabrik.de/asia/china/guangxi-latest.osm.pbf"
+  },
+  {
+    "id": "guizhou",
+    "name": "Guizhou",
+    "path": "asia/china/guizhou",
+    "pbf": "https://download.geofabrik.de/asia/china/guizhou-latest.osm.pbf"
+  },
+  {
+    "id": "hainan",
+    "name": "Hainan",
+    "path": "asia/china/hainan",
+    "pbf": "https://download.geofabrik.de/asia/china/hainan-latest.osm.pbf"
+  },
+  {
+    "id": "hebei",
+    "name": "Hebei (with Beijing and Tianjin)",
+    "path": "asia/china/hebei",
+    "pbf": "https://download.geofabrik.de/asia/china/hebei-latest.osm.pbf"
+  },
+  {
+    "id": "heilongjiang",
+    "name": "Heilongjiang",
+    "path": "asia/china/heilongjiang",
+    "pbf": "https://download.geofabrik.de/asia/china/heilongjiang-latest.osm.pbf"
+  },
+  {
+    "id": "henan",
+    "name": "Henan",
+    "path": "asia/china/henan",
+    "pbf": "https://download.geofabrik.de/asia/china/henan-latest.osm.pbf"
+  },
+  {
+    "id": "hokkaido",
+    "name": "Hokkaid\u014d",
+    "path": "asia/japan/hokkaido",
+    "pbf": "https://download.geofabrik.de/asia/japan/hokkaido-latest.osm.pbf"
+  },
+  {
+    "id": "hong-kong",
+    "name": "Hong Kong",
+    "path": "asia/china/hong-kong",
+    "pbf": "https://download.geofabrik.de/asia/china/hong-kong-latest.osm.pbf"
+  },
+  {
+    "id": "hubei",
+    "name": "Hubei",
+    "path": "asia/china/hubei",
+    "pbf": "https://download.geofabrik.de/asia/china/hubei-latest.osm.pbf"
+  },
+  {
+    "id": "hunan",
+    "name": "Hunan",
+    "path": "asia/china/hunan",
+    "pbf": "https://download.geofabrik.de/asia/china/hunan-latest.osm.pbf"
+  },
+  {
+    "id": "india",
+    "name": "India",
+    "path": "asia/india",
+    "pbf": "https://download.geofabrik.de/asia/india-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia",
+    "name": "Indonesia (with East Timor)",
+    "path": "asia/indonesia",
+    "pbf": "https://download.geofabrik.de/asia/indonesia-latest.osm.pbf"
+  },
+  {
+    "id": "inner-mongolia",
+    "name": "Inner Mongolia",
+    "path": "asia/china/inner-mongolia",
+    "pbf": "https://download.geofabrik.de/asia/china/inner-mongolia-latest.osm.pbf"
+  },
+  {
+    "id": "iran",
+    "name": "Iran",
+    "path": "asia/iran",
+    "pbf": "https://download.geofabrik.de/asia/iran-latest.osm.pbf"
+  },
+  {
+    "id": "iraq",
+    "name": "Iraq",
+    "path": "asia/iraq",
+    "pbf": "https://download.geofabrik.de/asia/iraq-latest.osm.pbf"
+  },
+  {
+    "id": "israel-and-palestine",
+    "name": "Israel and Palestine",
+    "path": "asia/israel-and-palestine",
+    "pbf": "https://download.geofabrik.de/asia/israel-and-palestine-latest.osm.pbf"
+  },
+  {
+    "id": "japan",
+    "name": "Japan",
+    "path": "asia/japan",
+    "pbf": "https://download.geofabrik.de/asia/japan-latest.osm.pbf"
+  },
+  {
+    "id": "java",
+    "name": "Java",
+    "path": "asia/indonesia/java",
+    "pbf": "https://download.geofabrik.de/asia/indonesia/java-latest.osm.pbf"
+  },
+  {
+    "id": "jiangsu",
+    "name": "Jiangsu",
+    "path": "asia/china/jiangsu",
+    "pbf": "https://download.geofabrik.de/asia/china/jiangsu-latest.osm.pbf"
+  },
+  {
+    "id": "jiangxi",
+    "name": "Jiangxi",
+    "path": "asia/china/jiangxi",
+    "pbf": "https://download.geofabrik.de/asia/china/jiangxi-latest.osm.pbf"
+  },
+  {
+    "id": "jilin",
+    "name": "Jilin",
+    "path": "asia/china/jilin",
+    "pbf": "https://download.geofabrik.de/asia/china/jilin-latest.osm.pbf"
+  },
+  {
+    "id": "jordan",
+    "name": "Jordan",
+    "path": "asia/jordan",
+    "pbf": "https://download.geofabrik.de/asia/jordan-latest.osm.pbf"
+  },
+  {
+    "id": "kalimantan",
+    "name": "Kalimantan",
+    "path": "asia/indonesia/kalimantan",
+    "pbf": "https://download.geofabrik.de/asia/indonesia/kalimantan-latest.osm.pbf"
+  },
+  {
+    "id": "kansai",
+    "name": "Kansai region (a.k.a. Kinki region)",
+    "path": "asia/japan/kansai",
+    "pbf": "https://download.geofabrik.de/asia/japan/kansai-latest.osm.pbf"
+  },
+  {
+    "id": "kanto",
+    "name": "Kant\u014d region",
+    "path": "asia/japan/kanto",
+    "pbf": "https://download.geofabrik.de/asia/japan/kanto-latest.osm.pbf"
+  },
+  {
+    "id": "kazakhstan",
+    "name": "Kazakhstan",
+    "path": "asia/kazakhstan",
+    "pbf": "https://download.geofabrik.de/asia/kazakhstan-latest.osm.pbf"
+  },
+  {
+    "id": "kyrgyzstan",
+    "name": "Kyrgyzstan",
+    "path": "asia/kyrgyzstan",
+    "pbf": "https://download.geofabrik.de/asia/kyrgyzstan-latest.osm.pbf"
+  },
+  {
+    "id": "kyushu",
+    "name": "Ky\u016bsh\u016b",
+    "path": "asia/japan/kyushu",
+    "pbf": "https://download.geofabrik.de/asia/japan/kyushu-latest.osm.pbf"
+  },
+  {
+    "id": "laos",
+    "name": "Laos",
+    "path": "asia/laos",
+    "pbf": "https://download.geofabrik.de/asia/laos-latest.osm.pbf"
+  },
+  {
+    "id": "lebanon",
+    "name": "Lebanon",
+    "path": "asia/lebanon",
+    "pbf": "https://download.geofabrik.de/asia/lebanon-latest.osm.pbf"
+  },
+  {
+    "id": "liaoning",
+    "name": "Liaoning",
+    "path": "asia/china/liaoning",
+    "pbf": "https://download.geofabrik.de/asia/china/liaoning-latest.osm.pbf"
+  },
+  {
+    "id": "macau",
+    "name": "Macau",
+    "path": "asia/china/macau",
+    "pbf": "https://download.geofabrik.de/asia/china/macau-latest.osm.pbf"
+  },
+  {
+    "id": "malaysia-singapore-brunei",
+    "name": "Malaysia, Singapore, and Brunei",
+    "path": "asia/malaysia-singapore-brunei",
+    "pbf": "https://download.geofabrik.de/asia/malaysia-singapore-brunei-latest.osm.pbf"
+  },
+  {
+    "id": "maldives",
+    "name": "Maldives",
+    "path": "asia/maldives",
+    "pbf": "https://download.geofabrik.de/asia/maldives-latest.osm.pbf"
+  },
+  {
+    "id": "maluku",
+    "name": "Maluku",
+    "path": "asia/indonesia/maluku",
+    "pbf": "https://download.geofabrik.de/asia/indonesia/maluku-latest.osm.pbf"
+  },
+  {
+    "id": "mongolia",
+    "name": "Mongolia",
+    "path": "asia/mongolia",
+    "pbf": "https://download.geofabrik.de/asia/mongolia-latest.osm.pbf"
+  },
+  {
+    "id": "myanmar",
+    "name": "Myanmar (a.k.a. Burma)",
+    "path": "asia/myanmar",
+    "pbf": "https://download.geofabrik.de/asia/myanmar-latest.osm.pbf"
+  },
+  {
+    "id": "nepal",
+    "name": "Nepal",
+    "path": "asia/nepal",
+    "pbf": "https://download.geofabrik.de/asia/nepal-latest.osm.pbf"
+  },
+  {
+    "id": "ningxia",
+    "name": "Ningxia",
+    "path": "asia/china/ningxia",
+    "pbf": "https://download.geofabrik.de/asia/china/ningxia-latest.osm.pbf"
+  },
+  {
+    "id": "north-eastern-zone",
+    "name": "North-Eastern Zone",
+    "path": "asia/india/north-eastern-zone",
+    "pbf": "https://download.geofabrik.de/asia/india/north-eastern-zone-latest.osm.pbf"
+  },
+  {
+    "id": "north-korea",
+    "name": "North Korea",
+    "path": "asia/north-korea",
+    "pbf": "https://download.geofabrik.de/asia/north-korea-latest.osm.pbf"
+  },
+  {
+    "id": "northern-zone",
+    "name": "Northern Zone",
+    "path": "asia/india/northern-zone",
+    "pbf": "https://download.geofabrik.de/asia/india/northern-zone-latest.osm.pbf"
+  },
+  {
+    "id": "nusa-tenggara",
+    "name": "Nusa-Tenggara",
+    "path": "asia/indonesia/nusa-tenggara",
+    "pbf": "https://download.geofabrik.de/asia/indonesia/nusa-tenggara-latest.osm.pbf"
+  },
+  {
+    "id": "pakistan",
+    "name": "Pakistan",
+    "path": "asia/pakistan",
+    "pbf": "https://download.geofabrik.de/asia/pakistan-latest.osm.pbf"
+  },
+  {
+    "id": "papua",
+    "name": "Papua",
+    "path": "asia/indonesia/papua",
+    "pbf": "https://download.geofabrik.de/asia/indonesia/papua-latest.osm.pbf"
+  },
+  {
+    "id": "philippines",
+    "name": "Philippines",
+    "path": "asia/philippines",
+    "pbf": "https://download.geofabrik.de/asia/philippines-latest.osm.pbf"
+  },
+  {
+    "id": "qinghai",
+    "name": "Qinghai",
+    "path": "asia/china/qinghai",
+    "pbf": "https://download.geofabrik.de/asia/china/qinghai-latest.osm.pbf"
+  },
+  {
+    "id": "sea",
+    "name": "South-East Asia",
+    "path": "asia/sea",
+    "pbf": "https://download.geofabrik.de/asia/sea-latest.osm.pbf"
+  },
+  {
+    "id": "shaanxi",
+    "name": "Shaanxi",
+    "path": "asia/china/shaanxi",
+    "pbf": "https://download.geofabrik.de/asia/china/shaanxi-latest.osm.pbf"
+  },
+  {
+    "id": "shandong",
+    "name": "Shandong",
+    "path": "asia/china/shandong",
+    "pbf": "https://download.geofabrik.de/asia/china/shandong-latest.osm.pbf"
+  },
+  {
+    "id": "shanghai",
+    "name": "Shanghai",
+    "path": "asia/china/shanghai",
+    "pbf": "https://download.geofabrik.de/asia/china/shanghai-latest.osm.pbf"
+  },
+  {
+    "id": "shanxi",
+    "name": "Shanxi",
+    "path": "asia/china/shanxi",
+    "pbf": "https://download.geofabrik.de/asia/china/shanxi-latest.osm.pbf"
+  },
+  {
+    "id": "shikoku",
+    "name": "Shikoku",
+    "path": "asia/japan/shikoku",
+    "pbf": "https://download.geofabrik.de/asia/japan/shikoku-latest.osm.pbf"
+  },
+  {
+    "id": "sichuan",
+    "name": "Sichuan",
+    "path": "asia/china/sichuan",
+    "pbf": "https://download.geofabrik.de/asia/china/sichuan-latest.osm.pbf"
+  },
+  {
+    "id": "south-korea",
+    "name": "South Korea",
+    "path": "asia/south-korea",
+    "pbf": "https://download.geofabrik.de/asia/south-korea-latest.osm.pbf"
+  },
+  {
+    "id": "southern-zone",
+    "name": "Southern Zone",
+    "path": "asia/india/southern-zone",
+    "pbf": "https://download.geofabrik.de/asia/india/southern-zone-latest.osm.pbf"
+  },
+  {
+    "id": "sri-lanka",
+    "name": "Sri Lanka",
+    "path": "asia/sri-lanka",
+    "pbf": "https://download.geofabrik.de/asia/sri-lanka-latest.osm.pbf"
+  },
+  {
+    "id": "sulawesi",
+    "name": "Sulawesi",
+    "path": "asia/indonesia/sulawesi",
+    "pbf": "https://download.geofabrik.de/asia/indonesia/sulawesi-latest.osm.pbf"
+  },
+  {
+    "id": "sumatra",
+    "name": "Sumatra",
+    "path": "asia/indonesia/sumatra",
+    "pbf": "https://download.geofabrik.de/asia/indonesia/sumatra-latest.osm.pbf"
+  },
+  {
+    "id": "syria",
+    "name": "Syria",
+    "path": "asia/syria",
+    "pbf": "https://download.geofabrik.de/asia/syria-latest.osm.pbf"
+  },
+  {
+    "id": "taiwan",
+    "name": "Taiwan",
+    "path": "asia/taiwan",
+    "pbf": "https://download.geofabrik.de/asia/taiwan-latest.osm.pbf"
+  },
+  {
+    "id": "tajikistan",
+    "name": "Tajikistan",
+    "path": "asia/tajikistan",
+    "pbf": "https://download.geofabrik.de/asia/tajikistan-latest.osm.pbf"
+  },
+  {
+    "id": "thailand",
+    "name": "Thailand",
+    "path": "asia/thailand",
+    "pbf": "https://download.geofabrik.de/asia/thailand-latest.osm.pbf"
+  },
+  {
+    "id": "tianjin",
+    "name": "Tianjin",
+    "path": "asia/china/tianjin",
+    "pbf": "https://download.geofabrik.de/asia/china/tianjin-latest.osm.pbf"
+  },
+  {
+    "id": "tibet",
+    "name": "Tibet",
+    "path": "asia/china/tibet",
+    "pbf": "https://download.geofabrik.de/asia/china/tibet-latest.osm.pbf"
+  },
+  {
+    "id": "tohoku",
+    "name": "T\u014dhoku region",
+    "path": "asia/japan/tohoku",
+    "pbf": "https://download.geofabrik.de/asia/japan/tohoku-latest.osm.pbf"
+  },
+  {
+    "id": "turkmenistan",
+    "name": "Turkmenistan",
+    "path": "asia/turkmenistan",
+    "pbf": "https://download.geofabrik.de/asia/turkmenistan-latest.osm.pbf"
+  },
+  {
+    "id": "uzbekistan",
+    "name": "Uzbekistan",
+    "path": "asia/uzbekistan",
+    "pbf": "https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf"
+  },
+  {
+    "id": "vietnam",
+    "name": "Vietnam",
+    "path": "asia/vietnam",
+    "pbf": "https://download.geofabrik.de/asia/vietnam-latest.osm.pbf"
+  },
+  {
+    "id": "western-zone",
+    "name": "Western Zone",
+    "path": "asia/india/western-zone",
+    "pbf": "https://download.geofabrik.de/asia/india/western-zone-latest.osm.pbf"
+  },
+  {
+    "id": "xinjiang",
+    "name": "Xinjiang",
+    "path": "asia/china/xinjiang",
+    "pbf": "https://download.geofabrik.de/asia/china/xinjiang-latest.osm.pbf"
+  },
+  {
+    "id": "yemen",
+    "name": "Yemen",
+    "path": "asia/yemen",
+    "pbf": "https://download.geofabrik.de/asia/yemen-latest.osm.pbf"
+  },
+  {
+    "id": "yunnan",
+    "name": "Yunnan",
+    "path": "asia/china/yunnan",
+    "pbf": "https://download.geofabrik.de/asia/china/yunnan-latest.osm.pbf"
+  },
+  {
+    "id": "zhejiang",
+    "name": "Zhejiang",
+    "path": "asia/china/zhejiang",
+    "pbf": "https://download.geofabrik.de/asia/china/zhejiang-latest.osm.pbf"
+  }
+]
