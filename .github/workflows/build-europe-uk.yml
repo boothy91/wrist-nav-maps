@@ -86,6 +86,11 @@ jobs:
               else:
                   size = os.path.getsize(out_map) / 1024 / 1024
                   print(f"Done: {out_map} ({size:.1f} MB)")
+                  upload = subprocess.run([
+                      "gh", "release", "upload", "maps-europe-uk", out_map, "--clobber"
+                  ], capture_output=True, text=True,
+                  env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+                  print(f"Uploaded {rid}.map" if upload.returncode == 0 else f"Upload failed: {upload.stderr}")
 
               for fp in [pbf, filtered]:
                   if os.path.exists(fp): os.remove(fp)
