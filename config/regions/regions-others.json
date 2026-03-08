@@ -394,5 +394,11 @@
     "name": "Wallis et Futuna",
     "path": "australia-oceania/wallis-et-futuna",
     "pbf": "https://download.geofabrik.de/australia-oceania/wallis-et-futuna-latest.osm.pbf"
+  },
+  {
+    "id": "bermuda",
+    "name": "Bermuda",
+    "path": "europe/united-kingdom/bermuda",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/bermuda-latest.osm.pbf"
   }
 ]

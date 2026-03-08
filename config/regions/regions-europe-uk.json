@@ -12,12 +12,6 @@
     "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/berkshire-latest.osm.pbf"
   },
   {
-    "id": "bermuda",
-    "name": "Bermuda",
-    "path": "europe/united-kingdom/bermuda",
-    "pbf": "https://download.geofabrik.de/europe/united-kingdom/bermuda-latest.osm.pbf"
-  },
-  {
     "id": "bristol",
     "name": "Bristol",
     "path": "europe/united-kingdom/england/bristol",
