@@ -23,11 +23,11 @@ jobs:
       - name: Download Osmosis
         run: |
           wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
-          unzip -q osmosis-0.49.2.zip -d osmosis
-          find osmosis -name "osmosis" -type f | head -3
-          OSMOSIS_BIN=$(find osmosis -name "osmosis" -not -name "*.bat" | head -1)
-          chmod +x "$OSMOSIS_BIN"
-          echo "OSMOSIS_BIN=$OSMOSIS_BIN" >> $GITHUB_ENV
+          unzip -q osmosis-0.49.2.zip -d osmosis_install
+          ls osmosis_install/
+          ls osmosis_install/bin/ || true
+          chmod +x osmosis_install/bin/osmosis
+          echo "OSMOSIS_BIN=osmosis_install/bin/osmosis" >> $GITHUB_ENV
 
       - name: Convert all regions
         run: |
