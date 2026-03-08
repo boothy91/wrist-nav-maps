@@ -106,8 +106,8 @@ jobs:
               ], capture_output=True, text=True,
               env={**os.environ, "JAVACMD_OPTIONS": "-Xmx3g"})
 
-              print(r.stdout[-500:] if r.stdout else "")
-              print(r.stderr[-500:] if r.stderr else "")
+              print("STDOUT:", r.stdout)
+              print("STDERR:", r.stderr)
 
               if r.returncode != 0 or not os.path.exists(out_map):
                   print(f"FAILED convert {rid}"); failed.append(rid)
