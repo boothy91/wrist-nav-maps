@@ -32,7 +32,20 @@ jobs:
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
           echo "JAVACMD_OPTIONS=-Xmx3g" >> $GITHUB_ENV
 
+      - name: Create empty release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete maps-others --yes 2>/dev/null || true
+          git push --delete origin maps-others 2>/dev/null || true
+          gh release create maps-others \
+            --title "Maps - Others - $(date +'%B %Y')" \
+            --notes "Auto-generated .map files for WristNav. Updated monthly." \
+            --latest=false
+
       - name: Convert regions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p output
           python3 - << 'PYEOF2'
@@ -78,6 +91,11 @@ jobs:
               else:
                   size = os.path.getsize(out_map) / 1024 / 1024
                   print(f"Done: {out_map} ({size:.1f} MB)")
+                  upload = subprocess.run([
+                      "gh", "release", "upload", "maps-others", out_map, "--clobber"
+                  ], capture_output=True, text=True,
+                  env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+                  print(f"Uploaded {rid}.map" if upload.returncode == 0 else f"Upload failed: {upload.stderr}")
 
               for fp in [pbf, filtered]:
                   if os.path.exists(fp): os.remove(fp)
@@ -114,20 +132,8 @@ jobs:
           print(f"index.json: {len(index['regions'])} regions")
           PYEOF2
 
-      - name: Delete existing release
+      - name: Upload index.json
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release delete maps-others --yes 2>/dev/null || true
-          git push --delete origin maps-others 2>/dev/null || true
-
-      - name: Create release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create maps-others \
-            --title "Maps - Others - $(date +'%B %Y')" \
-            --notes "Auto-generated .map files for WristNav - Others. Updated monthly." \
-            --latest=false \
-            output/*.map \
-            output/index.json
+          gh release upload maps-others output/index.json --clobber
