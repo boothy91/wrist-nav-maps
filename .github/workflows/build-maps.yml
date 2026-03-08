@@ -33,6 +33,12 @@ jobs:
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar"             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
 
+          # Create the missing osmosis plugin registration file inside the jar
+          mkdir -p /tmp/metainf/META-INF
+          echo "org.mapsforge.map.writer.osmosis.MapFileWriterPluginLoader" > /tmp/metainf/META-INF/osmosis-plugins.conf
+          cd /tmp/metainf && jar uf $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar META-INF/osmosis-plugins.conf
+          cd $GITHUB_WORKSPACE
+
           # Set heap
           echo "JAVACMD_OPTIONS=-Xmx3g" >> $GITHUB_ENV
 
