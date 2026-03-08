@@ -53,6 +53,15 @@ jobs:
           echo "=== Test osmosis help ==="
           $OSMOSIS_HOME/bin/osmosis --help 2>&1 | grep -i "mapfile\|mw\|plugin" | head -10
 
+      - name: Debug plugin loading
+        run: |
+          echo "=== Plugin dir ==="
+          ls -la $HOME/.openstreetmap/osmosis/plugins/
+          echo "=== osmosis-plugins.conf in jar ==="
+          jar tf $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar | grep -i "plugin\|conf"
+          echo "=== Test osmosis with verbose logging ==="
+          $OSMOSIS_HOME/bin/osmosis --help 2>&1 | tail -5
+
       - name: Convert all regions
         run: |
           mkdir -p output
