@@ -24,7 +24,10 @@ jobs:
         run: |
           wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
           unzip -q osmosis-0.49.2.zip -d osmosis
-          chmod +x osmosis/bin/osmosis
+          find osmosis -name "osmosis" -type f | head -3
+          OSMOSIS_BIN=$(find osmosis -name "osmosis" -not -name "*.bat" | head -1)
+          chmod +x "$OSMOSIS_BIN"
+          echo "OSMOSIS_BIN=$OSMOSIS_BIN" >> $GITHUB_ENV
 
       - name: Convert all regions
         run: |
@@ -36,7 +39,7 @@ jobs:
               regions = json.load(f)
 
           tag_conf = os.path.abspath('config/tag-mapping.xml')
-          osmosis = os.path.abspath('osmosis/bin/osmosis')
+          osmosis = os.path.abspath(os.environ.get('OSMOSIS_BIN', 'osmosis/bin/osmosis'))
           failed = []
 
           for region in regions:
