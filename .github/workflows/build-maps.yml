@@ -31,6 +31,12 @@ jobs:
           echo "JAVACMD_OPTIONS=-Xmx2g -cp /tmp/mapsforge-map-writer.jar" >> $GITHUB_ENV
           echo "OSMOSIS_BIN=osmosis_install/osmosis-0.49.2/bin/osmosis" >> $GITHUB_ENV
 
+      - name: Debug Osmosis structure
+        run: |
+          find osmosis_install -type f | sort
+          echo "---"
+          cat osmosis_install/osmosis-0.49.2/bin/osmosis
+
       - name: Convert all regions
         run: |
           mkdir -p output
