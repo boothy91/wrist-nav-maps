@@ -25,7 +25,9 @@ jobs:
           wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
+          ls osmosis_install/osmosis-0.49.2/
           # Download mapsforge map-writer plugin
+          mkdir -p osmosis_install/osmosis-0.49.2/lib/default
           wget -q https://github.com/mapsforge/mapsforge/releases/download/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar             -O osmosis_install/osmosis-0.49.2/lib/default/mapsforge-map-writer.jar
           echo "OSMOSIS_BIN=osmosis_install/osmosis-0.49.2/bin/osmosis" >> $GITHUB_ENV
 
