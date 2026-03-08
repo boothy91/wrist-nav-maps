@@ -101,8 +101,7 @@ jobs:
               r = subprocess.run([
                   osmosis,
                   "--rb", f"file={filtered}",
-                  "--mw", f"file={out_map}",
-                  f"tag-conf-file={tag_conf}"
+                  "--mw", f"file={out_map}"
               ], capture_output=True, text=True,
               env={**os.environ, "JAVACMD_OPTIONS": "-Xmx3g"})
 
