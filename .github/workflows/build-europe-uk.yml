@@ -41,6 +41,8 @@ jobs:
           gh release create maps-europe-uk             --title "Maps - Europe Uk - $(date +'%B %Y')"             --notes "Auto-generated .map files for WristNav - UK counties. Updated monthly."             --latest=false
 
       - name: Convert regions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p output
           python3 - << 'PYEOF2'
