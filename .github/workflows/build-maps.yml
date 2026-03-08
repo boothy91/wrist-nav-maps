@@ -20,15 +20,11 @@ jobs:
           sudo apt-get update -q
           sudo apt-get install -y osmium-tool default-jre wget
 
-      - name: Download Osmosis
+      - name: Download tools
         run: |
-          wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
-          unzip -q osmosis-0.49.2.zip -d osmosis_install
-          chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
-          # Download mapsforge map-writer plugin into osmosis lib dir
-          wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar"             -O osmosis_install/osmosis-0.49.2/lib/mapsforge-map-writer.jar
-          echo "JAVACMD_OPTIONS=-Xmx2g" >> $GITHUB_ENV
-          echo "OSMOSIS_BIN=osmosis_install/osmosis-0.49.2/bin/osmosis" >> $GITHUB_ENV
+          # Download mapsforge map-writer jar
+          wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar"             -O /tmp/map-writer.jar
+          echo "MAP_WRITER=/tmp/map-writer.jar" >> $GITHUB_ENV
 
       - name: Debug Osmosis structure
         run: |
@@ -46,7 +42,6 @@ jobs:
               regions = json.load(f)
 
           tag_conf = os.path.abspath('config/tag-mapping.xml')
-          osmosis = os.path.abspath(os.environ.get('OSMOSIS_BIN', 'osmosis/bin/osmosis'))
           failed = []
 
           for region in regions:
@@ -72,11 +67,13 @@ jobs:
               if r.returncode != 0:
                   print(f"FAILED filter {rid}"); failed.append(rid); os.remove(pbf); continue
 
+              map_writer = os.environ.get('MAP_WRITER', '/tmp/map-writer.jar')
               r = subprocess.run([
-                  osmosis, '--rb', filtered,
-                  '--mapfile-writer', f'file={out_map}',
-                  'zoom-interval-conf=10,0,17',
-                  f'tag-conf-file={tag_conf}'
+                  'java', '-Xmx2g', '-jar', map_writer,
+                  '--input-file', filtered,
+                  '--output-file', out_map,
+                  '--zoom-interval-conf', '10,0,17',
+                  '--tag-conf-file', tag_conf
               ], capture_output=True, text=True)
 
               if r.returncode != 0 or not os.path.exists(out_map):
