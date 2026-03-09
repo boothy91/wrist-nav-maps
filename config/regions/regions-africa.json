@@ -1,11 +1,5 @@
 [
   {
-    "id": "africa",
-    "name": "Africa",
-    "path": "africa",
-    "pbf": "https://download.geofabrik.de/africa-latest.osm.pbf"
-  },
-  {
     "id": "algeria",
     "name": "Algeria",
     "path": "africa/algeria",
@@ -156,12 +150,6 @@
     "pbf": "https://download.geofabrik.de/africa/kenya-latest.osm.pbf"
   },
   {
-    "id": "lesotho",
-    "name": "Lesotho",
-    "path": "africa/lesotho",
-    "pbf": "https://download.geofabrik.de/africa/lesotho-latest.osm.pbf"
-  },
-  {
     "id": "liberia",
     "name": "Liberia",
     "path": "africa/liberia",
@@ -274,12 +262,6 @@
     "name": "Somalia",
     "path": "africa/somalia",
     "pbf": "https://download.geofabrik.de/africa/somalia-latest.osm.pbf"
-  },
-  {
-    "id": "south-africa",
-    "name": "South Africa",
-    "path": "africa/south-africa",
-    "pbf": "https://download.geofabrik.de/africa/south-africa-latest.osm.pbf"
   },
   {
     "id": "south-africa-and-lesotho",

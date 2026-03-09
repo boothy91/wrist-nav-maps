@@ -18,12 +18,6 @@
     "pbf": "https://download.geofabrik.de/asia/armenia-latest.osm.pbf"
   },
   {
-    "id": "asia",
-    "name": "Asia",
-    "path": "asia",
-    "pbf": "https://download.geofabrik.de/asia-latest.osm.pbf"
-  },
-  {
     "id": "azerbaijan",
     "name": "Azerbaijan",
     "path": "asia/azerbaijan",
@@ -58,12 +52,6 @@
     "name": "Central Zone",
     "path": "asia/india/central-zone",
     "pbf": "https://download.geofabrik.de/asia/india/central-zone-latest.osm.pbf"
-  },
-  {
-    "id": "china",
-    "name": "China",
-    "path": "asia/china",
-    "pbf": "https://download.geofabrik.de/asia/china-latest.osm.pbf"
   },
   {
     "id": "chongqing",
@@ -180,18 +168,6 @@
     "pbf": "https://download.geofabrik.de/asia/china/hunan-latest.osm.pbf"
   },
   {
-    "id": "india",
-    "name": "India",
-    "path": "asia/india",
-    "pbf": "https://download.geofabrik.de/asia/india-latest.osm.pbf"
-  },
-  {
-    "id": "indonesia",
-    "name": "Indonesia (with East Timor)",
-    "path": "asia/indonesia",
-    "pbf": "https://download.geofabrik.de/asia/indonesia-latest.osm.pbf"
-  },
-  {
     "id": "inner-mongolia",
     "name": "Inner Mongolia",
     "path": "asia/china/inner-mongolia",
@@ -214,12 +190,6 @@
     "name": "Israel and Palestine",
     "path": "asia/israel-and-palestine",
     "pbf": "https://download.geofabrik.de/asia/israel-and-palestine-latest.osm.pbf"
-  },
-  {
-    "id": "japan",
-    "name": "Japan",
-    "path": "asia/japan",
-    "pbf": "https://download.geofabrik.de/asia/japan-latest.osm.pbf"
   },
   {
     "id": "java",

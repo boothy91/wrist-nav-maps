@@ -204,12 +204,6 @@
     "pbf": "https://download.geofabrik.de/europe/spain/navarra-latest.osm.pbf"
   },
   {
-    "id": "netherlands",
-    "name": "Netherlands",
-    "path": "europe/netherlands",
-    "pbf": "https://download.geofabrik.de/europe/netherlands-latest.osm.pbf"
-  },
-  {
     "id": "noord-brabant",
     "name": "Noord-Brabant",
     "path": "europe/netherlands/noord-brabant",
@@ -258,12 +252,6 @@
     "pbf": "https://download.geofabrik.de/europe/poland/podlaskie-latest.osm.pbf"
   },
   {
-    "id": "poland",
-    "name": "Poland",
-    "path": "europe/poland",
-    "pbf": "https://download.geofabrik.de/europe/poland-latest.osm.pbf"
-  },
-  {
     "id": "pomorskie",
     "name": "Wojew\u00f3dztwo pomorskie<br />(Pomeranian Voivodeship)",
     "path": "europe/poland/pomorskie",
@@ -306,12 +294,6 @@
     "pbf": "https://download.geofabrik.de/europe/slovenia-latest.osm.pbf"
   },
   {
-    "id": "spain",
-    "name": "Spain",
-    "path": "europe/spain",
-    "pbf": "https://download.geofabrik.de/europe/spain-latest.osm.pbf"
-  },
-  {
     "id": "sweden",
     "name": "Sweden",
     "path": "europe/sweden",
@@ -340,12 +322,6 @@
     "name": "Ukraine (with Crimea)",
     "path": "europe/ukraine",
     "pbf": "https://download.geofabrik.de/europe/ukraine-latest.osm.pbf"
-  },
-  {
-    "id": "united-kingdom",
-    "name": "United Kingdom",
-    "path": "europe/united-kingdom",
-    "pbf": "https://download.geofabrik.de/europe/united-kingdom-latest.osm.pbf"
   },
   {
     "id": "utrecht",

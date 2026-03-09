@@ -78,163 +78,163 @@
     "pbf": "https://download.geofabrik.de/north-america/us/california/socal-latest.osm.pbf"
   },
   {
-    "id": "us/arkansas",
+    "id": "arkansas",
     "name": "us/arkansas",
     "path": "north-america/us/arkansas",
     "pbf": "https://download.geofabrik.de/north-america/us/arkansas-latest.osm.pbf"
   },
   {
-    "id": "us/connecticut",
+    "id": "connecticut",
     "name": "us/connecticut",
     "path": "north-america/us/connecticut",
     "pbf": "https://download.geofabrik.de/north-america/us/connecticut-latest.osm.pbf"
   },
   {
-    "id": "us/delaware",
+    "id": "delaware",
     "name": "us/delaware",
     "path": "north-america/us/delaware",
     "pbf": "https://download.geofabrik.de/north-america/us/delaware-latest.osm.pbf"
   },
   {
-    "id": "us/district-of-columbia",
+    "id": "district-of-columbia",
     "name": "us/district-of-columbia",
     "path": "north-america/us/district-of-columbia",
     "pbf": "https://download.geofabrik.de/north-america/us/district-of-columbia-latest.osm.pbf"
   },
   {
-    "id": "us/hawaii",
+    "id": "hawaii",
     "name": "us/hawaii",
     "path": "north-america/us/hawaii",
     "pbf": "https://download.geofabrik.de/north-america/us/hawaii-latest.osm.pbf"
   },
   {
-    "id": "us/idaho",
+    "id": "idaho",
     "name": "us/idaho",
     "path": "north-america/us/idaho",
     "pbf": "https://download.geofabrik.de/north-america/us/idaho-latest.osm.pbf"
   },
   {
-    "id": "us/iowa",
+    "id": "iowa",
     "name": "us/iowa",
     "path": "north-america/us/iowa",
     "pbf": "https://download.geofabrik.de/north-america/us/iowa-latest.osm.pbf"
   },
   {
-    "id": "us/kansas",
+    "id": "kansas",
     "name": "us/kansas",
     "path": "north-america/us/kansas",
     "pbf": "https://download.geofabrik.de/north-america/us/kansas-latest.osm.pbf"
   },
   {
-    "id": "us/maine",
+    "id": "maine",
     "name": "us/maine",
     "path": "north-america/us/maine",
     "pbf": "https://download.geofabrik.de/north-america/us/maine-latest.osm.pbf"
   },
   {
-    "id": "us/mississippi",
+    "id": "mississippi",
     "name": "us/mississippi",
     "path": "north-america/us/mississippi",
     "pbf": "https://download.geofabrik.de/north-america/us/mississippi-latest.osm.pbf"
   },
   {
-    "id": "us/montana",
+    "id": "montana",
     "name": "us/montana",
     "path": "north-america/us/montana",
     "pbf": "https://download.geofabrik.de/north-america/us/montana-latest.osm.pbf"
   },
   {
-    "id": "us/nebraska",
+    "id": "nebraska",
     "name": "us/nebraska",
     "path": "north-america/us/nebraska",
     "pbf": "https://download.geofabrik.de/north-america/us/nebraska-latest.osm.pbf"
   },
   {
-    "id": "us/nevada",
+    "id": "nevada",
     "name": "us/nevada",
     "path": "north-america/us/nevada",
     "pbf": "https://download.geofabrik.de/north-america/us/nevada-latest.osm.pbf"
   },
   {
-    "id": "us/new-hampshire",
+    "id": "new-hampshire",
     "name": "us/new-hampshire",
     "path": "north-america/us/new-hampshire",
     "pbf": "https://download.geofabrik.de/north-america/us/new-hampshire-latest.osm.pbf"
   },
   {
-    "id": "us/new-jersey",
+    "id": "new-jersey",
     "name": "us/new-jersey",
     "path": "north-america/us/new-jersey",
     "pbf": "https://download.geofabrik.de/north-america/us/new-jersey-latest.osm.pbf"
   },
   {
-    "id": "us/new-mexico",
+    "id": "new-mexico",
     "name": "us/new-mexico",
     "path": "north-america/us/new-mexico",
     "pbf": "https://download.geofabrik.de/north-america/us/new-mexico-latest.osm.pbf"
   },
   {
-    "id": "us/north-dakota",
+    "id": "north-dakota",
     "name": "us/north-dakota",
     "path": "north-america/us/north-dakota",
     "pbf": "https://download.geofabrik.de/north-america/us/north-dakota-latest.osm.pbf"
   },
   {
-    "id": "us/oklahoma",
+    "id": "oklahoma",
     "name": "us/oklahoma",
     "path": "north-america/us/oklahoma",
     "pbf": "https://download.geofabrik.de/north-america/us/oklahoma-latest.osm.pbf"
   },
   {
-    "id": "us/puerto-rico",
+    "id": "puerto-rico",
     "name": "us/puerto-rico",
     "path": "north-america/us/puerto-rico",
     "pbf": "https://download.geofabrik.de/north-america/us/puerto-rico-latest.osm.pbf"
   },
   {
-    "id": "us/rhode-island",
+    "id": "rhode-island",
     "name": "us/rhode-island",
     "path": "north-america/us/rhode-island",
     "pbf": "https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf"
   },
   {
-    "id": "us/south-carolina",
+    "id": "south-carolina",
     "name": "us/south-carolina",
     "path": "north-america/us/south-carolina",
     "pbf": "https://download.geofabrik.de/north-america/us/south-carolina-latest.osm.pbf"
   },
   {
-    "id": "us/south-dakota",
+    "id": "south-dakota",
     "name": "us/south-dakota",
     "path": "north-america/us/south-dakota",
     "pbf": "https://download.geofabrik.de/north-america/us/south-dakota-latest.osm.pbf"
   },
   {
-    "id": "us/us-virgin-islands",
+    "id": "us-virgin-islands",
     "name": "us/us-virgin-islands",
     "path": "north-america/us/us-virgin-islands",
     "pbf": "https://download.geofabrik.de/north-america/us/us-virgin-islands-latest.osm.pbf"
   },
   {
-    "id": "us/utah",
+    "id": "utah",
     "name": "us/utah",
     "path": "north-america/us/utah",
     "pbf": "https://download.geofabrik.de/north-america/us/utah-latest.osm.pbf"
   },
   {
-    "id": "us/vermont",
+    "id": "vermont",
     "name": "us/vermont",
     "path": "north-america/us/vermont",
     "pbf": "https://download.geofabrik.de/north-america/us/vermont-latest.osm.pbf"
   },
   {
-    "id": "us/west-virginia",
+    "id": "west-virginia",
     "name": "us/west-virginia",
     "path": "north-america/us/west-virginia",
     "pbf": "https://download.geofabrik.de/north-america/us/west-virginia-latest.osm.pbf"
   },
   {
-    "id": "us/wyoming",
+    "id": "wyoming",
     "name": "us/wyoming",
     "path": "north-america/us/wyoming",
     "pbf": "https://download.geofabrik.de/north-america/us/wyoming-latest.osm.pbf"

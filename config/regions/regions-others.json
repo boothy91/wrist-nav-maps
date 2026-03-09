@@ -6,12 +6,6 @@
     "pbf": "https://download.geofabrik.de/australia-oceania/american-oceania-latest.osm.pbf"
   },
   {
-    "id": "antarctica",
-    "name": "Antarctica",
-    "path": "antarctica",
-    "pbf": "https://download.geofabrik.de/antarctica-latest.osm.pbf"
-  },
-  {
     "id": "argentina",
     "name": "Argentina",
     "path": "south-america/argentina",
@@ -22,12 +16,6 @@
     "name": "Australia",
     "path": "australia-oceania/australia",
     "pbf": "https://download.geofabrik.de/australia-oceania/australia-latest.osm.pbf"
-  },
-  {
-    "id": "australia-oceania",
-    "name": "Australia and Oceania",
-    "path": "australia-oceania",
-    "pbf": "https://download.geofabrik.de/australia-oceania-latest.osm.pbf"
   },
   {
     "id": "bahamas",
@@ -46,18 +34,6 @@
     "name": "Bolivia",
     "path": "south-america/bolivia",
     "pbf": "https://download.geofabrik.de/south-america/bolivia-latest.osm.pbf"
-  },
-  {
-    "id": "brazil",
-    "name": "Brazil",
-    "path": "south-america/brazil",
-    "pbf": "https://download.geofabrik.de/south-america/brazil-latest.osm.pbf"
-  },
-  {
-    "id": "central-america",
-    "name": "Central America",
-    "path": "central-america",
-    "pbf": "https://download.geofabrik.de/central-america-latest.osm.pbf"
   },
   {
     "id": "central-fed-district",
@@ -288,12 +264,6 @@
     "pbf": "https://download.geofabrik.de/australia-oceania/polynesie-francaise-latest.osm.pbf"
   },
   {
-    "id": "russia",
-    "name": "Russian Federation",
-    "path": "russia",
-    "pbf": "https://download.geofabrik.de/russia-latest.osm.pbf"
-  },
-  {
     "id": "samoa",
     "name": "Samoa",
     "path": "australia-oceania/samoa",
@@ -310,12 +280,6 @@
     "name": "Solomon Islands",
     "path": "australia-oceania/solomon-islands",
     "pbf": "https://download.geofabrik.de/australia-oceania/solomon-islands-latest.osm.pbf"
-  },
-  {
-    "id": "south-america",
-    "name": "South America",
-    "path": "south-america",
-    "pbf": "https://download.geofabrik.de/south-america-latest.osm.pbf"
   },
   {
     "id": "south-fed-district",
