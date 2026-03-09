@@ -6,12 +6,6 @@
     "pbf": "https://download.geofabrik.de/europe/albania-latest.osm.pbf"
   },
   {
-    "id": "alps",
-    "name": "Alps",
-    "path": "europe/alps",
-    "pbf": "https://download.geofabrik.de/europe/alps-latest.osm.pbf"
-  },
-  {
     "id": "alsace",
     "name": "Alsace",
     "path": "europe/france/alsace",
@@ -54,22 +48,10 @@
     "pbf": "https://download.geofabrik.de/europe/azores-latest.osm.pbf"
   },
   {
-    "id": "baden-wuerttemberg",
-    "name": "Baden-W\u00fcrttemberg",
-    "path": "europe/germany/baden-wuerttemberg",
-    "pbf": "https://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf"
-  },
-  {
     "id": "basse-normandie",
     "name": "Basse-Normandie",
     "path": "europe/france/basse-normandie",
     "pbf": "https://download.geofabrik.de/europe/france/basse-normandie-latest.osm.pbf"
-  },
-  {
-    "id": "bayern",
-    "name": "Bayern",
-    "path": "europe/germany/bayern",
-    "pbf": "https://download.geofabrik.de/europe/germany/bayern-latest.osm.pbf"
   },
   {
     "id": "belarus",
@@ -120,12 +102,6 @@
     "pbf": "https://download.geofabrik.de/europe/france/bretagne-latest.osm.pbf"
   },
   {
-    "id": "britain-and-ireland",
-    "name": "Britain and Ireland",
-    "path": "europe/britain-and-ireland",
-    "pbf": "https://download.geofabrik.de/europe/britain-and-ireland-latest.osm.pbf"
-  },
-  {
     "id": "bulgaria",
     "name": "Bulgaria",
     "path": "europe/bulgaria",
@@ -174,12 +150,6 @@
     "pbf": "https://download.geofabrik.de/europe/czech-republic-latest.osm.pbf"
   },
   {
-    "id": "dach",
-    "name": "Germany, Austria, Switzerland",
-    "path": "europe/dach",
-    "pbf": "https://download.geofabrik.de/europe/dach-latest.osm.pbf"
-  },
-  {
     "id": "denmark",
     "name": "Denmark",
     "path": "europe/denmark",
@@ -204,12 +174,6 @@
     "pbf": "https://download.geofabrik.de/europe/estonia-latest.osm.pbf"
   },
   {
-    "id": "europe",
-    "name": "Europe",
-    "path": "europe",
-    "pbf": "https://download.geofabrik.de/europe-latest.osm.pbf"
-  },
-  {
     "id": "faroe-islands",
     "name": "Faroe Islands",
     "path": "europe/faroe-islands",
@@ -220,12 +184,6 @@
     "name": "Finland",
     "path": "europe/finland",
     "pbf": "https://download.geofabrik.de/europe/finland-latest.osm.pbf"
-  },
-  {
-    "id": "france",
-    "name": "France",
-    "path": "europe/france",
-    "pbf": "https://download.geofabrik.de/europe/france-latest.osm.pbf"
   },
   {
     "id": "franche-comte",
@@ -244,18 +202,6 @@
     "name": "Georgia",
     "path": "europe/georgia",
     "pbf": "https://download.geofabrik.de/europe/georgia-latest.osm.pbf"
-  },
-  {
-    "id": "germany",
-    "name": "Germany",
-    "path": "europe/germany",
-    "pbf": "https://download.geofabrik.de/europe/germany-latest.osm.pbf"
-  },
-  {
-    "id": "great-britain",
-    "name": "Great Britain",
-    "path": "europe/great-britain",
-    "pbf": "https://download.geofabrik.de/europe/great-britain-latest.osm.pbf"
   },
   {
     "id": "greece",
@@ -334,12 +280,6 @@
     "name": "Isole",
     "path": "europe/italy/isole",
     "pbf": "https://download.geofabrik.de/europe/italy/isole-latest.osm.pbf"
-  },
-  {
-    "id": "italy",
-    "name": "Italy",
-    "path": "europe/italy",
-    "pbf": "https://download.geofabrik.de/europe/italy-latest.osm.pbf"
   },
   {
     "id": "karlsruhe-regbez",
@@ -466,12 +406,6 @@
     "name": "Nord-Pas-de-Calais",
     "path": "europe/france/nord-pas-de-calais",
     "pbf": "https://download.geofabrik.de/europe/france/nord-pas-de-calais-latest.osm.pbf"
-  },
-  {
-    "id": "nordrhein-westfalen",
-    "name": "Nordrhein-Westfalen",
-    "path": "europe/germany/nordrhein-westfalen",
-    "pbf": "https://download.geofabrik.de/europe/germany/nordrhein-westfalen-latest.osm.pbf"
   },
   {
     "id": "oberbayern",
