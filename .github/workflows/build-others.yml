@@ -68,6 +68,15 @@ jobs:
 
               print(f"\n=== {rname} ===")
 
+              # Skip if already uploaded
+              check = subprocess.run([
+                  "gh", "release", "view", "maps-others", "--json", "assets", "--jq",
+                  f"[.assets[].name] | index(\"{rid}.map\")"
+              ], capture_output=True, text=True,
+              env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+              if check.stdout.strip() not in ("", "null"):
+                  print(f"Skipping {rid} - already uploaded"); continue
+
               r = subprocess.run(["wget", "-q", "-O", pbf, pbf_url])
               if r.returncode != 0:
                   print(f"FAILED download {rid}"); failed.append(rid); continue
@@ -84,7 +93,7 @@ jobs:
               r = subprocess.run([
                   osmosis, "--rb", f"file={filtered}", "--mw", f"file={out_map}"
               ], capture_output=True, text=True,
-              env={**os.environ, "JAVACMD_OPTIONS": "-Xmx3g"})
+              env={**os.environ})
 
               if r.returncode != 0 or not os.path.exists(out_map):
                   print(f"FAILED convert {rid}: {r.stderr[-200:]}")
