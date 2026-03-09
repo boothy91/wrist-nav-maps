@@ -30,7 +30,7 @@ jobs:
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-          echo "JAVACMD_OPTIONS=-Xmx3g" >> $GITHUB_ENV
+          echo "JAVACMD_OPTIONS=-Xmx5g" >> $GITHUB_ENV
 
       - name: Create empty release
         env:
