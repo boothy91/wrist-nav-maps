@@ -38,7 +38,7 @@ jobs:
         run: |
           gh release delete maps-europe-uk --yes 2>/dev/null || true
           git push --delete origin maps-europe-uk 2>/dev/null || true
-          gh release create maps-europe-uk             --title "Maps - Europe Uk - $(date +'%B %Y')"             --notes "Auto-generated .map files for WristNav - UK counties. Updated monthly."             --latest=false \
+          gh release create maps-europe-uk             --title "Maps - Europe UK"             --notes "Auto-generated .map files for WristNav - UK counties. Updated monthly."             --latest=false \
             --draft=false
 
       - name: Convert regions

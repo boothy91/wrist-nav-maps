@@ -37,7 +37,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release view maps-others &>/dev/null || gh release create maps-others \
-            --title "Maps - Others - $(date +'%B %Y')" \
+            --title "Maps - Others" \
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false \
             --draft=false

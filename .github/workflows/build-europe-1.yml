@@ -37,7 +37,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release view maps-europe-1 &>/dev/null || gh release create maps-europe-1 \
-            --title "Maps - Europe 1 - $(date +'%B %Y')" \
+            --title "Maps - Europe 1" \
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false \
             --draft=false
