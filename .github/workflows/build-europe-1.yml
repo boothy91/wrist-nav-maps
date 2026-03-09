@@ -88,7 +88,7 @@ jobs:
                   print(f"FAILED filter {rid}"); failed.append(rid); continue
 
               r = subprocess.run([
-                  osmosis, "--rb", f"file={filtered}", "--mw", f"file={out_map}"
+                  osmosis, "--rb", f"file={filtered}", "--mw", f"file={out_map}", "type=hd"
               ], capture_output=True, text=True,
               env={**os.environ})
 
