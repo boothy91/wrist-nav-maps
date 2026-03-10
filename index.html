@@ -150,19 +150,17 @@ function log(msg,type='info') {
 }
 
 async function fetchReleaseAssets(tag) {
-  // Fetch all pages of assets
-  let assets = [], page = 1;
-  while(true) {
-    const url = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}?per_page=100&page=${page}`;
-    const res = await fetch(url, {headers:{'Accept':'application/vnd.github+json'}});
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    const maps = (data.assets||[]).filter(a=>a.name.endsWith('.map'));
-    assets = assets.concat(maps);
-    if(!data.assets || data.assets.length < 100) break;
-    page++;
-  }
-  return assets;
+  // Use release page HTML scrape via allorigins to avoid API rate limits
+  const indexUrl = `https://github.com/boothy91/wrist-nav-maps/releases/download/${tag}/index.json`;
+  const res = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(indexUrl));
+  if(!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  // Return assets in same shape as before
+  return (data.regions||[]).map(r => ({
+    name: r.id + '.map',
+    size: r.size,
+    browser_download_url: r.url
+  }));
 }
 
 function buildCard(rel, uploaded) {
