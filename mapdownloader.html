@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WristNav Map Downloader</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#080c10; --surface:#0d1117; --surface2:#111820; --border:#1e2832;
+    --accent:#00d4ff; --accent2:#00ff88; --warn:#ffaa00; --danger:#ff4466;
+    --text:#c9d1d9; --muted:#484f58;
+    --mono:'JetBrains Mono',monospace; --sans:'Space Grotesk',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+  .container{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:32px 24px}
+  header{margin-bottom:36px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+  .logo{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+  h1{font-family:var(--mono);font-size:20px;font-weight:700;color:#fff}
+  .subtitle{font-size:13px;color:var(--muted);margin-top:4px}
+  .subtitle a{color:var(--accent);text-decoration:none}
+
+  /* Search */
+  .search-bar{margin-bottom:24px;position:relative}
+  .search-bar input{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:14px;padding:12px 16px 12px 42px;border-radius:8px;outline:none;transition:border-color 0.2s}
+  .search-bar input:focus{border-color:var(--accent)}
+  .search-bar input::placeholder{color:var(--muted)}
+  .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:16px}
+
+  /* Region tabs */
+  .region-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+  .region-tab{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:11px;padding:6px 14px;border-radius:20px;cursor:pointer;transition:all 0.15s;white-space:nowrap}
+  .region-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .region-tab.active{background:rgba(0,212,255,0.1);border-color:var(--accent);color:var(--accent)}
+
+  /* Section */
+  .section{margin-bottom:32px}
+  .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .section-title{font-family:var(--mono);font-size:13px;font-weight:600;color:#fff;display:flex;align-items:center;gap:10px}
+  .section-count{font-size:11px;color:var(--muted);font-family:var(--mono)}
+
+  /* Map grid */
+  .map-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+  .map-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:border-color 0.15s}
+  .map-card:hover{border-color:var(--border);background:var(--surface2)}
+  .map-card.unavailable{opacity:0.4}
+  .map-name{font-size:13px;color:var(--text);text-transform:capitalize;flex:1;line-height:1.3}
+  .map-size{font-family:var(--mono);font-size:10px;color:var(--muted);flex-shrink:0}
+  .dl-btn{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;border:1px solid rgba(0,212,255,0.3);padding:5px 10px;border-radius:4px;transition:all 0.15s;flex-shrink:0;white-space:nowrap}
+  .dl-btn:hover{background:var(--accent);color:#000}
+  .dl-btn.soon{color:var(--muted);border-color:var(--border);pointer-events:none}
+
+  /* Loading */
+  .loading{text-align:center;padding:40px;color:var(--muted);font-family:var(--mono);font-size:13px}
+  .spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .empty{text-align:center;padding:30px;color:var(--muted);font-family:var(--mono);font-size:12px}
+
+  /* Flag emoji region labels */
+  .flag{font-size:16px}
+
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted)}
+  footer a{color:var(--accent);text-decoration:none}
+
+  @media(max-width:600px){
+    .map-grid{grid-template-columns:1fr}
+    .region-tabs{gap:6px}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">
+      <div class="logo-icon">🗺</div>
+      <div>
+        <h1>WristNav Map Downloader</h1>
+        <p class="subtitle">Download offline maps for your watch — transfer via <a href="https://boothy91.github.io/wrist-nav-site/">WristNav phone companion</a></p>
+      </div>
+    </div>
+  </header>
+
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search for a country or region..." oninput="filterMaps()">
+  </div>
+
+  <div class="region-tabs" id="regionTabs"></div>
+  <div id="content"><div class="loading"><span class="spinner"></span>Loading maps...</div></div>
+
+  <footer>
+    <p>Maps © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a> &nbsp;·&nbsp; <a href="https://boothy91.github.io/wrist-nav-maps/">Dashboard</a> &nbsp;·&nbsp; <a href="https://boothy91.github.io/wrist-nav-site/">WristNav</a></p>
+  </footer>
+</div>
+
+<script>
+const OWNER = 'boothy91', REPO = 'wrist-nav-maps';
+
+const REGIONS = [
+  { tag:'maps-europe-uk',     label:'🇬🇧 United Kingdom', short:'UK' },
+  { tag:'maps-europe-1',      label:'🇪🇺 Europe (Part 1)', short:'Europe 1' },
+  { tag:'maps-europe-2',      label:'🇪🇺 Europe (Part 2)', short:'Europe 2' },
+  { tag:'maps-africa',        label:'🌍 Africa',           short:'Africa' },
+  { tag:'maps-asia',          label:'🌏 Asia',             short:'Asia' },
+  { tag:'maps-north-america', label:'🌎 North America',    short:'N. America' },
+  { tag:'maps-others',        label:'🌐 Others',           short:'Others' },
+];
+
+const allMaps = {}; // tag -> [{name, size, url}]
+let activeTag = 'all';
+let searchTerm = '';
+
+function formatSize(b) {
+  if(b>=1024*1024*1024) return (b/1024/1024/1024).toFixed(1)+' GB';
+  if(b>=1024*1024) return (b/1024/1024).toFixed(1)+' MB';
+  return (b/1024).toFixed(0)+' KB';
+}
+
+function formatName(id) {
+  return id.replace(/-/g,' ').replace(/\b\w/g, c=>c.toUpperCase());
+}
+
+async function fetchRegion(tag) {
+  const url = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`;
+  const res = await fetch(url, {headers:{Accept:'application/vnd.github+json'}});
+  if(!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  return (data.assets||[])
+    .filter(a=>a.name.endsWith('.map'))
+    .map(a=>({name:a.name.replace('.map',''), size:a.size, url:a.browser_download_url}))
+    .sort((a,b)=>a.name.localeCompare(b.name));
+}
+
+function buildTabs() {
+  const tabs = document.getElementById('regionTabs');
+  tabs.innerHTML = '';
+
+  // All tab
+  const all = document.createElement('div');
+  all.className = 'region-tab' + (activeTag==='all'?' active':'');
+  all.textContent = '🌍 All Regions';
+  all.onclick = () => setTab('all');
+  tabs.appendChild(all);
+
+  REGIONS.forEach(r => {
+    const t = document.createElement('div');
+    t.className = 'region-tab' + (activeTag===r.tag?' active':'');
+    const count = allMaps[r.tag] ? allMaps[r.tag].length : null;
+    t.textContent = r.label + (count !== null ? ` (${count})` : '');
+    t.onclick = () => setTab(r.tag);
+    tabs.appendChild(t);
+  });
+}
+
+function setTab(tag) {
+  activeTag = tag;
+  buildTabs();
+  render();
+}
+
+function filterMaps() {
+  searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+  render();
+}
+
+function render() {
+  const content = document.getElementById('content');
+
+  // Determine which regions to show
+  const regions = activeTag === 'all' ? REGIONS : REGIONS.filter(r=>r.tag===activeTag);
+
+  let html = '';
+  let anyResults = false;
+
+  for(const r of regions) {
+    const maps = allMaps[r.tag];
+
+    if(!maps) {
+      // Still loading or unavailable
+      if(activeTag !== 'all') {
+        html += `<div class="loading"><span class="spinner"></span>Loading ${r.label}...</div>`;
+      }
+      continue;
+    }
+
+    // Filter by search
+    const filtered = searchTerm
+      ? maps.filter(m => m.name.toLowerCase().includes(searchTerm) || formatName(m.name).toLowerCase().includes(searchTerm))
+      : maps;
+
+    if(filtered.length === 0) continue;
+    anyResults = true;
+
+    html += `<div class="section">
+      <div class="section-header">
+        <div class="section-title">${r.label}</div>
+        <div class="section-count">${filtered.length} map${filtered.length!==1?'s':''}</div>
+      </div>
+      <div class="map-grid">`;
+
+    for(const m of filtered) {
+      html += `<div class="map-card">
+        <span class="map-name">${formatName(m.name)}</span>
+        <span class="map-size">${formatSize(m.size)}</span>
+        <a class="dl-btn" href="${m.url}" download="${m.name}.map">⬇ Download</a>
+      </div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  if(!anyResults && searchTerm) {
+    html = `<div class="empty">No maps found for "<strong>${searchTerm}</strong>"</div>`;
+  } else if(!anyResults) {
+    html = `<div class="loading"><span class="spinner"></span>Loading map data...</div>`;
+  }
+
+  content.innerHTML = html;
+}
+
+async function init() {
+  buildTabs();
+
+  // Load all regions in parallel
+  await Promise.allSettled(REGIONS.map(async r => {
+    try {
+      allMaps[r.tag] = await fetchRegion(r.tag);
+    } catch(e) {
+      allMaps[r.tag] = []; // mark as loaded but empty
+    }
+    buildTabs();
+    render();
+  }));
+}
+
+init();
+</script>
+</body>
+</html>
