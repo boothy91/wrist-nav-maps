@@ -124,16 +124,7 @@ function formatName(id) {
   return id.replace(/-/g,' ').replace(/\b\w/g, c=>c.toUpperCase());
 }
 
-async function fetchRegion(tag) {
-  const url = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`;
-  const res = await fetch(url, {headers:{Accept:'application/vnd.github+json'}});
-  if(!res.ok) throw new Error(`HTTP ${res.status}`);
-  const data = await res.json();
-  return (data.assets||[])
-    .filter(a=>a.name.endsWith('.map'))
-    .map(a=>({name:a.name.replace('.map',''), size:a.size, url:a.browser_download_url}))
-    .sort((a,b)=>a.name.localeCompare(b.name));
-}
+
 
 function buildTabs() {
   const tabs = document.getElementById('regionTabs');
@@ -224,17 +215,26 @@ function render() {
 
 async function init() {
   buildTabs();
-
-  // Load all regions in parallel
-  await Promise.allSettled(REGIONS.map(async r => {
-    try {
-      allMaps[r.tag] = await fetchRegion(r.tag);
-    } catch(e) {
-      allMaps[r.tag] = []; // mark as loaded but empty
+  render();
+  try {
+    const url = `https://api.github.com/repos/${OWNER}/${REPO}/releases?per_page=20`;
+    const res = await fetch(url, {headers:{Accept:'application/vnd.github+json'}});
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const releases = await res.json();
+    for(const rel of releases) {
+      const tag = rel.tag_name;
+      if(!REGIONS.find(r=>r.tag===tag)) continue;
+      allMaps[tag] = (rel.assets||[])
+        .filter(a=>a.name.endsWith('.map'))
+        .map(a=>({name:a.name.replace('.map',''), size:a.size, url:a.browser_download_url}))
+        .sort((a,b)=>a.name.localeCompare(b.name));
     }
-    buildTabs();
-    render();
-  }));
+    REGIONS.forEach(r=>{ if(!allMaps[r.tag]) allMaps[r.tag]=[]; });
+  } catch(e) {
+    REGIONS.forEach(r=>{ allMaps[r.tag]=[]; });
+  }
+  buildTabs();
+  render();
 }
 
 init();
