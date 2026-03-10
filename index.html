@@ -152,7 +152,7 @@ function log(msg,type='info') {
 async function fetchReleaseAssets(tag) {
   // Use release page HTML scrape via allorigins to avoid API rate limits
   const indexUrl = `https://github.com/boothy91/wrist-nav-maps/releases/download/${tag}/index.json`;
-  const res = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(indexUrl));
+  const res = await fetch('https://corsproxy.io/?' + encodeURIComponent(indexUrl));
   if(!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
   // Return assets in same shape as before
@@ -256,7 +256,7 @@ function renderDrawer(tag) {
     // We'll fetch index.json to get the full expected list
     content.innerHTML = '<div class="drawer-loading"><span class="spinner"></span>Checking index...</div>';
     const indexUrl = `https://github.com/${OWNER}/${REPO}/releases/download/${tag}/index.json`;
-    fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(indexUrl))
+    fetch('https://corsproxy.io/?'+encodeURIComponent(indexUrl))
       .then(r=>r.json())
       .then(data => {
         const expected = (data.regions||[]).map(r=>r.id);
