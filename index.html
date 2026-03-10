@@ -34,7 +34,7 @@
   .stat-card .sub { font-size:11px; color:var(--muted); margin-top:4px; }
   .releases { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px; }
   .release-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
-  .release-header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02); cursor:pointer; transition:background 0.15s; }
+  .release-header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02); cursor:pointer; transition:background 0.15s; text-decoration:none; }
   .release-header:hover { background:rgba(255,255,255,0.05); }
   .release-name { font-family:var(--mono); font-size:13px; font-weight:600; color:#fff; }
   .release-tag { font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2); padding:2px 8px; border-radius:4px; }
@@ -46,27 +46,8 @@
   .progress-fill.complete { background:var(--accent2); }
   .progress-fill.partial { background:var(--warn); }
   .progress-count { font-family:var(--mono); font-size:11px; color:var(--text); width:60px; text-align:right; flex-shrink:0; }
-  .chevron { color:var(--muted); font-size:12px; transition:transform 0.2s; margin-left:8px; }
-  .release-card.open .chevron { transform:rotate(180deg); }
-
-  /* Region drawer */
-  .region-drawer { display:none; border-top:1px solid var(--border); }
-  .release-card.open .region-drawer { display:block; }
-  .drawer-tabs { display:flex; border-bottom:1px solid var(--border); }
-  .drawer-tab { flex:1; padding:10px; font-family:var(--mono); font-size:11px; text-align:center; cursor:pointer; color:var(--muted); border-bottom:2px solid transparent; transition:all 0.15s; }
-  .drawer-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
-  .drawer-content { max-height:320px; overflow-y:auto; }
-  .drawer-content::-webkit-scrollbar { width:4px; }
-  .drawer-content::-webkit-scrollbar-thumb { background:#333; border-radius:2px; }
-  .region-row { display:flex; align-items:center; justify-content:space-between; padding:9px 16px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:12px; }
-  .region-row:last-child { border-bottom:none; }
-  .region-row.uploaded { color:var(--accent2); }
-  .region-row.missing { color:var(--danger); }
-  .region-size { color:var(--muted); font-size:11px; }
-  .dl-btn { font-size:11px; color:var(--accent); text-decoration:none; border:1px solid rgba(0,212,255,0.3); padding:3px 10px; border-radius:4px; transition:all 0.15s; }
-  .dl-btn:hover { background:var(--accent); color:#000; }
-  .drawer-loading { padding:20px; text-align:center; color:var(--muted); font-family:var(--mono); font-size:12px; }
-
+  .view-release { display:inline-flex; align-items:center; gap:6px; margin-top:12px; font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border:1px solid rgba(0,212,255,0.2); padding:5px 12px; border-radius:4px; transition:all 0.15s; }
+  .view-release:hover { background:rgba(0,212,255,0.08); }
   .spinner { display:inline-block; width:12px; height:12px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; vertical-align:middle; margin-right:6px; }
   @keyframes spin { to{transform:rotate(360deg)} }
   .log-section { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:24px; }
@@ -132,13 +113,7 @@ const RELEASES = [
   { tag:'maps-others',        name:'Others',            config:61 },
 ];
 const TOTAL_CONFIG = RELEASES.reduce((s,r)=>s+r.config,0);
-const releaseAssets = {}; // tag -> [{name,size,url}]
 
-function formatSize(b) {
-  if(b>=1024*1024*1024) return (b/1024/1024/1024).toFixed(1)+' GB';
-  if(b>=1024*1024) return (b/1024/1024).toFixed(1)+' MB';
-  return (b/1024).toFixed(0)+' KB';
-}
 function log(msg,type='info') {
   const body=document.getElementById('logBody');
   const now=new Date().toTimeString().slice(0,8);
@@ -149,133 +124,39 @@ function log(msg,type='info') {
   body.scrollTop=body.scrollHeight;
 }
 
-async function fetchReleaseAssets(tag) {
-  // Use release page HTML scrape via allorigins to avoid API rate limits
-  const indexUrl = `https://github.com/boothy91/wrist-nav-maps/releases/download/${tag}/index.json`;
-  const res = await fetch('https://corsproxy.io/?' + encodeURIComponent(indexUrl));
+async function fetchCount(tag) {
+  const url = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`;
+  const res = await fetch(url, {headers:{'Accept':'application/vnd.github+json'}});
   if(!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
-  // Return assets in same shape as before
-  return (data.regions||[]).map(r => ({
-    name: r.id + '.map',
-    size: r.size,
-    browser_download_url: r.url
-  }));
+  return (data.assets||[]).filter(a=>a.name.endsWith('.map')).length;
 }
 
 function buildCard(rel, uploaded) {
-  const pct = rel.config>0 ? Math.round((uploaded/rel.config)*100) : 0;
-  const remaining = rel.config - uploaded;
-  const fillClass = pct===100?'complete':uploaded===0?'partial':'partial';
-  const fillW = Math.max(pct,uploaded>0?3:0);
+  const num = typeof uploaded === 'number' ? uploaded : 0;
+  const pct = Math.round((num/rel.config)*100);
+  const remaining = rel.config - num;
+  const fillW = Math.max(pct, num>0?3:0);
+  const fillClass = pct===100?'complete':'partial';
+  const releaseUrl = `https://github.com/${OWNER}/${REPO}/releases/tag/${rel.tag}`;
   return `
-    <div class="release-card" id="card-${rel.tag}">
-      <div class="release-header" onclick="toggleDrawer('${rel.tag}')">
+    <div class="release-card">
+      <div class="release-header">
         <span class="release-name">${rel.name}</span>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="release-tag">${rel.tag}</span>
-          <span class="chevron">▼</span>
-        </div>
+        <span class="release-tag">${rel.tag}</span>
       </div>
       <div class="release-body">
         <div class="progress-row">
           <span class="progress-label">Uploaded</span>
           <div class="progress-bar"><div class="progress-fill ${fillClass}" style="width:${fillW}%"></div></div>
-          <span class="progress-count">${uploaded} / ${rel.config}</span>
+          <span class="progress-count">${num} / ${rel.config}</span>
         </div>
         <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px;">
           ${pct}% · ${remaining>0?`<span style="color:var(--warn)">${remaining} remaining</span>`:'<span style="color:var(--accent2)">✓ Complete</span>'}
-          &nbsp;·&nbsp; <span style="color:var(--accent);cursor:pointer;" onclick="toggleDrawer('${rel.tag}')">▼ Show maps</span>
         </div>
-      </div>
-      <div class="region-drawer" id="drawer-${rel.tag}">
-        <div class="drawer-tabs">
-          <div class="drawer-tab active" id="tab-uploaded-${rel.tag}" onclick="showTab('${rel.tag}','uploaded')">✓ Uploaded</div>
-          <div class="drawer-tab" id="tab-missing-${rel.tag}" onclick="showTab('${rel.tag}','missing')">✗ Missing</div>
-        </div>
-        <div class="drawer-content" id="drawer-content-${rel.tag}">
-          <div class="drawer-loading"><span class="spinner"></span>Loading assets...</div>
-        </div>
+        <a class="view-release" href="${releaseUrl}" target="_blank" rel="noopener">↗ View release &amp; download maps</a>
       </div>
     </div>`;
-}
-
-const drawerLoaded = {};
-const drawerTab = {};
-
-async function toggleDrawer(tag) {
-  const card = document.getElementById('card-'+tag);
-  const isOpen = card.classList.contains('open');
-  if(isOpen) { card.classList.remove('open'); return; }
-  card.classList.add('open');
-  if(drawerLoaded[tag]) return;
-  drawerLoaded[tag] = true;
-  drawerTab[tag] = 'uploaded';
-
-  try {
-    const assets = await fetchReleaseAssets(tag);
-    releaseAssets[tag] = assets;
-    log(`${tag}: loaded ${assets.length} uploaded assets`, 'ok');
-    renderDrawer(tag);
-  } catch(e) {
-    document.getElementById('drawer-content-'+tag).innerHTML =
-      `<div class="drawer-loading" style="color:var(--danger)">Failed to load: ${e.message}</div>`;
-    drawerLoaded[tag] = false;
-    log(`${tag}: failed to load assets — ${e.message}`, 'err');
-  }
-}
-
-function showTab(tag, tab) {
-  drawerTab[tag] = tab;
-  document.getElementById('tab-uploaded-'+tag).className = 'drawer-tab'+(tab==='uploaded'?' active':'');
-  document.getElementById('tab-missing-'+tag).className = 'drawer-tab'+(tab==='missing'?' active':'');
-  renderDrawer(tag);
-}
-
-function renderDrawer(tag) {
-  const assets = releaseAssets[tag] || [];
-  const rel = RELEASES.find(r=>r.tag===tag);
-  const content = document.getElementById('drawer-content-'+tag);
-  const tab = drawerTab[tag];
-
-  if(tab === 'uploaded') {
-    if(assets.length === 0) {
-      content.innerHTML = '<div class="drawer-loading" style="color:var(--warn)">No maps uploaded yet</div>';
-      return;
-    }
-    content.innerHTML = assets.map(a => `
-      <div class="region-row uploaded">
-        <span>${a.name.replace('.map','')}</span>
-        <div style="display:flex;align-items:center;gap:12px">
-          <span class="region-size">${formatSize(a.size)}</span>
-          <a class="dl-btn" href="${a.browser_download_url}">⬇</a>
-        </div>
-      </div>`).join('');
-  } else {
-    // Missing = in index.json but not in assets
-    // We'll fetch index.json to get the full expected list
-    content.innerHTML = '<div class="drawer-loading"><span class="spinner"></span>Checking index...</div>';
-    const indexUrl = `https://github.com/${OWNER}/${REPO}/releases/download/${tag}/index.json`;
-    fetch('https://corsproxy.io/?'+encodeURIComponent(indexUrl))
-      .then(r=>r.json())
-      .then(data => {
-        const expected = (data.regions||[]).map(r=>r.id);
-        const uploaded = assets.map(a=>a.name.replace('.map',''));
-        const missing = expected.filter(id=>!uploaded.includes(id));
-        if(missing.length === 0) {
-          content.innerHTML = '<div class="drawer-loading" style="color:var(--accent2)">✓ All maps uploaded!</div>';
-        } else {
-          content.innerHTML = missing.map(id => `
-            <div class="region-row missing">
-              <span>${id}</span>
-              <span class="region-size">not uploaded</span>
-            </div>`).join('');
-        }
-      })
-      .catch(()=>{
-        content.innerHTML = '<div class="drawer-loading" style="color:var(--warn)">index.json not available yet — release still building</div>';
-      });
-  }
 }
 
 async function fetchData() {
@@ -294,11 +175,10 @@ async function fetchData() {
 
   for(const rel of RELEASES) {
     try {
-      const assets = await fetchReleaseAssets(rel.tag);
-      releaseAssets[rel.tag] = assets;
-      results.push({...rel, uploaded:assets.length});
-      totalUploaded+=assets.length;
-      log(`${rel.name}: ${assets.length}/${rel.config}`, assets.length===rel.config?'ok':assets.length===0?'err':'warn');
+      const count = await fetchCount(rel.tag);
+      results.push({...rel, uploaded:count});
+      totalUploaded+=count;
+      log(`${rel.name}: ${count}/${rel.config}`, count===rel.config?'ok':count===0?'err':'warn');
     } catch(e) {
       results.push({...rel, uploaded:0});
       log(`${rel.name}: failed — ${e.message}`,'err');
@@ -321,19 +201,11 @@ async function fetchData() {
     log(`${remaining} maps still to upload.`,'warn');
   }
 
-  // Re-open any previously open drawers
-  Object.keys(drawerLoaded).forEach(tag => {
-    if(drawerLoaded[tag]) {
-      const card=document.getElementById('card-'+tag);
-      if(card) { card.classList.add('open'); renderDrawer(tag); }
-    }
-  });
-
   document.getElementById('lastUpdated').textContent='Last updated: '+new Date().toLocaleTimeString();
 }
 
 fetchData();
-setInterval(fetchData,120000);
+setInterval(fetchData, 120000);
 </script>
 </body>
 </html>
