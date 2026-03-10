@@ -7,364 +7,87 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #080c10;
-    --surface: #0d1117;
-    --border: #1e2832;
-    --accent: #00d4ff;
-    --accent2: #00ff88;
-    --warn: #ffaa00;
-    --danger: #ff4466;
-    --text: #c9d1d9;
-    --muted: #484f58;
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Space Grotesk', sans-serif;
+    --bg: #080c10; --surface: #0d1117; --border: #1e2832;
+    --accent: #00d4ff; --accent2: #00ff88; --warn: #ffaa00;
+    --danger: #ff4466; --text: #c9d1d9; --muted: #484f58;
+    --mono: 'JetBrains Mono', monospace; --sans: 'Space Grotesk', sans-serif;
   }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); min-height:100vh; overflow-x:hidden; }
+  body::before { content:''; position:fixed; inset:0; background-image:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; z-index:0; }
+  .container { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:32px 24px; }
+  header { display:flex; align-items:center; justify-content:space-between; margin-bottom:40px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+  .logo { display:flex; align-items:center; gap:12px; }
+  .logo-icon { width:40px; height:40px; background:linear-gradient(135deg,var(--accent),var(--accent2)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+  .logo h1 { font-family:var(--mono); font-size:18px; font-weight:700; color:#fff; letter-spacing:-0.5px; }
+  .logo span { font-size:11px; color:var(--muted); font-family:var(--mono); display:block; margin-top:2px; }
+  .status-indicator { display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; }
+  .dot { width:8px; height:8px; border-radius:50%; background:var(--muted); }
+  .dot.live { background:var(--accent2); animation:pulse 2s infinite; }
+  .dot.running { background:var(--warn); animation:pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+  .summary-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:32px; }
+  .stat-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px; position:relative; overflow:hidden; }
+  .stat-card::after { content:''; position:absolute; top:0;left:0;right:0; height:2px; background:linear-gradient(90deg,var(--accent),transparent); }
+  .stat-card .label { font-family:var(--mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+  .stat-card .value { font-family:var(--mono); font-size:28px; font-weight:700; color:#fff; line-height:1; }
+  .stat-card .sub { font-size:11px; color:var(--muted); margin-top:4px; }
+  .releases { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px; }
+  .release-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+  .release-header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02); cursor:pointer; transition:background 0.15s; }
+  .release-header:hover { background:rgba(255,255,255,0.05); }
+  .release-name { font-family:var(--mono); font-size:13px; font-weight:600; color:#fff; }
+  .release-tag { font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2); padding:2px 8px; border-radius:4px; }
+  .release-body { padding:14px 16px; }
+  .progress-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .progress-label { font-family:var(--mono); font-size:11px; color:var(--muted); width:70px; flex-shrink:0; }
+  .progress-bar { flex:1; height:6px; background:var(--border); border-radius:3px; overflow:hidden; }
+  .progress-fill { height:100%; border-radius:3px; transition:width 1s ease; }
+  .progress-fill.complete { background:var(--accent2); }
+  .progress-fill.partial { background:var(--warn); }
+  .progress-count { font-family:var(--mono); font-size:11px; color:var(--text); width:60px; text-align:right; flex-shrink:0; }
+  .chevron { color:var(--muted); font-size:12px; transition:transform 0.2s; margin-left:8px; }
+  .release-card.open .chevron { transform:rotate(180deg); }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* Region drawer */
+  .region-drawer { display:none; border-top:1px solid var(--border); }
+  .release-card.open .region-drawer { display:block; }
+  .drawer-tabs { display:flex; border-bottom:1px solid var(--border); }
+  .drawer-tab { flex:1; padding:10px; font-family:var(--mono); font-size:11px; text-align:center; cursor:pointer; color:var(--muted); border-bottom:2px solid transparent; transition:all 0.15s; }
+  .drawer-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+  .drawer-content { max-height:320px; overflow-y:auto; }
+  .drawer-content::-webkit-scrollbar { width:4px; }
+  .drawer-content::-webkit-scrollbar-thumb { background:#333; border-radius:2px; }
+  .region-row { display:flex; align-items:center; justify-content:space-between; padding:9px 16px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:12px; }
+  .region-row:last-child { border-bottom:none; }
+  .region-row.uploaded { color:var(--accent2); }
+  .region-row.missing { color:var(--danger); }
+  .region-size { color:var(--muted); font-size:11px; }
+  .dl-btn { font-size:11px; color:var(--accent); text-decoration:none; border:1px solid rgba(0,212,255,0.3); padding:3px 10px; border-radius:4px; transition:all 0.15s; }
+  .dl-btn:hover { background:var(--accent); color:#000; }
+  .drawer-loading { padding:20px; text-align:center; color:var(--muted); font-family:var(--mono); font-size:12px; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 32px 24px;
-  }
-
-  /* Header */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .logo-icon {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-  }
-
-  .logo h1 {
-    font-family: var(--mono);
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.5px;
-  }
-
-  .logo span {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: var(--mono);
-    display: block;
-    margin-top: 2px;
-  }
-
-  .status-indicator {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--muted);
-  }
-
-  .dot.live { background: var(--accent2); animation: pulse 2s infinite; }
-  .dot.running { background: var(--warn); animation: pulse 1s infinite; }
-  .dot.idle { background: var(--muted); }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
-    50% { opacity: 0.7; box-shadow: 0 0 6px 2px currentColor; }
-  }
-
-  /* Summary cards */
-  .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .stat-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-  }
-
-  .stat-card .label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-  }
-
-  .stat-card .value {
-    font-family: var(--mono);
-    font-size: 28px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-  }
-
-  .stat-card .sub {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  /* Release sections */
-  .releases {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .release-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .release-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255,255,255,0.02);
-  }
-
-  .release-name {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-  }
-
-  .release-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--accent);
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.2);
-    padding: 2px 8px;
-    border-radius: 4px;
-  }
-
-  .release-body {
-    padding: 14px 16px;
-  }
-
-  .progress-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-
-  .progress-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    width: 70px;
-    flex-shrink: 0;
-  }
-
-  .progress-bar {
-    flex: 1;
-    height: 6px;
-    background: var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 1s ease;
-  }
-
-  .progress-fill.complete { background: var(--accent2); }
-  .progress-fill.partial  { background: var(--warn); }
-  .progress-fill.empty    { background: var(--danger); width: 0% !important; }
-
-  .progress-count {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text);
-    width: 60px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  /* Process log */
-  .log-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 24px;
-  }
-
-  .log-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255,255,255,0.02);
-  }
-
-  .log-header h3 {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .log-body {
-    padding: 12px 16px;
-    font-family: var(--mono);
-    font-size: 12px;
-    line-height: 1.8;
-    max-height: 200px;
-    overflow-y: auto;
-    color: var(--text);
-  }
-
-  .log-line { display: flex; gap: 12px; }
-  .log-time { color: var(--muted); flex-shrink: 0; }
-  .log-ok   { color: var(--accent2); }
-  .log-warn { color: var(--warn); }
-  .log-err  { color: var(--danger); }
-  .log-info { color: var(--accent); }
-
-  /* Refresh button */
-  .btn-refresh {
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.3);
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 6px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .btn-refresh:hover {
-    background: rgba(0,212,255,0.15);
-    border-color: var(--accent);
-  }
-
-  /* Loading spinner */
-  .spinner {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border: 2px solid var(--border);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    vertical-align: middle;
-    margin-right: 6px;
-  }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .error-msg {
-    color: var(--danger);
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 8px 12px;
-    background: rgba(255,68,102,0.08);
-    border: 1px solid rgba(255,68,102,0.2);
-    border-radius: 6px;
-    margin-top: 8px;
-  }
-
-  .last-updated {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    text-align: right;
-    margin-top: 8px;
-  }
-
-  @media (max-width: 700px) {
-    .summary-grid { grid-template-columns: repeat(2, 1fr); }
-    .releases { grid-template-columns: 1fr; }
-  }
+  .spinner { display:inline-block; width:12px; height:12px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; vertical-align:middle; margin-right:6px; }
+  @keyframes spin { to{transform:rotate(360deg)} }
+  .log-section { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:24px; }
+  .log-header { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02); }
+  .log-header h3 { font-family:var(--mono); font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:1px; }
+  .log-body { padding:12px 16px; font-family:var(--mono); font-size:12px; line-height:1.8; max-height:200px; overflow-y:auto; }
+  .log-line { display:flex; gap:12px; }
+  .log-time { color:var(--muted); flex-shrink:0; }
+  .log-ok { color:var(--accent2); } .log-warn { color:var(--warn); } .log-err { color:var(--danger); } .log-info { color:var(--accent); }
+  .btn-refresh { background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.3); color:var(--accent); font-family:var(--mono); font-size:11px; padding:6px 14px; border-radius:6px; cursor:pointer; transition:all 0.2s; }
+  .btn-refresh:hover { background:rgba(0,212,255,0.15); }
+  .last-updated { font-family:var(--mono); font-size:10px; color:var(--muted); text-align:right; margin-top:8px; }
+  @media(max-width:700px) { .summary-grid{grid-template-columns:repeat(2,1fr)} .releases{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 <div class="container">
-
   <header>
     <div class="logo">
       <div class="logo-icon">🗺</div>
-      <div>
-        <h1>WristNav Maps</h1>
-        <span>boothy91/wrist-nav-maps</span>
-      </div>
+      <div><h1>WristNav Maps</h1><span>boothy91/wrist-nav-maps</span></div>
     </div>
     <div class="status-indicator">
       <div class="dot" id="statusDot"></div>
@@ -372,38 +95,19 @@
     </div>
   </header>
 
-  <!-- Summary -->
   <div class="summary-grid">
-    <div class="stat-card">
-      <div class="label">Total Maps</div>
-      <div class="value" id="totalMaps">—</div>
-      <div class="sub">across all releases</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Uploaded</div>
-      <div class="value" id="totalUploaded">—</div>
-      <div class="sub">files in GitHub releases</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Remaining</div>
-      <div class="value" id="totalRemaining" style="color:var(--warn)">—</div>
-      <div class="sub">still to process</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Complete</div>
-      <div class="value" id="totalPct" style="color:var(--accent2)">—</div>
-      <div class="sub">overall progress</div>
-    </div>
+    <div class="stat-card"><div class="label">Total Maps</div><div class="value" id="totalMaps">—</div><div class="sub">across all releases</div></div>
+    <div class="stat-card"><div class="label">Uploaded</div><div class="value" id="totalUploaded">—</div><div class="sub">files in GitHub releases</div></div>
+    <div class="stat-card"><div class="label">Remaining</div><div class="value" id="totalRemaining" style="color:var(--warn)">—</div><div class="sub">still to process</div></div>
+    <div class="stat-card"><div class="label">Complete</div><div class="value" id="totalPct" style="color:var(--accent2)">—</div><div class="sub">overall progress</div></div>
   </div>
 
-  <!-- Releases -->
   <div class="releases" id="releasesGrid">
     <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-family:var(--mono);font-size:13px;">
       <span class="spinner"></span> Loading release data...
     </div>
   </div>
 
-  <!-- Log -->
   <div class="log-section">
     <div class="log-header">
       <h3>Activity Log</h3>
@@ -413,56 +117,67 @@
       <div class="log-line"><span class="log-time">--:--:--</span><span class="log-info">Initialising dashboard...</span></div>
     </div>
   </div>
-
   <div class="last-updated" id="lastUpdated"></div>
-
 </div>
 
 <script>
-const OWNER = 'boothy91';
-const REPO  = 'wrist-nav-maps';
-
+const OWNER = 'boothy91', REPO = 'wrist-nav-maps';
 const RELEASES = [
-  { tag: 'maps-europe-uk',     name: 'Europe — UK',        config: 50 },
-  { tag: 'maps-europe-1',      name: 'Europe Part 1',      config: 93 },
-  { tag: 'maps-europe-2',      name: 'Europe Part 2',      config: 61 },
-  { tag: 'maps-africa',        name: 'Africa',             config: 54 },
-  { tag: 'maps-asia',          name: 'Asia',               config: 89 },
-  { tag: 'maps-north-america', name: 'North America',      config: 41 },
-  { tag: 'maps-others',        name: 'Others',             config: 61 },
+  { tag:'maps-europe-uk',     name:'Europe — UK',       config:50 },
+  { tag:'maps-europe-1',      name:'Europe Part 1',     config:93 },
+  { tag:'maps-europe-2',      name:'Europe Part 2',     config:61 },
+  { tag:'maps-africa',        name:'Africa',            config:54 },
+  { tag:'maps-asia',          name:'Asia',              config:89 },
+  { tag:'maps-north-america', name:'North America',     config:41 },
+  { tag:'maps-others',        name:'Others',            config:61 },
 ];
+const TOTAL_CONFIG = RELEASES.reduce((s,r)=>s+r.config,0);
+const releaseAssets = {}; // tag -> [{name,size,url}]
 
-const TOTAL_CONFIG = RELEASES.reduce((s, r) => s + r.config, 0);
-
-function log(msg, type = 'info') {
-  const body = document.getElementById('logBody');
-  const now = new Date().toTimeString().slice(0,8);
-  const line = document.createElement('div');
-  line.className = 'log-line';
-  line.innerHTML = `<span class="log-time">${now}</span><span class="log-${type}">${msg}</span>`;
+function formatSize(b) {
+  if(b>=1024*1024*1024) return (b/1024/1024/1024).toFixed(1)+' GB';
+  if(b>=1024*1024) return (b/1024/1024).toFixed(1)+' MB';
+  return (b/1024).toFixed(0)+' KB';
+}
+function log(msg,type='info') {
+  const body=document.getElementById('logBody');
+  const now=new Date().toTimeString().slice(0,8);
+  const line=document.createElement('div');
+  line.className='log-line';
+  line.innerHTML=`<span class="log-time">${now}</span><span class="log-${type}">${msg}</span>`;
   body.appendChild(line);
-  body.scrollTop = body.scrollHeight;
+  body.scrollTop=body.scrollHeight;
 }
 
-async function fetchRelease(tag) {
-  const url = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`;
-  const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
-  if (!res.ok) throw new Error(`${tag}: HTTP ${res.status}`);
-  const data = await res.json();
-  return data.assets ? data.assets.filter(a => a.name.endsWith('.map')).length : 0;
+async function fetchReleaseAssets(tag) {
+  // Fetch all pages of assets
+  let assets = [], page = 1;
+  while(true) {
+    const url = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}?per_page=100&page=${page}`;
+    const res = await fetch(url, {headers:{'Accept':'application/vnd.github+json'}});
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const maps = (data.assets||[]).filter(a=>a.name.endsWith('.map'));
+    assets = assets.concat(maps);
+    if(!data.assets || data.assets.length < 100) break;
+    page++;
+  }
+  return assets;
 }
 
-function buildReleaseCard(rel, uploaded) {
-  const pct = rel.config > 0 ? Math.round((uploaded / rel.config) * 100) : 0;
+function buildCard(rel, uploaded) {
+  const pct = rel.config>0 ? Math.round((uploaded/rel.config)*100) : 0;
   const remaining = rel.config - uploaded;
-  const fillClass = pct === 100 ? 'complete' : uploaded === 0 ? 'empty' : 'partial';
-  const fillW = pct === 100 ? 100 : uploaded === 0 ? 0 : Math.max(pct, 3);
-
+  const fillClass = pct===100?'complete':uploaded===0?'partial':'partial';
+  const fillW = Math.max(pct,uploaded>0?3:0);
   return `
-    <div class="release-card">
-      <div class="release-header">
+    <div class="release-card" id="card-${rel.tag}">
+      <div class="release-header" onclick="toggleDrawer('${rel.tag}')">
         <span class="release-name">${rel.name}</span>
-        <span class="release-tag">${rel.tag}</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="release-tag">${rel.tag}</span>
+          <span class="chevron">▼</span>
+        </div>
       </div>
       <div class="release-body">
         <div class="progress-row">
@@ -470,77 +185,157 @@ function buildReleaseCard(rel, uploaded) {
           <div class="progress-bar"><div class="progress-fill ${fillClass}" style="width:${fillW}%"></div></div>
           <span class="progress-count">${uploaded} / ${rel.config}</span>
         </div>
-        <div class="progress-row">
-          <span class="progress-label">Remaining</span>
-          <div class="progress-bar"><div class="progress-fill ${remaining>0?'partial':'complete'}" style="width:${remaining>0?Math.max((remaining/rel.config)*100,3):100}%"></div></div>
-          <span class="progress-count" style="color:${remaining>0?'var(--warn)':'var(--accent2)'}">${remaining} left</span>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px;">
+          ${pct}% · ${remaining>0?`<span style="color:var(--warn)">${remaining} remaining</span>`:'<span style="color:var(--accent2)">✓ Complete</span>'}
+          &nbsp;·&nbsp; <span style="color:var(--accent);cursor:pointer;" onclick="toggleDrawer('${rel.tag}')">▼ Show maps</span>
         </div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px;">
-          ${pct}% complete
-          ${pct===100 ? '✓ Done' : uploaded===0 ? '⚠ Not started' : '⟳ In progress'}
+      </div>
+      <div class="region-drawer" id="drawer-${rel.tag}">
+        <div class="drawer-tabs">
+          <div class="drawer-tab active" id="tab-uploaded-${rel.tag}" onclick="showTab('${rel.tag}','uploaded')">✓ Uploaded</div>
+          <div class="drawer-tab" id="tab-missing-${rel.tag}" onclick="showTab('${rel.tag}','missing')">✗ Missing</div>
+        </div>
+        <div class="drawer-content" id="drawer-content-${rel.tag}">
+          <div class="drawer-loading"><span class="spinner"></span>Loading assets...</div>
         </div>
       </div>
     </div>`;
 }
 
+const drawerLoaded = {};
+const drawerTab = {};
+
+async function toggleDrawer(tag) {
+  const card = document.getElementById('card-'+tag);
+  const isOpen = card.classList.contains('open');
+  if(isOpen) { card.classList.remove('open'); return; }
+  card.classList.add('open');
+  if(drawerLoaded[tag]) return;
+  drawerLoaded[tag] = true;
+  drawerTab[tag] = 'uploaded';
+
+  try {
+    const assets = await fetchReleaseAssets(tag);
+    releaseAssets[tag] = assets;
+    log(`${tag}: loaded ${assets.length} uploaded assets`, 'ok');
+    renderDrawer(tag);
+  } catch(e) {
+    document.getElementById('drawer-content-'+tag).innerHTML =
+      `<div class="drawer-loading" style="color:var(--danger)">Failed to load: ${e.message}</div>`;
+    drawerLoaded[tag] = false;
+    log(`${tag}: failed to load assets — ${e.message}`, 'err');
+  }
+}
+
+function showTab(tag, tab) {
+  drawerTab[tag] = tab;
+  document.getElementById('tab-uploaded-'+tag).className = 'drawer-tab'+(tab==='uploaded'?' active':'');
+  document.getElementById('tab-missing-'+tag).className = 'drawer-tab'+(tab==='missing'?' active':'');
+  renderDrawer(tag);
+}
+
+function renderDrawer(tag) {
+  const assets = releaseAssets[tag] || [];
+  const rel = RELEASES.find(r=>r.tag===tag);
+  const content = document.getElementById('drawer-content-'+tag);
+  const tab = drawerTab[tag];
+
+  if(tab === 'uploaded') {
+    if(assets.length === 0) {
+      content.innerHTML = '<div class="drawer-loading" style="color:var(--warn)">No maps uploaded yet</div>';
+      return;
+    }
+    content.innerHTML = assets.map(a => `
+      <div class="region-row uploaded">
+        <span>${a.name.replace('.map','')}</span>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="region-size">${formatSize(a.size)}</span>
+          <a class="dl-btn" href="${a.browser_download_url}">⬇</a>
+        </div>
+      </div>`).join('');
+  } else {
+    // Missing = in index.json but not in assets
+    // We'll fetch index.json to get the full expected list
+    content.innerHTML = '<div class="drawer-loading"><span class="spinner"></span>Checking index...</div>';
+    const indexUrl = `https://github.com/${OWNER}/${REPO}/releases/download/${tag}/index.json`;
+    fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(indexUrl))
+      .then(r=>r.json())
+      .then(data => {
+        const expected = (data.regions||[]).map(r=>r.id);
+        const uploaded = assets.map(a=>a.name.replace('.map',''));
+        const missing = expected.filter(id=>!uploaded.includes(id));
+        if(missing.length === 0) {
+          content.innerHTML = '<div class="drawer-loading" style="color:var(--accent2)">✓ All maps uploaded!</div>';
+        } else {
+          content.innerHTML = missing.map(id => `
+            <div class="region-row missing">
+              <span>${id}</span>
+              <span class="region-size">not uploaded</span>
+            </div>`).join('');
+        }
+      })
+      .catch(()=>{
+        content.innerHTML = '<div class="drawer-loading" style="color:var(--warn)">index.json not available yet — release still building</div>';
+      });
+  }
+}
+
 async function fetchData() {
-  const dot = document.getElementById('statusDot');
-  const statusText = document.getElementById('statusText');
-  dot.className = 'dot running';
-  statusText.textContent = 'Fetching...';
-  statusText.style.color = 'var(--warn)';
+  const dot=document.getElementById('statusDot');
+  const statusText=document.getElementById('statusText');
+  dot.className='dot running';
+  statusText.textContent='Fetching...';
+  statusText.style.color='var(--warn)';
+  log('Fetching release data...','info');
 
-  log('Fetching release data from GitHub API...', 'info');
+  const grid=document.getElementById('releasesGrid');
+  grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-family:var(--mono);font-size:13px;"><span class="spinner"></span> Loading...</div>';
 
-  const grid = document.getElementById('releasesGrid');
-  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-family:var(--mono);font-size:13px;"><span class="spinner"></span> Loading...</div>';
+  let totalUploaded=0;
+  const results=[];
 
-  let totalUploaded = 0;
-  const results = [];
-
-  for (const rel of RELEASES) {
+  for(const rel of RELEASES) {
     try {
-      const count = await fetchRelease(rel.tag);
-      results.push({ ...rel, uploaded: count });
-      totalUploaded += count;
-      log(`${rel.name}: ${count}/${rel.config} maps uploaded`, count === rel.config ? 'ok' : count === 0 ? 'err' : 'warn');
-    } catch (e) {
-      results.push({ ...rel, uploaded: 0 });
-      log(`${rel.name}: Failed to fetch — ${e.message}`, 'err');
+      const assets = await fetchReleaseAssets(rel.tag);
+      releaseAssets[rel.tag] = assets;
+      results.push({...rel, uploaded:assets.length});
+      totalUploaded+=assets.length;
+      log(`${rel.name}: ${assets.length}/${rel.config}`, assets.length===rel.config?'ok':assets.length===0?'err':'warn');
+    } catch(e) {
+      results.push({...rel, uploaded:0});
+      log(`${rel.name}: failed — ${e.message}`,'err');
     }
   }
 
-  // Update summary
-  const remaining = TOTAL_CONFIG - totalUploaded;
-  const pct = Math.round((totalUploaded / TOTAL_CONFIG) * 100);
-  document.getElementById('totalMaps').textContent = TOTAL_CONFIG;
-  document.getElementById('totalUploaded').textContent = totalUploaded;
-  document.getElementById('totalRemaining').textContent = remaining;
-  document.getElementById('totalPct').textContent = pct + '%';
+  const remaining=TOTAL_CONFIG-totalUploaded;
+  const pct=Math.round((totalUploaded/TOTAL_CONFIG)*100);
+  document.getElementById('totalMaps').textContent=TOTAL_CONFIG;
+  document.getElementById('totalUploaded').textContent=totalUploaded;
+  document.getElementById('totalRemaining').textContent=remaining;
+  document.getElementById('totalPct').textContent=pct+'%';
+  grid.innerHTML=results.map(r=>buildCard(r,r.uploaded)).join('');
 
-  // Build release cards
-  grid.innerHTML = results.map(r => buildReleaseCard(r, r.uploaded)).join('');
-
-  // Status
-  if (remaining === 0) {
-    dot.className = 'dot live';
-    statusText.textContent = 'All complete';
-    statusText.style.color = 'var(--accent2)';
-    log('All maps uploaded!', 'ok');
+  if(remaining===0) {
+    dot.className='dot live'; statusText.textContent='All complete'; statusText.style.color='var(--accent2)';
+    log('All maps uploaded!','ok');
   } else {
-    dot.className = 'dot idle';
-    statusText.textContent = `${remaining} remaining`;
-    statusText.style.color = 'var(--warn)';
-    log(`Done. ${remaining} maps still to upload.`, 'warn');
+    dot.className='dot idle'; statusText.textContent=`${remaining} remaining`; statusText.style.color='var(--warn)';
+    log(`${remaining} maps still to upload.`,'warn');
   }
 
-  document.getElementById('lastUpdated').textContent =
-    'Last updated: ' + new Date().toLocaleTimeString();
+  // Re-open any previously open drawers
+  Object.keys(drawerLoaded).forEach(tag => {
+    if(drawerLoaded[tag]) {
+      const card=document.getElementById('card-'+tag);
+      if(card) { card.classList.add('open'); renderDrawer(tag); }
+    }
+  });
+
+  document.getElementById('lastUpdated').textContent='Last updated: '+new Date().toLocaleTimeString();
 }
 
 fetchData();
-// Auto-refresh every 2 minutes
-setInterval(fetchData, 120000);
+setInterval(fetchData,120000);
 </script>
 </body>
 </html>
