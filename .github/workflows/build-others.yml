@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -25,6 +26,7 @@ jobs:
   build-maps:
     needs: generate-matrix
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
@@ -46,9 +48,11 @@ jobs:
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
+
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
+
           echo "JAVACMD_OPTIONS=-Xmx5g" >> $GITHUB_ENV
 
       - name: Ensure release exists
@@ -60,28 +64,17 @@ jobs:
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
-      - name: Check if already uploaded
-        id: check
+      - name: Download, filter and convert
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RID="${{ matrix.region.id }}"
           FNAME="${RID//\//-}.map"
-          EXISTS=$(gh release view maps-others --json assets \
-            --jq "[.assets[].name] | index(\"$FNAME\")" 2>/dev/null || echo "null")
-          echo "exists=$EXISTS" >> $GITHUB_OUTPUT
-          echo "fname=$FNAME" >> $GITHUB_OUTPUT
 
-      - name: Download, filter and convert
-        if: steps.check.outputs.exists == 'null' || steps.check.outputs.exists == ''
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          RID="${{ matrix.region.id }}"
-          FNAME="${{ steps.check.outputs.fname }}"
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/region_filtered.osm.pbf"
           OUT="output/$FNAME"
+
           mkdir -p output
 
           echo "=== ${{ matrix.region.name }} ==="
@@ -94,9 +87,11 @@ jobs:
             -o "$FILTERED" --overwrite
 
           SIZE_MB=$(du -m "$FILTERED" | cut -f1)
+
           echo "Filtered size: ${SIZE_MB}MB"
 
           CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
+
           if [ "$SIZE_MB" -gt 150 ]; then
             CMD="$CMD type=hd"
             echo "Using HD mode"
@@ -105,7 +100,9 @@ jobs:
           $CMD
 
           ls -lh "$OUT"
+
           gh release upload maps-others "$OUT" --clobber
+
           echo "Uploaded $FNAME"
 
 
@@ -113,6 +110,7 @@ jobs:
     needs: build-maps
     runs-on: ubuntu-latest
     if: always()
+
     permissions:
       contents: write
 
@@ -135,13 +133,19 @@ jobs:
               "--json", "assets", "--jq", "[.assets[].name]"
           ], capture_output=True, text=True,
           env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+
           uploaded = json.loads(result.stdout or "[]")
 
           base_url = "https://github.com/${{ github.repository }}/releases/download/maps-others"
-          index = {"updated": datetime.now().strftime("%Y-%m-%d"), "regions": []}
+
+          index = {
+              "updated": datetime.now().strftime("%Y-%m-%d"),
+              "regions": []
+          }
 
           for region in regions:
               fname = region["id"].replace("/", "-") + ".map"
+
               if fname in uploaded:
                   index["regions"].append({
                       "id": region["id"],
@@ -151,6 +155,7 @@ jobs:
                   })
 
           os.makedirs("output", exist_ok=True)
+
           with open("output/index.json", "w") as f:
               json.dump(index, f, indent=2)
 
