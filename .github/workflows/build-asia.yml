@@ -2,7 +2,7 @@ name: Build Maps - Asia
 
 on:
   schedule:
-    - cron: '0 2 2 * *'
+    - cron: '0 2 6 * *'
   workflow_dispatch:
 
 jobs:
@@ -71,16 +71,20 @@ jobs:
                   f"[.assets[].name] | index(\"{rid}.map\")"
               ], capture_output=True, text=True,
               env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
-              if check.stdout.strip() not in ("", "null"):
-                  print(f"Skipping {rid} - already uploaded", flush=True); continue
 
-              # Download with timeout and retries
+              if check.stdout.strip() not in ("", "null"):
+                  print(f"Skipping {rid} - already uploaded", flush=True)
+                  continue
+
               print(f"  Downloading {pbf_url}...", flush=True)
               r = subprocess.run([
                   "wget", "-q", "--timeout=300", "--tries=2", "-O", pbf, pbf_url
               ])
+
               if r.returncode != 0:
-                  print(f"FAILED download {rid}", flush=True); failed.append(rid); continue
+                  print(f"FAILED download {rid}", flush=True)
+                  failed.append(rid)
+                  continue
 
               print(f"  Filtering...", flush=True)
               r = subprocess.run([
@@ -89,25 +93,30 @@ jobs:
                   "w/track", "w/waterway", "w/natural", "w/landuse",
                   "-o", filtered, "--overwrite"
               ])
+
               if r.returncode != 0:
-                  print(f"FAILED filter {rid}", flush=True); failed.append(rid); continue
+                  print(f"FAILED filter {rid}", flush=True)
+                  failed.append(rid)
+                  continue
 
               pbf_size_mb = os.path.getsize(filtered) / 1024 / 1024
               use_hd = pbf_size_mb > 150
+
               cmd = [osmosis, "--rb", f"file={filtered}", "--mw", f"file={out_map}"]
               if use_hd:
                   cmd.append("type=hd")
+
               print(f"  Size: {pbf_size_mb:.1f}MB — using {'HD' if use_hd else 'standard'} mode", flush=True)
               print(f"  Converting...", flush=True)
 
-              # Stream osmosis output so it's visible in Actions log
               try:
                   r = subprocess.run(cmd, text=True, env={**os.environ}, timeout=3600)
               except subprocess.TimeoutExpired:
                   print(f"TIMEOUT convert {rid} (>1hr)", flush=True)
                   failed.append(rid)
                   for fp in [pbf, filtered]:
-                      if os.path.exists(fp): os.remove(fp)
+                      if os.path.exists(fp):
+                          os.remove(fp)
                   continue
 
               if r.returncode != 0 or not os.path.exists(out_map):
@@ -116,17 +125,24 @@ jobs:
               else:
                   size = os.path.getsize(out_map) / 1024 / 1024
                   print(f"  Done: {out_map} ({size:.1f} MB)", flush=True)
+
                   upload = subprocess.run([
                       "gh", "release", "upload", "maps-asia", out_map, "--clobber"
                   ], capture_output=True, text=True,
                   env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
-                  print(f"  Uploaded {rid}.map" if upload.returncode == 0 else f"  Upload failed: {upload.stderr}", flush=True)
+
+                  if upload.returncode == 0:
+                      print(f"  Uploaded {rid}.map", flush=True)
+                  else:
+                      print(f"  Upload failed: {upload.stderr}", flush=True)
 
               for fp in [pbf, filtered]:
-                  if os.path.exists(fp): os.remove(fp)
+                  if os.path.exists(fp):
+                      os.remove(fp)
 
           if failed:
-              print(f"\nFAILED regions: {failed}", flush=True); sys.exit(1)
+              print(f"\nFAILED regions: {failed}", flush=True)
+              sys.exit(1)
           PYEOF2
 
       - name: Generate index
@@ -154,6 +170,7 @@ jobs:
 
           with open("output/index.json", "w") as f:
               json.dump(index, f, indent=2)
+
           print(f"index.json: {len(index['regions'])} regions")
           PYEOF2
 
