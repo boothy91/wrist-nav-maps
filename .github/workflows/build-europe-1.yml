@@ -22,11 +22,9 @@ jobs:
           print(json.dumps({'region': regions}))
           ")" >> $GITHUB_OUTPUT
 
-
   build-maps:
     needs: generate-matrix
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
@@ -68,21 +66,19 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          mkdir -p output
           RID="${{ matrix.region.id }}"
           FNAME="${RID//\//-}.map"
-
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/region_filtered.osm.pbf"
           OUT="output/$FNAME"
 
-          mkdir -p output
-
           echo "=== ${{ matrix.region.name }} ==="
 
-          # Download
+          # Download PBF
           wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
-          # Filter
+          # Filter tags
           osmium tags-filter "$PBF" \
             w/highway w/path w/footway w/bridleway \
             w/track w/waterway w/natural w/landuse \
@@ -101,38 +97,24 @@ jobs:
 
           ls -lh "$OUT"
 
-          # Upload & overwrite
+          # Upload maps (overwrite existing)
           gh release upload maps-europe-1 "$OUT" --clobber
           echo "Uploaded $FNAME"
 
-          # Record metrics
-          METRICS_FILE="output/metrics.json"
-          mkdir -p output
-          python3 - << 'EOF'
-import json, os
-metrics_file = "output/metrics.json"
-metrics = {}
-for f in os.listdir("output"):
-    if f.endswith(".map"):
-        metrics[f] = os.path.getsize(os.path.join("output", f))
-with open(metrics_file, "w") as mf:
-    json.dump(metrics, mf, indent=2)
-EOF
+          # Cleanup
+          rm -f "$PBF" "$FILTERED"
 
   generate-index:
     needs: build-maps
     runs-on: ubuntu-latest
     if: always()
-
     permissions:
       contents: write
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate and upload index
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate index.json
         run: |
           python3 - << 'EOF'
 import json, os
@@ -158,6 +140,20 @@ os.makedirs("output", exist_ok=True)
 with open("output/index.json", "w") as f:
     json.dump(index, f, indent=2)
 print(f"index.json: {len(index['regions'])} regions")
+EOF
+
+      - name: Generate metrics.json
+        run: |
+          python3 - << 'EOF'
+import json, os
+
+metrics = {}
+for f in os.listdir("output"):
+    if f.endswith(".map"):
+        metrics[f] = os.path.getsize(os.path.join("output", f))
+
+with open("output/metrics.json", "w") as f:
+    json.dump(metrics, f, indent=2)
 EOF
 
       - name: Upload index.json and metrics.json
