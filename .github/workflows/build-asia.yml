@@ -64,28 +64,12 @@ jobs:
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
-      - name: Check if already uploaded
-        id: check
+      - name: Download, filter and convert
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RID="${{ matrix.region.id }}"
           FNAME="${RID//\//-}.map"
-
-          EXISTS=$(gh release view maps-asia --json assets \
-            --jq "[.assets[].name] | index(\"$FNAME\")" 2>/dev/null || echo "null")
-
-          echo "exists=$EXISTS" >> $GITHUB_OUTPUT
-          echo "fname=$FNAME" >> $GITHUB_OUTPUT
-
-
-      - name: Download, filter and convert
-        if: steps.check.outputs.exists == 'null' || steps.check.outputs.exists == ''
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          RID="${{ matrix.region.id }}"
-          FNAME="${{ steps.check.outputs.fname }}"
 
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/region_filtered.osm.pbf"
