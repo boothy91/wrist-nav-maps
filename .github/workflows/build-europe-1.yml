@@ -2,7 +2,7 @@ name: Build Maps - Europe 1
 
 on:
   schedule:
-    - cron: '0 2 3 * *'
+    - cron: '0 2 6 * *'
   workflow_dispatch:
 
 jobs:
@@ -22,9 +22,11 @@ jobs:
           print(json.dumps({'region': regions}))
           ")" >> $GITHUB_OUTPUT
 
+
   build-maps:
     needs: generate-matrix
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
@@ -51,7 +53,7 @@ jobs:
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
 
-          echo "JAVACMD_OPTIONS=-Xmx6g" >> $GITHUB_ENV
+          echo "JAVACMD_OPTIONS=-Xmx5g" >> $GITHUB_ENV
 
       - name: Ensure release exists
         env:
@@ -62,32 +64,35 @@ jobs:
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
+
       - name: Download, filter and convert
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p output
           RID="${{ matrix.region.id }}"
           FNAME="${RID//\//-}.map"
+
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/region_filtered.osm.pbf"
           OUT="output/$FNAME"
 
+          mkdir -p output
+
           echo "=== ${{ matrix.region.name }} ==="
 
-          # Download PBF
           wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
-          # Filter tags
           osmium tags-filter "$PBF" \
             w/highway w/path w/footway w/bridleway \
             w/track w/waterway w/natural w/landuse \
             -o "$FILTERED" --overwrite
 
           SIZE_MB=$(du -m "$FILTERED" | cut -f1)
+
           echo "Filtered size: ${SIZE_MB}MB"
 
           CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
+
           if [ "$SIZE_MB" -gt 150 ]; then
             CMD="$CMD type=hd"
             echo "Using HD mode"
@@ -97,68 +102,65 @@ jobs:
 
           ls -lh "$OUT"
 
-          # Upload maps (overwrite existing)
           gh release upload maps-europe-1 "$OUT" --clobber
+
           echo "Uploaded $FNAME"
 
-          # Cleanup
-          rm -f "$PBF" "$FILTERED"
 
   generate-index:
     needs: build-maps
     runs-on: ubuntu-latest
     if: always()
+
     permissions:
       contents: write
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate index.json
-        run: |
-          python3 - << 'EOF'
-import json, os
-from datetime import datetime
-
-with open("config/regions/regions-europe-1.json") as f:
-    regions = json.load(f)
-
-base_url = "https://github.com/${{ github.repository }}/releases/download/maps-europe-1"
-index = {"updated": datetime.now().strftime("%Y-%m-%d"), "regions": []}
-
-for region in regions:
-    fname = region["id"].replace("/", "-") + ".map"
-    if os.path.exists(f"output/{fname}"):
-        index["regions"].append({
-            "id": region["id"],
-            "name": region["name"],
-            "path": region["path"],
-            "url": f"{base_url}/{fname}",
-        })
-
-os.makedirs("output", exist_ok=True)
-with open("output/index.json", "w") as f:
-    json.dump(index, f, indent=2)
-print(f"index.json: {len(index['regions'])} regions")
-EOF
-
-      - name: Generate metrics.json
-        run: |
-          python3 - << 'EOF'
-import json, os
-
-metrics = {}
-for f in os.listdir("output"):
-    if f.endswith(".map"):
-        metrics[f] = os.path.getsize(os.path.join("output", f))
-
-with open("output/metrics.json", "w") as f:
-    json.dump(metrics, f, indent=2)
-EOF
-
-      - name: Upload index.json and metrics.json
+      - name: Generate and upload index
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          python3 - << 'EOF'
+          import json, subprocess, os
+          from datetime import datetime
+
+          with open("config/regions/regions-europe-1.json") as f:
+              regions = json.load(f)
+
+          result = subprocess.run([
+              "gh", "release", "view", "maps-europe-1",
+              "--json", "assets", "--jq", "[.assets[].name]"
+          ], capture_output=True, text=True,
+          env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+
+          uploaded = json.loads(result.stdout or "[]")
+
+          base_url = "https://github.com/${{ github.repository }}/releases/download/maps-europe-1"
+
+          index = {
+              "updated": datetime.now().strftime("%Y-%m-%d"),
+              "regions": []
+          }
+
+          for region in regions:
+              fname = region["id"].replace("/", "-") + ".map"
+
+              if fname in uploaded:
+                  index["regions"].append({
+                      "id": region["id"],
+                      "name": region["name"],
+                      "path": region["path"],
+                      "url": f"{base_url}/{fname}",
+                  })
+
+          os.makedirs("output", exist_ok=True)
+
+          with open("output/index.json", "w") as f:
+              json.dump(index, f, indent=2)
+
+          print(f"index.json: {len(index['regions'])} regions")
+          EOF
+
           gh release upload maps-europe-1 output/index.json --clobber
-          gh release upload maps-europe-1 output/metrics.json --clobber
