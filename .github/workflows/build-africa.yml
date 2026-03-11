@@ -2,18 +2,40 @@ name: Build Maps - Africa
 
 on:
   schedule:
-    - cron: '0 2 1 * *'
+    - cron: '0 2 6 * *'
   workflow_dispatch:
 
 jobs:
-  build-maps:
+  generate-matrix:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: set-matrix
+        run: |
+          echo "matrix=$(cat config/regions/regions-africa.json | python3 -c "
+          import json,sys
+          regions = json.load(sys.stdin)
+          print(json.dumps({'region': regions}))
+          ")" >> $GITHUB_OUTPUT
+
+
+  build-maps:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+      fail-fast: false
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
@@ -25,126 +47,120 @@ jobs:
           wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
-          OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2
-          echo "OSMOSIS_HOME=$OSMOSIS_HOME" >> $GITHUB_ENV
+          echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
+
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
+
           echo "JAVACMD_OPTIONS=-Xmx5g" >> $GITHUB_ENV
 
-      - name: Create empty release
+      - name: Ensure release exists
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release view maps-africa &>/dev/null || gh release create maps-africa \
             --title "Maps - Africa" \
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
-            --latest=false \
-            --draft=false
+            --latest=false
 
-      - name: Convert regions
+
+      - name: Download, filter and convert
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          RID="${{ matrix.region.id }}"
+          FNAME="${RID//\//-}.map"
+
+          PBF="/tmp/region.osm.pbf"
+          FILTERED="/tmp/region_filtered.osm.pbf"
+          OUT="output/$FNAME"
+
           mkdir -p output
-          python3 - << 'PYEOF2'
-          import json, os, subprocess, sys
 
-          with open("config/regions/regions-africa.json") as f:
-              regions = json.load(f)
+          echo "=== ${{ matrix.region.name }} ==="
 
-          osmosis = os.path.join(os.environ["OSMOSIS_HOME"], "bin", "osmosis")
-          failed = []
+          wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
-          for region in regions:
-              rid      = region["id"]
-              rname    = region["name"]
-              pbf_url  = region["pbf"]
-              pbf      = f"/tmp/{rid}.osm.pbf"
-              filtered = f"/tmp/{rid}_filtered.osm.pbf"
-              out_map  = f"output/{rid}.map"
+          osmium tags-filter "$PBF" \
+            w/highway w/path w/footway w/bridleway \
+            w/track w/waterway w/natural w/landuse \
+            -o "$FILTERED" --overwrite
 
-              print(f"\n=== {rname} ===")
+          SIZE_MB=$(du -m "$FILTERED" | cut -f1)
 
-              check = subprocess.run([
-                  "gh", "release", "view", "maps-africa", "--json", "assets", "--jq",
-                  f"[.assets[].name] | index(\"{rid}.map\")"
-              ], capture_output=True, text=True,
-              env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
-              if check.stdout.strip() not in ("", "null"):
-                  print(f"Skipping {rid} - already uploaded"); continue
+          echo "Filtered size: ${SIZE_MB}MB"
 
-              r = subprocess.run(["wget", "-q", "-O", pbf, pbf_url])
-              if r.returncode != 0:
-                  print(f"FAILED download {rid}"); failed.append(rid); continue
+          CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
 
-              r = subprocess.run([
-                  "osmium", "tags-filter", pbf,
-                  "w/highway", "w/path", "w/footway", "w/bridleway",
-                  "w/track", "w/waterway", "w/natural", "w/landuse",
-                  "-o", filtered, "--overwrite"
-              ])
-              if r.returncode != 0:
-                  print(f"FAILED filter {rid}"); failed.append(rid); continue
+          if [ "$SIZE_MB" -gt 150 ]; then
+            CMD="$CMD type=hd"
+            echo "Using HD mode"
+          fi
 
-              pbf_size_mb = os.path.getsize(filtered) / 1024 / 1024
-              use_hd = pbf_size_mb > 150
-              cmd = [osmosis, "--rb", f"file={filtered}", "--mw", f"file={out_map}"]
-              if use_hd:
-                  cmd.append("type=hd")
-              print(f"  Size: {pbf_size_mb:.1f}MB — using {'HD' if use_hd else 'standard'} mode")
-              r = subprocess.run(cmd, capture_output=True, text=True,
-              env={**os.environ})
+          $CMD
 
-              if r.returncode != 0 or not os.path.exists(out_map):
-                  print(f"FAILED convert {rid}: {r.stderr[-200:]}")
-                  failed.append(rid)
-              else:
-                  size = os.path.getsize(out_map) / 1024 / 1024
-                  print(f"Done: {out_map} ({size:.1f} MB)")
-                  upload = subprocess.run([
-                      "gh", "release", "upload", "maps-africa", out_map, "--clobber"
-                  ], capture_output=True, text=True,
-                  env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
-                  print(f"Uploaded {rid}.map" if upload.returncode == 0 else f"Upload failed: {upload.stderr}")
+          ls -lh "$OUT"
 
-              for fp in [pbf, filtered]:
-                  if os.path.exists(fp): os.remove(fp)
+          gh release upload maps-africa "$OUT" --clobber
 
-          if failed:
-              print(f"\nFAILED: {failed}"); sys.exit(1)
-          PYEOF2
+          echo "Uploaded $FNAME"
 
-      - name: Generate index
+
+  generate-index:
+    needs: build-maps
+    runs-on: ubuntu-latest
+    if: always()
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate and upload index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 - << 'PYEOF2'
-          import json, os
+          python3 - << 'EOF'
+          import json, subprocess, os
           from datetime import datetime
 
           with open("config/regions/regions-africa.json") as f:
               regions = json.load(f)
 
+          result = subprocess.run([
+              "gh", "release", "view", "maps-africa",
+              "--json", "assets", "--jq", "[.assets[].name]"
+          ], capture_output=True, text=True,
+          env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+
+          uploaded = json.loads(result.stdout or "[]")
+
           base_url = "https://github.com/${{ github.repository }}/releases/download/maps-africa"
-          index = {"updated": datetime.now().strftime("%Y-%m-%d"), "regions": []}
+
+          index = {
+              "updated": datetime.now().strftime("%Y-%m-%d"),
+              "regions": []
+          }
 
           for region in regions:
-              map_file = f"output/{region['id']}.map"
-              if os.path.exists(map_file):
+              fname = region["id"].replace("/", "-") + ".map"
+
+              if fname in uploaded:
                   index["regions"].append({
                       "id": region["id"],
                       "name": region["name"],
                       "path": region["path"],
-                      "url": f"{base_url}/{region['id']}.map",
-                      "size": os.path.getsize(map_file)
+                      "url": f"{base_url}/{fname}",
                   })
+
+          os.makedirs("output", exist_ok=True)
 
           with open("output/index.json", "w") as f:
               json.dump(index, f, indent=2)
-          print(f"index.json: {len(index['regions'])} regions")
-          PYEOF2
 
-      - name: Upload index.json
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
+          print(f"index.json: {len(index['regions'])} regions")
+          EOF
+
           gh release upload maps-africa output/index.json --clobber
