@@ -86,9 +86,13 @@ jobs:
               if r.returncode != 0:
                   print(f"FAILED filter {rid}"); failed.append(rid); continue
 
-              r = subprocess.run([
-                  osmosis, "--rb", f"file={filtered}", "--mw", f"file={out_map}", "type=hd"
-              ], capture_output=True, text=True,
+              pbf_size_mb = os.path.getsize(filtered) / 1024 / 1024
+              use_hd = pbf_size_mb > 150
+              cmd = [osmosis, "--rb", f"file={filtered}", "--mw", f"file={out_map}"]
+              if use_hd:
+                  cmd.append("type=hd")
+              print(f"  Size: {pbf_size_mb:.1f}MB — using {'HD' if use_hd else 'standard'} mode")
+              r = subprocess.run(cmd, capture_output=True, text=True,
               env={**os.environ})
 
               if r.returncode != 0 or not os.path.exists(out_map):
