@@ -372,12 +372,6 @@
     "pbf": "https://download.geofabrik.de/asia/china/qinghai-latest.osm.pbf"
   },
   {
-    "id": "sea",
-    "name": "South-East Asia",
-    "path": "asia/sea",
-    "pbf": "https://download.geofabrik.de/asia/sea-latest.osm.pbf"
-  },
-  {
     "id": "shaanxi",
     "name": "Shaanxi",
     "path": "asia/china/shaanxi",
