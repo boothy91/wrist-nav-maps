@@ -90,7 +90,7 @@ jobs:
 
           echo "Filtered size: ${SIZE_MB}MB"
 
-          CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
+          CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT type=hd"
 
           if [ "$SIZE_MB" -gt 80 ]; then
             CMD="$CMD type=hd"
