@@ -1,0 +1,124 @@
+name: Build Missing Maps
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-missing:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.find-missing.outputs.matrix }}
+    
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find missing maps
+        id: find-missing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get all uploaded .map files from all releases
+          UPLOADED=$(gh release list --repo ${{ github.repository }} --limit 50 --json tagName --jq '.[].tagName' | while read tag; do
+            gh release view "$tag" --repo ${{ github.repository }} --json assets --jq '.assets[].name' 2>/dev/null
+          done | grep '\.map$' | sort)
+
+          # Build matrix of missing regions
+          MISSING=$(python3 -c "
+          import json, glob, sys
+
+          uploaded = set('''$UPLOADED'''.strip().split('\n'))
+
+          regions = []
+          for f in sorted(glob.glob('config/regions/regions-*.json')):
+              tag = f.replace('config/regions/regions-', 'maps-').replace('.json', '')
+              # Map filename to release tag
+              tag_map = {
+                  'maps-africa': 'maps-africa',
+                  'maps-asia': 'maps-asia',
+                  'maps-australia-oceania': 'maps-others',
+                  'maps-central-america': 'maps-others',
+                  'maps-europe': 'maps-europe',
+                  'maps-europe-uk': 'maps-europe-uk',
+                  'maps-north-america': 'maps-north-america',
+                  'maps-south-america': 'maps-others',
+                  'maps-others': 'maps-others',
+              }
+              release = tag_map.get(tag, 'maps-others')
+              with open(f) as fh:
+                  data = json.load(fh)
+              for r in data:
+                  fname = r['id'].replace('/', '-') + '.map'
+                  if fname not in uploaded:
+                      regions.append({
+                          'id': r['id'],
+                          'name': r['name'],
+                          'pbf': r['pbf'],
+                          'release': release,
+                          'fname': fname
+                      })
+
+          print(json.dumps({'region': regions}))
+          ")
+
+          echo "matrix=$MISSING" >> $GITHUB_OUTPUT
+          echo "Missing regions: $(echo $MISSING | python3 -c "import json,sys; d=json.load(sys.stdin); print(len(d['region']))")"
+
+  build-missing:
+    needs: check-missing
+    runs-on: ubuntu-latest
+    if: ${{ needs.check-missing.outputs.matrix != '{"region":[]}' }}
+
+    permissions:
+      contents: write
+
+    strategy:
+      matrix: ${{ fromJson(needs.check-missing.outputs.matrix) }}
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y osmium-tool default-jre wget
+
+      - name: Setup Osmosis and mapsforge
+        run: |
+          wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
+          unzip -q osmosis-0.49.2.zip -d osmosis_install
+          chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
+          echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
+          mkdir -p $HOME/.openstreetmap/osmosis/plugins
+          wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
+            -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
+          echo "JAVACMD_OPTIONS=-Xmx6000m" >> $GITHUB_ENV
+
+      - name: Download, filter and convert
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PBF="/tmp/region.osm.pbf"
+          FILTERED="/tmp/region_filtered.osm.pbf"
+          FNAME="${{ matrix.region.fname }}"
+          mkdir -p output
+
+          echo "=== ${{ matrix.region.name }} ==="
+
+          wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
+
+          osmium tags-filter "$PBF" \
+            w/highway w/path w/footway w/bridleway \
+            w/track w/waterway w/natural w/landuse \
+            -o "$FILTERED" --overwrite
+
+          $OSMOSIS_HOME/bin/osmosis --rb file="$FILTERED" --mw file="output/$FNAME" type=hd
+
+          ls -lh "output/$FNAME"
+
+          gh release upload "${{ matrix.region.release }}" "output/$FNAME" --clobber
+
+          echo "Uploaded $FNAME to ${{ matrix.region.release }}"
