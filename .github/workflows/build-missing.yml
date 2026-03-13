@@ -92,20 +92,13 @@ jobs:
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-          echo "JAVACMD_OPTIONS=-Xmx12000m" >> $GITHUB_ENV
+          echo "JAVACMD_OPTIONS=-Xmx13000m" >> $GITHUB_ENV
 
       - name: Disk and memory check
         run: |
           echo "=== DISK ==="
           df -h
           echo "=== MEMORY ==="
-          free -h
-          echo "--- Creating 8GB swap file ---"
-          sudo fallocate -l 8G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
-          echo "=== MEMORY AFTER SWAP ==="
           free -h
 
       - name: Download, filter and convert
