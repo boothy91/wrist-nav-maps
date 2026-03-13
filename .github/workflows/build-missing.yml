@@ -34,7 +34,6 @@ jobs:
           regions = []
           for f in sorted(glob.glob('config/regions/regions-*.json')):
               tag = f.replace('config/regions/regions-', 'maps-').replace('.json', '')
-              # Map filename to release tag
               tag_map = {
                   'maps-africa': 'maps-africa',
                   'maps-asia': 'maps-asia',
@@ -95,7 +94,14 @@ jobs:
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-          echo "JAVACMD_OPTIONS=-Xmx6000m" >> $GITHUB_ENV
+          echo "JAVACMD_OPTIONS=-Xmx7000m" >> $GITHUB_ENV
+
+      - name: Disk and memory check
+        run: |
+          echo "=== DISK ==="
+          df -h
+          echo "=== MEMORY ==="
+          free -h
 
       - name: Download, filter and convert
         env:
@@ -108,17 +114,26 @@ jobs:
 
           echo "=== ${{ matrix.region.name }} ==="
 
-          wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
+          echo "--- Downloading PBF ---"
+          wget --progress=dot:giga --timeout=600 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
+          echo "Download complete. Size:"
+          ls -lh "$PBF"
+          df -h /tmp
 
+          echo "--- Running osmium filter ---"
           osmium tags-filter "$PBF" \
             w/highway w/path w/footway w/bridleway \
             w/track w/waterway w/natural w/landuse \
             -o "$FILTERED" --overwrite
+          echo "Filter complete. Size:"
+          ls -lh "$FILTERED"
+          df -h /tmp
 
+          echo "--- Running osmosis/mapsforge ---"
           $OSMOSIS_HOME/bin/osmosis --rb file="$FILTERED" --mw file="output/$FNAME" type=hd
-
+          echo "Conversion complete. Size:"
           ls -lh "output/$FNAME"
 
+          echo "--- Uploading to release ---"
           gh release upload "${{ matrix.region.release }}" "output/$FNAME" --clobber
-
           echo "Uploaded $FNAME to ${{ matrix.region.release }}"
