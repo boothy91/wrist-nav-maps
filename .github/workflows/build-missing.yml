@@ -20,12 +20,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Get all uploaded .map files from all releases
           UPLOADED=$(gh release list --repo ${{ github.repository }} --limit 50 --json tagName --jq '.[].tagName' | while read tag; do
             gh release view "$tag" --repo ${{ github.repository }} --json assets --jq '.assets[].name' 2>/dev/null
           done | grep '\.map$' | sort)
 
-          # Build matrix of missing regions
           MISSING=$(python3 -c "
           import json, glob, sys
 
@@ -127,8 +125,27 @@ jobs:
             -o "$FILTERED" --overwrite
           echo "Filter complete. Size:"
           ls -lh "$FILTERED"
-          df -h /tmp
 
+          # If filtered file is over 600MB, do a second stricter pass to reduce heap load
+          FILTERED_SIZE=$(stat -c%s "$FILTERED")
+          if [ "$FILTERED_SIZE" -gt 629145600 ]; then
+            echo "--- Large region ($(ls -lh $FILTERED | awk '{print $5}')), applying stricter filter ---"
+            SIMPLIFIED="/tmp/region_simplified.osm.pbf"
+            osmium tags-filter "$FILTERED" \
+              w/highway=motorway w/highway=trunk w/highway=primary \
+              w/highway=secondary w/highway=tertiary w/highway=unclassified \
+              w/highway=residential w/highway=track w/highway=path \
+              w/highway=footway w/highway=cycleway w/highway=steps \
+              w/waterway=river w/waterway=stream \
+              w/natural=coastline w/natural=water \
+              w/landuse=forest w/landuse=residential \
+              -o "$SIMPLIFIED" --overwrite
+            echo "Simplified size:"
+            ls -lh "$SIMPLIFIED"
+            FILTERED="$SIMPLIFIED"
+          fi
+
+          df -h /tmp
           echo "--- Running osmosis/mapsforge ---"
           $OSMOSIS_HOME/bin/osmosis --rb file="$FILTERED" --mw file="output/$FNAME" type=hd
           echo "Conversion complete. Size:"
