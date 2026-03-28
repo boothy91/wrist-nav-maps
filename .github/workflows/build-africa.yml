@@ -84,7 +84,8 @@ jobs:
 
           osmium tags-filter "$PBF" \
             w/highway w/path w/footway w/bridleway \
-            w/track w/waterway w/natural w/landuse \
+            w/track w/waterway w/natural w/landuse w/railway \
+            n/railway \
             -o "$FILTERED" --overwrite
 
           SIZE_MB=$(du -m "$FILTERED" | cut -f1)

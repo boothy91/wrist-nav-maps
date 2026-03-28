@@ -121,7 +121,8 @@ jobs:
           echo "--- Running osmium filter ---"
           osmium tags-filter "$PBF" \
             w/highway w/path w/footway w/bridleway \
-            w/track w/waterway w/natural w/landuse \
+            w/track w/waterway w/natural w/landuse w/railway \
+            n/railway \
             -o "$FILTERED" --overwrite
           echo "Filter complete. Size:"
           ls -lh "$FILTERED"
@@ -138,7 +139,8 @@ jobs:
               w/highway=footway w/highway=cycleway w/highway=steps \
               w/waterway=river w/waterway=stream \
               w/natural=coastline w/natural=water \
-              w/landuse=forest w/landuse=residential \
+              w/landuse=forest w/landuse=residential w/railway \
+              n/railway \
               -o "$SIMPLIFIED" --overwrite
             echo "Simplified size:"
             ls -lh "$SIMPLIFIED"
