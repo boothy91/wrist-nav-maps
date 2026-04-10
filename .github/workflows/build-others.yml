@@ -89,7 +89,7 @@ jobs:
           n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
           n/amenity=drinking_water,toilets,parking,shelter \
           r/route=hiking,foot,bicycle,mtb \
-  -o "$FILTERED" --overwrite
+          -o "$FILTERED" --overwrite
 
           SIZE_MB=$(du -m "$FILTERED" | cut -f1)
 
