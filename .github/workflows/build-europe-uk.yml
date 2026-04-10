@@ -85,9 +85,10 @@ jobs:
             w/highway w/waterway w/natural w/landuse w/railway \
             n/place=city,town,village,hamlet,suburb,locality \
             n/railway \
-            n/natural=peak,saddle \
+            n/natural=peak,saddle,spring \
             n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
-            n/amenity=drinking_water,toilets,parking,shelter \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,fountain \
+            n/man_made=survey_point \
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
