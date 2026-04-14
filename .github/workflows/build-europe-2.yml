@@ -55,6 +55,7 @@ jobs:
 
           echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
 
+
       - name: Ensure release exists
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -82,14 +83,20 @@ jobs:
 
           wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
+          # ✅ ADDED FILTER (same as Europe UK)
           osmium tags-filter "$PBF" \
             w/highway w/path w/footway w/bridleway \
             w/track w/waterway w/natural w/landuse w/railway \
+            n/place=city,town,village,hamlet,suburb,locality \
             n/railway \
+            n/natural=peak,saddle,spring \
+            n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,fountain \
+            n/man_made=survey_point \
+            r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
           SIZE_MB=$(du -m "$FILTERED" | cut -f1)
-
           echo "Filtered size: ${SIZE_MB}MB"
 
           CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
@@ -104,7 +111,6 @@ jobs:
           ls -lh "$OUT"
 
           gh release upload maps-europe-2 "$OUT" --clobber
-
           echo "Uploaded $FNAME"
 
 
@@ -153,7 +159,7 @@ jobs:
                       "id": region["id"],
                       "name": region["name"],
                       "path": region["path"],
-                      "url": f"{base_url}/{fname}",
+                      "url": f"{base_url}/{fname}"
                   })
 
           os.makedirs("output", exist_ok=True)
