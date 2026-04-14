@@ -163,7 +163,7 @@ jobs:
           with open("config/regions/regions-europe-uk.json") as f:
               regions = json.load(f)
 
-          base_url = f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com/{bucket}/europe-uk"
+          base_url = "https://pub-2a8aeee3bad44b7f9b310a7b58595933.r2.dev/europe-uk"
 
           index = {
               "updated": datetime.now().strftime("%Y-%m-%d"),
