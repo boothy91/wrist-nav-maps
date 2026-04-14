@@ -23,13 +23,9 @@ jobs:
         run: |
           mkdir -p output
 
-          echo "Fetching release assets list..."
-
           gh release view maps-asia \
             --json assets \
             --jq '.assets[].name' > files.txt
-
-          echo "Downloading assets..."
 
           while read file; do
             echo "Downloading $file"
@@ -38,7 +34,7 @@ jobs:
 
           ls -lh output
 
-      - name: Upload to Cloudflare R2
+      - name: Upload to R2
         env:
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
@@ -58,14 +54,10 @@ jobs:
 
           bucket = os.environ["R2_BUCKET_NAME"]
 
-          base = "output"
-          uploaded = 0
-
-          for root, _, files in os.walk(base):
+          for root, _, files in os.walk("output"):
               for f in files:
                   path = os.path.join(root, f)
-
-                  print(f"Uploading {f}")
+                  print("Uploading", f)
 
                   s3.upload_file(
                       path,
@@ -74,7 +66,5 @@ jobs:
                       ExtraArgs={"ContentType": "application/octet-stream"}
                   )
 
-                  uploaded += 1
-
-          print(f"Done. Uploaded {uploaded} files.")
+          print("Done")
           EOF
