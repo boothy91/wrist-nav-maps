@@ -20,7 +20,7 @@ jobs:
           sudo apt-get install -y jq python3-pip
           pip3 install boto3
 
-      - name: Sync all GitHub releases → R2
+      - name: Sync releases → R2
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
@@ -32,69 +32,61 @@ jobs:
 
           mkdir -p /tmp/r2sync
 
-          echo "Fetching releases..."
-
-          gh release list -R $GITHUB_REPOSITORY \
+          gh release list -R "$GITHUB_REPOSITORY" \
             --json tagName \
             --jq '.[].tagName' > releases.txt
 
           cat releases.txt
 
-          for release in $(cat releases.txt); do
+          while read release; do
             echo ""
-            echo "============================"
-            echo "Processing release: $release"
-            echo "============================"
+            echo "===================="
+            echo "Release: $release"
+            echo "===================="
 
             WORKDIR="/tmp/r2sync/$release"
             rm -rf "$WORKDIR"
             mkdir -p "$WORKDIR"
 
-            echo "Downloading assets..."
             gh release download "$release" \
-              -R $GITHUB_REPOSITORY \
+              -R "$GITHUB_REPOSITORY" \
               -D "$WORKDIR"
 
-            echo "Files:"
             ls -lh "$WORKDIR"
 
-            python3 - << EOF
-import boto3, os
+            python3 -c "
+import boto3, os, sys
 
-base = "$WORKDIR"
+base = '$WORKDIR'
 
 s3 = boto3.client(
-    "s3",
-    endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
-    aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
-    aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
-    region_name="auto"
+    's3',
+    endpoint_url=f\"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com\",
+    aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'],
+    aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'],
+    region_name='auto'
 )
 
-bucket = os.environ["R2_BUCKET_NAME"]
+bucket = os.environ['R2_BUCKET_NAME']
 
 count = 0
 
 for root, _, files in os.walk(base):
     for f in files:
         path = os.path.join(root, f)
+        key = f'{release}/' + f
 
-        key = f"{release}/{f}"   # 👈 folder per release
-
-        print("Uploading", key)
+        print('Uploading', key)
 
         s3.upload_file(
             path,
             bucket,
             key,
-            ExtraArgs={"ContentType": "application/octet-stream"}
+            ExtraArgs={'ContentType': 'application/octet-stream'}
         )
 
         count += 1
 
-print(f"Done {release}: {count} files uploaded")
-EOF
-
+print('Done', release, count)
+"
           done
-
-          echo "ALL RELEASES SYNCED TO R2"
