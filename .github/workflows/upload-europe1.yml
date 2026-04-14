@@ -1,46 +1,54 @@
-upload-maps:
-  needs: build-maps
-  runs-on: ubuntu-latest
+name: Upload Maps - Europe 1
 
-  steps:
-    - uses: actions/checkout@v4
+on:
+  workflow_run:
+    workflows: ["Build Maps - Europe 1"]
+    types:
+      - completed
 
-    - name: Install boto3
-      run: pip3 install boto3
+jobs:
+  upload-maps:
+    runs-on: ubuntu-latest
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: maps
-        path: output
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: output
 
-    - name: Upload to R2
-      env:
-        R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-        R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-        R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-        R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
-      run: |
-        python3 - << 'EOF'
-        import boto3, os
+      - name: Install boto3
+        run: pip3 install boto3
 
-        s3 = boto3.client(
-            "s3",
-            endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
-            aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
-            aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
-            region_name="auto"
-        )
+      - name: Upload to R2
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+        run: |
+          python3 - << 'EOF'
+          import boto3, os
 
-        bucket = os.environ["R2_BUCKET_NAME"]
+          s3 = boto3.client(
+              "s3",
+              endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
+              aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
+              aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
+              region_name="auto"
+          )
 
-        for fname in os.listdir("output"):
-            print(f"Uploading {fname}...")
-            s3.upload_file(
-                f"output/{fname}",
-                bucket,
-                f"europe-1/{fname}",
-                ExtraArgs={"ContentType": "application/octet-stream"}
-            )
-        print("Upload complete")
-        EOF
+          bucket = os.environ["R2_BUCKET_NAME"]
+
+          for root, _, files in os.walk("output"):
+              for fname in files:
+                  path = os.path.join(root, fname)
+                  print(f"Uploading {fname}...")
+                  s3.upload_file(
+                      path,
+                      bucket,
+                      f"europe-1/{fname}",
+                      ExtraArgs={"ContentType": "application/octet-stream"}
+                  )
+
+          print("Upload complete")
+          EOF
