@@ -1,94 +1,118 @@
-name: Sync All Releases to R2
+name: Upload All Maps (All Releases → R2)
 
 on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  upload:
     runs-on: ubuntu-latest
 
     permissions:
       contents: read
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y jq python3-pip
+          sudo apt-get install -y wget unzip jq python3-pip
           pip3 install boto3
 
-      - name: Sync releases → R2
+      - name: Download ALL releases assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
         run: |
           set -e
 
-          mkdir -p /tmp/r2sync
+          mkdir -p all-downloads
+
+          echo "Fetching all releases..."
 
           gh release list -R "$GITHUB_REPOSITORY" \
             --json tagName \
             --jq '.[].tagName' > releases.txt
 
+          cat releases.txt
+
           while read release; do
             echo ""
-            echo "===================="
-            echo "Processing $release"
-            echo "===================="
+            echo "============================"
+            echo "Downloading release: $release"
+            echo "============================"
 
-            WORKDIR="/tmp/r2sync/$release"
-            rm -rf "$WORKDIR"
-            mkdir -p "$WORKDIR"
+            mkdir -p "all-downloads/$release"
 
-            gh release download "$release" \
+            gh release view "$release" \
               -R "$GITHUB_REPOSITORY" \
-              -D "$WORKDIR"
+              --json assets \
+              --jq '.assets[].name' > files.txt
 
-            ls -lh "$WORKDIR"
+            if [ ! -s files.txt ]; then
+              echo "No assets in $release"
+              continue
+            fi
 
-            python3 << EOF
-import boto3, os
+            while read file; do
+              echo "Downloading: $file"
+              gh release download "$release" \
+                -R "$GITHUB_REPOSITORY" \
+                -p "$file" \
+                -D "all-downloads/$release"
+            done < files.txt
 
-base = "$WORKDIR"
-release = "$release"
+          done < releases.txt
 
-s3 = boto3.client(
-    "s3",
-    endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
-    aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
-    aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
-    region_name="auto"
-)
+          echo "Download complete"
+          find all-downloads -type f -ls
 
-bucket = os.environ["R2_BUCKET_NAME"]
+      - name: Upload ALL to Cloudflare R2
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+        run: |
+          python3 - << 'EOF'
+          import boto3
+          import os
+          import sys
 
-count = 0
+          base = "all-downloads"
 
-for root, _, files in os.walk(base):
-    for f in files:
-        path = os.path.join(root, f)
-        key = f"{release}/{f}"
+          if not os.path.isdir(base):
+              sys.exit("ERROR: all-downloads not found")
 
-        print("Uploading", key)
+          s3 = boto3.client(
+              "s3",
+              endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
+              aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
+              aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
+              region_name="auto"
+          )
 
-        s3.upload_file(
-            path,
-            bucket,
-            key,
-            ExtraArgs={"ContentType": "application/octet-stream"}
-        )
+          bucket = os.environ["R2_BUCKET_NAME"]
 
-        count += 1
+          count = 0
 
-print("Done", release, count)
-EOF
+          for root, _, files in os.walk(base):
+              for f in files:
+                  path = os.path.join(root, f)
 
-          done
+                  # structure: release/file.map
+                  rel_path = path.replace(base + "/", "")
 
-          echo "ALL RELEASES SYNC COMPLETE"
+                  print("Uploading", rel_path)
+
+                  s3.upload_file(
+                      path,
+                      bucket,
+                      rel_path,
+                      ExtraArgs={"ContentType": "application/octet-stream"}
+                  )
+
+                  count += 1
+
+          print(f"DONE. Uploaded {count} files total.")
+          EOF
