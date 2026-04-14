@@ -1,20 +1,14 @@
-name: Upload Maps - Europe 1
+name: Upload Maps - Europe 1 (Manual)
 
 on:
-  workflow_run:
-    workflows: ["Build Maps - Europe 1"]
-    types:
-      - completed
+  workflow_dispatch:
 
 jobs:
   upload-maps:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: output
+      - uses: actions/checkout@v4
 
       - name: Install boto3
         run: pip3 install boto3
@@ -29,6 +23,13 @@ jobs:
           python3 - << 'EOF'
           import boto3, os
 
+          # CHANGE THIS if your files are elsewhere
+          BASE_DIR = "output"
+
+          if not os.path.exists(BASE_DIR):
+              print(f"Directory '{BASE_DIR}' not found")
+              exit(1)
+
           s3 = boto3.client(
               "s3",
               endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
@@ -39,9 +40,15 @@ jobs:
 
           bucket = os.environ["R2_BUCKET_NAME"]
 
-          for root, _, files in os.walk("output"):
+          uploaded = 0
+
+          for root, _, files in os.walk(BASE_DIR):
               for fname in files:
+                  if not fname.endswith(".map"):
+                      continue
+
                   path = os.path.join(root, fname)
+
                   print(f"Uploading {fname}...")
                   s3.upload_file(
                       path,
@@ -50,5 +57,7 @@ jobs:
                       ExtraArgs={"ContentType": "application/octet-stream"}
                   )
 
-          print("Upload complete")
+                  uploaded += 1
+
+          print(f"Done. Uploaded {uploaded} files.")
           EOF
