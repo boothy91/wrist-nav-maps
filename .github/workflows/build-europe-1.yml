@@ -27,9 +27,6 @@ jobs:
     needs: generate-matrix
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     strategy:
       matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
       fail-fast: false
@@ -40,7 +37,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y osmium-tool default-jre wget
+          sudo apt-get install -y osmium-tool default-jre wget python3-pip
+          pip3 install boto3
 
       - name: Setup Osmosis and mapsforge
         run: |
@@ -55,19 +53,7 @@ jobs:
 
           echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
 
-      - name: Ensure release exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release view maps-europe-1 &>/dev/null || gh release create maps-europe-1 \
-            --title "Maps - Europe 1" \
-            --notes "Auto-generated .map files for WristNav. Updated monthly." \
-            --latest=false
-
-
       - name: Download, filter and convert
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RID="${{ matrix.region.id }}"
           FNAME="${RID//\//-}.map"
@@ -86,14 +72,14 @@ jobs:
             w/highway w/waterway w/natural w/landuse w/railway \
             n/place=city,town,village,hamlet,suburb,locality \
             n/railway \
-            n/natural=peak,saddle \
+            n/natural=peak,saddle,spring \
             n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
-            n/amenity=drinking_water,toilets,parking,shelter \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,fountain \
+            n/man_made=survey_point \
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
           SIZE_MB=$(du -m "$FILTERED" | cut -f1)
-
           echo "Filtered size: ${SIZE_MB}MB"
 
           CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
@@ -104,12 +90,39 @@ jobs:
           fi
 
           $CMD
-
           ls -lh "$OUT"
 
-          gh release upload maps-europe-1 "$OUT" --clobber
+      - name: Upload to R2
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          RID: ${{ matrix.region.id }}
+        run: |
+          python3 - << 'EOF'
+          import boto3, os
 
-          echo "Uploaded $FNAME"
+          s3 = boto3.client(
+              "s3",
+              endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
+              aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
+              aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
+              region_name="auto"
+          )
+
+          fname = os.environ["RID"].replace("/", "-") + ".map"
+          bucket = os.environ["R2_BUCKET_NAME"]
+
+          print(f"Uploading {fname} to R2...")
+          s3.upload_file(
+              f"output/{fname}",
+              bucket,
+              f"europe-1/{fname}",
+              ExtraArgs={"ContentType": "application/octet-stream"}
+          )
+          print(f"Done: europe-1/{fname}")
+          EOF
 
 
   generate-index:
@@ -117,32 +130,40 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
 
-    permissions:
-      contents: write
-
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install boto3
+        run: pip3 install boto3
+
       - name: Generate and upload index
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
         run: |
           python3 - << 'EOF'
-          import json, subprocess, os
+          import boto3, json, os
           from datetime import datetime
+
+          s3 = boto3.client(
+              "s3",
+              endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
+              aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
+              aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
+              region_name="auto"
+          )
+
+          bucket = os.environ["R2_BUCKET_NAME"]
+
+          response = s3.list_objects_v2(Bucket=bucket, Prefix="europe-1/")
+          uploaded = [obj["Key"].split("/")[-1] for obj in response.get("Contents", [])]
 
           with open("config/regions/regions-europe-1.json") as f:
               regions = json.load(f)
 
-          result = subprocess.run([
-              "gh", "release", "view", "maps-europe-1",
-              "--json", "assets", "--jq", "[.assets[].name]"
-          ], capture_output=True, text=True,
-          env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
-
-          uploaded = json.loads(result.stdout or "[]")
-
-          base_url = "https://github.com/${{ github.repository }}/releases/download/maps-europe-1"
+          base_url = "https://pub-2a8aeee3bad44b7f9b310a7b58595933.r2.dev/europe-1"
 
           index = {
               "updated": datetime.now().strftime("%Y-%m-%d"),
@@ -151,21 +172,22 @@ jobs:
 
           for region in regions:
               fname = region["id"].replace("/", "-") + ".map"
-
               if fname in uploaded:
                   index["regions"].append({
                       "id": region["id"],
                       "name": region["name"],
                       "path": region["path"],
-                      "url": f"{base_url}/{fname}",
+                      "url": f"{base_url}/{fname}"
                   })
 
-          os.makedirs("output", exist_ok=True)
-
-          with open("output/index.json", "w") as f:
-              json.dump(index, f, indent=2)
-
           print(f"index.json: {len(index['regions'])} regions")
-          EOF
 
-          gh release upload maps-europe-1 output/index.json --clobber
+          s3.put_object(
+              Bucket=bucket,
+              Key="europe-1/index.json",
+              Body=json.dumps(index, indent=2).encode(),
+              ContentType="application/json"
+          )
+
+          print("index.json uploaded to R2")
+          EOF
