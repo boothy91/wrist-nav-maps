@@ -98,10 +98,8 @@ jobs:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          RID: ${{ matrix.region.id }}
         run: |
-          RID="${{ matrix.region.id }}"
-          FNAME="${RID//\//-}.map"
-
           python3 - << 'EOF'
           import boto3, os
 
@@ -125,12 +123,6 @@ jobs:
           )
           print(f"Done: europe-uk/{fname}")
           EOF
-        env:
-          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
-          RID: ${{ matrix.region.id }}
 
 
   generate-index:
@@ -165,7 +157,6 @@ jobs:
 
           bucket = os.environ["R2_BUCKET_NAME"]
 
-          # List what's actually in R2
           response = s3.list_objects_v2(Bucket=bucket, Prefix="europe-uk/")
           uploaded = [obj["Key"].split("/")[-1] for obj in response.get("Contents", [])]
 
@@ -191,12 +182,10 @@ jobs:
 
           print(f"index.json: {len(index['regions'])} regions")
 
-          index_bytes = json.dumps(index, indent=2).encode()
-
           s3.put_object(
               Bucket=bucket,
               Key="europe-uk/index.json",
-              Body=index_bytes,
+              Body=json.dumps(index, indent=2).encode(),
               ContentType="application/json"
           )
 
