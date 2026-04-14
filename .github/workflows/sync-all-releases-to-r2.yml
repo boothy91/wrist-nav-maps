@@ -36,12 +36,10 @@ jobs:
             --json tagName \
             --jq '.[].tagName' > releases.txt
 
-          cat releases.txt
-
           while read release; do
             echo ""
             echo "===================="
-            echo "Release: $release"
+            echo "Processing $release"
             echo "===================="
 
             WORKDIR="/tmp/r2sync/$release"
@@ -54,39 +52,43 @@ jobs:
 
             ls -lh "$WORKDIR"
 
-            python3 -c "
-import boto3, os, sys
+            python3 << EOF
+import boto3, os
 
-base = '$WORKDIR'
+base = "$WORKDIR"
+release = "$release"
 
 s3 = boto3.client(
-    's3',
-    endpoint_url=f\"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com\",
-    aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'],
-    aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'],
-    region_name='auto'
+    "s3",
+    endpoint_url=f"https://{os.environ['R2_ACCOUNT_ID']}.r2.cloudflarestorage.com",
+    aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
+    aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],
+    region_name="auto"
 )
 
-bucket = os.environ['R2_BUCKET_NAME']
+bucket = os.environ["R2_BUCKET_NAME"]
 
 count = 0
 
 for root, _, files in os.walk(base):
     for f in files:
         path = os.path.join(root, f)
-        key = f'{release}/' + f
+        key = f"{release}/{f}"
 
-        print('Uploading', key)
+        print("Uploading", key)
 
         s3.upload_file(
             path,
             bucket,
             key,
-            ExtraArgs={'ContentType': 'application/octet-stream'}
+            ExtraArgs={"ContentType": "application/octet-stream"}
         )
 
         count += 1
 
-print('Done', release, count)
-"
+print("Done", release, count)
+EOF
+
           done
+
+          echo "ALL RELEASES SYNC COMPLETE"
