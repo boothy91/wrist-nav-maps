@@ -8,33 +8,48 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
-      - name: Install tools
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
         run: |
           sudo apt-get update -q
           sudo apt-get install -y wget unzip jq python3-pip
           pip3 install boto3
 
-      - name: Download GitHub Release assets (maps-asia)
+      - name: Download release assets (maps-asia)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p output
 
+          echo "Fetching asset list..."
+
           gh release view maps-asia \
             --json assets \
             --jq '.assets[].name' > files.txt
 
+          if [ ! -s files.txt ]; then
+            echo "No assets found in release maps-asia"
+            exit 1
+          fi
+
+          echo "Downloading assets..."
+
           while read file; do
-            echo "Downloading $file"
-            gh release download maps-asia -p "$file" -D output
+            echo "Downloading: $file"
+            gh release download maps-asia \
+              -p "$file" \
+              -D output
           done < files.txt
 
+          echo "Downloaded files:"
           ls -lh output
 
-      - name: Upload to R2
+      - name: Upload to Cloudflare R2
         env:
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
@@ -42,7 +57,14 @@ jobs:
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
         run: |
           python3 - << 'EOF'
-          import boto3, os
+          import boto3
+          import os
+          import sys
+
+          base = "output"
+
+          if not os.path.isdir(base):
+              sys.exit("ERROR: output/ folder not found")
 
           s3 = boto3.client(
               "s3",
@@ -54,10 +76,13 @@ jobs:
 
           bucket = os.environ["R2_BUCKET_NAME"]
 
-          for root, _, files in os.walk("output"):
+          count = 0
+
+          for root, _, files in os.walk(base):
               for f in files:
                   path = os.path.join(root, f)
-                  print("Uploading", f)
+
+                  print(f"Uploading {f}")
 
                   s3.upload_file(
                       path,
@@ -66,5 +91,7 @@ jobs:
                       ExtraArgs={"ContentType": "application/octet-stream"}
                   )
 
-          print("Done")
+                  count += 1
+
+          print(f"Upload complete. Files uploaded: {count}")
           EOF
