@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
       - name: Install boto3
         run: pip3 install boto3
@@ -23,12 +24,10 @@ jobs:
           python3 - << 'EOF'
           import boto3, os
 
-          # CHANGE THIS if your files are elsewhere
-          BASE_DIR = "output"
+          base = "output"
 
-          if not os.path.exists(BASE_DIR):
-              print(f"Directory '{BASE_DIR}' not found")
-              exit(1)
+          if not os.path.exists(base):
+              raise SystemExit("ERROR: output/ folder not found")
 
           s3 = boto3.client(
               "s3",
@@ -40,24 +39,25 @@ jobs:
 
           bucket = os.environ["R2_BUCKET_NAME"]
 
-          uploaded = 0
+          count = 0
 
-          for root, _, files in os.walk(BASE_DIR):
-              for fname in files:
-                  if not fname.endswith(".map"):
+          for root, _, files in os.walk(base):
+              for f in files:
+                  if not f.endswith(".map"):
                       continue
 
-                  path = os.path.join(root, fname)
+                  path = os.path.join(root, f)
 
-                  print(f"Uploading {fname}...")
+                  print("Uploading", f)
+
                   s3.upload_file(
                       path,
                       bucket,
-                      f"europe-1/{fname}",
+                      f"europe-1/{f}",
                       ExtraArgs={"ContentType": "application/octet-stream"}
                   )
 
-                  uploaded += 1
+                  count += 1
 
-          print(f"Done. Uploaded {uploaded} files.")
+          print("Uploaded:", count)
           EOF
