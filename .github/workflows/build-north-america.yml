@@ -82,16 +82,23 @@ jobs:
           wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
           osmium tags-filter "$PBF" \
-            w/highway w/path w/footway w/bridleway \
-            w/track w/waterway w/natural w/landuse w/railway \
+            w/highway \
+            w/waterway \
+            w/natural \
+            w/landuse \
+            w/railway \
+            n/place=city,town,village,hamlet,suburb,locality \
             n/railway \
+            n/natural=peak,saddle \
+            n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
+            n/amenity=drinking_water,toilets,parking,shelter \
+            r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
           SIZE_MB=$(du -m "$FILTERED" | cut -f1)
-
           echo "Filtered size: ${SIZE_MB}MB"
 
-          CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT type=hd"
+          CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
 
           if [ "$SIZE_MB" -gt 80 ]; then
             CMD="$CMD type=hd"
@@ -103,7 +110,6 @@ jobs:
           ls -lh "$OUT"
 
           gh release upload maps-north-america "$OUT" --clobber
-
           echo "Uploaded $FNAME"
 
 
