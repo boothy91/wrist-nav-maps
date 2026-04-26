@@ -2,8 +2,6 @@
 name: Build Maps - Europe 2
 
 on:
-  schedule:
-    - cron: '0 2 6 * *'
   workflow_dispatch:
 
 jobs:
