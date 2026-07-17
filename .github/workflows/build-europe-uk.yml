@@ -48,15 +48,11 @@ jobs:
             python3-gdal \
             gdal-bin
 
-          echo "Installing phyghtmap and Python dependencies..."
-          python3 -m pip install --break-system-packages \
-            setuptools matplotlib numpy beautifulsoup4
+          echo "Installing pyhgtmap (maintained phyghtmap fork)..."
+          python3 -m pip install --break-system-packages pyhgtmap
 
-          python3 -m pip install --break-system-packages \
-            http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
-
-          echo "Verifying phyghtmap install..."
-          phyghtmap --version
+          echo "Verifying pyhgtmap install..."
+          pyhgtmap --version
 
       - name: Setup Osmosis and mapsforge
         run: |
@@ -118,7 +114,7 @@ jobs:
             -o "$FILTERED" --overwrite
 
           echo "Generating contours"
-          phyghtmap \
+          pyhgtmap \
             --source=view3 \
             --step=10 \
             --pbf \
