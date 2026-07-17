@@ -137,7 +137,6 @@ jobs:
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
-          # Fixed clean options syntax here
           echo "Generating contours"
           phyghtmap \
             --source=view3 \
@@ -162,14 +161,15 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
-          # FIX: Explicit value="*" added to the 'ele' element to fix Mapsforge XML parse crash
+          # FIX 1: Swapped out invalid tag '<nodes>' for the spec-compliant '<pois>' container
+          # FIX 2: Appended force-polygon-line to contour paths so boundary clipping handles loops smoothly
           cat << 'EOF' > "$TAG_POJO"
           <?xml version="1.0" encoding="UTF-8"?>
           <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                        xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
                        default-zoom-appear="16" profile-name="default-profile">
-            <nodes>
+            <pois>
               <osm-tag key="place" value="city" zoom-appear="3" />
               <osm-tag key="place" value="town" zoom-appear="7" />
               <osm-tag key="place" value="village" zoom-appear="11" />
@@ -187,7 +187,7 @@ jobs:
               <osm-tag key="amenity" value="toilets" zoom-appear="14" />
               <osm-tag key="amenity" value="parking" zoom-appear="13" />
               <osm-tag key="amenity" value="shelter" zoom-appear="13" />
-            </nodes>
+            </pois>
             <ways>
               <osm-tag key="highway" value="motorway" zoom-appear="6" />
               <osm-tag key="highway" value="trunk" zoom-appear="7" />
@@ -209,15 +209,15 @@ jobs:
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
               
-              <!-- Core Mapsforge Contour indexing keys -->
-              <osm-tag key="contour" value="elevation" zoom-appear="13" />
-              <osm-tag key="contour" value="elevation_major" zoom-appear="13" />
-              <osm-tag key="contour" value="elevation_medium" zoom-appear="14" />
-              <osm-tag key="contour" value="elevation_minor" zoom-appear="15" />
+              <!-- Core Mapsforge Contour indexing keys with polygon line enforcement overrides -->
+              <osm-tag key="contour" value="elevation" zoom-appear="13" force-polygon-line="true" />
+              <osm-tag key="contour" value="elevation_major" zoom-appear="13" force-polygon-line="true" />
+              <osm-tag key="contour" value="elevation_medium" zoom-appear="14" force-polygon-line="true" />
+              <osm-tag key="contour" value="elevation_minor" zoom-appear="15" force-polygon-line="true" />
               
-              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="13" />
-              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="14" />
-              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" />
+              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="13" force-polygon-line="true" />
+              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="14" force-polygon-line="true" />
+              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" force-polygon-line="true" />
               <osm-tag key="ele" value="*" zoom-appear="13" />
             </ways>
           </tag-mapping>
