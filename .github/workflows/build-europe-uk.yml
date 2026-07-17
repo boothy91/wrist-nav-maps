@@ -137,15 +137,14 @@ jobs:
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
-          # FIX: Configure categorization step breaks (100m for major, 50m for medium)
-          # Target contour rendering strings directly rather than contour_ext
+          # FIX: Dropped the invalid --contour-tags option. 
+          # --line-cat generates elevation_major (100) and elevation_medium (50) natively
           echo "Generating contours"
           phyghtmap \
             --source=view3 \
             --step=10 \
             --pbf \
             --area="$BBOX" \
-            --contour-tags=contour \
             --line-cat=100,50 \
             --output-prefix=/tmp/contours
 
@@ -164,7 +163,8 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
-          # FIX: Matches light.xml's updated tag mappings for major, medium, minor values
+          # FIX: Included both contour AND contour_ext mapping variations 
+          # to match your original and updated light.xml theme file seamlessly.
           cat << 'EOF' > "$TAG_POJO"
           <?xml version="1.0" encoding="UTF-8"?>
           <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
@@ -211,11 +211,15 @@ jobs:
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
               
-              <!-- Map writer profile indexing tags required by custom rules in light.xml -->
+              <!-- Core Mapsforge Contour indexing keys -->
               <osm-tag key="contour" value="elevation" zoom-appear="13" />
               <osm-tag key="contour" value="elevation_major" zoom-appear="13" />
               <osm-tag key="contour" value="elevation_medium" zoom-appear="14" />
               <osm-tag key="contour" value="elevation_minor" zoom-appear="15" />
+              
+              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="13" />
+              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="14" />
+              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" />
               <osm-tag key="ele" zoom-appear="13" />
             </ways>
           </tag-mapping>
