@@ -36,6 +36,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
       - name: Install dependencies
         run: |
           sudo apt-get update -q
@@ -43,15 +48,22 @@ jobs:
             osmium-tool \
             default-jre \
             wget \
-            python3-pip \
             python3-gdal \
-            gdal-bin
+            gdal-bin \
+            build-essential \
+            libfreetype6-dev \
+            libpng-dev \
+            pkg-config
 
-          echo "Installing phyghtmap and Python dependencies..."
-          python3 -m pip install --break-system-packages \
-            setuptools matplotlib numpy beautifulsoup4
+          echo "Installing phyghtmap and Python dependencies (pinned for compatibility)..."
+          python3 -m pip install --upgrade pip
+          python3 -m pip install \
+            "matplotlib<3.5" \
+            "numpy<1.22" \
+            setuptools \
+            beautifulsoup4
 
-          python3 -m pip install --break-system-packages \
+          python3 -m pip install \
             http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
 
           echo "Verifying phyghtmap install..."
