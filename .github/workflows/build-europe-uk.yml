@@ -17,11 +17,8 @@ jobs:
         run: |
           MATRIX=$(python3 << 'EOF'
           import json
-          import sys
-
           with open("config/regions/regions-europe-uk.json") as f:
               regions = json.load(f)
-
           print(json.dumps({"region": regions}))
           EOF
           )
@@ -54,15 +51,8 @@ jobs:
             wget \
             jq \
             python3-gdal \
-            gdal-bin \
-            build-essential \
-            libfreetype6-dev \
-            libpng-dev \
-            pkg-config \
-            libxml2-dev \
-            libxslt1-dev
+            gdal-bin
 
-          echo "Installing phyghtmap and Python dependencies..."
           python3 -m pip install --upgrade pip
           python3 -m pip install \
             "matplotlib<3.5" \
@@ -79,11 +69,9 @@ jobs:
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
-
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-
           echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
 
       - name: Ensure release exists
@@ -101,32 +89,63 @@ jobs:
         run: |
           RID="${{ matrix.region.id }}"
           FNAME="${RID//\//-}.map"
+          PBF_URL="${{ matrix.region.pbf }}"
+
+          # Derive poly URL by replacing -latest.osm.pbf with .poly
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
 
           PBF="/tmp/region.osm.pbf"
           POLY="/tmp/region.poly"
           FILTERED="/tmp/region_filtered.osm.pbf"
           MERGED="/tmp/region_with_contours.osm.pbf"
           OUT="output/$FNAME"
-          TAG_POJO="/tmp/tag-mapping.xml"
+          TAG_CONF="/tmp/tag-mapping.xml"
+          HGT_DIR="/tmp/hgt_cache"
 
-          mkdir -p output
+          mkdir -p output "$HGT_DIR"
 
           echo "=== ${{ matrix.region.name }} ==="
-          PBF_URL="${{ matrix.region.pbf }}"
-          wget -q --timeout=300 --tries=2 -O "$PBF" "$PBF_URL"
 
-          # Calculate and pull the Geofabrik .poly contour file layout natively
-          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
-          echo "Attempting boundary polygon download from: $POLY_URL"
-          
-          if wget -q --timeout=30 --tries=2 -O "$POLY" "$POLY_URL"; then
-            echo "SUCCESS: Found and downloaded Geofabrik boundary polygon file."
+          # Download PBF
+          echo "Downloading PBF..."
+          wget -q --timeout=300 --tries=2 -O "$PBF" "$PBF_URL"
+          ls -lh "$PBF"
+
+          # Download poly boundary
+          echo "Downloading poly from: $POLY_URL"
+          if wget -q --timeout=30 --tries=2 -O "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
+            echo "Poly downloaded successfully"
+            # Extract bounding box from poly for phyghtmap area flag as fallback
+            BBOX=$(python3 - << 'PYEOF'
+          import sys
+          coords = []
+          with open("/tmp/region.poly") as f:
+              for line in f:
+                  line = line.strip()
+                  parts = line.split()
+                  if len(parts) == 2:
+                      try:
+                          lon, lat = float(parts[0]), float(parts[1])
+                          coords.append((lon, lat))
+                      except ValueError:
+                          pass
+          if coords:
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+              # Add 0.1 degree buffer
+              print(f"{min(lons)-0.1:.4f}:{min(lats)-0.1:.4f}:{max(lons)+0.1:.4f}:{max(lats)+0.1:.4f}")
+          PYEOF
+          )
+            echo "Bounding box: $BBOX"
           else
-            echo "NOTICE: Geofabrik .poly file not found. Removing placeholder."
+            echo "Poly download failed, using PBF bbox"
             rm -f "$POLY"
+            BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]-0.1):\(.[1]-0.1):\(.[2]+0.1):\(.[3]+0.1)"')
+            echo "Bounding box: $BBOX"
           fi
 
-          echo "Filtering OSM"
+          # Filter OSM data
+          echo "Filtering OSM..."
           osmium tags-filter "$PBF" \
             w/highway \
             w/waterway \
@@ -141,38 +160,38 @@ jobs:
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
-          echo "Generating contours via ViewfinderPanoramas (No Credentials Required)"
-          PHYGHT_CMD="phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --output-prefix=/tmp/contours"
-
-          if [ -f "$POLY" ] && [ -s "$POLY" ]; then
-            echo "Executing: phyghtmap with polygon bounds clipping..."
-            $PHYGHT_CMD --polygon="$POLY"
-          else
-            echo "Executing: phyghtmap with square bounding box fallback..."
-            BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]):\(.[1]):\(.[2]):\(.[3])"')
-            if [ -z "$BBOX" ] || [[ "$BBOX" == *"::"* ]] || [[ "$BBOX" == ":"* ]]; then
-              echo "ERROR: Failed to extract a valid bounding box from PBF"
-              exit 1
-            fi
-            $PHYGHT_CMD --area="$BBOX"
-          fi
+          # Generate contours using bounding box (more reliable than polygon clipping)
+          echo "Generating contours..."
+          phyghtmap \
+            --source=view3 \
+            --step=10 \
+            --pbf \
+            --line-cat=100,50 \
+            --hgtdir="$HGT_DIR" \
+            --output-prefix=/tmp/contours \
+            --area="$BBOX"
 
           CONTOURS=$(ls /tmp/contours*.osm.pbf 2>/dev/null | head -1)
           if [ -z "$CONTOURS" ]; then
-            echo "ERROR: No contour file was generated by phyghtmap"
-            exit 1
+            echo "ERROR: No contour file generated"
+            # Build without contours rather than fail
+            cp "$FILTERED" "$MERGED"
+          else
+            echo "Contour file: $CONTOURS"
+            ls -lh "$CONTOURS"
+
+            echo "Merging OSM + contours..."
+            $OSMOSIS_HOME/bin/osmosis \
+              --read-pbf file="$FILTERED" \
+              --read-pbf file="$CONTOURS" \
+              --merge \
+              --write-pbf file="$MERGED"
           fi
-          echo "Contour file generated: $CONTOURS"
-          ls -lh "$CONTOURS"
 
-          echo "Merging contours"
-          $OSMOSIS_HOME/bin/osmosis \
-            --read-pbf file="$FILTERED" \
-            --read-pbf file="$CONTOURS" \
-            --merge \
-            --write-pbf file="$MERGED"
+          ls -lh "$MERGED"
 
-          cat << 'EOF' > "$TAG_POJO"
+          # Tag mapping with contour support
+          cat << 'XMLEOF' > "$TAG_CONF"
           <?xml version="1.0" encoding="UTF-8"?>
           <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -217,21 +236,19 @@ jobs:
               <osm-tag key="landuse" value="forest" zoom-appear="10" />
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
-              
-              <osm-tag key="contour" value="elevation" zoom-appear="13" force-polygon-line="true" />
-              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="13" force-polygon-line="true" />
-              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="14" force-polygon-line="true" />
-              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" force-polygon-line="true" />
-              <osm-tag key="ele" value="*" zoom-appear="13" />
+              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="12" />
+              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="13" />
+              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="14" />
+              <osm-tag key="contour" value="elevation" zoom-appear="14" />
+              <osm-tag key="ele" value="*" zoom-appear="12" />
             </ways>
           </tag-mapping>
-          EOF
+          XMLEOF
 
           SIZE_MB=$(du -m "$MERGED" | cut -f1)
           echo "Merged size: ${SIZE_MB}MB"
 
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_POJO tag-values=true"
-
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true"
           if [ "$SIZE_MB" -gt 150 ]; then
             CMD="$CMD type=hd"
             echo "Using HD mode"
@@ -296,4 +313,3 @@ jobs:
           EOF
 
           gh release upload maps-europe-uk output/index.json --clobber
-          
