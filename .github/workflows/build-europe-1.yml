@@ -13,18 +13,20 @@ jobs:
       - uses: actions/checkout@v4
 
       - id: set-matrix
+        shell: bash
         run: |
-          echo "matrix=$(cat config/regions/regions-europe-1.json | python3 -c "
-          import json,sys
-          regions = json.load(sys.stdin)
-          print(json.dumps({'region': regions}))
-          ")" >> $GITHUB_OUTPUT
-
+          MATRIX=$(python3 << 'EOF'
+          import json
+          with open("config/regions/regions-europe-1.json") as f:
+              regions = json.load(f)
+          print(json.dumps({"region": regions}))
+          EOF
+          )
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
   build-maps:
     needs: generate-matrix
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
@@ -35,10 +37,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
       - name: Install dependencies
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y osmium-tool default-jre wget
+          sudo apt-get install -y \
+            osmium-tool \
+            default-jre \
+            wget \
+            jq \
+            python3-gdal \
+            gdal-bin
+
+          python3 -m pip install --upgrade pip
+          python3 -m pip install \
+            "matplotlib<3.5" \
+            "numpy<1.22" \
+            setuptools \
+            beautifulsoup4 \
+            lxml
+
+          python3 -m pip install http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
 
       - name: Setup Osmosis and mapsforge
         run: |
@@ -46,11 +69,9 @@ jobs:
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
-
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-
           echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
 
       - name: Ensure release exists
@@ -62,23 +83,65 @@ jobs:
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
-      - name: Download, filter and convert
+      - name: Download, filter, generate contours and convert
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RID="${{ matrix.region.id }}"
           FNAME="${RID//\//-}.map"
+          PBF_URL="${{ matrix.region.pbf }}"
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
 
           PBF="/tmp/region.osm.pbf"
+          POLY="/tmp/region.poly"
           FILTERED="/tmp/region_filtered.osm.pbf"
+          MERGED="/tmp/region_with_contours.osm.pbf"
           OUT="output/$FNAME"
+          TAG_CONF="/tmp/tag-mapping.xml"
+          HGT_DIR="/tmp/hgt_cache"
 
-          mkdir -p output
+          mkdir -p output "$HGT_DIR"
 
           echo "=== ${{ matrix.region.name }} ==="
 
-          wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
+          # Download PBF
+          echo "Downloading PBF..."
+          wget -q --timeout=300 --tries=2 -O "$PBF" "$PBF_URL"
+          ls -lh "$PBF"
 
+          # Download poly and extract bbox with buffer
+          echo "Downloading poly from: $POLY_URL"
+          if wget -q --timeout=30 --tries=2 -O "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
+            echo "Poly downloaded successfully"
+            BBOX=$(python3 - << 'PYEOF'
+          import sys
+          coords = []
+          with open("/tmp/region.poly") as f:
+              for line in f:
+                  line = line.strip()
+                  parts = line.split()
+                  if len(parts) == 2:
+                      try:
+                          lon, lat = float(parts[0]), float(parts[1])
+                          coords.append((lon, lat))
+                      except ValueError:
+                          pass
+          if coords:
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+              print(f"{min(lons)-0.2:.4f}:{min(lats)-0.2:.4f}:{max(lons)+0.2:.4f}:{max(lats)+0.2:.4f}")
+          PYEOF
+          )
+          else
+            echo "Poly download failed, using PBF bbox"
+            rm -f "$POLY"
+            BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]-0.2):\(.[1]-0.2):\(.[2]+0.2):\(.[3]+0.2)"')
+          fi
+
+          echo "Bounding box (with 0.2 degree buffer): $BBOX"
+
+          # Filter OSM data
+          echo "Filtering OSM..."
           osmium tags-filter "$PBF" \
             w/highway \
             w/waterway \
@@ -93,29 +156,135 @@ jobs:
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
-          SIZE_MB=$(du -m "$FILTERED" | cut -f1)
-          echo "Filtered size: ${SIZE_MB}MB"
+          # Generate contours - one tile at a time across full bbox
+          echo "Generating contours for bbox: $BBOX"
+          phyghtmap \
+            --source=view3 \
+            --step=10 \
+            --pbf \
+            --line-cat=100,50 \
+            --hgtdir="$HGT_DIR" \
+            --output-prefix=/tmp/contours \
+            --no-zero-contour \
+            --jobs=1 \
+            --area="$BBOX"
 
-          CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
+          echo "Contour files generated:"
+          ls -lh /tmp/contours*.osm.pbf 2>/dev/null || echo "No contour files found"
 
+          CONTOUR_FILES=($(ls /tmp/contours*.osm.pbf 2>/dev/null))
+          NUM_CONTOURS=${#CONTOUR_FILES[@]}
+          echo "Number of contour files: $NUM_CONTOURS"
+
+          if [ "$NUM_CONTOURS" -eq 0 ]; then
+            echo "WARNING: No contours generated, building map without contours"
+            cp "$FILTERED" "$MERGED"
+          elif [ "$NUM_CONTOURS" -eq 1 ]; then
+            echo "Single contour file, merging with OSM..."
+            $OSMOSIS_HOME/bin/osmosis \
+              --read-pbf file="$FILTERED" \
+              --read-pbf file="${CONTOUR_FILES[0]}" \
+              --merge \
+              --write-pbf file="$MERGED"
+          else
+            echo "Multiple contour files ($NUM_CONTOURS), merging all..."
+            # First merge all contour files together
+            CONTOUR_MERGE_CMD="$OSMOSIS_HOME/bin/osmosis"
+            for f in "${CONTOUR_FILES[@]}"; do
+              CONTOUR_MERGE_CMD="$CONTOUR_MERGE_CMD --read-pbf file=$f"
+            done
+            for i in $(seq 2 $NUM_CONTOURS); do
+              CONTOUR_MERGE_CMD="$CONTOUR_MERGE_CMD --merge"
+            done
+            CONTOUR_MERGE_CMD="$CONTOUR_MERGE_CMD --write-pbf file=/tmp/contours_all.osm.pbf"
+            echo "Running: $CONTOUR_MERGE_CMD"
+            $CONTOUR_MERGE_CMD
+            ls -lh /tmp/contours_all.osm.pbf
+
+            # Now merge contours with OSM
+            $OSMOSIS_HOME/bin/osmosis \
+              --read-pbf file="$FILTERED" \
+              --read-pbf file="/tmp/contours_all.osm.pbf" \
+              --merge \
+              --write-pbf file="$MERGED"
+          fi
+
+          ls -lh "$MERGED"
+
+          # Tag mapping with full contour support
+          cat << 'XMLEOF' > "$TAG_CONF"
+          <?xml version="1.0" encoding="UTF-8"?>
+          <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
+                       default-zoom-appear="16" profile-name="default-profile">
+            <pois>
+              <osm-tag key="place" value="city" zoom-appear="3" />
+              <osm-tag key="place" value="town" zoom-appear="7" />
+              <osm-tag key="place" value="village" zoom-appear="11" />
+              <osm-tag key="place" value="hamlet" zoom-appear="12" />
+              <osm-tag key="place" value="suburb" zoom-appear="12" />
+              <osm-tag key="place" value="locality" zoom-appear="13" />
+              <osm-tag key="natural" value="peak" zoom-appear="12" />
+              <osm-tag key="natural" value="saddle" zoom-appear="13" />
+              <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
+              <osm-tag key="tourism" value="information" zoom-appear="14" />
+              <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
+              <osm-tag key="tourism" value="camp_site" zoom-appear="13" />
+              <osm-tag key="tourism" value="picnic_site" zoom-appear="14" />
+              <osm-tag key="amenity" value="drinking_water" zoom-appear="14" />
+              <osm-tag key="amenity" value="toilets" zoom-appear="14" />
+              <osm-tag key="amenity" value="parking" zoom-appear="13" />
+              <osm-tag key="amenity" value="shelter" zoom-appear="13" />
+            </pois>
+            <ways>
+              <osm-tag key="highway" value="motorway" zoom-appear="6" />
+              <osm-tag key="highway" value="trunk" zoom-appear="7" />
+              <osm-tag key="highway" value="primary" zoom-appear="9" />
+              <osm-tag key="highway" value="secondary" zoom-appear="10" />
+              <osm-tag key="highway" value="tertiary" zoom-appear="11" />
+              <osm-tag key="highway" value="unclassified" zoom-appear="12" />
+              <osm-tag key="highway" value="residential" zoom-appear="12" />
+              <osm-tag key="highway" value="service" zoom-appear="13" />
+              <osm-tag key="highway" value="track" zoom-appear="12" />
+              <osm-tag key="highway" value="path" zoom-appear="12" />
+              <osm-tag key="highway" value="footway" zoom-appear="13" />
+              <osm-tag key="highway" value="cycleway" zoom-appear="12" />
+              <osm-tag key="waterway" value="river" zoom-appear="11" />
+              <osm-tag key="waterway" value="stream" zoom-appear="13" />
+              <osm-tag key="natural" value="water" zoom-appear="10" />
+              <osm-tag key="natural" value="wood" zoom-appear="10" />
+              <osm-tag key="landuse" value="forest" zoom-appear="10" />
+              <osm-tag key="landuse" value="residential" zoom-appear="11" />
+              <osm-tag key="railway" value="rail" zoom-appear="10" />
+              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="12" />
+              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="13" />
+              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="14" />
+              <osm-tag key="contour" value="elevation" zoom-appear="14" />
+              <osm-tag key="ele" value="*" zoom-appear="12" />
+            </ways>
+          </tag-mapping>
+          XMLEOF
+
+          SIZE_MB=$(du -m "$MERGED" | cut -f1)
+          echo "Merged size: ${SIZE_MB}MB"
+
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true"
           if [ "$SIZE_MB" -gt 150 ]; then
             CMD="$CMD type=hd"
             echo "Using HD mode"
           fi
 
           $CMD
-
           ls -lh "$OUT"
 
           gh release upload maps-europe-1 "$OUT" --clobber
           echo "Uploaded $FNAME"
 
-
   generate-index:
     needs: build-maps
     runs-on: ubuntu-latest
     if: always()
-
     permissions:
       contents: write
 
@@ -140,7 +309,6 @@ jobs:
           env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
 
           uploaded = json.loads(result.stdout or "[]")
-
           base_url = "https://github.com/${{ github.repository }}/releases/download/maps-europe-1"
 
           index = {
@@ -150,17 +318,15 @@ jobs:
 
           for region in regions:
               fname = region["id"].replace("/", "-") + ".map"
-
               if fname in uploaded:
                   index["regions"].append({
                       "id": region["id"],
                       "name": region["name"],
                       "path": region["path"],
-                      "url": f"{base_url}/{fname}",
+                      "url": f"{base_url}/{fname}"
                   })
 
           os.makedirs("output", exist_ok=True)
-
           with open("output/index.json", "w") as f:
               json.dump(index, f, indent=2)
 
