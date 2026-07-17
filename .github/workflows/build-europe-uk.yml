@@ -44,13 +44,13 @@ jobs:
             default-jre \
             wget \
             python3-pip \
-            python3-setuptools \
-            python3-matplotlib \
-            python3-bs4 \
-            python3-numpy \
-            python3-gdal
+            python3-gdal \
+            gdal-bin
 
-          echo "Installing phyghtmap..."
+          echo "Installing phyghtmap and Python dependencies..."
+          python3 -m pip install --break-system-packages \
+            setuptools matplotlib numpy beautifulsoup4
+
           python3 -m pip install --break-system-packages \
             http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
 
