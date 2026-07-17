@@ -15,7 +15,7 @@ jobs:
       - id: set-matrix
         shell: bash
         run: |
-          # The Python snippet must be indented to satisfy YAML syntax rules
+          # A heredoc cleanly protects python code formatting from breaking YAML/Bash strings
           MATRIX=$(python3 << 'EOF'
           import json
           import sys
@@ -112,7 +112,8 @@ jobs:
           wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
           echo "Computing exact bounding box..."
-          BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.minlon):\(.minlat):\(.maxlon):\(.maxlat)"')
+          # FIX: Access individual elements of the data.bbox array safely via numeric index [0..3]
+          BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]):\(.[1]):\(.[2]):\(.[3])"')
           echo "Using Bounding Box: $BBOX"
 
           if [ -z "$BBOX" ] || [[ "$BBOX" == *"::"* ]] || [[ "$BBOX" == ":"* ]]; then
@@ -158,6 +159,7 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
+          # FIX: Mapsforge ignores contours unless an explicit tag configuration is attached
           cat << 'EOF' > "$TAG_POJO"
           <tagmapping>
             <node id="contour" ele="elevation" />
