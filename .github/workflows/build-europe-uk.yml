@@ -160,14 +160,52 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
-          # Custom compliant schema profile to process generated contours safely
+          # Custom configuration linking core topographic attributes + newly created contours safely
           cat << 'EOF' > "$TAG_POJO"
           <?xml version="1.0" encoding="UTF-8"?>
           <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                        xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
                        default-zoom-appear="16" profile-name="default-profile">
+            <nodes>
+              <osm-tag key="place" value="city" zoom-appear="3" />
+              <osm-tag key="place" value="town" zoom-appear="7" />
+              <osm-tag key="place" value="village" zoom-appear="11" />
+              <osm-tag key="place" value="hamlet" zoom-appear="12" />
+              <osm-tag key="place" value="suburb" zoom-appear="12" />
+              <osm-tag key="place" value="locality" zoom-appear="13" />
+              <osm-tag key="natural" value="peak" zoom-appear="12" />
+              <osm-tag key="natural" value="saddle" zoom-appear="13" />
+              <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
+              <osm-tag key="tourism" value="information" zoom-appear="14" />
+              <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
+              <osm-tag key="tourism" value="camp_site" zoom-appear="13" />
+              <osm-tag key="tourism" value="picnic_site" zoom-appear="14" />
+              <osm-tag key="amenity" value="drinking_water" zoom-appear="14" />
+              <osm-tag key="amenity" value="toilets" zoom-appear="14" />
+              <osm-tag key="amenity" value="parking" zoom-appear="13" />
+              <osm-tag key="amenity" value="shelter" zoom-appear="13" />
+            </nodes>
             <ways>
+              <osm-tag key="highway" value="motorway" zoom-appear="6" />
+              <osm-tag key="highway" value="trunk" zoom-appear="7" />
+              <osm-tag key="highway" value="primary" zoom-appear="9" />
+              <osm-tag key="highway" value="secondary" zoom-appear="10" />
+              <osm-tag key="highway" value="tertiary" zoom-appear="11" />
+              <osm-tag key="highway" value="unclassified" zoom-appear="12" />
+              <osm-tag key="highway" value="residential" zoom-appear="12" />
+              <osm-tag key="highway" value="service" zoom-appear="13" />
+              <osm-tag key="highway" value="track" zoom-appear="12" />
+              <osm-tag key="highway" value="path" zoom-appear="12" />
+              <osm-tag key="highway" value="footway" zoom-appear="13" />
+              <osm-tag key="highway" value="cycleway" zoom-appear="12" />
+              <osm-tag key="waterway" value="river" zoom-appear="11" />
+              <osm-tag key="waterway" value="stream" zoom-appear="13" />
+              <osm-tag key="natural" value="water" zoom-appear="10" />
+              <osm-tag key="natural" value="wood" zoom-appear="10" />
+              <osm-tag key="landuse" value="forest" zoom-appear="10" />
+              <osm-tag key="landuse" value="residential" zoom-appear="11" />
+              <osm-tag key="railway" value="rail" zoom-appear="10" />
               <osm-tag key="contour" value="elevation" zoom-appear="12" />
             </ways>
           </tag-mapping>
