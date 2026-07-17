@@ -16,16 +16,12 @@ jobs:
         run: |
           MATRIX=$(python3 -c '
 import json
-import sys
-
 with open("config/regions/regions-europe-uk.json") as f:
     regions = json.load(f)
-
 print(json.dumps({"region": regions}))
           ')
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
-          echo "=== Matrix generated successfully ==="
-          echo "$MATRIX" | jq .
+          echo "Matrix generated with $(echo $MATRIX | jq '.region | length') regions"
         shell: bash
 
   build-maps:
@@ -44,7 +40,15 @@ print(json.dumps({"region": regions}))
       - name: Install dependencies
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y osmium-tool default-jre wget jq python3-pip python3-gdal gdal-bin
+          sudo apt-get install -y \
+            osmium-tool \
+            default-jre \
+            wget \
+            jq \
+            python3-pip \
+            python3-gdal \
+            gdal-bin
+
           python3 -m pip install --break-system-packages pyhgtmap
           pyhgtmap --version
 
@@ -68,7 +72,7 @@ print(json.dumps({"region": regions}))
         run: |
           gh release view maps-europe-uk &>/dev/null || gh release create maps-europe-uk \
             --title "Maps - Europe UK" \
-            --notes "Auto-generated .map files for WristNav." \
+            --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
       - name: Download, filter, generate contours and convert
@@ -100,7 +104,11 @@ print(json.dumps({"region": regions}))
 
           echo "Filtering OSM"
           osmium tags-filter "$PBF" \
-            w/highway w/waterway w/natural w/landuse w/railway \
+            w/highway \
+            w/waterway \
+            w/natural \
+            w/landuse \
+            w/railway \
             n/place=city,town,village,hamlet,suburb,locality \
             n/railway \
             n/natural=peak,saddle \
@@ -110,11 +118,16 @@ print(json.dumps({"region": regions}))
             -o "$FILTERED" --overwrite
 
           echo "Generating contours"
-          pyhgtmap --source=view3 --step=10 --pbf --area="$BBOX" --output-prefix=/tmp/contours
+          pyhgtmap \
+            --source=view3 \
+            --step=10 \
+            --pbf \
+            --area="$BBOX" \
+            --output-prefix=/tmp/contours
 
           CONTOURS=$(ls /tmp/contours*.osm.pbf 2>/dev/null | head -1)
           if [ -z "$CONTOURS" ]; then
-            echo "ERROR: No contour file generated"
+            echo "ERROR: No contour file was generated"
             exit 1
           fi
 
@@ -161,13 +174,18 @@ from datetime import datetime
 with open("config/regions/regions-europe-uk.json") as f:
     regions = json.load(f)
 
-result = subprocess.run(["gh", "release", "view", "maps-europe-uk", "--json", "assets", "--jq", "[.assets[].name]"],
-                        capture_output=True, text=True, env=os.environ)
+result = subprocess.run([
+    "gh", "release", "view", "maps-europe-uk",
+    "--json", "assets", "--jq", "[.assets[].name]"
+], capture_output=True, text=True, env=os.environ)
 
 uploaded = json.loads(result.stdout or "[]")
 base_url = "https://github.com/${{ github.repository }}/releases/download/maps-europe-uk"
 
-index = {"updated": datetime.now().strftime("%Y-%m-%d"), "regions": []}
+index = {
+    "updated": datetime.now().strftime("%Y-%m-%d"),
+    "regions": []
+}
 
 for region in regions:
     fname = region["id"].replace("/", "-") + ".map"
