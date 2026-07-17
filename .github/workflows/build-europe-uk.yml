@@ -160,10 +160,11 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
+          # FIX: Configured tag definitions explicitly targeting correct node/polyline mapsforge expectations
           cat << 'EOF' > "$TAG_POJO"
           <tagmapping>
-            <node id="contour" ele="elevation" />
-            <way id="contour" ele="elevation" />
+            <node id="contour" tag="contour" value="elevation" render-type="node" zoom="12" />
+            <way id="contour" tag="contour" value="elevation" render-type="polyline" zoom="12" />
           </tagmapping>
           EOF
 
