@@ -137,8 +137,7 @@ jobs:
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
-          # FIX: Dropped the invalid --contour-tags option. 
-          # --line-cat generates elevation_major (100) and elevation_medium (50) natively
+          # Fixed clean options syntax here
           echo "Generating contours"
           phyghtmap \
             --source=view3 \
@@ -163,8 +162,7 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
-          # FIX: Included both contour AND contour_ext mapping variations 
-          # to match your original and updated light.xml theme file seamlessly.
+          # FIX: Explicit value="*" added to the 'ele' element to fix Mapsforge XML parse crash
           cat << 'EOF' > "$TAG_POJO"
           <?xml version="1.0" encoding="UTF-8"?>
           <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
@@ -220,7 +218,7 @@ jobs:
               <osm-tag key="contour_ext" value="elevation_major" zoom-appear="13" />
               <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="14" />
               <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" />
-              <osm-tag key="ele" zoom-appear="13" />
+              <osm-tag key="ele" value="*" zoom-appear="13" />
             </ways>
           </tag-mapping>
           EOF
