@@ -137,12 +137,16 @@ jobs:
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
+          # FIX: Configure categorization step breaks (100m for major, 50m for medium)
+          # Target contour rendering strings directly rather than contour_ext
           echo "Generating contours"
           phyghtmap \
             --source=view3 \
             --step=10 \
             --pbf \
             --area="$BBOX" \
+            --contour-tags=contour \
+            --line-cat=100,50 \
             --output-prefix=/tmp/contours
 
           CONTOURS=$(ls /tmp/contours*.osm.pbf 2>/dev/null | head -1)
@@ -160,7 +164,7 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
-          # Custom configuration linking core topographic attributes + newly created contours safely
+          # FIX: Matches light.xml's updated tag mappings for major, medium, minor values
           cat << 'EOF' > "$TAG_POJO"
           <?xml version="1.0" encoding="UTF-8"?>
           <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
@@ -206,7 +210,13 @@ jobs:
               <osm-tag key="landuse" value="forest" zoom-appear="10" />
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
-              <osm-tag key="contour" value="elevation" zoom-appear="12" />
+              
+              <!-- Map writer profile indexing tags required by custom rules in light.xml -->
+              <osm-tag key="contour" value="elevation" zoom-appear="13" />
+              <osm-tag key="contour" value="elevation_major" zoom-appear="13" />
+              <osm-tag key="contour" value="elevation_medium" zoom-appear="14" />
+              <osm-tag key="contour" value="elevation_minor" zoom-appear="15" />
+              <osm-tag key="ele" zoom-appear="13" />
             </ways>
           </tag-mapping>
           EOF
