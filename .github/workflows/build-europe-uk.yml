@@ -15,11 +15,15 @@ jobs:
 
       - id: set-matrix
         run: |
-          echo "matrix=$(cat config/regions/regions-europe-uk.json | python3 -c '
-            import json,sys
+          # More reliable way to output the matrix
+          MATRIX=$(cat config/regions/regions-europe-uk.json | python3 -c '
+            import json, sys
             regions = json.load(sys.stdin)
             print(json.dumps({"region": regions}))
-          ')" >> $GITHUB_OUTPUT
+          ')
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+          echo "Generated matrix:"
+          echo "$MATRIX"
 
   build-maps:
     needs: generate-matrix
@@ -46,13 +50,10 @@ jobs:
             python3-gdal \
             gdal-bin
 
-          echo "Installing pyhgtmap..."
           python3 -m pip install --break-system-packages pyhgtmap
-
-          echo "Verifying pyhgtmap install..."
           pyhgtmap --version
 
-      - name: Setup Osmosis and Mapsforge writer
+      - name: Setup Osmosis and Mapsforge
         run: |
           wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
           unzip -q osmosis-0.49.2.zip -d osmosis_install
@@ -72,7 +73,7 @@ jobs:
         run: |
           gh release view maps-europe-uk &>/dev/null || gh release create maps-europe-uk \
             --title "Maps - Europe UK" \
-            --notes "Auto-generated .map files for WristNav. Updated monthly." \
+            --notes "Auto-generated .map files for WristNav." \
             --latest=false
 
       - name: Download, filter, generate contours and convert
@@ -97,7 +98,7 @@ jobs:
           BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.minlon):\(.minlat):\(.maxlon):\(.maxlat)"')
           echo "Bounding box: $BBOX"
 
-          if [ -z "$BBOX" ] || [[ "$BBOX" == *":"*":"*":"*":"* ]] || [[ "$BBOX" == ":"* ]]; then
+          if [ -z "$BBOX" ] || [[ "$BBOX" == *"::"* ]] || [[ "$BBOX" == ":"* ]]; then
             echo "ERROR: Failed to extract valid bounding box"
             exit 1
           fi
@@ -125,8 +126,12 @@ jobs:
             --area="$BBOX" \
             --output-prefix=/tmp/contours
 
-          CONTOURS=$(ls /tmp/contours*.osm.pbf | head -1)
-          echo "Contour file:"
+          CONTOURS=$(ls /tmp/contours*.osm.pbf 2>/dev/null | head -1)
+          if [ -z "$CONTOURS" ]; then
+            echo "ERROR: No contour file generated"
+            exit 1
+          fi
+          echo "Using contour file: $CONTOURS"
           ls -lh "$CONTOURS"
 
           echo "Merging contours"
@@ -156,7 +161,6 @@ jobs:
     needs: build-maps
     runs-on: ubuntu-latest
     if: always()
-
     permissions:
       contents: write
 
@@ -177,8 +181,7 @@ jobs:
           result = subprocess.run([
               "gh", "release", "view", "maps-europe-uk",
               "--json", "assets", "--jq", "[.assets[].name]"
-          ], capture_output=True, text=True,
-          env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+          ], capture_output=True, text=True, env=os.environ)
 
           uploaded = json.loads(result.stdout or "[]")
 
@@ -191,7 +194,6 @@ jobs:
 
           for region in regions:
               fname = region["id"].replace("/", "-") + ".map"
-
               if fname in uploaded:
                   index["regions"].append({
                       "id": region["id"],
@@ -201,11 +203,10 @@ jobs:
                   })
 
           os.makedirs("output", exist_ok=True)
-
           with open("output/index.json", "w") as f:
               json.dump(index, f, indent=2)
 
-          print(f"index.json: {len(index['regions'])} regions")
+          print(f"index.json created with {len(index['regions'])} regions")
           EOF
 
           gh release upload maps-europe-uk output/index.json --clobber
