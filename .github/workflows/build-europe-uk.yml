@@ -4,8 +4,10 @@ on:
   workflow_dispatch:
 
 jobs:
+
   generate-matrix:
     runs-on: ubuntu-latest
+
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
 
@@ -14,19 +16,16 @@ jobs:
 
       - id: set-matrix
         run: |
-          MATRIX=$(python3 -c '
-import json
-with open("config/regions/regions-europe-uk.json") as f:
-    regions = json.load(f)
-print(json.dumps({"region": regions}))
-          ')
-          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
-          echo "Matrix generated with $(echo $MATRIX | jq '.region | length') regions"
-        shell: bash
+          echo "matrix=$(cat config/regions/regions-europe-uk.json | python3 -c "
+          import json,sys
+          regions = json.load(sys.stdin)
+          print(json.dumps({'region': regions}))
+          ")" >> $GITHUB_OUTPUT
 
   build-maps:
     needs: generate-matrix
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
@@ -37,6 +36,11 @@ print(json.dumps({"region": regions}))
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
       - name: Install dependencies
         run: |
           sudo apt-get update -q
@@ -44,20 +48,32 @@ print(json.dumps({"region": regions}))
             osmium-tool \
             default-jre \
             wget \
-            jq \
-            python3-pip \
             python3-gdal \
-            gdal-bin
+            gdal-bin \
+            build-essential \
+            libfreetype6-dev \
+            libpng-dev \
+            pkg-config
 
-          python3 -m pip install --break-system-packages pyhgtmap
-          pyhgtmap --version
+          echo "Installing phyghtmap and Python dependencies (pinned for compatibility)..."
+          python3 -m pip install --upgrade pip
+          python3 -m pip install \
+            "matplotlib<3.5" \
+            "numpy<1.22" \
+            setuptools \
+            beautifulsoup4
 
-      - name: Setup Osmosis and Mapsforge
+          python3 -m pip install \
+            http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
+
+          echo "Verifying phyghtmap install..."
+          phyghtmap --version
+
+      - name: Setup Osmosis and mapsforge
         run: |
           wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
-          
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
 
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
@@ -93,15 +109,6 @@ print(json.dumps({"region": regions}))
 
           wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
-          echo "Computing bounding box"
-          BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.minlon):\(.minlat):\(.maxlon):\(.maxlat)"')
-          echo "Bounding box: $BBOX"
-
-          if [ -z "$BBOX" ] || [[ "$BBOX" == *"::"* ]] || [[ "$BBOX" == ":"* ]]; then
-            echo "ERROR: Failed to extract valid bounding box"
-            exit 1
-          fi
-
           echo "Filtering OSM"
           osmium tags-filter "$PBF" \
             w/highway \
@@ -118,18 +125,16 @@ print(json.dumps({"region": regions}))
             -o "$FILTERED" --overwrite
 
           echo "Generating contours"
-          pyhgtmap \
+          phyghtmap \
             --source=view3 \
             --step=10 \
             --pbf \
-            --area="$BBOX" \
+            --area="${{ matrix.region.bbox }}" \
             --output-prefix=/tmp/contours
 
-          CONTOURS=$(ls /tmp/contours*.osm.pbf 2>/dev/null | head -1)
-          if [ -z "$CONTOURS" ]; then
-            echo "ERROR: No contour file was generated"
-            exit 1
-          fi
+          CONTOURS=$(ls /tmp/contours*.osm.pbf | head -1)
+          echo "Contour file:"
+          ls -lh "$CONTOURS"
 
           echo "Merging contours"
           $OSMOSIS_HOME/bin/osmosis \
@@ -142,6 +147,7 @@ print(json.dumps({"region": regions}))
           echo "Merged size: ${SIZE_MB}MB"
 
           CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT"
+
           if [ "$SIZE_MB" -gt 150 ]; then
             CMD="$CMD type=hd"
             echo "Using HD mode"
@@ -157,6 +163,7 @@ print(json.dumps({"region": regions}))
     needs: build-maps
     runs-on: ubuntu-latest
     if: always()
+
     permissions:
       contents: write
 
@@ -168,40 +175,44 @@ print(json.dumps({"region": regions}))
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 - << 'EOF'
-import json, subprocess, os
-from datetime import datetime
+          import json, subprocess, os
+          from datetime import datetime
 
-with open("config/regions/regions-europe-uk.json") as f:
-    regions = json.load(f)
+          with open("config/regions/regions-europe-uk.json") as f:
+              regions = json.load(f)
 
-result = subprocess.run([
-    "gh", "release", "view", "maps-europe-uk",
-    "--json", "assets", "--jq", "[.assets[].name]"
-], capture_output=True, text=True, env=os.environ)
+          result = subprocess.run([
+              "gh", "release", "view", "maps-europe-uk",
+              "--json", "assets", "--jq", "[.assets[].name]"
+          ], capture_output=True, text=True,
+          env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
 
-uploaded = json.loads(result.stdout or "[]")
-base_url = "https://github.com/${{ github.repository }}/releases/download/maps-europe-uk"
+          uploaded = json.loads(result.stdout or "[]")
 
-index = {
-    "updated": datetime.now().strftime("%Y-%m-%d"),
-    "regions": []
-}
+          base_url = "https://github.com/${{ github.repository }}/releases/download/maps-europe-uk"
 
-for region in regions:
-    fname = region["id"].replace("/", "-") + ".map"
-    if fname in uploaded:
-        index["regions"].append({
-            "id": region["id"],
-            "name": region["name"],
-            "path": region["path"],
-            "url": f"{base_url}/{fname}"
-        })
+          index = {
+              "updated": datetime.now().strftime("%Y-%m-%d"),
+              "regions": []
+          }
 
-os.makedirs("output", exist_ok=True)
-with open("output/index.json", "w") as f:
-    json.dump(index, f, indent=2)
+          for region in regions:
+              fname = region["id"].replace("/", "-") + ".map"
 
-print(f"index.json created with {len(index['regions'])} regions")
-EOF
+              if fname in uploaded:
+                  index["regions"].append({
+                      "id": region["id"],
+                      "name": region["name"],
+                      "path": region["path"],
+                      "url": f"{base_url}/{fname}"
+                  })
+
+          os.makedirs("output", exist_ok=True)
+
+          with open("output/index.json", "w") as f:
+              json.dump(index, f, indent=2)
+
+          print(f"index.json: {len(index['regions'])} regions")
+          EOF
 
           gh release upload maps-europe-uk output/index.json --clobber
