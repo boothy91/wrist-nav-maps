@@ -115,7 +115,7 @@ jobs:
           PBF_URL="${{ matrix.region.pbf }}"
           wget -q --timeout=300 --tries=2 -O "$PBF" "$PBF_URL"
 
-          # DYNAMIC FIX: Derive the .poly URL straight from Geofabrik's file pattern
+          # Calculate and pull the Geofabrik .poly contour file layout natively
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
           echo "Attempting boundary polygon download from: $POLY_URL"
           
@@ -141,8 +141,8 @@ jobs:
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
-          echo "Generating contours via NASA SRTM"
-          PHYGHT_CMD="phyghtmap --source=srtm3 --srtm-version=3 --step=10 --pbf --line-cat=100,50 --output-prefix=/tmp/contours"
+          echo "Generating contours via ViewfinderPanoramas (No Credentials Required)"
+          PHYGHT_CMD="phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --output-prefix=/tmp/contours"
 
           if [ -f "$POLY" ] && [ -s "$POLY" ]; then
             echo "Executing: phyghtmap with polygon bounds clipping..."
