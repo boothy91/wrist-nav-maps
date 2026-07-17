@@ -15,7 +15,6 @@ jobs:
       - id: set-matrix
         shell: bash
         run: |
-          # A heredoc cleanly protects python code formatting from breaking YAML/Bash strings
           MATRIX=$(python3 << 'EOF'
           import json
           import sys
@@ -59,7 +58,9 @@ jobs:
             build-essential \
             libfreetype6-dev \
             libpng-dev \
-            pkg-config
+            pkg-config \
+            libxml2-dev \
+            libxslt1-dev
 
           echo "Installing phyghtmap and Python dependencies..."
           python3 -m pip install --upgrade pip
@@ -67,7 +68,8 @@ jobs:
             "matplotlib<3.5" \
             "numpy<1.22" \
             setuptools \
-            beautifulsoup4
+            beautifulsoup4 \
+            lxml
 
           python3 -m pip install http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
 
@@ -112,7 +114,6 @@ jobs:
           wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
           echo "Computing exact bounding box..."
-          # FIX: Access individual elements of the data.bbox array safely via numeric index [0..3]
           BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]):\(.[1]):\(.[2]):\(.[3])"')
           echo "Using Bounding Box: $BBOX"
 
@@ -159,7 +160,6 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
-          # FIX: Mapsforge ignores contours unless an explicit tag configuration is attached
           cat << 'EOF' > "$TAG_POJO"
           <tagmapping>
             <node id="contour" ele="elevation" />
