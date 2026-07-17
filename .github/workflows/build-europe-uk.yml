@@ -103,6 +103,7 @@ jobs:
           FNAME="${RID//\//-}.map"
 
           PBF="/tmp/region.osm.pbf"
+          POLY="/tmp/region.poly"
           FILTERED="/tmp/region_filtered.osm.pbf"
           MERGED="/tmp/region_with_contours.osm.pbf"
           OUT="output/$FNAME"
@@ -113,13 +114,10 @@ jobs:
           echo "=== ${{ matrix.region.name }} ==="
           wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
 
-          echo "Computing exact bounding box..."
-          BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]):\(.[1]):\(.[2]):\(.[3])"')
-          echo "Using Bounding Box: $BBOX"
-
-          if [ -z "$BBOX" ] || [[ "$BBOX" == *"::"* ]] || [[ "$BBOX" == ":"* ]]; then
-            echo "ERROR: Failed to extract a valid bounding box from PBF"
-            exit 1
+          # Check if poly configuration string exists, then download it
+          if [ -n "${{ matrix.region.poly }}" ]; then
+            echo "Downloading boundary polygon from: ${{ matrix.region.poly }}"
+            wget -q --timeout=60 --tries=2 -O "$POLY" "${{ matrix.region.poly }}"
           fi
 
           echo "Filtering OSM"
@@ -138,14 +136,23 @@ jobs:
             -o "$FILTERED" --overwrite
 
           echo "Generating contours"
-          # Restored the correct --line-cat option
-          phyghtmap \
-            --source=view3 \
-            --step=10 \
-            --pbf \
-            --area="$BBOX" \
-            --line-cat=100,50 \
-            --output-prefix=/tmp/contours
+          PHYGHT_CMD="phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --output-prefix=/tmp/contours"
+
+          # Use poly clip boundary if available; otherwise fall back smoothly to data bounding box
+          if [ -f "$POLY" ]; then
+            echo "Using Boundary Polygon File: $POLY"
+            $PHYGHT_CMD --polygon="$POLY"
+          else
+            echo "No polygon configuration found. Falling back to exact bounding box..."
+            BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]):\(.[1]):\(.[2]):\(.[3])"')
+            echo "Using Bounding Box fallback: $BBOX"
+            
+            if [ -z "$BBOX" ] || [[ "$BBOX" == *"::"* ]] || [[ "$BBOX" == ":"* ]]; then
+              echo "ERROR: Failed to extract a valid bounding box from PBF"
+              exit 1
+            fi
+            $PHYGHT_CMD --area="$BBOX"
+          fi
 
           CONTOURS=$(ls /tmp/contours*.osm.pbf 2>/dev/null | head -1)
           if [ -z "$CONTOURS" ]; then
@@ -208,7 +215,7 @@ jobs:
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
               
-              <!-- Core Mapsforge Contour matching rule sets -->
+              <!-- Core Mapsforge Contour matching rule sets matching light.xml -->
               <osm-tag key="contour" value="elevation" zoom-appear="13" force-polygon-line="true" />
               <osm-tag key="contour_ext" value="elevation_major" zoom-appear="13" force-polygon-line="true" />
               <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="14" force-polygon-line="true" />
