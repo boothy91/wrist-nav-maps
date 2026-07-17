@@ -221,7 +221,7 @@ jobs:
           SIZE_MB=$(du -m "$MERGED" | cut -f1)
           echo "Merged size: ${SIZE_MB}MB"
 
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_POJO"
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_POJO tag-values=true"
 
           if [ "$SIZE_MB" -gt 150 ]; then
             CMD="$CMD type=hd"
