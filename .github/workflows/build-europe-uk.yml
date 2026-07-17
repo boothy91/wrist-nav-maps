@@ -138,13 +138,13 @@ jobs:
             -o "$FILTERED" --overwrite
 
           echo "Generating contours"
-          # FIXED: Swapped --line-cat for --cat to force structured elevation tagging parameters
+          # Restored the correct --line-cat option
           phyghtmap \
             --source=view3 \
             --step=10 \
             --pbf \
             --area="$BBOX" \
-            --cat=500,100 \
+            --line-cat=100,50 \
             --output-prefix=/tmp/contours
 
           CONTOURS=$(ls /tmp/contours*.osm.pbf 2>/dev/null | head -1)
@@ -209,11 +209,7 @@ jobs:
               <osm-tag key="railway" value="rail" zoom-appear="10" />
               
               <!-- Core Mapsforge Contour matching rule sets -->
-              <osm-tag key="contour" value="elevation" zoom-appear="15" force-polygon-line="true" />
-              <osm-tag key="contour" value="elevation_major" zoom-appear="13" force-polygon-line="true" />
-              <osm-tag key="contour" value="elevation_medium" zoom-appear="14" force-polygon-line="true" />
-              <osm-tag key="contour" value="elevation_minor" zoom-appear="15" force-polygon-line="true" />
-              
+              <osm-tag key="contour" value="elevation" zoom-appear="13" force-polygon-line="true" />
               <osm-tag key="contour_ext" value="elevation_major" zoom-appear="13" force-polygon-line="true" />
               <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="14" force-polygon-line="true" />
               <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" force-polygon-line="true" />
