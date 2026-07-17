@@ -161,8 +161,6 @@ jobs:
             --merge \
             --write-pbf file="$MERGED"
 
-          # FIX 1: Swapped out invalid tag '<nodes>' for the spec-compliant '<pois>' container
-          # FIX 2: Appended force-polygon-line to contour paths so boundary clipping handles loops smoothly
           cat << 'EOF' > "$TAG_POJO"
           <?xml version="1.0" encoding="UTF-8"?>
           <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
@@ -209,8 +207,10 @@ jobs:
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
               
-              <!-- Core Mapsforge Contour indexing keys with polygon line enforcement overrides -->
-              <osm-tag key="contour" value="elevation" zoom-appear="13" force-polygon-line="true" />
+              <!-- Retains the raw generic baseline elevation tags -->
+              <osm-tag key="contour" value="elevation" zoom-appear="15" force-polygon-line="true" />
+              
+              <!-- Categorized variants mapping to custom theme extensions -->
               <osm-tag key="contour" value="elevation_major" zoom-appear="13" force-polygon-line="true" />
               <osm-tag key="contour" value="elevation_medium" zoom-appear="14" force-polygon-line="true" />
               <osm-tag key="contour" value="elevation_minor" zoom-appear="15" force-polygon-line="true" />
