@@ -314,7 +314,7 @@ jobs:
               SRC="$PBF"
             else
               SRC="$WORKDIR/piece_${i}_clip.osm.pbf"
-              osmium extract --bbox "$PBBOX" "$PBF" -o "$SRC" --overwrite
+              osmium extract --bbox "$(echo "$PBBOX" | tr ':' ',')" "$PBF" -o "$SRC" --overwrite
             fi
             POUT="$WORKDIR/piece_${i}_out.osm.pbf"
             process_piece "$SRC" "$PBBOX" "$POUT"
