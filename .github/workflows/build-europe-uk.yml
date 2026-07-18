@@ -294,7 +294,8 @@ jobs:
             else
               local cmd="$OSMOSIS_HOME/bin/osmosis"
               for f in "${contour_files[@]}"; do cmd="$cmd --read-pbf file=$f"; done
-              for i in $(seq 2 $num); do cmd="$cmd --merge"; done
+              local mi
+              for mi in $(seq 2 $num); do cmd="$cmd --merge"; done
               cmd="$cmd --write-pbf file=/tmp/contours_all_$$.osm.pbf"
               $cmd
               $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="/tmp/contours_all_$$.osm.pbf" --merge --write-pbf file="$out_pbf"
@@ -326,7 +327,7 @@ jobs:
           else
             cmd="$OSMOSIS_HOME/bin/osmosis"
             for f in "${PIECE_FILES[@]}"; do cmd="$cmd --read-pbf file=$f"; done
-            for i in $(seq 2 ${#PIECE_FILES[@]}); do cmd="$cmd --merge"; done
+            for mi in $(seq 2 ${#PIECE_FILES[@]}); do cmd="$cmd --merge"; done
             cmd="$cmd --write-pbf file=$MERGED"
             $cmd
           fi
@@ -335,7 +336,9 @@ jobs:
           SIZE_MB=$(du -m "$MERGED" | cut -f1)
           echo "Merged size: ${SIZE_MB}MB"
 
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true"
+          # mapfile-writer needs an explicit bbox when the source PBF's header bbox
+          # didn't survive the piece-merge chain (osmosis --merge can drop it).
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E"
           if [ "$SIZE_MB" -gt 150 ]; then
             CMD="$CMD type=hd"
           fi
