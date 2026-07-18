@@ -338,10 +338,12 @@ jobs:
 
           # mapfile-writer needs an explicit bbox when the source PBF's header bbox
           # didn't survive the piece-merge chain (osmosis --merge can drop it).
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E"
-          if [ "$SIZE_MB" -gt 150 ]; then
-            CMD="$CMD type=hd"
-          fi
+          # type=hd always: contour generation inflates node count independent of
+          # byte size (Albania OOM'd well under the old 150MB threshold), so the
+          # disk-backed processor is used unconditionally rather than guessing a size cutoff.
+          # simplification-factor=5: aggressively collapses complex ways (coastlines,
+          # boundaries) at each zoom's base resolution - doesn't affect zoom >12 detail.
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$MERGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=5"
           $CMD
           ls -lh "$OUT"
 
