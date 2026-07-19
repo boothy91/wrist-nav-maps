@@ -2,6 +2,11 @@ name: Build Maps - Europe UK
 
 on:
   workflow_dispatch:
+    inputs:
+      region:
+        description: 'Only build this region id (e.g. "scotland"). Leave blank to build all.'
+        required: false
+        default: ''
 
 jobs:
   generate-matrix:
@@ -19,6 +24,9 @@ jobs:
           import json
           with open("config/regions/regions-europe-uk.json") as f:
               regions = json.load(f)
+          only = "${{ github.event.inputs.region }}".strip()
+          if only:
+              regions = [r for r in regions if r["id"] == only]
           print(json.dumps({"region": regions}))
           EOF
           )
@@ -165,10 +173,10 @@ jobs:
               <osm-tag key="landuse" value="forest" zoom-appear="10" />
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
-              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="12" />
-              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="13" />
-              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="14" />
-              <osm-tag key="contour" value="elevation" zoom-appear="14" />
+              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="15" />
+              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="15" />
+              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" />
+              <osm-tag key="contour" value="elevation" zoom-appear="15" />
               <osm-tag key="ele" value="*" zoom-appear="12" />
             </ways>
           </tag-mapping>
@@ -226,14 +234,14 @@ jobs:
           PYEOF
           )
 
-          # Some regions (e.g. Wales) time out on coastline/geometry complexity that
-          # raw size and bbox area can't detect - force a minimum split for known cases.
-          FORCE_SPLIT_REGIONS="europe/united-kingdom/wales"
-          if echo "$FORCE_SPLIT_REGIONS" | tr ',' '\n' | grep -qx "$RID"; then
-            if [ "$PIECES" -lt 2 ]; then
-              echo "$RID is on the forced-split list (known geometry complexity) - overriding piece count"
-              PIECES=2
-            fi
+          # Some regions time out on coastline/geometry complexity (islands, long
+          # coastlines) that raw size and bbox area alone don't capture - force a
+          # minimum piece count for known cases. Keyed on the bare region id used
+          # in config/regions/*.json (e.g. "scotland"), not the geofabrik path.
+          declare -A PIECE_OVERRIDES=( ["scotland"]=12 ["wales"]=4 )
+          if [ -n "${PIECE_OVERRIDES[$RID]:-}" ] && [ "$PIECES" -lt "${PIECE_OVERRIDES[$RID]}" ]; then
+            echo "$RID is on the piece-count override list (known geometry complexity) - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
+            PIECES=${PIECE_OVERRIDES[$RID]}
           fi
 
           echo "PBF: ${PBF_SIZE_MB}MB, bbox area: $(python3 -c "print(round(($E-$W)*($N-$S),1))")deg^2 -> $PIECES piece(s)"
@@ -274,9 +282,9 @@ jobs:
             rm -f /tmp/contours*.osm.pbf
             local attempt ok=0
             for attempt in 1 2 3; do
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --simplifyContoursEpsilon=0.0001 \
+              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --max-nodes-per-way=400 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
-                  --no-zero-contour --jobs=1 --area="$bbox"; then
+                  --no-zero-contour --jobs="$(nproc)" --area="$bbox"; then
                 ok=1; break
               fi
               echo "phyghtmap attempt $attempt failed, retrying in 15s..." >&2
