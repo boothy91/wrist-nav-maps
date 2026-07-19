@@ -274,7 +274,7 @@ jobs:
             rm -f /tmp/contours*.osm.pbf
             local attempt ok=0
             for attempt in 1 2 3; do
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
+              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --simplifyContoursEpsilon=0.0001 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
                   --no-zero-contour --jobs=1 --area="$bbox"; then
                 ok=1; break
