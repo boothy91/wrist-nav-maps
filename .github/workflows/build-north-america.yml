@@ -189,6 +189,7 @@ jobs:
           if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
             echo "Poly downloaded successfully"
             BBOX=$(python3 - << 'PYEOF'
+          import sys
           coords = []
           with open("/tmp/region.poly") as f:
               for line in f:
@@ -199,7 +200,24 @@ jobs:
                       except ValueError:
                           pass
           if coords:
-              lons = [c[0] for c in coords]; lats = [c[1] for c in coords]
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+              raw_span = max(lons) - min(lons)
+              shifted = [lo + 360 if lo < 0 else lo for lo in lons]
+              shifted_span = max(shifted) - min(shifted)
+              if raw_span > 180 and shifted_span < raw_span:
+                  # Antimeridian crossing (e.g. Alaska's western Aleutians):
+                  # a naive min/max balloons to near-global width. Keep only
+                  # the larger of the two longitude clusters (east of 0 vs
+                  # west of 0) rather than spanning the whole planet - this
+                  # drops the far side of the antimeridian from this bbox.
+                  east = [(lo, la) for lo, la in coords if lo >= 0]
+                  west = [(lo, la) for lo, la in coords if lo < 0]
+                  main = east if len(east) >= len(west) else west
+                  dropped = len(coords) - len(main)
+                  print(f"WARNING: antimeridian crossing detected, dropping {dropped} poly points on the far side (raw span {raw_span:.1f} deg)", file=sys.stderr)
+                  lons = [p[0] for p in main]
+                  lats = [p[1] for p in main]
               print(f"{min(lons)-0.2:.4f}:{min(lats)-0.2:.4f}:{max(lons)+0.2:.4f}:{max(lats)+0.2:.4f}")
           PYEOF
           )
