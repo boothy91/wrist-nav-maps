@@ -113,7 +113,7 @@ jobs:
           # exceeds TARGET_AREA_DEG2 (whichever calls for more pieces wins), capped at MAX_PIECES
           TARGET_PBF_MB=100
           TARGET_AREA_DEG2=15
-          MAX_PIECES=6
+          MAX_PIECES=24
 
           mkdir -p output "$HGT_DIR" "$WORKDIR"
 
@@ -357,7 +357,13 @@ jobs:
           $CMD
           ls -lh "$OUT"
 
-          gh release upload maps-north-america "$OUT" --clobber
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-north-america "$OUT" --clobber; then
+              break
+            fi
+            echo "Upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done
           echo "Uploaded $FNAME"
 
   generate-index:
@@ -412,4 +418,10 @@ jobs:
           print(f"index.json: {len(index['regions'])} regions")
           EOF
 
-          gh release upload maps-north-america output/index.json --clobber
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-north-america output/index.json --clobber; then
+              break
+            fi
+            echo "Index upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done
