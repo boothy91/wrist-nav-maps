@@ -34,8 +34,7 @@
   .stat-card .sub { font-size:11px; color:var(--muted); margin-top:4px; }
   .releases { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px; }
   .release-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
-  .release-header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02); cursor:pointer; transition:background 0.15s; text-decoration:none; }
-  .release-header:hover { background:rgba(255,255,255,0.05); }
+  .release-header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border); background:rgba(255,255,255,0.02); }
   .release-name { font-family:var(--mono); font-size:13px; font-weight:600; color:#fff; }
   .release-tag { font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2); padding:2px 8px; border-radius:4px; }
   .release-body { padding:14px 16px; }
@@ -46,6 +45,8 @@
   .progress-fill.complete { background:var(--accent2); }
   .progress-fill.partial { background:var(--warn); }
   .progress-count { font-family:var(--mono); font-size:11px; color:var(--text); width:60px; text-align:right; flex-shrink:0; }
+  .release-meta { display:flex; align-items:center; justify-content:space-between; font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:4px; }
+  .release-updated { font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:8px; }
   .view-release { display:inline-flex; align-items:center; gap:6px; margin-top:12px; font-family:var(--mono); font-size:11px; color:var(--accent); text-decoration:none; border:1px solid rgba(0,212,255,0.2); padding:5px 12px; border-radius:4px; transition:all 0.15s; }
   .view-release:hover { background:rgba(0,212,255,0.08); }
   .spinner { display:inline-block; width:12px; height:12px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; vertical-align:middle; margin-right:6px; }
@@ -103,16 +104,21 @@
 
 <script>
 const OWNER = 'boothy91', REPO = 'wrist-nav-maps';
+const BRANCH = 'main'; // change to 'master' if that's the repo's default branch
+
+// Each release tag maps to the region config file that defines how many
+// maps it should contain. Counts are no longer hardcoded - they're read
+// live from config/regions/*.json so this dashboard never drifts out of
+// sync when regions are added or removed.
 const RELEASES = [
-  { tag:'maps-europe-uk',     name:'Europe — UK',       config:50 },
-  { tag:'maps-europe-1',      name:'Europe Part 1',     config:88 },
-  { tag:'maps-europe-2',      name:'Europe Part 2',     config:61 },
-  { tag:'maps-africa',        name:'Africa',            config:56 },
-  { tag:'maps-asia',          name:'Asia',              config:89 },
-  { tag:'maps-north-america', name:'North America',     config:69 },
-  { tag:'maps-others',        name:'Others',            config:61 },
+  { tag:'maps-europe-uk',     name:'Europe — UK',       regionFile:'regions-europe-uk.json' },
+  { tag:'maps-europe-1',      name:'Europe Part 1',     regionFile:'regions-europe-1.json' },
+  { tag:'maps-europe-2',      name:'Europe Part 2',     regionFile:'regions-europe-2.json' },
+  { tag:'maps-africa',        name:'Africa',            regionFile:'regions-africa.json' },
+  { tag:'maps-asia',          name:'Asia',              regionFile:'regions-asia.json' },
+  { tag:'maps-north-america', name:'North America',     regionFile:'regions-north-america.json' },
+  { tag:'maps-others',        name:'Others',            regionFile:'regions-others.json' },
 ];
-const TOTAL_CONFIG = RELEASES.reduce((s,r)=>s+r.config,0);
 
 function log(msg,type='info') {
   const body=document.getElementById('logBody');
@@ -124,18 +130,47 @@ function log(msg,type='info') {
   body.scrollTop=body.scrollHeight;
 }
 
-async function fetchCount(tag) {
+function timeAgo(iso) {
+  if (!iso) return 'never';
+  const diffMs = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diffMs/60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins/60);
+  if (hrs < 24) return `${hrs}h ago`;
+  const days = Math.floor(hrs/24);
+  return `${days}d ago`;
+}
+
+// Pull the expected map count for a release straight from its region
+// config JSON in the repo, rather than a number baked into this file.
+async function fetchRegionCount(regionFile) {
+  const url = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/config/regions/${regionFile}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${regionFile}`);
+  const regions = await res.json();
+  return Array.isArray(regions) ? regions.length : 0;
+}
+
+// Fetch a release's .map assets, returning how many exist and the most
+// recent upload time among them (used as the release's "last updated").
+async function fetchReleaseInfo(tag) {
   const url = `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`;
   const res = await fetch(url, {headers:{'Accept':'application/vnd.github+json'}});
   if(!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
-  return (data.assets||[]).filter(a=>a.name.endsWith('.map')).length;
+  const mapAssets = (data.assets||[]).filter(a=>a.name.endsWith('.map'));
+  const lastUpdated = mapAssets.length
+    ? mapAssets.map(a=>a.updated_at).sort().slice(-1)[0]
+    : null;
+  return { count: mapAssets.length, lastUpdated };
 }
 
-function buildCard(rel, uploaded) {
+function buildCard(rel, uploaded, config, lastUpdated) {
   const num = typeof uploaded === 'number' ? uploaded : 0;
-  const pct = Math.round((num/rel.config)*100);
-  const remaining = rel.config - num;
+  const cfg = config || 0;
+  const pct = cfg > 0 ? Math.round((num/cfg)*100) : 0;
+  const remaining = Math.max(cfg - num, 0);
   const fillW = Math.max(pct, num>0?3:0);
   const fillClass = pct===100?'complete':'partial';
   const releaseUrl = `https://github.com/${OWNER}/${REPO}/releases/tag/${rel.tag}`;
@@ -149,11 +184,12 @@ function buildCard(rel, uploaded) {
         <div class="progress-row">
           <span class="progress-label">Uploaded</span>
           <div class="progress-bar"><div class="progress-fill ${fillClass}" style="width:${fillW}%"></div></div>
-          <span class="progress-count">${num} / ${rel.config}</span>
+          <span class="progress-count">${num} / ${cfg}</span>
         </div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px;">
-          ${pct}% · ${remaining>0?`<span style="color:var(--warn)">${remaining} remaining</span>`:'<span style="color:var(--accent2)">✓ Complete</span>'}
+        <div class="release-meta">
+          <span>${pct}% · ${remaining>0?`<span style="color:var(--warn)">${remaining} remaining</span>`:'<span style="color:var(--accent2)">✓ Complete</span>'}</span>
         </div>
+        <div class="release-updated">Last updated: ${timeAgo(lastUpdated)}</div>
         <a class="view-release" href="${releaseUrl}" target="_blank" rel="noopener">↗ View release &amp; download maps</a>
       </div>
     </div>`;
@@ -165,35 +201,46 @@ async function fetchData() {
   dot.className='dot running';
   statusText.textContent='Fetching...';
   statusText.style.color='var(--warn)';
-  log('Fetching release data...','info');
+  log('Fetching region configs and release data...','info');
 
   const grid=document.getElementById('releasesGrid');
   grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-family:var(--mono);font-size:13px;"><span class="spinner"></span> Loading...</div>';
 
-  let totalUploaded=0;
+  let totalUploaded=0, totalConfig=0, globalLastUpdated=null;
   const results=[];
 
   for(const rel of RELEASES) {
+    let config = 0, uploaded = 0, lastUpdated = null;
     try {
-      const count = await fetchCount(rel.tag);
-      results.push({...rel, uploaded:count});
-      totalUploaded+=count;
-      log(`${rel.name}: ${count}/${rel.config}`, count===rel.config?'ok':count===0?'err':'warn');
+      config = await fetchRegionCount(rel.regionFile);
     } catch(e) {
-      results.push({...rel, uploaded:0});
-      log(`${rel.name}: failed — ${e.message}`,'err');
+      log(`${rel.name}: failed to read ${rel.regionFile} — ${e.message}`,'err');
     }
+    try {
+      const info = await fetchReleaseInfo(rel.tag);
+      uploaded = info.count;
+      lastUpdated = info.lastUpdated;
+      if (lastUpdated && (!globalLastUpdated || lastUpdated > globalLastUpdated)) {
+        globalLastUpdated = lastUpdated;
+      }
+      log(`${rel.name}: ${uploaded}/${config} · updated ${timeAgo(lastUpdated)}`, uploaded===config && config>0 ?'ok':uploaded===0?'err':'warn');
+    } catch(e) {
+      log(`${rel.name}: failed to fetch release — ${e.message}`,'err');
+    }
+    results.push({...rel, uploaded, config, lastUpdated});
+    totalUploaded += uploaded;
+    totalConfig += config;
   }
 
-  const remaining=TOTAL_CONFIG-totalUploaded;
-  const pct=Math.round((totalUploaded/TOTAL_CONFIG)*100);
-  document.getElementById('totalMaps').textContent=TOTAL_CONFIG;
+  const remaining=Math.max(totalConfig-totalUploaded, 0);
+  const pct=totalConfig>0 ? Math.round((totalUploaded/totalConfig)*100) : 0;
+  document.getElementById('totalMaps').textContent=totalConfig;
   document.getElementById('totalUploaded').textContent=totalUploaded;
   document.getElementById('totalRemaining').textContent=remaining;
   document.getElementById('totalPct').textContent=pct+'%';
-  grid.innerHTML=results.map(r=>buildCard(r,r.uploaded)).join('');
+  grid.innerHTML=results.map(r=>buildCard(r,r.uploaded,r.config,r.lastUpdated)).join('');
 
-  if(remaining===0) {
+  if(remaining===0 && totalConfig>0) {
     dot.className='dot live'; statusText.textContent='All complete'; statusText.style.color='var(--accent2)';
     log('All maps uploaded!','ok');
   } else {
@@ -201,7 +248,8 @@ async function fetchData() {
     log(`${remaining} maps still to upload.`,'warn');
   }
 
-  document.getElementById('lastUpdated').textContent='Last updated: '+new Date().toLocaleTimeString();
+  const lu = document.getElementById('lastUpdated');
+  lu.textContent = `Dashboard refreshed: ${new Date().toLocaleTimeString()} · Most recent map upload: ${globalLastUpdated ? new Date(globalLastUpdated).toLocaleString() : '—'}`;
 }
 
 fetchData();
