@@ -1,0 +1,310 @@
+name: Build Contours - Europe UK
+
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'Only build this region id (e.g. "scotland"). Leave blank to build all.'
+        required: false
+        default: ''
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: set-matrix
+        shell: bash
+        run: |
+          MATRIX=$(python3 << 'EOF'
+          import json
+          with open("config/regions/regions-europe-uk.json") as f:
+              regions = json.load(f)
+          only = "${{ github.event.inputs.region }}".strip()
+          if only:
+              regions = [r for r in regions if r["id"] == only]
+          print(json.dumps({"region": regions}))
+          EOF
+          )
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+
+  build-contours:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+      fail-fast: false
+      max-parallel: 4
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y \
+            osmium-tool \
+            default-jre \
+            wget \
+            jq \
+            python3-gdal \
+            gdal-bin
+
+          python3 -m pip install --upgrade pip
+          python3 -m pip install \
+            "matplotlib<3.5" \
+            "numpy<1.22" \
+            setuptools \
+            beautifulsoup4 \
+            lxml
+
+          python3 -m pip install http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
+
+      - name: Setup Osmosis
+        run: |
+          wget -q --tries=5 --waitretry=15 --retry-connrefused https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
+          unzip -q osmosis-0.49.2.zip -d osmosis_install
+          chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
+          echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
+
+      - name: Ensure contours release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view maps-europe-uk-contours &>/dev/null || gh release create maps-europe-uk-contours \
+            --title "Contours - Europe UK (intermediate)" \
+            --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
+            --latest=false
+
+      - name: Download, filter and generate contours
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -eo pipefail
+
+          RID="${{ matrix.region.id }}"
+          FBASE="${RID//\//-}"
+          PBF_URL="${{ matrix.region.pbf }}"
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+
+          PBF="/tmp/region.osm.pbf"
+          OUT_PBF="output/${FBASE}.osm.pbf"
+          OUT_BBOX="output/${FBASE}.bbox.txt"
+          HGT_DIR="/tmp/hgt_cache"
+          WORKDIR="/tmp/pieces"
+
+          # auto-split tuning: split when raw PBF exceeds TARGET_PBF_MB or bbox area
+          # exceeds TARGET_AREA_DEG2 (whichever calls for more pieces wins), capped at MAX_PIECES
+          TARGET_PBF_MB=100
+          TARGET_AREA_DEG2=15
+          MAX_PIECES=6
+
+          mkdir -p output "$HGT_DIR" "$WORKDIR"
+
+          echo "=== ${{ matrix.region.name }} ==="
+
+          download() {
+            wget -q --timeout=300 --tries=5 --waitretry=15 --retry-connrefused -O "$1" "$2"
+          }
+
+          echo "Downloading PBF..."
+          download "$PBF" "$PBF_URL"
+          ls -lh "$PBF"
+          PBF_SIZE_MB=$(du -m "$PBF" | cut -f1)
+
+          # --- bbox: poly (retried) with sanity-clamped raw-PBF fallback,
+          # and antimeridian-crossing handling (e.g. Alaska-style regions,
+          # kept here for consistency even though UK regions don't need it) ---
+          POLY="/tmp/region.poly"
+          BBOX=""
+          echo "Downloading poly from: $POLY_URL"
+          if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
+            echo "Poly downloaded successfully"
+            BBOX=$(python3 - << 'PYEOF'
+          import sys
+          coords = []
+          with open("/tmp/region.poly") as f:
+              for line in f:
+                  parts = line.strip().split()
+                  if len(parts) == 2:
+                      try:
+                          coords.append((float(parts[0]), float(parts[1])))
+                      except ValueError:
+                          pass
+          if coords:
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+              raw_span = max(lons) - min(lons)
+              shifted = [lo + 360 if lo < 0 else lo for lo in lons]
+              shifted_span = max(shifted) - min(shifted)
+              if raw_span > 180 and shifted_span < raw_span:
+                  east = [(lo, la) for lo, la in coords if lo >= 0]
+                  west = [(lo, la) for lo, la in coords if lo < 0]
+                  main = east if len(east) >= len(west) else west
+                  dropped = len(coords) - len(main)
+                  print(f"WARNING: antimeridian crossing detected, dropping {dropped} poly points on the far side (raw span {raw_span:.1f} deg)", file=sys.stderr)
+                  lons = [p[0] for p in main]
+                  lats = [p[1] for p in main]
+              print(f"{min(lons)-0.2:.4f}:{min(lats)-0.2:.4f}:{max(lons)+0.2:.4f}:{max(lats)+0.2:.4f}")
+          PYEOF
+          )
+          fi
+
+          if [ -z "$BBOX" ]; then
+            echo "Poly unavailable, falling back to PBF extent"
+            FALLBACK_BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]-0.2):\(.[1]-0.2):\(.[2]+0.2):\(.[3]+0.2)"')
+            SANE=$(python3 - "$FALLBACK_BBOX" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1].split(":"))
+          print("ok" if (e - w) <= 10 and (n - s) <= 10 else "bad")
+          PYEOF
+          )
+            if [ "$SANE" = "bad" ]; then
+              echo "ERROR: fallback bbox $FALLBACK_BBOX is implausibly large - likely a mistagged outlier node in the source data. Refusing to run contours against it." >&2
+              exit 1
+            fi
+            BBOX="$FALLBACK_BBOX"
+          fi
+
+          echo "Bounding box: $BBOX"
+          IFS=':' read -r W S E N <<< "$BBOX"
+          echo "$S:$W:$N:$E" > "$OUT_BBOX"
+
+          # --- decide how many pieces this region needs ---
+          PIECES=$(python3 - "$W" "$S" "$E" "$N" "$PBF_SIZE_MB" "$TARGET_PBF_MB" "$TARGET_AREA_DEG2" "$MAX_PIECES" << 'PYEOF'
+          import sys, math
+          w, s, e, n, pbf_mb, target_mb, target_area, max_pieces = map(float, sys.argv[1:9])
+          area = (e - w) * (n - s)
+          need = max(pbf_mb / target_mb, area / target_area, 1.0)
+          print(min(int(math.ceil(need)), int(max_pieces)))
+          PYEOF
+          )
+
+          # Some regions time out on coastline/geometry complexity (islands, long
+          # coastlines) that raw size and bbox area alone don't capture - force a
+          # minimum piece count for known cases. Keyed on the bare region id used
+          # in config/regions/*.json (e.g. "scotland"), not the geofabrik path.
+          declare -A PIECE_OVERRIDES=( ["scotland"]=12 ["wales"]=4 )
+          if [ -n "${PIECE_OVERRIDES[$RID]:-}" ] && [ "$PIECES" -lt "${PIECE_OVERRIDES[$RID]}" ]; then
+            echo "$RID is on the piece-count override list (known geometry complexity) - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
+            PIECES=${PIECE_OVERRIDES[$RID]}
+          fi
+
+          echo "PBF: ${PBF_SIZE_MB}MB, bbox area: $(python3 -c "print(round(($E-$W)*($N-$S),1))")deg^2 -> $PIECES piece(s)"
+
+          # --- build the list of piece bboxes (split along the longer axis) ---
+          BBOX_LIST=$(python3 - "$W" "$S" "$E" "$N" "$PIECES" << 'PYEOF'
+          import sys
+          w, s, e, n, pieces = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), float(sys.argv[4]), int(sys.argv[5])
+          if pieces <= 1:
+              print(f"{w}:{s}:{e}:{n}")
+          else:
+              width, height = e - w, n - s
+              if width >= height:
+                  step = width / pieces
+                  for i in range(pieces):
+                      print(f"{w+i*step}:{s}:{w+(i+1)*step}:{n}")
+              else:
+                  step = height / pieces
+                  for i in range(pieces):
+                      print(f"{w}:{s+i*step}:{e}:{s+(i+1)*step}")
+          PYEOF
+          )
+
+          # --- filter + contour a single piece into $3 ---
+          process_piece() {
+            local src_pbf="$1" bbox="$2" out_pbf="$3"
+            local filtered="/tmp/piece_filtered_$$.osm.pbf"
+
+            osmium tags-filter "$src_pbf" \
+              w/highway w/waterway w/natural w/landuse w/railway \
+              n/place=city,town,village,hamlet,suburb,locality \
+              n/railway n/natural=peak,saddle \
+              n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
+              n/amenity=drinking_water,toilets,parking,shelter \
+              r/route=hiking,foot,bicycle,mtb \
+              -o "$filtered" --overwrite
+
+            rm -f /tmp/contours*.osm.pbf
+            local attempt ok=0
+            for attempt in 1 2 3; do
+              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --max-nodes-per-way=400 \
+                  --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
+                  --no-zero-contour --jobs="$(nproc)" --area="$bbox"; then
+                ok=1; break
+              fi
+              echo "phyghtmap attempt $attempt failed, retrying in 15s..." >&2
+              sleep 15
+            done
+            [ "$ok" -eq 0 ] && echo "phyghtmap failed after 3 attempts, continuing without contours for this piece" >&2
+
+            local contour_files=($(ls /tmp/contours*.osm.pbf 2>/dev/null))
+            local num=${#contour_files[@]}
+
+            if [ "$num" -eq 0 ]; then
+              cp "$filtered" "$out_pbf"
+            elif [ "$num" -eq 1 ]; then
+              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="${contour_files[0]}" --merge --write-pbf file="$out_pbf"
+            else
+              local cmd="$OSMOSIS_HOME/bin/osmosis"
+              for f in "${contour_files[@]}"; do cmd="$cmd --read-pbf file=$f"; done
+              local mi
+              for mi in $(seq 2 $num); do cmd="$cmd --merge"; done
+              cmd="$cmd --write-pbf file=/tmp/contours_all_$$.osm.pbf"
+              $cmd
+              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="/tmp/contours_all_$$.osm.pbf" --merge --write-pbf file="$out_pbf"
+              rm -f "/tmp/contours_all_$$.osm.pbf"
+            fi
+            rm -f "$filtered" /tmp/contours*.osm.pbf
+          }
+
+          PIECE_FILES=()
+          i=0
+          while IFS= read -r PBBOX; do
+            [ -z "$PBBOX" ] && continue
+            i=$((i+1))
+            echo "--- Piece $i/$PIECES, bbox $PBBOX ---"
+            if [ "$PIECES" -le 1 ]; then
+              SRC="$PBF"
+            else
+              SRC="$WORKDIR/piece_${i}_clip.osm.pbf"
+              osmium extract --bbox "$(echo "$PBBOX" | tr ':' ',')" "$PBF" -o "$SRC" --overwrite
+            fi
+            POUT="$WORKDIR/piece_${i}_out.osm.pbf"
+            process_piece "$SRC" "$PBBOX" "$POUT"
+            PIECE_FILES+=("$POUT")
+          done <<< "$BBOX_LIST"
+
+          if [ "${#PIECE_FILES[@]}" -eq 1 ]; then
+            cp "${PIECE_FILES[0]}" "$OUT_PBF"
+          else
+            cmd="$OSMOSIS_HOME/bin/osmosis"
+            for f in "${PIECE_FILES[@]}"; do cmd="$cmd --read-pbf file=$f"; done
+            for mi in $(seq 2 ${#PIECE_FILES[@]}); do cmd="$cmd --merge"; done
+            cmd="$cmd --write-pbf file=$OUT_PBF"
+            $cmd
+          fi
+
+          ls -lh "$OUT_PBF"
+          cat "$OUT_BBOX"
+
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-europe-uk-contours "$OUT_PBF" "$OUT_BBOX" --clobber; then
+              break
+            fi
+            echo "Upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done
+          echo "Uploaded ${FBASE}.osm.pbf and ${FBASE}.bbox.txt"
