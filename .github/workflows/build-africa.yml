@@ -2,6 +2,11 @@ name: Build Maps - Africa
 
 on:
   workflow_dispatch:
+    inputs:
+      region:
+        description: 'Only build this region id (e.g. "south-africa"). Leave blank to build all.'
+        required: false
+        default: ''
 
 jobs:
   generate-matrix:
@@ -13,44 +18,43 @@ jobs:
       - uses: actions/checkout@v4
 
       - id: set-matrix
+        shell: bash
         run: |
-          echo "matrix=$(cat config/regions/regions-africa.json | python3 -c "
-          import json,sys
-          regions = json.load(sys.stdin)
-          print(json.dumps({'region': regions}))
-          ")" >> $GITHUB_OUTPUT
-
+          MATRIX=$(python3 << 'EOF'
+          import json
+          with open("config/regions/regions-africa.json") as f:
+              regions = json.load(f)
+          only = "${{ github.event.inputs.region }}".strip()
+          if only:
+              regions = [r for r in regions if r["id"] == only]
+          print(json.dumps({"region": regions}))
+          EOF
+          )
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
   build-maps:
     needs: generate-matrix
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
     strategy:
       matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
       fail-fast: false
+      max-parallel: 4
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y osmium-tool default-jre wget
-
       - name: Setup Osmosis and mapsforge
         run: |
-          wget -q https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
+          wget -q --tries=5 --waitretry=15 --retry-connrefused https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
-
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
-          wget -q "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
+          wget -q --tries=5 --waitretry=15 --retry-connrefused "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-
           echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
 
       - name: Ensure release exists
@@ -62,60 +66,132 @@ jobs:
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
-      - name: Download, filter and convert
+      - name: Download contoured PBF and write final map
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          RID="${{ matrix.region.id }}"
-          FNAME="${RID//\//-}.map"
+          set -eo pipefail
 
-          PBF="/tmp/region.osm.pbf"
-          FILTERED="/tmp/region_filtered.osm.pbf"
+          RID="${{ matrix.region.id }}"
+          FBASE="${RID//\//-}"
+          FNAME="${FBASE}.map"
           OUT="output/$FNAME"
+          TAG_CONF="/tmp/tag-mapping.xml"
 
           mkdir -p output
 
           echo "=== ${{ matrix.region.name }} ==="
 
-          wget -q --timeout=300 --tries=2 -O "$PBF" "${{ matrix.region.pbf }}"
+          IN_PBF="/tmp/${FBASE}.osm.pbf"
+          IN_BBOX="/tmp/${FBASE}.bbox.txt"
 
-          osmium tags-filter "$PBF" \
-            w/highway \
-            w/waterway \
-            w/natural \
-            w/landuse \
-            w/railway \
-            n/place=city,town,village,hamlet,suburb,locality \
-            n/railway \
-            n/natural=peak,saddle \
-            n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
-            n/amenity=drinking_water,toilets,parking,shelter \
-            r/route=hiking,foot,bicycle,mtb \
-            -o "$FILTERED" --overwrite
+          echo "Downloading contoured PBF from maps-africa-contours release..."
+          for attempt in 1 2 3 4 5; do
+            if gh release download maps-africa-contours \
+                -p "${FBASE}.osm.pbf" -p "${FBASE}.bbox.txt" \
+                -D /tmp --clobber; then
+              break
+            fi
+            echo "Download attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+            if [ "$attempt" -eq 5 ]; then
+              echo "ERROR: could not download ${FBASE}.osm.pbf / .bbox.txt from maps-africa-contours after 5 attempts. Has the contours build run for this region yet?" >&2
+              exit 1
+            fi
+          done
 
-          SIZE_MB=$(du -m "$FILTERED" | cut -f1)
-          echo "Filtered size: ${SIZE_MB}MB"
+          ls -lh "$IN_PBF"
+          IFS=':' read -r S W N E < "$IN_BBOX"
+          echo "Bounding box (from contours stage): S=$S W=$W N=$N E=$E"
 
-          CMD="$OSMOSIS_HOME/bin/osmosis --rb file=$FILTERED --mw file=$OUT"
+          cat << 'XMLEOF' > "$TAG_CONF"
+          <?xml version="1.0" encoding="UTF-8"?>
+          <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
+                       default-zoom-appear="16" profile-name="default-profile">
+            <pois>
+              <osm-tag key="place" value="city" zoom-appear="3" />
+              <osm-tag key="place" value="town" zoom-appear="7" />
+              <osm-tag key="place" value="village" zoom-appear="11" />
+              <osm-tag key="place" value="hamlet" zoom-appear="12" />
+              <osm-tag key="place" value="suburb" zoom-appear="12" />
+              <osm-tag key="place" value="locality" zoom-appear="13" />
+              <osm-tag key="natural" value="peak" zoom-appear="12" />
+              <osm-tag key="natural" value="saddle" zoom-appear="13" />
+              <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
+              <osm-tag key="tourism" value="information" zoom-appear="14" />
+              <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
+              <osm-tag key="tourism" value="camp_site" zoom-appear="13" />
+              <osm-tag key="tourism" value="picnic_site" zoom-appear="14" />
+              <osm-tag key="amenity" value="drinking_water" zoom-appear="14" />
+              <osm-tag key="amenity" value="toilets" zoom-appear="14" />
+              <osm-tag key="amenity" value="parking" zoom-appear="13" />
+              <osm-tag key="amenity" value="shelter" zoom-appear="13" />
+            </pois>
+            <ways>
+              <osm-tag key="highway" value="motorway" zoom-appear="6" />
+              <osm-tag key="highway" value="trunk" zoom-appear="7" />
+              <osm-tag key="highway" value="primary" zoom-appear="9" />
+              <osm-tag key="highway" value="secondary" zoom-appear="10" />
+              <osm-tag key="highway" value="tertiary" zoom-appear="11" />
+              <osm-tag key="highway" value="unclassified" zoom-appear="12" />
+              <osm-tag key="highway" value="residential" zoom-appear="12" />
+              <osm-tag key="highway" value="service" zoom-appear="13" />
+              <osm-tag key="highway" value="track" zoom-appear="12" />
+              <osm-tag key="highway" value="path" zoom-appear="12" />
+              <osm-tag key="highway" value="footway" zoom-appear="13" />
+              <osm-tag key="highway" value="cycleway" zoom-appear="12" />
+              <osm-tag key="waterway" value="river" zoom-appear="11" />
+              <osm-tag key="waterway" value="stream" zoom-appear="13" />
+              <osm-tag key="natural" value="water" zoom-appear="10" />
+              <osm-tag key="natural" value="wood" zoom-appear="10" />
+              <osm-tag key="landuse" value="forest" zoom-appear="10" />
+              <osm-tag key="landuse" value="residential" zoom-appear="11" />
+              <osm-tag key="railway" value="rail" zoom-appear="10" />
+              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="15" />
+              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="15" />
+              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" />
+              <osm-tag key="contour" value="elevation" zoom-appear="15" />
+              <osm-tag key="ele" value="*" zoom-appear="12" />
+            </ways>
+          </tag-mapping>
+          XMLEOF
 
-          if [ "$SIZE_MB" -gt 150 ]; then
-            CMD="$CMD type=hd"
-            echo "Using HD mode"
-          fi
+          # mapfile-writer strictly validates bbox to +/-180 lon, +/-90 lat and
+          # throws IllegalArgumentException otherwise - clamp defensively.
+          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1:5])
+          w = max(w, -180.0)
+          e = min(e, 180.0)
+          s = max(s, -90.0)
+          n = min(n, 90.0)
+          print(f"{w}:{s}:{e}:{n}")
+          PYEOF
+          )
+          IFS=':' read -r W S E N <<< "$CLAMPED"
 
+          SIZE_MB=$(du -m "$IN_PBF" | cut -f1)
+          echo "Input size: ${SIZE_MB}MB"
+
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$IN_PBF --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=5"
           $CMD
-
           ls -lh "$OUT"
 
-          gh release upload maps-africa "$OUT" --clobber
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-africa "$OUT" --clobber; then
+              break
+            fi
+            echo "Upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done
           echo "Uploaded $FNAME"
-
 
   generate-index:
     needs: build-maps
     runs-on: ubuntu-latest
     if: always()
-
     permissions:
       contents: write
 
@@ -140,7 +216,6 @@ jobs:
           env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
 
           uploaded = json.loads(result.stdout or "[]")
-
           base_url = "https://github.com/${{ github.repository }}/releases/download/maps-africa"
 
           index = {
@@ -150,21 +225,26 @@ jobs:
 
           for region in regions:
               fname = region["id"].replace("/", "-") + ".map"
-
               if fname in uploaded:
                   index["regions"].append({
                       "id": region["id"],
                       "name": region["name"],
                       "path": region["path"],
-                      "url": f"{base_url}/{fname}",
+                      "url": f"{base_url}/{fname}"
                   })
 
           os.makedirs("output", exist_ok=True)
-
           with open("output/index.json", "w") as f:
               json.dump(index, f, indent=2)
 
           print(f"index.json: {len(index['regions'])} regions")
           EOF
 
-          gh release upload maps-africa output/index.json --clobber
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-africa output/index.json --clobber; then
+              break
+            fi
+            echo "Index upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done
+          
