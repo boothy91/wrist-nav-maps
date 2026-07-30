@@ -105,8 +105,6 @@ jobs:
           HGT_DIR="/tmp/hgt_cache"
           WORKDIR="/tmp/pieces"
 
-          # auto-split tuning: split when raw PBF exceeds TARGET_PBF_MB or bbox area
-          # exceeds TARGET_AREA_DEG2 (whichever calls for more pieces wins), capped at MAX_PIECES
           TARGET_PBF_MB=100
           TARGET_AREA_DEG2=15
           MAX_PIECES=6
@@ -124,9 +122,6 @@ jobs:
           ls -lh "$PBF"
           PBF_SIZE_MB=$(du -m "$PBF" | cut -f1)
 
-          # --- bbox: poly (retried) with sanity-clamped raw-PBF fallback,
-          # and antimeridian-crossing handling (e.g. Alaska-style regions,
-          # kept here for consistency even though UK regions don't need it) ---
           POLY="/tmp/region.poly"
           BBOX=""
           echo "Downloading poly from: $POLY_URL"
@@ -182,7 +177,6 @@ jobs:
           IFS=':' read -r W S E N <<< "$BBOX"
           echo "$S:$W:$N:$E" > "$OUT_BBOX"
 
-          # --- decide how many pieces this region needs ---
           PIECES=$(python3 - "$W" "$S" "$E" "$N" "$PBF_SIZE_MB" "$TARGET_PBF_MB" "$TARGET_AREA_DEG2" "$MAX_PIECES" << 'PYEOF'
           import sys, math
           w, s, e, n, pbf_mb, target_mb, target_area, max_pieces = map(float, sys.argv[1:9])
@@ -192,10 +186,6 @@ jobs:
           PYEOF
           )
 
-          # Some regions time out on coastline/geometry complexity (islands, long
-          # coastlines) that raw size and bbox area alone don't capture - force a
-          # minimum piece count for known cases. Keyed on the bare region id used
-          # in config/regions/*.json (e.g. "scotland"), not the geofabrik path.
           declare -A PIECE_OVERRIDES=( ["scotland"]=12 ["wales"]=4 )
           if [ -n "${PIECE_OVERRIDES[$RID]:-}" ] && [ "$PIECES" -lt "${PIECE_OVERRIDES[$RID]}" ]; then
             echo "$RID is on the piece-count override list (known geometry complexity) - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
@@ -204,7 +194,6 @@ jobs:
 
           echo "PBF: ${PBF_SIZE_MB}MB, bbox area: $(python3 -c "print(round(($E-$W)*($N-$S),1))")deg^2 -> $PIECES piece(s)"
 
-          # --- build the list of piece bboxes (split along the longer axis) ---
           BBOX_LIST=$(python3 - "$W" "$S" "$E" "$N" "$PIECES" << 'PYEOF'
           import sys
           w, s, e, n, pieces = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), float(sys.argv[4]), int(sys.argv[5])
@@ -223,10 +212,18 @@ jobs:
           PYEOF
           )
 
-          # --- filter + contour a single piece into $3 ---
           process_piece() {
             local src_pbf="$1" bbox="$2" out_pbf="$3"
             local filtered="/tmp/piece_filtered_$$.osm.pbf"
+
+            # Add a 0.05 degree buffer to phyghtmap box to eliminate edge-clipping straight lines
+            local buffered_bbox=$(python3 - "$bbox" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1].split(":"))
+          buf = 0.05
+          print(f"{w-buf}:{s-buf}:{e+buf}:{n+buf}")
+          PYEOF
+          )
 
             osmium tags-filter "$src_pbf" \
               w/highway w/waterway w/natural w/landuse w/railway \
@@ -240,9 +237,10 @@ jobs:
             rm -f /tmp/contours*.osm.pbf
             local attempt ok=0
             for attempt in 1 2 3; do
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --max-nodes-per-way=400 \
+              # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
+              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
-                  --no-zero-contour --jobs="$(nproc)" --area="$bbox"; then
+                  --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox"; then
                 ok=1; break
               fi
               echo "phyghtmap attempt $attempt failed, retrying in 15s..." >&2
@@ -308,3 +306,4 @@ jobs:
             sleep 30
           done
           echo "Uploaded ${FBASE}.osm.pbf and ${FBASE}.bbox.txt"
+          
