@@ -228,6 +228,15 @@ jobs:
             local src_pbf="$1" bbox="$2" out_pbf="$3"
             local filtered="/tmp/piece_filtered_$$.osm.pbf"
 
+            # Add a 0.05 degree buffer to phyghtmap box to eliminate edge-clipping straight lines
+            local buffered_bbox=$(python3 - "$bbox" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1].split(":"))
+          buf = 0.05
+          print(f"{w-buf}:{s-buf}:{e+buf}:{n+buf}")
+          PYEOF
+          )
+
             osmium tags-filter "$src_pbf" \
               w/highway w/waterway w/natural w/landuse w/railway \
               n/place=city,town,village,hamlet,suburb,locality \
@@ -240,9 +249,10 @@ jobs:
             rm -f /tmp/contours*.osm.pbf
             local attempt ok=0
             for attempt in 1 2 3; do
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 --max-nodes-per-way=400 \
+              # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
+              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
-                  --no-zero-contour --jobs="$(nproc)" --area="$bbox"; then
+                  --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox"; then
                 ok=1; break
               fi
               echo "phyghtmap attempt $attempt failed, retrying in 15s..." >&2
