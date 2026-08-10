@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       region:
-        description: 'Only build this region id (e.g. "scotland"). Leave blank to build all.'
+        description: 'Only build this region id (e.g. "austria"). Leave blank to build all.'
         required: false
         default: ''
 
@@ -125,8 +125,7 @@ jobs:
           PBF_SIZE_MB=$(du -m "$PBF" | cut -f1)
 
           # --- bbox: poly (retried) with sanity-clamped raw-PBF fallback,
-          # and antimeridian-crossing handling (e.g. Alaska-style regions,
-          # kept here for consistency even though UK regions don't need it) ---
+          # and antimeridian-crossing handling ---
           POLY="/tmp/region.poly"
           BBOX=""
           echo "Downloading poly from: $POLY_URL"
@@ -192,13 +191,9 @@ jobs:
           PYEOF
           )
 
-          # Some regions time out on coastline/geometry complexity (islands, long
-          # coastlines) that raw size and bbox area alone don't capture - force a
-          # minimum piece count for known cases. Keyed on the bare region id used
-          # in config/regions/*.json (e.g. "scotland"), not the geofabrik path.
           declare -A PIECE_OVERRIDES=()
           if [ -n "${PIECE_OVERRIDES[$RID]:-}" ] && [ "$PIECES" -lt "${PIECE_OVERRIDES[$RID]}" ]; then
-            echo "$RID is on the piece-count override list (known geometry complexity) - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
+            echo "$RID is on the piece-count override list - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
             PIECES=${PIECE_OVERRIDES[$RID]}
           fi
 
@@ -223,12 +218,15 @@ jobs:
           PYEOF
           )
 
-          # --- filter + contour a single piece into $3 ---
+          # --- filter + contour a single piece into $3. $4 is this piece's
+          # index (1-based), used to give phyghtmap a unique node/way ID
+          # range per piece so contour ways from different pieces can never
+          # collide when the final osmium merge dedupes by (type, id, version). ---
           process_piece() {
-            local src_pbf="$1" bbox="$2" out_pbf="$3"
+            local src_pbf="$1" bbox="$2" out_pbf="$3" piece_idx="$4"
             local filtered="/tmp/piece_filtered_$$.osm.pbf"
 
-            # Add a 0.05 degree buffer to phyghtmap box to eliminate edge-clipping straight lines
+            # Add a 0.05 degree buffer to phyghtmap's box to eliminate edge-clipping straight lines
             local buffered_bbox=$(python3 - "$bbox" << 'PYEOF'
           import sys
           w, s, e, n = map(float, sys.argv[1].split(":"))
@@ -247,10 +245,14 @@ jobs:
               -o "$filtered" --overwrite
 
             rm -f /tmp/contours*.osm.pbf
+            local id_offset=$((10000000 + piece_idx * 1000000000))
             local attempt ok=0
             for attempt in 1 2 3; do
-              # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
+              # Removed --max-nodes-per-way limit to prevent continuous contour ways
+              # from chopping mid-flight. Unique --start-node-id/--start-way-id per
+              # piece prevents different pieces' contour ways sharing an ID.
               if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
+                  --start-node-id="$id_offset" --start-way-id="$id_offset" \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
                   --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox"; then
                 ok=1; break
@@ -290,21 +292,25 @@ jobs:
               SRC="$PBF"
             else
               SRC="$WORKDIR/piece_${i}_clip.osm.pbf"
+              # NOTE: osmium extract's default complete_ways strategy does NOT
+              # clip ways at this bbox - a way crossing into an adjacent piece
+              # is extracted whole into BOTH pieces. That's fine as long as the
+              # final recombination (below) uses osmium merge, which dedupes
+              # matching (type, id, version) objects - unlike osmosis --merge,
+              # which has no such guarantee and previously produced corrupted
+              # long-diagonal-line rendering artifacts from mismerged duplicates.
               osmium extract --bbox "$(echo "$PBBOX" | tr ':' ',')" "$PBF" -o "$SRC" --overwrite
             fi
             POUT="$WORKDIR/piece_${i}_out.osm.pbf"
-            process_piece "$SRC" "$PBBOX" "$POUT"
+            process_piece "$SRC" "$PBBOX" "$POUT" "$i"
             PIECE_FILES+=("$POUT")
           done <<< "$BBOX_LIST"
 
           if [ "${#PIECE_FILES[@]}" -eq 1 ]; then
             cp "${PIECE_FILES[0]}" "$OUT_PBF"
           else
-            cmd="$OSMOSIS_HOME/bin/osmosis"
-            for f in "${PIECE_FILES[@]}"; do cmd="$cmd --read-pbf file=$f"; done
-            for mi in $(seq 2 ${#PIECE_FILES[@]}); do cmd="$cmd --merge"; done
-            cmd="$cmd --write-pbf file=$OUT_PBF"
-            $cmd
+            echo "Merging ${#PIECE_FILES[@]} pieces with osmium merge (dedupes objects duplicated across piece boundaries)..."
+            osmium merge "${PIECE_FILES[@]}" -o "$OUT_PBF" --overwrite
           fi
 
           ls -lh "$OUT_PBF"
