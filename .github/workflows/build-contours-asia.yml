@@ -32,8 +32,37 @@ jobs:
           )
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
+  ensure-releases:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      # Created once, up front, before the matrix fans out. Doing this per-matrix-job
+      # instead causes a check-then-act race: multiple parallel jobs can all see
+      # "release doesn't exist yet" and then all try to create it, and every job
+      # after the first one fails with "Release.tag_name already exists".
+      - name: Ensure contours release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view maps-asia-contours &>/dev/null || gh release create maps-asia-contours \
+            --title "Contours - Asia (intermediate)" \
+            --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
+            --latest=false
+
+      - name: Ensure contours-map release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view maps-asia-contours-map &>/dev/null || gh release create maps-asia-contours-map \
+            --title "Contour overlay .map files - Asia" \
+            --notes "Standalone contour-only mapsforge .map files, one per region. Contains no base map data (no roads/water/etc) - intended to be added as a second TileRendererLayer stacked on top of the base map layer in the app, not as a replacement map." \
+            --latest=false
+
   build-contours:
-    needs: generate-matrix
+    needs: [generate-matrix, ensure-releases]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -79,14 +108,18 @@ jobs:
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
 
-      - name: Ensure contours release exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Registers the mapsforge-map-writer plugin with Osmosis so we can
+      # emit .map files directly (osmosis --mapfile-writer ...) instead of
+      # only intermediate .osm.pbf files.
+      - name: Setup mapsforge-map-writer plugin
         run: |
-          gh release view maps-asia-contours &>/dev/null || gh release create maps-asia-contours \
-            --title "Contours - Asia (intermediate)" \
-            --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
-            --latest=false
+          MW_VERSION="0.18.0"
+          PLUGIN_DIR="$HOME/.openstreetmap/osmosis/plugins"
+          mkdir -p "$PLUGIN_DIR"
+          wget -q --tries=5 --waitretry=15 --retry-connrefused \
+            -O "$PLUGIN_DIR/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar" \
+            "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/${MW_VERSION}/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar"
+          ls -lh "$PLUGIN_DIR"
 
       - name: Download, filter and generate contours
         env:
@@ -102,14 +135,14 @@ jobs:
           PBF="/tmp/region.osm.pbf"
           OUT_PBF="output/${FBASE}.osm.pbf"
           OUT_BBOX="output/${FBASE}.bbox.txt"
+          CONTOURS_ONLY_PBF="output/${FBASE}.contours-only.osm.pbf"
+          CONTOURS_MAP="output/${FBASE}-contours.map"
           HGT_DIR="/tmp/hgt_cache"
           WORKDIR="/tmp/pieces"
 
-          # auto-split tuning: split when raw PBF exceeds TARGET_PBF_MB or bbox area
-          # exceeds TARGET_AREA_DEG2 (whichever calls for more pieces wins), capped at MAX_PIECES
           TARGET_PBF_MB=100
           TARGET_AREA_DEG2=15
-          MAX_PIECES=24
+          MAX_PIECES=6
 
           mkdir -p output "$HGT_DIR" "$WORKDIR"
 
@@ -124,9 +157,6 @@ jobs:
           ls -lh "$PBF"
           PBF_SIZE_MB=$(du -m "$PBF" | cut -f1)
 
-          # --- bbox: poly (retried) with sanity-clamped raw-PBF fallback,
-          # and antimeridian-crossing handling (e.g. Alaska-style regions,
-          # kept here for consistency even though UK regions don't need it) ---
           POLY="/tmp/region.poly"
           BBOX=""
           echo "Downloading poly from: $POLY_URL"
@@ -182,7 +212,6 @@ jobs:
           IFS=':' read -r W S E N <<< "$BBOX"
           echo "$S:$W:$N:$E" > "$OUT_BBOX"
 
-          # --- decide how many pieces this region needs ---
           PIECES=$(python3 - "$W" "$S" "$E" "$N" "$PBF_SIZE_MB" "$TARGET_PBF_MB" "$TARGET_AREA_DEG2" "$MAX_PIECES" << 'PYEOF'
           import sys, math
           w, s, e, n, pbf_mb, target_mb, target_area, max_pieces = map(float, sys.argv[1:9])
@@ -192,11 +221,7 @@ jobs:
           PYEOF
           )
 
-          # Some regions time out on coastline/geometry complexity (islands, long
-          # coastlines) that raw size and bbox area alone don't capture - force a
-          # minimum piece count for known cases. Keyed on the bare region id used
-          # in config/regions/*.json (e.g. "scotland"), not the geofabrik path.
-          declare -A PIECE_OVERRIDES=()
+          declare -A PIECE_OVERRIDES=( ["scotland"]=12 ["wales"]=4 )
           if [ -n "${PIECE_OVERRIDES[$RID]:-}" ] && [ "$PIECES" -lt "${PIECE_OVERRIDES[$RID]}" ]; then
             echo "$RID is on the piece-count override list (known geometry complexity) - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
             PIECES=${PIECE_OVERRIDES[$RID]}
@@ -204,7 +229,6 @@ jobs:
 
           echo "PBF: ${PBF_SIZE_MB}MB, bbox area: $(python3 -c "print(round(($E-$W)*($N-$S),1))")deg^2 -> $PIECES piece(s)"
 
-          # --- build the list of piece bboxes (split along the longer axis) ---
           BBOX_LIST=$(python3 - "$W" "$S" "$E" "$N" "$PIECES" << 'PYEOF'
           import sys
           w, s, e, n, pieces = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), float(sys.argv[4]), int(sys.argv[5])
@@ -223,9 +247,8 @@ jobs:
           PYEOF
           )
 
-          # --- filter + contour a single piece into $3 ---
           process_piece() {
-            local src_pbf="$1" bbox="$2" out_pbf="$3"
+            local src_pbf="$1" bbox="$2" out_pbf="$3" contours_only_out="$4"
             local filtered="/tmp/piece_filtered_$$.osm.pbf"
 
             # Add a 0.05 degree buffer to phyghtmap box to eliminate edge-clipping straight lines
@@ -263,24 +286,34 @@ jobs:
             local contour_files=($(ls /tmp/contours*.osm.pbf 2>/dev/null))
             local num=${#contour_files[@]}
 
+            # Build a single contours-only pbf for this piece, BEFORE merging
+            # with the filtered base tags, so we still have a clean contours
+            # source to write a standalone .map from later.
             if [ "$num" -eq 0 ]; then
-              cp "$filtered" "$out_pbf"
+              : > /dev/null   # no contours for this piece - leave contours_only_out unset
             elif [ "$num" -eq 1 ]; then
-              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="${contour_files[0]}" --merge --write-pbf file="$out_pbf"
+              cp "${contour_files[0]}" "$contours_only_out"
             else
               local cmd="$OSMOSIS_HOME/bin/osmosis"
               for f in "${contour_files[@]}"; do cmd="$cmd --read-pbf file=$f"; done
               local mi
               for mi in $(seq 2 $num); do cmd="$cmd --merge"; done
-              cmd="$cmd --write-pbf file=/tmp/contours_all_$$.osm.pbf"
+              cmd="$cmd --write-pbf file=$contours_only_out"
               $cmd
-              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="/tmp/contours_all_$$.osm.pbf" --merge --write-pbf file="$out_pbf"
-              rm -f "/tmp/contours_all_$$.osm.pbf"
+            fi
+
+            if [ "$num" -eq 0 ]; then
+              cp "$filtered" "$out_pbf"
+            elif [ "$num" -eq 1 ]; then
+              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="${contour_files[0]}" --merge --write-pbf file="$out_pbf"
+            else
+              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="$contours_only_out" --merge --write-pbf file="$out_pbf"
             fi
             rm -f "$filtered" /tmp/contours*.osm.pbf
           }
 
           PIECE_FILES=()
+          CONTOUR_PIECE_FILES=()
           i=0
           while IFS= read -r PBBOX; do
             [ -z "$PBBOX" ] && continue
@@ -293,8 +326,10 @@ jobs:
               osmium extract --bbox "$(echo "$PBBOX" | tr ':' ',')" "$PBF" -o "$SRC" --overwrite
             fi
             POUT="$WORKDIR/piece_${i}_out.osm.pbf"
-            process_piece "$SRC" "$PBBOX" "$POUT"
+            CPOUT="$WORKDIR/piece_${i}_contours.osm.pbf"
+            process_piece "$SRC" "$PBBOX" "$POUT" "$CPOUT"
             PIECE_FILES+=("$POUT")
+            [ -f "$CPOUT" ] && CONTOUR_PIECE_FILES+=("$CPOUT")
           done <<< "$BBOX_LIST"
 
           if [ "${#PIECE_FILES[@]}" -eq 1 ]; then
@@ -305,6 +340,30 @@ jobs:
             for mi in $(seq 2 ${#PIECE_FILES[@]}); do cmd="$cmd --merge"; done
             cmd="$cmd --write-pbf file=$OUT_PBF"
             $cmd
+          fi
+
+          # Merge the contours-only pieces for this region (if any survived)
+          if [ "${#CONTOUR_PIECE_FILES[@]}" -eq 0 ]; then
+            echo "WARNING: no contours generated for any piece in $RID - skipping contours-only outputs" >&2
+          elif [ "${#CONTOUR_PIECE_FILES[@]}" -eq 1 ]; then
+            cp "${CONTOUR_PIECE_FILES[0]}" "$CONTOURS_ONLY_PBF"
+          else
+            cmd="$OSMOSIS_HOME/bin/osmosis"
+            for f in "${CONTOUR_PIECE_FILES[@]}"; do cmd="$cmd --read-pbf file=$f"; done
+            for mi in $(seq 2 ${#CONTOUR_PIECE_FILES[@]}); do cmd="$cmd --merge"; done
+            cmd="$cmd --write-pbf file=$CONTOURS_ONLY_PBF"
+            $cmd
+          fi
+
+          # Write the standalone contour overlay .map, if we have contours
+          if [ -f "$CONTOURS_ONLY_PBF" ]; then
+            "$OSMOSIS_HOME/bin/osmosis" \
+              --read-pbf file="$CONTOURS_ONLY_PBF" \
+              --mapfile-writer \
+                file="$CONTOURS_MAP" \
+                tag-conf-file="$(pwd)/config/tag-mapping-contours.xml" \
+                bbox="$S,$W,$N,$E"
+            ls -lh "$CONTOURS_MAP"
           fi
 
           ls -lh "$OUT_PBF"
@@ -318,3 +377,14 @@ jobs:
             sleep 30
           done
           echo "Uploaded ${FBASE}.osm.pbf and ${FBASE}.bbox.txt"
+
+          if [ -f "$CONTOURS_MAP" ]; then
+            for attempt in 1 2 3 4 5; do
+              if gh release upload maps-asia-contours-map "$CONTOURS_MAP" --clobber; then
+                break
+              fi
+              echo "Upload attempt $attempt failed, retrying in 30s..." >&2
+              sleep 30
+            done
+            echo "Uploaded ${FBASE}-contours.map"
+          fi
