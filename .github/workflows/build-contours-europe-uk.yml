@@ -32,8 +32,37 @@ jobs:
           )
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
+  ensure-releases:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      # Created once, up front, before the matrix fans out. Doing this per-matrix-job
+      # instead causes a check-then-act race: multiple parallel jobs can all see
+      # "release doesn't exist yet" and then all try to create it, and every job
+      # after the first one fails with "Release.tag_name already exists".
+      - name: Ensure contours release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view maps-europe-uk-contours &>/dev/null || gh release create maps-europe-uk-contours \
+            --title "Contours - Europe UK (intermediate)" \
+            --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
+            --latest=false
+
+      - name: Ensure contours-map release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view maps-europe-uk-contours-map &>/dev/null || gh release create maps-europe-uk-contours-map \
+            --title "Contour overlay .map files - Europe UK" \
+            --notes "Standalone contour-only mapsforge .map files, one per region. Contains no base map data (no roads/water/etc) - intended to be added as a second TileRendererLayer stacked on top of the base map layer in the app, not as a replacement map." \
+            --latest=false
+
   build-contours:
-    needs: generate-matrix
+    needs: [generate-matrix, ensure-releases]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -79,7 +108,7 @@ jobs:
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
 
-      # NEW: registers the mapsforge-map-writer plugin with Osmosis so we can
+      # Registers the mapsforge-map-writer plugin with Osmosis so we can
       # emit .map files directly (osmosis --mapfile-writer ...) instead of
       # only intermediate .osm.pbf files.
       - name: Setup mapsforge-map-writer plugin
@@ -91,25 +120,6 @@ jobs:
             -O "$PLUGIN_DIR/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar" \
             "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/${MW_VERSION}/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar"
           ls -lh "$PLUGIN_DIR"
-
-      - name: Ensure contours release exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release view maps-europe-uk-contours &>/dev/null || gh release create maps-europe-uk-contours \
-            --title "Contours - Europe UK (intermediate)" \
-            --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
-            --latest=false
-
-      # NEW: separate release for the standalone contour-only .map overlay files
-      - name: Ensure contours-map release exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release view maps-europe-uk-contours-map &>/dev/null || gh release create maps-europe-uk-contours-map \
-            --title "Contour overlay .map files - Europe UK" \
-            --notes "Standalone contour-only mapsforge .map files, one per region. Contains no base map data (no roads/water/etc) - intended to be added as a second TileRendererLayer stacked on top of the base map layer in the app, not as a replacement map." \
-            --latest=false
 
       - name: Download, filter and generate contours
         env:
