@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       region:
-        description: 'Only build this region id (e.g. "south-africa"). Leave blank to build all.'
+        description: 'Only build this region id (e.g. "scotland"). Leave blank to build all.'
         required: false
         default: ''
 
@@ -149,17 +149,10 @@ jobs:
               <osm-tag key="landuse" value="forest" zoom-appear="10" />
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
-              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="15" />
-              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="15" />
-              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" />
-              <osm-tag key="contour" value="elevation" zoom-appear="15" />
-              <osm-tag key="ele" value="*" zoom-appear="12" />
             </ways>
           </tag-mapping>
           XMLEOF
 
-          # mapfile-writer strictly validates bbox to +/-180 lon, +/-90 lat and
-          # throws IllegalArgumentException otherwise - clamp defensively.
           CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
           import sys
           w, s, e, n = map(float, sys.argv[1:5])
