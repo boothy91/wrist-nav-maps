@@ -149,11 +149,6 @@ jobs:
               <osm-tag key="landuse" value="forest" zoom-appear="10" />
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
-              <osm-tag key="contour_ext" value="elevation_major" zoom-appear="15" />
-              <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="15" />
-              <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" />
-              <osm-tag key="contour" value="elevation" zoom-appear="15" />
-              <osm-tag key="ele" value="*" zoom-appear="12" />
             </ways>
           </tag-mapping>
           XMLEOF
@@ -246,4 +241,3 @@ jobs:
             echo "Index upload attempt $attempt failed, retrying in 30s..." >&2
             sleep 30
           done
-          
