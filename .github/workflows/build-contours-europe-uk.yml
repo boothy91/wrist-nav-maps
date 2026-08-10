@@ -79,6 +79,19 @@ jobs:
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
 
+      # NEW: registers the mapsforge-map-writer plugin with Osmosis so we can
+      # emit .map files directly (osmosis --mapfile-writer ...) instead of
+      # only intermediate .osm.pbf files.
+      - name: Setup mapsforge-map-writer plugin
+        run: |
+          MW_VERSION="0.18.0"
+          PLUGIN_DIR="$HOME/.openstreetmap/osmosis/plugins"
+          mkdir -p "$PLUGIN_DIR"
+          wget -q --tries=5 --waitretry=15 --retry-connrefused \
+            -O "$PLUGIN_DIR/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar" \
+            "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/${MW_VERSION}/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar"
+          ls -lh "$PLUGIN_DIR"
+
       - name: Ensure contours release exists
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -86,6 +99,16 @@ jobs:
           gh release view maps-europe-uk-contours &>/dev/null || gh release create maps-europe-uk-contours \
             --title "Contours - Europe UK (intermediate)" \
             --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
+            --latest=false
+
+      # NEW: separate release for the standalone contour-only .map overlay files
+      - name: Ensure contours-map release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view maps-europe-uk-contours-map &>/dev/null || gh release create maps-europe-uk-contours-map \
+            --title "Contour overlay .map files - Europe UK" \
+            --notes "Standalone contour-only mapsforge .map files, one per region. Contains no base map data (no roads/water/etc) - intended to be added as a second TileRendererLayer stacked on top of the base map layer in the app, not as a replacement map." \
             --latest=false
 
       - name: Download, filter and generate contours
@@ -102,6 +125,8 @@ jobs:
           PBF="/tmp/region.osm.pbf"
           OUT_PBF="output/${FBASE}.osm.pbf"
           OUT_BBOX="output/${FBASE}.bbox.txt"
+          CONTOURS_ONLY_PBF="output/${FBASE}.contours-only.osm.pbf"
+          CONTOURS_MAP="output/${FBASE}-contours.map"
           HGT_DIR="/tmp/hgt_cache"
           WORKDIR="/tmp/pieces"
 
@@ -213,7 +238,7 @@ jobs:
           )
 
           process_piece() {
-            local src_pbf="$1" bbox="$2" out_pbf="$3"
+            local src_pbf="$1" bbox="$2" out_pbf="$3" contours_only_out="$4"
             local filtered="/tmp/piece_filtered_$$.osm.pbf"
 
             # Add a 0.05 degree buffer to phyghtmap box to eliminate edge-clipping straight lines
@@ -251,24 +276,34 @@ jobs:
             local contour_files=($(ls /tmp/contours*.osm.pbf 2>/dev/null))
             local num=${#contour_files[@]}
 
+            # Build a single contours-only pbf for this piece, BEFORE merging
+            # with the filtered base tags, so we still have a clean contours
+            # source to write a standalone .map from later.
             if [ "$num" -eq 0 ]; then
-              cp "$filtered" "$out_pbf"
+              : > /dev/null   # no contours for this piece - leave contours_only_out unset
             elif [ "$num" -eq 1 ]; then
-              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="${contour_files[0]}" --merge --write-pbf file="$out_pbf"
+              cp "${contour_files[0]}" "$contours_only_out"
             else
               local cmd="$OSMOSIS_HOME/bin/osmosis"
               for f in "${contour_files[@]}"; do cmd="$cmd --read-pbf file=$f"; done
               local mi
               for mi in $(seq 2 $num); do cmd="$cmd --merge"; done
-              cmd="$cmd --write-pbf file=/tmp/contours_all_$$.osm.pbf"
+              cmd="$cmd --write-pbf file=$contours_only_out"
               $cmd
-              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="/tmp/contours_all_$$.osm.pbf" --merge --write-pbf file="$out_pbf"
-              rm -f "/tmp/contours_all_$$.osm.pbf"
+            fi
+
+            if [ "$num" -eq 0 ]; then
+              cp "$filtered" "$out_pbf"
+            elif [ "$num" -eq 1 ]; then
+              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="${contour_files[0]}" --merge --write-pbf file="$out_pbf"
+            else
+              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="$contours_only_out" --merge --write-pbf file="$out_pbf"
             fi
             rm -f "$filtered" /tmp/contours*.osm.pbf
           }
 
           PIECE_FILES=()
+          CONTOUR_PIECE_FILES=()
           i=0
           while IFS= read -r PBBOX; do
             [ -z "$PBBOX" ] && continue
@@ -281,8 +316,10 @@ jobs:
               osmium extract --bbox "$(echo "$PBBOX" | tr ':' ',')" "$PBF" -o "$SRC" --overwrite
             fi
             POUT="$WORKDIR/piece_${i}_out.osm.pbf"
-            process_piece "$SRC" "$PBBOX" "$POUT"
+            CPOUT="$WORKDIR/piece_${i}_contours.osm.pbf"
+            process_piece "$SRC" "$PBBOX" "$POUT" "$CPOUT"
             PIECE_FILES+=("$POUT")
+            [ -f "$CPOUT" ] && CONTOUR_PIECE_FILES+=("$CPOUT")
           done <<< "$BBOX_LIST"
 
           if [ "${#PIECE_FILES[@]}" -eq 1 ]; then
@@ -293,6 +330,30 @@ jobs:
             for mi in $(seq 2 ${#PIECE_FILES[@]}); do cmd="$cmd --merge"; done
             cmd="$cmd --write-pbf file=$OUT_PBF"
             $cmd
+          fi
+
+          # Merge the contours-only pieces for this region (if any survived)
+          if [ "${#CONTOUR_PIECE_FILES[@]}" -eq 0 ]; then
+            echo "WARNING: no contours generated for any piece in $RID - skipping contours-only outputs" >&2
+          elif [ "${#CONTOUR_PIECE_FILES[@]}" -eq 1 ]; then
+            cp "${CONTOUR_PIECE_FILES[0]}" "$CONTOURS_ONLY_PBF"
+          else
+            cmd="$OSMOSIS_HOME/bin/osmosis"
+            for f in "${CONTOUR_PIECE_FILES[@]}"; do cmd="$cmd --read-pbf file=$f"; done
+            for mi in $(seq 2 ${#CONTOUR_PIECE_FILES[@]}); do cmd="$cmd --merge"; done
+            cmd="$cmd --write-pbf file=$CONTOURS_ONLY_PBF"
+            $cmd
+          fi
+
+          # Write the standalone contour overlay .map, if we have contours
+          if [ -f "$CONTOURS_ONLY_PBF" ]; then
+            "$OSMOSIS_HOME/bin/osmosis" \
+              --read-pbf file="$CONTOURS_ONLY_PBF" \
+              --mapfile-writer \
+                file="$CONTOURS_MAP" \
+                tag-conf-file="$(pwd)/config/tag-mapping-contours.xml" \
+                bbox="$S,$W,$N,$E"
+            ls -lh "$CONTOURS_MAP"
           fi
 
           ls -lh "$OUT_PBF"
@@ -306,4 +367,14 @@ jobs:
             sleep 30
           done
           echo "Uploaded ${FBASE}.osm.pbf and ${FBASE}.bbox.txt"
-          
+
+          if [ -f "$CONTOURS_MAP" ]; then
+            for attempt in 1 2 3 4 5; do
+              if gh release upload maps-europe-uk-contours-map "$CONTOURS_MAP" --clobber; then
+                break
+              fi
+              echo "Upload attempt $attempt failed, retrying in 30s..." >&2
+              sleep 30
+            done
+            echo "Uploaded ${FBASE}-contours.map"
+          fi
