@@ -363,7 +363,8 @@ jobs:
               --mapfile-writer \
                 file="$CONTOURS_MAP" \
                 tag-conf-file="$(pwd)/config/tag-mapping-contours.xml" \
-                bbox="$S,$W,$N,$E"
+                bbox="$S,$W,$N,$E" \
+                type=hd
             ls -lh "$CONTOURS_MAP"
           fi
 
