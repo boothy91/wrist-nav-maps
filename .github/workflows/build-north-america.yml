@@ -229,12 +229,13 @@ jobs:
           echo "Filtered PBF size: ${SIZE_MB}MB"
 
           # simplification-factor=1 to stop Map-Writer from collapsing curve points into straight vectors
-          # zoom-interval-conf caps the highest subfile at zoom 17 instead of mapsforge's
-          # default of 21. For a huge, sparse bbox (e.g. Greenland) the writer has to
-          # enumerate/index tiles across the whole bbox at whatever max zoom it's given,
-          # and that tile count explodes at zoom 21 regardless of how little data there
-          # actually is - that's what was OOMing, not overall data volume.
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$FILTERED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 zoom-interval-conf=5,0,7,10,8,11,14,12,17"
+          # First attempt (max zoom 21 -> 17) crashed at the same relative point, which
+          # points at the deepest interval's BASE zoom (was 14) as the real driver, not
+          # max zoom - base zoom sets the tile-index grid size across the whole bbox.
+          # Collapsing to two intervals and dropping that base zoom to 10 cuts the grid
+          # by ~16x per axis-doubling. This is the next experiment, not a confirmed fix -
+          # re-check the run.
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$FILTERED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 zoom-interval-conf=5,0,7,10,8,17"
           $CMD
           ls -lh "$OUT"
 
