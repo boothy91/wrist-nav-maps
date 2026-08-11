@@ -46,6 +46,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y osmium-tool wget jq
+
       - name: Setup Osmosis and mapsforge
         run: |
           wget -q --tries=5 --waitretry=15 --retry-connrefused https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
@@ -55,7 +60,7 @@ jobs:
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q --tries=5 --waitretry=15 --retry-connrefused "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-          echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
+          echo "JAVACMD_OPTIONS=-Xmx13000m" >> $GITHUB_ENV
 
       - name: Ensure release exists
         env:
@@ -66,7 +71,7 @@ jobs:
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
-      - name: Download contoured PBF and write final map
+      - name: Download, filter and write map
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -74,6 +79,11 @@ jobs:
 
           RID="${{ matrix.region.id }}"
           FBASE="${RID//\//-}"
+          PBF_URL="${{ matrix.region.pbf }}"
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+
+          PBF="/tmp/region.osm.pbf"
+          FILTERED="/tmp/${FBASE}.filtered.osm.pbf"
           FNAME="${FBASE}.map"
           OUT="output/$FNAME"
           TAG_CONF="/tmp/tag-mapping.xml"
@@ -82,27 +92,89 @@ jobs:
 
           echo "=== ${{ matrix.region.name }} ==="
 
-          IN_PBF="/tmp/${FBASE}.osm.pbf"
-          IN_BBOX="/tmp/${FBASE}.bbox.txt"
+          download() {
+            wget -q --timeout=300 --tries=5 --waitretry=15 --retry-connrefused -O "$1" "$2"
+          }
 
-          echo "Downloading contoured PBF from maps-asia-contours release..."
-          for attempt in 1 2 3 4 5; do
-            if gh release download maps-asia-contours \
-                -p "${FBASE}.osm.pbf" -p "${FBASE}.bbox.txt" \
-                -D /tmp --clobber; then
-              break
-            fi
-            echo "Download attempt $attempt failed, retrying in 30s..." >&2
-            sleep 30
-            if [ "$attempt" -eq 5 ]; then
-              echo "ERROR: could not download ${FBASE}.osm.pbf / .bbox.txt from maps-asia-contours after 5 attempts. Has the contours build run for this region yet?" >&2
+          echo "Downloading PBF..."
+          download "$PBF" "$PBF_URL"
+          ls -lh "$PBF"
+
+          POLY="/tmp/region.poly"
+          BBOX=""
+          echo "Downloading poly from: $POLY_URL"
+          if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
+            echo "Poly downloaded successfully"
+            BBOX=$(python3 - << 'PYEOF'
+          import sys
+          coords = []
+          with open("/tmp/region.poly") as f:
+              for line in f:
+                  parts = line.strip().split()
+                  if len(parts) == 2:
+                      try:
+                          coords.append((float(parts[0]), float(parts[1])))
+                      except ValueError:
+                          pass
+          if coords:
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+              raw_span = max(lons) - min(lons)
+              shifted = [lo + 360 if lo < 0 else lo for lo in lons]
+              shifted_span = max(shifted) - min(shifted)
+              if raw_span > 180 and shifted_span < raw_span:
+                  east = [(lo, la) for lo, la in coords if lo >= 0]
+                  west = [(lo, la) for lo, la in coords if lo < 0]
+                  main = east if len(east) >= len(west) else west
+                  dropped = len(coords) - len(main)
+                  print(f"WARNING: antimeridian crossing detected, dropping {dropped} poly points on the far side (raw span {raw_span:.1f} deg)", file=sys.stderr)
+                  lons = [p[0] for p in main]
+                  lats = [p[1] for p in main]
+              print(f"{min(lons)-0.2:.4f}:{min(lats)-0.2:.4f}:{max(lons)+0.2:.4f}:{max(lats)+0.2:.4f}")
+          PYEOF
+          )
+          fi
+
+          if [ -z "$BBOX" ]; then
+            echo "Poly unavailable, falling back to PBF extent"
+            FALLBACK_BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]-0.2):\(.[1]-0.2):\(.[2]+0.2):\(.[3]+0.2)"')
+            SANE=$(python3 - "$FALLBACK_BBOX" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1].split(":"))
+          print("ok" if (e - w) <= 10 and (n - s) <= 10 else "bad")
+          PYEOF
+          )
+            if [ "$SANE" = "bad" ]; then
+              echo "ERROR: fallback bbox $FALLBACK_BBOX is implausibly large - likely a mistagged outlier node in the source data. Refusing to run against it." >&2
               exit 1
             fi
-          done
+            BBOX="$FALLBACK_BBOX"
+          fi
 
-          ls -lh "$IN_PBF"
-          IFS=':' read -r S W N E < "$IN_BBOX"
-          echo "Bounding box (from contours stage): S=$S W=$W N=$N E=$E"
+          echo "Bounding box: $BBOX"
+          IFS=':' read -r W S E N <<< "$BBOX"
+
+          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1:5])
+          w = max(w, -180.0)
+          e = min(e, 180.0)
+          s = max(s, -90.0)
+          n = min(n, 90.0)
+          print(f"{w}:{s}:{e}:{n}")
+          PYEOF
+          )
+          IFS=':' read -r W S E N <<< "$CLAMPED"
+
+          echo "Filtering tags..."
+          osmium tags-filter "$PBF" \
+            w/highway w/waterway w/natural w/landuse w/railway \
+            n/place=city,town,village,hamlet,suburb,locality \
+            n/railway n/natural=peak,saddle \
+            n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
+            n/amenity=drinking_water,toilets,parking,shelter \
+            r/route=hiking,foot,bicycle,mtb \
+            -o "$FILTERED" --overwrite
 
           cat << 'XMLEOF' > "$TAG_CONF"
           <?xml version="1.0" encoding="UTF-8"?>
@@ -153,23 +225,17 @@ jobs:
           </tag-mapping>
           XMLEOF
 
-          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
-          import sys
-          w, s, e, n = map(float, sys.argv[1:5])
-          w = max(w, -180.0)
-          e = min(e, 180.0)
-          s = max(s, -90.0)
-          n = min(n, 90.0)
-          print(f"{w}:{s}:{e}:{n}")
-          PYEOF
-          )
-          IFS=':' read -r W S E N <<< "$CLAMPED"
+          SIZE_MB=$(du -m "$FILTERED" | cut -f1)
+          echo "Filtered PBF size: ${SIZE_MB}MB"
 
-          SIZE_MB=$(du -m "$IN_PBF" | cut -f1)
-          echo "Input size: ${SIZE_MB}MB"
-
-          # Adjusted simplification-factor to 1 to stop Map-Writer from collapsing curve points into straight vectors
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$IN_PBF --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1"
+          # simplification-factor=1 to stop Map-Writer from collapsing curve points into straight vectors
+          # First attempt (max zoom 21 -> 17) crashed at the same relative point, which
+          # points at the deepest interval's BASE zoom (was 14) as the real driver, not
+          # max zoom - base zoom sets the tile-index grid size across the whole bbox.
+          # Collapsing to two intervals and dropping that base zoom to 10 cuts the grid
+          # by ~16x per axis-doubling. This is the next experiment, not a confirmed fix -
+          # re-check the run.
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$FILTERED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 zoom-interval-conf=5,0,7,10,8,17"
           $CMD
           ls -lh "$OUT"
 
