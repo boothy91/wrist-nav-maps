@@ -201,6 +201,22 @@ jobs:
           echo "Bounding box: $BBOX"
           IFS=':' read -r W S E N <<< "$BBOX"
 
+          # Clamp to valid longitude/latitude range. The 0.2 degree buffer added
+          # above can push a region's bbox slightly past -180/180 for anything
+          # near the antimeridian (e.g. Pacific island regions), which mapsforge's
+          # BoundingBox parser rejects outright with IllegalArgumentException.
+          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF2'
+          import sys
+          w, s, e, n = map(float, sys.argv[1:5])
+          w = max(w, -180.0)
+          e = min(e, 180.0)
+          s = max(s, -90.0)
+          n = min(n, 90.0)
+          print(f"{w}:{s}:{e}:{n}")
+          PYEOF2
+          )
+          IFS=':' read -r W S E N <<< "$CLAMPED"
+
           PIECES=$(python3 - "$W" "$S" "$E" "$N" "$PBF_SIZE_MB" "$TARGET_PBF_MB" "$TARGET_AREA_DEG2" "$MAX_PIECES" << 'PYEOF'
           import sys, math
           w, s, e, n, pbf_mb, target_mb, target_area, max_pieces = map(float, sys.argv[1:9])
