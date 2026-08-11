@@ -60,7 +60,7 @@ jobs:
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q --tries=5 --waitretry=15 --retry-connrefused "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-          echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
+          echo "JAVACMD_OPTIONS=-Xmx13000m" >> $GITHUB_ENV
 
       - name: Ensure release exists
         env:
