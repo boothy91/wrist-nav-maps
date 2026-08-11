@@ -43,15 +43,6 @@ jobs:
       # instead causes a check-then-act race: multiple parallel jobs can all see
       # "release doesn't exist yet" and then all try to create it, and every job
       # after the first one fails with "Release.tag_name already exists".
-      - name: Ensure contours release exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release view maps-north-america-contours &>/dev/null || gh release create maps-north-america-contours \
-            --title "Contours - North America (intermediate)" \
-            --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
-            --latest=false
-
       - name: Ensure contours-map release exists
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -134,8 +125,6 @@ jobs:
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
 
           PBF="/tmp/region.osm.pbf"
-          OUT_PBF="output/${FBASE}.osm.pbf"
-          OUT_BBOX="output/${FBASE}.bbox.txt"
           CONTOURS_ONLY_PBF="output/${FBASE}.contours-only.osm.pbf"
           CONTOURS_MAP="output/${FBASE}-contours.map"
           HGT_DIR="/tmp/hgt_cache"
@@ -211,7 +200,22 @@ jobs:
 
           echo "Bounding box: $BBOX"
           IFS=':' read -r W S E N <<< "$BBOX"
-          echo "$S:$W:$N:$E" > "$OUT_BBOX"
+
+          # Clamp to valid longitude/latitude range. The 0.2 degree buffer added
+          # above can push a region's bbox slightly past -180/180 for anything
+          # near the antimeridian (e.g. Pacific island regions), which mapsforge's
+          # BoundingBox parser rejects outright with IllegalArgumentException.
+          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF2'
+          import sys
+          w, s, e, n = map(float, sys.argv[1:5])
+          w = max(w, -180.0)
+          e = min(e, 180.0)
+          s = max(s, -90.0)
+          n = min(n, 90.0)
+          print(f"{w}:{s}:{e}:{n}")
+          PYEOF2
+          )
+          IFS=':' read -r W S E N <<< "$CLAMPED"
 
           PIECES=$(python3 - "$W" "$S" "$E" "$N" "$PBF_SIZE_MB" "$TARGET_PBF_MB" "$TARGET_AREA_DEG2" "$MAX_PIECES" << 'PYEOF'
           import sys, math
@@ -226,6 +230,18 @@ jobs:
           if [ -n "${PIECE_OVERRIDES[$RID]:-}" ] && [ "$PIECES" -lt "${PIECE_OVERRIDES[$RID]}" ]; then
             echo "$RID is on the piece-count override list (known geometry complexity) - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
             PIECES=${PIECE_OVERRIDES[$RID]}
+          fi
+
+          # Coarser contour interval for regions too large/complex to finish within
+          # GitHub's 6-hour hosted-runner ceiling at the default 10m step. This is a
+          # platform hard limit - more pieces doesn't help since pieces are processed
+          # sequentially in one job, so the only lever that reduces total runtime is
+          # generating less contour geometry per piece.
+          STEP=10
+          declare -A STEP_OVERRIDES=( ["mexico"]=25 ["british-columbia"]=25 )
+          if [ -n "${STEP_OVERRIDES[$RID]:-}" ]; then
+            STEP=${STEP_OVERRIDES[$RID]}
+            echo "$RID is on the contour-step override list (too large/slow at 10m) - using ${STEP}m interval instead"
           fi
 
           echo "PBF: ${PBF_SIZE_MB}MB, bbox area: $(python3 -c "print(round(($E-$W)*($N-$S),1))")deg^2 -> $PIECES piece(s)"
@@ -249,8 +265,7 @@ jobs:
           )
 
           process_piece() {
-            local src_pbf="$1" bbox="$2" out_pbf="$3" contours_only_out="$4"
-            local filtered="/tmp/piece_filtered_$$.osm.pbf"
+            local src_pbf="$1" bbox="$2" contours_only_out="$3"
 
             # Add a 0.05 degree buffer to phyghtmap box to eliminate edge-clipping straight lines
             local buffered_bbox=$(python3 - "$bbox" << 'PYEOF'
@@ -261,20 +276,11 @@ jobs:
           PYEOF
           )
 
-            osmium tags-filter "$src_pbf" \
-              w/highway w/waterway w/natural w/landuse w/railway \
-              n/place=city,town,village,hamlet,suburb,locality \
-              n/railway n/natural=peak,saddle \
-              n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
-              n/amenity=drinking_water,toilets,parking,shelter \
-              r/route=hiking,foot,bicycle,mtb \
-              -o "$filtered" --overwrite
-
             rm -f /tmp/contours*.osm.pbf
             local attempt ok=0
             for attempt in 1 2 3; do
               # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
+              if phyghtmap --source=view3 --step="$STEP" --pbf --line-cat=100,50 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
                   --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox"; then
                 ok=1; break
@@ -287,9 +293,6 @@ jobs:
             local contour_files=($(ls /tmp/contours*.osm.pbf 2>/dev/null))
             local num=${#contour_files[@]}
 
-            # Build a single contours-only pbf for this piece, BEFORE merging
-            # with the filtered base tags, so we still have a clean contours
-            # source to write a standalone .map from later.
             if [ "$num" -eq 0 ]; then
               : > /dev/null   # no contours for this piece - leave contours_only_out unset
             elif [ "$num" -eq 1 ]; then
@@ -302,18 +305,9 @@ jobs:
               cmd="$cmd --write-pbf file=$contours_only_out"
               $cmd
             fi
-
-            if [ "$num" -eq 0 ]; then
-              cp "$filtered" "$out_pbf"
-            elif [ "$num" -eq 1 ]; then
-              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="${contour_files[0]}" --merge --write-pbf file="$out_pbf"
-            else
-              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="$contours_only_out" --merge --write-pbf file="$out_pbf"
-            fi
-            rm -f "$filtered" /tmp/contours*.osm.pbf
+            rm -f /tmp/contours*.osm.pbf
           }
 
-          PIECE_FILES=()
           CONTOUR_PIECE_FILES=()
           i=0
           while IFS= read -r PBBOX; do
@@ -326,22 +320,10 @@ jobs:
               SRC="$WORKDIR/piece_${i}_clip.osm.pbf"
               osmium extract --bbox "$(echo "$PBBOX" | tr ':' ',')" "$PBF" -o "$SRC" --overwrite
             fi
-            POUT="$WORKDIR/piece_${i}_out.osm.pbf"
             CPOUT="$WORKDIR/piece_${i}_contours.osm.pbf"
-            process_piece "$SRC" "$PBBOX" "$POUT" "$CPOUT"
-            PIECE_FILES+=("$POUT")
+            process_piece "$SRC" "$PBBOX" "$CPOUT"
             [ -f "$CPOUT" ] && CONTOUR_PIECE_FILES+=("$CPOUT")
           done <<< "$BBOX_LIST"
-
-          if [ "${#PIECE_FILES[@]}" -eq 1 ]; then
-            cp "${PIECE_FILES[0]}" "$OUT_PBF"
-          else
-            cmd="$OSMOSIS_HOME/bin/osmosis"
-            for f in "${PIECE_FILES[@]}"; do cmd="$cmd --read-pbf file=$f"; done
-            for mi in $(seq 2 ${#PIECE_FILES[@]}); do cmd="$cmd --merge"; done
-            cmd="$cmd --write-pbf file=$OUT_PBF"
-            $cmd
-          fi
 
           # Merge the contours-only pieces for this region (if any survived)
           if [ "${#CONTOUR_PIECE_FILES[@]}" -eq 0 ]; then
@@ -368,18 +350,6 @@ jobs:
             ls -lh "$CONTOURS_MAP"
           fi
 
-          ls -lh "$OUT_PBF"
-          cat "$OUT_BBOX"
-
-          for attempt in 1 2 3 4 5; do
-            if gh release upload maps-north-america-contours "$OUT_PBF" "$OUT_BBOX" --clobber; then
-              break
-            fi
-            echo "Upload attempt $attempt failed, retrying in 30s..." >&2
-            sleep 30
-          done
-          echo "Uploaded ${FBASE}.osm.pbf and ${FBASE}.bbox.txt"
-
           if [ -f "$CONTOURS_MAP" ]; then
             for attempt in 1 2 3 4 5; do
               if gh release upload maps-north-america-contours-map "$CONTOURS_MAP" --clobber; then
@@ -389,4 +359,7 @@ jobs:
               sleep 30
             done
             echo "Uploaded ${FBASE}-contours.map"
+          else
+            echo "No contours generated for $RID - nothing to upload" >&2
+            exit 1
           fi
