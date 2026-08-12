@@ -201,6 +201,22 @@ jobs:
           echo "Bounding box: $BBOX"
           IFS=':' read -r W S E N <<< "$BBOX"
 
+          # Clamp to valid longitude/latitude range. The 0.2 degree buffer added
+          # above can push a region's bbox slightly past -180/180 for anything
+          # near the antimeridian (e.g. Pacific island regions), which mapsforge's
+          # BoundingBox parser rejects outright with IllegalArgumentException.
+          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF2'
+          import sys
+          w, s, e, n = map(float, sys.argv[1:5])
+          w = max(w, -180.0)
+          e = min(e, 180.0)
+          s = max(s, -90.0)
+          n = min(n, 90.0)
+          print(f"{w}:{s}:{e}:{n}")
+          PYEOF2
+          )
+          IFS=':' read -r W S E N <<< "$CLAMPED"
+
           PIECES=$(python3 - "$W" "$S" "$E" "$N" "$PBF_SIZE_MB" "$TARGET_PBF_MB" "$TARGET_AREA_DEG2" "$MAX_PIECES" << 'PYEOF'
           import sys, math
           w, s, e, n, pbf_mb, target_mb, target_area, max_pieces = map(float, sys.argv[1:9])
@@ -214,6 +230,18 @@ jobs:
           if [ -n "${PIECE_OVERRIDES[$RID]:-}" ] && [ "$PIECES" -lt "${PIECE_OVERRIDES[$RID]}" ]; then
             echo "$RID is on the piece-count override list (known geometry complexity) - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
             PIECES=${PIECE_OVERRIDES[$RID]}
+          fi
+
+          # Coarser contour interval for regions too large/complex to finish within
+          # GitHub's 6-hour hosted-runner ceiling at the default 10m step. This is a
+          # platform hard limit - more pieces doesn't help since pieces are processed
+          # sequentially in one job, so the only lever that reduces total runtime is
+          # generating less contour geometry per piece.
+          STEP=10
+          declare -A STEP_OVERRIDES=( ["kazakhstan"]=25 ["myanmar"]=25 )
+          if [ -n "${STEP_OVERRIDES[$RID]:-}" ]; then
+            STEP=${STEP_OVERRIDES[$RID]}
+            echo "$RID is on the contour-step override list (too large/slow at 10m) - using ${STEP}m interval instead"
           fi
 
           echo "PBF: ${PBF_SIZE_MB}MB, bbox area: $(python3 -c "print(round(($E-$W)*($N-$S),1))")deg^2 -> $PIECES piece(s)"
@@ -252,7 +280,7 @@ jobs:
             local attempt ok=0
             for attempt in 1 2 3; do
               # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
+              if phyghtmap --source=view3 --step="$STEP" --pbf --line-cat=100,50 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
                   --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox"; then
                 ok=1; break
