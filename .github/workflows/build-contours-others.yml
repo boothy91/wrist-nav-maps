@@ -232,6 +232,18 @@ jobs:
             PIECES=${PIECE_OVERRIDES[$RID]}
           fi
 
+          # Coarser contour interval for regions too large/complex to finish within
+          # GitHub's 6-hour hosted-runner ceiling at the default 10m step. This is a
+          # platform hard limit - more pieces doesn't help since pieces are processed
+          # sequentially in one job, so the only lever that reduces total runtime is
+          # generating less contour geometry per piece.
+          STEP=10
+          declare -A STEP_OVERRIDES=( ["argentina"]=25 ["australia"]=25 ["chile"]=25 ["far-eastern-fed-district"]=25 ["norte"]=25 ["siberian-fed-district"]=25 )
+          if [ -n "${STEP_OVERRIDES[$RID]:-}" ]; then
+            STEP=${STEP_OVERRIDES[$RID]}
+            echo "$RID is on the contour-step override list (too large/slow at 10m) - using ${STEP}m interval instead"
+          fi
+
           echo "PBF: ${PBF_SIZE_MB}MB, bbox area: $(python3 -c "print(round(($E-$W)*($N-$S),1))")deg^2 -> $PIECES piece(s)"
 
           BBOX_LIST=$(python3 - "$W" "$S" "$E" "$N" "$PIECES" << 'PYEOF'
@@ -268,7 +280,7 @@ jobs:
             local attempt ok=0
             for attempt in 1 2 3; do
               # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
+              if phyghtmap --source=view3 --step="$STEP" --pbf --line-cat=100,50 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
                   --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox"; then
                 ok=1; break
