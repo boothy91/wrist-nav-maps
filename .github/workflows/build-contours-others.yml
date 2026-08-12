@@ -111,7 +111,7 @@ jobs:
             -O "$PLUGIN_DIR/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar" \
             "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/${MW_VERSION}/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar"
           ls -lh "$PLUGIN_DIR"
-          echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
+          echo "JAVACMD_OPTIONS=-Xmx13000m" >> $GITHUB_ENV
 
       - name: Download, filter and generate contours
         env:
@@ -346,7 +346,8 @@ jobs:
                 file="$CONTOURS_MAP" \
                 tag-conf-file="$(pwd)/config/tag-mapping-contours.xml" \
                 bbox="$S,$W,$N,$E" \
-                type=hd
+                type=hd \
+                zoom-interval-conf=5,0,7,10,8,17
             ls -lh "$CONTOURS_MAP"
           fi
 
