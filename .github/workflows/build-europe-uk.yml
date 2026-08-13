@@ -170,10 +170,12 @@ jobs:
           osmium tags-filter "$PBF" \
             w/highway w/waterway w/natural w/landuse w/railway \
             n/place=city,town,village,hamlet,suburb,locality \
-            n/railway n/natural=peak,saddle \
+            n/railway n/natural=peak,saddle,spring,cave_entrance \
             n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
-            n/amenity=drinking_water,toilets,parking,shelter \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe \
             n/barrier=stile,gate,kissing_gate,cattle_grid,lift_gate \
+            n/highway=ford \
+            n/shop=convenience,supermarket \
             r/route=hiking,foot,bicycle,mtb \
             -o "$FILTERED" --overwrite
 
@@ -206,6 +208,14 @@ jobs:
               <osm-tag key="barrier" value="kissing_gate" zoom-appear="14" />
               <osm-tag key="barrier" value="cattle_grid" zoom-appear="14" />
               <osm-tag key="barrier" value="lift_gate" zoom-appear="14" />
+              <osm-tag key="natural" value="spring" zoom-appear="14" />
+              <osm-tag key="natural" value="cave_entrance" zoom-appear="13" />
+              <osm-tag key="highway" value="ford" zoom-appear="13" />
+              <osm-tag key="amenity" value="bench" zoom-appear="15" />
+              <osm-tag key="amenity" value="pub" zoom-appear="13" />
+              <osm-tag key="amenity" value="cafe" zoom-appear="13" />
+              <osm-tag key="shop" value="convenience" zoom-appear="14" />
+              <osm-tag key="shop" value="supermarket" zoom-appear="12" />
             </pois>
             <ways>
               <osm-tag key="highway" value="motorway" zoom-appear="6" />
@@ -222,6 +232,7 @@ jobs:
               <osm-tag key="highway" value="cycleway" zoom-appear="12" />
               <osm-tag key="highway" value="bridleway" zoom-appear="12" />
               <osm-tag key="highway" value="steps" zoom-appear="13" />
+              <osm-tag key="natural" value="cliff" zoom-appear="12" />
               <osm-tag key="waterway" value="river" zoom-appear="11" />
               <osm-tag key="waterway" value="stream" zoom-appear="13" />
               <osm-tag key="natural" value="water" zoom-appear="10" />
