@@ -1,4 +1,4 @@
-name: Build Contours - Europe UK
+name: Build Maps - Europe UK
 
 on:
   workflow_dispatch:
@@ -32,37 +32,8 @@ jobs:
           )
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
-  ensure-releases:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-
-      # Created once, up front, before the matrix fans out. Doing this per-matrix-job
-      # instead causes a check-then-act race: multiple parallel jobs can all see
-      # "release doesn't exist yet" and then all try to create it, and every job
-      # after the first one fails with "Release.tag_name already exists".
-      - name: Ensure contours release exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release view maps-europe-uk-contours &>/dev/null || gh release create maps-europe-uk-contours \
-            --title "Contours - Europe UK (intermediate)" \
-            --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
-            --latest=false
-
-      - name: Ensure contours-map release exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release view maps-europe-uk-contours-map &>/dev/null || gh release create maps-europe-uk-contours-map \
-            --title "Contour overlay .map files - Europe UK" \
-            --notes "Standalone contour-only mapsforge .map files, one per region. Contains no base map data (no roads/water/etc) - intended to be added as a second TileRendererLayer stacked on top of the base map layer in the app, not as a replacement map." \
-            --latest=false
-
-  build-contours:
-    needs: [generate-matrix, ensure-releases]
+  build-maps:
+    needs: generate-matrix
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -75,53 +46,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
       - name: Install dependencies
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y \
-            osmium-tool \
-            default-jre \
-            wget \
-            jq \
-            python3-gdal \
-            gdal-bin
+          sudo apt-get install -y osmium-tool wget jq
 
-          python3 -m pip install --upgrade pip
-          python3 -m pip install \
-            "matplotlib<3.5" \
-            "numpy<1.22" \
-            setuptools \
-            beautifulsoup4 \
-            lxml
-
-          python3 -m pip install http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
-
-      - name: Setup Osmosis
+      - name: Setup Osmosis and mapsforge
         run: |
           wget -q --tries=5 --waitretry=15 --retry-connrefused https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
           unzip -q osmosis-0.49.2.zip -d osmosis_install
           chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
           echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
+          mkdir -p $HOME/.openstreetmap/osmosis/plugins
+          wget -q --tries=5 --waitretry=15 --retry-connrefused "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
+            -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
+          echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
 
-      # Registers the mapsforge-map-writer plugin with Osmosis so we can
-      # emit .map files directly (osmosis --mapfile-writer ...) instead of
-      # only intermediate .osm.pbf files.
-      - name: Setup mapsforge-map-writer plugin
+      - name: Ensure release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          MW_VERSION="0.18.0"
-          PLUGIN_DIR="$HOME/.openstreetmap/osmosis/plugins"
-          mkdir -p "$PLUGIN_DIR"
-          wget -q --tries=5 --waitretry=15 --retry-connrefused \
-            -O "$PLUGIN_DIR/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar" \
-            "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/${MW_VERSION}/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar"
-          ls -lh "$PLUGIN_DIR"
+          gh release view maps-europe-uk &>/dev/null || gh release create maps-europe-uk \
+            --title "Maps - Europe UK" \
+            --notes "Auto-generated .map files for WristNav. Updated monthly." \
+            --latest=false
 
-      - name: Download, filter and generate contours
+      - name: Download, filter and write map
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -133,18 +83,12 @@ jobs:
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
 
           PBF="/tmp/region.osm.pbf"
-          OUT_PBF="output/${FBASE}.osm.pbf"
-          OUT_BBOX="output/${FBASE}.bbox.txt"
-          CONTOURS_ONLY_PBF="output/${FBASE}.contours-only.osm.pbf"
-          CONTOURS_MAP="output/${FBASE}-contours.map"
-          HGT_DIR="/tmp/hgt_cache"
-          WORKDIR="/tmp/pieces"
+          FILTERED="/tmp/${FBASE}.filtered.osm.pbf"
+          FNAME="${FBASE}.map"
+          OUT="output/$FNAME"
+          TAG_CONF="/tmp/tag-mapping.xml"
 
-          TARGET_PBF_MB=100
-          TARGET_AREA_DEG2=15
-          MAX_PIECES=6
-
-          mkdir -p output "$HGT_DIR" "$WORKDIR"
+          mkdir -p output
 
           echo "=== ${{ matrix.region.name }} ==="
 
@@ -155,7 +99,6 @@ jobs:
           echo "Downloading PBF..."
           download "$PBF" "$PBF_URL"
           ls -lh "$PBF"
-          PBF_SIZE_MB=$(du -m "$PBF" | cut -f1)
 
           POLY="/tmp/region.poly"
           BBOX=""
@@ -202,7 +145,7 @@ jobs:
           PYEOF
           )
             if [ "$SANE" = "bad" ]; then
-              echo "ERROR: fallback bbox $FALLBACK_BBOX is implausibly large - likely a mistagged outlier node in the source data. Refusing to run contours against it." >&2
+              echo "ERROR: fallback bbox $FALLBACK_BBOX is implausibly large - likely a mistagged outlier node in the source data. Refusing to run against it." >&2
               exit 1
             fi
             BBOX="$FALLBACK_BBOX"
@@ -210,181 +153,170 @@ jobs:
 
           echo "Bounding box: $BBOX"
           IFS=':' read -r W S E N <<< "$BBOX"
-          echo "$S:$W:$N:$E" > "$OUT_BBOX"
 
-          PIECES=$(python3 - "$W" "$S" "$E" "$N" "$PBF_SIZE_MB" "$TARGET_PBF_MB" "$TARGET_AREA_DEG2" "$MAX_PIECES" << 'PYEOF'
-          import sys, math
-          w, s, e, n, pbf_mb, target_mb, target_area, max_pieces = map(float, sys.argv[1:9])
-          area = (e - w) * (n - s)
-          need = max(pbf_mb / target_mb, area / target_area, 1.0)
-          print(min(int(math.ceil(need)), int(max_pieces)))
-          PYEOF
-          )
-
-          declare -A PIECE_OVERRIDES=( ["scotland"]=12 ["wales"]=4 )
-          if [ -n "${PIECE_OVERRIDES[$RID]:-}" ] && [ "$PIECES" -lt "${PIECE_OVERRIDES[$RID]}" ]; then
-            echo "$RID is on the piece-count override list (known geometry complexity) - overriding piece count to ${PIECE_OVERRIDES[$RID]}"
-            PIECES=${PIECE_OVERRIDES[$RID]}
-          fi
-
-          echo "PBF: ${PBF_SIZE_MB}MB, bbox area: $(python3 -c "print(round(($E-$W)*($N-$S),1))")deg^2 -> $PIECES piece(s)"
-
-          BBOX_LIST=$(python3 - "$W" "$S" "$E" "$N" "$PIECES" << 'PYEOF'
+          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
           import sys
-          w, s, e, n, pieces = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), float(sys.argv[4]), int(sys.argv[5])
-          if pieces <= 1:
-              print(f"{w}:{s}:{e}:{n}")
-          else:
-              width, height = e - w, n - s
-              if width >= height:
-                  step = width / pieces
-                  for i in range(pieces):
-                      print(f"{w+i*step}:{s}:{w+(i+1)*step}:{n}")
-              else:
-                  step = height / pieces
-                  for i in range(pieces):
-                      print(f"{w}:{s+i*step}:{e}:{s+(i+1)*step}")
+          w, s, e, n = map(float, sys.argv[1:5])
+          w = max(w, -180.0)
+          e = min(e, 180.0)
+          s = max(s, -90.0)
+          n = min(n, 90.0)
+          print(f"{w}:{s}:{e}:{n}")
           PYEOF
           )
+          IFS=':' read -r W S E N <<< "$CLAMPED"
 
-          process_piece() {
-            local src_pbf="$1" bbox="$2" out_pbf="$3" contours_only_out="$4"
-            local filtered="/tmp/piece_filtered_$$.osm.pbf"
+          echo "Filtering tags..."
+          osmium tags-filter "$PBF" \
+            w/highway w/waterway w/natural w/landuse w/railway \
+            n/place=city,town,village,hamlet,suburb,locality \
+            n/railway n/natural=peak,saddle,spring,cave_entrance \
+            n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe \
+            n/barrier=stile,gate,kissing_gate,cattle_grid,lift_gate \
+            n/highway=ford \
+            n/shop=convenience,supermarket \
+            r/route=hiking,foot,bicycle,mtb \
+            -o "$FILTERED" --overwrite
 
-            # Add a 0.05 degree buffer to phyghtmap box to eliminate edge-clipping straight lines
-            local buffered_bbox=$(python3 - "$bbox" << 'PYEOF'
-          import sys
-          w, s, e, n = map(float, sys.argv[1].split(":"))
-          buf = 0.05
-          print(f"{w-buf}:{s-buf}:{e+buf}:{n+buf}")
-          PYEOF
-          )
+          cat << 'XMLEOF' > "$TAG_CONF"
+          <?xml version="1.0" encoding="UTF-8"?>
+          <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
+                       default-zoom-appear="16" profile-name="default-profile">
+            <pois>
+              <osm-tag key="place" value="city" zoom-appear="3" />
+              <osm-tag key="place" value="town" zoom-appear="7" />
+              <osm-tag key="place" value="village" zoom-appear="11" />
+              <osm-tag key="place" value="hamlet" zoom-appear="12" />
+              <osm-tag key="place" value="suburb" zoom-appear="12" />
+              <osm-tag key="place" value="locality" zoom-appear="13" />
+              <osm-tag key="natural" value="peak" zoom-appear="12" />
+              <osm-tag key="natural" value="saddle" zoom-appear="13" />
+              <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
+              <osm-tag key="tourism" value="information" zoom-appear="14" />
+              <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
+              <osm-tag key="tourism" value="camp_site" zoom-appear="13" />
+              <osm-tag key="tourism" value="picnic_site" zoom-appear="14" />
+              <osm-tag key="amenity" value="drinking_water" zoom-appear="14" />
+              <osm-tag key="amenity" value="toilets" zoom-appear="14" />
+              <osm-tag key="amenity" value="parking" zoom-appear="13" />
+              <osm-tag key="amenity" value="shelter" zoom-appear="13" />
+              <osm-tag key="barrier" value="stile" zoom-appear="14" />
+              <osm-tag key="barrier" value="gate" zoom-appear="14" />
+              <osm-tag key="barrier" value="kissing_gate" zoom-appear="14" />
+              <osm-tag key="barrier" value="cattle_grid" zoom-appear="14" />
+              <osm-tag key="barrier" value="lift_gate" zoom-appear="14" />
+              <osm-tag key="natural" value="spring" zoom-appear="14" />
+              <osm-tag key="natural" value="cave_entrance" zoom-appear="13" />
+              <osm-tag key="highway" value="ford" zoom-appear="13" />
+              <osm-tag key="amenity" value="bench" zoom-appear="15" />
+              <osm-tag key="amenity" value="pub" zoom-appear="13" />
+              <osm-tag key="amenity" value="cafe" zoom-appear="13" />
+              <osm-tag key="shop" value="convenience" zoom-appear="14" />
+              <osm-tag key="shop" value="supermarket" zoom-appear="12" />
+            </pois>
+            <ways>
+              <osm-tag key="highway" value="motorway" zoom-appear="6" />
+              <osm-tag key="highway" value="trunk" zoom-appear="7" />
+              <osm-tag key="highway" value="primary" zoom-appear="9" />
+              <osm-tag key="highway" value="secondary" zoom-appear="10" />
+              <osm-tag key="highway" value="tertiary" zoom-appear="11" />
+              <osm-tag key="highway" value="unclassified" zoom-appear="12" />
+              <osm-tag key="highway" value="residential" zoom-appear="12" />
+              <osm-tag key="highway" value="service" zoom-appear="13" />
+              <osm-tag key="highway" value="track" zoom-appear="12" />
+              <osm-tag key="highway" value="path" zoom-appear="12" />
+              <osm-tag key="highway" value="footway" zoom-appear="13" />
+              <osm-tag key="highway" value="cycleway" zoom-appear="12" />
+              <osm-tag key="highway" value="bridleway" zoom-appear="12" />
+              <osm-tag key="highway" value="steps" zoom-appear="13" />
+              <osm-tag key="natural" value="cliff" zoom-appear="12" />
+              <osm-tag key="waterway" value="river" zoom-appear="11" />
+              <osm-tag key="waterway" value="stream" zoom-appear="13" />
+              <osm-tag key="natural" value="water" zoom-appear="10" />
+              <osm-tag key="natural" value="wood" zoom-appear="10" />
+              <osm-tag key="landuse" value="forest" zoom-appear="10" />
+              <osm-tag key="landuse" value="residential" zoom-appear="11" />
+              <osm-tag key="railway" value="rail" zoom-appear="10" />
+            </ways>
+          </tag-mapping>
+          XMLEOF
 
-            osmium tags-filter "$src_pbf" \
-              w/highway w/waterway w/natural w/landuse w/railway \
-              n/place=city,town,village,hamlet,suburb,locality \
-              n/railway n/natural=peak,saddle \
-              n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
-              n/amenity=drinking_water,toilets,parking,shelter \
-              r/route=hiking,foot,bicycle,mtb \
-              -o "$filtered" --overwrite
+          SIZE_MB=$(du -m "$FILTERED" | cut -f1)
+          echo "Filtered PBF size: ${SIZE_MB}MB"
 
-            rm -f /tmp/contours*.osm.pbf
-            local attempt ok=0
-            for attempt in 1 2 3; do
-              # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
-                  --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
-                  --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox"; then
-                ok=1; break
-              fi
-              echo "phyghtmap attempt $attempt failed, retrying in 15s..." >&2
-              sleep 15
-            done
-            [ "$ok" -eq 0 ] && echo "phyghtmap failed after 3 attempts, continuing without contours for this piece" >&2
-
-            local contour_files=($(ls /tmp/contours*.osm.pbf 2>/dev/null))
-            local num=${#contour_files[@]}
-
-            # Build a single contours-only pbf for this piece, BEFORE merging
-            # with the filtered base tags, so we still have a clean contours
-            # source to write a standalone .map from later.
-            if [ "$num" -eq 0 ]; then
-              : > /dev/null   # no contours for this piece - leave contours_only_out unset
-            elif [ "$num" -eq 1 ]; then
-              cp "${contour_files[0]}" "$contours_only_out"
-            else
-              local cmd="$OSMOSIS_HOME/bin/osmosis"
-              for f in "${contour_files[@]}"; do cmd="$cmd --read-pbf file=$f"; done
-              local mi
-              for mi in $(seq 2 $num); do cmd="$cmd --merge"; done
-              cmd="$cmd --write-pbf file=$contours_only_out"
-              $cmd
-            fi
-
-            if [ "$num" -eq 0 ]; then
-              cp "$filtered" "$out_pbf"
-            elif [ "$num" -eq 1 ]; then
-              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="${contour_files[0]}" --merge --write-pbf file="$out_pbf"
-            else
-              $OSMOSIS_HOME/bin/osmosis --read-pbf file="$filtered" --read-pbf file="$contours_only_out" --merge --write-pbf file="$out_pbf"
-            fi
-            rm -f "$filtered" /tmp/contours*.osm.pbf
-          }
-
-          PIECE_FILES=()
-          CONTOUR_PIECE_FILES=()
-          i=0
-          while IFS= read -r PBBOX; do
-            [ -z "$PBBOX" ] && continue
-            i=$((i+1))
-            echo "--- Piece $i/$PIECES, bbox $PBBOX ---"
-            if [ "$PIECES" -le 1 ]; then
-              SRC="$PBF"
-            else
-              SRC="$WORKDIR/piece_${i}_clip.osm.pbf"
-              osmium extract --bbox "$(echo "$PBBOX" | tr ':' ',')" "$PBF" -o "$SRC" --overwrite
-            fi
-            POUT="$WORKDIR/piece_${i}_out.osm.pbf"
-            CPOUT="$WORKDIR/piece_${i}_contours.osm.pbf"
-            process_piece "$SRC" "$PBBOX" "$POUT" "$CPOUT"
-            PIECE_FILES+=("$POUT")
-            [ -f "$CPOUT" ] && CONTOUR_PIECE_FILES+=("$CPOUT")
-          done <<< "$BBOX_LIST"
-
-          if [ "${#PIECE_FILES[@]}" -eq 1 ]; then
-            cp "${PIECE_FILES[0]}" "$OUT_PBF"
-          else
-            cmd="$OSMOSIS_HOME/bin/osmosis"
-            for f in "${PIECE_FILES[@]}"; do cmd="$cmd --read-pbf file=$f"; done
-            for mi in $(seq 2 ${#PIECE_FILES[@]}); do cmd="$cmd --merge"; done
-            cmd="$cmd --write-pbf file=$OUT_PBF"
-            $cmd
-          fi
-
-          # Merge the contours-only pieces for this region (if any survived)
-          if [ "${#CONTOUR_PIECE_FILES[@]}" -eq 0 ]; then
-            echo "WARNING: no contours generated for any piece in $RID - skipping contours-only outputs" >&2
-          elif [ "${#CONTOUR_PIECE_FILES[@]}" -eq 1 ]; then
-            cp "${CONTOUR_PIECE_FILES[0]}" "$CONTOURS_ONLY_PBF"
-          else
-            cmd="$OSMOSIS_HOME/bin/osmosis"
-            for f in "${CONTOUR_PIECE_FILES[@]}"; do cmd="$cmd --read-pbf file=$f"; done
-            for mi in $(seq 2 ${#CONTOUR_PIECE_FILES[@]}); do cmd="$cmd --merge"; done
-            cmd="$cmd --write-pbf file=$CONTOURS_ONLY_PBF"
-            $cmd
-          fi
-
-          # Write the standalone contour overlay .map, if we have contours
-          if [ -f "$CONTOURS_ONLY_PBF" ]; then
-            "$OSMOSIS_HOME/bin/osmosis" \
-              --read-pbf file="$CONTOURS_ONLY_PBF" \
-              --mapfile-writer \
-                file="$CONTOURS_MAP" \
-                tag-conf-file="$(pwd)/config/tag-mapping-contours.xml" \
-                bbox="$S,$W,$N,$E"
-            ls -lh "$CONTOURS_MAP"
-          fi
-
-          ls -lh "$OUT_PBF"
-          cat "$OUT_BBOX"
+          # simplification-factor=1 to stop Map-Writer from collapsing curve points into straight vectors
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$FILTERED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1"
+          $CMD
+          ls -lh "$OUT"
 
           for attempt in 1 2 3 4 5; do
-            if gh release upload maps-europe-uk-contours "$OUT_PBF" "$OUT_BBOX" --clobber; then
+            if gh release upload maps-europe-uk "$OUT" --clobber; then
               break
             fi
             echo "Upload attempt $attempt failed, retrying in 30s..." >&2
             sleep 30
           done
-          echo "Uploaded ${FBASE}.osm.pbf and ${FBASE}.bbox.txt"
+          echo "Uploaded $FNAME"
 
-          if [ -f "$CONTOURS_MAP" ]; then
-            for attempt in 1 2 3 4 5; do
-              if gh release upload maps-europe-uk-contours-map "$CONTOURS_MAP" --clobber; then
-                break
-              fi
-              echo "Upload attempt $attempt failed, retrying in 30s..." >&2
-              sleep 30
-            done
-            echo "Uploaded ${FBASE}-contours.map"
-          fi
+  generate-index:
+    needs: build-maps
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate and upload index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - << 'EOF'
+          import json, subprocess, os
+          from datetime import datetime
+
+          with open("config/regions/regions-europe-uk.json") as f:
+              regions = json.load(f)
+
+          result = subprocess.run([
+              "gh", "release", "view", "maps-europe-uk",
+              "--json", "assets", "--jq", "[.assets[].name]"
+          ], capture_output=True, text=True,
+          env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+
+          uploaded = json.loads(result.stdout or "[]")
+          base_url = "https://github.com/${{ github.repository }}/releases/download/maps-europe-uk"
+
+          index = {
+              "updated": datetime.now().strftime("%Y-%m-%d"),
+              "regions": []
+          }
+
+          for region in regions:
+              fname = region["id"].replace("/", "-") + ".map"
+              if fname in uploaded:
+                  index["regions"].append({
+                      "id": region["id"],
+                      "name": region["name"],
+                      "path": region["path"],
+                      "url": f"{base_url}/{fname}"
+                  })
+
+          os.makedirs("output", exist_ok=True)
+          with open("output/index.json", "w") as f:
+              json.dump(index, f, indent=2)
+
+          print(f"index.json: {len(index['regions'])} regions")
+          EOF
+
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-europe-uk output/index.json --clobber; then
+              break
+            fi
+            echo "Index upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done
