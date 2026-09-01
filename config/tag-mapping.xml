@@ -21,6 +21,8 @@
         <osm-tag key="natural" value="peak" zoom-appear="11" />
         <osm-tag key="landuse" value="forest" zoom-appear="10" />
         <osm-tag key="landuse" value="residential" zoom-appear="12" />
+        <osm-tag key="landuse" value="reservoir" zoom-appear="8" />
+        <osm-tag key="landuse" value="basin" zoom-appear="10" />
         <osm-tag key="contour" value="elevation_major" zoom-appear="12" />
         <osm-tag key="contour" value="elevation_minor" zoom-appear="14" />
         <osm-tag key="contour" value="elevation" zoom-appear="12" />
