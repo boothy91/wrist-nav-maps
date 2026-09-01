@@ -177,8 +177,10 @@ jobs:
             n/highway=ford \
             n/shop=convenience,supermarket \
             r/route=hiking,foot,bicycle,mtb \
-            r/natural=water \
-            r/landuse=reservoir,basin \
+            r/natural \
+            r/landuse \
+            r/leisure \
+            r/boundary \
             -o "$FILTERED" --overwrite
 
           cat << 'XMLEOF' > "$TAG_CONF"
