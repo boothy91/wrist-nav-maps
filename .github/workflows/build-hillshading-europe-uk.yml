@@ -231,7 +231,12 @@ jobs:
           fi
 
           echo "Packaging $HGT_COUNT .hgt tile(s)..."
-          (cd "$STAGE_DIR" && zip -q "/github/workspace/$OUT_ZIP" ./*.hgt)
+          # Resolve the absolute output path BEFORE cd'ing into the stage
+          # dir - avoids hardcoding a workspace path that only exists in
+          # containerized jobs (this runner uses /home/runner/work/..., not
+          # /github/workspace).
+          OUT_ZIP_ABS="$(pwd)/$OUT_ZIP"
+          (cd "$STAGE_DIR" && zip -q "$OUT_ZIP_ABS" ./*.hgt)
           ls -lh "$OUT_ZIP"
 
           for attempt in 1 2 3 4 5; do
