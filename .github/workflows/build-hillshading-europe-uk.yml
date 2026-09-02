@@ -192,14 +192,46 @@ jobs:
           # Unzip any cached tiles that came down zipped
           find "$HGT_DIR" -name '*.hgt.zip' -exec unzip -o -q -d "$HGT_DIR" {} \;
 
-          HGT_COUNT=$(find "$HGT_DIR" -name '*.hgt' | wc -l)
+          # viewfinderpanoramas ships each 1-degree tile bundled inside a
+          # larger 5x5-degree zip, so $HGT_DIR now holds far more tiles than
+          # this region needs (confirmed in the run log: 76 tiles cached for
+          # 4 actually required). Build the exact 1-degree tile name list
+          # from the bbox and pull only those out, wherever they landed
+          # (phyghtmap nests them under $HGT_DIR/VIEW3/, not flat).
+          STAGE_DIR="/tmp/hillshade_stage"
+          mkdir -p "$STAGE_DIR"
+
+          TILE_NAMES=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
+          import sys, math
+          w, s, e, n = map(float, sys.argv[1:5])
+          for lat in range(math.floor(s), math.floor(n) + 1):
+              for lon in range(math.floor(w), math.floor(e) + 1):
+                  ns = "N" if lat >= 0 else "S"
+                  ew = "E" if lon >= 0 else "W"
+                  print(f"{ns}{abs(lat):02d}{ew}{abs(lon):03d}.hgt")
+          PYEOF
+          )
+
+          MISSING=0
+          while IFS= read -r TILE; do
+            FOUND=$(find "$HGT_DIR" -name "$TILE" -print -quit)
+            if [ -n "$FOUND" ]; then
+              cp "$FOUND" "$STAGE_DIR/"
+            else
+              echo "WARNING: expected tile $TILE not found in cache (likely sea/void area)" >&2
+              MISSING=$((MISSING+1))
+            fi
+          done <<< "$TILE_NAMES"
+
+          HGT_COUNT=$(find "$STAGE_DIR" -name '*.hgt' | wc -l)
+          echo "Staged $HGT_COUNT tile(s), $MISSING expected tile(s) missing"
           if [ "$HGT_COUNT" -eq 0 ]; then
             echo "WARNING: no .hgt tiles found for $RID - skipping upload" >&2
             exit 0
           fi
 
           echo "Packaging $HGT_COUNT .hgt tile(s)..."
-          (cd "$HGT_DIR" && zip -q "/github/workspace/$OUT_ZIP" ./*.hgt)
+          (cd "$STAGE_DIR" && zip -q "/github/workspace/$OUT_ZIP" ./*.hgt)
           ls -lh "$OUT_ZIP"
 
           for attempt in 1 2 3 4 5; do
