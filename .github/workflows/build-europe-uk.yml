@@ -236,6 +236,15 @@ jobs:
               <osm-tag key="highway" value="cycleway" zoom-appear="12" />
               <osm-tag key="highway" value="bridleway" zoom-appear="12" />
               <osm-tag key="highway" value="steps" zoom-appear="13" />
+
+              <!-- SAC hiking difficulty -->
+              <osm-tag key="sac_scale" value="strolling" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="mountain_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="demanding_mountain_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="alpine_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="demanding_alpine_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="difficult_alpine_hiking" zoom-appear="12" />
               <osm-tag key="natural" value="cliff" zoom-appear="12" />
               <osm-tag key="waterway" value="river" zoom-appear="11" />
               <osm-tag key="waterway" value="stream" zoom-appear="13" />
