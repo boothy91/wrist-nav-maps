@@ -390,6 +390,7 @@ jobs:
           set -euo pipefail
 
           OUTPUT="$RUNNER_TEMP/${REGION_ID}-rd5"
+          ARCHIVE="$RUNNER_TEMP/${REGION_ID}-rd5.zip"
 
           mkdir -p "$OUTPUT"
 
@@ -422,6 +423,12 @@ jobs:
           echo "Packaged RD5:"
           ls -lh "$OUTPUT"
 
+          cd "$OUTPUT"
+          zip -q "$ARCHIVE" ./*
+
+          echo "Created archive:"
+          ls -lh "$ARCHIVE"
+
       - name: Upload RD5 artifact
         uses: actions/upload-artifact@v4
         with:
@@ -429,3 +436,14 @@ jobs:
           path: ${{ runner.temp }}/${{ matrix.id }}-rd5/
           if-no-files-found: error
           retention-days: 30
+
+      - name: Upload RD5 release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REGION_ID: ${{ matrix.id }}
+        run: |
+          set -euo pipefail
+
+          ARCHIVE="$RUNNER_TEMP/${REGION_ID}-rd5.zip"
+
+          gh release upload routing-europe-uk "$ARCHIVE" --clobber
