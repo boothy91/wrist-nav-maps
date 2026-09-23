@@ -56,7 +56,9 @@ jobs:
             --latest=false
 
   build-routing:
-    needs: [generate-matrix, ensure-release]
+    needs:
+      - generate-matrix
+      - ensure-release
 
     runs-on: ubuntu-latest
 
@@ -77,7 +79,8 @@ jobs:
           sudo apt-get install -y \
             wget \
             jq \
-            osmium-tool
+            osmium-tool \
+            unzip
 
       - name: Checkout BRouter
         run: |
@@ -85,70 +88,82 @@ jobs:
             https://github.com/abrensch/brouter.git \
             /tmp/brouter
 
+      - name: Inspect BRouter build tools
+        run: |
+          set -eo pipefail
+
+          echo "=== BRouter repository ==="
+          ls -la /tmp/brouter
+
+          echo
+          echo "=== Map creation scripts ==="
+          find /tmp/brouter/misc/scripts/mapcreation \
+            -maxdepth 2 \
+            -type f \
+            -print | sort
+
+          echo
+          echo "=== process_pbf_planet.sh ==="
+
+          if [ -f /tmp/brouter/misc/scripts/mapcreation/process_pbf_planet.sh ]; then
+            sed -n '1,260p' \
+              /tmp/brouter/misc/scripts/mapcreation/process_pbf_planet.sh
+          else
+            echo "ERROR: process_pbf_planet.sh not found"
+            exit 1
+          fi
+
       - name: Build BRouter
         working-directory: /tmp/brouter
         run: |
+          set -eo pipefail
+
           chmod +x gradlew
 
-          ./gradlew clean build fatJar \
-            -x :brouter-routing-app:build \
-            --no-daemon
+          ./gradlew clean build fatJar --no-daemon
+
+          echo
+          echo "=== BRouter JAR files ==="
+
+          find /tmp/brouter \
+            -type f \
+            -name "*.jar" \
+            -printf '%p\n' \
+            | sort
+
+      - name: Locate BRouter files
+        run: |
+          set -eo pipefail
+
+          echo "=== Required BRouter files ==="
+
+          for NAME in \
+            lookups.dat \
+            bordernids.dat \
+            relations.dat \
+            restrictions.dat \
+            db_tags.csv.gz \
+            all.brf \
+            trekking.brf \
+            softaccess.brf
+          do
+            echo
+            echo "--- $NAME ---"
+
+            find /tmp/brouter \
+              -type f \
+              -name "$NAME" \
+              -print
+          done
 
           echo
           echo "=== BRouter JAR ==="
 
-          find brouter-server/build/libs \
-            -maxdepth 1 \
+          find /tmp/brouter \
             -type f \
             -name "*.jar" \
-            -ls
-
-      - name: Locate BRouter data files
-        run: |
-          set -eo pipefail
-
-          echo "=== lookups.dat ==="
-          find /tmp/brouter \
-            -type f \
-            -name "lookups.dat" \
-            -print
-
-          echo
-          echo "=== bordernids.dat ==="
-          find /tmp/brouter \
-            -type f \
-            -name "bordernids.dat" \
-            -print
-
-          echo
-          echo "=== relations.dat ==="
-          find /tmp/brouter \
-            -type f \
-            -name "relations.dat" \
-            -print
-
-          echo
-          echo "=== restrictions.dat ==="
-          find /tmp/brouter \
-            -type f \
-            -name "restrictions.dat" \
-            -print
-
-          echo
-          echo "=== db_tags.csv.gz ==="
-          find /tmp/brouter \
-            -type f \
-            -name "db_tags.csv.gz" \
-            -print
-
-          echo
-          echo "=== profiles ==="
-          find /tmp/brouter \
-            -type f \
-            \( -name "all.brf" \
-            -o -name "trekking.brf" \
-            -o -name "softaccess.brf" \) \
-            -print
+            -print \
+            | sort
 
       - name: Download region PBF and calculate bbox
         run: |
@@ -172,8 +187,12 @@ jobs:
           }
 
           echo "=== ${{ matrix.region.name }} ==="
+          echo "PBF:  $PBF_URL"
+          echo "POLY: $POLY_URL"
 
+          echo
           echo "Downloading PBF..."
+
           download "$PBF" "$PBF_URL"
 
           ls -lh "$PBF"
@@ -181,8 +200,8 @@ jobs:
           POLY="/tmp/region.poly"
           BBOX=""
 
+          echo
           echo "Downloading poly..."
-          echo "$POLY_URL"
 
           if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
 
@@ -282,7 +301,9 @@ jobs:
             BBOX="$FALLBACK_BBOX"
           fi
 
-          echo "Bounding box: $BBOX"
+          echo
+          echo "Bounding box:"
+          echo "$BBOX"
 
           IFS=':' read -r W S E N <<< "$BBOX"
 
@@ -291,12 +312,13 @@ jobs:
           echo "$E" > "/tmp/${FBASE}.e"
           echo "$N" > "/tmp/${FBASE}.n"
 
+          echo
           echo "W=$W"
           echo "S=$S"
           echo "E=$E"
           echo "N=$N"
 
-      - name: Filter PBF to region
+      - name: Extract region PBF
         run: |
           set -eo pipefail
 
@@ -311,7 +333,7 @@ jobs:
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/${FBASE}.routing.osm.pbf"
 
-          echo "Extracting:"
+          echo "Extracting region:"
           echo "$W,$S,$E,$N"
 
           osmium extract \
@@ -330,33 +352,31 @@ jobs:
 
           mkdir -p /tmp/brouter-work
 
-          LOOKUPS=$(find /tmp/brouter \
-            -type f -name "lookups.dat" | head -n 1)
+          find_one() {
+            find /tmp/brouter \
+              -type f \
+              -name "$1" \
+              -print \
+              | head -n 1
+          }
 
-          BORDERS=$(find /tmp/brouter \
-            -type f -name "bordernids.dat" | head -n 1)
+          LOOKUPS="$(find_one lookups.dat)"
+          BORDERS="$(find_one bordernids.dat)"
+          RELATIONS="$(find_one relations.dat)"
+          RESTRICTIONS="$(find_one restrictions.dat)"
+          DB_TAGS="$(find_one db_tags.csv.gz)"
+          ALL_BRF="$(find_one all.brf)"
+          TREKKING_BRF="$(find_one trekking.brf)"
+          SOFTACCESS_BRF="$(find_one softaccess.brf)"
 
-          RELATIONS=$(find /tmp/brouter \
-            -type f -name "relations.dat" | head -n 1)
-
-          RESTRICTIONS=$(find /tmp/brouter \
-            -type f -name "restrictions.dat" | head -n 1)
-
-          DB_TAGS=$(find /tmp/brouter \
-            -type f -name "db_tags.csv.gz" | head -n 1)
-
-          ALL_BRF=$(find /tmp/brouter \
-            -type f -name "all.brf" | head -n 1)
-
-          TREKKING_BRF=$(find /tmp/brouter \
-            -type f -name "trekking.brf" | head -n 1)
-
-          SOFTACCESS_BRF=$(find /tmp/brouter \
-            -type f -name "softaccess.brf" | head -n 1)
-
-          BROUTER_JAR=$(find /tmp/brouter/brouter-server/build/libs \
-            -type f -name "*.jar" \
-            | head -n 1)
+          echo "LOOKUPS=$LOOKUPS"
+          echo "BORDERS=$BORDERS"
+          echo "RELATIONS=$RELATIONS"
+          echo "RESTRICTIONS=$RESTRICTIONS"
+          echo "DB_TAGS=$DB_TAGS"
+          echo "ALL_BRF=$ALL_BRF"
+          echo "TREKKING_BRF=$TREKKING_BRF"
+          echo "SOFTACCESS_BRF=$SOFTACCESS_BRF"
 
           for FILE in \
             "$LOOKUPS" \
@@ -366,10 +386,10 @@ jobs:
             "$DB_TAGS" \
             "$ALL_BRF" \
             "$TREKKING_BRF" \
-            "$SOFTACCESS_BRF" \
-            "$BROUTER_JAR"
+            "$SOFTACCESS_BRF"
           do
             if [ -z "$FILE" ]; then
+              echo
               echo "ERROR: required BRouter file not found"
               exit 1
             fi
@@ -377,13 +397,11 @@ jobs:
 
           cp "$LOOKUPS" "$BORDERS" "$RELATIONS" \
              "$RESTRICTIONS" "$DB_TAGS" \
-             "$ALL_BRF" "$TREKKING_BRF" \
-             "$SOFTACCESS_BRF" \
-             "$BROUTER_JAR" \
+             "$ALL_BRF" "$TREKKING_BRF" "$SOFTACCESS_BRF" \
              /tmp/brouter-work/
 
-          echo "BROUTER_JAR=/tmp/brouter-work/$(basename "$BROUTER_JAR")" \
-            >> "$GITHUB_ENV"
+          echo
+          echo "=== BRouter work directory ==="
 
           cd /tmp/brouter-work
 
@@ -395,8 +413,37 @@ jobs:
             unodes55 \
             segments
 
-          echo "BRouter work directory:"
           find . -maxdepth 2 -type d | sort
+
+      - name: Find BRouter server JAR
+        run: |
+          set -eo pipefail
+
+          JAR=$(find /tmp/brouter \
+            -type f \
+            -name "*.jar" \
+            | grep -E 'brouter.*server|brouter-server' \
+            | head -n 1 || true)
+
+          if [ -z "$JAR" ]; then
+            JAR=$(find /tmp/brouter \
+              -type f \
+              -name "*.jar" \
+              | head -n 1)
+          fi
+
+          if [ -z "$JAR" ]; then
+            echo "ERROR: no BRouter JAR found"
+            exit 1
+          fi
+
+          echo "Using:"
+          echo "$JAR"
+
+          cp "$JAR" /tmp/brouter-work/brouter.jar
+
+          echo "BROUTER_JAR=/tmp/brouter-work/brouter.jar" \
+            >> "$GITHUB_ENV"
 
       - name: Generate BRouter routing segments
         run: |
@@ -464,11 +511,10 @@ jobs:
             restrictions.dat \
             lookups.dat \
             all.brf \
-            segments \
-            rd5
+            segments
 
           echo
-          echo "=== Generated .rd5 files ==="
+          echo "=== Generated routing segments ==="
 
           find segments \
             -type f \
@@ -481,7 +527,8 @@ jobs:
             -name "*.rd5" \
             | wc -l)
 
-          echo "Generated $COUNT routing segment(s)"
+          echo
+          echo "Generated $COUNT .rd5 file(s)"
 
           if [ "$COUNT" -eq 0 ]; then
             echo "ERROR: no .rd5 files generated"
