@@ -209,13 +209,10 @@ jobs:
           cp "$RUNNER_TEMP/brouter.jar" \
             mapbuild/brouter.jar
 
-          echo "Searching BRouter checkout for required map-creation files:"
-          find . -type f \( -name lookups.dat -o -name all.brf -o -name trekking.brf -o -name softaccess.brf -o -name db_tags.csv.gz \) -print
-
-          if [ -f misc/scripts/mapcreation/db_tags.csv.gz ]; then
-            cp misc/scripts/mapcreation/db_tags.csv.gz \
-              mapbuild/db_tags.csv.gz
-          fi
+          cp misc/profiles2/lookups.dat mapbuild/lookups.dat
+          cp misc/profiles2/all.brf mapbuild/all.brf
+          cp misc/profiles2/trekking.brf mapbuild/trekking.brf
+          cp misc/profiles2/softaccess.brf mapbuild/softaccess.brf
 
           echo "Map creation workspace:"
           find mapbuild \
@@ -257,8 +254,7 @@ jobs:
             all.brf \
             trekking.brf \
             softaccess.brf \
-            planet-new.osm.pbf \
-            db_tags.csv.gz
+            planet-new.osm.pbf
 
           echo
           echo "OsmFastCutter output:"
