@@ -107,6 +107,25 @@ jobs:
 
           cp "$JAR" /tmp/brouter.jar
 
+      - name: Show resolved region config
+        env:
+          REGION_NAME: ${{ matrix.name }}
+          REGION_ID: ${{ matrix.id }}
+          REGION_PATH: ${{ matrix.path }}
+          PBF_URL: ${{ matrix.pbf }}
+        run: |
+          set -euo pipefail
+
+          # Print exactly what this matrix entry resolved to, straight
+          # from config/regions/regions-europe-uk.json, with nothing
+          # inferred. If "path" or "pbf" is scoped wider than the county
+          # (e.g. points at england/great-britain instead of the county
+          # itself) it will be visible here before anything downloads.
+          echo "name: $REGION_NAME"
+          echo "id:   $REGION_ID"
+          echo "path: $REGION_PATH"
+          echo "pbf:  $PBF_URL"
+
       - name: Download OSM PBF
         env:
           PBF_URL: ${{ matrix.pbf }}
@@ -125,17 +144,20 @@ jobs:
 
       - name: Download region polygon
         env:
-          REGION_PATH: ${{ matrix.path }}
+          PBF_URL: ${{ matrix.pbf }}
         run: |
           set -euo pipefail
 
-          # NOTE: Geofabrik .poly files do NOT carry the "-free" suffix
-          # that .osm.pbf downloads use. Using "-free.poly" 404s for
-          # sub-country regions (e.g. English counties), which was
-          # silently treated as "no polygon available" and caused the
-          # full unfiltered PBF to be routed instead of the clipped
-          # region - producing zero relevant RD5 output.
-          POLY_URL="https://download.geofabrik.de/${REGION_PATH}.poly"
+          # Derive the poly URL from the working pbf URL by substitution,
+          # the same way the hillshading workflow does, rather than
+          # reconstructing it from matrix.path. This sidesteps two
+          # problems at once: the "-free" suffix mismatch (.poly files
+          # never carry it, unlike .osm.pbf), and any mismatch between
+          # "path" and "pbf" in config/regions/regions-europe-uk.json
+          # (e.g. a region filed under the wrong Geofabrik top-level
+          # folder) - if pbf resolves, this poly URL resolves too, since
+          # Geofabrik always serves both from the same directory.
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
 
           echo "Downloading polygon:"
           echo "$POLY_URL"
@@ -148,6 +170,10 @@ jobs:
 
           echo "Polygon downloaded:"
           ls -lh /tmp/region.poly
+
+          echo
+          echo "Polygon contents (first 15 lines):"
+          head -n 15 /tmp/region.poly
 
       - name: Prepare routing PBF
         run: |
@@ -171,22 +197,44 @@ jobs:
           osmium fileinfo \
             /tmp/region-source.osm.pbf
 
-      - name: Sanity check PBF bounding box
+      - name: Sanity check extracted region size
         env:
           REGION_NAME: ${{ matrix.name }}
+          # Adjust this per-region if you build anything bigger than a
+          # single English county/unitary authority through this same
+          # workflow (e.g. a "London" or "Yorkshire" entry legitimately
+          # needs a higher ceiling). This default is generous for a
+          # county-level clipped extract.
+          MAX_EXPECTED_MB: "80"
         run: |
           set -euo pipefail
 
-          echo "Bounding box for $REGION_NAME:"
+          echo "Bounding box and object counts for $REGION_NAME:"
+          osmium fileinfo -e /tmp/region-source.osm.pbf | tee /tmp/bbox.txt
 
-          osmium fileinfo -e /tmp/region-source.osm.pbf \
-            | tee /tmp/bbox.txt
+          SIZE_BYTES="$(stat -c%s /tmp/region-source.osm.pbf)"
+          SIZE_MB="$(( SIZE_BYTES / 1024 / 1024 ))"
 
-          # Catch the "wrong hemisphere / wrong region" failure mode
-          # (e.g. bbox around N30 W45 for a UK county) before burning
-          # several minutes on the Java build steps below.
-          if ! grep -qE '\(lon\)|\(lat\)' /tmp/bbox.txt; then
-            echo "WARNING: could not parse bbox from osmium fileinfo output."
+          echo
+          echo "Extracted PBF size: ${SIZE_MB} MB (limit: ${MAX_EXPECTED_MB} MB)"
+
+          # A single English county clipped to its own polygon should be
+          # tens of MB, not hundreds. If it's this big, the polygon almost
+          # certainly did not actually scope down to the county - "path"
+          # in config/regions/regions-europe-uk.json is pointing at a
+          # wider area (e.g. the whole of England/Great Britain) even
+          # though the poly file downloaded without a 404. Fail loudly
+          # here instead of burning ~2 minutes on a Java build that will
+          # produce zero usable RD5 output.
+          if [ "$SIZE_MB" -gt "$MAX_EXPECTED_MB" ]; then
+            echo
+            echo "ERROR: extracted PBF for $REGION_NAME is ${SIZE_MB} MB,"
+            echo "larger than the ${MAX_EXPECTED_MB} MB expected for a"
+            echo "single county. The polygon likely did not clip to the"
+            echo "intended area - check the 'path' value for this region"
+            echo "in config/regions/regions-europe-uk.json against"
+            echo "https://download.geofabrik.de/europe/great-britain/england.html"
+            exit 1
           fi
 
       - name: Build BRouter RD5 segments
