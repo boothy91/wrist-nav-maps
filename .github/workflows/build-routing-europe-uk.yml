@@ -38,11 +38,14 @@ jobs:
           fi
 
           cat /tmp/matrix.json
+
           echo "matrix=$(cat /tmp/matrix.json)" >> "$GITHUB_OUTPUT"
 
   build-routing:
     needs: prepare
+
     runs-on: ubuntu-latest
+
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -51,12 +54,16 @@ jobs:
     name: "${{ matrix.name }}"
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
+          set -euo pipefail
+
           sudo apt-get update
+
           sudo apt-get install -y \
             osmium-tool \
             wget \
@@ -78,15 +85,24 @@ jobs:
 
           ./gradlew clean build fatJar --no-daemon
 
-          JAR="$(find brouter-server/build/libs -maxdepth 1 -type f -name '*-all.jar' | head -n 1)"
+          JAR="$(find brouter-server/build/libs \
+            -maxdepth 1 \
+            -type f \
+            -name '*-all.jar' \
+            | head -n 1)"
 
           if [ -z "$JAR" ]; then
             echo "ERROR: BRouter fat JAR was not produced."
-            find brouter-server/build/libs -maxdepth 1 -type f -print || true
+
+            find brouter-server/build/libs \
+              -maxdepth 1 \
+              -type f \
+              -print || true
+
             exit 1
           fi
 
-          echo "BRouter JAR:"
+          echo "Using BRouter JAR:"
           echo "$JAR"
 
           cp "$JAR" /tmp/brouter.jar
@@ -96,6 +112,9 @@ jobs:
           PBF_URL: ${{ matrix.pbf }}
         run: |
           set -euo pipefail
+
+          echo "Downloading:"
+          echo "$PBF_URL"
 
           wget \
             --progress=dot:giga \
@@ -112,18 +131,23 @@ jobs:
 
           POLY_URL="https://download.geofabrik.de/${REGION_PATH}-free.poly"
 
-          echo "Trying:"
+          echo "Trying polygon:"
           echo "$POLY_URL"
 
           if wget -q \
             -O /tmp/region.poly \
             "$POLY_URL"; then
-            echo "Downloaded polygon:"
+
+            echo "Polygon downloaded:"
             ls -lh /tmp/region.poly
+
           else
-            echo "No Geofabrik .poly available."
-            echo "Using the complete supplied PBF."
+
+            echo "No Geofabrik polygon available."
+            echo "Using the supplied PBF without polygon extraction."
+
             rm -f /tmp/region.poly
+
           fi
 
       - name: Prepare routing PBF
@@ -131,6 +155,7 @@ jobs:
           set -euo pipefail
 
           if [ -f /tmp/region.poly ]; then
+
             echo "Extracting routing area using polygon..."
 
             osmium extract \
@@ -139,10 +164,21 @@ jobs:
               -o /tmp/region-routing.osm.pbf \
               --overwrite
 
-            mv /tmp/region-routing.osm.pbf /tmp/region-source.osm.pbf
+            mv \
+              /tmp/region-routing.osm.pbf \
+              /tmp/region-source.osm.pbf
+
+          else
+
+            echo "No polygon extraction required."
+
           fi
 
-          osmium fileinfo /tmp/region-source.osm.pbf
+          echo "Final routing PBF:"
+          ls -lh /tmp/region-source.osm.pbf
+
+          osmium fileinfo \
+            /tmp/region-source.osm.pbf
 
       - name: Build BRouter RD5 segments
         env:
@@ -156,26 +192,33 @@ jobs:
           PBF=/tmp/region-source.osm.pbf
 
           rm -rf "$WORK"
+
           mkdir -p "$WORK"
 
           cd "$WORK"
 
-          mkdir nodetiles
-          mkdir ftiles
-          mkdir waytiles
-          mkdir waytiles55
-          mkdir nodes55
-          mkdir unodes55
-          mkdir segments
+          mkdir -p nodetiles
+          mkdir -p ftiles
+          mkdir -p waytiles
+          mkdir -p waytiles55
+          mkdir -p nodes55
+          mkdir -p unodes55
+          mkdir -p segments
 
+          echo
           echo "========================================"
           echo "BRouter routing build"
           echo "Region: $REGION_ID"
           echo "PBF:    $PBF"
           echo "========================================"
-
           echo
+
+          # ------------------------------------------------------------
+          # STEP 1
+          # ------------------------------------------------------------
+
           echo "STEP 1 - OsmCutter"
+
           java \
             -Xmx6G \
             -Xms2G \
@@ -190,8 +233,13 @@ jobs:
             "$PROFILES/all.brf" \
             "$PBF"
 
+          # ------------------------------------------------------------
+          # STEP 2
+          # ------------------------------------------------------------
+
           echo
           echo "STEP 2 - NodeFilter"
+
           java \
             -Xmx6G \
             -Xms2G \
@@ -203,8 +251,13 @@ jobs:
             ways.dat \
             ftiles
 
+          # ------------------------------------------------------------
+          # STEP 3
+          # ------------------------------------------------------------
+
           echo
           echo "STEP 3 - RelationMerger"
+
           java \
             -Xmx6G \
             -Xms2G \
@@ -219,13 +272,12 @@ jobs:
             "$PROFILES/trekking.brf" \
             "$PROFILES/softaccess.brf"
 
+          # ------------------------------------------------------------
+          # STEP 4
+          # ------------------------------------------------------------
+
           echo
           echo "STEP 4 - WayCutter"
-
-          for file in ftiles/*.tls; do
-            [ -e "$file" ] || continue
-            cp "$file" "${file%.tls}.tlf"
-          done
 
           java \
             -Xmx6G \
@@ -238,13 +290,12 @@ jobs:
             ways2.dat \
             waytiles
 
+          # ------------------------------------------------------------
+          # STEP 5
+          # ------------------------------------------------------------
+
           echo
           echo "STEP 5 - WayCutter5"
-
-          for file in ftiles/*.tls; do
-            [ -e "$file" ] || continue
-            cp "$file" "${file%.tls}.ntl"
-          done
 
           java \
             -Xmx6G \
@@ -258,8 +309,13 @@ jobs:
             waytiles55 \
             bordernids.dat
 
+          # ------------------------------------------------------------
+          # STEP 6
+          # ------------------------------------------------------------
+
           echo
           echo "STEP 6 - NodeCutter"
+
           java \
             -Xmx6G \
             -Xms2G \
@@ -270,8 +326,21 @@ jobs:
             ftiles \
             nodes55
 
+          # ------------------------------------------------------------
+          # STEP 7
+          # ------------------------------------------------------------
+
           echo
           echo "STEP 7 - PosUnifier"
+
+          # BRouter requires SRTM directories even when
+          # no elevation data is being supplied.
+          #
+          # Empty directories are valid here and produce
+          # routing data without elevation.
+
+          mkdir -p /tmp/srtm1_bef
+          mkdir -p /tmp/srtm3_bef
 
           java \
             -Xmx6G \
@@ -283,7 +352,13 @@ jobs:
             nodes55 \
             unodes55 \
             bordernids.dat \
-            bordernodes.dat
+            bordernodes.dat \
+            /tmp/srtm1_bef \
+            /tmp/srtm3_bef
+
+          # ------------------------------------------------------------
+          # STEP 8
+          # ------------------------------------------------------------
 
           echo
           echo "STEP 8 - WayLinker"
@@ -304,32 +379,53 @@ jobs:
             segments \
             rd5
 
+          # ------------------------------------------------------------
+          # CHECK OUTPUT
+          # ------------------------------------------------------------
+
           echo
           echo "========================================"
           echo "GENERATED RD5 FILES"
           echo "========================================"
 
-          find segments -type f -name '*.rd5' -print -exec ls -lh {} \;
+          find segments \
+            -type f \
+            -name '*.rd5' \
+            -print \
+            -exec ls -lh {} \;
 
           COUNT="$(find segments -type f -name '*.rd5' | wc -l)"
 
           if [ "$COUNT" -eq 0 ]; then
+            echo
             echo "ERROR: No RD5 files were generated."
+            echo
+            echo "BRouter build directory:"
+            find . -maxdepth 2 -type f | sort | head -200
+
             exit 1
           fi
 
           echo
           echo "Generated $COUNT RD5 file(s)."
 
+          rm -rf /tmp/routing-output
           mkdir -p /tmp/routing-output
-          cp segments/*.rd5 /tmp/routing-output/
+
+          cp segments/*.rd5 \
+            /tmp/routing-output/
 
       - name: Show routing files
         run: |
           set -euo pipefail
 
           echo "Routing files for ${{ matrix.id }}:"
-          find /tmp/routing-output -type f -name '*.rd5' -print -exec ls -lh {} \;
+
+          find /tmp/routing-output \
+            -type f \
+            -name '*.rd5' \
+            -print \
+            -exec ls -lh {} \;
 
       - name: Upload routing artifacts
         uses: actions/upload-artifact@v4
