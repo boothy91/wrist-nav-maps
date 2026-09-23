@@ -2,92 +2,92 @@
   {
     "id": "bedfordshire",
     "name": "Bedfordshire",
-    "path": "europe/great-britain/england/bedfordshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/bedfordshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/bedfordshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/bedfordshire-latest.osm.pbf"
   },
   {
     "id": "berkshire",
     "name": "Berkshire",
-    "path": "europe/great-britain/england/berkshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/berkshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/berkshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/berkshire-latest.osm.pbf"
   },
   {
     "id": "bristol",
     "name": "Bristol",
-    "path": "europe/great-britain/england/bristol",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/bristol-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/bristol",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/bristol-latest.osm.pbf"
   },
   {
     "id": "buckinghamshire",
     "name": "Buckinghamshire",
-    "path": "europe/great-britain/england/buckinghamshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/buckinghamshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/buckinghamshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/buckinghamshire-latest.osm.pbf"
   },
   {
     "id": "cambridgeshire",
     "name": "Cambridgeshire",
-    "path": "europe/great-britain/england/cambridgeshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/cambridgeshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/cambridgeshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/cambridgeshire-latest.osm.pbf"
   },
   {
     "id": "cheshire",
     "name": "Cheshire",
-    "path": "europe/great-britain/england/cheshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/cheshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/cheshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/cheshire-latest.osm.pbf"
   },
   {
     "id": "cornwall",
     "name": "Cornwall",
-    "path": "europe/great-britain/england/cornwall",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/cornwall-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/cornwall",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/cornwall-latest.osm.pbf"
   },
   {
     "id": "cumbria",
     "name": "Cumbria",
-    "path": "europe/great-britain/england/cumbria",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/cumbria-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/cumbria",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/cumbria-latest.osm.pbf"
   },
   {
     "id": "derbyshire",
     "name": "Derbyshire",
-    "path": "europe/great-britain/england/derbyshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/derbyshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/derbyshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/derbyshire-latest.osm.pbf"
   },
   {
     "id": "devon",
     "name": "Devon",
-    "path": "europe/great-britain/england/devon",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/devon-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/devon",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/devon-latest.osm.pbf"
   },
   {
     "id": "dorset",
     "name": "Dorset",
-    "path": "europe/great-britain/england/dorset",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/dorset-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/dorset",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/dorset-latest.osm.pbf"
   },
   {
     "id": "durham",
     "name": "Durham",
-    "path": "europe/great-britain/england/durham",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/durham-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/durham",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/durham-latest.osm.pbf"
   },
   {
     "id": "east-sussex",
     "name": "East Sussex",
-    "path": "europe/great-britain/england/east-sussex",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/east-sussex-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/east-sussex",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/east-sussex-latest.osm.pbf"
   },
   {
     "id": "east-yorkshire-with-hull",
     "name": "East Yorkshire with Hull",
-    "path": "europe/great-britain/england/east-yorkshire-with-hull",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/east-yorkshire-with-hull-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/east-yorkshire-with-hull",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/east-yorkshire-with-hull-latest.osm.pbf"
   },
   {
     "id": "essex",
     "name": "Essex",
-    "path": "europe/great-britain/england/essex",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/essex-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/essex",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/essex-latest.osm.pbf"
   },
   {
     "id": "falklands",
@@ -98,116 +98,116 @@
   {
     "id": "gloucestershire",
     "name": "Gloucestershire",
-    "path": "europe/great-britain/england/gloucestershire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/gloucestershire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/gloucestershire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/gloucestershire-latest.osm.pbf"
   },
   {
     "id": "greater-london",
     "name": "Greater London",
-    "path": "europe/great-britain/england/greater-london",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/greater-london-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/greater-london",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/greater-london-latest.osm.pbf"
   },
   {
     "id": "greater-manchester",
     "name": "Greater Manchester",
-    "path": "europe/great-britain/england/greater-manchester",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/greater-manchester-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/greater-manchester",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/greater-manchester-latest.osm.pbf"
   },
   {
     "id": "hampshire",
     "name": "Hampshire",
-    "path": "europe/great-britain/england/hampshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/hampshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/hampshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/hampshire-latest.osm.pbf"
   },
   {
     "id": "herefordshire",
     "name": "Herefordshire",
-    "path": "europe/great-britain/england/herefordshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/herefordshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/herefordshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/herefordshire-latest.osm.pbf"
   },
   {
     "id": "hertfordshire",
     "name": "Hertfordshire",
-    "path": "europe/great-britain/england/hertfordshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/hertfordshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/hertfordshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/hertfordshire-latest.osm.pbf"
   },
   {
     "id": "isle-of-wight",
     "name": "Isle of Wight",
-    "path": "europe/great-britain/england/isle-of-wight",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/isle-of-wight-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/isle-of-wight",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/isle-of-wight-latest.osm.pbf"
   },
   {
     "id": "kent",
     "name": "Kent",
-    "path": "europe/great-britain/england/kent",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/kent-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/kent",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/kent-latest.osm.pbf"
   },
   {
     "id": "lancashire",
     "name": "Lancashire",
-    "path": "europe/great-britain/england/lancashire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/lancashire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/lancashire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/lancashire-latest.osm.pbf"
   },
   {
     "id": "leicestershire",
     "name": "Leicestershire",
-    "path": "europe/great-britain/england/leicestershire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/leicestershire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/leicestershire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/leicestershire-latest.osm.pbf"
   },
   {
     "id": "lincolnshire",
     "name": "Lincolnshire",
-    "path": "europe/great-britain/england/lincolnshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/lincolnshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/lincolnshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/lincolnshire-latest.osm.pbf"
   },
   {
     "id": "merseyside",
     "name": "Merseyside",
-    "path": "europe/great-britain/england/merseyside",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/merseyside-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/merseyside",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/merseyside-latest.osm.pbf"
   },
   {
     "id": "norfolk",
     "name": "Norfolk",
-    "path": "europe/great-britain/england/norfolk",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/norfolk-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/norfolk",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/norfolk-latest.osm.pbf"
   },
   {
     "id": "north-yorkshire",
     "name": "North Yorkshire",
-    "path": "europe/great-britain/england/north-yorkshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/north-yorkshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/north-yorkshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/north-yorkshire-latest.osm.pbf"
   },
   {
     "id": "northamptonshire",
     "name": "Northamptonshire",
-    "path": "europe/great-britain/england/northamptonshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/northamptonshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/northamptonshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/northamptonshire-latest.osm.pbf"
   },
   {
     "id": "northumberland",
     "name": "Northumberland",
-    "path": "europe/great-britain/england/northumberland",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/northumberland-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/northumberland",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/northumberland-latest.osm.pbf"
   },
   {
     "id": "nottinghamshire",
     "name": "Nottinghamshire",
-    "path": "europe/great-britain/england/nottinghamshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/nottinghamshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/nottinghamshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/nottinghamshire-latest.osm.pbf"
   },
   {
     "id": "oxfordshire",
     "name": "Oxfordshire",
-    "path": "europe/great-britain/england/oxfordshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/oxfordshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/oxfordshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/oxfordshire-latest.osm.pbf"
   },
   {
     "id": "rutland",
     "name": "Rutland",
-    "path": "europe/great-britain/england/rutland",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/rutland-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/rutland",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/rutland-latest.osm.pbf"
   },
   {
     "id": "scotland",
@@ -218,44 +218,44 @@
   {
     "id": "shropshire",
     "name": "Shropshire",
-    "path": "europe/great-britain/england/shropshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/shropshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/shropshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/shropshire-latest.osm.pbf"
   },
   {
     "id": "somerset",
     "name": "Somerset",
-    "path": "europe/great-britain/england/somerset",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/somerset-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/somerset",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/somerset-latest.osm.pbf"
   },
   {
     "id": "south-yorkshire",
     "name": "South Yorkshire",
-    "path": "europe/great-britain/england/south-yorkshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/south-yorkshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/south-yorkshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/south-yorkshire-latest.osm.pbf"
   },
   {
     "id": "staffordshire",
     "name": "Staffordshire",
-    "path": "europe/great-britain/england/staffordshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/staffordshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/staffordshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/staffordshire-latest.osm.pbf"
   },
   {
     "id": "suffolk",
     "name": "Suffolk",
-    "path": "europe/great-britain/england/suffolk",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/suffolk-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/suffolk",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/suffolk-latest.osm.pbf"
   },
   {
     "id": "surrey",
     "name": "Surrey",
-    "path": "europe/great-britain/england/surrey",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/surrey-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/surrey",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/surrey-latest.osm.pbf"
   },
   {
     "id": "tyne-and-wear",
     "name": "Tyne and Wear",
-    "path": "europe/great-britain/england/tyne-and-wear",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/tyne-and-wear-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/tyne-and-wear",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/tyne-and-wear-latest.osm.pbf"
   },
   {
     "id": "wales",
@@ -266,37 +266,37 @@
   {
     "id": "warwickshire",
     "name": "Warwickshire",
-    "path": "europe/great-britain/england/warwickshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/warwickshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/warwickshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/warwickshire-latest.osm.pbf"
   },
   {
     "id": "west-midlands",
     "name": "West Midlands",
-    "path": "europe/great-britain/england/west-midlands",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/west-midlands-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/west-midlands",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/west-midlands-latest.osm.pbf"
   },
   {
     "id": "west-sussex",
     "name": "West Sussex",
-    "path": "europe/great-britain/england/west-sussex",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/west-sussex-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/west-sussex",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/west-sussex-latest.osm.pbf"
   },
   {
     "id": "west-yorkshire",
     "name": "West Yorkshire",
-    "path": "europe/great-britain/england/west-yorkshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/west-yorkshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/west-yorkshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/west-yorkshire-latest.osm.pbf"
   },
   {
     "id": "wiltshire",
     "name": "Wiltshire",
-    "path": "europe/great-britain/england/wiltshire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/wiltshire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/wiltshire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/wiltshire-latest.osm.pbf"
   },
   {
     "id": "worcestershire",
     "name": "Worcestershire",
-    "path": "europe/great-britain/england/worcestershire",
-    "pbf": "https://download.geofabrik.de/europe/great-britain/england/worcestershire-latest.osm.pbf"
+    "path": "europe/united-kingdom/england/worcestershire",
+    "pbf": "https://download.geofabrik.de/europe/united-kingdom/england/worcestershire-latest.osm.pbf"
   }
 ]
