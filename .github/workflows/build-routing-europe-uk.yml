@@ -373,7 +373,7 @@ jobs:
             ftiles
 
           # ------------------------------------------------------------
-echo "FILE SIZES AFTER NodeFilter:"; find ftiles -type f -printf "%p %s bytes\n" | sort
+    echo "FILE SIZES AFTER NodeFilter:"; find ftiles -type f -printf "%p %s bytes\n" | sort
           # STEP 3
           # ------------------------------------------------------------
 
