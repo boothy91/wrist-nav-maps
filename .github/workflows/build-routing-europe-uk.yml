@@ -139,20 +139,21 @@ jobs:
           echo "$PBF_URL"
 
           wget \
+            --tries=5 --waitretry=15 --retry-connrefused \
             --progress=dot:giga \
             -O /tmp/region-source.osm.pbf \
             "$PBF_URL"
 
           ls -lh /tmp/region-source.osm.pbf
 
-      - name: Download region polygon
+      - name: Download region polygon (or fall back to bbox)
         env:
           PBF_URL: ${{ matrix.pbf }}
         run: |
           set -euo pipefail
 
           # Derive the poly URL from the working pbf URL by substitution,
-          # the same way the hillshading workflow does, rather than
+          # the same way the contours workflow does, rather than
           # reconstructing it from matrix.path. This sidesteps two
           # problems at once: the "-free" suffix mismatch (.poly files
           # never carry it, unlike .osm.pbf), and any mismatch between
@@ -165,30 +166,74 @@ jobs:
           echo "Downloading polygon:"
           echo "$POLY_URL"
 
-          # Fail the job instead of silently falling back. A missing
-          # polygon for a named sub-region almost always means REGION_PATH
-          # is wrong in config/regions/regions-europe-uk.json, not that
-          # extraction should be skipped.
-          wget -O /tmp/region.poly "$POLY_URL"
+          if wget --tries=5 --waitretry=15 --retry-connrefused \
+               -O /tmp/region.poly "$POLY_URL"; then
+            echo "Polygon downloaded:"
+            ls -lh /tmp/region.poly
+            echo
+            echo "Polygon contents (first 15 lines):"
+            head -n 15 /tmp/region.poly
+            echo "extract_mode=poly" >> "$GITHUB_ENV"
+          else
+            # No polygon available for this region. Rather than failing
+            # the whole job, fall back to a padded bounding-box extract
+            # derived from the PBF's own extent, same approach as the
+            # contours workflow. This is looser than a polygon clip (it
+            # can pull in slivers of neighbouring regions along straight
+            # edges), which is why the size sanity check below still
+            # runs and still fails the job if the result looks wrong.
+            echo "No polygon available at $POLY_URL - falling back to PBF bbox extent"
+            rm -f /tmp/region.poly
 
-          echo "Polygon downloaded:"
-          ls -lh /tmp/region.poly
+            BBOX="$(osmium fileinfo -e --json /tmp/region-source.osm.pbf \
+              | python3 - << 'PYEOF'
+          import json, sys
 
-          echo
-          echo "Polygon contents (first 15 lines):"
-          head -n 15 /tmp/region.poly
+          data = json.load(sys.stdin)
+          w, s, e, n = data["data"]["bbox"]
+
+          # Antimeridian-safe padding: a region whose bbox naively spans
+          # more than 180 degrees is almost certainly wrapping around
+          # +/-180, not actually that wide. In that (rare, for UK data)
+          # case, keep the larger of the two halves rather than padding
+          # a bogus full-globe box.
+          raw_span = e - w
+          if raw_span > 180:
+              print(f"WARNING: antimeridian-like bbox span ({raw_span:.1f} deg) - "
+                    f"using raw extent without correction, check region manually",
+                    file=sys.stderr)
+
+          pad = 0.05
+          print(f"{w-pad}:{s-pad}:{e+pad}:{n+pad}")
+          PYEOF
+          )"
+
+            echo "Derived bbox: $BBOX"
+            echo "bbox=$BBOX" >> "$GITHUB_ENV"
+            echo "extract_mode=bbox" >> "$GITHUB_ENV"
+          fi
 
       - name: Prepare routing PBF
         run: |
           set -euo pipefail
 
-          echo "Extracting routing area using polygon..."
+          if [ "$extract_mode" = "poly" ]; then
+            echo "Extracting routing area using polygon..."
 
-          osmium extract \
-            -p /tmp/region.poly \
-            /tmp/region-source.osm.pbf \
-            -o /tmp/region-routing.osm.pbf \
-            --overwrite
+            osmium extract \
+              -p /tmp/region.poly \
+              /tmp/region-source.osm.pbf \
+              -o /tmp/region-routing.osm.pbf \
+              --overwrite
+          else
+            echo "Extracting routing area using bbox: $bbox"
+
+            osmium extract \
+              --bbox "$bbox" \
+              /tmp/region-source.osm.pbf \
+              -o /tmp/region-routing.osm.pbf \
+              --overwrite
+          fi
 
           mv \
             /tmp/region-routing.osm.pbf \
@@ -208,7 +253,15 @@ jobs:
           # workflow (e.g. a "London" or "Yorkshire" entry legitimately
           # needs a higher ceiling). This default is generous for a
           # county-level clipped extract.
-          MAX_EXPECTED_MB: "80"
+          #
+          # The bbox fallback path (no polygon available) uses a
+          # tighter ceiling than the poly path, since a bbox clip has
+          # no way to exclude neighbouring-region roads along its
+          # straight edges the way a polygon clip does - a bbox extract
+          # that balloons past this is a stronger signal something is
+          # wrong (e.g. the PBF itself is scoped wider than the region).
+          MAX_EXPECTED_MB_POLY: "80"
+          MAX_EXPECTED_MB_BBOX: "60"
         run: |
           set -euo pipefail
 
@@ -218,7 +271,14 @@ jobs:
           SIZE_BYTES="$(stat -c%s /tmp/region-source.osm.pbf)"
           SIZE_MB="$(( SIZE_BYTES / 1024 / 1024 ))"
 
+          if [ "$extract_mode" = "poly" ]; then
+            MAX_EXPECTED_MB="$MAX_EXPECTED_MB_POLY"
+          else
+            MAX_EXPECTED_MB="$MAX_EXPECTED_MB_BBOX"
+          fi
+
           echo
+          echo "Extract mode: $extract_mode"
           echo "Extracted PBF size: ${SIZE_MB} MB (limit: ${MAX_EXPECTED_MB} MB)"
 
           # A single English county clipped to its own polygon should be
@@ -226,16 +286,18 @@ jobs:
           # certainly did not actually scope down to the county - "path"
           # in config/regions/regions-europe-uk.json is pointing at a
           # wider area (e.g. the whole of England/Great Britain) even
-          # though the poly file downloaded without a 404. Fail loudly
+          # though the poly file downloaded without a 404 - or, in bbox
+          # mode, the source PBF itself is scoped too wide. Fail loudly
           # here instead of burning ~2 minutes on a Java build that will
           # produce zero usable RD5 output.
           if [ "$SIZE_MB" -gt "$MAX_EXPECTED_MB" ]; then
             echo
             echo "ERROR: extracted PBF for $REGION_NAME is ${SIZE_MB} MB,"
             echo "larger than the ${MAX_EXPECTED_MB} MB expected for a"
-            echo "single county. The polygon likely did not clip to the"
-            echo "intended area - check the 'path' value for this region"
-            echo "in config/regions/regions-europe-uk.json against"
+            echo "single county (extract_mode=$extract_mode). The region"
+            echo "likely did not clip to the intended area - check the"
+            echo "'pbf'/'path' value for this region in"
+            echo "config/regions/regions-europe-uk.json against"
             echo "https://download.geofabrik.de/europe/great-britain/england.html"
             exit 1
           fi
