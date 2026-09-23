@@ -129,56 +129,65 @@ jobs:
         run: |
           set -euo pipefail
 
-          POLY_URL="https://download.geofabrik.de/${REGION_PATH}-free.poly"
+          # NOTE: Geofabrik .poly files do NOT carry the "-free" suffix
+          # that .osm.pbf downloads use. Using "-free.poly" 404s for
+          # sub-country regions (e.g. English counties), which was
+          # silently treated as "no polygon available" and caused the
+          # full unfiltered PBF to be routed instead of the clipped
+          # region - producing zero relevant RD5 output.
+          POLY_URL="https://download.geofabrik.de/${REGION_PATH}.poly"
 
-          echo "Trying polygon:"
+          echo "Downloading polygon:"
           echo "$POLY_URL"
 
-          if wget -q \
-            -O /tmp/region.poly \
-            "$POLY_URL"; then
+          # Fail the job instead of silently falling back. A missing
+          # polygon for a named sub-region almost always means REGION_PATH
+          # is wrong in config/regions/regions-europe-uk.json, not that
+          # extraction should be skipped.
+          wget -O /tmp/region.poly "$POLY_URL"
 
-            echo "Polygon downloaded:"
-            ls -lh /tmp/region.poly
-
-          else
-
-            echo "No Geofabrik polygon available."
-            echo "Using the supplied PBF without polygon extraction."
-
-            rm -f /tmp/region.poly
-
-          fi
+          echo "Polygon downloaded:"
+          ls -lh /tmp/region.poly
 
       - name: Prepare routing PBF
         run: |
           set -euo pipefail
 
-          if [ -f /tmp/region.poly ]; then
+          echo "Extracting routing area using polygon..."
 
-            echo "Extracting routing area using polygon..."
+          osmium extract \
+            -p /tmp/region.poly \
+            /tmp/region-source.osm.pbf \
+            -o /tmp/region-routing.osm.pbf \
+            --overwrite
 
-            osmium extract \
-              -p /tmp/region.poly \
-              /tmp/region-source.osm.pbf \
-              -o /tmp/region-routing.osm.pbf \
-              --overwrite
-
-            mv \
-              /tmp/region-routing.osm.pbf \
-              /tmp/region-source.osm.pbf
-
-          else
-
-            echo "No polygon extraction required."
-
-          fi
+          mv \
+            /tmp/region-routing.osm.pbf \
+            /tmp/region-source.osm.pbf
 
           echo "Final routing PBF:"
           ls -lh /tmp/region-source.osm.pbf
 
           osmium fileinfo \
             /tmp/region-source.osm.pbf
+
+      - name: Sanity check PBF bounding box
+        env:
+          REGION_NAME: ${{ matrix.name }}
+        run: |
+          set -euo pipefail
+
+          echo "Bounding box for $REGION_NAME:"
+
+          osmium fileinfo -e /tmp/region-source.osm.pbf \
+            | tee /tmp/bbox.txt
+
+          # Catch the "wrong hemisphere / wrong region" failure mode
+          # (e.g. bbox around N30 W45 for a UK county) before burning
+          # several minutes on the Java build steps below.
+          if ! grep -qE '\(lon\)|\(lat\)' /tmp/bbox.txt; then
+            echo "WARNING: could not parse bbox from osmium fileinfo output."
+          fi
 
       - name: Build BRouter RD5 segments
         env:
