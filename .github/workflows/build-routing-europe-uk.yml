@@ -14,6 +14,7 @@ permissions:
 jobs:
   prepare:
     runs-on: ubuntu-latest
+
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
 
@@ -37,7 +38,15 @@ jobs:
               config/regions/regions-europe-uk.json > /tmp/matrix.json
           fi
 
+          echo "Resolved build matrix:"
           cat /tmp/matrix.json
+
+          COUNT="$(jq '.include | length' /tmp/matrix.json)"
+
+          if [ "$COUNT" -eq 0 ]; then
+            echo "ERROR: No matching region found."
+            exit 1
+          fi
 
           echo "matrix=$(cat /tmp/matrix.json)" >> "$GITHUB_OUTPUT"
 
@@ -54,62 +63,10 @@ jobs:
     name: "${{ matrix.name }}"
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          set -euo pipefail
-
-          sudo apt-get update
-
-          sudo apt-get install -y \
-            osmium-tool \
-            wget \
-            jq \
-            unzip
-
-      - name: Checkout BRouter
-        run: |
-          set -euo pipefail
-
-          git clone --depth 1 https://github.com/abrensch/brouter.git /tmp/brouter
-          git -C /tmp/brouter checkout 2f4bcb80d2e28342f282224bf2c6cf741b390553
-
-          echo "Building BRouter commit:"
-          git -C /tmp/brouter log -1 --oneline
-
-      - name: Build BRouter
-        working-directory: /tmp/brouter
-        run: |
-          set -euo pipefail
-
-          ./gradlew clean build fatJar --no-daemon
-
-          JAR="$(find brouter-server/build/libs \
-            -maxdepth 1 \
-            -type f \
-            -name '*-all.jar' \
-            | head -n 1)"
-
-          if [ -z "$JAR" ]; then
-            echo "ERROR: BRouter fat JAR was not produced."
-
-            find brouter-server/build/libs \
-              -maxdepth 1 \
-              -type f \
-              -print || true
-
-            exit 1
-          fi
-
-          echo "Using BRouter JAR:"
-          echo "$JAR"
-
-          cp "$JAR" /tmp/brouter.jar
-
-      - name: Show resolved region config
+      - name: Show resolved region
         env:
           REGION_NAME: ${{ matrix.name }}
           REGION_ID: ${{ matrix.id }}
@@ -118,454 +75,166 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Print exactly what this matrix entry resolved to, straight
-          # from config/regions/regions-europe-uk.json, with nothing
-          # inferred. If "path" or "pbf" is scoped wider than the county
-          # (e.g. points at england/great-britain instead of the county
-          # itself) it will be visible here before anything downloads.
-          echo "name: $REGION_NAME"
-          echo "id:   $REGION_ID"
-          echo "path: $REGION_PATH"
-          echo "pbf:  $PBF_URL"
-
-      - name: Download OSM PBF
-        env:
-          PBF_URL: ${{ matrix.pbf }}
-        run: |
-          set -euo pipefail
-
-          echo "Downloading:"
-          echo "$PBF_URL"
-
-          wget \
-            --tries=5 --waitretry=15 --retry-connrefused \
-            --progress=dot:giga \
-            -O /tmp/region-source.osm.pbf \
-            "$PBF_URL"
-
-          ls -lh /tmp/region-source.osm.pbf
-
-      - name: Download region polygon (or fall back to bbox)
-        env:
-          PBF_URL: ${{ matrix.pbf }}
-        run: |
-          set -euo pipefail
-
-          # Derive the poly URL from the working pbf URL by substitution,
-          # the same way the contours workflow does, rather than
-          # reconstructing it from matrix.path. This sidesteps two
-          # problems at once: the "-free" suffix mismatch (.poly files
-          # never carry it, unlike .osm.pbf), and any mismatch between
-          # "path" and "pbf" in config/regions/regions-europe-uk.json
-          # (e.g. a region filed under the wrong Geofabrik top-level
-          # folder) - if pbf resolves, this poly URL resolves too, since
-          # Geofabrik always serves both from the same directory.
-          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
-
-          echo "Downloading polygon:"
-          echo "$POLY_URL"
-
-          if wget --tries=5 --waitretry=15 --retry-connrefused \
-               -O /tmp/region.poly "$POLY_URL"; then
-            echo "Polygon downloaded:"
-            ls -lh /tmp/region.poly
-            echo
-            echo "Polygon contents (first 15 lines):"
-            head -n 15 /tmp/region.poly
-            echo "extract_mode=poly" >> "$GITHUB_ENV"
-          else
-            # No polygon available for this region. Rather than failing
-            # the whole job, fall back to a padded bounding-box extract
-            # derived from the PBF's own extent, same approach as the
-            # contours workflow. This is looser than a polygon clip (it
-            # can pull in slivers of neighbouring regions along straight
-            # edges), which is why the size sanity check below still
-            # runs and still fails the job if the result looks wrong.
-            echo "No polygon available at $POLY_URL - falling back to PBF bbox extent"
-            rm -f /tmp/region.poly
-
-            BBOX="$(osmium fileinfo -e --json /tmp/region-source.osm.pbf \
-              | python3 - << 'PYEOF'
-          import json, sys
-
-          data = json.load(sys.stdin)
-          w, s, e, n = data["data"]["bbox"]
-
-          # Antimeridian-safe padding: a region whose bbox naively spans
-          # more than 180 degrees is almost certainly wrapping around
-          # +/-180, not actually that wide. In that (rare, for UK data)
-          # case, keep the larger of the two halves rather than padding
-          # a bogus full-globe box.
-          raw_span = e - w
-          if raw_span > 180:
-              print(f"WARNING: antimeridian-like bbox span ({raw_span:.1f} deg) - "
-                    f"using raw extent without correction, check region manually",
-                    file=sys.stderr)
-
-          pad = 0.05
-          print(f"{w-pad}:{s-pad}:{e+pad}:{n+pad}")
-          PYEOF
-          )"
-
-            echo "Derived bbox: $BBOX"
-            echo "bbox=$BBOX" >> "$GITHUB_ENV"
-            echo "extract_mode=bbox" >> "$GITHUB_ENV"
-          fi
-
-      - name: Prepare routing PBF
-        run: |
-          set -euo pipefail
-
-          if [ "$extract_mode" = "poly" ]; then
-            echo "Extracting routing area using polygon..."
-
-            osmium extract \
-              -p /tmp/region.poly \
-              /tmp/region-source.osm.pbf \
-              -o /tmp/region-routing.osm.pbf \
-              --overwrite
-          else
-            echo "Extracting routing area using bbox: $bbox"
-
-            osmium extract \
-              --bbox "$bbox" \
-              /tmp/region-source.osm.pbf \
-              -o /tmp/region-routing.osm.pbf \
-              --overwrite
-          fi
-
-          mv \
-            /tmp/region-routing.osm.pbf \
-            /tmp/region-source.osm.pbf
-
-          echo "Final routing PBF:"
-          ls -lh /tmp/region-source.osm.pbf
-
-          osmium fileinfo \
-            /tmp/region-source.osm.pbf
-
-      - name: Sanity check extracted region size
-        env:
-          REGION_NAME: ${{ matrix.name }}
-          # Adjust this per-region if you build anything bigger than a
-          # single English county/unitary authority through this same
-          # workflow (e.g. a "London" or "Yorkshire" entry legitimately
-          # needs a higher ceiling). This default is generous for a
-          # county-level clipped extract.
-          #
-          # The bbox fallback path (no polygon available) uses a
-          # tighter ceiling than the poly path, since a bbox clip has
-          # no way to exclude neighbouring-region roads along its
-          # straight edges the way a polygon clip does - a bbox extract
-          # that balloons past this is a stronger signal something is
-          # wrong (e.g. the PBF itself is scoped wider than the region).
-          MAX_EXPECTED_MB_POLY: "80"
-          MAX_EXPECTED_MB_BBOX: "60"
-        run: |
-          set -euo pipefail
-
-          echo "Bounding box and object counts for $REGION_NAME:"
-          osmium fileinfo -e /tmp/region-source.osm.pbf | tee /tmp/bbox.txt
-
-          SIZE_BYTES="$(stat -c%s /tmp/region-source.osm.pbf)"
-          SIZE_MB="$(( SIZE_BYTES / 1024 / 1024 ))"
-
-          if [ "$extract_mode" = "poly" ]; then
-            MAX_EXPECTED_MB="$MAX_EXPECTED_MB_POLY"
-          else
-            MAX_EXPECTED_MB="$MAX_EXPECTED_MB_BBOX"
-          fi
-
+          echo "========================================"
+          echo "Region"
+          echo "========================================"
+          echo "Name: $REGION_NAME"
+          echo "ID:   $REGION_ID"
+          echo "Path: $REGION_PATH"
+          echo "PBF:  $PBF_URL"
           echo
-          echo "Extract mode: $extract_mode"
-          echo "Extracted PBF size: ${SIZE_MB} MB (limit: ${MAX_EXPECTED_MB} MB)"
 
-          # A single English county clipped to its own polygon should be
-          # tens of MB, not hundreds. If it's this big, the polygon almost
-          # certainly did not actually scope down to the county - "path"
-          # in config/regions/regions-europe-uk.json is pointing at a
-          # wider area (e.g. the whole of England/Great Britain) even
-          # though the poly file downloaded without a 404 - or, in bbox
-          # mode, the source PBF itself is scoped too wide. Fail loudly
-          # here instead of burning ~2 minutes on a Java build that will
-          # produce zero usable RD5 output.
-          if [ "$SIZE_MB" -gt "$MAX_EXPECTED_MB" ]; then
-            echo
-            echo "ERROR: extracted PBF for $REGION_NAME is ${SIZE_MB} MB,"
-            echo "larger than the ${MAX_EXPECTED_MB} MB expected for a"
-            echo "single county (extract_mode=$extract_mode). The region"
-            echo "likely did not clip to the intended area - check the"
-            echo "'pbf'/'path' value for this region in"
-            echo "config/regions/regions-europe-uk.json against"
-            echo "https://download.geofabrik.de/europe/great-britain/england.html"
+          if [[ "$PBF_URL" != https://download.geofabrik.de/* ]]; then
+            echo "ERROR: PBF URL is not a Geofabrik download URL."
             exit 1
           fi
 
-      - name: Build BRouter RD5 segments
+          if [[ "$PBF_URL" != *.osm.pbf ]]; then
+            echo "ERROR: PBF URL does not point to an .osm.pbf file."
+            exit 1
+          fi
+
+      - name: Prepare directories
+        run: |
+          set -euo pipefail
+
+          rm -rf "$RUNNER_TEMP/brouter"
+          mkdir -p \
+            "$RUNNER_TEMP/brouter/planet" \
+            "$RUNNER_TEMP/brouter/tmp" \
+            "$RUNNER_TEMP/brouter/segments"
+
+      - name: Download Geofabrik regional PBF
         env:
+          PBF_URL: ${{ matrix.pbf }}
           REGION_ID: ${{ matrix.id }}
         run: |
           set -euo pipefail
 
-          WORK=/tmp/brouter-build
-          JAR=/tmp/brouter.jar
-          PROFILES=/tmp/brouter/misc/profiles2
-          PBF=/tmp/region-source.osm.pbf
+          PBF_FILE="$(basename "$PBF_URL")"
 
-          rm -rf "$WORK"
+          echo "Downloading Geofabrik regional extract:"
+          echo "$PBF_URL"
+          echo
+          echo "Filename: $PBF_FILE"
 
-          mkdir -p "$WORK"
-
-          cd "$WORK"
-
-          mkdir -p nodetiles
-          mkdir -p ftiles
-          mkdir -p waytiles
-          mkdir -p waytiles55
-          mkdir -p nodes55
-          mkdir -p unodes55
-          mkdir -p segments
+          wget \
+            --tries=5 \
+            --waitretry=15 \
+            --retry-connrefused \
+            --progress=dot:giga \
+            -O "$RUNNER_TEMP/brouter/planet/$PBF_FILE" \
+            "$PBF_URL"
 
           echo
-          echo "========================================"
-          echo "BRouter routing build"
-          echo "Region: $REGION_ID"
-          echo "PBF:    $PBF"
-          echo "========================================"
-          echo
+          echo "Downloaded PBF:"
+          ls -lh "$RUNNER_TEMP/brouter/planet/$PBF_FILE"
 
-          # ------------------------------------------------------------
-          # STEP 1
-          # ------------------------------------------------------------
-
-          echo "STEP 1 - OsmCutter"
-
-          java \
-            -Xmx6G \
-            -Xms2G \
-            -cp "$JAR" \
-            -DavoidMapPolling=true \
-            btools.mapcreator.OsmCutter \
-            "$PROFILES/lookups.dat" \
-            nodetiles \
-            ways.dat \
-            relations.dat \
-            restrictions.dat \
-            "$PROFILES/all.brf" \
-            "$PBF"
-
-          # ------------------------------------------------------------
-          # STEP 2
-          # ------------------------------------------------------------
-
-          echo
-          echo "STEP 2 - NodeFilter"
-
-          java \
-            -Xmx6G \
-            -Xms2G \
-            -cp "$JAR" \
-            -Ddeletetmpfiles=false \
-            -DuseDenseMaps=true \
-            btools.mapcreator.NodeFilter \
-            nodetiles \
-            ways.dat \
-            ftiles
-
-          # ------------------------------------------------------------
-    echo "FILE SIZES AFTER NodeFilter:"; find ftiles -type f -printf "%p %s bytes\n" | sort
-          # STEP 3
-          # ------------------------------------------------------------
-
-          echo
-          echo "STEP 3 - RelationMerger"
-
-          java \
-            -Xmx6G \
-            -Xms2G \
-            -cp "$JAR" \
-            -Ddeletetmpfiles=false \
-            -DuseDenseMaps=true \
-            btools.mapcreator.RelationMerger \
-            ways.dat \
-            ways2.dat \
-            relations.dat \
-            "$PROFILES/lookups.dat" \
-            "$PROFILES/trekking.brf" \
-            "$PROFILES/softaccess.brf"
-
-          # ------------------------------------------------------------
-          echo "FILE SIZES AFTER RelationMerger:"
-          ls -lh ways.dat ways2.dat relations.dat
-          # STEP 4
-          # ------------------------------------------------------------
-
-          echo
-          echo "STEP 4 - WayCutter"
-
-          java \
-            -Xmx6G \
-            -Xms2G \
-            -cp "$JAR" \
-            -Ddeletetmpfiles=false \
-            -DuseDenseMaps=true \
-            btools.mapcreator.WayCutter \
-            ftiles \
-            ways2.dat \
-            waytiles
-
-          # ------------------------------------------------------------
-          # STEP 5
-          # ------------------------------------------------------------
-
-          echo
-          echo "STEP 5 - WayCutter5"
-
-          java \
-            -Xmx6G \
-            -Xms2G \
-            -cp "$JAR" \
-            -Ddeletetmpfiles=false \
-            -DuseDenseMaps=true \
-            btools.mapcreator.WayCutter5 \
-            ftiles \
-            waytiles \
-            waytiles55 \
-            bordernids.dat
-
-          # ------------------------------------------------------------
-          # STEP 6
-          # ------------------------------------------------------------
-
-          echo
-          echo "STEP 6 - NodeCutter"
-
-          java \
-            -Xmx6G \
-            -Xms2G \
-            -cp "$JAR" \
-            -Ddeletetmpfiles=false \
-            -DuseDenseMaps=true \
-            btools.mapcreator.NodeCutter \
-            ftiles \
-            nodes55
-
-          # ------------------------------------------------------------
-          # STEP 7
-          # ------------------------------------------------------------
-
-          echo
-          echo "STEP 7 - PosUnifier"
-
-          # BRouter requires SRTM directories even when
-          # no elevation data is being supplied.
-          #
-          # Empty directories are valid here and produce
-          # routing data without elevation.
-
-          mkdir -p /tmp/srtm1_bef
-          mkdir -p /tmp/srtm3_bef
-
-          java \
-            -Xmx6G \
-            -Xms2G \
-            -cp "$JAR" \
-            -Ddeletetmpfiles=false \
-            -DuseDenseMaps=true \
-            btools.mapcreator.PosUnifier \
-            nodes55 \
-            unodes55 \
-            bordernids.dat \
-            bordernodes.dat \
-            /tmp/srtm1_bef \
-            /tmp/srtm3_bef
-
-          # ------------------------------------------------------------
-          # STEP 8
-          # ------------------------------------------------------------
-
-          echo
-          echo "STEP 8 - WayLinker"
-
-          java \
-            -Xmx6G \
-            -Xms2G \
-            -cp "$JAR" \
-            -DuseDenseMaps=true \
-            -DskipEncodingCheck=true \
-            btools.mapcreator.WayLinker \
-            unodes55 \
-            waytiles55 \
-            bordernodes.dat \
-            restrictions.dat \
-            "$PROFILES/lookups.dat" \
-            "$PROFILES/all.brf" \
-            segments \
-            rd5
-
-          # ------------------------------------------------------------
-          # CHECK OUTPUT
-          # ------------------------------------------------------------
-
-          echo
-          echo "========================================"
-          echo "GENERATED RD5 FILES"
-          echo "========================================"
-
-          find segments \
-            -type f \
-            -name '*.rd5' \
-            -print \
-            -exec ls -lh {} \;
-
-          COUNT="$(find segments -type f -name '*.rd5' | wc -l)"
-
-          if [ "$COUNT" -eq 0 ]; then
-            echo
-            echo "ERROR: No RD5 files were generated."
-            echo
-            echo "BRouter build directory:"
-            find . -maxdepth 2 -type f | sort | head -200
-
+          if [ ! -s "$RUNNER_TEMP/brouter/planet/$PBF_FILE" ]; then
+            echo "ERROR: Downloaded PBF is empty."
             exit 1
           fi
 
-          echo
-          echo "Generated $COUNT RD5 file(s)."
+          echo "PBF_FILE=$PBF_FILE" >> "$GITHUB_ENV"
 
-          rm -rf /tmp/routing-output
-          mkdir -p /tmp/routing-output
-
-          cp segments/*.rd5 \
-            /tmp/routing-output/
-
-      - name: Show routing files
+      - name: Build RD5 routing data
+        env:
+          REGION_NAME: ${{ matrix.name }}
+          REGION_ID: ${{ matrix.id }}
         run: |
           set -euo pipefail
 
-          echo "Routing files for ${{ matrix.id }}:"
+          echo "========================================"
+          echo "Building BRouter RD5"
+          echo "========================================"
+          echo "Region: $REGION_NAME"
+          echo "ID:     $REGION_ID"
+          echo "PBF:    $PBF_FILE"
+          echo
 
-          find /tmp/routing-output \
+          docker pull ghcr.io/mjaschen/brouter-routingdata-builder:5.0.1
+
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            --env "PLANET=$PBF_FILE" \
+            --env "PLANET_UPDATE=0" \
+            --env "JAVA_OPTS=-Xmx6144M -Xms6144M -Xmn256M" \
+            --volume "$RUNNER_TEMP/brouter/tmp:/brouter-tmp" \
+            --volume "$RUNNER_TEMP/brouter/planet:/planet:ro" \
+            --volume "$RUNNER_TEMP/brouter/segments:/segments" \
+            ghcr.io/mjaschen/brouter-routingdata-builder:5.0.1
+
+      - name: Verify RD5 output
+        env:
+          REGION_NAME: ${{ matrix.name }}
+          REGION_ID: ${{ matrix.id }}
+        run: |
+          set -euo pipefail
+
+          echo "========================================"
+          echo "RD5 output"
+          echo "========================================"
+
+          find "$RUNNER_TEMP/brouter/segments" \
+            -maxdepth 1 \
             -type f \
             -name '*.rd5' \
             -print \
             -exec ls -lh {} \;
 
-      - name: Upload routing artifacts
+          RD5_COUNT="$(
+            find "$RUNNER_TEMP/brouter/segments" \
+              -maxdepth 1 \
+              -type f \
+              -name '*.rd5' \
+              | wc -l
+          )"
+
+          echo
+          echo "RD5 files generated: $RD5_COUNT"
+
+          if [ "$RD5_COUNT" -eq 0 ]; then
+            echo "ERROR: No RD5 files were generated for $REGION_NAME."
+            exit 1
+          fi
+
+      - name: Package routing data
+        env:
+          REGION_ID: ${{ matrix.id }}
+          REGION_NAME: ${{ matrix.name }}
+        run: |
+          set -euo pipefail
+
+          OUTPUT="$RUNNER_TEMP/${REGION_ID}-rd5"
+          mkdir -p "$OUTPUT"
+
+          cp "$RUNNER_TEMP/brouter/segments/"*.rd5 "$OUTPUT/"
+
+          cat > "$OUTPUT/README.txt" <<EOF
+          WristNav BRouter routing data
+
+          Region: $REGION_NAME
+          Region ID: $REGION_ID
+
+          Source:
+          Geofabrik regional OSM PBF
+
+          Build:
+          BRouter Routing Data Builder 5.0.1
+
+          Format:
+          Standard BRouter .rd5 segment files
+
+          No polygon clipping was applied.
+          EOF
+
+          echo "Packaged files:"
+          ls -lh "$OUTPUT"
+
+      - name: Upload RD5 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: routing-${{ matrix.id }}
-          path: /tmp/routing-output/*.rd5
+          name: ${{ matrix.id }}-rd5
+          path: ${{ runner.temp }}/${{ matrix.id }}-rd5/
           if-no-files-found: error
-
-      - name: Upload routing files to release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: maps-routing-europe-uk
-          name: WristNav BRouter Routing - Europe UK
-          prerelease: false
-          make_latest: false
-          files: /tmp/routing-output/*.rd5
-          fail_on_unmatched_files: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          retention-days: 30
