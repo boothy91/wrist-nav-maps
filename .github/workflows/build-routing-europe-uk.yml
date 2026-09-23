@@ -134,7 +134,6 @@ jobs:
 
           ./gradlew clean build fatJar \
             --no-daemon \
-            -x :brouter-routing-app:build
 
           JAR="$(
             find brouter-server/build/libs \
