@@ -78,6 +78,9 @@ jobs:
             https://github.com/abrensch/brouter.git \
             /tmp/brouter
 
+          echo "Building BRouter commit:"
+          git -C /tmp/brouter log -1 --oneline
+
       - name: Build BRouter
         working-directory: /tmp/brouter
         run: |
