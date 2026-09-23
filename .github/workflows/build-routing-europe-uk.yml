@@ -1,0 +1,428 @@
+name: Build Routing - Europe UK
+
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'Only build this region id (e.g. "scotland"). Leave blank to build all.'
+        required: false
+        default: ''
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: set-matrix
+        shell: bash
+        run: |
+          MATRIX=$(python3 << 'EOF'
+          import json
+
+          with open("config/regions/regions-europe-uk.json") as f:
+              regions = json.load(f)
+
+          only = "${{ github.event.inputs.region }}".strip()
+
+          if only:
+              regions = [r for r in regions if r["id"] == only]
+
+          print(json.dumps({"region": regions}))
+          EOF
+          )
+
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+
+  ensure-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ensure routing release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view routing-europe-uk &>/dev/null || \
+          gh release create routing-europe-uk \
+            --title "Routing - Europe UK" \
+            --notes "BRouter offline routing .rd5 segment files for WristNav. Generated from OpenStreetMap data." \
+            --latest=false
+
+  build-routing:
+    needs: [generate-matrix, ensure-release]
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+      fail-fast: false
+      max-parallel: 2
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y \
+            git \
+            osmium-tool \
+            wget \
+            jq
+
+      - name: Checkout BRouter
+        run: |
+          git clone --depth 1 https://github.com/abrensch/brouter.git /tmp/brouter
+
+      - name: Build BRouter map creator
+        working-directory: /tmp/brouter
+        run: |
+          chmod +x gradlew
+          ./gradlew clean fatJar --no-daemon
+
+      - name: Locate BRouter jar
+        run: |
+          find /tmp/brouter -type f \
+            \( -name "*.jar" -o -name "brouter.jar" \) \
+            -printf '%p\n' | sort
+
+          BROUTER_JAR=$(find /tmp/brouter/brouter-server/build/libs \
+            -type f -name "*.jar" \
+            | head -n 1)
+
+          if [ -z "$BROUTER_JAR" ]; then
+            echo "ERROR: BRouter fat jar not found"
+            exit 1
+          fi
+
+          echo "BROUTER_JAR=$BROUTER_JAR" >> "$GITHUB_ENV"
+
+      - name: Download and calculate region bbox
+        run: |
+          set -eo pipefail
+
+          RID="${{ matrix.region.id }}"
+          FBASE="${RID//\//-}"
+          PBF_URL="${{ matrix.region.pbf }}"
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+
+          PBF="/tmp/region.osm.pbf"
+
+          download() {
+            wget -q \
+              --timeout=300 \
+              --tries=5 \
+              --waitretry=15 \
+              --retry-connrefused \
+              -O "$1" "$2"
+          }
+
+          echo "=== ${{ matrix.region.name }} ==="
+          echo "PBF: $PBF_URL"
+          echo "POLY: $POLY_URL"
+
+          echo "Downloading PBF..."
+          download "$PBF" "$PBF_URL"
+
+          ls -lh "$PBF"
+
+          POLY="/tmp/region.poly"
+          BBOX=""
+
+          echo "Downloading poly..."
+
+          if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
+
+            BBOX=$(python3 - << 'PYEOF'
+          coords = []
+
+          with open("/tmp/region.poly") as f:
+              for line in f:
+                  parts = line.strip().split()
+
+                  if len(parts) == 2:
+                      try:
+                          coords.append(
+                              (float(parts[0]), float(parts[1]))
+                          )
+                      except ValueError:
+                          pass
+
+          if coords:
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+
+              raw_span = max(lons) - min(lons)
+
+              shifted = [
+                  lo + 360 if lo < 0 else lo
+                  for lo in lons
+              ]
+
+              shifted_span = max(shifted) - min(shifted)
+
+              if raw_span > 180 and shifted_span < raw_span:
+                  east = [
+                      (lo, la)
+                      for lo, la in coords
+                      if lo >= 0
+                  ]
+
+                  west = [
+                      (lo, la)
+                      for lo, la in coords
+                      if lo < 0
+                  ]
+
+                  main = (
+                      east
+                      if len(east) >= len(west)
+                      else west
+                  )
+
+                  lons = [p[0] for p in main]
+                  lats = [p[1] for p in main]
+
+              print(
+                  f"{min(lons)-0.2:.4f}:"
+                  f"{min(lats)-0.2:.4f}:"
+                  f"{max(lons)+0.2:.4f}:"
+                  f"{max(lats)+0.2:.4f}"
+              )
+          PYEOF
+            )
+
+          fi
+
+          if [ -z "$BBOX" ]; then
+            echo "Poly unavailable, falling back to PBF extent"
+
+            FALLBACK_BBOX=$(osmium fileinfo \
+              -e \
+              --json "$PBF" \
+              | jq -r \
+              '.data.bbox |
+               "\(.[0]-0.2):\(.[1]-0.2):\(.[2]+0.2):\(.[3]+0.2)"')
+
+            SANE=$(python3 - "$FALLBACK_BBOX" << 'PYEOF'
+          import sys
+
+          w, s, e, n = map(
+              float,
+              sys.argv[1].split(":")
+          )
+
+          print(
+              "ok"
+              if (e - w) <= 10 and (n - s) <= 10
+              else "bad"
+          )
+          PYEOF
+            )
+
+            if [ "$SANE" = "bad" ]; then
+              echo "ERROR: fallback bbox is implausibly large:"
+              echo "$FALLBACK_BBOX"
+              exit 1
+            fi
+
+            BBOX="$FALLBACK_BBOX"
+          fi
+
+          echo "Bounding box: $BBOX"
+
+          IFS=':' read -r W S E N <<< "$BBOX"
+
+          # Clamp to valid longitude/latitude ranges.
+          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
+          import sys
+
+          w, s, e, n = map(float, sys.argv[1:5])
+
+          w = max(w, -180.0)
+          e = min(e, 180.0)
+
+          s = max(s, -90.0)
+          n = min(n, 90.0)
+
+          print(f"{w}:{s}:{e}:{n}")
+          PYEOF
+          )
+
+          IFS=':' read -r W S E N <<< "$CLAMPED"
+
+          echo "Final bbox: $W,$S,$E,$N"
+
+          echo "$W" > /tmp/${FBASE}.w
+          echo "$S" > /tmp/${FBASE}.s
+          echo "$E" > /tmp/${FBASE}.e
+          echo "$N" > /tmp/${FBASE}.n
+
+      - name: Filter PBF to region
+        run: |
+          set -eo pipefail
+
+          RID="${{ matrix.region.id }}"
+          FBASE="${RID//\//-}"
+
+          W=$(cat /tmp/${FBASE}.w)
+          S=$(cat /tmp/${FBASE}.s)
+          E=$(cat /tmp/${FBASE}.e)
+          N=$(cat /tmp/${FBASE}.n)
+
+          PBF="/tmp/region.osm.pbf"
+          FILTERED="/tmp/${FBASE}.routing.osm.pbf"
+
+          echo "Filtering PBF to:"
+          echo "$W:$S:$E:$N"
+
+          osmium extract \
+            -b "$W,$S,$E,$N" \
+            "$PBF" \
+            -o "$FILTERED" \
+            --overwrite
+
+          ls -lh "$FILTERED"
+
+          echo "FILTERED_PBF=$FILTERED" >> "$GITHUB_ENV"
+
+      - name: Prepare BRouter map creator
+        run: |
+          set -eo pipefail
+
+          mkdir -p /tmp/brouter-work
+
+          cd /tmp/brouter-work
+
+          mkdir -p \
+            nodetiles \
+            waytiles \
+            nodes55 \
+            waytiles55 \
+            segments
+
+          cp /tmp/brouter/lookups.dat .
+          cp /tmp/brouter/bordernids.dat .
+          cp /tmp/brouter/relations.dat .
+          cp /tmp/brouter/restrictions.dat .
+          cp /tmp/brouter/all.brf .
+          cp /tmp/brouter/trekking.brf .
+          cp /tmp/brouter/softaccess.brf .
+
+      - name: Generate BRouter segment files
+        run: |
+          set -eo pipefail
+
+          cd /tmp/brouter-work
+
+          JAVA_OPTS="-Xmx6500m -Xms6500m -Xmn256m"
+
+          echo "=== OsmFastCutter ==="
+
+          java $JAVA_OPTS \
+            -cp "$BROUTER_JAR" \
+            -Ddeletetmpfiles=true \
+            -DuseDenseMaps=true \
+            btools.util.StackSampler \
+            btools.mapcreator.OsmFastCutter \
+            lookups.dat \
+            nodetiles \
+            waytiles \
+            nodes55 \
+            waytiles55 \
+            bordernids.dat \
+            relations.dat \
+            restrictions.dat \
+            all.brf \
+            trekking.brf \
+            softaccess.brf \
+            "$FILTERED_PBF" \
+            db_tags.csv.gz
+
+          echo "=== PosUnifier ==="
+
+          mkdir -p unodes55
+
+          java $JAVA_OPTS \
+            -cp "$BROUTER_JAR" \
+            -Ddeletetmpfiles=true \
+            -DuseDenseMaps=true \
+            btools.util.StackSampler \
+            btools.mapcreator.PosUnifier \
+            nodes55 \
+            unodes55 \
+            bordernids.dat \
+            bordernodes.dat
+
+          echo "=== WayLinker ==="
+
+          java $JAVA_OPTS \
+            -cp "$BROUTER_JAR" \
+            -DuseDenseMaps=true \
+            -DskipEncodingCheck=true \
+            btools.util.StackSampler \
+            btools.mapcreator.WayLinker \
+            unodes55 \
+            waytiles55 \
+            bordernodes.dat \
+            restrictions.dat \
+            lookups.dat \
+            all.brf \
+            segments
+
+          echo
+          echo "=== Generated RD5 files ==="
+
+          find segments \
+            -type f \
+            -name "*.rd5" \
+            -printf '%f %s bytes\n' \
+            | sort
+
+          COUNT=$(find segments -type f -name "*.rd5" | wc -l)
+
+          echo "Generated $COUNT .rd5 file(s)"
+
+          if [ "$COUNT" -eq 0 ]; then
+            echo "ERROR: no .rd5 files were generated"
+            exit 1
+          fi
+
+      - name: Upload routing segments
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -eo pipefail
+
+          RID="${{ matrix.region.id }}"
+          FBASE="${RID//\//-}"
+
+          cd /tmp/brouter-work
+
+          for RD5 in segments/*.rd5; do
+            [ -f "$RD5" ] || continue
+
+            echo "Uploading $(basename "$RD5")"
+
+            for attempt in 1 2 3 4 5; do
+              if gh release upload \
+                routing-europe-uk \
+                "$RD5" \
+                --clobber; then
+                break
+              fi
+
+              echo "Upload failed, retrying in 30 seconds..." >&2
+              sleep 30
+            done
+          done
