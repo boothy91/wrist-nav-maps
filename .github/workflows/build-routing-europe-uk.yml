@@ -209,17 +209,8 @@ jobs:
           cp "$RUNNER_TEMP/brouter.jar" \
             mapbuild/brouter.jar
 
-          cp misc/scripts/mapcreation/lookups.dat \
-            mapbuild/lookups.dat
-
-          cp misc/scripts/mapcreation/all.brf \
-            mapbuild/all.brf
-
-          cp misc/scripts/mapcreation/trekking.brf \
-            mapbuild/trekking.brf
-
-          cp misc/scripts/mapcreation/softaccess.brf \
-            mapbuild/softaccess.brf
+          echo "Searching BRouter checkout for required map-creation files:"
+          find . -type f \( -name lookups.dat -o -name all.brf -o -name trekking.brf -o -name softaccess.brf \) -print
 
           if [ -f misc/scripts/mapcreation/db_tags.csv.gz ]; then
             cp misc/scripts/mapcreation/db_tags.csv.gz \
