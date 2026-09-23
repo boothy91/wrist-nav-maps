@@ -74,9 +74,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          git clone --depth 1 \
-            https://github.com/abrensch/brouter.git \
-            /tmp/brouter
+          git clone --depth 1 https://github.com/abrensch/brouter.git /tmp/brouter
+          git -C /tmp/brouter checkout 2f4bcb80d2e28342f282224bf2c6cf741b390553
 
           echo "Building BRouter commit:"
           git -C /tmp/brouter log -1 --oneline
