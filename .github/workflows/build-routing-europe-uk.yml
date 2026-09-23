@@ -394,6 +394,8 @@ jobs:
             "$PROFILES/softaccess.brf"
 
           # ------------------------------------------------------------
+          echo "FILE SIZES AFTER RelationMerger:"
+          ls -lh ways.dat ways2.dat relations.dat
           # STEP 4
           # ------------------------------------------------------------
 
