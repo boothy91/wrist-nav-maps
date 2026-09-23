@@ -52,7 +52,7 @@ jobs:
           gh release view routing-europe-uk &>/dev/null || \
           gh release create routing-europe-uk \
             --title "Routing - Europe UK" \
-            --notes "BRouter offline routing .rd5 segment files for WristNav. Generated from OpenStreetMap data." \
+            --notes "BRouter offline routing .rd5 segment files for WristNav." \
             --latest=false
 
   build-routing:
@@ -79,8 +79,7 @@ jobs:
           sudo apt-get install -y \
             wget \
             jq \
-            osmium-tool \
-            unzip
+            osmium-tool
 
       - name: Checkout BRouter
         run: |
@@ -88,82 +87,120 @@ jobs:
             https://github.com/abrensch/brouter.git \
             /tmp/brouter
 
-      - name: Inspect BRouter build tools
-        run: |
-          set -eo pipefail
-
-          echo "=== BRouter repository ==="
-          ls -la /tmp/brouter
-
-          echo
-          echo "=== Map creation scripts ==="
-          find /tmp/brouter/misc/scripts/mapcreation \
-            -maxdepth 2 \
-            -type f \
-            -print | sort
-
-          echo
-          echo "=== process_pbf_planet.sh ==="
-
-          if [ -f /tmp/brouter/misc/scripts/mapcreation/process_pbf_planet.sh ]; then
-            sed -n '1,260p' \
-              /tmp/brouter/misc/scripts/mapcreation/process_pbf_planet.sh
-          else
-            echo "ERROR: process_pbf_planet.sh not found"
-            exit 1
-          fi
-
-      - name: Build BRouter
+      - name: Build BRouter fat JAR
         working-directory: /tmp/brouter
         run: |
-          set -eo pipefail
-
           chmod +x gradlew
 
           ./gradlew clean build fatJar --no-daemon
 
           echo
-          echo "=== BRouter JAR files ==="
+          echo "=== Generated JAR ==="
 
-          find /tmp/brouter \
+          find brouter-server/build/libs \
+            -maxdepth 1 \
             -type f \
             -name "*.jar" \
-            -printf '%p\n' \
-            | sort
+            -printf '%p\n'
 
-      - name: Locate BRouter files
+          JAR=$(find brouter-server/build/libs \
+            -maxdepth 1 \
+            -type f \
+            -name "*.jar" \
+            | head -n 1)
+
+          if [ -z "$JAR" ]; then
+            echo "ERROR: BRouter fat JAR not found"
+            exit 1
+          fi
+
+          cp "$JAR" /tmp/brouter.jar
+
+      - name: Prepare BRouter map creator resources
         run: |
           set -eo pipefail
 
-          echo "=== Required BRouter files ==="
+          mkdir -p /tmp/brouter-work
 
-          for NAME in \
-            lookups.dat \
-            bordernids.dat \
-            relations.dat \
-            restrictions.dat \
-            db_tags.csv.gz \
-            all.brf \
-            trekking.brf \
-            softaccess.brf
-          do
-            echo
-            echo "--- $NAME ---"
-
-            find /tmp/brouter \
-              -type f \
-              -name "$NAME" \
-              -print
-          done
-
-          echo
-          echo "=== BRouter JAR ==="
+          echo "=== BRouter map creator resources ==="
 
           find /tmp/brouter \
             -type f \
-            -name "*.jar" \
+            \( \
+              -name "bordernids.dat" \
+              -o -name "relations.dat" \
+              -o -name "restrictions.dat" \
+              -o -name "db_tags.csv.gz" \
+            \) \
             -print \
             | sort
+
+          echo
+          echo "=== Build resources ==="
+
+          find /tmp/brouter/brouter-map-creator/build \
+            -type f \
+            \( \
+              -name "bordernids.dat" \
+              -o -name "relations.dat" \
+              -o -name "restrictions.dat" \
+              -o -name "db_tags.csv.gz" \
+            \) \
+            -print \
+            2>/dev/null \
+            | sort || true
+
+          echo
+          echo "=== Test resources ==="
+
+          find /tmp/brouter/brouter-map-creator/build/resources/test \
+            -type f \
+            -print \
+            2>/dev/null \
+            | sort || true
+
+      - name: Locate required map creator files
+        run: |
+          set -eo pipefail
+
+          find_one() {
+            find "$1" \
+              -type f \
+              -name "$2" \
+              -print \
+              | head -n 1
+          }
+
+          LOOKUPS=$(find_one /tmp/brouter "lookups.dat")
+          BORDERS=$(find_one /tmp/brouter "bordernids.dat")
+          RELATIONS=$(find_one /tmp/brouter "relations.dat")
+          RESTRICTIONS=$(find_one /tmp/brouter "restrictions.dat")
+          DB_TAGS=$(find_one /tmp/brouter "db_tags.csv.gz")
+          ALL_BRF=$(find_one /tmp/brouter "all.brf")
+          TREKKING_BRF=$(find_one /tmp/brouter "trekking.brf")
+          SOFTACCESS_BRF=$(find_one /tmp/brouter "softaccess.brf")
+
+          echo "LOOKUPS=$LOOKUPS"
+          echo "BORDERS=$BORDERS"
+          echo "RELATIONS=$RELATIONS"
+          echo "RESTRICTIONS=$RESTRICTIONS"
+          echo "DB_TAGS=$DB_TAGS"
+          echo "ALL_BRF=$ALL_BRF"
+          echo "TREKKING_BRF=$TREKKING_BRF"
+          echo "SOFTACCESS_BRF=$SOFTACCESS_BRF"
+
+          if [ -z "$LOOKUPS" ] || \
+             [ -z "$BORDERS" ] || \
+             [ -z "$RELATIONS" ] || \
+             [ -z "$RESTRICTIONS" ]; then
+
+            echo
+            echo "ERROR: BRouter map creator resources are missing."
+            echo
+            echo "The next step will generate them using BRouter's"
+            echo "map creator tooling."
+            exit 1
+          fi
 
       - name: Download region PBF and calculate bbox
         run: |
@@ -187,12 +224,8 @@ jobs:
           }
 
           echo "=== ${{ matrix.region.name }} ==="
-          echo "PBF:  $PBF_URL"
-          echo "POLY: $POLY_URL"
 
-          echo
           echo "Downloading PBF..."
-
           download "$PBF" "$PBF_URL"
 
           ls -lh "$PBF"
@@ -200,8 +233,8 @@ jobs:
           POLY="/tmp/region.poly"
           BBOX=""
 
-          echo
           echo "Downloading poly..."
+          echo "$POLY_URL"
 
           if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
 
@@ -301,9 +334,7 @@ jobs:
             BBOX="$FALLBACK_BBOX"
           fi
 
-          echo
-          echo "Bounding box:"
-          echo "$BBOX"
+          echo "Bounding box: $BBOX"
 
           IFS=':' read -r W S E N <<< "$BBOX"
 
@@ -311,12 +342,6 @@ jobs:
           echo "$S" > "/tmp/${FBASE}.s"
           echo "$E" > "/tmp/${FBASE}.e"
           echo "$N" > "/tmp/${FBASE}.n"
-
-          echo
-          echo "W=$W"
-          echo "S=$S"
-          echo "E=$E"
-          echo "N=$N"
 
       - name: Extract region PBF
         run: |
@@ -330,78 +355,20 @@ jobs:
           E=$(cat "/tmp/${FBASE}.e")
           N=$(cat "/tmp/${FBASE}.n")
 
-          PBF="/tmp/region.osm.pbf"
-          FILTERED="/tmp/${FBASE}.routing.osm.pbf"
-
-          echo "Extracting region:"
-          echo "$W,$S,$E,$N"
-
           osmium extract \
             -b "$W,$S,$E,$N" \
-            "$PBF" \
-            -o "$FILTERED" \
+            /tmp/region.osm.pbf \
+            -o "/tmp/${FBASE}.routing.osm.pbf" \
             --overwrite
 
-          ls -lh "$FILTERED"
+          ls -lh "/tmp/${FBASE}.routing.osm.pbf"
 
-          echo "FILTERED_PBF=$FILTERED" >> "$GITHUB_ENV"
+          echo "FILTERED_PBF=/tmp/${FBASE}.routing.osm.pbf" \
+            >> "$GITHUB_ENV"
 
-      - name: Prepare BRouter map creator
+      - name: Generate BRouter segments
         run: |
           set -eo pipefail
-
-          mkdir -p /tmp/brouter-work
-
-          find_one() {
-            find /tmp/brouter \
-              -type f \
-              -name "$1" \
-              -print \
-              | head -n 1
-          }
-
-          LOOKUPS="$(find_one lookups.dat)"
-          BORDERS="$(find_one bordernids.dat)"
-          RELATIONS="$(find_one relations.dat)"
-          RESTRICTIONS="$(find_one restrictions.dat)"
-          DB_TAGS="$(find_one db_tags.csv.gz)"
-          ALL_BRF="$(find_one all.brf)"
-          TREKKING_BRF="$(find_one trekking.brf)"
-          SOFTACCESS_BRF="$(find_one softaccess.brf)"
-
-          echo "LOOKUPS=$LOOKUPS"
-          echo "BORDERS=$BORDERS"
-          echo "RELATIONS=$RELATIONS"
-          echo "RESTRICTIONS=$RESTRICTIONS"
-          echo "DB_TAGS=$DB_TAGS"
-          echo "ALL_BRF=$ALL_BRF"
-          echo "TREKKING_BRF=$TREKKING_BRF"
-          echo "SOFTACCESS_BRF=$SOFTACCESS_BRF"
-
-          for FILE in \
-            "$LOOKUPS" \
-            "$BORDERS" \
-            "$RELATIONS" \
-            "$RESTRICTIONS" \
-            "$DB_TAGS" \
-            "$ALL_BRF" \
-            "$TREKKING_BRF" \
-            "$SOFTACCESS_BRF"
-          do
-            if [ -z "$FILE" ]; then
-              echo
-              echo "ERROR: required BRouter file not found"
-              exit 1
-            fi
-          done
-
-          cp "$LOOKUPS" "$BORDERS" "$RELATIONS" \
-             "$RESTRICTIONS" "$DB_TAGS" \
-             "$ALL_BRF" "$TREKKING_BRF" "$SOFTACCESS_BRF" \
-             /tmp/brouter-work/
-
-          echo
-          echo "=== BRouter work directory ==="
 
           cd /tmp/brouter-work
 
@@ -413,51 +380,52 @@ jobs:
             unodes55 \
             segments
 
-          find . -maxdepth 2 -type d | sort
+          cp /tmp/brouter.jar ./brouter.jar
 
-      - name: Find BRouter server JAR
-        run: |
-          set -eo pipefail
+          LOOKUPS=$(find /tmp/brouter \
+            -type f -name "lookups.dat" \
+            | head -n 1)
 
-          JAR=$(find /tmp/brouter \
-            -type f \
-            -name "*.jar" \
-            | grep -E 'brouter.*server|brouter-server' \
-            | head -n 1 || true)
+          BORDERS=$(find /tmp/brouter \
+            -type f -name "bordernids.dat" \
+            | head -n 1)
 
-          if [ -z "$JAR" ]; then
-            JAR=$(find /tmp/brouter \
-              -type f \
-              -name "*.jar" \
-              | head -n 1)
-          fi
+          RELATIONS=$(find /tmp/brouter \
+            -type f -name "relations.dat" \
+            | head -n 1)
 
-          if [ -z "$JAR" ]; then
-            echo "ERROR: no BRouter JAR found"
-            exit 1
-          fi
+          RESTRICTIONS=$(find /tmp/brouter \
+            -type f -name "restrictions.dat" \
+            | head -n 1)
 
-          echo "Using:"
-          echo "$JAR"
+          ALL_BRF=$(find /tmp/brouter \
+            -type f -name "all.brf" \
+            | head -n 1)
 
-          cp "$JAR" /tmp/brouter-work/brouter.jar
+          TREKKING_BRF=$(find /tmp/brouter \
+            -type f -name "trekking.brf" \
+            | head -n 1)
 
-          echo "BROUTER_JAR=/tmp/brouter-work/brouter.jar" \
-            >> "$GITHUB_ENV"
+          SOFTACCESS_BRF=$(find /tmp/brouter \
+            -type f -name "softaccess.brf" \
+            | head -n 1)
 
-      - name: Generate BRouter routing segments
-        run: |
-          set -eo pipefail
+          cp "$LOOKUPS" .
+          cp "$BORDERS" .
+          cp "$RELATIONS" .
+          cp "$RESTRICTIONS" .
+          cp "$ALL_BRF" .
+          cp "$TREKKING_BRF" .
+          cp "$SOFTACCESS_BRF" .
 
-          cd /tmp/brouter-work
-
-          echo "=== OsmFastCutter ==="
+          # BRouter's current build documentation uses these three
+          # stages for generating RD5 routing segments.
 
           java \
             -Xmx6500M \
             -Xms6500M \
             -Xmn256M \
-            -cp "$BROUTER_JAR" \
+            -cp ./brouter.jar \
             -Ddeletetmpfiles=true \
             -DuseDenseMaps=true \
             btools.util.StackSampler \
@@ -467,40 +435,33 @@ jobs:
             waytiles \
             nodes55 \
             waytiles55 \
-            bordernids.dat \
-            relations.dat \
-            restrictions.dat \
+            ./bordernids.dat \
+            ./relations.dat \
+            ./restrictions.dat \
             ./all.brf \
             ./trekking.brf \
             ./softaccess.brf \
-            "$FILTERED_PBF" \
-            ./db_tags.csv.gz
-
-          echo
-          echo "=== PosUnifier ==="
+            "$FILTERED_PBF"
 
           java \
             -Xmx6500M \
             -Xms6500M \
             -Xmn256M \
-            -cp "$BROUTER_JAR" \
+            -cp ./brouter.jar \
             -Ddeletetmpfiles=true \
             -DuseDenseMaps=true \
             btools.util.StackSampler \
             btools.mapcreator.PosUnifier \
             nodes55 \
             unodes55 \
-            bordernids.dat \
+            ./bordernids.dat \
             bordernodes.dat
-
-          echo
-          echo "=== WayLinker ==="
 
           java \
             -Xmx6500M \
             -Xms6500M \
             -Xmn256M \
-            -cp "$BROUTER_JAR" \
+            -cp ./brouter.jar \
             -DuseDenseMaps=true \
             -DskipEncodingCheck=true \
             btools.util.StackSampler \
@@ -508,13 +469,14 @@ jobs:
             unodes55 \
             waytiles55 \
             bordernodes.dat \
-            restrictions.dat \
-            lookups.dat \
-            all.brf \
-            segments
+            ./restrictions.dat \
+            ./lookups.dat \
+            ./all.brf \
+            segments \
+            rd5
 
           echo
-          echo "=== Generated routing segments ==="
+          echo "=== Generated RD5 files ==="
 
           find segments \
             -type f \
@@ -528,7 +490,7 @@ jobs:
             | wc -l)
 
           echo
-          echo "Generated $COUNT .rd5 file(s)"
+          echo "Generated $COUNT .rd5 files"
 
           if [ "$COUNT" -eq 0 ]; then
             echo "ERROR: no .rd5 files generated"
@@ -549,7 +511,6 @@ jobs:
 
             NAME="$(basename "$RD5")"
 
-            echo
             echo "Uploading $NAME..."
 
             for attempt in 1 2 3 4 5; do
@@ -568,18 +529,7 @@ jobs:
                 exit 1
               fi
 
-              echo "Upload attempt $attempt failed."
-              echo "Retrying in 30 seconds..."
-
               sleep 30
             done
 
           done
-
-          echo
-          echo "=== Routing release assets ==="
-
-          gh release view \
-            routing-europe-uk \
-            --json assets \
-            --jq '.assets[].name'
