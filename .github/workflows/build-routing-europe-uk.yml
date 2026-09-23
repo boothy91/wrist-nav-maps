@@ -75,44 +75,88 @@ jobs:
         run: |
           sudo apt-get update -q
           sudo apt-get install -y \
-            git \
-            osmium-tool \
             wget \
-            jq
+            jq \
+            osmium-tool
 
       - name: Checkout BRouter
         run: |
-          git clone --depth 1 https://github.com/abrensch/brouter.git /tmp/brouter
+          git clone --depth 1 \
+            https://github.com/abrensch/brouter.git \
+            /tmp/brouter
 
-      - name: Build BRouter map creator
+      - name: Build BRouter
         working-directory: /tmp/brouter
         run: |
           chmod +x gradlew
-          ./gradlew clean fatJar --no-daemon
 
-      - name: Locate BRouter jar
+          ./gradlew clean build fatJar \
+            -x :brouter-routing-app:build \
+            --no-daemon
+
+          echo
+          echo "=== BRouter JAR ==="
+
+          find brouter-server/build/libs \
+            -maxdepth 1 \
+            -type f \
+            -name "*.jar" \
+            -ls
+
+      - name: Locate BRouter data files
         run: |
-          find /tmp/brouter -type f \
-            \( -name "*.jar" -o -name "brouter.jar" \) \
-            -printf '%p\n' | sort
+          set -eo pipefail
 
-          BROUTER_JAR=$(find /tmp/brouter/brouter-server/build/libs \
-            -type f -name "*.jar" \
-            | head -n 1)
+          echo "=== lookups.dat ==="
+          find /tmp/brouter \
+            -type f \
+            -name "lookups.dat" \
+            -print
 
-          if [ -z "$BROUTER_JAR" ]; then
-            echo "ERROR: BRouter fat jar not found"
-            exit 1
-          fi
+          echo
+          echo "=== bordernids.dat ==="
+          find /tmp/brouter \
+            -type f \
+            -name "bordernids.dat" \
+            -print
 
-          echo "BROUTER_JAR=$BROUTER_JAR" >> "$GITHUB_ENV"
+          echo
+          echo "=== relations.dat ==="
+          find /tmp/brouter \
+            -type f \
+            -name "relations.dat" \
+            -print
 
-      - name: Download and calculate region bbox
+          echo
+          echo "=== restrictions.dat ==="
+          find /tmp/brouter \
+            -type f \
+            -name "restrictions.dat" \
+            -print
+
+          echo
+          echo "=== db_tags.csv.gz ==="
+          find /tmp/brouter \
+            -type f \
+            -name "db_tags.csv.gz" \
+            -print
+
+          echo
+          echo "=== profiles ==="
+          find /tmp/brouter \
+            -type f \
+            \( -name "all.brf" \
+            -o -name "trekking.brf" \
+            -o -name "softaccess.brf" \) \
+            -print
+
+      - name: Download region PBF and calculate bbox
         run: |
           set -eo pipefail
 
           RID="${{ matrix.region.id }}"
           FBASE="${RID//\//-}"
+
           PBF_URL="${{ matrix.region.pbf }}"
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
 
@@ -128,8 +172,6 @@ jobs:
           }
 
           echo "=== ${{ matrix.region.name }} ==="
-          echo "PBF: $PBF_URL"
-          echo "POLY: $POLY_URL"
 
           echo "Downloading PBF..."
           download "$PBF" "$PBF_URL"
@@ -140,6 +182,7 @@ jobs:
           BBOX=""
 
           echo "Downloading poly..."
+          echo "$POLY_URL"
 
           if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
 
@@ -243,30 +286,15 @@ jobs:
 
           IFS=':' read -r W S E N <<< "$BBOX"
 
-          # Clamp to valid longitude/latitude ranges.
-          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
-          import sys
+          echo "$W" > "/tmp/${FBASE}.w"
+          echo "$S" > "/tmp/${FBASE}.s"
+          echo "$E" > "/tmp/${FBASE}.e"
+          echo "$N" > "/tmp/${FBASE}.n"
 
-          w, s, e, n = map(float, sys.argv[1:5])
-
-          w = max(w, -180.0)
-          e = min(e, 180.0)
-
-          s = max(s, -90.0)
-          n = min(n, 90.0)
-
-          print(f"{w}:{s}:{e}:{n}")
-          PYEOF
-          )
-
-          IFS=':' read -r W S E N <<< "$CLAMPED"
-
-          echo "Final bbox: $W,$S,$E,$N"
-
-          echo "$W" > /tmp/${FBASE}.w
-          echo "$S" > /tmp/${FBASE}.s
-          echo "$E" > /tmp/${FBASE}.e
-          echo "$N" > /tmp/${FBASE}.n
+          echo "W=$W"
+          echo "S=$S"
+          echo "E=$E"
+          echo "N=$N"
 
       - name: Filter PBF to region
         run: |
@@ -275,16 +303,16 @@ jobs:
           RID="${{ matrix.region.id }}"
           FBASE="${RID//\//-}"
 
-          W=$(cat /tmp/${FBASE}.w)
-          S=$(cat /tmp/${FBASE}.s)
-          E=$(cat /tmp/${FBASE}.e)
-          N=$(cat /tmp/${FBASE}.n)
+          W=$(cat "/tmp/${FBASE}.w")
+          S=$(cat "/tmp/${FBASE}.s")
+          E=$(cat "/tmp/${FBASE}.e")
+          N=$(cat "/tmp/${FBASE}.n")
 
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/${FBASE}.routing.osm.pbf"
 
-          echo "Filtering PBF to:"
-          echo "$W:$S:$E:$N"
+          echo "Extracting:"
+          echo "$W,$S,$E,$N"
 
           osmium extract \
             -b "$W,$S,$E,$N" \
@@ -302,6 +330,61 @@ jobs:
 
           mkdir -p /tmp/brouter-work
 
+          LOOKUPS=$(find /tmp/brouter \
+            -type f -name "lookups.dat" | head -n 1)
+
+          BORDERS=$(find /tmp/brouter \
+            -type f -name "bordernids.dat" | head -n 1)
+
+          RELATIONS=$(find /tmp/brouter \
+            -type f -name "relations.dat" | head -n 1)
+
+          RESTRICTIONS=$(find /tmp/brouter \
+            -type f -name "restrictions.dat" | head -n 1)
+
+          DB_TAGS=$(find /tmp/brouter \
+            -type f -name "db_tags.csv.gz" | head -n 1)
+
+          ALL_BRF=$(find /tmp/brouter \
+            -type f -name "all.brf" | head -n 1)
+
+          TREKKING_BRF=$(find /tmp/brouter \
+            -type f -name "trekking.brf" | head -n 1)
+
+          SOFTACCESS_BRF=$(find /tmp/brouter \
+            -type f -name "softaccess.brf" | head -n 1)
+
+          BROUTER_JAR=$(find /tmp/brouter/brouter-server/build/libs \
+            -type f -name "*.jar" \
+            | head -n 1)
+
+          for FILE in \
+            "$LOOKUPS" \
+            "$BORDERS" \
+            "$RELATIONS" \
+            "$RESTRICTIONS" \
+            "$DB_TAGS" \
+            "$ALL_BRF" \
+            "$TREKKING_BRF" \
+            "$SOFTACCESS_BRF" \
+            "$BROUTER_JAR"
+          do
+            if [ -z "$FILE" ]; then
+              echo "ERROR: required BRouter file not found"
+              exit 1
+            fi
+          done
+
+          cp "$LOOKUPS" "$BORDERS" "$RELATIONS" \
+             "$RESTRICTIONS" "$DB_TAGS" \
+             "$ALL_BRF" "$TREKKING_BRF" \
+             "$SOFTACCESS_BRF" \
+             "$BROUTER_JAR" \
+             /tmp/brouter-work/
+
+          echo "BROUTER_JAR=/tmp/brouter-work/$(basename "$BROUTER_JAR")" \
+            >> "$GITHUB_ENV"
+
           cd /tmp/brouter-work
 
           mkdir -p \
@@ -309,33 +392,30 @@ jobs:
             waytiles \
             nodes55 \
             waytiles55 \
+            unodes55 \
             segments
 
-          cp /tmp/brouter/lookups.dat .
-          cp /tmp/brouter/bordernids.dat .
-          cp /tmp/brouter/relations.dat .
-          cp /tmp/brouter/restrictions.dat .
-          cp /tmp/brouter/all.brf .
-          cp /tmp/brouter/trekking.brf .
-          cp /tmp/brouter/softaccess.brf .
+          echo "BRouter work directory:"
+          find . -maxdepth 2 -type d | sort
 
-      - name: Generate BRouter segment files
+      - name: Generate BRouter routing segments
         run: |
           set -eo pipefail
 
           cd /tmp/brouter-work
 
-          JAVA_OPTS="-Xmx6500m -Xms6500m -Xmn256m"
-
           echo "=== OsmFastCutter ==="
 
-          java $JAVA_OPTS \
+          java \
+            -Xmx6500M \
+            -Xms6500M \
+            -Xmn256M \
             -cp "$BROUTER_JAR" \
             -Ddeletetmpfiles=true \
             -DuseDenseMaps=true \
             btools.util.StackSampler \
             btools.mapcreator.OsmFastCutter \
-            lookups.dat \
+            ./lookups.dat \
             nodetiles \
             waytiles \
             nodes55 \
@@ -343,17 +423,19 @@ jobs:
             bordernids.dat \
             relations.dat \
             restrictions.dat \
-            all.brf \
-            trekking.brf \
-            softaccess.brf \
+            ./all.brf \
+            ./trekking.brf \
+            ./softaccess.brf \
             "$FILTERED_PBF" \
-            db_tags.csv.gz
+            ./db_tags.csv.gz
 
+          echo
           echo "=== PosUnifier ==="
 
-          mkdir -p unodes55
-
-          java $JAVA_OPTS \
+          java \
+            -Xmx6500M \
+            -Xms6500M \
+            -Xmn256M \
             -cp "$BROUTER_JAR" \
             -Ddeletetmpfiles=true \
             -DuseDenseMaps=true \
@@ -364,9 +446,13 @@ jobs:
             bordernids.dat \
             bordernodes.dat
 
+          echo
           echo "=== WayLinker ==="
 
-          java $JAVA_OPTS \
+          java \
+            -Xmx6500M \
+            -Xms6500M \
+            -Xmn256M \
             -cp "$BROUTER_JAR" \
             -DuseDenseMaps=true \
             -DskipEncodingCheck=true \
@@ -378,10 +464,11 @@ jobs:
             restrictions.dat \
             lookups.dat \
             all.brf \
-            segments
+            segments \
+            rd5
 
           echo
-          echo "=== Generated RD5 files ==="
+          echo "=== Generated .rd5 files ==="
 
           find segments \
             -type f \
@@ -389,12 +476,15 @@ jobs:
             -printf '%f %s bytes\n' \
             | sort
 
-          COUNT=$(find segments -type f -name "*.rd5" | wc -l)
+          COUNT=$(find segments \
+            -type f \
+            -name "*.rd5" \
+            | wc -l)
 
-          echo "Generated $COUNT .rd5 file(s)"
+          echo "Generated $COUNT routing segment(s)"
 
           if [ "$COUNT" -eq 0 ]; then
-            echo "ERROR: no .rd5 files were generated"
+            echo "ERROR: no .rd5 files generated"
             exit 1
           fi
 
@@ -404,25 +494,45 @@ jobs:
         run: |
           set -eo pipefail
 
-          RID="${{ matrix.region.id }}"
-          FBASE="${RID//\//-}"
-
           cd /tmp/brouter-work
 
           for RD5 in segments/*.rd5; do
+
             [ -f "$RD5" ] || continue
 
-            echo "Uploading $(basename "$RD5")"
+            NAME="$(basename "$RD5")"
+
+            echo
+            echo "Uploading $NAME..."
 
             for attempt in 1 2 3 4 5; do
+
               if gh release upload \
                 routing-europe-uk \
                 "$RD5" \
                 --clobber; then
+
+                echo "Uploaded $NAME"
                 break
               fi
 
-              echo "Upload failed, retrying in 30 seconds..." >&2
+              if [ "$attempt" -eq 5 ]; then
+                echo "ERROR: failed to upload $NAME"
+                exit 1
+              fi
+
+              echo "Upload attempt $attempt failed."
+              echo "Retrying in 30 seconds..."
+
               sleep 30
             done
+
           done
+
+          echo
+          echo "=== Routing release assets ==="
+
+          gh release view \
+            routing-europe-uk \
+            --json assets \
+            --jq '.assets[].name'
