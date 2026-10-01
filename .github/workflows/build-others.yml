@@ -168,7 +168,7 @@ jobs:
 
           echo "Filtering tags..."
           osmium tags-filter "$PBF" \
-            w/highway w/waterway w/natural w/landuse w/railway \
+            w/highway w/waterway w/natural w/landuse w/railway w/boundary=administrative \
             n/place=city,town,village,hamlet,suburb,locality \
             n/railway n/natural=peak,saddle,spring,cave_entrance \
             n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
@@ -252,6 +252,9 @@ jobs:
               <osm-tag key="landuse" value="forest" zoom-appear="10" />
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
+              <osm-tag key="natural" value="coastline" zoom-appear="5" />
+              <osm-tag key="boundary" value="administrative" zoom-appear="5" />
+              <osm-tag key="admin_level" value="2" zoom-appear="5" />
             </ways>
           </tag-mapping>
           XMLEOF
