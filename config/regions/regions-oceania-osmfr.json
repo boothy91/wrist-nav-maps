@@ -334,5 +334,11 @@
     "name": "Kiribati",
     "path": "merge/kiribati",
     "pbf": "https://download.openstreetmap.fr/extracts/merge/kiribati-latest.osm.pbf"
+  },
+  {
+    "id": "new_zealand",
+    "name": "New Zealand",
+    "path": "oceania/new_zealand",
+    "pbf": "https://download.geofabrik.de/australia-oceania/new-zealand-latest.osm.pbf"
   }
 ]
