@@ -1,0 +1,578 @@
+[
+  {
+    "id": "algeria",
+    "name": "Algeria",
+    "path": "africa/algeria",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/algeria-latest.osm.pbf"
+  },
+  {
+    "id": "angola",
+    "name": "Angola",
+    "path": "africa/angola",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/angola-latest.osm.pbf"
+  },
+  {
+    "id": "benin",
+    "name": "Benin",
+    "path": "africa/benin",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/benin-latest.osm.pbf"
+  },
+  {
+    "id": "bir_tawil",
+    "name": "Bir Tawil",
+    "path": "africa/bir_tawil",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/bir_tawil-latest.osm.pbf"
+  },
+  {
+    "id": "bouvet_island",
+    "name": "Bouvet Island",
+    "path": "africa/bouvet_island",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/bouvet_island-latest.osm.pbf"
+  },
+  {
+    "id": "burkina_faso",
+    "name": "Burkina Faso",
+    "path": "africa/burkina_faso",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/burkina_faso-latest.osm.pbf"
+  },
+  {
+    "id": "burundi",
+    "name": "Burundi",
+    "path": "africa/burundi",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/burundi-latest.osm.pbf"
+  },
+  {
+    "id": "cameroon",
+    "name": "Cameroon",
+    "path": "africa/cameroon",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/cameroon-latest.osm.pbf"
+  },
+  {
+    "id": "cape_verde",
+    "name": "Cape Verde",
+    "path": "africa/cape_verde",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/cape_verde-latest.osm.pbf"
+  },
+  {
+    "id": "central_african_republic",
+    "name": "Central African Republic",
+    "path": "africa/central_african_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/central_african_republic-latest.osm.pbf"
+  },
+  {
+    "id": "chad",
+    "name": "Chad",
+    "path": "africa/chad",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/chad-latest.osm.pbf"
+  },
+  {
+    "id": "comoros",
+    "name": "Comoros",
+    "path": "africa/comoros",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/comoros-latest.osm.pbf"
+  },
+  {
+    "id": "congo_brazzaville",
+    "name": "Congo - Brazzaville",
+    "path": "africa/congo_brazzaville",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/congo_brazzaville-latest.osm.pbf"
+  },
+  {
+    "id": "congo_kinshasa",
+    "name": "Congo - Kinshasa",
+    "path": "africa/congo_kinshasa",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/congo_kinshasa-latest.osm.pbf"
+  },
+  {
+    "id": "djibouti",
+    "name": "Djibouti",
+    "path": "africa/djibouti",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/djibouti-latest.osm.pbf"
+  },
+  {
+    "id": "egypt",
+    "name": "Egypt",
+    "path": "africa/egypt",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/egypt-latest.osm.pbf"
+  },
+  {
+    "id": "equatorial_guinea",
+    "name": "Equatorial Guinea",
+    "path": "africa/equatorial_guinea",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/equatorial_guinea-latest.osm.pbf"
+  },
+  {
+    "id": "eritrea",
+    "name": "Eritrea",
+    "path": "africa/eritrea",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/eritrea-latest.osm.pbf"
+  },
+  {
+    "id": "ethiopia",
+    "name": "Ethiopia",
+    "path": "africa/ethiopia",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/ethiopia-latest.osm.pbf"
+  },
+  {
+    "id": "france_taaf",
+    "name": "French Southern and Antarctic Lands",
+    "path": "africa/france_taaf",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/france_taaf-latest.osm.pbf"
+  },
+  {
+    "id": "gabon",
+    "name": "Gabon",
+    "path": "africa/gabon",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/gabon-latest.osm.pbf"
+  },
+  {
+    "id": "gambia",
+    "name": "Gambia",
+    "path": "africa/gambia",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/gambia-latest.osm.pbf"
+  },
+  {
+    "id": "ghana",
+    "name": "Ghana",
+    "path": "africa/ghana",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/ghana-latest.osm.pbf"
+  },
+  {
+    "id": "guinea",
+    "name": "Guinea",
+    "path": "africa/guinea",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/guinea-latest.osm.pbf"
+  },
+  {
+    "id": "ilemi",
+    "name": "Ilemi Triangle",
+    "path": "africa/ilemi",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/ilemi-latest.osm.pbf"
+  },
+  {
+    "id": "ivory_coast",
+    "name": "Ivory Coast",
+    "path": "africa/ivory_coast",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/ivory_coast-latest.osm.pbf"
+  },
+  {
+    "id": "kenya",
+    "name": "Kenya",
+    "path": "africa/kenya",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/kenya-latest.osm.pbf"
+  },
+  {
+    "id": "lesotho",
+    "name": "Lesotho",
+    "path": "africa/lesotho",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/lesotho-latest.osm.pbf"
+  },
+  {
+    "id": "madagascar",
+    "name": "Madagascar",
+    "path": "africa/madagascar",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/madagascar-latest.osm.pbf"
+  },
+  {
+    "id": "malawi",
+    "name": "Malawi",
+    "path": "africa/malawi",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/malawi-latest.osm.pbf"
+  },
+  {
+    "id": "mali",
+    "name": "Mali",
+    "path": "africa/mali",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mali-latest.osm.pbf"
+  },
+  {
+    "id": "mauritania",
+    "name": "Mauritania",
+    "path": "africa/mauritania",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mauritania-latest.osm.pbf"
+  },
+  {
+    "id": "mauritius",
+    "name": "Mauritius",
+    "path": "africa/mauritius",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mauritius-latest.osm.pbf"
+  },
+  {
+    "id": "mayotte",
+    "name": "Mayotte",
+    "path": "africa/mayotte",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mayotte-latest.osm.pbf"
+  },
+  {
+    "id": "morocco",
+    "name": "Morocco",
+    "path": "africa/morocco",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/morocco-latest.osm.pbf"
+  },
+  {
+    "id": "mozambique",
+    "name": "Mozambique",
+    "path": "africa/mozambique",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique-latest.osm.pbf"
+  },
+  {
+    "id": "namibia",
+    "name": "Namibia",
+    "path": "africa/namibia",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/namibia-latest.osm.pbf"
+  },
+  {
+    "id": "niger",
+    "name": "Niger",
+    "path": "africa/niger",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/niger-latest.osm.pbf"
+  },
+  {
+    "id": "nigeria",
+    "name": "Nigeria",
+    "path": "africa/nigeria",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/nigeria-latest.osm.pbf"
+  },
+  {
+    "id": "reunion",
+    "name": "Réunion",
+    "path": "africa/reunion",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/reunion-latest.osm.pbf"
+  },
+  {
+    "id": "rwanda",
+    "name": "Rwanda",
+    "path": "africa/rwanda",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/rwanda-latest.osm.pbf"
+  },
+  {
+    "id": "saint_helena_ascension_tristan_da_cunha",
+    "name": "Saint Helena, Ascension and Tristan da Cunha",
+    "path": "africa/saint_helena_ascension_tristan_da_cunha",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/saint_helena_ascension_tristan_da_cunha-latest.osm.pbf"
+  },
+  {
+    "id": "sao_tome_and_principe",
+    "name": "São Tomé and Príncipe",
+    "path": "africa/sao_tome_and_principe",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/sao_tome_and_principe-latest.osm.pbf"
+  },
+  {
+    "id": "senegal",
+    "name": "Senegal",
+    "path": "africa/senegal",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/senegal-latest.osm.pbf"
+  },
+  {
+    "id": "seychelles",
+    "name": "Seychelles",
+    "path": "africa/seychelles",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/seychelles-latest.osm.pbf"
+  },
+  {
+    "id": "south_africa",
+    "name": "South Africa",
+    "path": "africa/south_africa",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa-latest.osm.pbf"
+  },
+  {
+    "id": "south_sudan",
+    "name": "South Sudan",
+    "path": "africa/south_sudan",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_sudan-latest.osm.pbf"
+  },
+  {
+    "id": "sudan",
+    "name": "Sudan",
+    "path": "africa/sudan",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/sudan-latest.osm.pbf"
+  },
+  {
+    "id": "swaziland",
+    "name": "Eswatini",
+    "path": "africa/swaziland",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/swaziland-latest.osm.pbf"
+  },
+  {
+    "id": "tanzania",
+    "name": "Tanzania",
+    "path": "africa/tanzania",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania-latest.osm.pbf"
+  },
+  {
+    "id": "togo",
+    "name": "Togo",
+    "path": "africa/togo",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/togo-latest.osm.pbf"
+  },
+  {
+    "id": "tunisia",
+    "name": "Tunisia",
+    "path": "africa/tunisia",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tunisia-latest.osm.pbf"
+  },
+  {
+    "id": "uganda",
+    "name": "Uganda",
+    "path": "africa/uganda",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/uganda-latest.osm.pbf"
+  },
+  {
+    "id": "western_sahara",
+    "name": "Western Sahara",
+    "path": "africa/western_sahara",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/western_sahara-latest.osm.pbf"
+  },
+  {
+    "id": "cabo_delgado",
+    "name": "Cabo Delgado",
+    "path": "africa/mozambique/cabo_delgado",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/cabo_delgado-latest.osm.pbf"
+  },
+  {
+    "id": "gaza",
+    "name": "Gaza",
+    "path": "africa/mozambique/gaza",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/gaza-latest.osm.pbf"
+  },
+  {
+    "id": "inhambane",
+    "name": "Inhambane",
+    "path": "africa/mozambique/inhambane",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/inhambane-latest.osm.pbf"
+  },
+  {
+    "id": "manica",
+    "name": "Manica",
+    "path": "africa/mozambique/manica",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/manica-latest.osm.pbf"
+  },
+  {
+    "id": "maputo",
+    "name": "Maputo",
+    "path": "africa/mozambique/maputo",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/maputo-latest.osm.pbf"
+  },
+  {
+    "id": "maputo_city",
+    "name": "Maputo City",
+    "path": "africa/mozambique/maputo_city",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/maputo_city-latest.osm.pbf"
+  },
+  {
+    "id": "nampula",
+    "name": "Nampula",
+    "path": "africa/mozambique/nampula",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/nampula-latest.osm.pbf"
+  },
+  {
+    "id": "niassa",
+    "name": "Niassa",
+    "path": "africa/mozambique/niassa",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/niassa-latest.osm.pbf"
+  },
+  {
+    "id": "sofala",
+    "name": "Sofala",
+    "path": "africa/mozambique/sofala",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/sofala-latest.osm.pbf"
+  },
+  {
+    "id": "tete",
+    "name": "Tete",
+    "path": "africa/mozambique/tete",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/tete-latest.osm.pbf"
+  },
+  {
+    "id": "zambezia",
+    "name": "Zambezia",
+    "path": "africa/mozambique/zambezia",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique/zambezia-latest.osm.pbf"
+  },
+  {
+    "id": "north_central",
+    "name": "North Central",
+    "path": "africa/nigeria/north_central",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/nigeria/north_central-latest.osm.pbf"
+  },
+  {
+    "id": "north_east",
+    "name": "North East",
+    "path": "africa/nigeria/north_east",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/nigeria/north_east-latest.osm.pbf"
+  },
+  {
+    "id": "north_west",
+    "name": "North West",
+    "path": "africa/nigeria/north_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/nigeria/north_west-latest.osm.pbf"
+  },
+  {
+    "id": "south_east",
+    "name": "South East",
+    "path": "africa/nigeria/south_east",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/nigeria/south_east-latest.osm.pbf"
+  },
+  {
+    "id": "south_south",
+    "name": "South South",
+    "path": "africa/nigeria/south_south",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/nigeria/south_south-latest.osm.pbf"
+  },
+  {
+    "id": "south_west",
+    "name": "South West",
+    "path": "africa/nigeria/south_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/nigeria/south_west-latest.osm.pbf"
+  },
+  {
+    "id": "eastern_cape",
+    "name": "Eastern Cape",
+    "path": "africa/south_africa/eastern_cape",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/eastern_cape-latest.osm.pbf"
+  },
+  {
+    "id": "free_state",
+    "name": "Free State",
+    "path": "africa/south_africa/free_state",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/free_state-latest.osm.pbf"
+  },
+  {
+    "id": "gauteng",
+    "name": "Gauteng",
+    "path": "africa/south_africa/gauteng",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/gauteng-latest.osm.pbf"
+  },
+  {
+    "id": "kwazulu_natal",
+    "name": "KwaZulu-Natal",
+    "path": "africa/south_africa/kwazulu_natal",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/kwazulu_natal-latest.osm.pbf"
+  },
+  {
+    "id": "limpopo",
+    "name": "Limpopo",
+    "path": "africa/south_africa/limpopo",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/limpopo-latest.osm.pbf"
+  },
+  {
+    "id": "mpumalanga",
+    "name": "Mpumalanga",
+    "path": "africa/south_africa/mpumalanga",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/mpumalanga-latest.osm.pbf"
+  },
+  {
+    "id": "north_west_1",
+    "name": "North West",
+    "path": "africa/south_africa/north_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/north_west-latest.osm.pbf"
+  },
+  {
+    "id": "northern_cape",
+    "name": "Northern Cape",
+    "path": "africa/south_africa/northern_cape",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/northern_cape-latest.osm.pbf"
+  },
+  {
+    "id": "western_cape",
+    "name": "Western Cape",
+    "path": "africa/south_africa/western_cape",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/western_cape-latest.osm.pbf"
+  },
+  {
+    "id": "canarias",
+    "name": "Canary Islands",
+    "path": "africa/spain/canarias",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/spain/canarias-latest.osm.pbf"
+  },
+  {
+    "id": "ceuta",
+    "name": "Ceuta",
+    "path": "africa/spain/ceuta",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/spain/ceuta-latest.osm.pbf"
+  },
+  {
+    "id": "melilla",
+    "name": "Melilla",
+    "path": "africa/spain/melilla",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/spain/melilla-latest.osm.pbf"
+  },
+  {
+    "id": "las_palmas",
+    "name": "Las Palmas",
+    "path": "africa/spain/canarias/las_palmas",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/spain/canarias/las_palmas-latest.osm.pbf"
+  },
+  {
+    "id": "santa_cruz_de_tenerife",
+    "name": "Santa Cruz de Tenerife",
+    "path": "africa/spain/canarias/santa_cruz_de_tenerife",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/spain/canarias/santa_cruz_de_tenerife-latest.osm.pbf"
+  },
+  {
+    "id": "central",
+    "name": "Central",
+    "path": "africa/tanzania/central",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania/central-latest.osm.pbf"
+  },
+  {
+    "id": "coastal",
+    "name": "Coastal",
+    "path": "africa/tanzania/coastal",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania/coastal-latest.osm.pbf"
+  },
+  {
+    "id": "lake",
+    "name": "Lake",
+    "path": "africa/tanzania/lake",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania/lake-latest.osm.pbf"
+  },
+  {
+    "id": "northern",
+    "name": "Northern",
+    "path": "africa/tanzania/northern",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania/northern-latest.osm.pbf"
+  },
+  {
+    "id": "southern_highlands",
+    "name": "Southern Highlands",
+    "path": "africa/tanzania/southern_highlands",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania/southern_highlands-latest.osm.pbf"
+  },
+  {
+    "id": "western",
+    "name": "Western",
+    "path": "africa/tanzania/western",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania/western-latest.osm.pbf"
+  },
+  {
+    "id": "zanzibar",
+    "name": "Zanzibar",
+    "path": "africa/tanzania/zanzibar",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania/zanzibar-latest.osm.pbf"
+  },
+  {
+    "id": "central_1",
+    "name": "Central",
+    "path": "africa/uganda/central",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/uganda/central-latest.osm.pbf"
+  },
+  {
+    "id": "eastern",
+    "name": "Eastern",
+    "path": "africa/uganda/eastern",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/uganda/eastern-latest.osm.pbf"
+  },
+  {
+    "id": "northern_1",
+    "name": "Northern",
+    "path": "africa/uganda/northern",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/uganda/northern-latest.osm.pbf"
+  },
+  {
+    "id": "western_1",
+    "name": "Western",
+    "path": "africa/uganda/western",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/uganda/western-latest.osm.pbf"
+  }
+]
