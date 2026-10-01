@@ -1,0 +1,560 @@
+[
+  {
+    "id": "central_federal_district",
+    "name": "Central Federal District",
+    "path": "russia/central_federal_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district-latest.osm.pbf"
+  },
+  {
+    "id": "far_eastern_federal_district",
+    "name": "Far Eastern Federal District",
+    "path": "russia/far_eastern_federal_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district-latest.osm.pbf"
+  },
+  {
+    "id": "north_caucasian_federal_district",
+    "name": "North Caucasian Federal District",
+    "path": "russia/north_caucasian_federal_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district-latest.osm.pbf"
+  },
+  {
+    "id": "northwestern_federal_district",
+    "name": "Northwestern Federal District",
+    "path": "russia/northwestern_federal_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district-latest.osm.pbf"
+  },
+  {
+    "id": "siberian_federal_district",
+    "name": "Siberian Federal District",
+    "path": "russia/siberian_federal_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district-latest.osm.pbf"
+  },
+  {
+    "id": "southern_federal_district",
+    "name": "Southern Federal District",
+    "path": "russia/southern_federal_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district-latest.osm.pbf"
+  },
+  {
+    "id": "ural_federal_district",
+    "name": "Ural Federal District",
+    "path": "russia/ural_federal_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district-latest.osm.pbf"
+  },
+  {
+    "id": "volga_federal_district",
+    "name": "Volga Federal District",
+    "path": "russia/volga_federal_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district-latest.osm.pbf"
+  },
+  {
+    "id": "belgorod_oblast",
+    "name": "Belgorod Oblast",
+    "path": "russia/central_federal_district/belgorod_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/belgorod_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "bryansk_oblast",
+    "name": "Bryansk Oblast",
+    "path": "russia/central_federal_district/bryansk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/bryansk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "ivanovo_oblast",
+    "name": "Ivanovo Oblast",
+    "path": "russia/central_federal_district/ivanovo_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/ivanovo_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kaluga_oblast",
+    "name": "Kaluga Oblast",
+    "path": "russia/central_federal_district/kaluga_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/kaluga_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kostroma_oblast",
+    "name": "Kostroma Oblast",
+    "path": "russia/central_federal_district/kostroma_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/kostroma_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kursk_oblast",
+    "name": "Kursk Oblast",
+    "path": "russia/central_federal_district/kursk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/kursk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "lipetsk_oblast",
+    "name": "Lipetsk Oblast",
+    "path": "russia/central_federal_district/lipetsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/lipetsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "moscow",
+    "name": "Moscow",
+    "path": "russia/central_federal_district/moscow",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/moscow-latest.osm.pbf"
+  },
+  {
+    "id": "moscow_oblast",
+    "name": "Moscow Oblast",
+    "path": "russia/central_federal_district/moscow_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/moscow_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "oryol_oblast",
+    "name": "Oryol Oblast",
+    "path": "russia/central_federal_district/oryol_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/oryol_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "ryazan_oblast",
+    "name": "Ryazan Oblast",
+    "path": "russia/central_federal_district/ryazan_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/ryazan_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "smolensk_oblast",
+    "name": "Smolensk Oblast",
+    "path": "russia/central_federal_district/smolensk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/smolensk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "tambov_oblast",
+    "name": "Tambov Oblast",
+    "path": "russia/central_federal_district/tambov_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/tambov_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "tula_oblast",
+    "name": "Tula Oblast",
+    "path": "russia/central_federal_district/tula_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/tula_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "tver_oblast",
+    "name": "Tver Oblast",
+    "path": "russia/central_federal_district/tver_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/tver_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "vladimir_oblast",
+    "name": "Vladimir Oblast",
+    "path": "russia/central_federal_district/vladimir_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/vladimir_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "voronezh_oblast",
+    "name": "Voronezh Oblast",
+    "path": "russia/central_federal_district/voronezh_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/voronezh_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "yaroslavl_oblast",
+    "name": "Yaroslavl Oblast",
+    "path": "russia/central_federal_district/yaroslavl_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district/yaroslavl_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "amur_oblast",
+    "name": "Amur Oblast",
+    "path": "russia/far_eastern_federal_district/amur_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/amur_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "chukotka_autonomous_okrug",
+    "name": "Chukotka Autonomous Okrug",
+    "path": "russia/far_eastern_federal_district/chukotka_autonomous_okrug",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/chukotka_autonomous_okrug-latest.osm.pbf"
+  },
+  {
+    "id": "jewish_autonomous_oblast",
+    "name": "Jewish Autonomous Oblast",
+    "path": "russia/far_eastern_federal_district/jewish_autonomous_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/jewish_autonomous_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kamchatka_krai",
+    "name": "Kamchatka Krai",
+    "path": "russia/far_eastern_federal_district/kamchatka_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/kamchatka_krai-latest.osm.pbf"
+  },
+  {
+    "id": "khabarovsk_krai",
+    "name": "Khabarovsk Krai",
+    "path": "russia/far_eastern_federal_district/khabarovsk_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/khabarovsk_krai-latest.osm.pbf"
+  },
+  {
+    "id": "magadan_oblast",
+    "name": "Magadan Oblast",
+    "path": "russia/far_eastern_federal_district/magadan_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/magadan_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "primorsky_krai",
+    "name": "Primorsky Krai",
+    "path": "russia/far_eastern_federal_district/primorsky_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/primorsky_krai-latest.osm.pbf"
+  },
+  {
+    "id": "sakha_republic",
+    "name": "Sakha Republic",
+    "path": "russia/far_eastern_federal_district/sakha_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/sakha_republic-latest.osm.pbf"
+  },
+  {
+    "id": "sakhalin_oblast",
+    "name": "Sakhalin Oblast",
+    "path": "russia/far_eastern_federal_district/sakhalin_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district/sakhalin_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "chechen_republic",
+    "name": "Chechen Republic",
+    "path": "russia/north_caucasian_federal_district/chechen_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district/chechen_republic-latest.osm.pbf"
+  },
+  {
+    "id": "dagestan_republic",
+    "name": "Dagestan Republic",
+    "path": "russia/north_caucasian_federal_district/dagestan_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district/dagestan_republic-latest.osm.pbf"
+  },
+  {
+    "id": "ingushetia_republic",
+    "name": "Ingushetia Republic",
+    "path": "russia/north_caucasian_federal_district/ingushetia_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district/ingushetia_republic-latest.osm.pbf"
+  },
+  {
+    "id": "kabardino_balkar_republic",
+    "name": "Kabardino Balkar Republic",
+    "path": "russia/north_caucasian_federal_district/kabardino_balkar_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district/kabardino_balkar_republic-latest.osm.pbf"
+  },
+  {
+    "id": "karachay_cherkess_republic",
+    "name": "Karachay Cherkess Republic",
+    "path": "russia/north_caucasian_federal_district/karachay_cherkess_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district/karachay_cherkess_republic-latest.osm.pbf"
+  },
+  {
+    "id": "north_ossetia_alania_republic",
+    "name": "North Ossetia Alania Republic",
+    "path": "russia/north_caucasian_federal_district/north_ossetia_alania_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district/north_ossetia_alania_republic-latest.osm.pbf"
+  },
+  {
+    "id": "stavropol_krai",
+    "name": "Stavropol Krai",
+    "path": "russia/north_caucasian_federal_district/stavropol_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district/stavropol_krai-latest.osm.pbf"
+  },
+  {
+    "id": "arkhangelsk_oblast",
+    "name": "Arkhangelsk Oblast",
+    "path": "russia/northwestern_federal_district/arkhangelsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/arkhangelsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kaliningrad_oblast",
+    "name": "Kaliningrad Oblast",
+    "path": "russia/northwestern_federal_district/kaliningrad_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/kaliningrad_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "karelia_republic",
+    "name": "Karelia Republic",
+    "path": "russia/northwestern_federal_district/karelia_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/karelia_republic-latest.osm.pbf"
+  },
+  {
+    "id": "komi_republic",
+    "name": "Komi Republic",
+    "path": "russia/northwestern_federal_district/komi_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/komi_republic-latest.osm.pbf"
+  },
+  {
+    "id": "leningrad_oblast",
+    "name": "Leningrad Oblast",
+    "path": "russia/northwestern_federal_district/leningrad_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/leningrad_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "murmansk_oblast",
+    "name": "Murmansk Oblast",
+    "path": "russia/northwestern_federal_district/murmansk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/murmansk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "nenets_autonomous_okrug",
+    "name": "Nenets Autonomous Okrug",
+    "path": "russia/northwestern_federal_district/nenets_autonomous_okrug",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/nenets_autonomous_okrug-latest.osm.pbf"
+  },
+  {
+    "id": "novgorod_oblast",
+    "name": "Novgorod Oblast",
+    "path": "russia/northwestern_federal_district/novgorod_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/novgorod_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "pskov_oblast",
+    "name": "Pskov Oblast",
+    "path": "russia/northwestern_federal_district/pskov_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/pskov_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "saint_petersburg",
+    "name": "Saint Petersburg",
+    "path": "russia/northwestern_federal_district/saint_petersburg",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/saint_petersburg-latest.osm.pbf"
+  },
+  {
+    "id": "vologda_oblast",
+    "name": "Vologda Oblast",
+    "path": "russia/northwestern_federal_district/vologda_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district/vologda_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "altai_krai",
+    "name": "Altai Krai",
+    "path": "russia/siberian_federal_district/altai_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/altai_krai-latest.osm.pbf"
+  },
+  {
+    "id": "altai_republic",
+    "name": "Altai Republic",
+    "path": "russia/siberian_federal_district/altai_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/altai_republic-latest.osm.pbf"
+  },
+  {
+    "id": "buryatia_republic",
+    "name": "Buryatia Republic",
+    "path": "russia/siberian_federal_district/buryatia_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/buryatia_republic-latest.osm.pbf"
+  },
+  {
+    "id": "irkutsk_oblast",
+    "name": "Irkutsk Oblast",
+    "path": "russia/siberian_federal_district/irkutsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/irkutsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kemerovo_oblast",
+    "name": "Kemerovo Oblast",
+    "path": "russia/siberian_federal_district/kemerovo_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/kemerovo_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "khakassia_republic",
+    "name": "Khakassia Republic",
+    "path": "russia/siberian_federal_district/khakassia_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/khakassia_republic-latest.osm.pbf"
+  },
+  {
+    "id": "krasnoyarsk_krai",
+    "name": "Krasnoyarsk Krai",
+    "path": "russia/siberian_federal_district/krasnoyarsk_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/krasnoyarsk_krai-latest.osm.pbf"
+  },
+  {
+    "id": "novosibirsk_oblast",
+    "name": "Novosibirsk Oblast",
+    "path": "russia/siberian_federal_district/novosibirsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/novosibirsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "omsk_oblast",
+    "name": "Omsk Oblast",
+    "path": "russia/siberian_federal_district/omsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/omsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "tomsk_oblast",
+    "name": "Tomsk Oblast",
+    "path": "russia/siberian_federal_district/tomsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/tomsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "tuva_republic",
+    "name": "Tuva Republic",
+    "path": "russia/siberian_federal_district/tuva_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/tuva_republic-latest.osm.pbf"
+  },
+  {
+    "id": "zabaykalsky_krai",
+    "name": "Zabaykalsky Krai",
+    "path": "russia/siberian_federal_district/zabaykalsky_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/zabaykalsky_krai-latest.osm.pbf"
+  },
+  {
+    "id": "adygea_republic",
+    "name": "Adygea Republic",
+    "path": "russia/southern_federal_district/adygea_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district/adygea_republic-latest.osm.pbf"
+  },
+  {
+    "id": "astrakhan_oblast",
+    "name": "Astrakhan Oblast",
+    "path": "russia/southern_federal_district/astrakhan_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district/astrakhan_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "crimea_republic",
+    "name": "Crimea Republic",
+    "path": "russia/southern_federal_district/crimea_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district/crimea_republic-latest.osm.pbf"
+  },
+  {
+    "id": "kalmykia_republic",
+    "name": "Kalmykia Republic",
+    "path": "russia/southern_federal_district/kalmykia_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district/kalmykia_republic-latest.osm.pbf"
+  },
+  {
+    "id": "krasnodar_krai",
+    "name": "Krasnodar Krai",
+    "path": "russia/southern_federal_district/krasnodar_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district/krasnodar_krai-latest.osm.pbf"
+  },
+  {
+    "id": "rostov_oblast",
+    "name": "Rostov Oblast",
+    "path": "russia/southern_federal_district/rostov_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district/rostov_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "sevastopol",
+    "name": "Sevastopol",
+    "path": "russia/southern_federal_district/sevastopol",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district/sevastopol-latest.osm.pbf"
+  },
+  {
+    "id": "volgograd_oblast",
+    "name": "Volgograd Oblast",
+    "path": "russia/southern_federal_district/volgograd_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district/volgograd_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "chelyabinsk_oblast",
+    "name": "Chelyabinsk Oblast",
+    "path": "russia/ural_federal_district/chelyabinsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/chelyabinsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "khanty_mansi_autonomous_okrug",
+    "name": "Khanty Mansi Autonomous Okrug",
+    "path": "russia/ural_federal_district/khanty_mansi_autonomous_okrug",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/khanty_mansi_autonomous_okrug-latest.osm.pbf"
+  },
+  {
+    "id": "kurgan_oblast",
+    "name": "Kurgan Oblast",
+    "path": "russia/ural_federal_district/kurgan_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/kurgan_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "sverdlovsk_oblast",
+    "name": "Sverdlovsk Oblast",
+    "path": "russia/ural_federal_district/sverdlovsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/sverdlovsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "tyumen_oblast",
+    "name": "Tyumen Oblast",
+    "path": "russia/ural_federal_district/tyumen_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/tyumen_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "yamalo_nenets_autonomous_okrug",
+    "name": "Yamalo Nenets Autonomous Okrug",
+    "path": "russia/ural_federal_district/yamalo_nenets_autonomous_okrug",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/yamalo_nenets_autonomous_okrug-latest.osm.pbf"
+  },
+  {
+    "id": "bashkortostan_republic",
+    "name": "Bashkortostan Republic",
+    "path": "russia/volga_federal_district/bashkortostan_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/bashkortostan_republic-latest.osm.pbf"
+  },
+  {
+    "id": "chuvash_republic",
+    "name": "Chuvash Republic",
+    "path": "russia/volga_federal_district/chuvash_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/chuvash_republic-latest.osm.pbf"
+  },
+  {
+    "id": "kirov_oblast",
+    "name": "Kirov Oblast",
+    "path": "russia/volga_federal_district/kirov_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/kirov_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "mari_el_republic",
+    "name": "Mari El Republic",
+    "path": "russia/volga_federal_district/mari_el_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/mari_el_republic-latest.osm.pbf"
+  },
+  {
+    "id": "mordovia_republic",
+    "name": "Mordovia Republic",
+    "path": "russia/volga_federal_district/mordovia_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/mordovia_republic-latest.osm.pbf"
+  },
+  {
+    "id": "nizhny_novgorod_oblast",
+    "name": "Nizhny Novgorod Oblast",
+    "path": "russia/volga_federal_district/nizhny_novgorod_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/nizhny_novgorod_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "orenburg_oblast",
+    "name": "Orenburg Oblast",
+    "path": "russia/volga_federal_district/orenburg_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/orenburg_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "penza_oblast",
+    "name": "Penza Oblast",
+    "path": "russia/volga_federal_district/penza_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/penza_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "perm_krai",
+    "name": "Perm Krai",
+    "path": "russia/volga_federal_district/perm_krai",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/perm_krai-latest.osm.pbf"
+  },
+  {
+    "id": "samara_oblast",
+    "name": "Samara Oblast",
+    "path": "russia/volga_federal_district/samara_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/samara_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "saratov_oblast",
+    "name": "Saratov Oblast",
+    "path": "russia/volga_federal_district/saratov_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/saratov_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "tatarstan_republic",
+    "name": "Tatarstan Republic",
+    "path": "russia/volga_federal_district/tatarstan_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/tatarstan_republic-latest.osm.pbf"
+  },
+  {
+    "id": "udmurt_republic",
+    "name": "Udmurt Republic",
+    "path": "russia/volga_federal_district/udmurt_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/udmurt_republic-latest.osm.pbf"
+  },
+  {
+    "id": "ulyanovsk_oblast",
+    "name": "Ulyanovsk Oblast",
+    "path": "russia/volga_federal_district/ulyanovsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district/ulyanovsk_oblast-latest.osm.pbf"
+  }
+]

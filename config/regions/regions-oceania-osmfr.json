@@ -1,0 +1,338 @@
+[
+  {
+    "id": "american_samoa",
+    "name": "American Samoa",
+    "path": "oceania/american_samoa",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/american_samoa-latest.osm.pbf"
+  },
+  {
+    "id": "australia",
+    "name": "Australia",
+    "path": "oceania/australia",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia-latest.osm.pbf"
+  },
+  {
+    "id": "clipperton",
+    "name": "Clipperton",
+    "path": "oceania/clipperton",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/clipperton-latest.osm.pbf"
+  },
+  {
+    "id": "cook_islands",
+    "name": "Cook Islands",
+    "path": "oceania/cook_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/cook_islands-latest.osm.pbf"
+  },
+  {
+    "id": "fiji_east",
+    "name": "Fiji (East)",
+    "path": "oceania/fiji_east",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/fiji_east-latest.osm.pbf"
+  },
+  {
+    "id": "fiji_west",
+    "name": "Fiji (West)",
+    "path": "oceania/fiji_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/fiji_west-latest.osm.pbf"
+  },
+  {
+    "id": "france_taaf",
+    "name": "French Southern and Antarctic Lands",
+    "path": "oceania/france_taaf",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/france_taaf-latest.osm.pbf"
+  },
+  {
+    "id": "guam",
+    "name": "Guam",
+    "path": "oceania/guam",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/guam-latest.osm.pbf"
+  },
+  {
+    "id": "kiribati_east",
+    "name": "Kiribati (East)",
+    "path": "oceania/kiribati_east",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/kiribati_east-latest.osm.pbf"
+  },
+  {
+    "id": "kiribati_west",
+    "name": "Kiribati (West)",
+    "path": "oceania/kiribati_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/kiribati_west-latest.osm.pbf"
+  },
+  {
+    "id": "marshall_islands",
+    "name": "Marshall Islands",
+    "path": "oceania/marshall_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/marshall_islands-latest.osm.pbf"
+  },
+  {
+    "id": "micronesia",
+    "name": "Micronesia",
+    "path": "oceania/micronesia",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/micronesia-latest.osm.pbf"
+  },
+  {
+    "id": "nauru",
+    "name": "Nauru",
+    "path": "oceania/nauru",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/nauru-latest.osm.pbf"
+  },
+  {
+    "id": "new_caledonia",
+    "name": "New Caledonia",
+    "path": "oceania/new_caledonia",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/new_caledonia-latest.osm.pbf"
+  },
+  {
+    "id": "niue",
+    "name": "Niue",
+    "path": "oceania/niue",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/niue-latest.osm.pbf"
+  },
+  {
+    "id": "northern_mariana_islands",
+    "name": "Northern Mariana Islands",
+    "path": "oceania/northern_mariana_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/northern_mariana_islands-latest.osm.pbf"
+  },
+  {
+    "id": "palau",
+    "name": "Palau",
+    "path": "oceania/palau",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/palau-latest.osm.pbf"
+  },
+  {
+    "id": "papua_new_guinea",
+    "name": "Papua New Guinea",
+    "path": "oceania/papua_new_guinea",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/papua_new_guinea-latest.osm.pbf"
+  },
+  {
+    "id": "pitcairn",
+    "name": "Pitcairn Islands",
+    "path": "oceania/pitcairn",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/pitcairn-latest.osm.pbf"
+  },
+  {
+    "id": "polynesie",
+    "name": "French Polynesia",
+    "path": "oceania/polynesie",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/polynesie-latest.osm.pbf"
+  },
+  {
+    "id": "samoa",
+    "name": "Samoa",
+    "path": "oceania/samoa",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/samoa-latest.osm.pbf"
+  },
+  {
+    "id": "solomon_islands",
+    "name": "Solomon Islands",
+    "path": "oceania/solomon_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/solomon_islands-latest.osm.pbf"
+  },
+  {
+    "id": "tokelau",
+    "name": "Tokelau",
+    "path": "oceania/tokelau",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/tokelau-latest.osm.pbf"
+  },
+  {
+    "id": "tonga",
+    "name": "Tonga",
+    "path": "oceania/tonga",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/tonga-latest.osm.pbf"
+  },
+  {
+    "id": "tuvalu",
+    "name": "Tuvalu",
+    "path": "oceania/tuvalu",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/tuvalu-latest.osm.pbf"
+  },
+  {
+    "id": "vanuatu",
+    "name": "Vanuatu",
+    "path": "oceania/vanuatu",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/vanuatu-latest.osm.pbf"
+  },
+  {
+    "id": "wallis_et_futuna",
+    "name": "Wallis and Futuna",
+    "path": "oceania/wallis_et_futuna",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/wallis_et_futuna-latest.osm.pbf"
+  },
+  {
+    "id": "ashmore_and_cartier_islands",
+    "name": "Ashmore and Cartier Islands",
+    "path": "oceania/australia/ashmore_and_cartier_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/ashmore_and_cartier_islands-latest.osm.pbf"
+  },
+  {
+    "id": "australian_capital_territory",
+    "name": "Australian Capital Territory",
+    "path": "oceania/australia/australian_capital_territory",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/australian_capital_territory-latest.osm.pbf"
+  },
+  {
+    "id": "christmas_island",
+    "name": "Christmas Island",
+    "path": "oceania/australia/christmas_island",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/christmas_island-latest.osm.pbf"
+  },
+  {
+    "id": "cocos_islands",
+    "name": "Cocos Islands",
+    "path": "oceania/australia/cocos_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/cocos_islands-latest.osm.pbf"
+  },
+  {
+    "id": "coral_sea_islands",
+    "name": "Coral Sea Islands",
+    "path": "oceania/australia/coral_sea_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/coral_sea_islands-latest.osm.pbf"
+  },
+  {
+    "id": "heard_island_and_mcdonald_slands",
+    "name": "Heard Island and Mcdonald Slands",
+    "path": "oceania/australia/heard_island_and_mcdonald_slands",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/heard_island_and_mcdonald_slands-latest.osm.pbf"
+  },
+  {
+    "id": "new_south_wales",
+    "name": "New South Wales",
+    "path": "oceania/australia/new_south_wales",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales-latest.osm.pbf"
+  },
+  {
+    "id": "norfolk_island",
+    "name": "Norfolk Island",
+    "path": "oceania/australia/norfolk_island",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/norfolk_island-latest.osm.pbf"
+  },
+  {
+    "id": "northern_territory",
+    "name": "Northern Territory",
+    "path": "oceania/australia/northern_territory",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/northern_territory-latest.osm.pbf"
+  },
+  {
+    "id": "queensland",
+    "name": "Queensland",
+    "path": "oceania/australia/queensland",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/queensland-latest.osm.pbf"
+  },
+  {
+    "id": "south_australia",
+    "name": "South Australia",
+    "path": "oceania/australia/south_australia",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/south_australia-latest.osm.pbf"
+  },
+  {
+    "id": "tasmania",
+    "name": "Tasmania",
+    "path": "oceania/australia/tasmania",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/tasmania-latest.osm.pbf"
+  },
+  {
+    "id": "victoria",
+    "name": "Victoria",
+    "path": "oceania/australia/victoria",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/victoria-latest.osm.pbf"
+  },
+  {
+    "id": "western_australia",
+    "name": "Western Australia",
+    "path": "oceania/australia/western_australia",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/western_australia-latest.osm.pbf"
+  },
+  {
+    "id": "central_west",
+    "name": "Central West",
+    "path": "oceania/australia/new_south_wales/central_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/central_west-latest.osm.pbf"
+  },
+  {
+    "id": "far_west",
+    "name": "Far West",
+    "path": "oceania/australia/new_south_wales/far_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/far_west-latest.osm.pbf"
+  },
+  {
+    "id": "greater_metropolitan_newcastle",
+    "name": "Greater Metropolitan Newcastle",
+    "path": "oceania/australia/new_south_wales/greater_metropolitan_newcastle",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/greater_metropolitan_newcastle-latest.osm.pbf"
+  },
+  {
+    "id": "greater_metropolitan_sydney",
+    "name": "Greater Metropolitan Sydney",
+    "path": "oceania/australia/new_south_wales/greater_metropolitan_sydney",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/greater_metropolitan_sydney-latest.osm.pbf"
+  },
+  {
+    "id": "illawarra",
+    "name": "Illawarra",
+    "path": "oceania/australia/new_south_wales/illawarra",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/illawarra-latest.osm.pbf"
+  },
+  {
+    "id": "mid_north_coast",
+    "name": "Mid North Coast",
+    "path": "oceania/australia/new_south_wales/mid_north_coast",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/mid_north_coast-latest.osm.pbf"
+  },
+  {
+    "id": "murray",
+    "name": "Murray",
+    "path": "oceania/australia/new_south_wales/murray",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/murray-latest.osm.pbf"
+  },
+  {
+    "id": "north_western",
+    "name": "North Western",
+    "path": "oceania/australia/new_south_wales/north_western",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/north_western-latest.osm.pbf"
+  },
+  {
+    "id": "northern",
+    "name": "Northern",
+    "path": "oceania/australia/new_south_wales/northern",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/northern-latest.osm.pbf"
+  },
+  {
+    "id": "richmond_tweed",
+    "name": "Richmond Tweed",
+    "path": "oceania/australia/new_south_wales/richmond_tweed",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/richmond_tweed-latest.osm.pbf"
+  },
+  {
+    "id": "south_east_region",
+    "name": "South East Region",
+    "path": "oceania/australia/new_south_wales/south_east_region",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/south_east_region-latest.osm.pbf"
+  },
+  {
+    "id": "sydney_surrounds",
+    "name": "Sydney Surrounds",
+    "path": "oceania/australia/new_south_wales/sydney_surrounds",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/sydney_surrounds-latest.osm.pbf"
+  },
+  {
+    "id": "the_riverina",
+    "name": "The Riverina",
+    "path": "oceania/australia/new_south_wales/the_riverina",
+    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales/the_riverina-latest.osm.pbf"
+  },
+  {
+    "id": "fiji",
+    "name": "Fiji",
+    "path": "merge/fiji",
+    "pbf": "https://download.openstreetmap.fr/extracts/merge/fiji-latest.osm.pbf"
+  },
+  {
+    "id": "kiribati",
+    "name": "Kiribati",
+    "path": "merge/kiribati",
+    "pbf": "https://download.openstreetmap.fr/extracts/merge/kiribati-latest.osm.pbf"
+  }
+]

@@ -1,0 +1,494 @@
+[
+  {
+    "id": "argentina",
+    "name": "Argentina",
+    "path": "south-america/argentina",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina-latest.osm.pbf"
+  },
+  {
+    "id": "brazil",
+    "name": "Brazil",
+    "path": "south-america/brazil",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil-latest.osm.pbf"
+  },
+  {
+    "id": "chile",
+    "name": "Chile",
+    "path": "south-america/chile",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile-latest.osm.pbf"
+  },
+  {
+    "id": "falkland",
+    "name": "Falkland Islands",
+    "path": "south-america/falkland",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/falkland-latest.osm.pbf"
+  },
+  {
+    "id": "guyana",
+    "name": "Guyana",
+    "path": "south-america/guyana",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/guyana-latest.osm.pbf"
+  },
+  {
+    "id": "guyane",
+    "name": "French Guiana",
+    "path": "south-america/guyane",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/guyane-latest.osm.pbf"
+  },
+  {
+    "id": "paraguay",
+    "name": "Paraguay",
+    "path": "south-america/paraguay",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/paraguay-latest.osm.pbf"
+  },
+  {
+    "id": "south_georgia_and_south_sandwich",
+    "name": "South Georgia and South Sandwich Islands",
+    "path": "south-america/south_georgia_and_south_sandwich",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/south_georgia_and_south_sandwich-latest.osm.pbf"
+  },
+  {
+    "id": "suriname",
+    "name": "Suriname",
+    "path": "south-america/suriname",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/suriname-latest.osm.pbf"
+  },
+  {
+    "id": "venezuela",
+    "name": "Venezuela",
+    "path": "south-america/venezuela",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/venezuela-latest.osm.pbf"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Buenos Aires",
+    "path": "south-america/argentina/buenos_aires",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/buenos_aires-latest.osm.pbf"
+  },
+  {
+    "id": "buenos_aires_city",
+    "name": "Buenos Aires City",
+    "path": "south-america/argentina/buenos_aires_city",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/buenos_aires_city-latest.osm.pbf"
+  },
+  {
+    "id": "catamarca",
+    "name": "Catamarca",
+    "path": "south-america/argentina/catamarca",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/catamarca-latest.osm.pbf"
+  },
+  {
+    "id": "chaco",
+    "name": "Chaco",
+    "path": "south-america/argentina/chaco",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/chaco-latest.osm.pbf"
+  },
+  {
+    "id": "chubut",
+    "name": "Chubut",
+    "path": "south-america/argentina/chubut",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/chubut-latest.osm.pbf"
+  },
+  {
+    "id": "cordoba",
+    "name": "Cordoba",
+    "path": "south-america/argentina/cordoba",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/cordoba-latest.osm.pbf"
+  },
+  {
+    "id": "corrientes",
+    "name": "Corrientes",
+    "path": "south-america/argentina/corrientes",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/corrientes-latest.osm.pbf"
+  },
+  {
+    "id": "entre_rios",
+    "name": "Entre Rios",
+    "path": "south-america/argentina/entre_rios",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/entre_rios-latest.osm.pbf"
+  },
+  {
+    "id": "formosa",
+    "name": "Formosa",
+    "path": "south-america/argentina/formosa",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/formosa-latest.osm.pbf"
+  },
+  {
+    "id": "jujuy",
+    "name": "Jujuy",
+    "path": "south-america/argentina/jujuy",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/jujuy-latest.osm.pbf"
+  },
+  {
+    "id": "la_pampa",
+    "name": "La Pampa",
+    "path": "south-america/argentina/la_pampa",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/la_pampa-latest.osm.pbf"
+  },
+  {
+    "id": "la_rioja",
+    "name": "La Rioja",
+    "path": "south-america/argentina/la_rioja",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/la_rioja-latest.osm.pbf"
+  },
+  {
+    "id": "mendoza",
+    "name": "Mendoza",
+    "path": "south-america/argentina/mendoza",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/mendoza-latest.osm.pbf"
+  },
+  {
+    "id": "misiones",
+    "name": "Misiones",
+    "path": "south-america/argentina/misiones",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/misiones-latest.osm.pbf"
+  },
+  {
+    "id": "neuquen",
+    "name": "Neuquen",
+    "path": "south-america/argentina/neuquen",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/neuquen-latest.osm.pbf"
+  },
+  {
+    "id": "rio_negro",
+    "name": "Rio Negro",
+    "path": "south-america/argentina/rio_negro",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/rio_negro-latest.osm.pbf"
+  },
+  {
+    "id": "salta",
+    "name": "Salta",
+    "path": "south-america/argentina/salta",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/salta-latest.osm.pbf"
+  },
+  {
+    "id": "san_juan",
+    "name": "San Juan",
+    "path": "south-america/argentina/san_juan",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/san_juan-latest.osm.pbf"
+  },
+  {
+    "id": "san_luis",
+    "name": "San Luis",
+    "path": "south-america/argentina/san_luis",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/san_luis-latest.osm.pbf"
+  },
+  {
+    "id": "santa_cruz",
+    "name": "Santa Cruz",
+    "path": "south-america/argentina/santa_cruz",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/santa_cruz-latest.osm.pbf"
+  },
+  {
+    "id": "santa_fe",
+    "name": "Santa Fe",
+    "path": "south-america/argentina/santa_fe",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/santa_fe-latest.osm.pbf"
+  },
+  {
+    "id": "santiago_del_estero",
+    "name": "Santiago del Estero",
+    "path": "south-america/argentina/santiago_del_estero",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/santiago_del_estero-latest.osm.pbf"
+  },
+  {
+    "id": "tierra_del_fuego",
+    "name": "Tierra del Fuego",
+    "path": "south-america/argentina/tierra_del_fuego",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/tierra_del_fuego-latest.osm.pbf"
+  },
+  {
+    "id": "tucuman",
+    "name": "Tucuman",
+    "path": "south-america/argentina/tucuman",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/tucuman-latest.osm.pbf"
+  },
+  {
+    "id": "central-west",
+    "name": "Central-west",
+    "path": "south-america/brazil/central-west",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/central-west-latest.osm.pbf"
+  },
+  {
+    "id": "north",
+    "name": "North",
+    "path": "south-america/brazil/north",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north-latest.osm.pbf"
+  },
+  {
+    "id": "northeast",
+    "name": "Northeast",
+    "path": "south-america/brazil/northeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast-latest.osm.pbf"
+  },
+  {
+    "id": "south",
+    "name": "South",
+    "path": "south-america/brazil/south",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/south-latest.osm.pbf"
+  },
+  {
+    "id": "southeast",
+    "name": "Southeast",
+    "path": "south-america/brazil/southeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/southeast-latest.osm.pbf"
+  },
+  {
+    "id": "antofagasta",
+    "name": "Antofagasta",
+    "path": "south-america/chile/antofagasta",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/antofagasta-latest.osm.pbf"
+  },
+  {
+    "id": "araucania",
+    "name": "Araucania",
+    "path": "south-america/chile/araucania",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/araucania-latest.osm.pbf"
+  },
+  {
+    "id": "arica_y_parinacota",
+    "name": "Arica Y Parinacota",
+    "path": "south-america/chile/arica_y_parinacota",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/arica_y_parinacota-latest.osm.pbf"
+  },
+  {
+    "id": "atacama",
+    "name": "Atacama",
+    "path": "south-america/chile/atacama",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/atacama-latest.osm.pbf"
+  },
+  {
+    "id": "aysen",
+    "name": "Aysen",
+    "path": "south-america/chile/aysen",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/aysen-latest.osm.pbf"
+  },
+  {
+    "id": "biobio",
+    "name": "Biobio",
+    "path": "south-america/chile/biobio",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/biobio-latest.osm.pbf"
+  },
+  {
+    "id": "coquimbo",
+    "name": "Coquimbo",
+    "path": "south-america/chile/coquimbo",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/coquimbo-latest.osm.pbf"
+  },
+  {
+    "id": "los_lagos",
+    "name": "Los Lagos",
+    "path": "south-america/chile/los_lagos",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/los_lagos-latest.osm.pbf"
+  },
+  {
+    "id": "los_rios",
+    "name": "Los Rios",
+    "path": "south-america/chile/los_rios",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/los_rios-latest.osm.pbf"
+  },
+  {
+    "id": "magallanes",
+    "name": "Magallanes",
+    "path": "south-america/chile/magallanes",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/magallanes-latest.osm.pbf"
+  },
+  {
+    "id": "maule",
+    "name": "Maule",
+    "path": "south-america/chile/maule",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/maule-latest.osm.pbf"
+  },
+  {
+    "id": "nuble",
+    "name": "Nuble",
+    "path": "south-america/chile/nuble",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/nuble-latest.osm.pbf"
+  },
+  {
+    "id": "o_higgins",
+    "name": "O Higgins",
+    "path": "south-america/chile/o_higgins",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/o_higgins-latest.osm.pbf"
+  },
+  {
+    "id": "santiago",
+    "name": "Santiago",
+    "path": "south-america/chile/santiago",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/santiago-latest.osm.pbf"
+  },
+  {
+    "id": "tarapaca",
+    "name": "Tarapaca",
+    "path": "south-america/chile/tarapaca",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/tarapaca-latest.osm.pbf"
+  },
+  {
+    "id": "valparaiso",
+    "name": "Valparaiso",
+    "path": "south-america/chile/valparaiso",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile/valparaiso-latest.osm.pbf"
+  },
+  {
+    "id": "distrito-federal",
+    "name": "Distrito-federal",
+    "path": "south-america/brazil/central-west/distrito-federal",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/central-west/distrito-federal-latest.osm.pbf"
+  },
+  {
+    "id": "goias",
+    "name": "Goiás",
+    "path": "south-america/brazil/central-west/goias",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/central-west/goias-latest.osm.pbf"
+  },
+  {
+    "id": "mato-grosso",
+    "name": "Mato-grosso",
+    "path": "south-america/brazil/central-west/mato-grosso",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/central-west/mato-grosso-latest.osm.pbf"
+  },
+  {
+    "id": "mato-grosso-do-sul",
+    "name": "Mato-grosso-do-sul",
+    "path": "south-america/brazil/central-west/mato-grosso-do-sul",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/central-west/mato-grosso-do-sul-latest.osm.pbf"
+  },
+  {
+    "id": "acre",
+    "name": "Acre",
+    "path": "south-america/brazil/north/acre",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north/acre-latest.osm.pbf"
+  },
+  {
+    "id": "amapa",
+    "name": "Amapá",
+    "path": "south-america/brazil/north/amapa",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north/amapa-latest.osm.pbf"
+  },
+  {
+    "id": "amazonas",
+    "name": "Amazonas",
+    "path": "south-america/brazil/north/amazonas",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north/amazonas-latest.osm.pbf"
+  },
+  {
+    "id": "para",
+    "name": "Pará",
+    "path": "south-america/brazil/north/para",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north/para-latest.osm.pbf"
+  },
+  {
+    "id": "rondonia",
+    "name": "Rondônia",
+    "path": "south-america/brazil/north/rondonia",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north/rondonia-latest.osm.pbf"
+  },
+  {
+    "id": "roraima",
+    "name": "Roraima",
+    "path": "south-america/brazil/north/roraima",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north/roraima-latest.osm.pbf"
+  },
+  {
+    "id": "tocantins",
+    "name": "Tocantins",
+    "path": "south-america/brazil/north/tocantins",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north/tocantins-latest.osm.pbf"
+  },
+  {
+    "id": "alagoas",
+    "name": "Alagoas",
+    "path": "south-america/brazil/northeast/alagoas",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/alagoas-latest.osm.pbf"
+  },
+  {
+    "id": "bahia",
+    "name": "Bahia",
+    "path": "south-america/brazil/northeast/bahia",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/bahia-latest.osm.pbf"
+  },
+  {
+    "id": "ceara",
+    "name": "Ceará",
+    "path": "south-america/brazil/northeast/ceara",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/ceara-latest.osm.pbf"
+  },
+  {
+    "id": "maranhao",
+    "name": "Maranhão",
+    "path": "south-america/brazil/northeast/maranhao",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/maranhao-latest.osm.pbf"
+  },
+  {
+    "id": "paraiba",
+    "name": "Paraíba",
+    "path": "south-america/brazil/northeast/paraiba",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/paraiba-latest.osm.pbf"
+  },
+  {
+    "id": "pernambuco",
+    "name": "Pernambuco",
+    "path": "south-america/brazil/northeast/pernambuco",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/pernambuco-latest.osm.pbf"
+  },
+  {
+    "id": "piaui",
+    "name": "Piauí",
+    "path": "south-america/brazil/northeast/piaui",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/piaui-latest.osm.pbf"
+  },
+  {
+    "id": "rio-grande-do-norte",
+    "name": "Rio-grande-do-norte",
+    "path": "south-america/brazil/northeast/rio-grande-do-norte",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/rio-grande-do-norte-latest.osm.pbf"
+  },
+  {
+    "id": "sergipe",
+    "name": "Sergipe",
+    "path": "south-america/brazil/northeast/sergipe",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast/sergipe-latest.osm.pbf"
+  },
+  {
+    "id": "parana",
+    "name": "Parana",
+    "path": "south-america/brazil/south/parana",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/south/parana-latest.osm.pbf"
+  },
+  {
+    "id": "rio-grande-do-sul",
+    "name": "Rio-grande-do-sul",
+    "path": "south-america/brazil/south/rio-grande-do-sul",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/south/rio-grande-do-sul-latest.osm.pbf"
+  },
+  {
+    "id": "santa-catarina",
+    "name": "Santa-catarina",
+    "path": "south-america/brazil/south/santa-catarina",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/south/santa-catarina-latest.osm.pbf"
+  },
+  {
+    "id": "espirito-santo",
+    "name": "Espirito-santo",
+    "path": "south-america/brazil/southeast/espirito-santo",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/southeast/espirito-santo-latest.osm.pbf"
+  },
+  {
+    "id": "minas-gerais",
+    "name": "Minas-gerais",
+    "path": "south-america/brazil/southeast/minas-gerais",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/southeast/minas-gerais-latest.osm.pbf"
+  },
+  {
+    "id": "rio-de-janeiro",
+    "name": "Rio-de-janeiro",
+    "path": "south-america/brazil/southeast/rio-de-janeiro",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/southeast/rio-de-janeiro-latest.osm.pbf"
+  },
+  {
+    "id": "sao-paulo",
+    "name": "Sao-paulo",
+    "path": "south-america/brazil/southeast/sao-paulo",
+    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/southeast/sao-paulo-latest.osm.pbf"
+  }
+]
