@@ -1,53 +1,5 @@
 [
   {
-    "id": "central_federal_district",
-    "name": "Central Federal District",
-    "path": "russia/central_federal_district",
-    "pbf": "https://download.openstreetmap.fr/extracts/russia/central_federal_district-latest.osm.pbf"
-  },
-  {
-    "id": "far_eastern_federal_district",
-    "name": "Far Eastern Federal District",
-    "path": "russia/far_eastern_federal_district",
-    "pbf": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district-latest.osm.pbf"
-  },
-  {
-    "id": "north_caucasian_federal_district",
-    "name": "North Caucasian Federal District",
-    "path": "russia/north_caucasian_federal_district",
-    "pbf": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district-latest.osm.pbf"
-  },
-  {
-    "id": "northwestern_federal_district",
-    "name": "Northwestern Federal District",
-    "path": "russia/northwestern_federal_district",
-    "pbf": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district-latest.osm.pbf"
-  },
-  {
-    "id": "siberian_federal_district",
-    "name": "Siberian Federal District",
-    "path": "russia/siberian_federal_district",
-    "pbf": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district-latest.osm.pbf"
-  },
-  {
-    "id": "southern_federal_district",
-    "name": "Southern Federal District",
-    "path": "russia/southern_federal_district",
-    "pbf": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district-latest.osm.pbf"
-  },
-  {
-    "id": "ural_federal_district",
-    "name": "Ural Federal District",
-    "path": "russia/ural_federal_district",
-    "pbf": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district-latest.osm.pbf"
-  },
-  {
-    "id": "volga_federal_district",
-    "name": "Volga Federal District",
-    "path": "russia/volga_federal_district",
-    "pbf": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district-latest.osm.pbf"
-  },
-  {
     "id": "belgorod_oblast",
     "name": "Belgorod Oblast",
     "path": "russia/central_federal_district/belgorod_oblast",

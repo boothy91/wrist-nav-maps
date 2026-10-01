@@ -12,12 +12,6 @@
     "pbf": "https://download.openstreetmap.fr/extracts/europe/ireland-latest.osm.pbf"
   },
   {
-    "id": "italy",
-    "name": "Italy",
-    "path": "europe/italy",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy-latest.osm.pbf"
-  },
-  {
     "id": "jersey",
     "name": "Jersey",
     "path": "europe/jersey",
@@ -34,24 +28,6 @@
     "name": "Monaco",
     "path": "europe/monaco",
     "pbf": "https://download.openstreetmap.fr/extracts/europe/monaco-latest.osm.pbf"
-  },
-  {
-    "id": "netherlands",
-    "name": "Netherlands",
-    "path": "europe/netherlands",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands-latest.osm.pbf"
-  },
-  {
-    "id": "norway",
-    "name": "Norway",
-    "path": "europe/norway",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway-latest.osm.pbf"
-  },
-  {
-    "id": "poland",
-    "name": "Poland",
-    "path": "europe/poland",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland-latest.osm.pbf"
   },
   {
     "id": "abruzzo",

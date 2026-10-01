@@ -1,57 +1,9 @@
 [
   {
-    "id": "portugal",
-    "name": "Portugal",
-    "path": "europe/portugal",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal-latest.osm.pbf"
-  },
-  {
     "id": "san_marino",
     "name": "San Marino",
     "path": "europe/san_marino",
     "pbf": "https://download.openstreetmap.fr/extracts/europe/san_marino-latest.osm.pbf"
-  },
-  {
-    "id": "slovakia",
-    "name": "Slovakia",
-    "path": "europe/slovakia",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia-latest.osm.pbf"
-  },
-  {
-    "id": "spain",
-    "name": "Spain",
-    "path": "europe/spain",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain-latest.osm.pbf"
-  },
-  {
-    "id": "sweden",
-    "name": "Sweden",
-    "path": "europe/sweden",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden-latest.osm.pbf"
-  },
-  {
-    "id": "switzerland",
-    "name": "Switzerland",
-    "path": "europe/switzerland",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland-latest.osm.pbf"
-  },
-  {
-    "id": "turkey",
-    "name": "Turkey",
-    "path": "europe/turkey",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey-latest.osm.pbf"
-  },
-  {
-    "id": "ukraine",
-    "name": "Ukraine",
-    "path": "europe/ukraine",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine-latest.osm.pbf"
-  },
-  {
-    "id": "united_kingdom",
-    "name": "United Kingdom",
-    "path": "europe/united_kingdom",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom-latest.osm.pbf"
   },
   {
     "id": "vatican_city",
@@ -228,18 +180,6 @@
     "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/zilinsky-latest.osm.pbf"
   },
   {
-    "id": "andalucia",
-    "name": "Andalucia",
-    "path": "europe/spain/andalucia",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia-latest.osm.pbf"
-  },
-  {
-    "id": "aragon",
-    "name": "Aragon",
-    "path": "europe/spain/aragon",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/aragon-latest.osm.pbf"
-  },
-  {
     "id": "asturias",
     "name": "Asturias",
     "path": "europe/spain/asturias",
@@ -252,24 +192,6 @@
     "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/cantabria-latest.osm.pbf"
   },
   {
-    "id": "castilla_la_mancha",
-    "name": "Castilla la Mancha",
-    "path": "europe/spain/castilla_la_mancha",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_la_mancha-latest.osm.pbf"
-  },
-  {
-    "id": "castilla_y_leon",
-    "name": "Castilla Y Leon",
-    "path": "europe/spain/castilla_y_leon",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon-latest.osm.pbf"
-  },
-  {
-    "id": "catalunya",
-    "name": "Catalunya",
-    "path": "europe/spain/catalunya",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/catalunya-latest.osm.pbf"
-  },
-  {
     "id": "comunidad_de_madrid",
     "name": "Comunidad de Madrid",
     "path": "europe/spain/comunidad_de_madrid",
@@ -280,30 +202,6 @@
     "name": "Comunidad Foral de Navarra",
     "path": "europe/spain/comunidad_foral_de_navarra",
     "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/comunidad_foral_de_navarra-latest.osm.pbf"
-  },
-  {
-    "id": "comunitat_valenciana",
-    "name": "Comunitat Valenciana",
-    "path": "europe/spain/comunitat_valenciana",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/comunitat_valenciana-latest.osm.pbf"
-  },
-  {
-    "id": "euskadi",
-    "name": "Euskadi",
-    "path": "europe/spain/euskadi",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/euskadi-latest.osm.pbf"
-  },
-  {
-    "id": "extremadura",
-    "name": "Extremadura",
-    "path": "europe/spain/extremadura",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/extremadura-latest.osm.pbf"
-  },
-  {
-    "id": "galicia",
-    "name": "Galicia",
-    "path": "europe/spain/galicia",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/galicia-latest.osm.pbf"
   },
   {
     "id": "illes_balears",
@@ -808,12 +706,6 @@
     "name": "Zhytomyr Oblast",
     "path": "europe/ukraine/zhytomyr_oblast",
     "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/zhytomyr_oblast-latest.osm.pbf"
-  },
-  {
-    "id": "england",
-    "name": "England",
-    "path": "europe/united_kingdom/england",
-    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england-latest.osm.pbf"
   },
   {
     "id": "northern_ireland",

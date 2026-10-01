@@ -6,46 +6,10 @@
     "pbf": "https://download.openstreetmap.fr/extracts/north-america/bermuda-latest.osm.pbf"
   },
   {
-    "id": "canada",
-    "name": "Canada",
-    "path": "north-america/canada",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada-latest.osm.pbf"
-  },
-  {
-    "id": "mexico",
-    "name": "Mexico",
-    "path": "north-america/mexico",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico-latest.osm.pbf"
-  },
-  {
     "id": "saint_pierre_et_miquelon",
     "name": "Saint Pierre and Miquelon",
     "path": "north-america/saint_pierre_et_miquelon",
     "pbf": "https://download.openstreetmap.fr/extracts/north-america/saint_pierre_et_miquelon-latest.osm.pbf"
-  },
-  {
-    "id": "us-midwest",
-    "name": "Us-midwest",
-    "path": "north-america/us-midwest",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest-latest.osm.pbf"
-  },
-  {
-    "id": "us-northeast",
-    "name": "Us-northeast",
-    "path": "north-america/us-northeast",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast-latest.osm.pbf"
-  },
-  {
-    "id": "us-south",
-    "name": "Us-south",
-    "path": "north-america/us-south",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south-latest.osm.pbf"
-  },
-  {
-    "id": "us-west",
-    "name": "Us-west",
-    "path": "north-america/us-west",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west-latest.osm.pbf"
   },
   {
     "id": "alberta",
@@ -96,22 +60,10 @@
     "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/nunavut-latest.osm.pbf"
   },
   {
-    "id": "ontario",
-    "name": "Ontario",
-    "path": "north-america/canada/ontario",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/ontario-latest.osm.pbf"
-  },
-  {
     "id": "prince_edward_island",
     "name": "Prince Edward Island",
     "path": "north-america/canada/prince_edward_island",
     "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/prince_edward_island-latest.osm.pbf"
-  },
-  {
-    "id": "quebec",
-    "name": "Québec",
-    "path": "north-america/canada/quebec",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec-latest.osm.pbf"
   },
   {
     "id": "saskatchewan",
@@ -316,66 +268,6 @@
     "name": "Zacatecas",
     "path": "north-america/mexico/zacatecas",
     "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/zacatecas-latest.osm.pbf"
-  },
-  {
-    "id": "illinois",
-    "name": "Illinois",
-    "path": "north-america/us-midwest/illinois",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois-latest.osm.pbf"
-  },
-  {
-    "id": "michigan",
-    "name": "Michigan",
-    "path": "north-america/us-midwest/michigan",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan-latest.osm.pbf"
-  },
-  {
-    "id": "new-york",
-    "name": "New-york",
-    "path": "north-america/us-northeast/new-york",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york-latest.osm.pbf"
-  },
-  {
-    "id": "florida",
-    "name": "Florida",
-    "path": "north-america/us-south/florida",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida-latest.osm.pbf"
-  },
-  {
-    "id": "georgia",
-    "name": "Georgia",
-    "path": "north-america/us-south/georgia",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/georgia-latest.osm.pbf"
-  },
-  {
-    "id": "north-carolina",
-    "name": "North-carolina",
-    "path": "north-america/us-south/north-carolina",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina-latest.osm.pbf"
-  },
-  {
-    "id": "texas",
-    "name": "Texas",
-    "path": "north-america/us-south/texas",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/texas-latest.osm.pbf"
-  },
-  {
-    "id": "virginia",
-    "name": "Virginia",
-    "path": "north-america/us-south/virginia",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia-latest.osm.pbf"
-  },
-  {
-    "id": "california",
-    "name": "California",
-    "path": "north-america/us-west/california",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california-latest.osm.pbf"
-  },
-  {
-    "id": "colorado",
-    "name": "Colorado",
-    "path": "north-america/us-west/colorado",
-    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/colorado-latest.osm.pbf"
   },
   {
     "id": "central_ontario",

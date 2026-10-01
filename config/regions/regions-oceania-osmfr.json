@@ -6,12 +6,6 @@
     "pbf": "https://download.openstreetmap.fr/extracts/oceania/american_samoa-latest.osm.pbf"
   },
   {
-    "id": "australia",
-    "name": "Australia",
-    "path": "oceania/australia",
-    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia-latest.osm.pbf"
-  },
-  {
     "id": "clipperton",
     "name": "Clipperton",
     "path": "oceania/clipperton",
@@ -196,12 +190,6 @@
     "name": "Heard Island and Mcdonald Slands",
     "path": "oceania/australia/heard_island_and_mcdonald_slands",
     "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/heard_island_and_mcdonald_slands-latest.osm.pbf"
-  },
-  {
-    "id": "new_south_wales",
-    "name": "New South Wales",
-    "path": "oceania/australia/new_south_wales",
-    "pbf": "https://download.openstreetmap.fr/extracts/oceania/australia/new_south_wales-latest.osm.pbf"
   },
   {
     "id": "norfolk_island",

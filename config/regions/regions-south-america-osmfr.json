@@ -1,23 +1,5 @@
 [
   {
-    "id": "argentina",
-    "name": "Argentina",
-    "path": "south-america/argentina",
-    "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina-latest.osm.pbf"
-  },
-  {
-    "id": "brazil",
-    "name": "Brazil",
-    "path": "south-america/brazil",
-    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil-latest.osm.pbf"
-  },
-  {
-    "id": "chile",
-    "name": "Chile",
-    "path": "south-america/chile",
-    "pbf": "https://download.openstreetmap.fr/extracts/south-america/chile-latest.osm.pbf"
-  },
-  {
     "id": "falkland",
     "name": "Falkland Islands",
     "path": "south-america/falkland",
@@ -202,36 +184,6 @@
     "name": "Tucuman",
     "path": "south-america/argentina/tucuman",
     "pbf": "https://download.openstreetmap.fr/extracts/south-america/argentina/tucuman-latest.osm.pbf"
-  },
-  {
-    "id": "central-west",
-    "name": "Central-west",
-    "path": "south-america/brazil/central-west",
-    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/central-west-latest.osm.pbf"
-  },
-  {
-    "id": "north",
-    "name": "North",
-    "path": "south-america/brazil/north",
-    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/north-latest.osm.pbf"
-  },
-  {
-    "id": "northeast",
-    "name": "Northeast",
-    "path": "south-america/brazil/northeast",
-    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/northeast-latest.osm.pbf"
-  },
-  {
-    "id": "south",
-    "name": "South",
-    "path": "south-america/brazil/south",
-    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/south-latest.osm.pbf"
-  },
-  {
-    "id": "southeast",
-    "name": "Southeast",
-    "path": "south-america/brazil/southeast",
-    "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/southeast-latest.osm.pbf"
   },
   {
     "id": "antofagasta",
