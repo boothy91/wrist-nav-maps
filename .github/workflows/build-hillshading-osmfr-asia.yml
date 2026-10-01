@@ -1,4 +1,4 @@
-name: Build Hillshading - Asia
+name: Build Hillshading - OSMFR Asia
 
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
         run: |
           MATRIX=$(python3 << 'EOF'
           import json
-          with open("config/regions/regions-asia.json") as f:
+          with open("config/regions/regions-asia-osmfr.json") as f:
               regions = json.load(f)
           only = "${{ github.event.inputs.region }}".strip()
           if only:
@@ -45,8 +45,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release view maps-asia-hillshade &>/dev/null || gh release create maps-asia-hillshade \
-            --title "Hillshading (SRTM .hgt) - Asia" \
+          gh release view maps-osmfr-asia-hillshade &>/dev/null || gh release create maps-osmfr-asia-hillshade \
+            --title "Hillshading (SRTM .hgt) - OSMFR Asia" \
             --notes "Per-region zipped SRTM .hgt elevation tiles, for Mapsforge's HillsRenderConfig / MemoryCachingHgtReaderTileSource. Consumed directly by the watch app as an optional overlay layer under the base map - not a replacement map." \
             --latest=false
 
@@ -90,6 +90,7 @@ jobs:
           FBASE="${RID//\//-}"
           PBF_URL="${{ matrix.region.pbf }}"
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+          POLY_URL="${POLY_URL/extracts/polygons}"
           PBF="/tmp/region.osm.pbf"
 
           download() {
@@ -240,7 +241,7 @@ jobs:
           ls -lh "$OUT_ZIP"
 
           for attempt in 1 2 3 4 5; do
-            if gh release upload maps-asia-hillshade "$OUT_ZIP" --clobber; then
+            if gh release upload maps-osmfr-asia-hillshade "$OUT_ZIP" --clobber; then
               break
             fi
             echo "Upload attempt $attempt failed, retrying in 30s..." >&2

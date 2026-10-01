@@ -1,4 +1,4 @@
-name: Build Maps - Asia
+name: Build Maps - OSMFR Africa
 
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
         run: |
           MATRIX=$(python3 << 'EOF'
           import json
-          with open("config/regions/regions-asia.json") as f:
+          with open("config/regions/regions-africa-osmfr.json") as f:
               regions = json.load(f)
           only = "${{ github.event.inputs.region }}".strip()
           if only:
@@ -60,14 +60,14 @@ jobs:
           mkdir -p $HOME/.openstreetmap/osmosis/plugins
           wget -q --tries=5 --waitretry=15 --retry-connrefused "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
             -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
-          echo "JAVACMD_OPTIONS=-Xmx13000m" >> $GITHUB_ENV
+          echo "JAVACMD_OPTIONS=-Xmx6500m" >> $GITHUB_ENV
 
       - name: Ensure release exists
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release view maps-asia &>/dev/null || gh release create maps-asia \
-            --title "Maps - Asia" \
+          gh release view maps-osmfr-africa &>/dev/null || gh release create maps-osmfr-africa \
+            --title "Maps - OSMFR Africa" \
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
@@ -81,6 +81,7 @@ jobs:
           FBASE="${RID//\//-}"
           PBF_URL="${{ matrix.region.pbf }}"
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+          POLY_URL="${POLY_URL/extracts/polygons}"
 
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/${FBASE}.filtered.osm.pbf"
@@ -104,7 +105,7 @@ jobs:
             PAGE_URL="${PBF_URL%-latest.osm.pbf}.html"
             echo "Resolving latest Geofabrik PBF from: $PAGE_URL"
 
-            FILE_NAME=$(curl -fsSL "$PAGE_URL" |
+            FILE_NAME=$(curl -fsSL --retry 5 --retry-delay 15 --retry-all-errors "$PAGE_URL" |
               grep -oE '[A-Za-z0-9_-]+-[0-9]{6}\.osm\.pbf' |
               sort -V |
               tail -1)
@@ -281,18 +282,12 @@ jobs:
           echo "Filtered PBF size: ${SIZE_MB}MB"
 
           # simplification-factor=1 to stop Map-Writer from collapsing curve points into straight vectors
-          # First attempt (max zoom 21 -> 17) crashed at the same relative point, which
-          # points at the deepest interval's BASE zoom (was 14) as the real driver, not
-          # max zoom - base zoom sets the tile-index grid size across the whole bbox.
-          # Collapsing to two intervals and dropping that base zoom to 10 cuts the grid
-          # by ~16x per axis-doubling. This is the next experiment, not a confirmed fix -
-          # re-check the run.
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$FILTERED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 zoom-interval-conf=5,0,7,10,8,17"
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$FILTERED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1"
           $CMD
           ls -lh "$OUT"
 
           for attempt in 1 2 3 4 5; do
-            if gh release upload maps-asia "$OUT" --clobber; then
+            if gh release upload maps-osmfr-africa "$OUT" --clobber; then
               break
             fi
             echo "Upload attempt $attempt failed, retrying in 30s..." >&2
@@ -318,17 +313,17 @@ jobs:
           import json, subprocess, os
           from datetime import datetime
 
-          with open("config/regions/regions-asia.json") as f:
+          with open("config/regions/regions-africa-osmfr.json") as f:
               regions = json.load(f)
 
           result = subprocess.run([
-              "gh", "release", "view", "maps-asia",
+              "gh", "release", "view", "maps-osmfr-africa",
               "--json", "assets", "--jq", "[.assets[].name]"
           ], capture_output=True, text=True,
           env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
 
           uploaded = json.loads(result.stdout or "[]")
-          base_url = "https://github.com/${{ github.repository }}/releases/download/maps-asia"
+          base_url = "https://github.com/${{ github.repository }}/releases/download/maps-osmfr-africa"
 
           index = {
               "updated": datetime.now().strftime("%Y-%m-%d"),
@@ -353,7 +348,7 @@ jobs:
           EOF
 
           for attempt in 1 2 3 4 5; do
-            if gh release upload maps-asia output/index.json --clobber; then
+            if gh release upload maps-osmfr-africa output/index.json --clobber; then
               break
             fi
             echo "Index upload attempt $attempt failed, retrying in 30s..." >&2

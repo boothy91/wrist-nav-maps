@@ -1,10 +1,10 @@
-name: Build Routing - Africa
+name: Build Routing - OSMFR Asia
 
 on:
   workflow_dispatch:
     inputs:
       region:
-        description: "Region ID (leave blank for all Africa regions)"
+        description: "Region ID (leave blank for all OSMFR Asia regions)"
         required: false
         default: ""
 
@@ -32,10 +32,10 @@ jobs:
           if [ -n "$REGION" ]; then
             jq -c --arg id "$REGION" \
               '{include: [ .[] | select(.id == $id) ]}' \
-              config/regions/regions-africa.json > /tmp/matrix.json
+              config/regions/regions-asia-osmfr.json > /tmp/matrix.json
           else
             jq -c '{include: .}' \
-              config/regions/regions-africa.json > /tmp/matrix.json
+              config/regions/regions-asia-osmfr.json > /tmp/matrix.json
           fi
 
           echo "Resolved matrix:"
@@ -255,6 +255,7 @@ jobs:
           echo "Using existing regional PBF: $PBF"
 
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+          POLY_URL="${POLY_URL/extracts/polygons}"
           BBOX=""
 
           echo "Downloading poly: $POLY_URL"
@@ -640,8 +641,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release view routing-africa &>/dev/null || gh release create routing-africa \
-            --title "Routing - Africa" \
+          gh release view routing-osmfr-asia &>/dev/null || gh release create routing-osmfr-asia \
+            --title "Routing - OSMFR Asia" \
             --notes "Auto-generated BRouter routing data with SRTM elevation for WristNav." \
             --latest=false
 
@@ -662,4 +663,4 @@ jobs:
 
           ARCHIVE="$RUNNER_TEMP/${REGION_ID}-rd5.zip"
 
-          gh release upload routing-africa "$ARCHIVE" --clobber
+          gh release upload routing-osmfr-asia "$ARCHIVE" --clobber
