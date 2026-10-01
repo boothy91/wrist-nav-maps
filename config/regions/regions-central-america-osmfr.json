@@ -1,0 +1,200 @@
+[
+  {
+    "id": "anguilla",
+    "name": "Anguilla",
+    "path": "central-america/anguilla",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/anguilla-latest.osm.pbf"
+  },
+  {
+    "id": "antigua_and_barbuda",
+    "name": "Antigua and Barbuda",
+    "path": "central-america/antigua_and_barbuda",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/antigua_and_barbuda-latest.osm.pbf"
+  },
+  {
+    "id": "aruba",
+    "name": "Aruba",
+    "path": "central-america/aruba",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/aruba-latest.osm.pbf"
+  },
+  {
+    "id": "bahamas",
+    "name": "Bahamas",
+    "path": "central-america/bahamas",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/bahamas-latest.osm.pbf"
+  },
+  {
+    "id": "barbados",
+    "name": "Barbados",
+    "path": "central-america/barbados",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/barbados-latest.osm.pbf"
+  },
+  {
+    "id": "british_virgin_islands",
+    "name": "British Virgin Islands",
+    "path": "central-america/british_virgin_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/british_virgin_islands-latest.osm.pbf"
+  },
+  {
+    "id": "caribbean",
+    "name": "Caribbean",
+    "path": "central-america/caribbean",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/caribbean-latest.osm.pbf"
+  },
+  {
+    "id": "cayman_islands",
+    "name": "Cayman Islands",
+    "path": "central-america/cayman_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/cayman_islands-latest.osm.pbf"
+  },
+  {
+    "id": "costa_rica",
+    "name": "Costa Rica",
+    "path": "central-america/costa_rica",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/costa_rica-latest.osm.pbf"
+  },
+  {
+    "id": "curacao",
+    "name": "Curaçao",
+    "path": "central-america/curacao",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/curacao-latest.osm.pbf"
+  },
+  {
+    "id": "dominica",
+    "name": "Dominica",
+    "path": "central-america/dominica",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/dominica-latest.osm.pbf"
+  },
+  {
+    "id": "dominican_republic",
+    "name": "Dominican Republic",
+    "path": "central-america/dominican_republic",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/dominican_republic-latest.osm.pbf"
+  },
+  {
+    "id": "el_salvador",
+    "name": "El Salvador",
+    "path": "central-america/el_salvador",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/el_salvador-latest.osm.pbf"
+  },
+  {
+    "id": "grenada",
+    "name": "Grenada",
+    "path": "central-america/grenada",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/grenada-latest.osm.pbf"
+  },
+  {
+    "id": "guadeloupe",
+    "name": "Guadeloupe",
+    "path": "central-america/guadeloupe",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/guadeloupe-latest.osm.pbf"
+  },
+  {
+    "id": "haiti",
+    "name": "Haiti",
+    "path": "central-america/haiti",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/haiti-latest.osm.pbf"
+  },
+  {
+    "id": "honduras",
+    "name": "Honduras",
+    "path": "central-america/honduras",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/honduras-latest.osm.pbf"
+  },
+  {
+    "id": "jamaica",
+    "name": "Jamaica",
+    "path": "central-america/jamaica",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/jamaica-latest.osm.pbf"
+  },
+  {
+    "id": "martinique",
+    "name": "Martinique",
+    "path": "central-america/martinique",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/martinique-latest.osm.pbf"
+  },
+  {
+    "id": "montserrat",
+    "name": "Montserrat",
+    "path": "central-america/montserrat",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/montserrat-latest.osm.pbf"
+  },
+  {
+    "id": "nicaragua",
+    "name": "Nicaragua",
+    "path": "central-america/nicaragua",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/nicaragua-latest.osm.pbf"
+  },
+  {
+    "id": "panama",
+    "name": "Panama",
+    "path": "central-america/panama",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/panama-latest.osm.pbf"
+  },
+  {
+    "id": "puerto_rico",
+    "name": "Puerto Rico",
+    "path": "central-america/puerto_rico",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/puerto_rico-latest.osm.pbf"
+  },
+  {
+    "id": "saint_barthelemy",
+    "name": "Saint Barthélemy",
+    "path": "central-america/saint_barthelemy",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/saint_barthelemy-latest.osm.pbf"
+  },
+  {
+    "id": "saint_kitts_and_nevis",
+    "name": "Saint Kitts and Nevis",
+    "path": "central-america/saint_kitts_and_nevis",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/saint_kitts_and_nevis-latest.osm.pbf"
+  },
+  {
+    "id": "saint_lucia",
+    "name": "Saint Lucia",
+    "path": "central-america/saint_lucia",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/saint_lucia-latest.osm.pbf"
+  },
+  {
+    "id": "saint_martin",
+    "name": "Saint Martin",
+    "path": "central-america/saint_martin",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/saint_martin-latest.osm.pbf"
+  },
+  {
+    "id": "saint_vincent_and_the_grenadines",
+    "name": "Saint Vincent and the Grenadines",
+    "path": "central-america/saint_vincent_and_the_grenadines",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/saint_vincent_and_the_grenadines-latest.osm.pbf"
+  },
+  {
+    "id": "sint_maarten",
+    "name": "Sint Maarten",
+    "path": "central-america/sint_maarten",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/sint_maarten-latest.osm.pbf"
+  },
+  {
+    "id": "trinidad_and_tobago",
+    "name": "Trinidad and Tobago",
+    "path": "central-america/trinidad_and_tobago",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/trinidad_and_tobago-latest.osm.pbf"
+  },
+  {
+    "id": "turks_and_caicos_islands",
+    "name": "Turks and Caicos Islands",
+    "path": "central-america/turks_and_caicos_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/turks_and_caicos_islands-latest.osm.pbf"
+  },
+  {
+    "id": "united_states_virgin_islands",
+    "name": "United States Virgin Islands",
+    "path": "central-america/united_states_virgin_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/united_states_virgin_islands-latest.osm.pbf"
+  },
+  {
+    "id": "usa_virgin_islands",
+    "name": "USA Virgin Islands",
+    "path": "central-america/usa_virgin_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/central-america/usa_virgin_islands-latest.osm.pbf"
+  }
+]
