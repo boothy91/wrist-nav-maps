@@ -1,0 +1,464 @@
+[
+  {
+    "id": "guernesey",
+    "name": "Guernsey",
+    "path": "europe/guernesey",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/guernesey-latest.osm.pbf"
+  },
+  {
+    "id": "ireland",
+    "name": "Ireland",
+    "path": "europe/ireland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ireland-latest.osm.pbf"
+  },
+  {
+    "id": "italy",
+    "name": "Italy",
+    "path": "europe/italy",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy-latest.osm.pbf"
+  },
+  {
+    "id": "jersey",
+    "name": "Jersey",
+    "path": "europe/jersey",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/jersey-latest.osm.pbf"
+  },
+  {
+    "id": "luxembourg",
+    "name": "Luxembourg",
+    "path": "europe/luxembourg",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/luxembourg-latest.osm.pbf"
+  },
+  {
+    "id": "monaco",
+    "name": "Monaco",
+    "path": "europe/monaco",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/monaco-latest.osm.pbf"
+  },
+  {
+    "id": "netherlands",
+    "name": "Netherlands",
+    "path": "europe/netherlands",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands-latest.osm.pbf"
+  },
+  {
+    "id": "norway",
+    "name": "Norway",
+    "path": "europe/norway",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway-latest.osm.pbf"
+  },
+  {
+    "id": "poland",
+    "name": "Poland",
+    "path": "europe/poland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland-latest.osm.pbf"
+  },
+  {
+    "id": "abruzzo",
+    "name": "Abruzzo",
+    "path": "europe/italy/abruzzo",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/abruzzo-latest.osm.pbf"
+  },
+  {
+    "id": "basilicata",
+    "name": "Basilicata",
+    "path": "europe/italy/basilicata",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/basilicata-latest.osm.pbf"
+  },
+  {
+    "id": "calabria",
+    "name": "Calabria",
+    "path": "europe/italy/calabria",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/calabria-latest.osm.pbf"
+  },
+  {
+    "id": "campania",
+    "name": "Campania",
+    "path": "europe/italy/campania",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/campania-latest.osm.pbf"
+  },
+  {
+    "id": "emilia_romagna",
+    "name": "Emilia Romagna",
+    "path": "europe/italy/emilia_romagna",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/emilia_romagna-latest.osm.pbf"
+  },
+  {
+    "id": "friuli_venezia_giulia",
+    "name": "Friuli Venezia Giulia",
+    "path": "europe/italy/friuli_venezia_giulia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/friuli_venezia_giulia-latest.osm.pbf"
+  },
+  {
+    "id": "lazio",
+    "name": "Lazio",
+    "path": "europe/italy/lazio",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/lazio-latest.osm.pbf"
+  },
+  {
+    "id": "liguria",
+    "name": "Liguria",
+    "path": "europe/italy/liguria",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/liguria-latest.osm.pbf"
+  },
+  {
+    "id": "lombardia",
+    "name": "Lombardia",
+    "path": "europe/italy/lombardia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/lombardia-latest.osm.pbf"
+  },
+  {
+    "id": "marche",
+    "name": "Marche",
+    "path": "europe/italy/marche",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/marche-latest.osm.pbf"
+  },
+  {
+    "id": "molise",
+    "name": "Molise",
+    "path": "europe/italy/molise",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/molise-latest.osm.pbf"
+  },
+  {
+    "id": "piemonte",
+    "name": "Piemonte",
+    "path": "europe/italy/piemonte",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/piemonte-latest.osm.pbf"
+  },
+  {
+    "id": "puglia",
+    "name": "Puglia",
+    "path": "europe/italy/puglia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/puglia-latest.osm.pbf"
+  },
+  {
+    "id": "sardegna",
+    "name": "Sardegna",
+    "path": "europe/italy/sardegna",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/sardegna-latest.osm.pbf"
+  },
+  {
+    "id": "sicilia",
+    "name": "Sicilia",
+    "path": "europe/italy/sicilia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/sicilia-latest.osm.pbf"
+  },
+  {
+    "id": "toscana",
+    "name": "Toscana",
+    "path": "europe/italy/toscana",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/toscana-latest.osm.pbf"
+  },
+  {
+    "id": "trentino_alto_adige",
+    "name": "Trentino Alto Adige",
+    "path": "europe/italy/trentino_alto_adige",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/trentino_alto_adige-latest.osm.pbf"
+  },
+  {
+    "id": "umbria",
+    "name": "Umbria",
+    "path": "europe/italy/umbria",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/umbria-latest.osm.pbf"
+  },
+  {
+    "id": "valle_aosta",
+    "name": "Valle Aosta",
+    "path": "europe/italy/valle_aosta",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/valle_aosta-latest.osm.pbf"
+  },
+  {
+    "id": "veneto",
+    "name": "Veneto",
+    "path": "europe/italy/veneto",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/italy/veneto-latest.osm.pbf"
+  },
+  {
+    "id": "drenthe",
+    "name": "Drenthe",
+    "path": "europe/netherlands/drenthe",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/drenthe-latest.osm.pbf"
+  },
+  {
+    "id": "flevoland",
+    "name": "Flevoland",
+    "path": "europe/netherlands/flevoland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/flevoland-latest.osm.pbf"
+  },
+  {
+    "id": "friesland",
+    "name": "Friesland",
+    "path": "europe/netherlands/friesland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/friesland-latest.osm.pbf"
+  },
+  {
+    "id": "gelderland",
+    "name": "Gelderland",
+    "path": "europe/netherlands/gelderland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/gelderland-latest.osm.pbf"
+  },
+  {
+    "id": "groningen",
+    "name": "Groningen",
+    "path": "europe/netherlands/groningen",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/groningen-latest.osm.pbf"
+  },
+  {
+    "id": "limburg",
+    "name": "Limburg",
+    "path": "europe/netherlands/limburg",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/limburg-latest.osm.pbf"
+  },
+  {
+    "id": "noord_brabant",
+    "name": "Noord Brabant",
+    "path": "europe/netherlands/noord_brabant",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/noord_brabant-latest.osm.pbf"
+  },
+  {
+    "id": "noord_holland",
+    "name": "Noord Holland",
+    "path": "europe/netherlands/noord_holland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/noord_holland-latest.osm.pbf"
+  },
+  {
+    "id": "overijssel",
+    "name": "Overijssel",
+    "path": "europe/netherlands/overijssel",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/overijssel-latest.osm.pbf"
+  },
+  {
+    "id": "utrecht",
+    "name": "Utrecht",
+    "path": "europe/netherlands/utrecht",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/utrecht-latest.osm.pbf"
+  },
+  {
+    "id": "zeeland",
+    "name": "Zeeland",
+    "path": "europe/netherlands/zeeland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/zeeland-latest.osm.pbf"
+  },
+  {
+    "id": "zuid_holland",
+    "name": "Zuid Holland",
+    "path": "europe/netherlands/zuid_holland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/netherlands/zuid_holland-latest.osm.pbf"
+  },
+  {
+    "id": "akershus",
+    "name": "Akershus",
+    "path": "europe/norway/akershus",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/akershus-latest.osm.pbf"
+  },
+  {
+    "id": "aust-agder",
+    "name": "Aust-agder",
+    "path": "europe/norway/aust-agder",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/aust-agder-latest.osm.pbf"
+  },
+  {
+    "id": "buskerud",
+    "name": "Buskerud",
+    "path": "europe/norway/buskerud",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/buskerud-latest.osm.pbf"
+  },
+  {
+    "id": "finnmark",
+    "name": "Finnmark",
+    "path": "europe/norway/finnmark",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/finnmark-latest.osm.pbf"
+  },
+  {
+    "id": "hedmark",
+    "name": "Hedmark",
+    "path": "europe/norway/hedmark",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/hedmark-latest.osm.pbf"
+  },
+  {
+    "id": "hordaland",
+    "name": "Hordaland",
+    "path": "europe/norway/hordaland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/hordaland-latest.osm.pbf"
+  },
+  {
+    "id": "jan_mayen",
+    "name": "Jan Mayen",
+    "path": "europe/norway/jan_mayen",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/jan_mayen-latest.osm.pbf"
+  },
+  {
+    "id": "moere_og_romsdal",
+    "name": "Moere Og Romsdal",
+    "path": "europe/norway/moere_og_romsdal",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/moere_og_romsdal-latest.osm.pbf"
+  },
+  {
+    "id": "nordland",
+    "name": "Nordland",
+    "path": "europe/norway/nordland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/nordland-latest.osm.pbf"
+  },
+  {
+    "id": "oestfold",
+    "name": "Oestfold",
+    "path": "europe/norway/oestfold",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/oestfold-latest.osm.pbf"
+  },
+  {
+    "id": "oppland",
+    "name": "Oppland",
+    "path": "europe/norway/oppland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/oppland-latest.osm.pbf"
+  },
+  {
+    "id": "oslo",
+    "name": "Oslo",
+    "path": "europe/norway/oslo",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/oslo-latest.osm.pbf"
+  },
+  {
+    "id": "rogaland",
+    "name": "Rogaland",
+    "path": "europe/norway/rogaland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/rogaland-latest.osm.pbf"
+  },
+  {
+    "id": "sogn_og_fjordane",
+    "name": "Sogn Og Fjordane",
+    "path": "europe/norway/sogn_og_fjordane",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/sogn_og_fjordane-latest.osm.pbf"
+  },
+  {
+    "id": "svalbard",
+    "name": "Svalbard",
+    "path": "europe/norway/svalbard",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/svalbard-latest.osm.pbf"
+  },
+  {
+    "id": "telemark",
+    "name": "Telemark",
+    "path": "europe/norway/telemark",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/telemark-latest.osm.pbf"
+  },
+  {
+    "id": "troendelag",
+    "name": "Troendelag",
+    "path": "europe/norway/troendelag",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/troendelag-latest.osm.pbf"
+  },
+  {
+    "id": "troms",
+    "name": "Troms",
+    "path": "europe/norway/troms",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/troms-latest.osm.pbf"
+  },
+  {
+    "id": "vest-agder",
+    "name": "Vest-agder",
+    "path": "europe/norway/vest-agder",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/vest-agder-latest.osm.pbf"
+  },
+  {
+    "id": "vestfold",
+    "name": "Vestfold",
+    "path": "europe/norway/vestfold",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/norway/vestfold-latest.osm.pbf"
+  },
+  {
+    "id": "dolnoslaskie",
+    "name": "Dolnoslaskie",
+    "path": "europe/poland/dolnoslaskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/dolnoslaskie-latest.osm.pbf"
+  },
+  {
+    "id": "kujawsko_pomorskie",
+    "name": "Kujawsko Pomorskie",
+    "path": "europe/poland/kujawsko_pomorskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/kujawsko_pomorskie-latest.osm.pbf"
+  },
+  {
+    "id": "lodzkie",
+    "name": "Lodzkie",
+    "path": "europe/poland/lodzkie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/lodzkie-latest.osm.pbf"
+  },
+  {
+    "id": "lubelskie",
+    "name": "Lubelskie",
+    "path": "europe/poland/lubelskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/lubelskie-latest.osm.pbf"
+  },
+  {
+    "id": "lubuskie",
+    "name": "Lubuskie",
+    "path": "europe/poland/lubuskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/lubuskie-latest.osm.pbf"
+  },
+  {
+    "id": "malopolskie",
+    "name": "Malopolskie",
+    "path": "europe/poland/malopolskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/malopolskie-latest.osm.pbf"
+  },
+  {
+    "id": "mazowieckie",
+    "name": "Mazowieckie",
+    "path": "europe/poland/mazowieckie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/mazowieckie-latest.osm.pbf"
+  },
+  {
+    "id": "opolskie",
+    "name": "Opolskie",
+    "path": "europe/poland/opolskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/opolskie-latest.osm.pbf"
+  },
+  {
+    "id": "podkarpackie",
+    "name": "Podkarpackie",
+    "path": "europe/poland/podkarpackie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/podkarpackie-latest.osm.pbf"
+  },
+  {
+    "id": "podlaskie",
+    "name": "Podlaskie",
+    "path": "europe/poland/podlaskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/podlaskie-latest.osm.pbf"
+  },
+  {
+    "id": "pomorskie",
+    "name": "Pomorskie",
+    "path": "europe/poland/pomorskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/pomorskie-latest.osm.pbf"
+  },
+  {
+    "id": "slaskie",
+    "name": "Slaskie",
+    "path": "europe/poland/slaskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/slaskie-latest.osm.pbf"
+  },
+  {
+    "id": "swietokrzyskie",
+    "name": "Swietokrzyskie",
+    "path": "europe/poland/swietokrzyskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/swietokrzyskie-latest.osm.pbf"
+  },
+  {
+    "id": "warminsko_mazurskie",
+    "name": "Warminsko Mazurskie",
+    "path": "europe/poland/warminsko_mazurskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/warminsko_mazurskie-latest.osm.pbf"
+  },
+  {
+    "id": "wielkopolskie",
+    "name": "Wielkopolskie",
+    "path": "europe/poland/wielkopolskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/wielkopolskie-latest.osm.pbf"
+  },
+  {
+    "id": "zachodniopomorskie",
+    "name": "Zachodniopomorskie",
+    "path": "europe/poland/zachodniopomorskie",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/poland/zachodniopomorskie-latest.osm.pbf"
+  }
+]

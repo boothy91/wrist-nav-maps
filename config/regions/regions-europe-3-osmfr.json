@@ -1,0 +1,1124 @@
+[
+  {
+    "id": "portugal",
+    "name": "Portugal",
+    "path": "europe/portugal",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal-latest.osm.pbf"
+  },
+  {
+    "id": "san_marino",
+    "name": "San Marino",
+    "path": "europe/san_marino",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/san_marino-latest.osm.pbf"
+  },
+  {
+    "id": "slovakia",
+    "name": "Slovakia",
+    "path": "europe/slovakia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia-latest.osm.pbf"
+  },
+  {
+    "id": "spain",
+    "name": "Spain",
+    "path": "europe/spain",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain-latest.osm.pbf"
+  },
+  {
+    "id": "sweden",
+    "name": "Sweden",
+    "path": "europe/sweden",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden-latest.osm.pbf"
+  },
+  {
+    "id": "switzerland",
+    "name": "Switzerland",
+    "path": "europe/switzerland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland-latest.osm.pbf"
+  },
+  {
+    "id": "turkey",
+    "name": "Turkey",
+    "path": "europe/turkey",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey-latest.osm.pbf"
+  },
+  {
+    "id": "ukraine",
+    "name": "Ukraine",
+    "path": "europe/ukraine",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine-latest.osm.pbf"
+  },
+  {
+    "id": "united_kingdom",
+    "name": "United Kingdom",
+    "path": "europe/united_kingdom",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom-latest.osm.pbf"
+  },
+  {
+    "id": "vatican_city",
+    "name": "Vatican City",
+    "path": "europe/vatican_city",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/vatican_city-latest.osm.pbf"
+  },
+  {
+    "id": "aveiro",
+    "name": "Aveiro",
+    "path": "europe/portugal/aveiro",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/aveiro-latest.osm.pbf"
+  },
+  {
+    "id": "azores",
+    "name": "Azores",
+    "path": "europe/portugal/azores",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/azores-latest.osm.pbf"
+  },
+  {
+    "id": "beja",
+    "name": "Beja",
+    "path": "europe/portugal/beja",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/beja-latest.osm.pbf"
+  },
+  {
+    "id": "braga",
+    "name": "Braga",
+    "path": "europe/portugal/braga",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/braga-latest.osm.pbf"
+  },
+  {
+    "id": "braganca",
+    "name": "Braganca",
+    "path": "europe/portugal/braganca",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/braganca-latest.osm.pbf"
+  },
+  {
+    "id": "castelo_branco",
+    "name": "Castelo Branco",
+    "path": "europe/portugal/castelo_branco",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/castelo_branco-latest.osm.pbf"
+  },
+  {
+    "id": "coimbra",
+    "name": "Coimbra",
+    "path": "europe/portugal/coimbra",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/coimbra-latest.osm.pbf"
+  },
+  {
+    "id": "evora",
+    "name": "Evora",
+    "path": "europe/portugal/evora",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/evora-latest.osm.pbf"
+  },
+  {
+    "id": "faro",
+    "name": "Faro",
+    "path": "europe/portugal/faro",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/faro-latest.osm.pbf"
+  },
+  {
+    "id": "guarda",
+    "name": "Guarda",
+    "path": "europe/portugal/guarda",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/guarda-latest.osm.pbf"
+  },
+  {
+    "id": "leiria",
+    "name": "Leiria",
+    "path": "europe/portugal/leiria",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/leiria-latest.osm.pbf"
+  },
+  {
+    "id": "lisbon",
+    "name": "Lisbon",
+    "path": "europe/portugal/lisbon",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/lisbon-latest.osm.pbf"
+  },
+  {
+    "id": "madeira",
+    "name": "Madeira",
+    "path": "europe/portugal/madeira",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/madeira-latest.osm.pbf"
+  },
+  {
+    "id": "portalegre",
+    "name": "Portalegre",
+    "path": "europe/portugal/portalegre",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/portalegre-latest.osm.pbf"
+  },
+  {
+    "id": "porto",
+    "name": "Porto",
+    "path": "europe/portugal/porto",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/porto-latest.osm.pbf"
+  },
+  {
+    "id": "santarem",
+    "name": "Santarem",
+    "path": "europe/portugal/santarem",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/santarem-latest.osm.pbf"
+  },
+  {
+    "id": "setubal",
+    "name": "Setubal",
+    "path": "europe/portugal/setubal",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/setubal-latest.osm.pbf"
+  },
+  {
+    "id": "viana_do_castelo",
+    "name": "Viana Do Castelo",
+    "path": "europe/portugal/viana_do_castelo",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/viana_do_castelo-latest.osm.pbf"
+  },
+  {
+    "id": "vila_real",
+    "name": "Vila Real",
+    "path": "europe/portugal/vila_real",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/vila_real-latest.osm.pbf"
+  },
+  {
+    "id": "viseu",
+    "name": "Viseu",
+    "path": "europe/portugal/viseu",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/portugal/viseu-latest.osm.pbf"
+  },
+  {
+    "id": "banskobystricky",
+    "name": "Banskobystricky",
+    "path": "europe/slovakia/banskobystricky",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/banskobystricky-latest.osm.pbf"
+  },
+  {
+    "id": "bratislavsky",
+    "name": "Bratislavsky",
+    "path": "europe/slovakia/bratislavsky",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/bratislavsky-latest.osm.pbf"
+  },
+  {
+    "id": "kosicky",
+    "name": "Kosicky",
+    "path": "europe/slovakia/kosicky",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/kosicky-latest.osm.pbf"
+  },
+  {
+    "id": "nitriansky",
+    "name": "Nitriansky",
+    "path": "europe/slovakia/nitriansky",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/nitriansky-latest.osm.pbf"
+  },
+  {
+    "id": "presovsky",
+    "name": "Presovsky",
+    "path": "europe/slovakia/presovsky",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/presovsky-latest.osm.pbf"
+  },
+  {
+    "id": "trenciansky",
+    "name": "Trenciansky",
+    "path": "europe/slovakia/trenciansky",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/trenciansky-latest.osm.pbf"
+  },
+  {
+    "id": "trnavsky",
+    "name": "Trnavsky",
+    "path": "europe/slovakia/trnavsky",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/trnavsky-latest.osm.pbf"
+  },
+  {
+    "id": "zilinsky",
+    "name": "Zilinsky",
+    "path": "europe/slovakia/zilinsky",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/slovakia/zilinsky-latest.osm.pbf"
+  },
+  {
+    "id": "andalucia",
+    "name": "Andalucia",
+    "path": "europe/spain/andalucia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia-latest.osm.pbf"
+  },
+  {
+    "id": "aragon",
+    "name": "Aragon",
+    "path": "europe/spain/aragon",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/aragon-latest.osm.pbf"
+  },
+  {
+    "id": "asturias",
+    "name": "Asturias",
+    "path": "europe/spain/asturias",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/asturias-latest.osm.pbf"
+  },
+  {
+    "id": "cantabria",
+    "name": "Cantabria",
+    "path": "europe/spain/cantabria",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/cantabria-latest.osm.pbf"
+  },
+  {
+    "id": "castilla_la_mancha",
+    "name": "Castilla la Mancha",
+    "path": "europe/spain/castilla_la_mancha",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_la_mancha-latest.osm.pbf"
+  },
+  {
+    "id": "castilla_y_leon",
+    "name": "Castilla Y Leon",
+    "path": "europe/spain/castilla_y_leon",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon-latest.osm.pbf"
+  },
+  {
+    "id": "catalunya",
+    "name": "Catalunya",
+    "path": "europe/spain/catalunya",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/catalunya-latest.osm.pbf"
+  },
+  {
+    "id": "comunidad_de_madrid",
+    "name": "Comunidad de Madrid",
+    "path": "europe/spain/comunidad_de_madrid",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/comunidad_de_madrid-latest.osm.pbf"
+  },
+  {
+    "id": "comunidad_foral_de_navarra",
+    "name": "Comunidad Foral de Navarra",
+    "path": "europe/spain/comunidad_foral_de_navarra",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/comunidad_foral_de_navarra-latest.osm.pbf"
+  },
+  {
+    "id": "comunitat_valenciana",
+    "name": "Comunitat Valenciana",
+    "path": "europe/spain/comunitat_valenciana",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/comunitat_valenciana-latest.osm.pbf"
+  },
+  {
+    "id": "euskadi",
+    "name": "Euskadi",
+    "path": "europe/spain/euskadi",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/euskadi-latest.osm.pbf"
+  },
+  {
+    "id": "extremadura",
+    "name": "Extremadura",
+    "path": "europe/spain/extremadura",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/extremadura-latest.osm.pbf"
+  },
+  {
+    "id": "galicia",
+    "name": "Galicia",
+    "path": "europe/spain/galicia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/galicia-latest.osm.pbf"
+  },
+  {
+    "id": "illes_balears",
+    "name": "Illes Balears",
+    "path": "europe/spain/illes_balears",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/illes_balears-latest.osm.pbf"
+  },
+  {
+    "id": "la_rioja",
+    "name": "La Rioja",
+    "path": "europe/spain/la_rioja",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/la_rioja-latest.osm.pbf"
+  },
+  {
+    "id": "region_de_murcia",
+    "name": "Region de Murcia",
+    "path": "europe/spain/region_de_murcia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/region_de_murcia-latest.osm.pbf"
+  },
+  {
+    "id": "blekinge",
+    "name": "Blekinge",
+    "path": "europe/sweden/blekinge",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/blekinge-latest.osm.pbf"
+  },
+  {
+    "id": "dalarna",
+    "name": "Dalarna",
+    "path": "europe/sweden/dalarna",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/dalarna-latest.osm.pbf"
+  },
+  {
+    "id": "gavleborg",
+    "name": "Gavleborg",
+    "path": "europe/sweden/gavleborg",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/gavleborg-latest.osm.pbf"
+  },
+  {
+    "id": "gotland",
+    "name": "Gotland",
+    "path": "europe/sweden/gotland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/gotland-latest.osm.pbf"
+  },
+  {
+    "id": "halland",
+    "name": "Halland",
+    "path": "europe/sweden/halland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/halland-latest.osm.pbf"
+  },
+  {
+    "id": "jamtland",
+    "name": "Jamtland",
+    "path": "europe/sweden/jamtland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/jamtland-latest.osm.pbf"
+  },
+  {
+    "id": "jonkoping",
+    "name": "Jonkoping",
+    "path": "europe/sweden/jonkoping",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/jonkoping-latest.osm.pbf"
+  },
+  {
+    "id": "kalmar",
+    "name": "Kalmar",
+    "path": "europe/sweden/kalmar",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/kalmar-latest.osm.pbf"
+  },
+  {
+    "id": "kronoberg",
+    "name": "Kronoberg",
+    "path": "europe/sweden/kronoberg",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/kronoberg-latest.osm.pbf"
+  },
+  {
+    "id": "norrbotten",
+    "name": "Norrbotten",
+    "path": "europe/sweden/norrbotten",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/norrbotten-latest.osm.pbf"
+  },
+  {
+    "id": "orebro",
+    "name": "Orebro",
+    "path": "europe/sweden/orebro",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/orebro-latest.osm.pbf"
+  },
+  {
+    "id": "ostergotland",
+    "name": "Ostergotland",
+    "path": "europe/sweden/ostergotland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/ostergotland-latest.osm.pbf"
+  },
+  {
+    "id": "skane",
+    "name": "Skane",
+    "path": "europe/sweden/skane",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/skane-latest.osm.pbf"
+  },
+  {
+    "id": "sodermanland",
+    "name": "Sodermanland",
+    "path": "europe/sweden/sodermanland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/sodermanland-latest.osm.pbf"
+  },
+  {
+    "id": "stockholm",
+    "name": "Stockholm",
+    "path": "europe/sweden/stockholm",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/stockholm-latest.osm.pbf"
+  },
+  {
+    "id": "uppsala",
+    "name": "Uppsala",
+    "path": "europe/sweden/uppsala",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/uppsala-latest.osm.pbf"
+  },
+  {
+    "id": "varmland",
+    "name": "Varmland",
+    "path": "europe/sweden/varmland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/varmland-latest.osm.pbf"
+  },
+  {
+    "id": "vasterbotten",
+    "name": "Vasterbotten",
+    "path": "europe/sweden/vasterbotten",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/vasterbotten-latest.osm.pbf"
+  },
+  {
+    "id": "vasternorrland",
+    "name": "Vasternorrland",
+    "path": "europe/sweden/vasternorrland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/vasternorrland-latest.osm.pbf"
+  },
+  {
+    "id": "vastmanland",
+    "name": "Vastmanland",
+    "path": "europe/sweden/vastmanland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/vastmanland-latest.osm.pbf"
+  },
+  {
+    "id": "vastra_gotaland",
+    "name": "Vastra Gotaland",
+    "path": "europe/sweden/vastra_gotaland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/sweden/vastra_gotaland-latest.osm.pbf"
+  },
+  {
+    "id": "aargau",
+    "name": "Aargau",
+    "path": "europe/switzerland/aargau",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/aargau-latest.osm.pbf"
+  },
+  {
+    "id": "appenzell_ausserrhoden",
+    "name": "Appenzell Ausserrhoden",
+    "path": "europe/switzerland/appenzell_ausserrhoden",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/appenzell_ausserrhoden-latest.osm.pbf"
+  },
+  {
+    "id": "appenzell_innerrhoden",
+    "name": "Appenzell Innerrhoden",
+    "path": "europe/switzerland/appenzell_innerrhoden",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/appenzell_innerrhoden-latest.osm.pbf"
+  },
+  {
+    "id": "basel_landschaft",
+    "name": "Basel Landschaft",
+    "path": "europe/switzerland/basel_landschaft",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/basel_landschaft-latest.osm.pbf"
+  },
+  {
+    "id": "basel_stadt",
+    "name": "Basel Stadt",
+    "path": "europe/switzerland/basel_stadt",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/basel_stadt-latest.osm.pbf"
+  },
+  {
+    "id": "bern",
+    "name": "Bern",
+    "path": "europe/switzerland/bern",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/bern-latest.osm.pbf"
+  },
+  {
+    "id": "fribourg",
+    "name": "Fribourg",
+    "path": "europe/switzerland/fribourg",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/fribourg-latest.osm.pbf"
+  },
+  {
+    "id": "geneva",
+    "name": "Geneva",
+    "path": "europe/switzerland/geneva",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/geneva-latest.osm.pbf"
+  },
+  {
+    "id": "glarus",
+    "name": "Glarus",
+    "path": "europe/switzerland/glarus",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/glarus-latest.osm.pbf"
+  },
+  {
+    "id": "grisons",
+    "name": "Grisons",
+    "path": "europe/switzerland/grisons",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/grisons-latest.osm.pbf"
+  },
+  {
+    "id": "jura",
+    "name": "Jura",
+    "path": "europe/switzerland/jura",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/jura-latest.osm.pbf"
+  },
+  {
+    "id": "lucerne",
+    "name": "Lucerne",
+    "path": "europe/switzerland/lucerne",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/lucerne-latest.osm.pbf"
+  },
+  {
+    "id": "neuchatel",
+    "name": "Neuchatel",
+    "path": "europe/switzerland/neuchatel",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/neuchatel-latest.osm.pbf"
+  },
+  {
+    "id": "nidwalden",
+    "name": "Nidwalden",
+    "path": "europe/switzerland/nidwalden",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/nidwalden-latest.osm.pbf"
+  },
+  {
+    "id": "obwalden",
+    "name": "Obwalden",
+    "path": "europe/switzerland/obwalden",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/obwalden-latest.osm.pbf"
+  },
+  {
+    "id": "saint_gallen",
+    "name": "Saint Gallen",
+    "path": "europe/switzerland/saint_gallen",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/saint_gallen-latest.osm.pbf"
+  },
+  {
+    "id": "schaffhausen",
+    "name": "Schaffhausen",
+    "path": "europe/switzerland/schaffhausen",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/schaffhausen-latest.osm.pbf"
+  },
+  {
+    "id": "schwyz",
+    "name": "Schwyz",
+    "path": "europe/switzerland/schwyz",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/schwyz-latest.osm.pbf"
+  },
+  {
+    "id": "solothurn",
+    "name": "Solothurn",
+    "path": "europe/switzerland/solothurn",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/solothurn-latest.osm.pbf"
+  },
+  {
+    "id": "thurgau",
+    "name": "Thurgau",
+    "path": "europe/switzerland/thurgau",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/thurgau-latest.osm.pbf"
+  },
+  {
+    "id": "ticino",
+    "name": "Ticino",
+    "path": "europe/switzerland/ticino",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/ticino-latest.osm.pbf"
+  },
+  {
+    "id": "uri",
+    "name": "Uri",
+    "path": "europe/switzerland/uri",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/uri-latest.osm.pbf"
+  },
+  {
+    "id": "valais",
+    "name": "Valais",
+    "path": "europe/switzerland/valais",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/valais-latest.osm.pbf"
+  },
+  {
+    "id": "vaud",
+    "name": "Vaud",
+    "path": "europe/switzerland/vaud",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/vaud-latest.osm.pbf"
+  },
+  {
+    "id": "zug",
+    "name": "Zug",
+    "path": "europe/switzerland/zug",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/zug-latest.osm.pbf"
+  },
+  {
+    "id": "zurich",
+    "name": "Zurich",
+    "path": "europe/switzerland/zurich",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/switzerland/zurich-latest.osm.pbf"
+  },
+  {
+    "id": "aegean",
+    "name": "Aegean",
+    "path": "europe/turkey/aegean",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey/aegean-latest.osm.pbf"
+  },
+  {
+    "id": "black_sea",
+    "name": "Black Sea",
+    "path": "europe/turkey/black_sea",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey/black_sea-latest.osm.pbf"
+  },
+  {
+    "id": "central_anatolia",
+    "name": "Central Anatolia",
+    "path": "europe/turkey/central_anatolia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey/central_anatolia-latest.osm.pbf"
+  },
+  {
+    "id": "eastern_anatolia",
+    "name": "Eastern Anatolia",
+    "path": "europe/turkey/eastern_anatolia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey/eastern_anatolia-latest.osm.pbf"
+  },
+  {
+    "id": "marmara",
+    "name": "Marmara",
+    "path": "europe/turkey/marmara",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey/marmara-latest.osm.pbf"
+  },
+  {
+    "id": "mediterranean",
+    "name": "Mediterranean",
+    "path": "europe/turkey/mediterranean",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey/mediterranean-latest.osm.pbf"
+  },
+  {
+    "id": "southeastern_anatolia",
+    "name": "Southeastern Anatolia",
+    "path": "europe/turkey/southeastern_anatolia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/turkey/southeastern_anatolia-latest.osm.pbf"
+  },
+  {
+    "id": "cherkasy_oblast",
+    "name": "Cherkasy Oblast",
+    "path": "europe/ukraine/cherkasy_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/cherkasy_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "chernihiv_oblast",
+    "name": "Chernihiv Oblast",
+    "path": "europe/ukraine/chernihiv_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/chernihiv_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "chernivtsi_oblast",
+    "name": "Chernivtsi Oblast",
+    "path": "europe/ukraine/chernivtsi_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/chernivtsi_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "crimea",
+    "name": "Crimea",
+    "path": "europe/ukraine/crimea",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/crimea-latest.osm.pbf"
+  },
+  {
+    "id": "dnipropetrovsk_oblast",
+    "name": "Dnipropetrovsk Oblast",
+    "path": "europe/ukraine/dnipropetrovsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/dnipropetrovsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "donetsk_oblast",
+    "name": "Donetsk Oblast",
+    "path": "europe/ukraine/donetsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/donetsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "ivano-frankivsk_oblast",
+    "name": "Ivano-frankivsk Oblast",
+    "path": "europe/ukraine/ivano-frankivsk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/ivano-frankivsk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kharkiv_oblast",
+    "name": "Kharkiv Oblast",
+    "path": "europe/ukraine/kharkiv_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/kharkiv_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kherson_oblast",
+    "name": "Kherson Oblast",
+    "path": "europe/ukraine/kherson_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/kherson_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "khmelnytskyi_oblast",
+    "name": "Khmelnytskyi Oblast",
+    "path": "europe/ukraine/khmelnytskyi_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/khmelnytskyi_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kiev",
+    "name": "Kiev",
+    "path": "europe/ukraine/kiev",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/kiev-latest.osm.pbf"
+  },
+  {
+    "id": "kiev_oblast",
+    "name": "Kiev Oblast",
+    "path": "europe/ukraine/kiev_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/kiev_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "kirovohrad_oblast",
+    "name": "Kirovohrad Oblast",
+    "path": "europe/ukraine/kirovohrad_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/kirovohrad_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "luhansk_oblast",
+    "name": "Luhansk Oblast",
+    "path": "europe/ukraine/luhansk_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/luhansk_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "lviv_oblast",
+    "name": "Lviv Oblast",
+    "path": "europe/ukraine/lviv_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/lviv_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "mykolaiv_oblast",
+    "name": "Mykolaiv Oblast",
+    "path": "europe/ukraine/mykolaiv_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/mykolaiv_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "odessa_oblast",
+    "name": "Odessa Oblast",
+    "path": "europe/ukraine/odessa_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/odessa_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "poltava_oblast",
+    "name": "Poltava Oblast",
+    "path": "europe/ukraine/poltava_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/poltava_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "rivne_oblast",
+    "name": "Rivne Oblast",
+    "path": "europe/ukraine/rivne_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/rivne_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "sevastopol",
+    "name": "Sevastopol",
+    "path": "europe/ukraine/sevastopol",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/sevastopol-latest.osm.pbf"
+  },
+  {
+    "id": "sumy_oblast",
+    "name": "Sumy Oblast",
+    "path": "europe/ukraine/sumy_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/sumy_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "ternopil_oblast",
+    "name": "Ternopil Oblast",
+    "path": "europe/ukraine/ternopil_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/ternopil_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "vinnytsia_oblast",
+    "name": "Vinnytsia Oblast",
+    "path": "europe/ukraine/vinnytsia_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/vinnytsia_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "volyn_oblast",
+    "name": "Volyn Oblast",
+    "path": "europe/ukraine/volyn_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/volyn_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "zakarpattia_oblast",
+    "name": "Zakarpattia Oblast",
+    "path": "europe/ukraine/zakarpattia_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/zakarpattia_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "zaporizhia_oblast",
+    "name": "Zaporizhia Oblast",
+    "path": "europe/ukraine/zaporizhia_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/zaporizhia_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "zhytomyr_oblast",
+    "name": "Zhytomyr Oblast",
+    "path": "europe/ukraine/zhytomyr_oblast",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/ukraine/zhytomyr_oblast-latest.osm.pbf"
+  },
+  {
+    "id": "england",
+    "name": "England",
+    "path": "europe/united_kingdom/england",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england-latest.osm.pbf"
+  },
+  {
+    "id": "northern_ireland",
+    "name": "Northern Ireland",
+    "path": "europe/united_kingdom/northern_ireland",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/northern_ireland-latest.osm.pbf"
+  },
+  {
+    "id": "almeria",
+    "name": "Almeria",
+    "path": "europe/spain/andalucia/almeria",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia/almeria-latest.osm.pbf"
+  },
+  {
+    "id": "cadiz",
+    "name": "Cadiz",
+    "path": "europe/spain/andalucia/cadiz",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia/cadiz-latest.osm.pbf"
+  },
+  {
+    "id": "cordoba",
+    "name": "Cordoba",
+    "path": "europe/spain/andalucia/cordoba",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia/cordoba-latest.osm.pbf"
+  },
+  {
+    "id": "granada",
+    "name": "Granada",
+    "path": "europe/spain/andalucia/granada",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia/granada-latest.osm.pbf"
+  },
+  {
+    "id": "huelva",
+    "name": "Huelva",
+    "path": "europe/spain/andalucia/huelva",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia/huelva-latest.osm.pbf"
+  },
+  {
+    "id": "jaen",
+    "name": "Jaen",
+    "path": "europe/spain/andalucia/jaen",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia/jaen-latest.osm.pbf"
+  },
+  {
+    "id": "malaga",
+    "name": "Malaga",
+    "path": "europe/spain/andalucia/malaga",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia/malaga-latest.osm.pbf"
+  },
+  {
+    "id": "sevilla",
+    "name": "Sevilla",
+    "path": "europe/spain/andalucia/sevilla",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/andalucia/sevilla-latest.osm.pbf"
+  },
+  {
+    "id": "huesca",
+    "name": "Huesca",
+    "path": "europe/spain/aragon/huesca",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/aragon/huesca-latest.osm.pbf"
+  },
+  {
+    "id": "teruel",
+    "name": "Teruel",
+    "path": "europe/spain/aragon/teruel",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/aragon/teruel-latest.osm.pbf"
+  },
+  {
+    "id": "zaragoza",
+    "name": "Zaragoza",
+    "path": "europe/spain/aragon/zaragoza",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/aragon/zaragoza-latest.osm.pbf"
+  },
+  {
+    "id": "albacete",
+    "name": "Albacete",
+    "path": "europe/spain/castilla_la_mancha/albacete",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_la_mancha/albacete-latest.osm.pbf"
+  },
+  {
+    "id": "ciudad_real",
+    "name": "Ciudad Real",
+    "path": "europe/spain/castilla_la_mancha/ciudad_real",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_la_mancha/ciudad_real-latest.osm.pbf"
+  },
+  {
+    "id": "cuenca",
+    "name": "Cuenca",
+    "path": "europe/spain/castilla_la_mancha/cuenca",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_la_mancha/cuenca-latest.osm.pbf"
+  },
+  {
+    "id": "guadalajara",
+    "name": "Guadalajara",
+    "path": "europe/spain/castilla_la_mancha/guadalajara",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_la_mancha/guadalajara-latest.osm.pbf"
+  },
+  {
+    "id": "toledo",
+    "name": "Toledo",
+    "path": "europe/spain/castilla_la_mancha/toledo",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_la_mancha/toledo-latest.osm.pbf"
+  },
+  {
+    "id": "avila",
+    "name": "Avila",
+    "path": "europe/spain/castilla_y_leon/avila",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/avila-latest.osm.pbf"
+  },
+  {
+    "id": "burgos",
+    "name": "Burgos",
+    "path": "europe/spain/castilla_y_leon/burgos",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/burgos-latest.osm.pbf"
+  },
+  {
+    "id": "leon",
+    "name": "Leon",
+    "path": "europe/spain/castilla_y_leon/leon",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/leon-latest.osm.pbf"
+  },
+  {
+    "id": "palencia",
+    "name": "Palencia",
+    "path": "europe/spain/castilla_y_leon/palencia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/palencia-latest.osm.pbf"
+  },
+  {
+    "id": "salamanca",
+    "name": "Salamanca",
+    "path": "europe/spain/castilla_y_leon/salamanca",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/salamanca-latest.osm.pbf"
+  },
+  {
+    "id": "segovia",
+    "name": "Segovia",
+    "path": "europe/spain/castilla_y_leon/segovia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/segovia-latest.osm.pbf"
+  },
+  {
+    "id": "soria",
+    "name": "Soria",
+    "path": "europe/spain/castilla_y_leon/soria",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/soria-latest.osm.pbf"
+  },
+  {
+    "id": "valladolid",
+    "name": "Valladolid",
+    "path": "europe/spain/castilla_y_leon/valladolid",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/valladolid-latest.osm.pbf"
+  },
+  {
+    "id": "zamora",
+    "name": "Zamora",
+    "path": "europe/spain/castilla_y_leon/zamora",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/castilla_y_leon/zamora-latest.osm.pbf"
+  },
+  {
+    "id": "barcelona",
+    "name": "Barcelona",
+    "path": "europe/spain/catalunya/barcelona",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/catalunya/barcelona-latest.osm.pbf"
+  },
+  {
+    "id": "girona",
+    "name": "Girona",
+    "path": "europe/spain/catalunya/girona",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/catalunya/girona-latest.osm.pbf"
+  },
+  {
+    "id": "lleida",
+    "name": "Lleida",
+    "path": "europe/spain/catalunya/lleida",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/catalunya/lleida-latest.osm.pbf"
+  },
+  {
+    "id": "tarragona",
+    "name": "Tarragona",
+    "path": "europe/spain/catalunya/tarragona",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/catalunya/tarragona-latest.osm.pbf"
+  },
+  {
+    "id": "alicante",
+    "name": "Alicante",
+    "path": "europe/spain/comunitat_valenciana/alicante",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/comunitat_valenciana/alicante-latest.osm.pbf"
+  },
+  {
+    "id": "castellon",
+    "name": "Castellon",
+    "path": "europe/spain/comunitat_valenciana/castellon",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/comunitat_valenciana/castellon-latest.osm.pbf"
+  },
+  {
+    "id": "valencia",
+    "name": "Valencia",
+    "path": "europe/spain/comunitat_valenciana/valencia",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/comunitat_valenciana/valencia-latest.osm.pbf"
+  },
+  {
+    "id": "alava",
+    "name": "Alava",
+    "path": "europe/spain/euskadi/alava",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/euskadi/alava-latest.osm.pbf"
+  },
+  {
+    "id": "guipuzcoa",
+    "name": "Guipuzcoa",
+    "path": "europe/spain/euskadi/guipuzcoa",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/euskadi/guipuzcoa-latest.osm.pbf"
+  },
+  {
+    "id": "vizcaya",
+    "name": "Vizcaya",
+    "path": "europe/spain/euskadi/vizcaya",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/euskadi/vizcaya-latest.osm.pbf"
+  },
+  {
+    "id": "badajoz",
+    "name": "Badajoz",
+    "path": "europe/spain/extremadura/badajoz",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/extremadura/badajoz-latest.osm.pbf"
+  },
+  {
+    "id": "caceres",
+    "name": "Caceres",
+    "path": "europe/spain/extremadura/caceres",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/extremadura/caceres-latest.osm.pbf"
+  },
+  {
+    "id": "la_coruna",
+    "name": "La Coruna",
+    "path": "europe/spain/galicia/la_coruna",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/galicia/la_coruna-latest.osm.pbf"
+  },
+  {
+    "id": "lugo",
+    "name": "Lugo",
+    "path": "europe/spain/galicia/lugo",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/galicia/lugo-latest.osm.pbf"
+  },
+  {
+    "id": "ourense",
+    "name": "Ourense",
+    "path": "europe/spain/galicia/ourense",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/galicia/ourense-latest.osm.pbf"
+  },
+  {
+    "id": "pontevedra",
+    "name": "Pontevedra",
+    "path": "europe/spain/galicia/pontevedra",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/spain/galicia/pontevedra-latest.osm.pbf"
+  },
+  {
+    "id": "east",
+    "name": "East",
+    "path": "europe/united_kingdom/england/east",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/east-latest.osm.pbf"
+  },
+  {
+    "id": "east_midlands",
+    "name": "East Midlands",
+    "path": "europe/united_kingdom/england/east_midlands",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/east_midlands-latest.osm.pbf"
+  },
+  {
+    "id": "greater_london",
+    "name": "Greater London",
+    "path": "europe/united_kingdom/england/greater_london",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/greater_london-latest.osm.pbf"
+  },
+  {
+    "id": "north_east",
+    "name": "North East",
+    "path": "europe/united_kingdom/england/north_east",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/north_east-latest.osm.pbf"
+  },
+  {
+    "id": "north_west",
+    "name": "North West",
+    "path": "europe/united_kingdom/england/north_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/north_west-latest.osm.pbf"
+  },
+  {
+    "id": "south_east",
+    "name": "South East",
+    "path": "europe/united_kingdom/england/south_east",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/south_east-latest.osm.pbf"
+  },
+  {
+    "id": "south_west",
+    "name": "South West",
+    "path": "europe/united_kingdom/england/south_west",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/south_west-latest.osm.pbf"
+  },
+  {
+    "id": "west_midlands",
+    "name": "West Midlands",
+    "path": "europe/united_kingdom/england/west_midlands",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/west_midlands-latest.osm.pbf"
+  },
+  {
+    "id": "yorkshire_and_the_humber",
+    "name": "Yorkshire and the Humber",
+    "path": "europe/united_kingdom/england/yorkshire_and_the_humber",
+    "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/yorkshire_and_the_humber-latest.osm.pbf"
+  }
+]

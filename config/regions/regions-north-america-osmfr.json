@@ -1,0 +1,1250 @@
+[
+  {
+    "id": "bermuda",
+    "name": "Bermuda",
+    "path": "north-america/bermuda",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/bermuda-latest.osm.pbf"
+  },
+  {
+    "id": "canada",
+    "name": "Canada",
+    "path": "north-america/canada",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada-latest.osm.pbf"
+  },
+  {
+    "id": "mexico",
+    "name": "Mexico",
+    "path": "north-america/mexico",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico-latest.osm.pbf"
+  },
+  {
+    "id": "saint_pierre_et_miquelon",
+    "name": "Saint Pierre and Miquelon",
+    "path": "north-america/saint_pierre_et_miquelon",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/saint_pierre_et_miquelon-latest.osm.pbf"
+  },
+  {
+    "id": "us-midwest",
+    "name": "Us-midwest",
+    "path": "north-america/us-midwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest-latest.osm.pbf"
+  },
+  {
+    "id": "us-northeast",
+    "name": "Us-northeast",
+    "path": "north-america/us-northeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast-latest.osm.pbf"
+  },
+  {
+    "id": "us-south",
+    "name": "Us-south",
+    "path": "north-america/us-south",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south-latest.osm.pbf"
+  },
+  {
+    "id": "us-west",
+    "name": "Us-west",
+    "path": "north-america/us-west",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west-latest.osm.pbf"
+  },
+  {
+    "id": "alberta",
+    "name": "Alberta",
+    "path": "north-america/canada/alberta",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/alberta-latest.osm.pbf"
+  },
+  {
+    "id": "british_columbia",
+    "name": "British Columbia",
+    "path": "north-america/canada/british_columbia",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/british_columbia-latest.osm.pbf"
+  },
+  {
+    "id": "manitoba",
+    "name": "Manitoba",
+    "path": "north-america/canada/manitoba",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/manitoba-latest.osm.pbf"
+  },
+  {
+    "id": "new_brunswick",
+    "name": "New Brunswick",
+    "path": "north-america/canada/new_brunswick",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/new_brunswick-latest.osm.pbf"
+  },
+  {
+    "id": "newfoundland_and_labrador",
+    "name": "Newfoundland and Labrador",
+    "path": "north-america/canada/newfoundland_and_labrador",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/newfoundland_and_labrador-latest.osm.pbf"
+  },
+  {
+    "id": "northwest_territories",
+    "name": "Northwest Territories",
+    "path": "north-america/canada/northwest_territories",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/northwest_territories-latest.osm.pbf"
+  },
+  {
+    "id": "nova_scotia",
+    "name": "Nova Scotia",
+    "path": "north-america/canada/nova_scotia",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/nova_scotia-latest.osm.pbf"
+  },
+  {
+    "id": "nunavut",
+    "name": "Nunavut",
+    "path": "north-america/canada/nunavut",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/nunavut-latest.osm.pbf"
+  },
+  {
+    "id": "ontario",
+    "name": "Ontario",
+    "path": "north-america/canada/ontario",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/ontario-latest.osm.pbf"
+  },
+  {
+    "id": "prince_edward_island",
+    "name": "Prince Edward Island",
+    "path": "north-america/canada/prince_edward_island",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/prince_edward_island-latest.osm.pbf"
+  },
+  {
+    "id": "quebec",
+    "name": "Québec",
+    "path": "north-america/canada/quebec",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec-latest.osm.pbf"
+  },
+  {
+    "id": "saskatchewan",
+    "name": "Saskatchewan",
+    "path": "north-america/canada/saskatchewan",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/saskatchewan-latest.osm.pbf"
+  },
+  {
+    "id": "yukon",
+    "name": "Yukon",
+    "path": "north-america/canada/yukon",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/yukon-latest.osm.pbf"
+  },
+  {
+    "id": "aguascalientes",
+    "name": "Aguascalientes",
+    "path": "north-america/mexico/aguascalientes",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/aguascalientes-latest.osm.pbf"
+  },
+  {
+    "id": "baja_california",
+    "name": "Baja California",
+    "path": "north-america/mexico/baja_california",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/baja_california-latest.osm.pbf"
+  },
+  {
+    "id": "baja_california_sur",
+    "name": "Baja California Sur",
+    "path": "north-america/mexico/baja_california_sur",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/baja_california_sur-latest.osm.pbf"
+  },
+  {
+    "id": "campeche",
+    "name": "Campeche",
+    "path": "north-america/mexico/campeche",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/campeche-latest.osm.pbf"
+  },
+  {
+    "id": "chiapas",
+    "name": "Chiapas",
+    "path": "north-america/mexico/chiapas",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/chiapas-latest.osm.pbf"
+  },
+  {
+    "id": "chihuahua",
+    "name": "Chihuahua",
+    "path": "north-america/mexico/chihuahua",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/chihuahua-latest.osm.pbf"
+  },
+  {
+    "id": "coahuila",
+    "name": "Coahuila",
+    "path": "north-america/mexico/coahuila",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/coahuila-latest.osm.pbf"
+  },
+  {
+    "id": "colima",
+    "name": "Colima",
+    "path": "north-america/mexico/colima",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/colima-latest.osm.pbf"
+  },
+  {
+    "id": "durango",
+    "name": "Durango",
+    "path": "north-america/mexico/durango",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/durango-latest.osm.pbf"
+  },
+  {
+    "id": "guanajuato",
+    "name": "Guanajuato",
+    "path": "north-america/mexico/guanajuato",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/guanajuato-latest.osm.pbf"
+  },
+  {
+    "id": "guerrero",
+    "name": "Guerrero",
+    "path": "north-america/mexico/guerrero",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/guerrero-latest.osm.pbf"
+  },
+  {
+    "id": "hidalgo",
+    "name": "Hidalgo",
+    "path": "north-america/mexico/hidalgo",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/hidalgo-latest.osm.pbf"
+  },
+  {
+    "id": "jalisco",
+    "name": "Jalisco",
+    "path": "north-america/mexico/jalisco",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/jalisco-latest.osm.pbf"
+  },
+  {
+    "id": "mexico_city",
+    "name": "Mexico City",
+    "path": "north-america/mexico/mexico_city",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/mexico_city-latest.osm.pbf"
+  },
+  {
+    "id": "michoacan",
+    "name": "Michoacán",
+    "path": "north-america/mexico/michoacan",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/michoacan-latest.osm.pbf"
+  },
+  {
+    "id": "morelos",
+    "name": "Morelos",
+    "path": "north-america/mexico/morelos",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/morelos-latest.osm.pbf"
+  },
+  {
+    "id": "nayarit",
+    "name": "Nayarit",
+    "path": "north-america/mexico/nayarit",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/nayarit-latest.osm.pbf"
+  },
+  {
+    "id": "nuevo_leon",
+    "name": "Nuevo León",
+    "path": "north-america/mexico/nuevo_leon",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/nuevo_leon-latest.osm.pbf"
+  },
+  {
+    "id": "oaxaca",
+    "name": "Oaxaca",
+    "path": "north-america/mexico/oaxaca",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/oaxaca-latest.osm.pbf"
+  },
+  {
+    "id": "puebla",
+    "name": "Puebla",
+    "path": "north-america/mexico/puebla",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/puebla-latest.osm.pbf"
+  },
+  {
+    "id": "queretaro",
+    "name": "Querétaro",
+    "path": "north-america/mexico/queretaro",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/queretaro-latest.osm.pbf"
+  },
+  {
+    "id": "quintana_roo",
+    "name": "Quintana Roo",
+    "path": "north-america/mexico/quintana_roo",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/quintana_roo-latest.osm.pbf"
+  },
+  {
+    "id": "san_luis_potosi",
+    "name": "San Luis Potosí",
+    "path": "north-america/mexico/san_luis_potosi",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/san_luis_potosi-latest.osm.pbf"
+  },
+  {
+    "id": "sinaloa",
+    "name": "Sinaloa",
+    "path": "north-america/mexico/sinaloa",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/sinaloa-latest.osm.pbf"
+  },
+  {
+    "id": "sonora",
+    "name": "Sonora",
+    "path": "north-america/mexico/sonora",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/sonora-latest.osm.pbf"
+  },
+  {
+    "id": "state_of_mexico",
+    "name": "State of Mexico",
+    "path": "north-america/mexico/state_of_mexico",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/state_of_mexico-latest.osm.pbf"
+  },
+  {
+    "id": "tabasco",
+    "name": "Tabasco",
+    "path": "north-america/mexico/tabasco",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/tabasco-latest.osm.pbf"
+  },
+  {
+    "id": "tamaulipas",
+    "name": "Tamaulipas",
+    "path": "north-america/mexico/tamaulipas",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/tamaulipas-latest.osm.pbf"
+  },
+  {
+    "id": "tlaxcala",
+    "name": "Tlaxcala",
+    "path": "north-america/mexico/tlaxcala",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/tlaxcala-latest.osm.pbf"
+  },
+  {
+    "id": "veracruz",
+    "name": "Veracruz",
+    "path": "north-america/mexico/veracruz",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/veracruz-latest.osm.pbf"
+  },
+  {
+    "id": "yucatan",
+    "name": "Yucatán",
+    "path": "north-america/mexico/yucatan",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/yucatan-latest.osm.pbf"
+  },
+  {
+    "id": "zacatecas",
+    "name": "Zacatecas",
+    "path": "north-america/mexico/zacatecas",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/mexico/zacatecas-latest.osm.pbf"
+  },
+  {
+    "id": "illinois",
+    "name": "Illinois",
+    "path": "north-america/us-midwest/illinois",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois-latest.osm.pbf"
+  },
+  {
+    "id": "michigan",
+    "name": "Michigan",
+    "path": "north-america/us-midwest/michigan",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan-latest.osm.pbf"
+  },
+  {
+    "id": "new-york",
+    "name": "New-york",
+    "path": "north-america/us-northeast/new-york",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york-latest.osm.pbf"
+  },
+  {
+    "id": "florida",
+    "name": "Florida",
+    "path": "north-america/us-south/florida",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida-latest.osm.pbf"
+  },
+  {
+    "id": "georgia",
+    "name": "Georgia",
+    "path": "north-america/us-south/georgia",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/georgia-latest.osm.pbf"
+  },
+  {
+    "id": "north-carolina",
+    "name": "North-carolina",
+    "path": "north-america/us-south/north-carolina",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina-latest.osm.pbf"
+  },
+  {
+    "id": "texas",
+    "name": "Texas",
+    "path": "north-america/us-south/texas",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/texas-latest.osm.pbf"
+  },
+  {
+    "id": "virginia",
+    "name": "Virginia",
+    "path": "north-america/us-south/virginia",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia-latest.osm.pbf"
+  },
+  {
+    "id": "california",
+    "name": "California",
+    "path": "north-america/us-west/california",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california-latest.osm.pbf"
+  },
+  {
+    "id": "colorado",
+    "name": "Colorado",
+    "path": "north-america/us-west/colorado",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/colorado-latest.osm.pbf"
+  },
+  {
+    "id": "central_ontario",
+    "name": "Central Ontario",
+    "path": "north-america/canada/ontario/central_ontario",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/ontario/central_ontario-latest.osm.pbf"
+  },
+  {
+    "id": "eastern_ontario",
+    "name": "Eastern Ontario",
+    "path": "north-america/canada/ontario/eastern_ontario",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/ontario/eastern_ontario-latest.osm.pbf"
+  },
+  {
+    "id": "golden_horseshoe",
+    "name": "Golden Horseshoe",
+    "path": "north-america/canada/ontario/golden_horseshoe",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/ontario/golden_horseshoe-latest.osm.pbf"
+  },
+  {
+    "id": "northeastern_ontario",
+    "name": "Northeastern Ontario",
+    "path": "north-america/canada/ontario/northeastern_ontario",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/ontario/northeastern_ontario-latest.osm.pbf"
+  },
+  {
+    "id": "northwestern_ontario",
+    "name": "Northwestern Ontario",
+    "path": "north-america/canada/ontario/northwestern_ontario",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/ontario/northwestern_ontario-latest.osm.pbf"
+  },
+  {
+    "id": "southwestern_ontario",
+    "name": "Southwestern Ontario",
+    "path": "north-america/canada/ontario/southwestern_ontario",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/ontario/southwestern_ontario-latest.osm.pbf"
+  },
+  {
+    "id": "abitibi_temiscamingue",
+    "name": "Abitibi Temiscamingue",
+    "path": "north-america/canada/quebec/abitibi_temiscamingue",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/abitibi_temiscamingue-latest.osm.pbf"
+  },
+  {
+    "id": "bas_saint_laurent",
+    "name": "Bas Saint Laurent",
+    "path": "north-america/canada/quebec/bas_saint_laurent",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/bas_saint_laurent-latest.osm.pbf"
+  },
+  {
+    "id": "capitale_nationale",
+    "name": "Capitale Nationale",
+    "path": "north-america/canada/quebec/capitale_nationale",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/capitale_nationale-latest.osm.pbf"
+  },
+  {
+    "id": "centre_du_quebec",
+    "name": "Centre du Quebec",
+    "path": "north-america/canada/quebec/centre_du_quebec",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/centre_du_quebec-latest.osm.pbf"
+  },
+  {
+    "id": "chaudiere_appalaches",
+    "name": "Chaudiere Appalaches",
+    "path": "north-america/canada/quebec/chaudiere_appalaches",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/chaudiere_appalaches-latest.osm.pbf"
+  },
+  {
+    "id": "cote_nord",
+    "name": "Cote Nord",
+    "path": "north-america/canada/quebec/cote_nord",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/cote_nord-latest.osm.pbf"
+  },
+  {
+    "id": "estrie",
+    "name": "Estrie",
+    "path": "north-america/canada/quebec/estrie",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/estrie-latest.osm.pbf"
+  },
+  {
+    "id": "gaspesie_iles_de_la_madeleine",
+    "name": "Gaspesie Iles de la Madeleine",
+    "path": "north-america/canada/quebec/gaspesie_iles_de_la_madeleine",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/gaspesie_iles_de_la_madeleine-latest.osm.pbf"
+  },
+  {
+    "id": "lanaudiere",
+    "name": "Lanaudiere",
+    "path": "north-america/canada/quebec/lanaudiere",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/lanaudiere-latest.osm.pbf"
+  },
+  {
+    "id": "laurentides",
+    "name": "Laurentides",
+    "path": "north-america/canada/quebec/laurentides",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/laurentides-latest.osm.pbf"
+  },
+  {
+    "id": "laval",
+    "name": "Laval",
+    "path": "north-america/canada/quebec/laval",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/laval-latest.osm.pbf"
+  },
+  {
+    "id": "mauricie",
+    "name": "Mauricie",
+    "path": "north-america/canada/quebec/mauricie",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/mauricie-latest.osm.pbf"
+  },
+  {
+    "id": "monteregie",
+    "name": "Monteregie",
+    "path": "north-america/canada/quebec/monteregie",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/monteregie-latest.osm.pbf"
+  },
+  {
+    "id": "montreal",
+    "name": "Montreal",
+    "path": "north-america/canada/quebec/montreal",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/montreal-latest.osm.pbf"
+  },
+  {
+    "id": "nord_du_quebec",
+    "name": "Nord du Quebec",
+    "path": "north-america/canada/quebec/nord_du_quebec",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/nord_du_quebec-latest.osm.pbf"
+  },
+  {
+    "id": "outaouais",
+    "name": "Outaouais",
+    "path": "north-america/canada/quebec/outaouais",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/outaouais-latest.osm.pbf"
+  },
+  {
+    "id": "saguenay_lac_saint_jean",
+    "name": "Saguenay Lac Saint Jean",
+    "path": "north-america/canada/quebec/saguenay_lac_saint_jean",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/canada/quebec/saguenay_lac_saint_jean-latest.osm.pbf"
+  },
+  {
+    "id": "central",
+    "name": "Central",
+    "path": "north-america/us-midwest/illinois/central",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois/central-latest.osm.pbf"
+  },
+  {
+    "id": "cook",
+    "name": "Cook",
+    "path": "north-america/us-midwest/illinois/cook",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois/cook-latest.osm.pbf"
+  },
+  {
+    "id": "east_central",
+    "name": "East Central",
+    "path": "north-america/us-midwest/illinois/east_central",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois/east_central-latest.osm.pbf"
+  },
+  {
+    "id": "north",
+    "name": "North",
+    "path": "north-america/us-midwest/illinois/north",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois/north-latest.osm.pbf"
+  },
+  {
+    "id": "northeast",
+    "name": "Northeast",
+    "path": "north-america/us-midwest/illinois/northeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois/northeast-latest.osm.pbf"
+  },
+  {
+    "id": "northwest",
+    "name": "Northwest",
+    "path": "north-america/us-midwest/illinois/northwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois/northwest-latest.osm.pbf"
+  },
+  {
+    "id": "southern",
+    "name": "Southern",
+    "path": "north-america/us-midwest/illinois/southern",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois/southern-latest.osm.pbf"
+  },
+  {
+    "id": "southwest",
+    "name": "Southwest",
+    "path": "north-america/us-midwest/illinois/southwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/illinois/southwest-latest.osm.pbf"
+  },
+  {
+    "id": "central_1",
+    "name": "Central",
+    "path": "north-america/us-midwest/michigan/central",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan/central-latest.osm.pbf"
+  },
+  {
+    "id": "detroit_metro",
+    "name": "Detroit Metro",
+    "path": "north-america/us-midwest/michigan/detroit_metro",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan/detroit_metro-latest.osm.pbf"
+  },
+  {
+    "id": "northern_lower",
+    "name": "Northern Lower",
+    "path": "north-america/us-midwest/michigan/northern_lower",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan/northern_lower-latest.osm.pbf"
+  },
+  {
+    "id": "southeast",
+    "name": "Southeast",
+    "path": "north-america/us-midwest/michigan/southeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan/southeast-latest.osm.pbf"
+  },
+  {
+    "id": "southwest_1",
+    "name": "Southwest",
+    "path": "north-america/us-midwest/michigan/southwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan/southwest-latest.osm.pbf"
+  },
+  {
+    "id": "upper_peninsula",
+    "name": "Upper Peninsula",
+    "path": "north-america/us-midwest/michigan/upper_peninsula",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan/upper_peninsula-latest.osm.pbf"
+  },
+  {
+    "id": "west",
+    "name": "West",
+    "path": "north-america/us-midwest/michigan/west",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-midwest/michigan/west-latest.osm.pbf"
+  },
+  {
+    "id": "capital_district",
+    "name": "Capital District",
+    "path": "north-america/us-northeast/new-york/capital_district",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/capital_district-latest.osm.pbf"
+  },
+  {
+    "id": "central_new_york",
+    "name": "Central New York",
+    "path": "north-america/us-northeast/new-york/central_new_york",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/central_new_york-latest.osm.pbf"
+  },
+  {
+    "id": "finger_lakes",
+    "name": "Finger Lakes",
+    "path": "north-america/us-northeast/new-york/finger_lakes",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/finger_lakes-latest.osm.pbf"
+  },
+  {
+    "id": "hudson_valley",
+    "name": "Hudson Valley",
+    "path": "north-america/us-northeast/new-york/hudson_valley",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/hudson_valley-latest.osm.pbf"
+  },
+  {
+    "id": "long_island",
+    "name": "Long Island",
+    "path": "north-america/us-northeast/new-york/long_island",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/long_island-latest.osm.pbf"
+  },
+  {
+    "id": "mohawk_valley",
+    "name": "Mohawk Valley",
+    "path": "north-america/us-northeast/new-york/mohawk_valley",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/mohawk_valley-latest.osm.pbf"
+  },
+  {
+    "id": "new_york_city",
+    "name": "New York City",
+    "path": "north-america/us-northeast/new-york/new_york_city",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/new_york_city-latest.osm.pbf"
+  },
+  {
+    "id": "north_country",
+    "name": "North Country",
+    "path": "north-america/us-northeast/new-york/north_country",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/north_country-latest.osm.pbf"
+  },
+  {
+    "id": "southern_tier",
+    "name": "Southern Tier",
+    "path": "north-america/us-northeast/new-york/southern_tier",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/southern_tier-latest.osm.pbf"
+  },
+  {
+    "id": "western_new_york",
+    "name": "Western New York",
+    "path": "north-america/us-northeast/new-york/western_new_york",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-northeast/new-york/western_new_york-latest.osm.pbf"
+  },
+  {
+    "id": "east_central_1",
+    "name": "East Central",
+    "path": "north-america/us-south/florida/east_central",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/east_central-latest.osm.pbf"
+  },
+  {
+    "id": "gatorland",
+    "name": "Gatorland",
+    "path": "north-america/us-south/florida/gatorland",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/gatorland-latest.osm.pbf"
+  },
+  {
+    "id": "gold_coast",
+    "name": "Gold Coast",
+    "path": "north-america/us-south/florida/gold_coast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/gold_coast-latest.osm.pbf"
+  },
+  {
+    "id": "northeast_1",
+    "name": "Northeast",
+    "path": "north-america/us-south/florida/northeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/northeast-latest.osm.pbf"
+  },
+  {
+    "id": "northwest_1",
+    "name": "Northwest",
+    "path": "north-america/us-south/florida/northwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/northwest-latest.osm.pbf"
+  },
+  {
+    "id": "panhandle",
+    "name": "Panhandle",
+    "path": "north-america/us-south/florida/panhandle",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/panhandle-latest.osm.pbf"
+  },
+  {
+    "id": "southwest_2",
+    "name": "Southwest",
+    "path": "north-america/us-south/florida/southwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/southwest-latest.osm.pbf"
+  },
+  {
+    "id": "suncoast",
+    "name": "Suncoast",
+    "path": "north-america/us-south/florida/suncoast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/suncoast-latest.osm.pbf"
+  },
+  {
+    "id": "treasure_coast",
+    "name": "Treasure Coast",
+    "path": "north-america/us-south/florida/treasure_coast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/florida/treasure_coast-latest.osm.pbf"
+  },
+  {
+    "id": "north_metro",
+    "name": "North Metro",
+    "path": "north-america/us-south/georgia/north_metro",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/georgia/north_metro-latest.osm.pbf"
+  },
+  {
+    "id": "northeast_2",
+    "name": "Northeast",
+    "path": "north-america/us-south/georgia/northeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/georgia/northeast-latest.osm.pbf"
+  },
+  {
+    "id": "northwest_2",
+    "name": "Northwest",
+    "path": "north-america/us-south/georgia/northwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/georgia/northwest-latest.osm.pbf"
+  },
+  {
+    "id": "southeast_1",
+    "name": "Southeast",
+    "path": "north-america/us-south/georgia/southeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/georgia/southeast-latest.osm.pbf"
+  },
+  {
+    "id": "southwest_3",
+    "name": "Southwest",
+    "path": "north-america/us-south/georgia/southwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/georgia/southwest-latest.osm.pbf"
+  },
+  {
+    "id": "north_central",
+    "name": "North Central",
+    "path": "north-america/us-south/north-carolina/north_central",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina/north_central-latest.osm.pbf"
+  },
+  {
+    "id": "northeast_3",
+    "name": "Northeast",
+    "path": "north-america/us-south/north-carolina/northeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina/northeast-latest.osm.pbf"
+  },
+  {
+    "id": "northwest_3",
+    "name": "Northwest",
+    "path": "north-america/us-south/north-carolina/northwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina/northwest-latest.osm.pbf"
+  },
+  {
+    "id": "piedmont_triad",
+    "name": "Piedmont Triad",
+    "path": "north-america/us-south/north-carolina/piedmont_triad",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina/piedmont_triad-latest.osm.pbf"
+  },
+  {
+    "id": "south_central",
+    "name": "South Central",
+    "path": "north-america/us-south/north-carolina/south_central",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina/south_central-latest.osm.pbf"
+  },
+  {
+    "id": "southeast_2",
+    "name": "Southeast",
+    "path": "north-america/us-south/north-carolina/southeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina/southeast-latest.osm.pbf"
+  },
+  {
+    "id": "western",
+    "name": "Western",
+    "path": "north-america/us-south/north-carolina/western",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/north-carolina/western-latest.osm.pbf"
+  },
+  {
+    "id": "central_2",
+    "name": "Central",
+    "path": "north-america/us-south/texas/central",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/texas/central-latest.osm.pbf"
+  },
+  {
+    "id": "north_1",
+    "name": "North",
+    "path": "north-america/us-south/texas/north",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/texas/north-latest.osm.pbf"
+  },
+  {
+    "id": "northwest_4",
+    "name": "Northwest",
+    "path": "north-america/us-south/texas/northwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/texas/northwest-latest.osm.pbf"
+  },
+  {
+    "id": "south",
+    "name": "South",
+    "path": "north-america/us-south/texas/south",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/texas/south-latest.osm.pbf"
+  },
+  {
+    "id": "southeast_3",
+    "name": "Southeast",
+    "path": "north-america/us-south/texas/southeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/texas/southeast-latest.osm.pbf"
+  },
+  {
+    "id": "west_1",
+    "name": "West",
+    "path": "north-america/us-south/texas/west",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/texas/west-latest.osm.pbf"
+  },
+  {
+    "id": "appomattox",
+    "name": "Appomattox",
+    "path": "north-america/us-south/virginia/appomattox",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia/appomattox-latest.osm.pbf"
+  },
+  {
+    "id": "chesapeake",
+    "name": "Chesapeake",
+    "path": "north-america/us-south/virginia/chesapeake",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia/chesapeake-latest.osm.pbf"
+  },
+  {
+    "id": "culpeper",
+    "name": "Culpeper",
+    "path": "north-america/us-south/virginia/culpeper",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia/culpeper-latest.osm.pbf"
+  },
+  {
+    "id": "fairfax",
+    "name": "Fairfax",
+    "path": "north-america/us-south/virginia/fairfax",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia/fairfax-latest.osm.pbf"
+  },
+  {
+    "id": "richmond",
+    "name": "Richmond",
+    "path": "north-america/us-south/virginia/richmond",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia/richmond-latest.osm.pbf"
+  },
+  {
+    "id": "salem",
+    "name": "Salem",
+    "path": "north-america/us-south/virginia/salem",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia/salem-latest.osm.pbf"
+  },
+  {
+    "id": "wytheville",
+    "name": "Wytheville",
+    "path": "north-america/us-south/virginia/wytheville",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-south/virginia/wytheville-latest.osm.pbf"
+  },
+  {
+    "id": "alameda",
+    "name": "Alameda",
+    "path": "north-america/us-west/california/alameda",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/alameda-latest.osm.pbf"
+  },
+  {
+    "id": "alpine",
+    "name": "Alpine",
+    "path": "north-america/us-west/california/alpine",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/alpine-latest.osm.pbf"
+  },
+  {
+    "id": "amador",
+    "name": "Amador",
+    "path": "north-america/us-west/california/amador",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/amador-latest.osm.pbf"
+  },
+  {
+    "id": "butte",
+    "name": "Butte",
+    "path": "north-america/us-west/california/butte",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/butte-latest.osm.pbf"
+  },
+  {
+    "id": "calaveras",
+    "name": "Calaveras",
+    "path": "north-america/us-west/california/calaveras",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/calaveras-latest.osm.pbf"
+  },
+  {
+    "id": "colusa",
+    "name": "Colusa",
+    "path": "north-america/us-west/california/colusa",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/colusa-latest.osm.pbf"
+  },
+  {
+    "id": "contra_costa",
+    "name": "Contra Costa",
+    "path": "north-america/us-west/california/contra_costa",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/contra_costa-latest.osm.pbf"
+  },
+  {
+    "id": "del_norte",
+    "name": "Del Norte",
+    "path": "north-america/us-west/california/del_norte",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/del_norte-latest.osm.pbf"
+  },
+  {
+    "id": "el_dorado",
+    "name": "El Dorado",
+    "path": "north-america/us-west/california/el_dorado",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/el_dorado-latest.osm.pbf"
+  },
+  {
+    "id": "fresno",
+    "name": "Fresno",
+    "path": "north-america/us-west/california/fresno",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/fresno-latest.osm.pbf"
+  },
+  {
+    "id": "glenn",
+    "name": "Glenn",
+    "path": "north-america/us-west/california/glenn",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/glenn-latest.osm.pbf"
+  },
+  {
+    "id": "humboldt",
+    "name": "Humboldt",
+    "path": "north-america/us-west/california/humboldt",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/humboldt-latest.osm.pbf"
+  },
+  {
+    "id": "imperial",
+    "name": "Imperial",
+    "path": "north-america/us-west/california/imperial",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/imperial-latest.osm.pbf"
+  },
+  {
+    "id": "inyo",
+    "name": "Inyo",
+    "path": "north-america/us-west/california/inyo",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/inyo-latest.osm.pbf"
+  },
+  {
+    "id": "kern",
+    "name": "Kern",
+    "path": "north-america/us-west/california/kern",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/kern-latest.osm.pbf"
+  },
+  {
+    "id": "kings",
+    "name": "Kings",
+    "path": "north-america/us-west/california/kings",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/kings-latest.osm.pbf"
+  },
+  {
+    "id": "lake",
+    "name": "Lake",
+    "path": "north-america/us-west/california/lake",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/lake-latest.osm.pbf"
+  },
+  {
+    "id": "lassen",
+    "name": "Lassen",
+    "path": "north-america/us-west/california/lassen",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/lassen-latest.osm.pbf"
+  },
+  {
+    "id": "los_angeles",
+    "name": "Los Angeles",
+    "path": "north-america/us-west/california/los_angeles",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/los_angeles-latest.osm.pbf"
+  },
+  {
+    "id": "madera",
+    "name": "Madera",
+    "path": "north-america/us-west/california/madera",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/madera-latest.osm.pbf"
+  },
+  {
+    "id": "marin",
+    "name": "Marin",
+    "path": "north-america/us-west/california/marin",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/marin-latest.osm.pbf"
+  },
+  {
+    "id": "mariposa",
+    "name": "Mariposa",
+    "path": "north-america/us-west/california/mariposa",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/mariposa-latest.osm.pbf"
+  },
+  {
+    "id": "mendocino",
+    "name": "Mendocino",
+    "path": "north-america/us-west/california/mendocino",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/mendocino-latest.osm.pbf"
+  },
+  {
+    "id": "merced",
+    "name": "Merced",
+    "path": "north-america/us-west/california/merced",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/merced-latest.osm.pbf"
+  },
+  {
+    "id": "modoc",
+    "name": "Modoc",
+    "path": "north-america/us-west/california/modoc",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/modoc-latest.osm.pbf"
+  },
+  {
+    "id": "mono",
+    "name": "Mono",
+    "path": "north-america/us-west/california/mono",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/mono-latest.osm.pbf"
+  },
+  {
+    "id": "monterey",
+    "name": "Monterey",
+    "path": "north-america/us-west/california/monterey",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/monterey-latest.osm.pbf"
+  },
+  {
+    "id": "napa",
+    "name": "Napa",
+    "path": "north-america/us-west/california/napa",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/napa-latest.osm.pbf"
+  },
+  {
+    "id": "nevada",
+    "name": "Nevada",
+    "path": "north-america/us-west/california/nevada",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/nevada-latest.osm.pbf"
+  },
+  {
+    "id": "orange",
+    "name": "Orange",
+    "path": "north-america/us-west/california/orange",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/orange-latest.osm.pbf"
+  },
+  {
+    "id": "placer",
+    "name": "Placer",
+    "path": "north-america/us-west/california/placer",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/placer-latest.osm.pbf"
+  },
+  {
+    "id": "plumas",
+    "name": "Plumas",
+    "path": "north-america/us-west/california/plumas",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/plumas-latest.osm.pbf"
+  },
+  {
+    "id": "riverside",
+    "name": "Riverside",
+    "path": "north-america/us-west/california/riverside",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/riverside-latest.osm.pbf"
+  },
+  {
+    "id": "sacramento",
+    "name": "Sacramento",
+    "path": "north-america/us-west/california/sacramento",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/sacramento-latest.osm.pbf"
+  },
+  {
+    "id": "san_benito",
+    "name": "San Benito",
+    "path": "north-america/us-west/california/san_benito",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/san_benito-latest.osm.pbf"
+  },
+  {
+    "id": "san_bernardino",
+    "name": "San Bernardino",
+    "path": "north-america/us-west/california/san_bernardino",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/san_bernardino-latest.osm.pbf"
+  },
+  {
+    "id": "san_diego",
+    "name": "San Diego",
+    "path": "north-america/us-west/california/san_diego",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/san_diego-latest.osm.pbf"
+  },
+  {
+    "id": "san_francisco",
+    "name": "San Francisco",
+    "path": "north-america/us-west/california/san_francisco",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/san_francisco-latest.osm.pbf"
+  },
+  {
+    "id": "san_joaquin",
+    "name": "San Joaquin",
+    "path": "north-america/us-west/california/san_joaquin",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/san_joaquin-latest.osm.pbf"
+  },
+  {
+    "id": "san_luis_obispo",
+    "name": "San Luis Obispo",
+    "path": "north-america/us-west/california/san_luis_obispo",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/san_luis_obispo-latest.osm.pbf"
+  },
+  {
+    "id": "san_mateo",
+    "name": "San Mateo",
+    "path": "north-america/us-west/california/san_mateo",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/san_mateo-latest.osm.pbf"
+  },
+  {
+    "id": "santa_barbara",
+    "name": "Santa Barbara",
+    "path": "north-america/us-west/california/santa_barbara",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/santa_barbara-latest.osm.pbf"
+  },
+  {
+    "id": "santa_clara",
+    "name": "Santa Clara",
+    "path": "north-america/us-west/california/santa_clara",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/santa_clara-latest.osm.pbf"
+  },
+  {
+    "id": "santa_cruz",
+    "name": "Santa Cruz",
+    "path": "north-america/us-west/california/santa_cruz",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/santa_cruz-latest.osm.pbf"
+  },
+  {
+    "id": "shasta",
+    "name": "Shasta",
+    "path": "north-america/us-west/california/shasta",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/shasta-latest.osm.pbf"
+  },
+  {
+    "id": "sierra",
+    "name": "Sierra",
+    "path": "north-america/us-west/california/sierra",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/sierra-latest.osm.pbf"
+  },
+  {
+    "id": "siskiyou",
+    "name": "Siskiyou",
+    "path": "north-america/us-west/california/siskiyou",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/siskiyou-latest.osm.pbf"
+  },
+  {
+    "id": "solano",
+    "name": "Solano",
+    "path": "north-america/us-west/california/solano",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/solano-latest.osm.pbf"
+  },
+  {
+    "id": "sonoma",
+    "name": "Sonoma",
+    "path": "north-america/us-west/california/sonoma",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/sonoma-latest.osm.pbf"
+  },
+  {
+    "id": "stanislaus",
+    "name": "Stanislaus",
+    "path": "north-america/us-west/california/stanislaus",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/stanislaus-latest.osm.pbf"
+  },
+  {
+    "id": "sutter",
+    "name": "Sutter",
+    "path": "north-america/us-west/california/sutter",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/sutter-latest.osm.pbf"
+  },
+  {
+    "id": "tehama",
+    "name": "Tehama",
+    "path": "north-america/us-west/california/tehama",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/tehama-latest.osm.pbf"
+  },
+  {
+    "id": "trinity",
+    "name": "Trinity",
+    "path": "north-america/us-west/california/trinity",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/trinity-latest.osm.pbf"
+  },
+  {
+    "id": "tulare",
+    "name": "Tulare",
+    "path": "north-america/us-west/california/tulare",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/tulare-latest.osm.pbf"
+  },
+  {
+    "id": "tuolumne",
+    "name": "Tuolumne",
+    "path": "north-america/us-west/california/tuolumne",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/tuolumne-latest.osm.pbf"
+  },
+  {
+    "id": "ventura",
+    "name": "Ventura",
+    "path": "north-america/us-west/california/ventura",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/ventura-latest.osm.pbf"
+  },
+  {
+    "id": "yolo",
+    "name": "Yolo",
+    "path": "north-america/us-west/california/yolo",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/yolo-latest.osm.pbf"
+  },
+  {
+    "id": "yuba",
+    "name": "Yuba",
+    "path": "north-america/us-west/california/yuba",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/california/yuba-latest.osm.pbf"
+  },
+  {
+    "id": "denver",
+    "name": "Denver",
+    "path": "north-america/us-west/colorado/denver",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/colorado/denver-latest.osm.pbf"
+  },
+  {
+    "id": "northeast_4",
+    "name": "Northeast",
+    "path": "north-america/us-west/colorado/northeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/colorado/northeast-latest.osm.pbf"
+  },
+  {
+    "id": "northwest_5",
+    "name": "Northwest",
+    "path": "north-america/us-west/colorado/northwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/colorado/northwest-latest.osm.pbf"
+  },
+  {
+    "id": "southeast_4",
+    "name": "Southeast",
+    "path": "north-america/us-west/colorado/southeast",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/colorado/southeast-latest.osm.pbf"
+  },
+  {
+    "id": "southwest_4",
+    "name": "Southwest",
+    "path": "north-america/us-west/colorado/southwest",
+    "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/colorado/southwest-latest.osm.pbf"
+  }
+]
