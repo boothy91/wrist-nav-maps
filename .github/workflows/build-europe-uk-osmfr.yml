@@ -174,7 +174,7 @@ jobs:
           POLY="/tmp/region.poly"
           BBOX=""
 
-          POLY_URL="${PBF_URL%-latest.osm.pbf}.poly"
+          POLY_URL="${PBF_URL/download.openstreetmap.fr\/extracts/download.openstreetmap.fr\/polygons}"
 
           echo "Downloading poly from: $POLY_URL"
 
