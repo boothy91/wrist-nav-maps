@@ -210,6 +210,12 @@
     "pbf": "https://download.openstreetmap.fr/extracts/africa/morocco-latest.osm.pbf"
   },
   {
+    "id": "mozambique",
+    "name": "Mozambique",
+    "path": "africa/mozambique",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/mozambique-latest.osm.pbf"
+  },
+  {
     "id": "namibia",
     "name": "Namibia",
     "path": "africa/namibia",
@@ -220,6 +226,12 @@
     "name": "Niger",
     "path": "africa/niger",
     "pbf": "https://download.openstreetmap.fr/extracts/africa/niger-latest.osm.pbf"
+  },
+  {
+    "id": "nigeria",
+    "name": "Nigeria",
+    "path": "africa/nigeria",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/nigeria-latest.osm.pbf"
   },
   {
     "id": "reunion",
@@ -258,6 +270,12 @@
     "pbf": "https://download.openstreetmap.fr/extracts/africa/seychelles-latest.osm.pbf"
   },
   {
+    "id": "south_africa",
+    "name": "South Africa",
+    "path": "africa/south_africa",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa-latest.osm.pbf"
+  },
+  {
     "id": "south_sudan",
     "name": "South Sudan",
     "path": "africa/south_sudan",
@@ -276,6 +294,12 @@
     "pbf": "https://download.openstreetmap.fr/extracts/africa/swaziland-latest.osm.pbf"
   },
   {
+    "id": "tanzania",
+    "name": "Tanzania",
+    "path": "africa/tanzania",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/tanzania-latest.osm.pbf"
+  },
+  {
     "id": "togo",
     "name": "Togo",
     "path": "africa/togo",
@@ -286,6 +310,12 @@
     "name": "Tunisia",
     "path": "africa/tunisia",
     "pbf": "https://download.openstreetmap.fr/extracts/africa/tunisia-latest.osm.pbf"
+  },
+  {
+    "id": "uganda",
+    "name": "Uganda",
+    "path": "africa/uganda",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/uganda-latest.osm.pbf"
   },
   {
     "id": "western_sahara",
@@ -448,6 +478,12 @@
     "name": "Western Cape",
     "path": "africa/south_africa/western_cape",
     "pbf": "https://download.openstreetmap.fr/extracts/africa/south_africa/western_cape-latest.osm.pbf"
+  },
+  {
+    "id": "canarias",
+    "name": "Canary Islands",
+    "path": "africa/spain/canarias",
+    "pbf": "https://download.openstreetmap.fr/extracts/africa/spain/canarias-latest.osm.pbf"
   },
   {
     "id": "ceuta",

@@ -175,6 +175,7 @@ jobs:
           BBOX=""
 
           POLY_URL="${PBF_URL/\/extracts\//\/polygons\/}"; POLY_URL="${POLY_URL%-latest.osm.pbf}.poly"
+          POLY_URL="${POLY_URL/extracts/polygons}"
 
           echo "Downloading poly from: $POLY_URL"
 
