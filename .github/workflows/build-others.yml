@@ -105,7 +105,7 @@ jobs:
             echo "Resolving latest Geofabrik PBF from: $PAGE_URL"
 
             FILE_NAME=$(curl -fsSL "$PAGE_URL" |
-              grep -oE '[A-Za-z0-9_-]+-[0-9]{6}\\.osm\\.pbf' |
+              grep -oE '[A-Za-z0-9_-]+-[0-9]{6}\.osm\.pbf' |
               sort -V |
               tail -1)
 
