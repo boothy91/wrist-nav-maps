@@ -1,0 +1,249 @@
+name: Build Hillshading - Asia
+
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'Only build this region id (e.g. "scotland"). Leave blank to build all.'
+        required: false
+        default: ''
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: set-matrix
+        shell: bash
+        run: |
+          MATRIX=$(python3 << 'EOF'
+          import json
+          with open("config/regions/regions-asia.json") as f:
+              regions = json.load(f)
+          only = "${{ github.event.inputs.region }}".strip()
+          if only:
+              regions = [r for r in regions if r["id"] == only]
+          print(json.dumps({"region": regions}))
+          EOF
+          )
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+
+  ensure-releases:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      # Same up-front pattern as the contours workflow, to avoid the
+      # check-then-act race across parallel matrix jobs.
+      - name: Ensure hillshade release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view maps-asia-hillshade &>/dev/null || gh release create maps-asia-hillshade \
+            --title "Hillshading (SRTM .hgt) - Asia" \
+            --notes "Per-region zipped SRTM .hgt elevation tiles, for Mapsforge's HillsRenderConfig / MemoryCachingHgtReaderTileSource. Consumed directly by the watch app as an optional overlay layer under the base map - not a replacement map." \
+            --latest=false
+
+  build-hillshading:
+    needs: [generate-matrix, ensure-releases]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+      fail-fast: false
+      max-parallel: 4
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y wget jq zip unzip osmium-tool
+
+          python3 -m pip install --upgrade pip
+          python3 -m pip install "matplotlib<3.5" "numpy<1.22" setuptools beautifulsoup4 lxml
+          python3 -m pip install http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
+
+      - name: Compute region bbox
+        run: |
+          # Self-contained - no dependency on the contours workflow's
+          # release assets, which may or may not exist/persist. Same
+          # poly-with-PBF-fallback logic as the contours workflow, so the
+          # bbox comes out identical either way.
+          set -eo pipefail
+
+          RID="${{ matrix.region.id }}"
+          FBASE="${RID//\//-}"
+          PBF_URL="${{ matrix.region.pbf }}"
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+          PBF="/tmp/region.osm.pbf"
+
+          download() {
+            wget -q --timeout=300 --tries=5 --waitretry=15 --retry-connrefused -O "$1" "$2"
+          }
+
+          echo "Downloading PBF..."
+          download "$PBF" "$PBF_URL"
+
+          POLY="/tmp/region.poly"
+          BBOX=""
+          echo "Downloading poly from: $POLY_URL"
+          if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
+            BBOX=$(python3 - << 'PYEOF'
+          import sys
+          coords = []
+          with open("/tmp/region.poly") as f:
+              for line in f:
+                  parts = line.strip().split()
+                  if len(parts) == 2:
+                      try:
+                          coords.append((float(parts[0]), float(parts[1])))
+                      except ValueError:
+                          pass
+          if coords:
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+              raw_span = max(lons) - min(lons)
+              shifted = [lo + 360 if lo < 0 else lo for lo in lons]
+              shifted_span = max(shifted) - min(shifted)
+              if raw_span > 180 and shifted_span < raw_span:
+                  east = [(lo, la) for lo, la in coords if lo >= 0]
+                  west = [(lo, la) for lo, la in coords if lo < 0]
+                  main = east if len(east) >= len(west) else west
+                  lons = [p[0] for p in main]
+                  lats = [p[1] for p in main]
+              print(f"{min(lons)-0.2:.4f}:{min(lats)-0.2:.4f}:{max(lons)+0.2:.4f}:{max(lats)+0.2:.4f}")
+          PYEOF
+          )
+          fi
+
+          if [ -z "$BBOX" ]; then
+            echo "Poly unavailable, falling back to PBF extent"
+            FALLBACK_BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]-0.2):\(.[1]-0.2):\(.[2]+0.2):\(.[3]+0.2)"')
+            SANE=$(python3 - "$FALLBACK_BBOX" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1].split(":"))
+          print("ok" if (e - w) <= 10 and (n - s) <= 10 else "bad")
+          PYEOF
+          )
+            if [ "$SANE" = "bad" ]; then
+              echo "ERROR: fallback bbox $FALLBACK_BBOX is implausibly large - refusing to run against it." >&2
+              exit 1
+            fi
+            BBOX="$FALLBACK_BBOX"
+          fi
+
+          echo "Bounding box (W:S:E:N): $BBOX"
+          IFS=':' read -r W S E N <<< "$BBOX"
+          echo "$S:$W:$N:$E" > "/tmp/${FBASE}.bbox.txt"
+          cat "/tmp/${FBASE}.bbox.txt"
+
+      - name: Fetch SRTM hillshading tiles and package
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -eo pipefail
+
+          RID="${{ matrix.region.id }}"
+          FBASE="${RID//\//-}"
+          HGT_DIR="/tmp/hgt_cache"
+          OUT_ZIP="output/${FBASE}-hillshade.zip"
+
+          mkdir -p output "$HGT_DIR"
+
+          # bbox.txt format from the contours workflow is "S:W:N:E"
+          IFS=':' read -r S W N E < "/tmp/${FBASE}.bbox.txt"
+          echo "=== ${{ matrix.region.name }} :: bbox $W,$S,$E,$N ==="
+
+          # Re-use phyghtmap's own view3 (viewfinderpanoramas SRTM, void-filled)
+          # downloader rather than hand-rolling a second SRTM source - it's
+          # already proven working in the contours workflow. We don't care
+          # about the contour lines it emits here, only the .hgt tiles it
+          # pulls into --hgtdir as a side effect.
+          #
+          # NOTE: verify phyghtmap's on-disk cache naming (.hgt vs .hgt.zip)
+          # the first time this runs - unzip step below assumes .zip and may
+          # need adjusting if phyghtmap already leaves them unzipped.
+          for attempt in 1 2 3; do
+            if phyghtmap --source=view3 --step=100 --pbf \
+                --hgtdir="$HGT_DIR" --output-prefix=/tmp/hillshade_probe \
+                --jobs="$(nproc)" --area="${W}:${S}:${E}:${N}"; then
+              break
+            fi
+            echo "phyghtmap hgt fetch attempt $attempt failed, retrying in 15s..." >&2
+            sleep 15
+          done
+          rm -f /tmp/hillshade_probe*.osm.pbf
+
+          # Unzip any cached tiles that came down zipped
+          find "$HGT_DIR" -name '*.hgt.zip' -exec unzip -o -q -d "$HGT_DIR" {} \;
+
+          # viewfinderpanoramas ships each 1-degree tile bundled inside a
+          # larger 5x5-degree zip, so $HGT_DIR now holds far more tiles than
+          # this region needs (confirmed in the run log: 76 tiles cached for
+          # 4 actually required). Build the exact 1-degree tile name list
+          # from the bbox and pull only those out, wherever they landed
+          # (phyghtmap nests them under $HGT_DIR/VIEW3/, not flat).
+          STAGE_DIR="/tmp/hillshade_stage"
+          mkdir -p "$STAGE_DIR"
+
+          TILE_NAMES=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
+          import sys, math
+          w, s, e, n = map(float, sys.argv[1:5])
+          for lat in range(math.floor(s), math.floor(n) + 1):
+              for lon in range(math.floor(w), math.floor(e) + 1):
+                  ns = "N" if lat >= 0 else "S"
+                  ew = "E" if lon >= 0 else "W"
+                  print(f"{ns}{abs(lat):02d}{ew}{abs(lon):03d}.hgt")
+          PYEOF
+          )
+
+          MISSING=0
+          while IFS= read -r TILE; do
+            FOUND=$(find "$HGT_DIR" -name "$TILE" -print -quit)
+            if [ -n "$FOUND" ]; then
+              cp "$FOUND" "$STAGE_DIR/"
+            else
+              echo "WARNING: expected tile $TILE not found in cache (likely sea/void area)" >&2
+              MISSING=$((MISSING+1))
+            fi
+          done <<< "$TILE_NAMES"
+
+          HGT_COUNT=$(find "$STAGE_DIR" -name '*.hgt' | wc -l)
+          echo "Staged $HGT_COUNT tile(s), $MISSING expected tile(s) missing"
+          if [ "$HGT_COUNT" -eq 0 ]; then
+            echo "WARNING: no .hgt tiles found for $RID - skipping upload" >&2
+            exit 0
+          fi
+
+          echo "Packaging $HGT_COUNT .hgt tile(s)..."
+          # Resolve the absolute output path BEFORE cd'ing into the stage
+          # dir - avoids hardcoding a workspace path that only exists in
+          # containerized jobs (this runner uses /home/runner/work/..., not
+          # /github/workspace).
+          OUT_ZIP_ABS="$(pwd)/$OUT_ZIP"
+          (cd "$STAGE_DIR" && zip -q "$OUT_ZIP_ABS" ./*.hgt)
+          ls -lh "$OUT_ZIP"
+
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-asia-hillshade "$OUT_ZIP" --clobber; then
+              break
+            fi
+            echo "Upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done
+          echo "Uploaded ${FBASE}-hillshade.zip"
