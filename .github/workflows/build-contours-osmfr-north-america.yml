@@ -123,6 +123,7 @@ jobs:
           FBASE="${RID//\//-}"
           PBF_URL="${{ matrix.region.pbf }}"
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+          POLY_URL="${POLY_URL/extracts/polygons}"
 
           PBF="/tmp/region.osm.pbf"
           CONTOURS_ONLY_PBF="output/${FBASE}.contours-only.osm.pbf"

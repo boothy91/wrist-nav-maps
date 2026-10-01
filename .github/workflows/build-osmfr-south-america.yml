@@ -81,6 +81,7 @@ jobs:
           FBASE="${RID//\//-}"
           PBF_URL="${{ matrix.region.pbf }}"
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+          POLY_URL="${POLY_URL/extracts/polygons}"
 
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/${FBASE}.filtered.osm.pbf"

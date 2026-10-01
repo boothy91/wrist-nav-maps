@@ -255,6 +255,7 @@ jobs:
           echo "Using existing regional PBF: $PBF"
 
           POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+          POLY_URL="${POLY_URL/extracts/polygons}"
           BBOX=""
 
           echo "Downloading poly: $POLY_URL"
