@@ -1,0 +1,986 @@
+[
+  {
+    "id": "afghanistan",
+    "name": "Afghanistan",
+    "path": "asia/afghanistan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/afghanistan-latest.osm.pbf"
+  },
+  {
+    "id": "armenia",
+    "name": "Armenia",
+    "path": "asia/armenia",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/armenia-latest.osm.pbf"
+  },
+  {
+    "id": "bahrain",
+    "name": "Bahrain",
+    "path": "asia/bahrain",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/bahrain-latest.osm.pbf"
+  },
+  {
+    "id": "bhutan",
+    "name": "Bhutan",
+    "path": "asia/bhutan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/bhutan-latest.osm.pbf"
+  },
+  {
+    "id": "british_indian_ocean_territory",
+    "name": "British Indian Ocean Territory",
+    "path": "asia/british_indian_ocean_territory",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/british_indian_ocean_territory-latest.osm.pbf"
+  },
+  {
+    "id": "brunei",
+    "name": "Brunei",
+    "path": "asia/brunei",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/brunei-latest.osm.pbf"
+  },
+  {
+    "id": "cambodia",
+    "name": "Cambodia",
+    "path": "asia/cambodia",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/cambodia-latest.osm.pbf"
+  },
+  {
+    "id": "china",
+    "name": "China",
+    "path": "asia/china",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china-latest.osm.pbf"
+  },
+  {
+    "id": "east_timor",
+    "name": "East Timor",
+    "path": "asia/east_timor",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/east_timor-latest.osm.pbf"
+  },
+  {
+    "id": "georgia",
+    "name": "Georgia",
+    "path": "asia/georgia",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/georgia-latest.osm.pbf"
+  },
+  {
+    "id": "india",
+    "name": "India",
+    "path": "asia/india",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia",
+    "name": "Indonesia",
+    "path": "asia/indonesia",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia-latest.osm.pbf"
+  },
+  {
+    "id": "israel",
+    "name": "Israel",
+    "path": "asia/israel",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/israel-latest.osm.pbf"
+  },
+  {
+    "id": "israel_and_palestine",
+    "name": "Israel and Palestine",
+    "path": "asia/israel_and_palestine",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/israel_and_palestine-latest.osm.pbf"
+  },
+  {
+    "id": "israel_west_bank",
+    "name": "Israel West Bank",
+    "path": "asia/israel_west_bank",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/israel_west_bank-latest.osm.pbf"
+  },
+  {
+    "id": "japan",
+    "name": "Japan",
+    "path": "asia/japan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan-latest.osm.pbf"
+  },
+  {
+    "id": "kuwait",
+    "name": "Kuwait",
+    "path": "asia/kuwait",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/kuwait-latest.osm.pbf"
+  },
+  {
+    "id": "laos",
+    "name": "Laos",
+    "path": "asia/laos",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/laos-latest.osm.pbf"
+  },
+  {
+    "id": "lebanon",
+    "name": "Lebanon",
+    "path": "asia/lebanon",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/lebanon-latest.osm.pbf"
+  },
+  {
+    "id": "malaysia",
+    "name": "Malaysia",
+    "path": "asia/malaysia",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/malaysia-latest.osm.pbf"
+  },
+  {
+    "id": "maldives",
+    "name": "Maldives",
+    "path": "asia/maldives",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/maldives-latest.osm.pbf"
+  },
+  {
+    "id": "myanmar",
+    "name": "Myanmar",
+    "path": "asia/myanmar",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/myanmar-latest.osm.pbf"
+  },
+  {
+    "id": "oman",
+    "name": "Oman",
+    "path": "asia/oman",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/oman-latest.osm.pbf"
+  },
+  {
+    "id": "palestine",
+    "name": "Palestine",
+    "path": "asia/palestine",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/palestine-latest.osm.pbf"
+  },
+  {
+    "id": "philippines",
+    "name": "Philippines",
+    "path": "asia/philippines",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines-latest.osm.pbf"
+  },
+  {
+    "id": "qatar",
+    "name": "Qatar",
+    "path": "asia/qatar",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/qatar-latest.osm.pbf"
+  },
+  {
+    "id": "saudi_arabia",
+    "name": "Saudi Arabia",
+    "path": "asia/saudi_arabia",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/saudi_arabia-latest.osm.pbf"
+  },
+  {
+    "id": "singapore",
+    "name": "Singapore",
+    "path": "asia/singapore",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/singapore-latest.osm.pbf"
+  },
+  {
+    "id": "united_arab_emirates",
+    "name": "United Arab Emirates",
+    "path": "asia/united_arab_emirates",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/united_arab_emirates-latest.osm.pbf"
+  },
+  {
+    "id": "china_anhui",
+    "name": "Anhui",
+    "path": "asia/china/anhui",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/anhui-latest.osm.pbf"
+  },
+  {
+    "id": "china_beijing",
+    "name": "Beijing",
+    "path": "asia/china/beijing",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/beijing-latest.osm.pbf"
+  },
+  {
+    "id": "china_chongqing",
+    "name": "Chongqing",
+    "path": "asia/china/chongqing",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/chongqing-latest.osm.pbf"
+  },
+  {
+    "id": "china_fujian",
+    "name": "Fujian",
+    "path": "asia/china/fujian",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/fujian-latest.osm.pbf"
+  },
+  {
+    "id": "china_gansu",
+    "name": "Gansu",
+    "path": "asia/china/gansu",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/gansu-latest.osm.pbf"
+  },
+  {
+    "id": "china_guangdong",
+    "name": "Guangdong",
+    "path": "asia/china/guangdong",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/guangdong-latest.osm.pbf"
+  },
+  {
+    "id": "china_guangxi",
+    "name": "Guangxi",
+    "path": "asia/china/guangxi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/guangxi-latest.osm.pbf"
+  },
+  {
+    "id": "china_guizhou",
+    "name": "Guizhou",
+    "path": "asia/china/guizhou",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/guizhou-latest.osm.pbf"
+  },
+  {
+    "id": "china_hainan",
+    "name": "Hainan",
+    "path": "asia/china/hainan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/hainan-latest.osm.pbf"
+  },
+  {
+    "id": "china_hebei",
+    "name": "Hebei",
+    "path": "asia/china/hebei",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/hebei-latest.osm.pbf"
+  },
+  {
+    "id": "china_heilongjiang",
+    "name": "Heilongjiang",
+    "path": "asia/china/heilongjiang",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/heilongjiang-latest.osm.pbf"
+  },
+  {
+    "id": "china_henan",
+    "name": "Henan",
+    "path": "asia/china/henan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/henan-latest.osm.pbf"
+  },
+  {
+    "id": "china_hong_kong",
+    "name": "Hong Kong",
+    "path": "asia/china/hong_kong",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/hong_kong-latest.osm.pbf"
+  },
+  {
+    "id": "china_hubei",
+    "name": "Hubei",
+    "path": "asia/china/hubei",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/hubei-latest.osm.pbf"
+  },
+  {
+    "id": "china_hunan",
+    "name": "Hunan",
+    "path": "asia/china/hunan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/hunan-latest.osm.pbf"
+  },
+  {
+    "id": "china_inner_mongolia",
+    "name": "Inner Mongolia",
+    "path": "asia/china/inner_mongolia",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/inner_mongolia-latest.osm.pbf"
+  },
+  {
+    "id": "china_jiangsu",
+    "name": "Jiangsu",
+    "path": "asia/china/jiangsu",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/jiangsu-latest.osm.pbf"
+  },
+  {
+    "id": "china_jiangxi",
+    "name": "Jiangxi",
+    "path": "asia/china/jiangxi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/jiangxi-latest.osm.pbf"
+  },
+  {
+    "id": "china_jilin",
+    "name": "Jilin",
+    "path": "asia/china/jilin",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/jilin-latest.osm.pbf"
+  },
+  {
+    "id": "china_liaoning",
+    "name": "Liaoning",
+    "path": "asia/china/liaoning",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/liaoning-latest.osm.pbf"
+  },
+  {
+    "id": "china_macau",
+    "name": "Macau",
+    "path": "asia/china/macau",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/macau-latest.osm.pbf"
+  },
+  {
+    "id": "china_ningxia",
+    "name": "Ningxia",
+    "path": "asia/china/ningxia",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/ningxia-latest.osm.pbf"
+  },
+  {
+    "id": "china_qinghai",
+    "name": "Qinghai",
+    "path": "asia/china/qinghai",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/qinghai-latest.osm.pbf"
+  },
+  {
+    "id": "china_shaanxi",
+    "name": "Shaanxi",
+    "path": "asia/china/shaanxi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/shaanxi-latest.osm.pbf"
+  },
+  {
+    "id": "china_shandong",
+    "name": "Shandong",
+    "path": "asia/china/shandong",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/shandong-latest.osm.pbf"
+  },
+  {
+    "id": "china_shanghai",
+    "name": "Shanghai",
+    "path": "asia/china/shanghai",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/shanghai-latest.osm.pbf"
+  },
+  {
+    "id": "china_shanxi",
+    "name": "Shanxi",
+    "path": "asia/china/shanxi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/shanxi-latest.osm.pbf"
+  },
+  {
+    "id": "china_sichuan",
+    "name": "Sichuan",
+    "path": "asia/china/sichuan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/sichuan-latest.osm.pbf"
+  },
+  {
+    "id": "china_tianjin",
+    "name": "Tianjin",
+    "path": "asia/china/tianjin",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/tianjin-latest.osm.pbf"
+  },
+  {
+    "id": "china_tibet",
+    "name": "Tibet",
+    "path": "asia/china/tibet",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/tibet-latest.osm.pbf"
+  },
+  {
+    "id": "china_xinjiang",
+    "name": "Xinjiang",
+    "path": "asia/china/xinjiang",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/xinjiang-latest.osm.pbf"
+  },
+  {
+    "id": "china_yunnan",
+    "name": "Yunnan",
+    "path": "asia/china/yunnan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/yunnan-latest.osm.pbf"
+  },
+  {
+    "id": "china_zhejiang",
+    "name": "Zhejiang",
+    "path": "asia/china/zhejiang",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/china/zhejiang-latest.osm.pbf"
+  },
+  {
+    "id": "india_andaman_and_nicobar_islands",
+    "name": "Andaman and Nicobar Islands",
+    "path": "asia/india/andaman_and_nicobar_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/andaman_and_nicobar_islands-latest.osm.pbf"
+  },
+  {
+    "id": "india_andhra_pradesh",
+    "name": "Andhra Pradesh",
+    "path": "asia/india/andhra_pradesh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/andhra_pradesh-latest.osm.pbf"
+  },
+  {
+    "id": "india_arunachal_pradesh",
+    "name": "Arunachal Pradesh",
+    "path": "asia/india/arunachal_pradesh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/arunachal_pradesh-latest.osm.pbf"
+  },
+  {
+    "id": "india_assam",
+    "name": "Assam",
+    "path": "asia/india/assam",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/assam-latest.osm.pbf"
+  },
+  {
+    "id": "india_bihar",
+    "name": "Bihar",
+    "path": "asia/india/bihar",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/bihar-latest.osm.pbf"
+  },
+  {
+    "id": "india_chandigarh",
+    "name": "Chandigarh",
+    "path": "asia/india/chandigarh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/chandigarh-latest.osm.pbf"
+  },
+  {
+    "id": "india_chhattisgarh",
+    "name": "Chhattisgarh",
+    "path": "asia/india/chhattisgarh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/chhattisgarh-latest.osm.pbf"
+  },
+  {
+    "id": "india_dadra_and_nagar_haveli",
+    "name": "Dadra and Nagar Haveli",
+    "path": "asia/india/dadra_and_nagar_haveli",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/dadra_and_nagar_haveli-latest.osm.pbf"
+  },
+  {
+    "id": "india_dadra_and_nagar_haveli_and_daman_and_diu",
+    "name": "Dadra and Nagar Haveli and Daman and Diu",
+    "path": "asia/india/dadra_and_nagar_haveli_and_daman_and_diu",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/dadra_and_nagar_haveli_and_daman_and_diu-latest.osm.pbf"
+  },
+  {
+    "id": "india_daman_and_diu",
+    "name": "Daman And Diu",
+    "path": "asia/india/daman_and_diu",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/daman_and_diu-latest.osm.pbf"
+  },
+  {
+    "id": "india_goa",
+    "name": "Goa",
+    "path": "asia/india/goa",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/goa-latest.osm.pbf"
+  },
+  {
+    "id": "india_gujarat",
+    "name": "Gujarat",
+    "path": "asia/india/gujarat",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/gujarat-latest.osm.pbf"
+  },
+  {
+    "id": "india_haryana",
+    "name": "Haryana",
+    "path": "asia/india/haryana",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/haryana-latest.osm.pbf"
+  },
+  {
+    "id": "india_himachal_pradesh",
+    "name": "Himachal Pradesh",
+    "path": "asia/india/himachal_pradesh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/himachal_pradesh-latest.osm.pbf"
+  },
+  {
+    "id": "india_jammu_and_kashmir",
+    "name": "Jammu And Kashmir",
+    "path": "asia/india/jammu_and_kashmir",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/jammu_and_kashmir-latest.osm.pbf"
+  },
+  {
+    "id": "india_jharkhand",
+    "name": "Jharkhand",
+    "path": "asia/india/jharkhand",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/jharkhand-latest.osm.pbf"
+  },
+  {
+    "id": "india_karnataka",
+    "name": "Karnataka",
+    "path": "asia/india/karnataka",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/karnataka-latest.osm.pbf"
+  },
+  {
+    "id": "india_kerala",
+    "name": "Kerala",
+    "path": "asia/india/kerala",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/kerala-latest.osm.pbf"
+  },
+  {
+    "id": "india_ladakh",
+    "name": "Ladakh",
+    "path": "asia/india/ladakh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/ladakh-latest.osm.pbf"
+  },
+  {
+    "id": "india_lakshadweep",
+    "name": "Lakshadweep",
+    "path": "asia/india/lakshadweep",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/lakshadweep-latest.osm.pbf"
+  },
+  {
+    "id": "india_madhya_pradesh",
+    "name": "Madhya Pradesh",
+    "path": "asia/india/madhya_pradesh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/madhya_pradesh-latest.osm.pbf"
+  },
+  {
+    "id": "india_maharashtra",
+    "name": "Maharashtra",
+    "path": "asia/india/maharashtra",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/maharashtra-latest.osm.pbf"
+  },
+  {
+    "id": "india_manipur",
+    "name": "Manipur",
+    "path": "asia/india/manipur",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/manipur-latest.osm.pbf"
+  },
+  {
+    "id": "india_meghalaya",
+    "name": "Meghalaya",
+    "path": "asia/india/meghalaya",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/meghalaya-latest.osm.pbf"
+  },
+  {
+    "id": "india_mizoram",
+    "name": "Mizoram",
+    "path": "asia/india/mizoram",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/mizoram-latest.osm.pbf"
+  },
+  {
+    "id": "india_nagaland",
+    "name": "Nagaland",
+    "path": "asia/india/nagaland",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/nagaland-latest.osm.pbf"
+  },
+  {
+    "id": "india_national_capital_territory_of_delhi",
+    "name": "National Capital Territory of Delhi",
+    "path": "asia/india/national_capital_territory_of_delhi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/national_capital_territory_of_delhi-latest.osm.pbf"
+  },
+  {
+    "id": "india_odisha",
+    "name": "Odisha",
+    "path": "asia/india/odisha",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/odisha-latest.osm.pbf"
+  },
+  {
+    "id": "india_puducherry",
+    "name": "Puducherry",
+    "path": "asia/india/puducherry",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/puducherry-latest.osm.pbf"
+  },
+  {
+    "id": "india_punjab",
+    "name": "Punjab",
+    "path": "asia/india/punjab",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/punjab-latest.osm.pbf"
+  },
+  {
+    "id": "india_rajasthan",
+    "name": "Rajasthan",
+    "path": "asia/india/rajasthan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/rajasthan-latest.osm.pbf"
+  },
+  {
+    "id": "india_sikkim",
+    "name": "Sikkim",
+    "path": "asia/india/sikkim",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/sikkim-latest.osm.pbf"
+  },
+  {
+    "id": "india_tamil_nadu",
+    "name": "Tamil Nadu",
+    "path": "asia/india/tamil_nadu",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/tamil_nadu-latest.osm.pbf"
+  },
+  {
+    "id": "india_telangana",
+    "name": "Telangana",
+    "path": "asia/india/telangana",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/telangana-latest.osm.pbf"
+  },
+  {
+    "id": "india_tripura",
+    "name": "Tripura",
+    "path": "asia/india/tripura",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/tripura-latest.osm.pbf"
+  },
+  {
+    "id": "india_uttar_pradesh",
+    "name": "Uttar Pradesh",
+    "path": "asia/india/uttar_pradesh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/uttar_pradesh-latest.osm.pbf"
+  },
+  {
+    "id": "india_uttarakhand",
+    "name": "Uttarakhand",
+    "path": "asia/india/uttarakhand",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/uttarakhand-latest.osm.pbf"
+  },
+  {
+    "id": "india_west_bengal",
+    "name": "West Bengal",
+    "path": "asia/india/west_bengal",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/india/west_bengal-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_aceh",
+    "name": "Aceh",
+    "path": "asia/indonesia/aceh",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/aceh-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_bali",
+    "name": "Bali",
+    "path": "asia/indonesia/bali",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/bali-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_bangka_belitung_islands",
+    "name": "Bangka Belitung Islands",
+    "path": "asia/indonesia/bangka_belitung_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/bangka_belitung_islands-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_banten",
+    "name": "Banten",
+    "path": "asia/indonesia/banten",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/banten-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_bengkulu",
+    "name": "Bengkulu",
+    "path": "asia/indonesia/bengkulu",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/bengkulu-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_central_java",
+    "name": "Central Java",
+    "path": "asia/indonesia/central_java",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/central_java-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_central_kalimantan",
+    "name": "Central Kalimantan",
+    "path": "asia/indonesia/central_kalimantan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/central_kalimantan-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_central_papua",
+    "name": "Central Papua",
+    "path": "asia/indonesia/central_papua",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/central_papua-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_central_sulawesi",
+    "name": "Central Sulawesi",
+    "path": "asia/indonesia/central_sulawesi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/central_sulawesi-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_east_java",
+    "name": "East Java",
+    "path": "asia/indonesia/east_java",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/east_java-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_east_kalimantan",
+    "name": "East Kalimantan",
+    "path": "asia/indonesia/east_kalimantan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/east_kalimantan-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_east_nusa_tenggara",
+    "name": "East Nusa Tenggara",
+    "path": "asia/indonesia/east_nusa_tenggara",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/east_nusa_tenggara-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_gorontalo",
+    "name": "Gorontalo",
+    "path": "asia/indonesia/gorontalo",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/gorontalo-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_highland_papua",
+    "name": "Highland Papua",
+    "path": "asia/indonesia/highland_papua",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/highland_papua-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_jakarta",
+    "name": "Jakarta",
+    "path": "asia/indonesia/jakarta",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/jakarta-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_jambi",
+    "name": "Jambi",
+    "path": "asia/indonesia/jambi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/jambi-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_lampung",
+    "name": "Lampung",
+    "path": "asia/indonesia/lampung",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/lampung-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_maluku",
+    "name": "Maluku",
+    "path": "asia/indonesia/maluku",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/maluku-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_north_kalimantan",
+    "name": "North Kalimantan",
+    "path": "asia/indonesia/north_kalimantan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/north_kalimantan-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_north_maluku",
+    "name": "North Maluku",
+    "path": "asia/indonesia/north_maluku",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/north_maluku-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_north_sulawesi",
+    "name": "North Sulawesi",
+    "path": "asia/indonesia/north_sulawesi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/north_sulawesi-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_north_sumatra",
+    "name": "North Sumatra",
+    "path": "asia/indonesia/north_sumatra",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/north_sumatra-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_papua",
+    "name": "Papua",
+    "path": "asia/indonesia/papua",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/papua-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_riau",
+    "name": "Riau",
+    "path": "asia/indonesia/riau",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/riau-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_riau_islands",
+    "name": "Riau Islands",
+    "path": "asia/indonesia/riau_islands",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/riau_islands-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_south_kalimantan",
+    "name": "South Kalimantan",
+    "path": "asia/indonesia/south_kalimantan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/south_kalimantan-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_south_papua",
+    "name": "South Papua",
+    "path": "asia/indonesia/south_papua",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/south_papua-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_south_sulawesi",
+    "name": "South Sulawesi",
+    "path": "asia/indonesia/south_sulawesi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/south_sulawesi-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_south_sumatra",
+    "name": "South Sumatra",
+    "path": "asia/indonesia/south_sumatra",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/south_sumatra-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_southeast_sulawesi",
+    "name": "Southeast Sulawesi",
+    "path": "asia/indonesia/southeast_sulawesi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/southeast_sulawesi-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_southwest_papua",
+    "name": "Southwest Papua",
+    "path": "asia/indonesia/southwest_papua",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/southwest_papua-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_west_java",
+    "name": "West Java",
+    "path": "asia/indonesia/west_java",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/west_java-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_west_kalimantan",
+    "name": "West Kalimantan",
+    "path": "asia/indonesia/west_kalimantan",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/west_kalimantan-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_west_nusa_tenggara",
+    "name": "West Nusa Tenggara",
+    "path": "asia/indonesia/west_nusa_tenggara",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/west_nusa_tenggara-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_west_papua",
+    "name": "West Papua",
+    "path": "asia/indonesia/west_papua",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/west_papua-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_west_sulawesi",
+    "name": "West Sulawesi",
+    "path": "asia/indonesia/west_sulawesi",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/west_sulawesi-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_west_sumatra",
+    "name": "West Sumatra",
+    "path": "asia/indonesia/west_sumatra",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/west_sumatra-latest.osm.pbf"
+  },
+  {
+    "id": "indonesia_yogyakarta",
+    "name": "Yogyakarta",
+    "path": "asia/indonesia/yogyakarta",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/indonesia/yogyakarta-latest.osm.pbf"
+  },
+  {
+    "id": "japan_chubu",
+    "name": "Chubu",
+    "path": "asia/japan/chubu",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan/chubu-latest.osm.pbf"
+  },
+  {
+    "id": "japan_chugoku",
+    "name": "Chugoku",
+    "path": "asia/japan/chugoku",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan/chugoku-latest.osm.pbf"
+  },
+  {
+    "id": "japan_hokkaido",
+    "name": "Hokkaido",
+    "path": "asia/japan/hokkaido",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan/hokkaido-latest.osm.pbf"
+  },
+  {
+    "id": "japan_kansai",
+    "name": "Kansai",
+    "path": "asia/japan/kansai",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan/kansai-latest.osm.pbf"
+  },
+  {
+    "id": "japan_kanto",
+    "name": "Kanto",
+    "path": "asia/japan/kanto",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan/kanto-latest.osm.pbf"
+  },
+  {
+    "id": "japan_kyushu",
+    "name": "Kyushu",
+    "path": "asia/japan/kyushu",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan/kyushu-latest.osm.pbf"
+  },
+  {
+    "id": "japan_shikoku",
+    "name": "Shikoku",
+    "path": "asia/japan/shikoku",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan/shikoku-latest.osm.pbf"
+  },
+  {
+    "id": "japan_tohoku",
+    "name": "Tohoku",
+    "path": "asia/japan/tohoku",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/japan/tohoku-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_bangsamoro",
+    "name": "Bangsamoro",
+    "path": "asia/philippines/bangsamoro",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/bangsamoro-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_bicol_region",
+    "name": "Bicol Region",
+    "path": "asia/philippines/bicol_region",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/bicol_region-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_cagayan_valley",
+    "name": "Cagayan Valley",
+    "path": "asia/philippines/cagayan_valley",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/cagayan_valley-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_calabarzon",
+    "name": "CALABARZON",
+    "path": "asia/philippines/calabarzon",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/calabarzon-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_caraga",
+    "name": "Caraga",
+    "path": "asia/philippines/caraga",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/caraga-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_central_luzon",
+    "name": "Central Luzon",
+    "path": "asia/philippines/central_luzon",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/central_luzon-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_central_visayas",
+    "name": "Central Visayas",
+    "path": "asia/philippines/central_visayas",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/central_visayas-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_cordillera_administrative_region",
+    "name": "Cordillera Administrative Region",
+    "path": "asia/philippines/cordillera_administrative_region",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/cordillera_administrative_region-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_davao_region",
+    "name": "Davao Region",
+    "path": "asia/philippines/davao_region",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/davao_region-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_eastern_visayas",
+    "name": "Eastern Visayas",
+    "path": "asia/philippines/eastern_visayas",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/eastern_visayas-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_ilocos_region",
+    "name": "Ilocos Region",
+    "path": "asia/philippines/ilocos_region",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/ilocos_region-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_metro_manila",
+    "name": "Metro Manila",
+    "path": "asia/philippines/metro_manila",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/metro_manila-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_mimaropa",
+    "name": "MIMAROPA",
+    "path": "asia/philippines/mimaropa",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/mimaropa-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_negros_island_region",
+    "name": "Negros Island Region",
+    "path": "asia/philippines/negros_island_region",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/negros_island_region-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_northern_mindanao",
+    "name": "Northern Mindanao",
+    "path": "asia/philippines/northern_mindanao",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/northern_mindanao-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_soccsksargen",
+    "name": "SOCCSKSARGEN",
+    "path": "asia/philippines/soccsksargen",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/soccsksargen-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_western_visayas",
+    "name": "Western Visayas",
+    "path": "asia/philippines/western_visayas",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/western_visayas-latest.osm.pbf"
+  },
+  {
+    "id": "philippines_zamboanga_peninsula",
+    "name": "Zamboanga Peninsula",
+    "path": "asia/philippines/zamboanga_peninsula",
+    "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/zamboanga_peninsula-latest.osm.pbf"
+  }
+]
