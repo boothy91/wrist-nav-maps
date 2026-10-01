@@ -1,0 +1,361 @@
+name: Build Maps - OSMFR Europe 2
+
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'Only build this region id (e.g. "scotland"). Leave blank to build all.'
+        required: false
+        default: ''
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: set-matrix
+        shell: bash
+        run: |
+          MATRIX=$(python3 << 'EOF'
+          import json
+          with open("config/regions/regions-europe-2-osmfr.json") as f:
+              regions = json.load(f)
+          only = "${{ github.event.inputs.region }}".strip()
+          if only:
+              regions = [r for r in regions if r["id"] == only]
+          print(json.dumps({"region": regions}))
+          EOF
+          )
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+
+  build-maps:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+      fail-fast: false
+      max-parallel: 4
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y osmium-tool wget jq
+
+      - name: Setup Osmosis and mapsforge
+        run: |
+          wget -q --tries=5 --waitretry=15 --retry-connrefused https://github.com/openstreetmap/osmosis/releases/download/0.49.2/osmosis-0.49.2.zip
+          unzip -q osmosis-0.49.2.zip -d osmosis_install
+          chmod +x osmosis_install/osmosis-0.49.2/bin/osmosis
+          echo "OSMOSIS_HOME=$(pwd)/osmosis_install/osmosis-0.49.2" >> $GITHUB_ENV
+          mkdir -p $HOME/.openstreetmap/osmosis/plugins
+          wget -q --tries=5 --waitretry=15 --retry-connrefused "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/0.21.0/mapsforge-map-writer-0.21.0-jar-with-dependencies.jar" \
+            -O $HOME/.openstreetmap/osmosis/plugins/mapsforge-map-writer.jar
+          echo "JAVACMD_OPTIONS=-Xmx13000m" >> $GITHUB_ENV
+
+      - name: Ensure release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view maps-osmfr-europe-2 &>/dev/null || gh release create maps-osmfr-europe-2 \
+            --title "Maps - OSMFR Europe 2" \
+            --notes "Auto-generated .map files for WristNav. Updated monthly." \
+            --latest=false
+
+      - name: Download, filter and write map
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -eo pipefail
+
+          RID="${{ matrix.region.id }}"
+          FBASE="${RID//\//-}"
+          PBF_URL="${{ matrix.region.pbf }}"
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+
+          PBF="/tmp/region.osm.pbf"
+          FILTERED="/tmp/${FBASE}.filtered.osm.pbf"
+          FNAME="${FBASE}.map"
+          OUT="output/$FNAME"
+          TAG_CONF="/tmp/tag-mapping.xml"
+
+          mkdir -p output
+
+          echo "=== ${{ matrix.region.name }} ==="
+
+          download() {
+            wget -q --timeout=300 --tries=5 --waitretry=15 --retry-connrefused -O "$1" "$2"
+          }
+
+          echo "Downloading PBF..."
+
+          DOWNLOAD_URL="$PBF_URL"
+
+          if [[ "$PBF_URL" == https://download.geofabrik.de/*-latest.osm.pbf ]]; then
+            PAGE_URL="${PBF_URL%-latest.osm.pbf}.html"
+            echo "Resolving latest Geofabrik PBF from: $PAGE_URL"
+
+            FILE_NAME=$(curl -fsSL --retry 5 --retry-delay 15 --retry-all-errors "$PAGE_URL" |
+              grep -oE '[A-Za-z0-9_-]+-[0-9]{6}\.osm\.pbf' |
+              sort -V |
+              tail -1)
+
+            if [ -z "$FILE_NAME" ]; then
+              echo "ERROR: Could not determine latest Geofabrik PBF" >&2
+              exit 1
+            fi
+
+            DOWNLOAD_URL="${PBF_URL%/*}/$FILE_NAME"
+            echo "Resolved PBF: $DOWNLOAD_URL"
+          fi
+
+          download "$PBF" "$DOWNLOAD_URL"
+          ls -lh "$PBF"
+
+          POLY="/tmp/region.poly"
+          BBOX=""
+          echo "Downloading poly from: $POLY_URL"
+          if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
+            echo "Poly downloaded successfully"
+            BBOX=$(python3 - << 'PYEOF'
+          import sys
+          coords = []
+          with open("/tmp/region.poly") as f:
+              for line in f:
+                  parts = line.strip().split()
+                  if len(parts) == 2:
+                      try:
+                          coords.append((float(parts[0]), float(parts[1])))
+                      except ValueError:
+                          pass
+          if coords:
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+              raw_span = max(lons) - min(lons)
+              shifted = [lo + 360 if lo < 0 else lo for lo in lons]
+              shifted_span = max(shifted) - min(shifted)
+              if raw_span > 180 and shifted_span < raw_span:
+                  east = [(lo, la) for lo, la in coords if lo >= 0]
+                  west = [(lo, la) for lo, la in coords if lo < 0]
+                  main = east if len(east) >= len(west) else west
+                  dropped = len(coords) - len(main)
+                  print(f"WARNING: antimeridian crossing detected, dropping {dropped} poly points on the far side (raw span {raw_span:.1f} deg)", file=sys.stderr)
+                  lons = [p[0] for p in main]
+                  lats = [p[1] for p in main]
+              print(f"{min(lons)-0.2:.4f}:{min(lats)-0.2:.4f}:{max(lons)+0.2:.4f}:{max(lats)+0.2:.4f}")
+          PYEOF
+          )
+          fi
+
+          if [ -z "$BBOX" ]; then
+            echo "Poly unavailable, falling back to PBF extent"
+            FALLBACK_BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]-0.2):\(.[1]-0.2):\(.[2]+0.2):\(.[3]+0.2)"')
+            SANE=$(python3 - "$FALLBACK_BBOX" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1].split(":"))
+          print("ok" if (e - w) <= 10 and (n - s) <= 10 else "bad")
+          PYEOF
+          )
+            if [ "$SANE" = "bad" ]; then
+              echo "ERROR: fallback bbox $FALLBACK_BBOX is implausibly large - likely a mistagged outlier node in the source data. Refusing to run against it." >&2
+              exit 1
+            fi
+            BBOX="$FALLBACK_BBOX"
+          fi
+
+          echo "Bounding box: $BBOX"
+          IFS=':' read -r W S E N <<< "$BBOX"
+
+          CLAMPED=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
+          import sys
+          w, s, e, n = map(float, sys.argv[1:5])
+          w = max(w, -180.0)
+          e = min(e, 180.0)
+          s = max(s, -90.0)
+          n = min(n, 90.0)
+          print(f"{w}:{s}:{e}:{n}")
+          PYEOF
+          )
+          IFS=':' read -r W S E N <<< "$CLAMPED"
+
+          echo "Filtering tags..."
+          osmium tags-filter "$PBF" \
+            w/highway w/waterway w/natural w/landuse w/railway \
+            n/place=city,town,village,hamlet,suburb,locality \
+            n/railway n/natural=peak,saddle,spring,cave_entrance \
+            n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe \
+            n/barrier=stile,gate,kissing_gate,cattle_grid,lift_gate \
+            n/highway=ford \
+            n/shop=convenience,supermarket \
+            r/route=hiking,foot,bicycle,mtb \
+            r/natural \
+            r/landuse \
+            r/leisure \
+            r/boundary \
+            -o "$FILTERED" --overwrite
+
+          cat << 'XMLEOF' > "$TAG_CONF"
+          <?xml version="1.0" encoding="UTF-8"?>
+          <tag-mapping xmlns="http://mapsforge.org/tag-mapping"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
+                       default-zoom-appear="16" profile-name="default-profile">
+            <pois>
+              <osm-tag key="place" value="city" zoom-appear="3" />
+              <osm-tag key="place" value="town" zoom-appear="7" />
+              <osm-tag key="place" value="village" zoom-appear="11" />
+              <osm-tag key="place" value="hamlet" zoom-appear="12" />
+              <osm-tag key="place" value="suburb" zoom-appear="12" />
+              <osm-tag key="place" value="locality" zoom-appear="13" />
+              <osm-tag key="natural" value="peak" zoom-appear="12" />
+              <osm-tag key="natural" value="saddle" zoom-appear="13" />
+              <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
+              <osm-tag key="tourism" value="information" zoom-appear="14" />
+              <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
+              <osm-tag key="tourism" value="camp_site" zoom-appear="13" />
+              <osm-tag key="tourism" value="picnic_site" zoom-appear="14" />
+              <osm-tag key="amenity" value="drinking_water" zoom-appear="14" />
+              <osm-tag key="amenity" value="toilets" zoom-appear="14" />
+              <osm-tag key="amenity" value="parking" zoom-appear="13" />
+              <osm-tag key="amenity" value="shelter" zoom-appear="13" />
+              <osm-tag key="barrier" value="stile" zoom-appear="14" />
+              <osm-tag key="barrier" value="gate" zoom-appear="14" />
+              <osm-tag key="barrier" value="kissing_gate" zoom-appear="14" />
+              <osm-tag key="barrier" value="cattle_grid" zoom-appear="14" />
+              <osm-tag key="barrier" value="lift_gate" zoom-appear="14" />
+              <osm-tag key="natural" value="spring" zoom-appear="14" />
+              <osm-tag key="natural" value="cave_entrance" zoom-appear="13" />
+              <osm-tag key="highway" value="ford" zoom-appear="13" />
+              <osm-tag key="amenity" value="bench" zoom-appear="15" />
+              <osm-tag key="amenity" value="pub" zoom-appear="13" />
+              <osm-tag key="amenity" value="cafe" zoom-appear="13" />
+              <osm-tag key="shop" value="convenience" zoom-appear="14" />
+              <osm-tag key="shop" value="supermarket" zoom-appear="12" />
+            </pois>
+            <ways>
+              <osm-tag key="highway" value="motorway" zoom-appear="6" />
+              <osm-tag key="highway" value="trunk" zoom-appear="7" />
+              <osm-tag key="highway" value="primary" zoom-appear="9" />
+              <osm-tag key="highway" value="secondary" zoom-appear="10" />
+              <osm-tag key="highway" value="tertiary" zoom-appear="11" />
+              <osm-tag key="highway" value="unclassified" zoom-appear="12" />
+              <osm-tag key="highway" value="residential" zoom-appear="12" />
+              <osm-tag key="highway" value="service" zoom-appear="13" />
+              <osm-tag key="highway" value="track" zoom-appear="12" />
+              <osm-tag key="highway" value="path" zoom-appear="12" />
+              <osm-tag key="highway" value="footway" zoom-appear="13" />
+              <osm-tag key="highway" value="cycleway" zoom-appear="12" />
+              <osm-tag key="highway" value="bridleway" zoom-appear="12" />
+              <osm-tag key="highway" value="steps" zoom-appear="13" />
+              <!-- SAC hiking difficulty -->
+              <osm-tag key="sac_scale" value="strolling" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="mountain_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="demanding_mountain_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="alpine_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="demanding_alpine_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="difficult_alpine_hiking" zoom-appear="12" />
+              <osm-tag key="natural" value="cliff" zoom-appear="12" />
+              <osm-tag key="waterway" value="river" zoom-appear="11" />
+              <osm-tag key="waterway" value="stream" zoom-appear="13" />
+              <osm-tag key="natural" value="water" zoom-appear="10" />
+              <osm-tag key="natural" value="wood" zoom-appear="10" />
+              <osm-tag key="landuse" value="forest" zoom-appear="10" />
+              <osm-tag key="landuse" value="residential" zoom-appear="11" />
+              <osm-tag key="railway" value="rail" zoom-appear="10" />
+            </ways>
+          </tag-mapping>
+          XMLEOF
+
+          SIZE_MB=$(du -m "$FILTERED" | cut -f1)
+          echo "Filtered PBF size: ${SIZE_MB}MB"
+
+          # simplification-factor=1 to stop Map-Writer from collapsing curve points into straight vectors
+          # First attempt (max zoom 21 -> 17) crashed at the same relative point, which
+          # points at the deepest interval's BASE zoom (was 14) as the real driver, not
+          # max zoom - base zoom sets the tile-index grid size across the whole bbox.
+          # Collapsing to two intervals and dropping that base zoom to 10 cuts the grid
+          # by ~16x per axis-doubling. This is the next experiment, not a confirmed fix -
+          # re-check the run.
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$FILTERED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 zoom-interval-conf=5,0,7,10,8,17"
+          $CMD
+          ls -lh "$OUT"
+
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-osmfr-europe-2 "$OUT" --clobber; then
+              break
+            fi
+            echo "Upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done
+          echo "Uploaded $FNAME"
+
+  generate-index:
+    needs: build-maps
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate and upload index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - << 'EOF'
+          import json, subprocess, os
+          from datetime import datetime
+
+          with open("config/regions/regions-europe-2-osmfr.json") as f:
+              regions = json.load(f)
+
+          result = subprocess.run([
+              "gh", "release", "view", "maps-osmfr-europe-2",
+              "--json", "assets", "--jq", "[.assets[].name]"
+          ], capture_output=True, text=True,
+          env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
+
+          uploaded = json.loads(result.stdout or "[]")
+          base_url = "https://github.com/${{ github.repository }}/releases/download/maps-osmfr-europe-2"
+
+          index = {
+              "updated": datetime.now().strftime("%Y-%m-%d"),
+              "regions": []
+          }
+
+          for region in regions:
+              fname = region["id"].replace("/", "-") + ".map"
+              if fname in uploaded:
+                  index["regions"].append({
+                      "id": region["id"],
+                      "name": region["name"],
+                      "path": region["path"],
+                      "url": f"{base_url}/{fname}"
+                  })
+
+          os.makedirs("output", exist_ok=True)
+          with open("output/index.json", "w") as f:
+              json.dump(index, f, indent=2)
+
+          print(f"index.json: {len(index['regions'])} regions")
+          EOF
+
+          for attempt in 1 2 3 4 5; do
+            if gh release upload maps-osmfr-europe-2 output/index.json --clobber; then
+              break
+            fi
+            echo "Index upload attempt $attempt failed, retrying in 30s..." >&2
+            sleep 30
+          done

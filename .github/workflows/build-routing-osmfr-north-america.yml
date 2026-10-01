@@ -1,0 +1,665 @@
+name: Build Routing - OSMFR North America
+
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: "Region ID (leave blank for all OSMFR North America regions)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build region matrix
+        id: matrix
+        env:
+          REGION: ${{ inputs.region }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "$REGION" ]; then
+            jq -c --arg id "$REGION" \
+              '{include: [ .[] | select(.id == $id) ]}' \
+              config/regions/regions-north-america-osmfr.json > /tmp/matrix.json
+          else
+            jq -c '{include: .}' \
+              config/regions/regions-north-america-osmfr.json > /tmp/matrix.json
+          fi
+
+          echo "Resolved matrix:"
+          cat /tmp/matrix.json
+
+          COUNT="$(jq '.include | length' /tmp/matrix.json)"
+
+          if [ "$COUNT" -eq 0 ]; then
+            echo "ERROR: No matching region found."
+            exit 1
+          fi
+
+          echo "matrix=$(cat /tmp/matrix.json)" >> "$GITHUB_OUTPUT"
+
+  build-routing:
+    needs: prepare
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+
+      matrix: ${{ fromJson(needs.prepare.outputs.matrix) }}
+
+    name: "${{ matrix.name }}"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show region configuration
+        env:
+          REGION_NAME: ${{ matrix.name }}
+          REGION_ID: ${{ matrix.id }}
+          REGION_PATH: ${{ matrix.path }}
+          PBF_URL: ${{ matrix.pbf }}
+        run: |
+          set -euo pipefail
+
+          echo "========================================"
+          echo "BRouter regional build"
+          echo "========================================"
+          echo "Name: $REGION_NAME"
+          echo "ID:   $REGION_ID"
+          echo "Path: $REGION_PATH"
+          echo "PBF:  $PBF_URL"
+          echo
+
+          if [[ "$PBF_URL" != https://download.geofabrik.de/* ]]; then
+            echo "ERROR: Region PBF is not a Geofabrik URL."
+            exit 1
+          fi
+
+          if [[ "$PBF_URL" != *.osm.pbf ]]; then
+            echo "ERROR: Region PBF URL does not end in .osm.pbf."
+            exit 1
+          fi
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          set -euo pipefail
+
+          sudo apt-get update
+
+          sudo apt-get install -y \
+            wget \
+            unzip \
+            osmium-tool
+
+          python3 -m pip install --upgrade pip
+          python3 -m pip install "matplotlib<3.5" "numpy<1.22" setuptools beautifulsoup4 lxml
+          python3 -m pip install http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
+
+      - name: Checkout BRouter
+        run: |
+          set -euo pipefail
+
+          rm -rf "$RUNNER_TEMP/brouter"
+
+          git clone \
+            --depth 1 \
+            https://github.com/abrensch/brouter.git \
+            "$RUNNER_TEMP/brouter"
+
+          git -C "$RUNNER_TEMP/brouter" fetch \
+            --depth 1 \
+            origin \
+            2f4bcb80d2e28342f282224bf2c6cf741b390553
+
+          git -C "$RUNNER_TEMP/brouter" checkout \
+            2f4bcb80d2e28342f282224bf2c6cf741b390553
+
+          echo "BRouter commit:"
+          git -C "$RUNNER_TEMP/brouter" log -1 --oneline
+
+      - name: Build BRouter map-creator JAR
+        working-directory: ${{ runner.temp }}/brouter
+        run: |
+          set -euo pipefail
+
+          ./gradlew clean build fatJar \
+            --no-daemon \
+
+          JAR="$(
+            find brouter-server/build/libs \
+              -maxdepth 1 \
+              -type f \
+              -name '*-all.jar' \
+              | head -n 1
+          )"
+
+          if [ -z "$JAR" ]; then
+            echo "ERROR: BRouter fat JAR was not produced."
+
+            find brouter-server/build/libs \
+              -maxdepth 1 \
+              -type f \
+              -print || true
+
+            exit 1
+          fi
+
+          echo "Using BRouter JAR:"
+          echo "$JAR"
+
+          cp "$JAR" "$RUNNER_TEMP/brouter.jar"
+
+      - name: Download Geofabrik regional PBF
+        env:
+          PBF_URL: ${{ matrix.pbf }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$RUNNER_TEMP/brouter-input"
+
+          PBF_FILE="$(basename "$PBF_URL")"
+
+          echo "Downloading:"
+          echo "$PBF_URL"
+          echo
+
+          wget \
+            --tries=5 \
+            --waitretry=15 \
+            --retry-connrefused \
+            --progress=dot:giga \
+            -O "$RUNNER_TEMP/brouter-input/$PBF_FILE" \
+            "$PBF_URL"
+
+          if [ ! -s "$RUNNER_TEMP/brouter-input/$PBF_FILE" ]; then
+            echo "ERROR: PBF download is empty."
+            exit 1
+          fi
+
+          echo
+          echo "Downloaded:"
+          ls -lh "$RUNNER_TEMP/brouter-input/$PBF_FILE"
+
+          echo "PBF_FILE=$PBF_FILE" >> "$GITHUB_ENV"
+
+      - name: Prepare official BRouter map-creation workspace
+        run: |
+          set -euo pipefail
+
+          cd "$RUNNER_TEMP/brouter"
+
+          rm -rf mapbuild
+
+          mkdir -p mapbuild
+          mkdir -p mapbuild/tmp
+
+          cp "$RUNNER_TEMP/brouter-input/$PBF_FILE" \
+            mapbuild/planet-new.osm.pbf
+
+          cp "$RUNNER_TEMP/brouter.jar" \
+            mapbuild/brouter.jar
+
+          cp misc/profiles2/lookups.dat mapbuild/lookups.dat
+          cp misc/profiles2/all.brf mapbuild/all.brf
+          cp misc/profiles2/trekking.brf mapbuild/trekking.brf
+          cp misc/profiles2/softaccess.brf mapbuild/softaccess.brf
+
+          echo "Map creation workspace:"
+          find mapbuild \
+            -maxdepth 2 \
+            -type f \
+            -printf '%p %s bytes\n'
+
+      - name: Prepare SRTM elevation data
+        env:
+          REGION_NAME: ${{ matrix.name }}
+          REGION_ID: ${{ matrix.id }}
+          PBF_URL: ${{ matrix.pbf }}
+        run: |
+          set -eo pipefail
+
+          FBASE="${REGION_ID//\//-}"
+          PBF="$RUNNER_TEMP/brouter-input/$PBF_FILE"
+          POLY="/tmp/region.poly"
+          HGT_DIR="$RUNNER_TEMP/srtm-hgt"
+          BBOX_FILE="$RUNNER_TEMP/${FBASE}.bbox.txt"
+
+          mkdir -p "$HGT_DIR"
+
+          download() {
+            wget -q --timeout=300 --tries=5 \
+              --waitretry=15 --retry-connrefused \
+              -O "$1" "$2"
+          }
+
+          echo "Using existing regional PBF: $PBF"
+
+          POLY_URL="${PBF_URL/-latest.osm.pbf/.poly}"
+          BBOX=""
+
+          echo "Downloading poly: $POLY_URL"
+          if download "$POLY" "$POLY_URL" && [ -s "$POLY" ]; then
+            BBOX=$(python3 - <<'PYEOF'
+          coords = []
+          with open("/tmp/region.poly") as f:
+              for line in f:
+                  parts = line.strip().split()
+                  if len(parts) == 2:
+                      try:
+                          coords.append((float(parts[0]), float(parts[1])))
+                      except ValueError:
+                          pass
+
+          if coords:
+              lons = [c[0] for c in coords]
+              lats = [c[1] for c in coords]
+              raw_span = max(lons) - min(lons)
+              shifted = [lo + 360 if lo < 0 else lo for lo in lons]
+              shifted_span = max(shifted) - min(shifted)
+
+              if raw_span > 180 and shifted_span < raw_span:
+                  east = [(lo, la) for lo, la in coords if lo >= 0]
+                  west = [(lo, la) for lo, la in coords if lo < 0]
+                  main = east if len(east) >= len(west) else west
+                  lons = [p[0] for p in main]
+                  lats = [p[1] for p in main]
+
+              print(
+                  f"{min(lons)-0.2:.4f}:"
+                  f"{min(lats)-0.2:.4f}:"
+                  f"{max(lons)+0.2:.4f}:"
+                  f"{max(lats)+0.2:.4f}"
+              )
+          PYEOF
+          )
+          fi
+
+          if [ -z "$BBOX" ]; then
+            echo "Poly unavailable; using PBF extent"
+            BBOX=$(python3 - "$PBF" <<'PYEOF'
+          import json
+          import subprocess
+          import sys
+
+          pbf = sys.argv[1]
+          info = subprocess.check_output(
+              ["osmium", "fileinfo", "-e", "--json", pbf],
+              text=True
+          )
+          bbox = json.loads(info)["data"]["bbox"]
+          print(
+              f"{bbox[0]-0.2:.4f}:"
+              f"{bbox[1]-0.2:.4f}:"
+              f"{bbox[2]+0.2:.4f}:"
+              f"{bbox[3]+0.2:.4f}"
+          )
+          PYEOF
+          )
+          fi
+
+          IFS=':' read -r W S E N <<< "$BBOX"
+          echo "$S:$W:$N:$E" > "$BBOX_FILE"
+
+          echo "Region: $REGION_NAME"
+          echo "BBOX:   $W,$S,$E,$N"
+
+          for attempt in 1 2 3; do
+            if phyghtmap --source=view3 --step=100 --pbf \
+                --hgtdir="$HGT_DIR" \
+                --output-prefix=/tmp/brouter_elevation_probe \
+                --jobs="$(nproc)" \
+                --area="${W}:${S}:${E}:${N}"; then
+              break
+            fi
+
+            if [ "$attempt" -eq 3 ]; then
+              echo "ERROR: phyghtmap SRTM download failed."
+              exit 1
+            fi
+
+            echo "phyghtmap attempt $attempt failed; retrying in 15s..."
+            sleep 15
+          done
+
+          rm -f /tmp/brouter_elevation_probe*.osm.pbf
+
+          find "$HGT_DIR" -name '*.hgt.zip' \
+            -exec unzip -o -q -d "$HGT_DIR" {} \;
+
+          HGT_COUNT=$(find "$HGT_DIR" -name '*.hgt' | wc -l)
+          echo "Downloaded/extracted $HGT_COUNT HGT tile(s)."
+
+          if [ "$HGT_COUNT" -eq 0 ]; then
+            echo "ERROR: no SRTM HGT tiles were downloaded."
+            exit 1
+          fi
+
+      - name: Convert SRTM elevation to BRouter rasters
+        env:
+          REGION_ID: ${{ matrix.id }}
+        working-directory: ${{ runner.temp }}/brouter/mapbuild
+        run: |
+          set -euo pipefail
+
+          HGT_DIR="$RUNNER_TEMP/srtm-hgt"
+          HGT_STAGE="$RUNNER_TEMP/srtm-hgt-flat"
+          BEF_DIR="$RUNNER_TEMP/brouter/mapbuild/tmp/srtm3_bef"
+          BBOX_FILE="$RUNNER_TEMP/${REGION_ID//\//-}.bbox.txt"
+
+          mkdir -p "$HGT_STAGE" "$BEF_DIR"
+
+          echo "Staging HGT tiles for BRouter..."
+          find "$HGT_DIR" -type f -name '*.hgt' -exec cp -f {} "$HGT_STAGE/" \;
+
+          HGT_COUNT=$(find "$HGT_STAGE" -maxdepth 1 -name '*.hgt' | wc -l)
+          echo "Staged $HGT_COUNT HGT tile(s)."
+
+          if [ "$HGT_COUNT" -eq 0 ]; then
+            echo "ERROR: no flat HGT tiles available for BRouter conversion."
+            exit 1
+          fi
+
+          IFS=':' read -r S W N E < "$BBOX_FILE"
+
+          python3 - "$W" "$S" "$E" "$N" > "$RUNNER_TEMP/brouter-srtm-blocks.txt" <<'PYEOF'
+          import math
+          import sys
+
+          west, south, east, north = map(float, sys.argv[1:5])
+
+          lon_start = math.floor(west / 5.0) * 5
+          lon_end = math.floor((east - 1e-9) / 5.0) * 5
+          lat_start = math.floor(south / 5.0) * 5
+          lat_end = math.floor((north - 1e-9) / 5.0) * 5
+
+          for lon_base in range(lon_start, lon_end + 1, 5):
+              for lat_base in range(lat_start, lat_end + 1, 5):
+                  lon_idx = ((lon_base + 180) // 5) + 1
+                  lat_idx = (60 - lat_base) // 5
+                  name = f"srtm_{lon_idx:02d}_{lat_idx:02d}"
+                  print(name)
+          PYEOF
+
+          echo "BRouter SRTM blocks:"
+          cat "$RUNNER_TEMP/brouter-srtm-blocks.txt"
+
+          while IFS= read -r BLOCK; do
+            [ -n "$BLOCK" ] || continue
+
+            echo "Converting $BLOCK..."
+
+            java \
+              -Xmx1024M \
+              -cp brouter.jar \
+              btools.mapcreator.ElevationRasterTileConverter \
+              "$BLOCK" \
+              "$HGT_STAGE" \
+              "$BEF_DIR"
+          done < "$RUNNER_TEMP/brouter-srtm-blocks.txt"
+
+          BEF_COUNT=$(find "$BEF_DIR" -maxdepth 1 -name '*.bef' | wc -l)
+          echo "Created $BEF_COUNT BRouter elevation raster(s)."
+
+          if [ "$BEF_COUNT" -eq 0 ]; then
+            echo "ERROR: no BRouter .bef elevation rasters were created."
+            exit 1
+          fi
+
+          find "$BEF_DIR" -maxdepth 1 -type f -printf '%f %s bytes\n' | sort
+
+      - name: Run official BRouter OsmFastCutter
+        working-directory: ${{ runner.temp }}/brouter/mapbuild
+        run: |
+          set -euo pipefail
+
+          mkdir -p tmp/nodetiles
+          mkdir -p tmp/waytiles
+          mkdir -p tmp/waytiles55
+          mkdir -p tmp/nodes55
+
+          echo "========================================"
+          echo "STEP 1 - OsmFastCutter"
+          echo "========================================"
+
+          java \
+            -Xmx6144M \
+            -Xms6144M \
+            -Xmn256M \
+            -cp brouter.jar \
+            -Ddeletetmpfiles=true \
+            -DuseDenseMaps=true \
+            btools.util.StackSampler \
+            btools.mapcreator.OsmFastCutter \
+            lookups.dat \
+            tmp/nodetiles \
+            tmp/waytiles \
+            tmp/nodes55 \
+            tmp/waytiles55 \
+            tmp/bordernids.dat \
+            tmp/relations.dat \
+            tmp/restrictions.dat \
+            all.brf \
+            trekking.brf \
+            softaccess.brf \
+            planet-new.osm.pbf
+
+          echo
+          echo "OsmFastCutter output:"
+          find tmp \
+            -maxdepth 2 \
+            -type f \
+            -printf '%p %s bytes\n' \
+            | sort
+
+      - name: Run official BRouter PosUnifier
+        working-directory: ${{ runner.temp }}/brouter/mapbuild
+        run: |
+          set -euo pipefail
+
+          mkdir -p tmp/unodes55
+          mkdir -p tmp/srtm3_bef
+
+          echo "========================================"
+          echo "STEP 2 - PosUnifier"
+          echo "========================================"
+
+          java \
+            -Xmx6144M \
+            -Xms6144M \
+            -Xmn256M \
+            -cp brouter.jar \
+            -Ddeletetmpfiles=true \
+            -DuseDenseMaps=true \
+            btools.util.StackSampler \
+            btools.mapcreator.PosUnifier \
+            tmp/nodes55 \
+            tmp/unodes55 \
+            tmp/bordernids.dat \
+            tmp/bordernodes.dat \
+            tmp/srtm3_bef
+
+          echo
+          echo "PosUnifier output:"
+          find tmp/unodes55 \
+            -maxdepth 1 \
+            -type f \
+            -printf '%p %s bytes\n' \
+            | sort
+
+      - name: Run official BRouter WayLinker
+        working-directory: ${{ runner.temp }}/brouter/mapbuild
+        run: |
+          set -euo pipefail
+
+          mkdir -p tmp/segments
+
+          echo "========================================"
+          echo "STEP 3 - WayLinker"
+          echo "========================================"
+
+          java \
+            -Xmx6144M \
+            -Xms6144M \
+            -Xmn256M \
+            -cp brouter.jar \
+            -DuseDenseMaps=true \
+            -DskipEncodingCheck=true \
+            btools.util.StackSampler \
+            btools.mapcreator.WayLinker \
+            tmp/unodes55 \
+            tmp/waytiles55 \
+            tmp/bordernodes.dat \
+            tmp/restrictions.dat \
+            lookups.dat \
+            all.brf \
+            tmp/segments \
+            rd5
+
+          echo
+          echo "WayLinker output:"
+          find tmp/segments \
+            -maxdepth 1 \
+            -type f \
+            -name '*.rd5' \
+            -printf '%f %s bytes\n' \
+            | sort
+
+      - name: Verify RD5 files
+        env:
+          REGION_NAME: ${{ matrix.name }}
+          REGION_ID: ${{ matrix.id }}
+        working-directory: ${{ runner.temp }}/brouter/mapbuild
+        run: |
+          set -euo pipefail
+
+          echo "========================================"
+          echo "GENERATED RD5 FILES"
+          echo "========================================"
+
+          RD5_COUNT="$(
+            find tmp/segments \
+              -maxdepth 1 \
+              -type f \
+              -name '*.rd5' \
+              | wc -l
+          )"
+
+          if [ "$RD5_COUNT" -eq 0 ]; then
+            echo "ERROR: No RD5 files were generated."
+            echo
+            echo "BRouter build directory:"
+            find tmp \
+              -maxdepth 2 \
+              -type f \
+              -printf '%p %s bytes\n' \
+              | sort
+
+            exit 1
+          fi
+
+          echo "Region: $REGION_NAME"
+          echo "ID:     $REGION_ID"
+          echo
+          echo "RD5 files generated: $RD5_COUNT"
+          echo
+
+          find tmp/segments \
+            -maxdepth 1 \
+            -type f \
+            -name '*.rd5' \
+            -exec ls -lh {} \;
+
+      - name: Package RD5 files
+        env:
+          REGION_NAME: ${{ matrix.name }}
+          REGION_ID: ${{ matrix.id }}
+        run: |
+          set -euo pipefail
+
+          OUTPUT="$RUNNER_TEMP/${REGION_ID}-rd5"
+          ARCHIVE="$RUNNER_TEMP/${REGION_ID}-rd5.zip"
+
+          mkdir -p "$OUTPUT"
+
+          cp \
+            "$RUNNER_TEMP/brouter/mapbuild/tmp/segments/"*.rd5 \
+            "$OUTPUT/"
+
+          cat > "$OUTPUT/README.txt" <<EOF
+          WristNav BRouter routing data
+
+          Region: $REGION_NAME
+          Region ID: $REGION_ID
+
+          OSM source:
+          Geofabrik regional .osm.pbf extract
+
+          Map creation:
+          BRouter official map-creation pipeline
+
+          Input:
+          Regional Geofabrik PBF
+
+          Output:
+          Standard BRouter .rd5 segment files
+
+          Polygon clipping:
+          None
+          EOF
+
+          echo "Packaged RD5:"
+          ls -lh "$OUTPUT"
+
+          cd "$OUTPUT"
+          zip -q "$ARCHIVE" ./*
+
+          echo "Created archive:"
+          ls -lh "$ARCHIVE"
+
+      - name: Ensure release exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view routing-osmfr-north-america &>/dev/null || gh release create routing-osmfr-north-america \
+            --title "Routing - OSMFR North America" \
+            --notes "Auto-generated BRouter routing data with SRTM elevation for WristNav." \
+            --latest=false
+
+      - name: Upload RD5 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.id }}-rd5
+          path: ${{ runner.temp }}/${{ matrix.id }}-rd5/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload RD5 release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REGION_ID: ${{ matrix.id }}
+        run: |
+          set -euo pipefail
+
+          ARCHIVE="$RUNNER_TEMP/${REGION_ID}-rd5.zip"
+
+          gh release upload routing-osmfr-north-america "$ARCHIVE" --clobber
