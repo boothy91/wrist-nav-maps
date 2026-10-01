@@ -97,7 +97,28 @@ jobs:
           }
 
           echo "Downloading PBF..."
-          download "$PBF" "$PBF_URL"
+
+          DOWNLOAD_URL="$PBF_URL"
+
+          if [[ "$PBF_URL" == https://download.geofabrik.de/*-latest.osm.pbf ]]; then
+            PAGE_URL="${PBF_URL%-latest.osm.pbf}.html"
+            echo "Resolving latest Geofabrik PBF from: $PAGE_URL"
+
+            FILE_NAME=$(curl -fsSL "$PAGE_URL" |
+              grep -oE '[A-Za-z0-9_-]+-[0-9]{6}\.osm\.pbf' |
+              sort -V |
+              tail -1)
+
+            if [ -z "$FILE_NAME" ]; then
+              echo "ERROR: Could not determine latest Geofabrik PBF" >&2
+              exit 1
+            fi
+
+            DOWNLOAD_URL="${PBF_URL%/*}/$FILE_NAME"
+            echo "Resolved PBF: $DOWNLOAD_URL"
+          fi
+
+          download "$PBF" "$DOWNLOAD_URL"
           ls -lh "$PBF"
 
           POLY="/tmp/region.poly"
