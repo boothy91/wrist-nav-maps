@@ -196,5 +196,23 @@
     "name": "USA Virgin Islands",
     "path": "central-america/usa_virgin_islands",
     "pbf": "https://download.openstreetmap.fr/extracts/central-america/usa_virgin_islands-latest.osm.pbf"
+  },
+  {
+    "id": "belize",
+    "name": "Belize",
+    "path": "central-america/belize",
+    "pbf": "https://download.geofabrik.de/central-america/belize-latest.osm.pbf"
+  },
+  {
+    "id": "cuba",
+    "name": "Cuba",
+    "path": "central-america/cuba",
+    "pbf": "https://download.geofabrik.de/central-america/cuba-latest.osm.pbf"
+  },
+  {
+    "id": "guatemala",
+    "name": "Guatemala",
+    "path": "central-america/guatemala",
+    "pbf": "https://download.geofabrik.de/central-america/guatemala-latest.osm.pbf"
   }
 ]

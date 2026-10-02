@@ -982,5 +982,131 @@
     "name": "Zamboanga Peninsula",
     "path": "asia/philippines/zamboanga_peninsula",
     "pbf": "https://download.openstreetmap.fr/extracts/asia/philippines/zamboanga_peninsula-latest.osm.pbf"
+  },
+  {
+    "id": "azerbaijan",
+    "name": "Azerbaijan",
+    "path": "asia/azerbaijan",
+    "pbf": "https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf"
+  },
+  {
+    "id": "bangladesh",
+    "name": "Bangladesh",
+    "path": "asia/bangladesh",
+    "pbf": "https://download.geofabrik.de/asia/bangladesh-latest.osm.pbf"
+  },
+  {
+    "id": "iran",
+    "name": "Iran",
+    "path": "asia/iran",
+    "pbf": "https://download.geofabrik.de/asia/iran-latest.osm.pbf"
+  },
+  {
+    "id": "iraq",
+    "name": "Iraq",
+    "path": "asia/iraq",
+    "pbf": "https://download.geofabrik.de/asia/iraq-latest.osm.pbf"
+  },
+  {
+    "id": "jordan",
+    "name": "Jordan",
+    "path": "asia/jordan",
+    "pbf": "https://download.geofabrik.de/asia/jordan-latest.osm.pbf"
+  },
+  {
+    "id": "kazakhstan",
+    "name": "Kazakhstan",
+    "path": "asia/kazakhstan",
+    "pbf": "https://download.geofabrik.de/asia/kazakhstan-latest.osm.pbf"
+  },
+  {
+    "id": "kyrgyzstan",
+    "name": "Kyrgyzstan",
+    "path": "asia/kyrgyzstan",
+    "pbf": "https://download.geofabrik.de/asia/kyrgyzstan-latest.osm.pbf"
+  },
+  {
+    "id": "mongolia",
+    "name": "Mongolia",
+    "path": "asia/mongolia",
+    "pbf": "https://download.geofabrik.de/asia/mongolia-latest.osm.pbf"
+  },
+  {
+    "id": "nepal",
+    "name": "Nepal",
+    "path": "asia/nepal",
+    "pbf": "https://download.geofabrik.de/asia/nepal-latest.osm.pbf"
+  },
+  {
+    "id": "north-korea",
+    "name": "North Korea",
+    "path": "asia/north-korea",
+    "pbf": "https://download.geofabrik.de/asia/north-korea-latest.osm.pbf"
+  },
+  {
+    "id": "pakistan",
+    "name": "Pakistan",
+    "path": "asia/pakistan",
+    "pbf": "https://download.geofabrik.de/asia/pakistan-latest.osm.pbf"
+  },
+  {
+    "id": "south-korea",
+    "name": "South Korea",
+    "path": "asia/south-korea",
+    "pbf": "https://download.geofabrik.de/asia/south-korea-latest.osm.pbf"
+  },
+  {
+    "id": "sri-lanka",
+    "name": "Sri Lanka",
+    "path": "asia/sri-lanka",
+    "pbf": "https://download.geofabrik.de/asia/sri-lanka-latest.osm.pbf"
+  },
+  {
+    "id": "syria",
+    "name": "Syria",
+    "path": "asia/syria",
+    "pbf": "https://download.geofabrik.de/asia/syria-latest.osm.pbf"
+  },
+  {
+    "id": "taiwan",
+    "name": "Taiwan",
+    "path": "asia/taiwan",
+    "pbf": "https://download.geofabrik.de/asia/taiwan-latest.osm.pbf"
+  },
+  {
+    "id": "tajikistan",
+    "name": "Tajikistan",
+    "path": "asia/tajikistan",
+    "pbf": "https://download.geofabrik.de/asia/tajikistan-latest.osm.pbf"
+  },
+  {
+    "id": "thailand",
+    "name": "Thailand",
+    "path": "asia/thailand",
+    "pbf": "https://download.geofabrik.de/asia/thailand-latest.osm.pbf"
+  },
+  {
+    "id": "turkmenistan",
+    "name": "Turkmenistan",
+    "path": "asia/turkmenistan",
+    "pbf": "https://download.geofabrik.de/asia/turkmenistan-latest.osm.pbf"
+  },
+  {
+    "id": "uzbekistan",
+    "name": "Uzbekistan",
+    "path": "asia/uzbekistan",
+    "pbf": "https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf"
+  },
+  {
+    "id": "vietnam",
+    "name": "Vietnam",
+    "path": "asia/vietnam",
+    "pbf": "https://download.geofabrik.de/asia/vietnam-latest.osm.pbf"
+  },
+  {
+    "id": "yemen",
+    "name": "Yemen",
+    "path": "asia/yemen",
+    "pbf": "https://download.geofabrik.de/asia/yemen-latest.osm.pbf"
   }
 ]

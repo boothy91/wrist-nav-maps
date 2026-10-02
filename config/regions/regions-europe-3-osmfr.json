@@ -1012,5 +1012,23 @@
     "name": "Yorkshire and the Humber",
     "path": "europe/united_kingdom/england/yorkshire_and_the_humber",
     "pbf": "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/yorkshire_and_the_humber-latest.osm.pbf"
+  },
+  {
+    "id": "romania",
+    "name": "Romania",
+    "path": "europe/romania",
+    "pbf": "https://download.geofabrik.de/europe/romania-latest.osm.pbf"
+  },
+  {
+    "id": "serbia",
+    "name": "Serbia",
+    "path": "europe/serbia",
+    "pbf": "https://download.geofabrik.de/europe/serbia-latest.osm.pbf"
+  },
+  {
+    "id": "slovenia",
+    "name": "Slovenia",
+    "path": "europe/slovenia",
+    "pbf": "https://download.geofabrik.de/europe/slovenia-latest.osm.pbf"
   }
 ]

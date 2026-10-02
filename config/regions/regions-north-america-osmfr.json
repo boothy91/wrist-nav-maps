@@ -1138,5 +1138,11 @@
     "name": "Southwest",
     "path": "north-america/us-west/colorado/southwest",
     "pbf": "https://download.openstreetmap.fr/extracts/north-america/us-west/colorado/southwest-latest.osm.pbf"
+  },
+  {
+    "id": "greenland",
+    "name": "Greenland",
+    "path": "north-america/greenland",
+    "pbf": "https://download.geofabrik.de/north-america/greenland-latest.osm.pbf"
   }
 ]

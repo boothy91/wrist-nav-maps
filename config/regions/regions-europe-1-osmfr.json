@@ -946,5 +946,53 @@
     "name": "Munster",
     "path": "europe/germany/nordrhein_westfalen/munster",
     "pbf": "https://download.openstreetmap.fr/extracts/europe/germany/nordrhein_westfalen/munster-latest.osm.pbf"
+  },
+  {
+    "id": "albania",
+    "name": "Albania",
+    "path": "europe/albania",
+    "pbf": "https://download.geofabrik.de/europe/albania-latest.osm.pbf"
+  },
+  {
+    "id": "belarus",
+    "name": "Belarus",
+    "path": "europe/belarus",
+    "pbf": "https://download.geofabrik.de/europe/belarus-latest.osm.pbf"
+  },
+  {
+    "id": "bosnia-herzegovina",
+    "name": "Bosnia-Herzegovina",
+    "path": "europe/bosnia-herzegovina",
+    "pbf": "https://download.geofabrik.de/europe/bosnia-herzegovina-latest.osm.pbf"
+  },
+  {
+    "id": "bulgaria",
+    "name": "Bulgaria",
+    "path": "europe/bulgaria",
+    "pbf": "https://download.geofabrik.de/europe/bulgaria-latest.osm.pbf"
+  },
+  {
+    "id": "croatia",
+    "name": "Croatia",
+    "path": "europe/croatia",
+    "pbf": "https://download.geofabrik.de/europe/croatia-latest.osm.pbf"
+  },
+  {
+    "id": "cyprus",
+    "name": "Cyprus",
+    "path": "europe/cyprus",
+    "pbf": "https://download.geofabrik.de/europe/cyprus-latest.osm.pbf"
+  },
+  {
+    "id": "estonia",
+    "name": "Estonia",
+    "path": "europe/estonia",
+    "pbf": "https://download.geofabrik.de/europe/estonia-latest.osm.pbf"
+  },
+  {
+    "id": "faroe-islands",
+    "name": "Faroe Islands",
+    "path": "europe/faroe-islands",
+    "pbf": "https://download.geofabrik.de/europe/faroe-islands-latest.osm.pbf"
   }
 ]

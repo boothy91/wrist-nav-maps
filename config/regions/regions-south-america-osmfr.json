@@ -442,5 +442,35 @@
     "name": "Sao-paulo",
     "path": "south-america/brazil/southeast/sao-paulo",
     "pbf": "https://download.openstreetmap.fr/extracts/south-america/brazil/southeast/sao-paulo-latest.osm.pbf"
+  },
+  {
+    "id": "bolivia",
+    "name": "Bolivia",
+    "path": "south-america/bolivia",
+    "pbf": "https://download.geofabrik.de/south-america/bolivia-latest.osm.pbf"
+  },
+  {
+    "id": "colombia",
+    "name": "Colombia",
+    "path": "south-america/colombia",
+    "pbf": "https://download.geofabrik.de/south-america/colombia-latest.osm.pbf"
+  },
+  {
+    "id": "ecuador",
+    "name": "Ecuador",
+    "path": "south-america/ecuador",
+    "pbf": "https://download.geofabrik.de/south-america/ecuador-latest.osm.pbf"
+  },
+  {
+    "id": "peru",
+    "name": "Peru",
+    "path": "south-america/peru",
+    "pbf": "https://download.geofabrik.de/south-america/peru-latest.osm.pbf"
+  },
+  {
+    "id": "uruguay",
+    "name": "Uruguay",
+    "path": "south-america/uruguay",
+    "pbf": "https://download.geofabrik.de/south-america/uruguay-latest.osm.pbf"
   }
 ]

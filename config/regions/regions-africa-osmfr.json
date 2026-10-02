@@ -574,5 +574,53 @@
     "name": "Western",
     "path": "africa/uganda/western",
     "pbf": "https://download.openstreetmap.fr/extracts/africa/uganda/western-latest.osm.pbf"
+  },
+  {
+    "id": "botswana",
+    "name": "Botswana",
+    "path": "africa/botswana",
+    "pbf": "https://download.geofabrik.de/africa/botswana-latest.osm.pbf"
+  },
+  {
+    "id": "guinea-bissau",
+    "name": "Guinea-Bissau",
+    "path": "africa/guinea-bissau",
+    "pbf": "https://download.geofabrik.de/africa/guinea-bissau-latest.osm.pbf"
+  },
+  {
+    "id": "liberia",
+    "name": "Liberia",
+    "path": "africa/liberia",
+    "pbf": "https://download.geofabrik.de/africa/liberia-latest.osm.pbf"
+  },
+  {
+    "id": "libya",
+    "name": "Libya",
+    "path": "africa/libya",
+    "pbf": "https://download.geofabrik.de/africa/libya-latest.osm.pbf"
+  },
+  {
+    "id": "sierra-leone",
+    "name": "Sierra Leone",
+    "path": "africa/sierra-leone",
+    "pbf": "https://download.geofabrik.de/africa/sierra-leone-latest.osm.pbf"
+  },
+  {
+    "id": "somalia",
+    "name": "Somalia",
+    "path": "africa/somalia",
+    "pbf": "https://download.geofabrik.de/africa/somalia-latest.osm.pbf"
+  },
+  {
+    "id": "zambia",
+    "name": "Zambia",
+    "path": "africa/zambia",
+    "pbf": "https://download.geofabrik.de/africa/zambia-latest.osm.pbf"
+  },
+  {
+    "id": "zimbabwe",
+    "name": "Zimbabwe",
+    "path": "africa/zimbabwe",
+    "pbf": "https://download.geofabrik.de/africa/zimbabwe-latest.osm.pbf"
   }
 ]
