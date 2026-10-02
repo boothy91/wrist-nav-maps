@@ -85,8 +85,8 @@ jobs:
           echo "PBF:  $PBF_URL"
           echo
 
-          if [[ "$PBF_URL" != https://download.geofabrik.de/* ]]; then
-            echo "ERROR: Region PBF is not a Geofabrik URL."
+          if [[ "$PBF_URL" != https://download.geofabrik.de/* && "$PBF_URL" != https://download.openstreetmap.fr/* ]]; then
+            echo "ERROR: Region PBF must be a Geofabrik or OSMFR URL."
             exit 1
           fi
 
@@ -169,7 +169,7 @@ jobs:
 
           cp "$JAR" "$RUNNER_TEMP/brouter.jar"
 
-      - name: Download Geofabrik regional PBF
+      - name: Download regional PBF
         env:
           PBF_URL: ${{ matrix.pbf }}
         run: |
@@ -613,13 +613,13 @@ jobs:
           Region ID: $REGION_ID
 
           OSM source:
-          Geofabrik regional .osm.pbf extract
+          Regional .osm.pbf extract (Geofabrik or OSMFR)
 
           Map creation:
           BRouter official map-creation pipeline
 
           Input:
-          Regional Geofabrik PBF
+          Regional PBF
 
           Output:
           Standard BRouter .rd5 segment files
