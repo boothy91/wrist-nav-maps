@@ -2,6 +2,7 @@ name: Pipeline stage - Routing (one area at a time)
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 permissions:
   contents: write
