@@ -1,0 +1,67 @@
+name: Pipeline stage - Contours (one area at a time)
+
+on:
+  workflow_call:
+
+permissions:
+  contents: write
+
+jobs:
+  africa:
+    uses: ./.github/workflows/build-contours-osmfr-africa.yml
+    permissions:
+      contents: write
+  asia:
+    needs: africa
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-asia.yml
+    permissions:
+      contents: write
+  central_america:
+    needs: asia
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-central-america.yml
+    permissions:
+      contents: write
+  europe_1:
+    needs: central_america
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-europe-1.yml
+    permissions:
+      contents: write
+  europe_2:
+    needs: europe_1
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-europe-2.yml
+    permissions:
+      contents: write
+  europe_3:
+    needs: europe_2
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-europe-3.yml
+    permissions:
+      contents: write
+  north_america:
+    needs: europe_3
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-north-america.yml
+    permissions:
+      contents: write
+  oceania:
+    needs: north_america
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-oceania.yml
+    permissions:
+      contents: write
+  russia:
+    needs: oceania
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-russia.yml
+    permissions:
+      contents: write
+  south_america:
+    needs: russia
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/build-contours-osmfr-south-america.yml
+    permissions:
+      contents: write

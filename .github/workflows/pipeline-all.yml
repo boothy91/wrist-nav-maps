@@ -1,0 +1,31 @@
+name: Pipeline - All OSMFR (maps, contours, hillshading, routing)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  maps:
+    uses: ./.github/workflows/pipeline-stage-maps.yml
+    permissions:
+      contents: write
+  contours:
+    needs: maps
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/pipeline-stage-contours.yml
+    permissions:
+      contents: write
+  hillshading:
+    needs: contours
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/pipeline-stage-hillshading.yml
+    permissions:
+      contents: write
+  routing:
+    needs: hillshading
+    if: ${{ !cancelled() }}
+    uses: ./.github/workflows/pipeline-stage-routing.yml
+    permissions:
+      contents: write

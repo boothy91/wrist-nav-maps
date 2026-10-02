@@ -1,6 +1,7 @@
 name: Build Hillshading - OSMFR Oceania
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       region:

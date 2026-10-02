@@ -1,6 +1,7 @@
 name: Build Maps - OSMFR South America
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       region:

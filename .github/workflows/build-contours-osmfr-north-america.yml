@@ -1,6 +1,7 @@
 name: Build Contours - OSMFR North America
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       region:

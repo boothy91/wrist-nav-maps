@@ -1,6 +1,7 @@
 name: Build Maps - Europe UK (OSM France)
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       region:

@@ -1,6 +1,7 @@
 name: Build Hillshading - OSMFR Europe 1
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       region:
