@@ -325,11 +325,11 @@ jobs:
 
           result = subprocess.run([
               "gh", "release", "view", "maps-osmfr-europe-2",
-              "--json", "assets", "--jq", "[.assets[].name]"
+              "--json", "assets", "--jq", "[.assets[] | {name, updatedAt, size}]"
           ], capture_output=True, text=True,
           env={**os.environ, "GH_TOKEN": os.environ.get("GH_TOKEN","")})
 
-          uploaded = json.loads(result.stdout or "[]")
+          uploaded = {a["name"]: a for a in json.loads(result.stdout or "[]")}
           base_url = "https://github.com/${{ github.repository }}/releases/download/maps-osmfr-europe-2"
 
           index = {
@@ -344,7 +344,9 @@ jobs:
                       "id": region["id"],
                       "name": region["name"],
                       "path": region["path"],
-                      "url": f"{base_url}/{fname}"
+                      "url": f"{base_url}/{fname}",
+                      "updated": uploaded[fname]["updatedAt"][:10],
+                      "size": uploaded[fname]["size"]
                   })
 
           os.makedirs("output", exist_ok=True)
