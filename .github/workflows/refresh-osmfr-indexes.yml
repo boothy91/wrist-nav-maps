@@ -1,0 +1,75 @@
+name: Refresh OSMFR Indexes
+
+# Rebuilds index.json for every OSMFR map release from the files already
+# uploaded. No maps are rebuilt. Adds the per-map "updated" date and "size".
+on:
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate and upload index.json for each release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - << 'EOF'
+          import glob, json, os, re, subprocess, time
+          from datetime import datetime
+
+          repo = os.environ.get("GITHUB_REPOSITORY", "boothy91/wrist-nav-maps")
+
+          for cfg in sorted(glob.glob("config/regions/regions-*-osmfr.json")):
+              key = re.match(r".*/regions-(.+)-osmfr\.json$", cfg).group(1)
+              tag = f"maps-osmfr-{key}"
+
+              with open(cfg) as f:
+                  regions = json.load(f)
+
+              result = subprocess.run(
+                  ["gh", "release", "view", tag, "--json", "assets",
+                   "--jq", "[.assets[] | {name, updatedAt, size}]"],
+                  capture_output=True, text=True)
+              if result.returncode != 0:
+                  print(f"{tag}: release not found, skipping")
+                  continue
+
+              uploaded = {a["name"]: a for a in json.loads(result.stdout or "[]")}
+              base_url = f"https://github.com/{repo}/releases/download/{tag}"
+
+              index = {
+                  "updated": datetime.now().strftime("%Y-%m-%d"),
+                  "regions": []
+              }
+              for region in regions:
+                  fname = region["id"].replace("/", "-") + ".map"
+                  if fname in uploaded:
+                      index["regions"].append({
+                          "id": region["id"],
+                          "name": region["name"],
+                          "path": region["path"],
+                          "url": f"{base_url}/{fname}",
+                          "updated": uploaded[fname]["updatedAt"][:10],
+                          "size": uploaded[fname]["size"]
+                      })
+
+              outdir = os.path.join("output", key)
+              os.makedirs(outdir, exist_ok=True)
+              out = os.path.join(outdir, "index.json")
+              with open(out, "w") as f:
+                  json.dump(index, f, indent=2)
+              print(f"{tag}: {len(index['regions'])} of {len(regions)} regions listed")
+
+              for attempt in range(1, 6):
+                  up = subprocess.run(
+                      ["gh", "release", "upload", tag, out, "--clobber"])
+                  if up.returncode == 0:
+                      break
+                  print(f"Index upload attempt {attempt} failed, retrying in 30s...")
+                  time.sleep(30)
+          EOF
