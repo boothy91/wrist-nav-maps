@@ -377,8 +377,12 @@ jobs:
           echo "Staged $HGT_COUNT HGT tile(s)."
 
           if [ "$HGT_COUNT" -eq 0 ]; then
-            echo "ERROR: no flat HGT tiles available for BRouter conversion."
-            exit 1
+            if [ "$REGION_ID" = "tuvalu" ]; then
+              echo "WARNING: no HGT tiles available for Tuvalu; continuing without elevation."
+            else
+              echo "ERROR: no flat HGT tiles available for BRouter conversion."
+              exit 1
+            fi
           fi
 
           IFS=':' read -r S W N E < "$BBOX_FILE"
@@ -423,8 +427,12 @@ jobs:
           echo "Created $BEF_COUNT BRouter elevation raster(s)."
 
           if [ "$BEF_COUNT" -eq 0 ]; then
-            echo "ERROR: no BRouter .bef elevation rasters were created."
-            exit 1
+            if [ "$REGION_ID" = "tuvalu" ]; then
+              echo "WARNING: no BRouter .bef elevation rasters for Tuvalu; continuing without elevation."
+            else
+              echo "ERROR: no BRouter .bef elevation rasters were created."
+              exit 1
+            fi
           fi
 
           find "$BEF_DIR" -maxdepth 1 -type f -printf '%f %s bytes\n' | sort
