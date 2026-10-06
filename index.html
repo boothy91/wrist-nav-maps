@@ -54,15 +54,19 @@ h1{margin:0;font-size:clamp(30px,6vw,48px);letter-spacing:-1.5px}
   background:var(--surface);border:1px solid var(--border);
   border-radius:18px;margin:12px 0;overflow:hidden
 }
-.section>button,.tree-button{
-  width:100%;border:0;background:none;color:var(--text);
-  text-align:left;font:inherit;font-weight:800;cursor:pointer
+.section-head button{
+  width:100%;border:0;background:linear-gradient(135deg,var(--brand),var(--brand-dark));
+  color:white;text-align:left;font:inherit;font-weight:800;cursor:pointer;
+  box-shadow:0 3px 10px #6e4d2025;
+  transition:filter .2s,transform .1s
 }
-.section>button{
+.section-head button:hover{filter:brightness(1.06)}
+.section-head button:active{transform:scale(.995)}
+.section-head button{
   padding:17px 18px;display:flex;justify-content:space-between;
   align-items:center;font-size:19px
 }
-.arrow{color:var(--muted);transition:.2s}
+.section-head .arrow{color:white;transition:.2s}
 .section.open>.section-head .arrow,
 .node.open>.node-head .arrow{transform:rotate(90deg)}
 .children{display:none;border-top:1px solid var(--border)}
@@ -71,12 +75,19 @@ h1{margin:0;font-size:clamp(30px,6vw,48px);letter-spacing:-1.5px}
 .node:last-child{border-bottom:0}
 .node-head{
   display:flex;align-items:center;gap:8px;padding:13px 16px;
-  cursor:pointer;font-weight:700
+  cursor:pointer;font-weight:700;
+  background:var(--surface2);
+  transition:background .2s
 }
-.node-head .arrow{width:18px}
+.node-head:hover{background:var(--surface)}
+.node-head .arrow{width:18px;color:var(--brand)}
 .node-head.leaf{cursor:default}
 .node-name{flex:1}
-.node-count{font-size:12px;color:var(--muted);font-weight:600}
+.node-count{
+  font-size:12px;color:var(--brand-dark);font-weight:700;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:999px;padding:3px 8px
+}
 .node>.children{padding-left:18px}
 .file{
   display:flex;align-items:center;gap:10px;
@@ -85,15 +96,18 @@ h1{margin:0;font-size:clamp(30px,6vw,48px);letter-spacing:-1.5px}
 .file-name{flex:1;min-width:0;overflow-wrap:anywhere;font-size:14px}
 .file-actions{display:flex;gap:6px}
 .file-actions button{
-  border:1px solid var(--border);background:var(--surface2);
-  color:var(--brand-dark);border-radius:8px;padding:7px 10px;
-  font-weight:700;cursor:pointer
+  border:1px solid var(--brand);background:var(--surface);
+  color:var(--brand-dark);border-radius:9px;padding:7px 10px;
+  font-weight:700;cursor:pointer;transition:.2s
 }
+.file-actions button:hover{background:var(--brand);color:white}
 .file-actions a{
   border:1px solid var(--brand);background:var(--brand);
-  color:white;border-radius:8px;padding:7px 10px;
-  font-weight:700;text-decoration:none;white-space:nowrap
+  color:white;border-radius:9px;padding:7px 10px;
+  font-weight:700;text-decoration:none;white-space:nowrap;
+  transition:.2s
 }
+.file-actions a:hover{filter:brightness(1.08)}
 .loading,.error{
   padding:25px;text-align:center;color:var(--muted)
 }
@@ -289,7 +303,7 @@ function renderNode(name,node,depth){
 
   let html=
     '<div class="node">'+
-      '<div class="node-head">'+
+      '<div class="node-head" onclick="this.parentElement.classList.toggle(\'open\')">'+
         '<span class="arrow">›</span>'+
         '<span class="node-name">'+escapeHtml(name)+'</span>'+
         '<span class="node-count">'+
