@@ -276,7 +276,7 @@ jobs:
             local attempt ok=0
             for attempt in 1 2 3; do
               # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
-              if phyghtmap --source=view3 --step=10 --pbf --line-cat=100,50 \
+              if phyghtmap --source=view3 --step="$(case "$RID" in china_tibet|china_xinjiang|kazakhstan) echo 25;; *) echo 10;; esac)" --pbf --line-cat=100,50 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
                   --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox"; then
                 ok=1; break
