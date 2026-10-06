@@ -9,148 +9,486 @@
   --bg:#ece0c7;--surface:#f8f2e4;--surface2:#f1e5c9;
   --border:#d8c39a;--brand:#8c6328;--brand-dark:#6e4d20;
   --text:#2b2013;--muted:#6e5a3d;--green:#557a45;
-  --orange:#b87927;--red:#a8483a
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-.topbar{position:sticky;top:0;z-index:10;background:#f8f2e4eF;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
-.nav{max-width:1100px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif
+}
+.topbar{
+  position:sticky;top:0;z-index:10;background:#f8f2e4ef;
+  border-bottom:1px solid var(--border);backdrop-filter:blur(12px)
+}
+.nav{
+  max-width:1100px;margin:auto;padding:12px 18px;
+  display:flex;align-items:center;gap:12px
+}
 .logo{width:42px;height:42px;border-radius:11px;object-fit:cover}
 .brand{font-weight:800;font-size:19px}
 .nav small{color:var(--muted)}
-.nav a{margin-left:auto;color:var(--brand-dark);font-weight:700;text-decoration:none}
-main{max-width:1100px;margin:auto;padding:34px 18px 60px}
-.hero{display:flex;gap:22px;align-items:center;margin-bottom:28px}
-.hero img{width:82px;height:82px;border-radius:20px;box-shadow:0 8px 25px #6e4d2020}
-h1{margin:0;font-size:clamp(32px,6vw,52px);letter-spacing:-1.5px}
-.hero p{margin:8px 0 0;color:var(--muted);font-size:16px}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0}
-.tab{border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:13px 8px;border-radius:13px;font-weight:800;cursor:pointer}
-.tab.active{background:var(--brand);color:white;border-color:var(--brand)}
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
-.stat{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:17px}
-.stat b{display:block;font-size:25px}.stat span{color:var(--muted);font-size:13px}
-.section-head{display:flex;align-items:center;justify-content:space-between;margin:28px 0 12px}
-.section-head h2{margin:0;font-size:22px}
-button.refresh{border:1px solid var(--border);background:var(--surface);padding:9px 13px;border-radius:10px;font-weight:700;color:var(--brand-dark)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px}
-.card h3{margin:0 0 5px;font-size:18px}
-.meta{color:var(--muted);font-size:13px;margin-bottom:15px}
-.bar{height:9px;background:var(--surface2);border-radius:99px;overflow:hidden}
-.fill{height:100%;background:var(--green);border-radius:99px;transition:.3s}.fill.partial{background:var(--orange)}
-.status{display:flex;justify-content:space-between;margin-top:10px;font-size:13px;color:var(--muted)}
-.status strong{color:var(--text)}
-.card a{display:inline-block;margin-top:13px;color:var(--brand-dark);font-weight:700;text-decoration:none}
-.log{margin-top:20px;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;color:var(--muted);font-size:13px}
-footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px}
-@media(max-width:650px){
-  .hero{align-items:flex-start}.hero img{width:64px;height:64px}
-  .tabs{grid-template-columns:repeat(2,1fr)}
-  .summary{grid-template-columns:repeat(2,1fr)}
+.nav a{
+  margin-left:auto;color:var(--brand-dark);
+  font-weight:700;text-decoration:none
+}
+main{max-width:1100px;margin:auto;padding:30px 18px 60px}
+.hero{
+  display:flex;gap:18px;align-items:center;margin-bottom:25px
+}
+.hero img{
+  width:70px;height:70px;border-radius:18px;
+  box-shadow:0 8px 25px #6e4d2020
+}
+h1{margin:0;font-size:clamp(30px,6vw,48px);letter-spacing:-1.5px}
+.hero p{margin:6px 0 0;color:var(--muted)}
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:10px;margin:20px 0 28px
+}
+.stat{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:15px;padding:15px
+}
+.stat b{display:block;font-size:22px}
+.stat span{font-size:12px;color:var(--muted)}
+.section{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:18px;margin:12px 0;overflow:hidden
+}
+.section>button,.tree-button{
+  width:100%;border:0;background:none;color:var(--text);
+  text-align:left;font:inherit;font-weight:800;cursor:pointer
+}
+.section>button{
+  padding:17px 18px;display:flex;justify-content:space-between;
+  align-items:center;font-size:19px
+}
+.arrow{color:var(--muted);transition:.2s}
+.section.open>.section-head .arrow,
+.node.open>.node-head .arrow{transform:rotate(90deg)}
+.children{display:none;border-top:1px solid var(--border)}
+.section.open>.children,.node.open>.children{display:block}
+.node{border-bottom:1px solid var(--border)}
+.node:last-child{border-bottom:0}
+.node-head{
+  display:flex;align-items:center;gap:8px;padding:13px 16px;
+  cursor:pointer;font-weight:700
+}
+.node-head .arrow{width:18px}
+.node-head.leaf{cursor:default}
+.node-name{flex:1}
+.node-count{font-size:12px;color:var(--muted);font-weight:600}
+.node>.children{padding-left:18px}
+.file{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px 10px 28px;border-top:1px solid var(--border)
+}
+.file-name{flex:1;min-width:0;overflow-wrap:anywhere;font-size:14px}
+.file-actions{display:flex;gap:6px}
+.file-actions button{
+  border:1px solid var(--border);background:var(--surface2);
+  color:var(--brand-dark);border-radius:8px;padding:7px 10px;
+  font-weight:700;cursor:pointer
+}
+.file-actions a{
+  border:1px solid var(--brand);background:var(--brand);
+  color:white;border-radius:8px;padding:7px 10px;
+  font-weight:700;text-decoration:none;white-space:nowrap
+}
+.loading,.error{
+  padding:25px;text-align:center;color:var(--muted)
+}
+.error{color:#a8483a}
+footer{
+  text-align:center;color:var(--muted);font-size:12px;margin-top:35px
+}
+@media(max-width:700px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .file{align-items:flex-start}
+  .file-actions{flex-wrap:wrap}
+  .file-actions button,.file-actions a{font-size:12px}
 }
 </style>
 </head>
 <body>
+
 <header class="topbar">
-<div class="nav">
-<img class="logo" src="https://raw.githubusercontent.com/boothy91/wrist-nav-site/main/ic_launcher.png">
-<div><div class="brand">WristNav</div><small>Maps &amp; routing</small></div>
-<a href="https://boothy91.github.io/wrist-nav-site/">WristNav site →</a>
-</div>
+  <div class="nav">
+    <img class="logo"
+      src="https://raw.githubusercontent.com/boothy91/wrist-nav-site/main/ic_launcher.png">
+    <div>
+      <div class="brand">WristNav</div>
+      <small>Maps &amp; routing</small>
+    </div>
+    <a href="https://boothy91.github.io/wrist-nav-site/">WristNav site →</a>
+  </div>
 </header>
-<main id="main">
-<div class="hero">
-<img src="https://raw.githubusercontent.com/boothy91/wrist-nav-site/main/ic_launcher.png">
-<div><h1>WristNav Maps</h1><p>Live map, terrain and routing data for standalone Wear OS navigation.</p></div>
-</div>
-<div class="tabs">
-<button class="tab active" data-section="maps">Main Map</button>
-<button class="tab" data-section="contours">Contours</button>
-<button class="tab" data-section="hillshade">Hillshading</button>
-<button class="tab" data-section="routing">Routing</button>
-</div>
-<div class="summary">
-<div class="stat"><b id="expected">—</b><span>Expected</span></div>
-<div class="stat"><b id="available">—</b><span>Available</span></div>
-<div class="stat"><b id="remaining">—</b><span>Remaining</span></div>
-<div class="stat"><b id="complete">—</b><span>Complete</span></div>
-</div>
-<div class="section-head"><h2 id="sectionTitle">Main Map</h2><button class="refresh" onclick="load()">Refresh</button></div>
-<div id="cards" class="grid"></div>
-<div id="log" class="log">Checking GitHub releases…</div>
-<footer>WristNav Maps · Data is generated automatically for WristNav</footer>
+
+<main>
+  <div class="hero">
+    <img src="https://raw.githubusercontent.com/boothy91/wrist-nav-site/main/ic_launcher.png">
+    <div>
+      <h1>WristNav Maps</h1>
+      <p>Maps, terrain, contours and routing data for WristNav.</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <b id="mapsStat">—</b>
+      <span>Base Map</span>
+    </div>
+    <div class="stat">
+      <b id="hillStat">—</b>
+      <span>Hillshading</span>
+    </div>
+    <div class="stat">
+      <b id="contourStat">—</b>
+      <span>Contours</span>
+    </div>
+    <div class="stat">
+      <b id="routingStat">—</b>
+      <span>Routing</span>
+    </div>
+  </div>
+
+  <div id="regions">
+    <div class="loading">Loading map regions…</div>
+  </div>
+
+  <footer>
+    WristNav Maps · OpenStreetMap data via OSMFR
+  </footer>
 </main>
+
 <script>
-const OWNER="boothy91",REPO="wrist-nav-maps",BRANCH="main";
-const REGIONS={
-uk:"regions-europe-uk.json",europe1:"regions-europe-1.json",
-europe2:"regions-europe-2.json",africa:"regions-africa.json",
-asia:"regions-asia.json",northAmerica:"regions-north-america.json",
-others:"regions-others.json"
-};
-const names={uk:"Europe · UK",europe1:"Europe · 1",europe2:"Europe · 2",
-africa:"Africa",asia:"Asia",northAmerica:"North America",others:"Other regions"};
-const configs={
-maps:["Main Map",["maps-europe-uk","maps-europe-1","maps-europe-2","maps-africa","maps-asia","maps-north-america","maps-others"],".map"],
-contours:["Contours",["maps-europe-uk-contours-map","maps-europe-1-contours-map","maps-europe-2-contours-map","maps-africa-contours-map","maps-asia-contours-map","maps-north-america-contours-map","maps-others-contours-map"],".map"],
-hillshade:["Hillshading",["maps-europe-uk-hillshade","maps-europe-1-hillshade","maps-europe-2-hillshade","maps-africa-hillshade","maps-asia-hillshade","maps-north-america-hillshade","maps-others-hillshade"],".zip"],
-routing:["Routing",["routing-europe-uk","routing-europe-1","routing-europe-2","routing-africa","routing-asia","routing-north-america","routing-others"],".zip"]
-};
-const regionKeys=["uk","europe1","europe2","africa","asia","northAmerica","others"];
-let current="maps";
+const OWNER="boothy91";
+const REPO="wrist-nav-maps";
+const BRANCH="main";
 
-document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
- current=b.dataset.section;
- document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));
- load();
-});
+const AREA_CONFIGS=[
+  ["africa","Africa"],
+  ["asia","Asia"],
+  ["central-america","Central America"],
+  ["europe-1","Europe"],
+  ["europe-2","Europe"],
+  ["europe-3","Europe"],
+  ["north-america","North America"],
+  ["oceania","Oceania"],
+  ["russia","Russia"],
+  ["south-america","South America"]
+];
 
-async function json(url){
- const r=await fetch(url,{cache:"no-store"});
- if(!r.ok)throw new Error(r.status);
- return r.json();
+const TYPES={
+  maps:{
+    stat:"mapsStat",
+    release:area=>"maps-osmfr-"+area,
+    suffix:".map"
+  },
+  hillshade:{
+    stat:"hillStat",
+    release:area=>"maps-osmfr-"+area+"-hillshade",
+    suffix:".zip"
+  },
+  contours:{
+    stat:"contourStat",
+    release:area=>"maps-osmfr-"+area+"-contours-map",
+    suffix:".map"
+  },
+  routing:{
+    stat:"routingStat",
+    release:area=>"routing-osmfr-"+area,
+    suffix:".zip"
+  }
+};
+
+const state={
+  regions:[],
+  releases:{}
+};
+
+async function getJson(url){
+  const response=await fetch(url,{cache:"no-store"});
+  if(!response.ok) throw new Error(response.status);
+  return response.json();
+}
+
+async function loadConfig(area){
+  const url=
+    "https://raw.githubusercontent.com/"+OWNER+"/"+REPO+
+    "/"+BRANCH+"/config/regions/regions-"+area+"-osmfr.json";
+  return getJson(url);
+}
+
+async function loadRelease(tag){
+  if(state.releases[tag]!==undefined) return state.releases[tag];
+  try{
+    state.releases[tag]=await getJson(
+      "https://api.github.com/repos/"+OWNER+"/"+REPO+
+      "/releases/tags/"+encodeURIComponent(tag)
+    );
+  }catch(e){
+    state.releases[tag]=null;
+  }
+  return state.releases[tag];
+}
+
+function assetNames(release){
+  if(!release||!release.assets) return new Set();
+  return new Set(release.assets.map(a=>a.name));
+}
+
+function releaseAssetUrl(tag,name){
+  return "https://github.com/"+OWNER+"/"+REPO+
+    "/releases/download/"+encodeURIComponent(tag)+"/"+
+    encodeURIComponent(name);
+}
+
+function escapeHtml(value){
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function makeTree(items){
+  const root={children:new Map(),files:[]};
+
+  for(const item of items){
+    const parts=String(item.path||"").split("/").filter(Boolean);
+
+    // Remove the continent prefix from the configured path.
+    if(parts.length && parts[0].toLowerCase()===item.continent){
+      parts.shift();
+    }
+
+    let node=root;
+
+    for(const part of parts){
+      if(!node.children.has(part)){
+        node.children.set(part,{children:new Map(),files:[]});
+      }
+      node=node.children.get(part);
+    }
+
+    node.files.push(item);
+  }
+
+  return root;
+}
+
+function sortedChildren(map){
+  return [...map.entries()].sort((a,b)=>
+    a[0].localeCompare(b[0],"en",{numeric:true,sensitivity:"base"})
+  );
+}
+
+function renderNode(name,node,depth){
+  const children=sortedChildren(node.children);
+
+  let html=
+    '<div class="node">'+
+      '<div class="node-head">'+
+        '<span class="arrow">›</span>'+
+        '<span class="node-name">'+escapeHtml(name)+'</span>'+
+        '<span class="node-count">'+
+          (children.length+node.files.length)+
+        '</span>'+
+      '</div>'+
+      '<div class="children">';
+
+  for(const [childName,childNode] of children){
+    html+=renderNode(childName,childNode,depth+1);
+  }
+
+  for(const file of node.files){
+    html+=renderFile(file);
+  }
+
+  html+="</div></div>";
+  return html;
+}
+
+function renderFile(file){
+  const url=releaseAssetUrl(file.release,file.filename);
+
+  return `
+    <div class="file">
+      <div class="file-name">${escapeHtml(file.filename)}</div>
+      <div class="file-actions">
+        <a href="${url}" download>Download</a>
+        <button onclick="copyUrl(this,'${escapeHtml(url)}')">Copy</button>
+      </div>
+    </div>`;
+}
+
+async function copyUrl(button,url){
+  try{
+    await navigator.clipboard.writeText(url);
+    const old=button.textContent;
+    button.textContent="Copied";
+    setTimeout(()=>button.textContent=old,1200);
+  }catch(e){
+    window.prompt("Copy map URL:",url);
+  }
+}
+
+function setStat(id,available,total){
+  document.getElementById(id).textContent=available+" / "+total;
+}
+
+function createRegionSection(name,tree){
+  const section=document.createElement("section");
+  section.className="section";
+
+  section.innerHTML=`
+    <div class="section-head">
+      <button type="button">
+        <span>${escapeHtml(name)}</span>
+        <span class="arrow">›</span>
+      </button>
+    </div>
+    <div class="children"></div>`;
+
+  const children=section.querySelector(".children");
+
+  for(const [childName,childNode] of sortedChildren(tree.children)){
+    children.insertAdjacentHTML(
+      "beforeend",
+      renderNode(childName,childNode,0)
+    );
+  }
+
+  for(const file of tree.files){
+    children.insertAdjacentHTML("beforeend",renderFile(file));
+  }
+
+  section.querySelector(".section-head button").onclick=()=>{
+    section.classList.toggle("open");
+  };
+
+  return section;
 }
 
 async function load(){
- const [title,tags,ext]=configs[current];
- document.getElementById("sectionTitle").textContent=title;
- const cards=document.getElementById("cards");
- cards.innerHTML="";
- document.getElementById("log").textContent="Checking GitHub releases…";
- let expected=0,available=0,complete=0;
+  const regions=document.getElementById("regions");
+  regions.innerHTML='<div class="loading">Loading map data…</div>';
 
- for(let i=0;i<tags.length;i++){
-  const key=regionKeys[i],file=REGIONS[key];
-  let count=0,release=null;
+  state.regions=[];
+  state.releases={};
+
   try{
-   const data=await json("https://raw.githubusercontent.com/"+OWNER+"/"+REPO+"/"+BRANCH+"/config/regions/"+file);
-   count=Array.isArray(data)?data.length:Object.keys(data).length;
-  }catch(e){}
-  expected+=count;
-  try{release=await json("https://api.github.com/repos/"+OWNER+"/"+REPO+"/releases/tags/"+tags[i])}catch(e){}
-  let found=0;
-  if(release&&release.assets){
-   found=release.assets.filter(a=>a.name.toLowerCase().endsWith(ext)).length;
+    const configs=await Promise.all(
+      AREA_CONFIGS.map(async ([area,display])=>{
+        const data=await loadConfig(area);
+        return {area,display,data};
+      })
+    );
+
+    const allRegions=[];
+    for(const config of configs){
+      for(const item of config.data){
+        allRegions.push({
+          ...item,
+          area:config.area,
+          display:config.display,
+          continent:config.area.replace(/-\d+$/,"")
+        });
+      }
+    }
+
+    /*
+     * A region belongs to the release containing its config.
+     * Europe 1/2/3 therefore appears as one Europe tree while
+     * retaining the correct release tag for each individual map.
+     */
+    for(const item of allRegions){
+      item.filename=item.id+".map";
+      item.release=TYPES.maps.release(item.area);
+    }
+
+    state.regions=allRegions;
+
+    const releaseTags=[
+      ...new Set(AREA_CONFIGS.map(x=>TYPES.maps.release(x[0])))
+    ];
+
+    for(const tag of releaseTags) await loadRelease(tag);
+
+    const availableAssets=new Map();
+
+    for(const [area] of AREA_CONFIGS){
+      const tag=TYPES.maps.release(area);
+      const release=await loadRelease(tag);
+      availableAssets.set(tag,assetNames(release));
+    }
+
+    const total=allRegions.length;
+    let available=0;
+
+    for(const item of allRegions){
+      if(availableAssets.get(item.release)?.has(item.filename)){
+        available++;
+      }
+    }
+
+    setStat("mapsStat",available,total);
+
+    // Optional data is shown only as a coverage counter.
+    for(const typeName of ["hillshade","contours","routing"]){
+      let total=0;
+      let available=0;
+
+      for(const [area] of AREA_CONFIGS){
+        const config=await loadConfig(area);
+        const tag=TYPES[typeName].release(area);
+        const release=await loadRelease(tag);
+        const assets=assetNames(release);
+
+        for(const item of config){
+          total++;
+
+          let filename;
+          if(typeName==="hillshade") filename=item.id+"-hillshade.zip";
+          if(typeName==="contours") filename=item.id+"-contours.map";
+          if(typeName==="routing") filename=item.id+"-rd5.zip";
+
+          if(assets.has(filename)){
+            available++;
+          }
+        }
+      }
+
+      setStat(TYPES[typeName].stat,available,total);
+    }
+
+    const grouped=new Map();
+
+    for(const item of allRegions){
+      if(!grouped.has(item.display)){
+        grouped.set(item.display,[]);
+      }
+      grouped.get(item.display).push(item);
+    }
+
+    regions.innerHTML="";
+
+    for(const [name,items] of [...grouped.entries()].sort((a,b)=>
+      a[0].localeCompare(b[0],"en")
+    )){
+      const tree=makeTree(items);
+      regions.appendChild(createRegionSection(name,tree));
+    }
+
+  }catch(error){
+    console.error(error);
+    regions.innerHTML=
+      '<div class="error">Unable to load map data. Please try again later.</div>';
   }
-  available+=found;
-  if(count>0&&found>=count)complete++;
-  const pct=count?Math.min(100,Math.round(found/count*100)):0;
-  cards.insertAdjacentHTML("beforeend",
-   `<article class="card"><h3>${names[key]}</h3><div class="meta">${tags[i]}</div>
-   <div class="bar"><div class="fill ${pct>=100?"complete":pct>0?"partial":""}" style="width:${pct}%"></div></div>
-   <div class="status"><span>${found} of ${count||"?"}</span><strong>${count?pct+"%":"Checking…"}</strong></div>
-   ${release?`<div class="meta">Updated ${new Date(release.published_at||release.created_at).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})}</div><a href="${release.html_url}" target="_blank">View release →</a>`:`<div class="meta">Release not found yet</div>`}
-   </article>`);
- }
- document.getElementById("expected").textContent=expected||"—";
- document.getElementById("available").textContent=available;
- document.getElementById("remaining").textContent=Math.max(0,expected-available);
- document.getElementById("complete").textContent=complete+"/"+tags.length;
- document.getElementById("log").textContent="Last checked "+new Date().toLocaleString();
 }
+
 load();
-setInterval(load,120000);
 </script>
 </body>
 </html>
