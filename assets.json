@@ -4219,12 +4219,14 @@
       "zabaykalsky_krai-hillshade.zip"
     ],
     "contours": [
+      "amur_oblast-contours.map",
       "belgorod_oblast-contours.map",
       "bryansk_oblast-contours.map",
       "index.json",
       "ivanovo_oblast-contours.map",
       "jewish_autonomous_oblast-contours.map",
       "kaluga_oblast-contours.map",
+      "kamchatka_krai-contours.map",
       "kostroma_oblast-contours.map",
       "kursk_oblast-contours.map",
       "lipetsk_oblast-contours.map",
