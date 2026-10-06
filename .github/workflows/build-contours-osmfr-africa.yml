@@ -190,14 +190,14 @@ jobs:
                   print(f"WARNING: antimeridian crossing detected, dropping {dropped} poly points on the far side (raw span {raw_span:.1f} deg)", file=sys.stderr)
                   lons = [p[0] for p in main]
                   lats = [p[1] for p in main]
-              print(f"{min(lons)-0.2:.4f}:{min(lats)-0.2:.4f}:{max(lons)+0.2:.4f}:{max(lats)+0.2:.4f}")
+              print(f"{max(min(lons)-0.2,-180):.4f}:{max(min(lats)-0.2,-90):.4f}:{min(max(lons)+0.2,180):.4f}:{min(max(lats)+0.2,90):.4f}")
           PYEOF
           )
           fi
 
           if [ -z "$BBOX" ]; then
             echo "Poly unavailable, falling back to PBF extent"
-            FALLBACK_BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\(.[0]-0.2):\(.[1]-0.2):\(.[2]+0.2):\(.[3]+0.2)"')
+            FALLBACK_BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\([.[0]-0.2,-180]|max):\([.[1]-0.2,-90]|max):\([.[2]+0.2,180]|min):\([.[3]+0.2,90]|min)"')
             SANE=$(python3 - "$FALLBACK_BBOX" << 'PYEOF'
           import sys
           w, s, e, n = map(float, sys.argv[1].split(":"))
