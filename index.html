@@ -350,12 +350,14 @@ function renderNode(name,node,depth){
 
 function renderFile(file){
   const url=releaseAssetUrl(file.release,file.filename);
+  const phoneUrl="wristnav://map?url="+encodeURIComponent(url);
 
   return `
     <div class="file">
       <div class="file-name">${escapeHtml(file.filename)}</div>
       <div class="file-actions">
         <a href="${url}" download>Download</a>
+        <a href="${phoneUrl}">Send to Phone</a>
         <button onclick="copyUrl(this,'${escapeHtml(url)}')">Copy</button>
       </div>
     </div>`;
