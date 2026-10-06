@@ -240,7 +240,7 @@ jobs:
           # sequentially in one job, so the only lever that reduces total runtime is
           # generating less contour geometry per piece.
           STEP=10
-          declare -A STEP_OVERRIDES=( ["mexico"]=25 ["british-columbia"]=25 ["nunavut"]=50 ["alaska"]=25 ["greenland"]=50 )
+          declare -A STEP_OVERRIDES=( ["british_columbia"]=25 ["nord_du_quebec"]=25 ["china_tibet"]=25 ["china_xinjiang"]=25 ["kazakhstan"]=25 ["peru"]=25 ["nunavut"]=50 ["alaska"]=25 ["greenland"]=50 ["mexico"]=25 ["mexico"]=25 ["british-columbia"]=25 ["nunavut"]=50 ["alaska"]=25 ["greenland"]=50 )
           if [ -n "${STEP_OVERRIDES[$RID]:-}" ]; then
             STEP=${STEP_OVERRIDES[$RID]}
             echo "$RID is on the contour-step override list (too large/slow at 10m) - using ${STEP}m interval instead"
