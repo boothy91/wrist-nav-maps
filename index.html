@@ -217,7 +217,8 @@ const TYPES={
 
 const state={
   regions:[],
-  releases:{}
+  releases:{},
+  manifest:undefined
 };
 
 async function getJson(url){
@@ -233,17 +234,40 @@ async function loadConfig(area){
   return getJson(url);
 }
 
-async function loadRelease(tag){
-  if(state.releases[tag]!==undefined) return state.releases[tag];
+async function loadManifest(){
+  if(state.manifest!==undefined) return state.manifest;
+
   try{
-    state.releases[tag]=await getJson(
-      "https://api.github.com/repos/"+OWNER+"/"+REPO+
-      "/releases/tags/"+encodeURIComponent(tag)
+    state.manifest=await getJson(
+      "https://boothy91.github.io/wrist-nav-maps/assets.json"
     );
   }catch(e){
-    state.releases[tag]=null;
+    state.manifest={};
   }
+
+  return state.manifest;
+}
+
+async function loadRelease(tag){
+  if(state.releases[tag]!==undefined) return state.releases[tag];
+
+  state.releases[tag]={assets:[]};
   return state.releases[tag];
+}
+
+async function assetExists(tag,name){
+  const manifest=await loadManifest();
+
+  for(const area of Object.keys(manifest)){
+    for(const typeName of Object.keys(manifest[area]||{})){
+      if(manifest[area][typeName]?.includes(name)){
+        const expectedTag=TYPES[typeName]?.release(area);
+        if(expectedTag===tag) return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 function assetNames(release){
@@ -424,43 +448,30 @@ async function load(){
 
     state.regions=allRegions;
 
-    const releaseTags=[
-      ...new Set(AREA_CONFIGS.map(x=>TYPES.maps.release(x[0])))
-    ];
-
-    for(const tag of releaseTags) await loadRelease(tag);
-
-    const availableAssets=new Map();
-
-    for(const [area] of AREA_CONFIGS){
-      const tag=TYPES.maps.release(area);
-      const release=await loadRelease(tag);
-      availableAssets.set(tag,assetNames(release));
-    }
-
     const total=allRegions.length;
     let available=0;
 
-    for(const item of allRegions){
-      if(availableAssets.get(item.release)?.has(item.filename)){
-        available++;
-      }
-    }
+    const checks=await Promise.all(
+      allRegions.map(async item=>{
+        return assetExists(item.release,item.filename);
+      })
+    );
+
+    available=checks.filter(Boolean).length;
 
     setStat("mapsStat",available,total);
 
     // Optional data is shown only as a coverage counter.
+    const manifest=await loadManifest();
+
     for(const typeName of ["hillshade","contours","routing"]){
       let total=0;
       let available=0;
 
-      for(const [area] of AREA_CONFIGS){
-        const config=await loadConfig(area);
-        const tag=TYPES[typeName].release(area);
-        const release=await loadRelease(tag);
-        const assets=assetNames(release);
+      for(const config of configs){
+        const assets=new Set(manifest[config.area]?.[typeName] || []);
 
-        for(const item of config){
+        for(const item of config.data){
           total++;
 
           let filename;
