@@ -61,7 +61,6 @@ jobs:
             --country-name="United Kingdom" \
             --area-name="Yorkshire and the Humber" \
             --product-id=1 \
-            --overview-map \
             --gmapsupp \
             --output-dir=output \
             split/*.img
