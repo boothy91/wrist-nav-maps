@@ -1,0 +1,80 @@
+name: Build Garmin - Yorkshire and the Humber
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y wget unzip
+
+      - name: Download mkgmap
+        run: |
+          wget -q --tries=5 --waitretry=15 --retry-connrefused \
+            https://www.mkgmap.org.uk/download/mkgmap.zip \
+            -O mkgmap.zip
+          unzip -q mkgmap.zip -d mkgmap
+
+      - name: Download splitter
+        run: |
+          wget -q --tries=5 --waitretry=15 --retry-connrefused \
+            https://www.mkgmap.org.uk/download/splitter.zip \
+            -O splitter.zip
+          unzip -q splitter.zip -d splitter
+
+      - name: Download Yorkshire and the Humber
+        run: |
+          wget -q --timeout=300 --tries=5 --waitretry=15 \
+            --retry-connrefused \
+            "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/yorkshire_and_the_humber-latest.osm.pbf" \
+            -O yorkshire_and_the_humber.osm.pbf
+          ls -lh yorkshire_and_the_humber.osm.pbf
+
+      - name: Split map
+        run: |
+          mkdir -p split
+          SPLITTER=$(find splitter -name 'splitter.jar' | head -1)
+          java -Xmx6G -jar "$SPLITTER" \
+            --mapid=68000001 \
+            --description="Yorkshire and the Humber" \
+            --output-dir=split \
+            yorkshire_and_the_humber.osm.pbf
+
+      - name: Build Garmin IMG
+        run: |
+          mkdir -p output
+          MKGMAP=$(find mkgmap -name 'mkgmap.jar' | head -1)
+          java -Xmx6G -jar "$MKGMAP" \
+            --family-id=6800 \
+            --family-name="WristNav Garmin Test" \
+            --series-name="Yorkshire and the Humber" \
+            --country-abbr=GBR \
+            --country-name="United Kingdom" \
+            --area-name="Yorkshire and the Humber" \
+            --product-id=1 \
+            --overview-map \
+            --gmapsupp \
+            --output-dir=output \
+            split/*.img
+
+          ls -lh output
+
+      - name: Upload Garmin IMG
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view garmin-test &>/dev/null || \
+            gh release create garmin-test \
+              --title "Garmin Test Maps" \
+              --notes "Test Garmin IMG map generated from OSMFR Yorkshire and the Humber."
+
+          gh release upload garmin-test output/gmapsupp.img --clobber
