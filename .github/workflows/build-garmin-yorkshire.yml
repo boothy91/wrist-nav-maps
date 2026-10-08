@@ -64,7 +64,7 @@ jobs:
             --product-id=1 \
             --gmapsupp \
             --output-dir=output \
-            split/*.img
+            split/template.args
 
           ls -lh output
 
