@@ -53,6 +53,8 @@ jobs:
         run: |
           mkdir -p output
           find split -maxdepth 2 -type f -printf "%p\n" | sort | head -50
+          echo "===== template.args ====="
+          cat split/template.args
           MKGMAP=$(find mkgmap -name 'mkgmap.jar' | head -1)
           java -Xmx6G -jar "$MKGMAP" \
             --family-id=6800 \
