@@ -66,7 +66,7 @@ jobs:
             --product-id=1 \
             --gmapsupp \
             --output-dir=output \
-            @split/template.args
+            -c split/template.args
 
           ls -lh output
 
