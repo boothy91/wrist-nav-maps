@@ -20,14 +20,14 @@ jobs:
       - name: Download mkgmap
         run: |
           wget -q --tries=5 --waitretry=15 --retry-connrefused \
-            https://www.mkgmap.org.uk/download/mkgmap.zip \
+            https://www.mkgmap.org.uk/download/mkgmap-r4924.zip \
             -O mkgmap.zip
           unzip -q mkgmap.zip -d mkgmap
 
       - name: Download splitter
         run: |
           wget -q --tries=5 --waitretry=15 --retry-connrefused \
-            https://www.mkgmap.org.uk/download/splitter.zip \
+            https://www.mkgmap.org.uk/download/splitter-r654.zip \
             -O splitter.zip
           unzip -q splitter.zip -d splitter
 
