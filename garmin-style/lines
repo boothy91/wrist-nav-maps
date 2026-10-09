@@ -1,2 +1,2 @@
 addr:housenumber=* {delete addr:housenumber; delete addr:housename}
-waterway!=* & natural!=* {delete name; delete brand; delete operator; delete ref; delete int_ref; delete nat_ref; delete reg_ref; delete cuisine; delete mkgmap:boundary_name}
+(highway=* | railway=* | boundary=* | route=*) & waterway!=* & natural!=* {delete name; delete brand; delete operator; delete ref; delete int_ref; delete nat_ref; delete reg_ref; delete cuisine; delete mkgmap:boundary_name}

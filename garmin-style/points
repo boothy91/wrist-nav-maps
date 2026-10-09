@@ -1,1 +1,2 @@
 # Keep only places, natural features, water, viewpoints, barriers
+(amenity=* | shop=* | tourism=* | highway=* | railway=* | public_transport=* | leisure=* | historic=* | office=* | man_made=* | craft=*) & place!=* & natural!=* & waterway!=* & barrier!=* & tourism!=viewpoint {deletealltags}
