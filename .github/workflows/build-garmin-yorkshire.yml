@@ -49,32 +49,6 @@ jobs:
             --output-dir=split \
             yorkshire_and_the_humber.osm.pbf
 
-      - name: Download elevation (SRTM HGT, auto tiles)
-        run: |
-          mkdir -p hgt
-          python3 - <<'PY' > hgt_tiles.txt
-          import math
-          lons, lats = [], []
-          for l in open('split/areas.poly'):
-              p = l.split()
-              if len(p) == 2:
-                  try:
-                      lons.append(float(p[0])); lats.append(float(p[1]))
-                  except ValueError:
-                      pass
-          for la in range(math.floor(min(lats)), math.floor(max(lats)) + 1):
-              for lo in range(math.floor(min(lons)), math.floor(max(lons)) + 1):
-                  ns = 'N' if la >= 0 else 'S'
-                  ew = 'E' if lo >= 0 else 'W'
-                  print('%s%02d%s%03d' % (ns, abs(la), ew, abs(lo)))
-          PY
-          cat hgt_tiles.txt
-          for t in $(cat hgt_tiles.txt); do
-            d=${t:0:3}
-            curl -sf --retry 5 "https://s3.amazonaws.com/elevation-tiles-prod/skadi/${d}/${t}.hgt.gz" -o "hgt/${t}.hgt.gz" && gunzip -f "hgt/${t}.hgt.gz" || echo "missing ${t}"
-          done
-          ls -lh hgt
-
       - name: Build Garmin IMG
         run: |
           mkdir -p output
@@ -91,10 +65,7 @@ jobs:
             --area-name="Yorkshire and the Humber" \
             --product-id=1 \
             --gmapsupp \
-            --dem=hgt \
-            --dem-poly=split/areas.poly \
-            --dem-dists=3312,13248,26512,53024 \
-            --overview-dem-dist=88888 \
+            --merge-lines \
             --style-file=garmin-style \
             --output-dir=output \
             -c split/template.args \
