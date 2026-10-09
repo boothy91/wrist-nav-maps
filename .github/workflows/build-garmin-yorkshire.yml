@@ -65,6 +65,7 @@ jobs:
             --area-name="Yorkshire and the Humber" \
             --product-id=1 \
             --gmapsupp \
+            --style-file=garmin-style \
             --output-dir=output \
             -c split/template.args
 

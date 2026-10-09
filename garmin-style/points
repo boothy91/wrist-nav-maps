@@ -1,0 +1,6 @@
+shop=* {delete name}
+amenity=* {delete name}
+tourism=* {delete name}
+leisure=* {delete name}
+office=* {delete name}
+craft=* {delete name}

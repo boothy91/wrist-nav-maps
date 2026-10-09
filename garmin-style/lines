@@ -1,0 +1,2 @@
+highway ~ '(residential|service|unclassified|living_street|track|path|footway|cycleway|bridleway|steps|pedestrian|road)' {delete name}
+waterway=* {delete name}

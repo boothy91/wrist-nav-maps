@@ -1,0 +1,4 @@
+building=* {delete name}
+landuse=* {delete name}
+amenity=* {delete name}
+shop=* {delete name}
