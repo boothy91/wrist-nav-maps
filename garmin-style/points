@@ -1,12 +1,2 @@
-shop=* {deletealltags}
-office=* {deletealltags}
-craft=* {deletealltags}
-amenity ~ '(bank|atm|fast_food|restaurant|fuel|car_wash|car_rental|hairdresser|pharmacy|dentist|doctors|clinic|veterinary|post_office|post_box|telephone|recycling|vending_machine|charging_station)' {deletealltags}
-shop=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-amenity=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-tourism=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-leisure=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-office=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-craft=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-healthcare=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-historic=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+# Keep only places, natural features, water, viewpoints, barriers
+place!=* & natural!=* & waterway!=* & landuse!=reservoir & landuse!=basin & barrier!=* & tourism!=viewpoint {deletealltags}

@@ -1,7 +1,2 @@
-building=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-landuse=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-amenity=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-shop=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-tourism=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-leisure=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
-office=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+addr:housenumber=* {delete addr:housenumber; delete addr:housename}
+natural!=* & waterway!=* & place!=* & landuse!=reservoir & landuse!=basin {delete name; delete brand; delete operator; delete ref; delete int_ref; delete nat_ref; delete reg_ref; delete cuisine; delete mkgmap:boundary_name}

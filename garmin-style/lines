@@ -1,4 +1,2 @@
-highway=* {delete name}
-highway=* {delete ref; delete int_ref; delete nat_ref; delete reg_ref}
-highway ~ '(residential|service|unclassified|living_street|track|path|footway|cycleway|bridleway|steps|pedestrian|road)' {delete name}
-waterway=* {delete name}
+addr:housenumber=* {delete addr:housenumber; delete addr:housename}
+waterway!=* & natural!=* {delete name; delete brand; delete operator; delete ref; delete int_ref; delete nat_ref; delete reg_ref; delete cuisine; delete mkgmap:boundary_name}
