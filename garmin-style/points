@@ -1,2 +1,1 @@
 # Keep only places, natural features, water, viewpoints, barriers
-place!=* & natural!=* & waterway!=* & landuse!=reservoir & landuse!=basin & barrier!=* & tourism!=viewpoint {deletealltags}
