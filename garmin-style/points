@@ -1,3 +1,7 @@
+shop=* {deletealltags}
+office=* {deletealltags}
+craft=* {deletealltags}
+amenity ~ '(bank|atm|fast_food|restaurant|fuel|car_wash|car_rental|hairdresser|pharmacy|dentist|doctors|clinic|veterinary|post_office|post_box|telephone|recycling|vending_machine|charging_station)' {deletealltags}
 shop=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
 amenity=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
 tourism=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
