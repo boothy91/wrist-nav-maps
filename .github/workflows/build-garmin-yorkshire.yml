@@ -67,7 +67,8 @@ jobs:
             --gmapsupp \
             --style-file=garmin-style \
             --output-dir=output \
-            -c split/template.args
+            -c split/template.args \
+            typ.txt
 
           ls -lh output
 

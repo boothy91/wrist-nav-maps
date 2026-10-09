@@ -1,0 +1,487 @@
+; WristNav Garmin theme for the mkgmap default style
+[_id]
+FID=6800
+ProductCode=1
+CodePage=1252
+[end]
+
+[_drawOrder]
+Type=0x1,3
+Type=0x2,3
+Type=0x3,2
+Type=0x4,2
+Type=0x5,2
+Type=0x6,2
+Type=0x7,2
+Type=0x8,2
+Type=0x9,3
+Type=0xa,2
+Type=0xb,2
+Type=0xc,2
+Type=0xe,5
+Type=0x10,2
+Type=0x13,5
+Type=0x16,3
+Type=0x17,2
+Type=0x18,3
+Type=0x19,3
+Type=0x1a,3
+Type=0x1e,2
+Type=0x1f,2
+Type=0x32,1
+Type=0x3c,4
+Type=0x3d,4
+Type=0x3f,4
+Type=0x46,4
+Type=0x47,4
+Type=0x4d,3
+Type=0x4e,2
+Type=0x4f,2
+Type=0x50,3
+Type=0x51,3
+Type=0x53,4
+[end]
+
+[_polygon]
+Type=0x3
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #EAE5DA"
+[end]
+
+[_polygon]
+Type=0x4
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #E4D2D2"
+[end]
+
+[_polygon]
+Type=0x5
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #EEEEEE"
+[end]
+
+[_polygon]
+Type=0x6
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #E2E2E2"
+[end]
+
+[_polygon]
+Type=0x7
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #E8DEE8"
+[end]
+
+[_polygon]
+Type=0x8
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #F2DCCF"
+[end]
+
+[_polygon]
+Type=0x9
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #BFDFF5"
+[end]
+
+[_polygon]
+Type=0xa
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #F4F0C0"
+[end]
+
+[_polygon]
+Type=0xb
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #F6D6D6"
+[end]
+
+[_polygon]
+Type=0xc
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #E3D3E3"
+[end]
+
+[_polygon]
+Type=0xe
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #C8C8C8"
+[end]
+
+[_polygon]
+Type=0x10
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #EAE5DA"
+[end]
+
+[_polygon]
+Type=0x13
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #D2C2AE"
+[end]
+
+[_polygon]
+Type=0x16
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #D6EBD2"
+[end]
+
+[_polygon]
+Type=0x17
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #CDEBB0"
+[end]
+
+[_polygon]
+Type=0x18
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #B8E0A0"
+[end]
+
+[_polygon]
+Type=0x19
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #BCE6B0"
+[end]
+
+[_polygon]
+Type=0x1a
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #AACBAF"
+[end]
+
+[_polygon]
+Type=0x1e
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #E8D8C8"
+[end]
+
+[_polygon]
+Type=0x1f
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #F0E4F0"
+[end]
+
+[_polygon]
+Type=0x32
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x3c
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #9CC3F0"
+[end]
+
+[_polygon]
+Type=0x3d
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x3f
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #9CC3F0"
+[end]
+
+[_polygon]
+Type=0x46
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #9CC3F0"
+[end]
+
+[_polygon]
+Type=0x47
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #9CC3F0"
+[end]
+
+[_polygon]
+Type=0x4d
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #E8F4FF"
+[end]
+
+[_polygon]
+Type=0x4e
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #F2EFC9"
+[end]
+
+[_polygon]
+Type=0x4f
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #C8DFA8"
+[end]
+
+[_polygon]
+Type=0x50
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #A3CC8E"
+[end]
+
+[_polygon]
+Type=0x51
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #B6DDD0"
+[end]
+
+[_polygon]
+Type=0x53
+FontStyle=NoLabel
+Xpm="0 0 1 0"
+"a c #EAE5DA"
+[end]
+
+[_line]
+Type=0x1
+LineWidth=4
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #E892A2"
+"b c #C0285A"
+[end]
+
+[_line]
+Type=0x2
+LineWidth=4
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #F9B29C"
+"b c #B84A32"
+[end]
+
+[_line]
+Type=0x3
+LineWidth=4
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #FCD6A4"
+"b c #C98A30"
+[end]
+
+[_line]
+Type=0x4
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #F7F4A8"
+"b c #B8B050"
+[end]
+
+[_line]
+Type=0x5
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #FFFFFF"
+"b c #8A8A8A"
+[end]
+
+[_line]
+Type=0x6
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #FFFFFF"
+"b c #A0A0A0"
+[end]
+
+[_line]
+Type=0x7
+LineWidth=1
+Xpm="0 0 1 0"
+"a c #B0B0B0"
+[end]
+
+[_line]
+Type=0x8
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #FCD6A4"
+"b c #C98A30"
+[end]
+
+[_line]
+Type=0x9
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #E892A2"
+"b c #C0285A"
+[end]
+
+[_line]
+Type=0x14
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #777777"
+"b c #FFFFFF"
+[end]
+
+[_line]
+Type=0x15
+LineWidth=1
+Xpm="0 0 1 0"
+"a c #4A90C0"
+[end]
+
+[_line]
+Type=0x18
+LineWidth=1
+Xpm="0 0 1 0"
+"a c #8FB8F0"
+[end]
+
+[_line]
+Type=0x1f
+LineWidth=3
+Xpm="0 0 1 0"
+"a c #8FB8F0"
+[end]
+
+[_line]
+Type=0x26
+LineWidth=1
+Xpm="0 0 1 0"
+"a c #8FB8F0"
+[end]
+
+[_line]
+Type=0x29
+LineWidth=1
+Xpm="0 0 1 0"
+"a c #AAAAAA"
+[end]
+
+[_line]
+Type=0x10801
+LineWidth=4
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #F9B29C"
+"b c #B84A32"
+[end]
+
+[_line]
+Type=0x10802
+LineWidth=4
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #FCD6A4"
+"b c #C98A30"
+[end]
+
+[_line]
+Type=0x10803
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #F7F4A8"
+"b c #B8B050"
+[end]
+
+[_line]
+Type=0x10804
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"a c #FFFFFF"
+"b c #8A8A8A"
+[end]
+
+[_line]
+Type=0x10a02
+LineWidth=1
+Xpm="0 0 1 0"
+"a c #8FB8F0"
+[end]
+
+[_line]
+Type=0xa
+Xpm="32 3 2 1"
+"a c #8B5A2B"
+"b c none"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+[end]
+
+[_line]
+Type=0x16
+Xpm="32 2 2 1"
+"a c #B84B3A"
+"b c none"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+[end]
+
+[_line]
+Type=0x1b
+Xpm="32 2 2 1"
+"a c #5090D0"
+"b c none"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+[end]
+
+[_line]
+Type=0x1c
+Xpm="32 1 2 1"
+"a c #A060A0"
+"b c none"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+[end]
+
+[_line]
+Type=0x1d
+Xpm="32 1 2 1"
+"a c #A060A0"
+"b c none"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+[end]
+
+[_line]
+Type=0x1e
+Xpm="32 2 2 1"
+"a c #8040A0"
+"b c none"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+"aaaaaaaaaaaabbbbbbbbaaaabbbbbbbb"
+[end]
+
