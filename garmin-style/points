@@ -1,7 +1,7 @@
 barrier=stile {name 'Stile'} [0x1100 resolution 24]
 barrier=gate | barrier=kissing_gate {name 'Gate'} [0x1101 resolution 24]
-amenity=drinking_water | natural=spring | man_made=water_tap {add name='${name|def:Water}'} [0x5000 resolution 24]
-natural=peak [0x6616 resolution 22]
-tourism=viewpoint [0x2c04 resolution 23]
+amenity=drinking_water | natural=spring | man_made=water_tap {name '${name|def:Water}'} [0x5000 resolution 24]
+natural=peak {name '${name|def:Peak}'} [0x6616 resolution 22]
+tourism=viewpoint {name '${name|def:Viewpoint}'} [0x2c04 resolution 23]
 # Keep only places, natural features, water, viewpoints, barriers
 (amenity=* | shop=* | tourism=* | highway=* | railway=* | public_transport=* | leisure=* | historic=* | office=* | man_made=* | craft=*) & place!=* & natural!=* & waterway!=* & barrier!=* & tourism!=viewpoint {deletealltags}
