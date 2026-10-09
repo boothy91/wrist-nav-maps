@@ -1,6 +1,8 @@
-shop=* {delete name}
-amenity=* {delete name}
-tourism=* {delete name}
-leisure=* {delete name}
-office=* {delete name}
-craft=* {delete name}
+shop=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+amenity=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+tourism=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+leisure=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+office=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+craft=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+healthcare=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+historic=* {delete name; delete brand; delete operator; delete ref; delete cuisine}

@@ -1,4 +1,7 @@
-building=* {delete name}
-landuse=* {delete name}
-amenity=* {delete name}
-shop=* {delete name}
+building=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+landuse=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+amenity=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+shop=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+tourism=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+leisure=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
+office=* {delete name; delete brand; delete operator; delete ref; delete cuisine}
