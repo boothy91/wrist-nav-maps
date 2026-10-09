@@ -1,0 +1,146 @@
+name: Build Garmin DEM Test - Yorkshire
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y wget unzip jq osmium-tool
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install elevation dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install "matplotlib<3.5" "numpy<1.22" setuptools beautifulsoup4 lxml
+          python3 -m pip install http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.23.orig.tar.gz
+
+      - name: Download mkgmap
+        run: |
+          wget -q --tries=5 --waitretry=15 --retry-connrefused \
+            https://www.mkgmap.org.uk/download/mkgmap-r4924.zip \
+            -O mkgmap.zip
+          unzip -q mkgmap.zip -d mkgmap
+
+      - name: Download splitter
+        run: |
+          wget -q --tries=5 --waitretry=15 --retry-connrefused \
+            https://www.mkgmap.org.uk/download/splitter-r654.zip \
+            -O splitter.zip
+          unzip -q splitter.zip -d splitter
+
+      - name: Download Yorkshire and the Humber
+        run: |
+          wget -q --timeout=300 --tries=5 --waitretry=15 \
+            --retry-connrefused \
+            "https://download.openstreetmap.fr/extracts/europe/united_kingdom/england/yorkshire_and_the_humber-latest.osm.pbf" \
+            -O yorkshire_and_the_humber.osm.pbf
+          ls -lh yorkshire_and_the_humber.osm.pbf
+
+      - name: Fetch SRTM elevation tiles for Garmin DEM
+        run: |
+          set -euo pipefail
+          mkdir -p dem/hgt
+          PBF="yorkshire_and_the_humber.osm.pbf"
+          BBOX=$(osmium fileinfo -e --json "$PBF" | jq -r '.data.bbox | "\([.[0]-0.2,-180]|max):\([.[1]-0.2,-90]|max):\([.[2]+0.2,180]|min):\([.[3]+0.2,90]|min)"')
+          IFS=':' read -r W S E N <<< "$BBOX"
+          echo "Yorkshire bbox W:S:E:N = $BBOX"
+          for attempt in 1 2 3; do
+            if phyghtmap --source=view3 --step=100 --pbf \
+                --hgtdir="$PWD/dem/hgt" --output-prefix="$PWD/dem/probe" \
+                --jobs="$(nproc)" --area="${W}:${S}:${E}:${N}"; then
+              break
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              echo "SRTM download failed after 3 attempts" >&2
+              exit 1
+            fi
+            sleep 15
+          done
+          # Extract any zipped SRTM tiles, preserving the original cache layout.
+          find dem/hgt -type f -name '*.hgt.zip' -print0 |
+            while IFS= read -r -d '' archive; do
+              unzip -o -q "$archive" -d "$(dirname "$archive")"
+            done
+
+          echo "===== Downloaded elevation files ====="
+          find dem/hgt -maxdepth 5 -type f -printf '%p %s bytes\\n' | head -100
+
+          HGT_COUNT=$(find dem/hgt -type f -name '*.hgt' | wc -l)
+          echo "Unzipped HGT tile count: $HGT_COUNT"
+          if [ "$HGT_COUNT" -eq 0 ]; then
+            echo "ERROR: No .hgt tiles found; cannot build Garmin DEM." >&2
+            exit 1
+          fi
+
+          # Stage the HGT files in a flat directory for mkgmap.
+          mkdir -p dem/mkgmap-hgt
+          find dem/hgt -type f -name '*.hgt' -exec cp -f {} dem/mkgmap-hgt/ \;
+          echo "===== Staged DEM tiles ====="
+          find dem/mkgmap-hgt -maxdepth 1 -type f -printf '%f %s bytes\\n' | sort
+          STAGED_COUNT=$(find dem/mkgmap-hgt -maxdepth 1 -type f -name '*.hgt' | wc -l)
+          if [ "$STAGED_COUNT" -eq 0 ]; then
+            echo "ERROR: No HGT tiles staged for mkgmap." >&2
+            exit 1
+          fi
+
+      - name: Split map
+        run: |
+          mkdir -p split
+          SPLITTER=$(find splitter -name 'splitter.jar' | head -1)
+          java -Xmx6G -jar "$SPLITTER" \
+            --mapid=68000001 \
+            --description="Yorkshire and the Humber" \
+            --output-dir=split \
+            yorkshire_and_the_humber.osm.pbf
+
+      - name: Build Garmin IMG
+        run: |
+          mkdir -p output
+          find split -maxdepth 2 -type f -printf "%p\n" | sort | head -50
+          echo "===== template.args ====="
+          cat split/template.args
+          MKGMAP=$(find mkgmap -name 'mkgmap.jar' | head -1)
+          java -Xmx6G -jar "$MKGMAP" \
+            --family-id=6800 \
+            --family-name="WristNav Garmin Test" \
+            --series-name="Yorkshire and the Humber" \
+            --country-abbr=GBR \
+            --country-name="United Kingdom" \
+            --area-name="Yorkshire and the Humber" \
+            --product-id=1 \
+            --gmapsupp \
+            --merge-lines \
+            --style-file=garmin-style \
+            --output-dir=output \
+            --dem=dem/mkgmap-hgt \
+            --dem-dists=9942,19884,39768,79536 \
+            --show-profiles=1 \
+            -c split/template.args \
+            typ.txt
+
+          ls -lh output
+
+      - name: Upload Garmin IMG
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view garmin-yorkshire-dem-test &>/dev/null || \
+            gh release create garmin-yorkshire-dem-test \
+              --title "Garmin Yorkshire DEM Test" \
+              --notes "Experimental Garmin IMG with embedded DEM elevation data for Yorkshire and the Humber."
+
+          gh release upload garmin-yorkshire-dem-test output/gmapsupp.img --clobber
