@@ -44,15 +44,6 @@ jobs:
       # instead causes a check-then-act race: multiple parallel jobs can all see
       # "release doesn't exist yet" and then all try to create it, and every job
       # after the first one fails with "Release.tag_name already exists".
-      - name: Ensure contours release exists
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release view maps-osmfr-africa-contours &>/dev/null || gh release create maps-osmfr-africa-contours \
-            --title "Contours - OSMFR Africa (intermediate)" \
-            --notes "Intermediate filtered+contoured .osm.pbf files, one per region, plus a bbox sidecar each. Consumed by the Build Maps workflow's mapfile-writer stage. Not for direct use by the app." \
-            --latest=false
-
       - name: Ensure contours-map release exists
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -373,13 +364,6 @@ jobs:
           ls -lh "$OUT_PBF"
           cat "$OUT_BBOX"
 
-          for attempt in 1 2 3 4 5; do
-            if gh release upload maps-osmfr-africa-contours "$OUT_PBF" "$OUT_BBOX" --clobber; then
-              break
-            fi
-            echo "Upload attempt $attempt failed, retrying in 30s..." >&2
-            sleep 30
-          done
           echo "Uploaded ${FBASE}.osm.pbf and ${FBASE}.bbox.txt"
 
           if [ -f "$CONTOURS_MAP" ]; then
