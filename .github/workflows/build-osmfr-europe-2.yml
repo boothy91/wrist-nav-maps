@@ -47,10 +47,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Install dependencies
         run: |
           sudo apt-get update -q
           sudo apt-get install -y osmium-tool wget jq
+          pip install osmium
 
       - name: Setup Osmosis and mapsforge
         run: |
@@ -72,6 +77,93 @@ jobs:
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
+      - name: Write route-tagging script
+        run: |
+          cat << 'PYEOF' > /tmp/tag_routes.py
+          """
+          Copy hiking/cycling route relation info onto member ways.
+
+          The Mapsforge writer ignores route relations, so trail colours and refs
+          would otherwise never reach the .map file. This adds:
+            hike_color   red/blue/green/... (from osmc:symbol or colour)
+            hike_net     iwn/nwn/rwn/lwn
+            bike_route   yes (route=bicycle or mtb)
+            ref          route ref, only if the way has no ref of its own
+          """
+          import sys
+          import osmium
+
+          src, dst = sys.argv[1], sys.argv[2]
+
+          COLORS = {"red", "blue", "green", "yellow", "white", "black",
+                    "orange", "brown", "purple", "pink", "gray", "grey"}
+          NET_RANK = {"iwn": 0, "nwn": 1, "rwn": 2, "lwn": 3}
+          HIKE = {"hiking", "foot"}
+          BIKE = {"bicycle", "mtb"}
+
+
+          def color_of(tags):
+              sym = tags.get("osmc:symbol", "")
+              first = sym.split(":")[0].strip().lower() if sym else ""
+              if first in COLORS:
+                  return first
+              col = (tags.get("colour") or tags.get("color") or "").strip().lower()
+              return col if col in COLORS else None
+
+
+          hike = {}   # way id -> {"rank", "color", "net", "ref"}
+          bike = set()
+
+          # Pass 1: collect route info from relations
+          for rel in osmium.FileProcessor(src, osmium.osm.RELATION):
+              route = rel.tags.get("route")
+              if route in HIKE:
+                  net = rel.tags.get("network", "")
+                  info = {
+                      "rank": NET_RANK.get(net, 9),
+                      "color": color_of(rel.tags),
+                      "net": net if net in NET_RANK else None,
+                      "ref": rel.tags.get("ref"),
+                  }
+                  for m in rel.members:
+                      if m.type != "w":
+                          continue
+                      old = hike.get(m.ref)
+                      if old is None or (info["rank"], info["color"] is None) < (old["rank"], old["color"] is None):
+                          hike[m.ref] = info
+              elif route in BIKE:
+                  for m in rel.members:
+                      if m.type == "w":
+                          bike.add(m.ref)
+
+          print(f"Hiking route ways: {len(hike)}, cycling route ways: {len(bike)}")
+
+          # Pass 2: write everything out, adding the synthetic tags to ways
+          with osmium.SimpleWriter(dst) as writer:
+              for o in osmium.FileProcessor(src):
+                  if o.is_node():
+                      writer.add_node(o)
+                  elif o.is_way():
+                      info = hike.get(o.id)
+                      is_bike = o.id in bike
+                      if info is None and not is_bike:
+                          writer.add_way(o)
+                          continue
+                      tags = {t.k: t.v for t in o.tags}
+                      if info:
+                          if info["color"]:
+                              tags["hike_color"] = info["color"]
+                          if info["net"]:
+                              tags["hike_net"] = info["net"]
+                          if info["ref"] and "ref" not in tags:
+                              tags["ref"] = info["ref"]
+                      if is_bike:
+                          tags["bike_route"] = "yes"
+                      writer.add_way(o.replace(tags=tags))
+                  elif o.is_relation():
+                      writer.add_relation(o)
+          PYEOF
+
       - name: Download, filter and write map
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -86,6 +178,7 @@ jobs:
 
           PBF="/tmp/region.osm.pbf"
           FILTERED="/tmp/${FBASE}.filtered.osm.pbf"
+          TAGGED="/tmp/${FBASE}.tagged.osm.pbf"
           FNAME="${FBASE}.map"
           OUT="output/$FNAME"
           TAG_CONF="/tmp/tag-mapping.xml"
@@ -191,11 +284,16 @@ jobs:
 
           echo "Filtering tags..."
           osmium tags-filter "$PBF" \
-            w/highway w/waterway w/natural w/landuse w/railway \
+            w/highway w/waterway w/natural w/landuse w/railway w/bridge w/tunnel \
+            w/leisure=nature_reserve,park \
+            w/boundary=national_park,protected_area \
             n/place=city,town,village,hamlet,suburb,locality \
-            n/railway n/natural=peak,saddle,spring,cave_entrance \
-            n/tourism=viewpoint,information,alpine_hut,camp_site,picnic_site \
-            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe \
+            n/railway \
+            n/natural=peak,saddle,spring,cave_entrance,waterfall,tree \
+            n/mountain_pass=yes \
+            n/tourism=viewpoint,information,alpine_hut,wilderness_hut,camp_site,picnic_site,attraction \
+            n/information=guidepost,map,board \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe,restaurant \
             n/barrier=stile,gate,kissing_gate,cattle_grid,lift_gate \
             n/highway=ford \
             n/shop=convenience,supermarket \
@@ -203,8 +301,12 @@ jobs:
             r/natural \
             r/landuse \
             r/leisure \
-            r/boundary \
+            r/boundary=national_park,protected_area \
             -o "$FILTERED" --overwrite
+
+          echo "Copying route info onto member ways..."
+          python3 /tmp/tag_routes.py "$FILTERED" "$TAGGED"
+          ls -lh "$TAGGED"
 
           cat << 'XMLEOF' > "$TAG_CONF"
           <?xml version="1.0" encoding="UTF-8"?>
@@ -213,38 +315,54 @@ jobs:
                        xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
                        default-zoom-appear="16" profile-name="default-profile">
             <pois>
+              <!-- places -->
               <osm-tag key="place" value="city" zoom-appear="3" />
               <osm-tag key="place" value="town" zoom-appear="7" />
               <osm-tag key="place" value="village" zoom-appear="11" />
               <osm-tag key="place" value="hamlet" zoom-appear="12" />
               <osm-tag key="place" value="suburb" zoom-appear="12" />
               <osm-tag key="place" value="locality" zoom-appear="13" />
+              <!-- natural -->
               <osm-tag key="natural" value="peak" zoom-appear="12" />
               <osm-tag key="natural" value="saddle" zoom-appear="13" />
+              <osm-tag key="natural" value="spring" zoom-appear="14" />
+              <osm-tag key="natural" value="cave_entrance" zoom-appear="13" />
+              <osm-tag key="natural" value="waterfall" zoom-appear="13" />
+              <osm-tag key="natural" value="tree" zoom-appear="15" />
+              <osm-tag key="mountain_pass" value="yes" zoom-appear="12" />
+              <!-- tourism / information -->
               <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
               <osm-tag key="tourism" value="information" zoom-appear="14" />
               <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
+              <osm-tag key="tourism" value="wilderness_hut" zoom-appear="12" />
               <osm-tag key="tourism" value="camp_site" zoom-appear="13" />
               <osm-tag key="tourism" value="picnic_site" zoom-appear="14" />
+              <osm-tag key="tourism" value="attraction" zoom-appear="13" />
+              <osm-tag key="information" value="guidepost" zoom-appear="14" />
+              <osm-tag key="information" value="map" zoom-appear="15" />
+              <osm-tag key="information" value="board" zoom-appear="15" />
+              <!-- amenities -->
               <osm-tag key="amenity" value="drinking_water" zoom-appear="14" />
               <osm-tag key="amenity" value="toilets" zoom-appear="14" />
               <osm-tag key="amenity" value="parking" zoom-appear="13" />
               <osm-tag key="amenity" value="shelter" zoom-appear="13" />
+              <osm-tag key="amenity" value="bench" zoom-appear="15" />
+              <osm-tag key="amenity" value="pub" zoom-appear="13" />
+              <osm-tag key="amenity" value="cafe" zoom-appear="13" />
+              <osm-tag key="amenity" value="restaurant" zoom-appear="14" />
+              <!-- barriers -->
               <osm-tag key="barrier" value="stile" zoom-appear="14" />
               <osm-tag key="barrier" value="gate" zoom-appear="14" />
               <osm-tag key="barrier" value="kissing_gate" zoom-appear="14" />
               <osm-tag key="barrier" value="cattle_grid" zoom-appear="14" />
               <osm-tag key="barrier" value="lift_gate" zoom-appear="14" />
-              <osm-tag key="natural" value="spring" zoom-appear="14" />
-              <osm-tag key="natural" value="cave_entrance" zoom-appear="13" />
               <osm-tag key="highway" value="ford" zoom-appear="13" />
-              <osm-tag key="amenity" value="bench" zoom-appear="15" />
-              <osm-tag key="amenity" value="pub" zoom-appear="13" />
-              <osm-tag key="amenity" value="cafe" zoom-appear="13" />
+              <!-- shops -->
               <osm-tag key="shop" value="convenience" zoom-appear="14" />
               <osm-tag key="shop" value="supermarket" zoom-appear="12" />
             </pois>
             <ways>
+              <!-- roads -->
               <osm-tag key="highway" value="motorway" zoom-appear="6" />
               <osm-tag key="highway" value="trunk" zoom-appear="7" />
               <osm-tag key="highway" value="primary" zoom-appear="9" />
@@ -252,35 +370,102 @@ jobs:
               <osm-tag key="highway" value="tertiary" zoom-appear="11" />
               <osm-tag key="highway" value="unclassified" zoom-appear="12" />
               <osm-tag key="highway" value="residential" zoom-appear="12" />
+              <osm-tag key="highway" value="living_street" zoom-appear="13" />
+              <osm-tag key="highway" value="pedestrian" zoom-appear="13" />
               <osm-tag key="highway" value="service" zoom-appear="13" />
-              <osm-tag key="highway" value="track" zoom-appear="12" />
-              <osm-tag key="highway" value="path" zoom-appear="12" />
-              <osm-tag key="highway" value="footway" zoom-appear="13" />
-              <osm-tag key="highway" value="cycleway" zoom-appear="12" />
-              <osm-tag key="highway" value="bridleway" zoom-appear="12" />
+              <osm-tag key="highway" value="motorway_link" zoom-appear="11" />
+              <osm-tag key="highway" value="trunk_link" zoom-appear="11" />
+              <osm-tag key="highway" value="primary_link" zoom-appear="12" />
+              <osm-tag key="highway" value="secondary_link" zoom-appear="12" />
+              <osm-tag key="highway" value="tertiary_link" zoom-appear="13" />
+              <!-- trails: appear earlier than before -->
+              <osm-tag key="highway" value="track" zoom-appear="11" />
+              <osm-tag key="highway" value="path" zoom-appear="11" />
+              <osm-tag key="highway" value="footway" zoom-appear="12" />
+              <osm-tag key="highway" value="cycleway" zoom-appear="11" />
+              <osm-tag key="highway" value="bridleway" zoom-appear="11" />
               <osm-tag key="highway" value="steps" zoom-appear="13" />
               <!-- SAC hiking difficulty -->
-              <osm-tag key="sac_scale" value="strolling" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="mountain_hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="demanding_mountain_hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="alpine_hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="demanding_alpine_hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="difficult_alpine_hiking" zoom-appear="12" />
+              <osm-tag key="sac_scale" value="strolling" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="mountain_hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="demanding_mountain_hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="alpine_hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="demanding_alpine_hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="difficult_alpine_hiking" zoom-appear="11" />
+              <!-- trail visibility -->
+              <osm-tag key="trail_visibility" value="good" zoom-appear="13" />
+              <osm-tag key="trail_visibility" value="intermediate" zoom-appear="13" />
+              <osm-tag key="trail_visibility" value="bad" zoom-appear="13" />
+              <osm-tag key="trail_visibility" value="horrible" zoom-appear="13" />
+              <osm-tag key="trail_visibility" value="no" zoom-appear="13" />
+              <!-- MTB difficulty -->
+              <osm-tag key="mtb:scale" value="0" zoom-appear="13" />
+              <osm-tag key="mtb:scale" value="1" zoom-appear="13" />
+              <osm-tag key="mtb:scale" value="2" zoom-appear="13" />
+              <osm-tag key="mtb:scale" value="3" zoom-appear="13" />
+              <!-- surface -->
+              <osm-tag key="surface" value="paved" zoom-appear="13" />
+              <osm-tag key="surface" value="gravel" zoom-appear="13" />
+              <osm-tag key="surface" value="dirt" zoom-appear="13" />
+              <osm-tag key="surface" value="rock" zoom-appear="13" />
+              <osm-tag key="bridge" value="yes" zoom-appear="13" />
+              <osm-tag key="tunnel" value="yes" zoom-appear="13" />
+              <!-- synthetic route tags written by tag_routes.py -->
+              <osm-tag key="hike_color" value="red" zoom-appear="11" />
+              <osm-tag key="hike_color" value="blue" zoom-appear="11" />
+              <osm-tag key="hike_color" value="green" zoom-appear="11" />
+              <osm-tag key="hike_color" value="yellow" zoom-appear="11" />
+              <osm-tag key="hike_color" value="white" zoom-appear="11" />
+              <osm-tag key="hike_color" value="black" zoom-appear="11" />
+              <osm-tag key="hike_color" value="orange" zoom-appear="11" />
+              <osm-tag key="hike_color" value="brown" zoom-appear="11" />
+              <osm-tag key="hike_color" value="purple" zoom-appear="11" />
+              <osm-tag key="hike_color" value="pink" zoom-appear="11" />
+              <osm-tag key="hike_color" value="gray" zoom-appear="11" />
+              <osm-tag key="hike_color" value="grey" zoom-appear="11" />
+              <osm-tag key="hike_net" value="iwn" zoom-appear="9" />
+              <osm-tag key="hike_net" value="nwn" zoom-appear="10" />
+              <osm-tag key="hike_net" value="rwn" zoom-appear="11" />
+              <osm-tag key="hike_net" value="lwn" zoom-appear="12" />
+              <osm-tag key="bike_route" value="yes" zoom-appear="11" />
+              <!-- natural / terrain -->
               <osm-tag key="natural" value="cliff" zoom-appear="12" />
-              <osm-tag key="waterway" value="river" zoom-appear="11" />
-              <osm-tag key="waterway" value="stream" zoom-appear="13" />
               <osm-tag key="natural" value="water" zoom-appear="10" />
               <osm-tag key="natural" value="wood" zoom-appear="10" />
+              <osm-tag key="natural" value="scrub" zoom-appear="12" />
+              <osm-tag key="natural" value="heath" zoom-appear="12" />
+              <osm-tag key="natural" value="grassland" zoom-appear="12" />
+              <osm-tag key="natural" value="bare_rock" zoom-appear="12" />
+              <osm-tag key="natural" value="scree" zoom-appear="12" />
+              <osm-tag key="natural" value="wetland" zoom-appear="12" />
+              <osm-tag key="natural" value="glacier" zoom-appear="9" />
+              <osm-tag key="natural" value="beach" zoom-appear="13" />
+              <osm-tag key="natural" value="coastline" zoom-appear="5" />
+              <!-- water -->
+              <osm-tag key="waterway" value="river" zoom-appear="11" />
+              <osm-tag key="waterway" value="canal" zoom-appear="12" />
+              <osm-tag key="waterway" value="stream" zoom-appear="13" />
+              <osm-tag key="waterway" value="waterfall" zoom-appear="13" />
+              <!-- landuse -->
               <osm-tag key="landuse" value="forest" zoom-appear="10" />
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
+              <osm-tag key="landuse" value="meadow" zoom-appear="12" />
+              <osm-tag key="landuse" value="farmland" zoom-appear="12" />
+              <osm-tag key="landuse" value="grass" zoom-appear="13" />
+              <!-- protected areas -->
+              <osm-tag key="leisure" value="nature_reserve" zoom-appear="10" />
+              <osm-tag key="leisure" value="park" zoom-appear="12" />
+              <osm-tag key="boundary" value="national_park" zoom-appear="8" />
+              <osm-tag key="boundary" value="protected_area" zoom-appear="10" />
+              <!-- railway -->
               <osm-tag key="railway" value="rail" zoom-appear="10" />
             </ways>
           </tag-mapping>
           XMLEOF
 
-          SIZE_MB=$(du -m "$FILTERED" | cut -f1)
-          echo "Filtered PBF size: ${SIZE_MB}MB"
+          SIZE_MB=$(du -m "$TAGGED" | cut -f1)
+          echo "Tagged PBF size: ${SIZE_MB}MB"
 
           # simplification-factor=1 to stop Map-Writer from collapsing curve points into straight vectors
           # First attempt (max zoom 21 -> 17) crashed at the same relative point, which
@@ -289,7 +474,7 @@ jobs:
           # Collapsing to two intervals and dropping that base zoom to 10 cuts the grid
           # by ~16x per axis-doubling. This is the next experiment, not a confirmed fix -
           # re-check the run.
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$FILTERED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 zoom-interval-conf=5,0,7,10,8,17"
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$TAGGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 way-clipping=true label-position=true preferred-languages=en zoom-interval-conf=5,0,7,10,8,17"
           $CMD
           ls -lh "$OUT"
 
