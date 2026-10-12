@@ -181,7 +181,7 @@ jobs:
           # the first time this runs - unzip step below assumes .zip and may
           # need adjusting if phyghtmap already leaves them unzipped.
           for attempt in 1 2 3; do
-            if phyghtmap --source=view1 --step=100 --pbf \
+            if phyghtmap --source=view1,view3,srtm3 --step=100 --pbf \
                 --hgtdir="$HGT_DIR" --output-prefix=/tmp/hillshade_probe \
                 --jobs="$(nproc)" --area="${W}:${S}:${E}:${N}"; then
               break
@@ -218,7 +218,7 @@ jobs:
           while IFS= read -r TILE; do
             FOUND=$(find "$HGT_DIR" -name "$TILE" -print -quit)
             if [ -n "$FOUND" ]; then
-              cp "$FOUND" "$STAGE_DIR/"
+              ln "$FOUND" "$STAGE_DIR/"
             else
               echo "WARNING: expected tile $TILE not found in cache (likely sea/void area)" >&2
               MISSING=$((MISSING+1))
