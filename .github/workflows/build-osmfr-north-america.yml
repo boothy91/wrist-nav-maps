@@ -377,6 +377,32 @@ jobs:
               <osm-tag key="landuse" value="forest" zoom-appear="10" />
               <osm-tag key="landuse" value="residential" zoom-appear="11" />
               <osm-tag key="railway" value="rail" zoom-appear="10" />
+              <osm-tag key="mtb:scale" value="1" zoom-appear="13" />
+              <osm-tag key="mtb:scale" value="2" zoom-appear="13" />
+              <osm-tag key="mtb:scale" value="3" zoom-appear="13" />
+              <osm-tag key="surface" value="paved" zoom-appear="13" />
+              <osm-tag key="surface" value="gravel" zoom-appear="13" />
+              <osm-tag key="surface" value="dirt" zoom-appear="13" />
+              <osm-tag key="surface" value="rock" zoom-appear="13" />
+              <osm-tag key="bridge" value="yes" zoom-appear="13" />
+              <osm-tag key="tunnel" value="yes" zoom-appear="13" />
+              <osm-tag key="hike_color" value="red" zoom-appear="11" />
+              <osm-tag key="hike_color" value="blue" zoom-appear="11" />
+              <osm-tag key="hike_color" value="green" zoom-appear="11" />
+              <osm-tag key="hike_color" value="yellow" zoom-appear="11" />
+              <osm-tag key="hike_color" value="white" zoom-appear="11" />
+              <osm-tag key="hike_color" value="black" zoom-appear="11" />
+              <osm-tag key="hike_color" value="orange" zoom-appear="11" />
+              <osm-tag key="hike_color" value="brown" zoom-appear="11" />
+              <osm-tag key="hike_color" value="purple" zoom-appear="11" />
+              <osm-tag key="hike_color" value="pink" zoom-appear="11" />
+              <osm-tag key="hike_color" value="gray" zoom-appear="11" />
+              <osm-tag key="hike_color" value="grey" zoom-appear="11" />
+              <osm-tag key="hike_net" value="iwn" zoom-appear="9" />
+              <osm-tag key="hike_net" value="nwn" zoom-appear="10" />
+              <osm-tag key="hike_net" value="rwn" zoom-appear="11" />
+              <osm-tag key="hike_net" value="lwn" zoom-appear="12" />
+              <osm-tag key="bike_route" value="yes" zoom-appear="10" />
             </ways>
           </tag-mapping>
           XMLEOF
