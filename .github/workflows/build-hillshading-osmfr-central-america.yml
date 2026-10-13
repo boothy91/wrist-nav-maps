@@ -180,15 +180,27 @@ jobs:
           # NOTE: verify phyghtmap's on-disk cache naming (.hgt vs .hgt.zip)
           # the first time this runs - unzip step below assumes .zip and may
           # need adjusting if phyghtmap already leaves them unzipped.
-          for attempt in 1 2 3; do
-            if phyghtmap --source="$([ "$attempt" -lt 3 ] && echo view1 || echo view3)" --step=100 --pbf \
+          for SOURCE in view1 view3; do
+            echo "Trying elevation source: $SOURCE"
+
+            if phyghtmap --source="$SOURCE" --step=100 --pbf \
                 --hgtdir="$HGT_DIR" --output-prefix=/tmp/hillshade_probe \
                 --jobs="$(nproc)" --area="${W}:${S}:${E}:${N}"; then
+              echo "phyghtmap exited successfully for $SOURCE"
+            else
+              echo "phyghtmap returned an error for $SOURCE" >&2
+            fi
+
+            if find "$HGT_DIR" -type f \
+                \( -name '*.hgt' -o -name '*.hgt.zip' \) \
+                -print -quit | grep -q .; then
+              echo "Elevation files found using $SOURCE"
               break
             fi
-            echo "phyghtmap hgt fetch attempt $attempt failed, retrying in 15s..." >&2
-            sleep 15
+
+            echo "No elevation files found using $SOURCE"
           done
+
           rm -f /tmp/hillshade_probe*.osm.pbf
 
           # Unzip any cached tiles that came down zipped
