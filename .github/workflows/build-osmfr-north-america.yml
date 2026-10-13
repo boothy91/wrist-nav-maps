@@ -376,7 +376,10 @@ jobs:
               <osm-tag key="highway" value="unclassified" zoom-appear="12" />
               <osm-tag key="highway" value="residential" zoom-appear="12" />
               <osm-tag key="highway" value="service" zoom-appear="13" />
-              <osm-tag key="highway" value="track" zoom-appear="12" />
+              <osm-tag key="highway" value="track" zoom-appear="11" />
+              <osm-tag key="highway" value="corridor" zoom-appear="14" />
+              <osm-tag key="highway" value="escape" zoom-appear="13" />
+              <osm-tag key="highway" value="raceway" zoom-appear="12" />
               <osm-tag key="highway" value="path" zoom-appear="12" />
               <osm-tag key="highway" value="footway" zoom-appear="13" />
               <osm-tag key="highway" value="cycleway" zoom-appear="12" />
