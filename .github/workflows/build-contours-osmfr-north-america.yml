@@ -282,7 +282,7 @@ jobs:
             local attempt ok=0
             for attempt in 1 2 3; do
               # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
-              if phyghtmap --source=$([ "$attempt" -eq 1 ] && echo view1 || echo view3) -n "${STEP_OVERRIDES[$RID]:-}" ] && echo view3 || echo view1)" --step="$STEP" --pbf --line-cat=100,50 \
+              if phyghtmap --source="$([ "$attempt" -eq 1 ] && echo view1 || echo view3)" --step="$STEP" --pbf --line-cat=100,50 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
                   --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox" && ls /tmp/contours*.osm.pbf >/dev/null 2>&1; then
                 ok=1; break
