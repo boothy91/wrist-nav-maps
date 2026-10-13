@@ -394,6 +394,14 @@ jobs:
               <osm-tag key="sac_scale" value="demanding_alpine_hiking" zoom-appear="12" />
               <osm-tag key="sac_scale" value="difficult_alpine_hiking" zoom-appear="12" />
               <osm-tag key="natural" value="cliff" zoom-appear="12" />
+              <osm-tag key="natural" value="scrub" zoom-appear="12" />
+              <osm-tag key="natural" value="heath" zoom-appear="12" />
+              <osm-tag key="natural" value="grassland" zoom-appear="12" />
+              <osm-tag key="natural" value="bare_rock" zoom-appear="12" />
+              <osm-tag key="natural" value="scree" zoom-appear="12" />
+              <osm-tag key="natural" value="wetland" zoom-appear="12" />
+              <osm-tag key="natural" value="beach" zoom-appear="13" />
+              <osm-tag key="natural" value="coastline" zoom-appear="5" />
               <osm-tag key="waterway" value="river" zoom-appear="11" />
               <osm-tag key="waterway" value="stream" zoom-appear="13" />
               <osm-tag key="natural" value="water" zoom-appear="10" />
