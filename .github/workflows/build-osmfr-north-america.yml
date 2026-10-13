@@ -321,6 +321,10 @@ jobs:
               <osm-tag key="place" value="locality" zoom-appear="13" />
               <osm-tag key="natural" value="peak" zoom-appear="12" />
               <osm-tag key="natural" value="saddle" zoom-appear="13" />
+              <osm-tag key="natural" value="glacier" zoom-appear="11" />
+              <osm-tag key="natural" value="volcano" zoom-appear="11" />
+              <osm-tag key="natural" value="hot_spring" zoom-appear="13" />
+              <osm-tag key="mountain_pass" value="yes" zoom-appear="12" />
               <osm-tag key="natural" value="waterfall" zoom-appear="13" />
               <osm-tag key="natural" value="tree" zoom-appear="15" />
               <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
