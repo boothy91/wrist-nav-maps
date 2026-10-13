@@ -284,9 +284,7 @@ jobs:
 
           echo "Filtering tags..."
           osmium tags-filter "$PBF" \
-            w/highway w/waterway w/natural w/landuse w/railway w/bridge w/tunnel \
-            w/leisure=nature_reserve,park \
-            w/boundary=national_park,protected_area \
+            w/highway w/waterway w/natural w/landuse w/railway \
             n/place=city,town,village,hamlet,suburb,locality \
             n/railway \
             n/natural=peak,saddle,spring,cave_entrance,waterfall,tree \
@@ -301,7 +299,7 @@ jobs:
             r/natural \
             r/landuse \
             r/leisure \
-            r/boundary=national_park,protected_area \
+            r/boundary \
             -o "$FILTERED" --overwrite
 
           echo "Copying route info onto member ways..."
