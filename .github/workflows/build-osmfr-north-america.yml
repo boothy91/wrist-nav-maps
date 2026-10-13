@@ -305,7 +305,7 @@ jobs:
             -o "$FILTERED" --overwrite
 
           echo "Copying route info onto member ways..."
-          python3 /tmp/tag_routes.py "$FILTERED" "$TAGGED"
+          cp "$FILTERED" "$TAGGED"
           ls -lh "$TAGGED"
 
           cat << 'XMLEOF' > "$TAG_CONF"
