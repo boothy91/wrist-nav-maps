@@ -279,18 +279,25 @@ jobs:
           )
 
             rm -f /tmp/contours*.osm.pbf
-            local attempt ok=0
-            for attempt in 1 2 3; do
+            local attempt=0
+            local ok=0
+            for source in view1 view3 view3; do
+              attempt=$((attempt + 1))
               # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
-              if phyghtmap --source="$([ "$attempt" -eq 1 ] && echo view1 || echo view3)" --step="$STEP" --pbf --line-cat=100,50 \
+              rm -f /tmp/contours*.osm.pbf
+              if phyghtmap --source="$source" --step="$STEP" --pbf --line-cat=100,50 \
                   --hgtdir="$HGT_DIR" --output-prefix=/tmp/contours \
-                  --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox" && ls /tmp/contours*.osm.pbf >/dev/null 2>&1; then
-                ok=1; break
+                  --no-zero-contour --jobs="$(nproc)" --area="$buffered_bbox" && find /tmp -maxdepth 1 -type f -name 'contours*.osm.pbf' -size +0c -print -quit | grep -q .; then
+                ok=1
+                break
               fi
-              echo "phyghtmap attempt $attempt failed, retrying in 15s..." >&2
+              echo "phyghtmap source $source produced no usable contours (attempt $attempt)" >&2
               sleep 15
             done
-            [ "$ok" -eq 0 ] && echo "phyghtmap failed after 3 attempts, continuing without contours for this piece" >&2
+            if [ "$ok" -eq 0 ]; then
+              rm -f /tmp/contours*.osm.pbf
+              echo "phyghtmap failed for view1 and view3; continuing without contours for this piece" >&2
+            fi
 
             local contour_files=($(ls /tmp/contours*.osm.pbf 2>/dev/null))
             local num=${#contour_files[@]}
