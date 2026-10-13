@@ -291,7 +291,7 @@ jobs:
             n/mountain_pass=yes \
             n/tourism=viewpoint,information,alpine_hut,wilderness_hut,camp_site,picnic_site,attraction \
             n/information=guidepost,map,board \
-            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe,restaurant \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe,restaurant,fast_food,first_aid,bicycle_repair_station,bicycle_rental \
             n/barrier=stile,gate,kissing_gate,cattle_grid,lift_gate \
             n/highway=ford \
             n/shop=convenience,supermarket \
@@ -352,6 +352,11 @@ jobs:
               <osm-tag key="amenity" value="bench" zoom-appear="15" />
               <osm-tag key="amenity" value="pub" zoom-appear="13" />
               <osm-tag key="amenity" value="cafe" zoom-appear="13" />
+              <osm-tag key="amenity" value="restaurant" zoom-appear="13" />
+              <osm-tag key="amenity" value="fast_food" zoom-appear="14" />
+              <osm-tag key="amenity" value="first_aid" zoom-appear="14" />
+              <osm-tag key="amenity" value="bicycle_repair_station" zoom-appear="14" />
+              <osm-tag key="amenity" value="bicycle_rental" zoom-appear="14" />
               <osm-tag key="shop" value="convenience" zoom-appear="14" />
               <osm-tag key="shop" value="supermarket" zoom-appear="12" />
             </pois>
