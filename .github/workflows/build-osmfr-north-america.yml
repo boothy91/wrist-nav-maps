@@ -327,6 +327,11 @@ jobs:
               <osm-tag key="mountain_pass" value="yes" zoom-appear="12" />
               <osm-tag key="natural" value="waterfall" zoom-appear="13" />
               <osm-tag key="natural" value="tree" zoom-appear="15" />
+              <osm-tag key="tourism" value="wilderness_hut" zoom-appear="12" />
+              <osm-tag key="tourism" value="attraction" zoom-appear="13" />
+              <osm-tag key="information" value="guidepost" zoom-appear="13" />
+              <osm-tag key="information" value="map" zoom-appear="14" />
+              <osm-tag key="information" value="board" zoom-appear="14" />
               <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
               <osm-tag key="tourism" value="information" zoom-appear="14" />
               <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
