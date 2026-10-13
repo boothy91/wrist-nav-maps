@@ -181,7 +181,7 @@ jobs:
           # the first time this runs - unzip step below assumes .zip and may
           # need adjusting if phyghtmap already leaves them unzipped.
           for attempt in 1 2 3; do
-            if phyghtmap --source=view1 --step=100 --pbf \
+            if phyghtmap --source="$([ "$attempt" -lt 3 ] && echo view1 || echo view3)" --step=100 --pbf \
                 --hgtdir="$HGT_DIR" --output-prefix=/tmp/hillshade_probe \
                 --jobs="$(nproc)" --area="${W}:${S}:${E}:${N}"; then
               break
