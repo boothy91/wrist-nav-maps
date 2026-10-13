@@ -73,7 +73,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release view maps-osmfr-north-america &>/dev/null || gh release create maps-osmfr-north-america \
-            --title "Maps - OSMFR North America" \
+            --title "Maps - OSMFR Europe 1" \
             --notes "Auto-generated .map files for WristNav. Updated monthly." \
             --latest=false
 
@@ -284,14 +284,16 @@ jobs:
 
           echo "Filtering tags..."
           osmium tags-filter "$PBF" \
-            w/highway w/waterway w/natural w/landuse w/railway \
+            w/highway w/waterway w/natural w/landuse w/railway w/bridge w/tunnel \
+            w/leisure=nature_reserve,park \
+            w/boundary=national_park,protected_area \
             n/place=city,town,village,hamlet,suburb,locality \
             n/railway \
             n/natural=peak,saddle,spring,cave_entrance,waterfall,tree \
             n/mountain_pass=yes \
             n/tourism=viewpoint,information,alpine_hut,wilderness_hut,camp_site,picnic_site,attraction \
             n/information=guidepost,map,board \
-            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe,restaurant,fast_food,first_aid,bicycle_repair_station,bicycle_rental \
+            n/amenity=drinking_water,toilets,parking,shelter,bench,pub,cafe,restaurant \
             n/barrier=stile,gate,kissing_gate,cattle_grid,lift_gate \
             n/highway=ford \
             n/shop=convenience,supermarket \
@@ -299,7 +301,7 @@ jobs:
             r/natural \
             r/landuse \
             r/leisure \
-            r/boundary \
+            r/boundary=national_park,protected_area \
             -o "$FILTERED" --overwrite
 
           echo "Copying route info onto member ways..."
@@ -313,111 +315,103 @@ jobs:
                        xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
                        default-zoom-appear="16" profile-name="default-profile">
             <pois>
+              <!-- places -->
               <osm-tag key="place" value="city" zoom-appear="3" />
               <osm-tag key="place" value="town" zoom-appear="7" />
               <osm-tag key="place" value="village" zoom-appear="11" />
               <osm-tag key="place" value="hamlet" zoom-appear="12" />
               <osm-tag key="place" value="suburb" zoom-appear="12" />
               <osm-tag key="place" value="locality" zoom-appear="13" />
+              <!-- natural -->
               <osm-tag key="natural" value="peak" zoom-appear="12" />
               <osm-tag key="natural" value="saddle" zoom-appear="13" />
-              <osm-tag key="natural" value="glacier" zoom-appear="11" />
-              <osm-tag key="natural" value="volcano" zoom-appear="11" />
-              <osm-tag key="natural" value="hot_spring" zoom-appear="13" />
-              <osm-tag key="mountain_pass" value="yes" zoom-appear="12" />
+              <osm-tag key="natural" value="spring" zoom-appear="14" />
+              <osm-tag key="natural" value="cave_entrance" zoom-appear="13" />
               <osm-tag key="natural" value="waterfall" zoom-appear="13" />
               <osm-tag key="natural" value="tree" zoom-appear="15" />
-              <osm-tag key="tourism" value="wilderness_hut" zoom-appear="12" />
-              <osm-tag key="tourism" value="attraction" zoom-appear="13" />
-              <osm-tag key="information" value="guidepost" zoom-appear="13" />
-              <osm-tag key="information" value="map" zoom-appear="14" />
-              <osm-tag key="information" value="board" zoom-appear="14" />
+              <osm-tag key="mountain_pass" value="yes" zoom-appear="12" />
+              <!-- tourism / information -->
               <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
               <osm-tag key="tourism" value="information" zoom-appear="14" />
               <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
+              <osm-tag key="tourism" value="wilderness_hut" zoom-appear="12" />
               <osm-tag key="tourism" value="camp_site" zoom-appear="13" />
               <osm-tag key="tourism" value="picnic_site" zoom-appear="14" />
+              <osm-tag key="tourism" value="attraction" zoom-appear="13" />
+              <osm-tag key="information" value="guidepost" zoom-appear="14" />
+              <osm-tag key="information" value="map" zoom-appear="15" />
+              <osm-tag key="information" value="board" zoom-appear="15" />
+              <!-- amenities -->
               <osm-tag key="amenity" value="drinking_water" zoom-appear="14" />
               <osm-tag key="amenity" value="toilets" zoom-appear="14" />
               <osm-tag key="amenity" value="parking" zoom-appear="13" />
               <osm-tag key="amenity" value="shelter" zoom-appear="13" />
+              <osm-tag key="amenity" value="bench" zoom-appear="15" />
+              <osm-tag key="amenity" value="pub" zoom-appear="13" />
+              <osm-tag key="amenity" value="cafe" zoom-appear="13" />
+              <osm-tag key="amenity" value="restaurant" zoom-appear="14" />
+              <!-- barriers -->
               <osm-tag key="barrier" value="stile" zoom-appear="14" />
               <osm-tag key="barrier" value="gate" zoom-appear="14" />
               <osm-tag key="barrier" value="kissing_gate" zoom-appear="14" />
               <osm-tag key="barrier" value="cattle_grid" zoom-appear="14" />
               <osm-tag key="barrier" value="lift_gate" zoom-appear="14" />
-              <osm-tag key="natural" value="spring" zoom-appear="14" />
-              <osm-tag key="natural" value="cave_entrance" zoom-appear="13" />
               <osm-tag key="highway" value="ford" zoom-appear="13" />
-              <osm-tag key="amenity" value="bench" zoom-appear="15" />
-              <osm-tag key="amenity" value="pub" zoom-appear="13" />
-              <osm-tag key="amenity" value="cafe" zoom-appear="13" />
-              <osm-tag key="amenity" value="restaurant" zoom-appear="13" />
-              <osm-tag key="amenity" value="fast_food" zoom-appear="14" />
-              <osm-tag key="amenity" value="first_aid" zoom-appear="14" />
-              <osm-tag key="amenity" value="bicycle_repair_station" zoom-appear="14" />
-              <osm-tag key="amenity" value="bicycle_rental" zoom-appear="14" />
+              <!-- shops -->
               <osm-tag key="shop" value="convenience" zoom-appear="14" />
               <osm-tag key="shop" value="supermarket" zoom-appear="12" />
             </pois>
             <ways>
+              <!-- roads -->
               <osm-tag key="highway" value="motorway" zoom-appear="6" />
-              <osm-tag key="highway" value="motorway_link" zoom-appear="8" />
-              <osm-tag key="highway" value="trunk_link" zoom-appear="9" />
-              <osm-tag key="highway" value="primary_link" zoom-appear="10" />
-              <osm-tag key="highway" value="secondary_link" zoom-appear="11" />
-              <osm-tag key="highway" value="tertiary_link" zoom-appear="12" />
-              <osm-tag key="highway" value="pedestrian" zoom-appear="13" />
-              <osm-tag key="highway" value="via_ferrata" zoom-appear="13" />
               <osm-tag key="highway" value="trunk" zoom-appear="7" />
               <osm-tag key="highway" value="primary" zoom-appear="9" />
               <osm-tag key="highway" value="secondary" zoom-appear="10" />
               <osm-tag key="highway" value="tertiary" zoom-appear="11" />
               <osm-tag key="highway" value="unclassified" zoom-appear="12" />
               <osm-tag key="highway" value="residential" zoom-appear="12" />
+              <osm-tag key="highway" value="living_street" zoom-appear="13" />
+              <osm-tag key="highway" value="pedestrian" zoom-appear="13" />
               <osm-tag key="highway" value="service" zoom-appear="13" />
+              <osm-tag key="highway" value="motorway_link" zoom-appear="11" />
+              <osm-tag key="highway" value="trunk_link" zoom-appear="11" />
+              <osm-tag key="highway" value="primary_link" zoom-appear="12" />
+              <osm-tag key="highway" value="secondary_link" zoom-appear="12" />
+              <osm-tag key="highway" value="tertiary_link" zoom-appear="13" />
+              <!-- trails: appear earlier than before -->
               <osm-tag key="highway" value="track" zoom-appear="11" />
-              <osm-tag key="highway" value="corridor" zoom-appear="14" />
-              <osm-tag key="highway" value="escape" zoom-appear="13" />
-              <osm-tag key="highway" value="raceway" zoom-appear="12" />
-              <osm-tag key="highway" value="path" zoom-appear="12" />
-              <osm-tag key="highway" value="footway" zoom-appear="13" />
-              <osm-tag key="highway" value="cycleway" zoom-appear="12" />
-              <osm-tag key="highway" value="bridleway" zoom-appear="12" />
+              <osm-tag key="highway" value="path" zoom-appear="11" />
+              <osm-tag key="highway" value="footway" zoom-appear="12" />
+              <osm-tag key="highway" value="cycleway" zoom-appear="11" />
+              <osm-tag key="highway" value="bridleway" zoom-appear="11" />
               <osm-tag key="highway" value="steps" zoom-appear="13" />
               <!-- SAC hiking difficulty -->
-              <osm-tag key="sac_scale" value="strolling" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="mountain_hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="demanding_mountain_hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="alpine_hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="demanding_alpine_hiking" zoom-appear="12" />
-              <osm-tag key="sac_scale" value="difficult_alpine_hiking" zoom-appear="12" />
-              <osm-tag key="natural" value="cliff" zoom-appear="12" />
-              <osm-tag key="natural" value="scrub" zoom-appear="12" />
-              <osm-tag key="natural" value="heath" zoom-appear="12" />
-              <osm-tag key="natural" value="grassland" zoom-appear="12" />
-              <osm-tag key="natural" value="bare_rock" zoom-appear="12" />
-              <osm-tag key="natural" value="scree" zoom-appear="12" />
-              <osm-tag key="natural" value="wetland" zoom-appear="12" />
-              <osm-tag key="natural" value="beach" zoom-appear="13" />
-              <osm-tag key="natural" value="coastline" zoom-appear="5" />
-              <osm-tag key="waterway" value="river" zoom-appear="11" />
-              <osm-tag key="waterway" value="stream" zoom-appear="13" />
-              <osm-tag key="natural" value="water" zoom-appear="10" />
-              <osm-tag key="natural" value="wood" zoom-appear="10" />
-              <osm-tag key="landuse" value="forest" zoom-appear="10" />
-              <osm-tag key="landuse" value="residential" zoom-appear="11" />
-              <osm-tag key="railway" value="rail" zoom-appear="10" />
+              <osm-tag key="sac_scale" value="strolling" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="mountain_hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="demanding_mountain_hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="alpine_hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="demanding_alpine_hiking" zoom-appear="11" />
+              <osm-tag key="sac_scale" value="difficult_alpine_hiking" zoom-appear="11" />
+              <!-- trail visibility -->
+              <osm-tag key="trail_visibility" value="good" zoom-appear="13" />
+              <osm-tag key="trail_visibility" value="intermediate" zoom-appear="13" />
+              <osm-tag key="trail_visibility" value="bad" zoom-appear="13" />
+              <osm-tag key="trail_visibility" value="horrible" zoom-appear="13" />
+              <osm-tag key="trail_visibility" value="no" zoom-appear="13" />
+              <!-- MTB difficulty -->
+              <osm-tag key="mtb:scale" value="0" zoom-appear="13" />
               <osm-tag key="mtb:scale" value="1" zoom-appear="13" />
               <osm-tag key="mtb:scale" value="2" zoom-appear="13" />
               <osm-tag key="mtb:scale" value="3" zoom-appear="13" />
+              <!-- surface -->
               <osm-tag key="surface" value="paved" zoom-appear="13" />
               <osm-tag key="surface" value="gravel" zoom-appear="13" />
               <osm-tag key="surface" value="dirt" zoom-appear="13" />
               <osm-tag key="surface" value="rock" zoom-appear="13" />
               <osm-tag key="bridge" value="yes" zoom-appear="13" />
               <osm-tag key="tunnel" value="yes" zoom-appear="13" />
+              <!-- synthetic route tags written by tag_routes.py -->
               <osm-tag key="hike_color" value="red" zoom-appear="11" />
               <osm-tag key="hike_color" value="blue" zoom-appear="11" />
               <osm-tag key="hike_color" value="green" zoom-appear="11" />
@@ -434,7 +428,38 @@ jobs:
               <osm-tag key="hike_net" value="nwn" zoom-appear="10" />
               <osm-tag key="hike_net" value="rwn" zoom-appear="11" />
               <osm-tag key="hike_net" value="lwn" zoom-appear="12" />
-              <osm-tag key="bike_route" value="yes" zoom-appear="10" />
+              <osm-tag key="bike_route" value="yes" zoom-appear="11" />
+              <!-- natural / terrain -->
+              <osm-tag key="natural" value="cliff" zoom-appear="12" />
+              <osm-tag key="natural" value="water" zoom-appear="10" />
+              <osm-tag key="natural" value="wood" zoom-appear="10" />
+              <osm-tag key="natural" value="scrub" zoom-appear="12" />
+              <osm-tag key="natural" value="heath" zoom-appear="12" />
+              <osm-tag key="natural" value="grassland" zoom-appear="12" />
+              <osm-tag key="natural" value="bare_rock" zoom-appear="12" />
+              <osm-tag key="natural" value="scree" zoom-appear="12" />
+              <osm-tag key="natural" value="wetland" zoom-appear="12" />
+              <osm-tag key="natural" value="glacier" zoom-appear="9" />
+              <osm-tag key="natural" value="beach" zoom-appear="13" />
+              <osm-tag key="natural" value="coastline" zoom-appear="5" />
+              <!-- water -->
+              <osm-tag key="waterway" value="river" zoom-appear="11" />
+              <osm-tag key="waterway" value="canal" zoom-appear="12" />
+              <osm-tag key="waterway" value="stream" zoom-appear="13" />
+              <osm-tag key="waterway" value="waterfall" zoom-appear="13" />
+              <!-- landuse -->
+              <osm-tag key="landuse" value="forest" zoom-appear="10" />
+              <osm-tag key="landuse" value="residential" zoom-appear="11" />
+              <osm-tag key="landuse" value="meadow" zoom-appear="12" />
+              <osm-tag key="landuse" value="farmland" zoom-appear="12" />
+              <osm-tag key="landuse" value="grass" zoom-appear="13" />
+              <!-- protected areas -->
+              <osm-tag key="leisure" value="nature_reserve" zoom-appear="10" />
+              <osm-tag key="leisure" value="park" zoom-appear="12" />
+              <osm-tag key="boundary" value="national_park" zoom-appear="8" />
+              <osm-tag key="boundary" value="protected_area" zoom-appear="10" />
+              <!-- railway -->
+              <osm-tag key="railway" value="rail" zoom-appear="10" />
             </ways>
           </tag-mapping>
           XMLEOF
@@ -442,14 +467,8 @@ jobs:
           SIZE_MB=$(du -m "$TAGGED" | cut -f1)
           echo "Tagged PBF size: ${SIZE_MB}MB"
 
-          # simplification-factor=1 to stop Map-Writer from collapsing curve points into straight vectors
-          # First attempt (max zoom 21 -> 17) crashed at the same relative point, which
-          # points at the deepest interval's BASE zoom (was 14) as the real driver, not
-          # max zoom - base zoom sets the tile-index grid size across the whole bbox.
-          # Collapsing to two intervals and dropping that base zoom to 10 cuts the grid
-          # by ~16x per axis-doubling. This is the next experiment, not a confirmed fix -
-          # re-check the run.
-          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$TAGGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 way-clipping=true label-position=true preferred-languages=en zoom-interval-conf=5,0,7,10,8,17"
+          # simplification-factor=1 stops Map-Writer collapsing curve points into straight vectors
+          CMD="$OSMOSIS_HOME/bin/osmosis --read-pbf file=$TAGGED --mw file=$OUT tag-conf-file=$TAG_CONF tag-values=true bbox=$S,$W,$N,$E type=hd simplification-factor=1 way-clipping=true label-position=true preferred-languages=en"
           $CMD
           ls -lh "$OUT"
 
