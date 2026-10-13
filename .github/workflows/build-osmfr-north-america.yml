@@ -322,6 +322,7 @@ jobs:
               <osm-tag key="natural" value="peak" zoom-appear="12" />
               <osm-tag key="natural" value="saddle" zoom-appear="13" />
               <osm-tag key="natural" value="waterfall" zoom-appear="13" />
+              <osm-tag key="natural" value="tree" zoom-appear="15" />
               <osm-tag key="tourism" value="viewpoint" zoom-appear="13" />
               <osm-tag key="tourism" value="information" zoom-appear="14" />
               <osm-tag key="tourism" value="alpine_hut" zoom-appear="12" />
