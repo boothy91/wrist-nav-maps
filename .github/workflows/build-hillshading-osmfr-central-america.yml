@@ -226,6 +226,45 @@ jobs:
           PYEOF
           )
 
+          # AWS SRTM fallback: download any required tiles still missing
+          # after trying the existing Viewfinder view1/view3 sources.
+          AWS_DIR="$HGT_DIR/AWS"
+          mkdir -p "$AWS_DIR"
+
+          while IFS= read -r TILE; do
+            [ -n "$TILE" ] || continue
+
+            if find "$HGT_DIR" -type f -name "$TILE" -print -quit | grep -q .; then
+              continue
+            fi
+
+            LAT_HEMI="${TILE:0:1}"
+            LAT_NUM=$((10#${TILE:1:2}))
+            if { [ "$LAT_HEMI" = "N" ] && [ "$LAT_NUM" -ge 60 ]; } ||
+               { [ "$LAT_HEMI" = "S" ] && [ "$LAT_NUM" -ge 56 ]; }; then
+              echo "AWS SRTM coverage limit: skipping $TILE"
+              continue
+            fi
+
+            LAT_PREFIX="${TILE:0:3}"
+            AWS_URL="https://s3.amazonaws.com/elevation-tiles-prod/skadi/${LAT_PREFIX}/${TILE}.gz"
+            GZ_TMP="$AWS_DIR/$TILE.gz.tmp"
+            HGT_TMP="$AWS_DIR/$TILE.tmp"
+
+            echo "AWS fallback: trying $TILE"
+            if wget --timeout=30 --tries=2 --waitretry=2 \
+                -O "$GZ_TMP" "$AWS_URL" &&
+               gzip -t "$GZ_TMP" &&
+               gzip -dc "$GZ_TMP" > "$HGT_TMP" &&
+               test -s "$HGT_TMP"; then
+              mv "$HGT_TMP" "$AWS_DIR/$TILE"
+              echo "AWS fallback downloaded $TILE"
+            else
+              echo "AWS tile unavailable or invalid: $TILE" >&2
+            fi
+            rm -f "$GZ_TMP" "$HGT_TMP"
+          done <<< "$TILE_NAMES"
+
           MISSING=0
           while IFS= read -r TILE; do
             FOUND=$(find "$HGT_DIR" -name "$TILE" -print -quit)
