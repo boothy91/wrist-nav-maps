@@ -105,14 +105,38 @@ jobs:
       # only intermediate .osm.pbf files.
       - name: Setup mapsforge-map-writer plugin
         run: |
+          set -euo pipefail
           MW_VERSION="0.18.0"
           PLUGIN_DIR="$HOME/.openstreetmap/osmosis/plugins"
+          JAR="$PLUGIN_DIR/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar"
           mkdir -p "$PLUGIN_DIR"
-          wget -q --tries=5 --waitretry=15 --retry-connrefused \
-            -O "$PLUGIN_DIR/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar" \
+
+          URLS=(
+            "https://repo.maven.apache.org/maven2/org/mapsforge/mapsforge-map-writer/${MW_VERSION}/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar"
             "https://repo1.maven.org/maven2/org/mapsforge/mapsforge-map-writer/${MW_VERSION}/mapsforge-map-writer-${MW_VERSION}-jar-with-dependencies.jar"
-          ls -lh "$PLUGIN_DIR"
-          echo "JAVACMD_OPTIONS=-Xmx12000m" >> $GITHUB_ENV
+          )
+
+          downloaded=false
+          for url in "${URLS[@]}"; do
+            echo "Downloading mapsforge writer from: $url"
+            if wget --tries=5 --waitretry=15 --retry-connrefused \
+                -O "$JAR.tmp" "$url" && test -s "$JAR.tmp" && \
+                jar tf "$JAR.tmp" >/dev/null 2>&1; then
+              mv "$JAR.tmp" "$JAR"
+              downloaded=true
+              break
+            fi
+            echo "Download or JAR validation failed; trying fallback URL." >&2
+            rm -f "$JAR.tmp"
+          done
+
+          if [ "$downloaded" != true ]; then
+            echo "ERROR: Could not download a valid mapsforge writer JAR from either Maven Central URL." >&2
+            exit 1
+          fi
+
+          ls -lh "$JAR"
+          echo "JAVACMD_OPTIONS=-Xmx12000m" >> "$GITHUB_ENV"
 
       - name: Download, filter and generate contours
         env:
@@ -266,7 +290,13 @@ jobs:
             rm -f /tmp/contours*.osm.pbf
             local attempt=0
             local ok=0
-            for source in view1 view3 view3; do
+            if [ "$RID" = "china_inner_mongolia" ]; then
+              echo "Inner Mongolia: skipping view1; trying view3 twice"
+              sources=(view3 view3)
+            else
+              sources=(view1 view3 view3)
+            fi
+            for source in "${sources[@]}"; do
               attempt=$((attempt + 1))
               # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
               rm -f /tmp/contours*.osm.pbf
@@ -281,7 +311,7 @@ jobs:
             done
             if [ "$ok" -eq 0 ]; then
               rm -f /tmp/contours*.osm.pbf
-              echo "phyghtmap failed for view1 and view3; continuing without contours for this piece" >&2
+              echo "phyghtmap failed for all source attempts; continuing without contours for this piece" >&2
             fi
 
             local contour_files=($(ls /tmp/contours*.osm.pbf 2>/dev/null))
