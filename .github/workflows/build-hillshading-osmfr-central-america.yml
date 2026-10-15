@@ -180,7 +180,7 @@ jobs:
           # NOTE: verify phyghtmap's on-disk cache naming (.hgt vs .hgt.zip)
           # the first time this runs - unzip step below assumes .zip and may
           # need adjusting if phyghtmap already leaves them unzipped.
-          for SOURCE in view1 view3; do
+          for SOURCE in view1; do
             echo "Trying elevation source: $SOURCE"
 
             if phyghtmap --source="$SOURCE" --step=100 --pbf \
@@ -264,6 +264,30 @@ jobs:
             fi
             rm -f "$GZ_TMP" "$HGT_TMP"
           done <<< "$TILE_NAMES"
+
+          # Final fallback: try view3 only for tiles still missing after AWS.
+          NEED_VIEW3=0
+          while IFS= read -r TILE; do
+            [ -n "$TILE" ] || continue
+            if ! find "$HGT_DIR" -type f -name "$TILE" -print -quit | grep -q .; then
+              NEED_VIEW3=1
+              break
+            fi
+          done <<< "$TILE_NAMES"
+
+          if [ "$NEED_VIEW3" -eq 1 ]; then
+            echo "Tiles still missing after AWS; trying view3"
+            if phyghtmap --source=view3 --step=100 --pbf \
+                --hgtdir="$HGT_DIR" --output-prefix=/tmp/hillshade_probe \
+                --jobs="$(nproc)" --area="${W}:${S}:${E}:${N}"; then
+              echo "phyghtmap exited successfully for view3"
+            else
+              echo "phyghtmap returned an error for view3" >&2
+            fi
+            find "$HGT_DIR" -name '*.hgt.zip' -exec unzip -o -q -d "$HGT_DIR" {} \;
+          else
+            echo "All required tiles found before view3; skipping view3"
+          fi
 
           MISSING=0
           while IFS= read -r TILE; do
