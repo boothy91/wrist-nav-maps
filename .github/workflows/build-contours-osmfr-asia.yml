@@ -16,7 +16,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - id: set-matrix
         shell: bash
@@ -38,7 +38,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Created once, up front, before the matrix fans out. Doing this per-matrix-job
       # instead causes a check-then-act race: multiple parallel jobs can all see
@@ -65,7 +65,7 @@ jobs:
       max-parallel: 4
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
