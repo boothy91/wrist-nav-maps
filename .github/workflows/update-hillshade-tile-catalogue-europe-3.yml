@@ -1,0 +1,114 @@
+name: Update Europe 3 Hillshade Tile Catalogue
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-hillshade-tile-catalogue-europe-3
+  cancel-in-progress: false
+
+jobs:
+  update-catalogue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Generate tile catalogue
+        run: python3 scripts/generate-hillshade-tile-catalogue.py
+
+      - name: Validate generated catalogue
+        run: |
+          python3 - <<'PY'
+          import json
+          import math
+          import re
+          from pathlib import Path
+
+          source_path = Path("config/regions/regions-europe-3-osmfr.json")
+          output_path = Path("config/regions/hillshade-tiles-europe-3.json")
+
+          source = json.loads(source_path.read_text())
+          catalogue = json.loads(output_path.read_text())
+          regions = catalogue["regions"]
+
+          source_ids = [item["id"] for item in source]
+          catalogue_ids = [item["id"] for item in regions]
+
+          assert len(source_ids) == 172, (
+              f"Expected 172 source regions, found {len(source_ids)}"
+          )
+          assert len(catalogue_ids) == len(set(catalogue_ids)), (
+              "Duplicate catalogue region IDs"
+          )
+          assert set(catalogue_ids) == set(source_ids), (
+              "Catalogue IDs do not match source region IDs"
+          )
+          assert catalogue["region_count"] == len(regions), (
+              "region_count does not match catalogue"
+          )
+          assert catalogue["margin_degrees"] == 0.2, (
+              "Unexpected margin_degrees"
+          )
+
+          for region in regions:
+              bbox = region["bbox"]
+              expected = []
+
+              for lat in range(
+                  math.floor(bbox["south"]),
+                  math.floor(bbox["north"]) + 1
+              ):
+                  for lon in range(
+                      math.floor(bbox["west"]),
+                      math.floor(bbox["east"]) + 1
+                  ):
+                      ns = "N" if lat >= 0 else "S"
+                      ew = "E" if lon >= 0 else "W"
+                      expected.append(
+                          f"{ns}{abs(lat):02d}{ew}{abs(lon):03d}.hgt"
+                      )
+
+              assert region["tiles"] == expected, (
+                  f"Tile list does not match bounding box: {region['id']}"
+              )
+              assert all(
+                  re.fullmatch(r"[NS]\d{2}[EW]\d{3}\.hgt", tile)
+                  for tile in region["tiles"]
+              ), f"Invalid tile filename: {region['id']}"
+
+          yorkshire = next(
+              r for r in regions
+              if r["id"] == "yorkshire_and_the_humber"
+          )
+          print(f"Validation passed: {len(regions)} regions")
+          print(
+              "Total tile entries:",
+              sum(len(r["tiles"]) for r in regions)
+          )
+          print("Yorkshire and the Humber:", ", ".join(yorkshire["tiles"]))
+          PY
+
+      - name: Commit catalogue if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -- config/regions/hillshade-tiles-europe-3.json
+
+          if git diff --cached --quiet -- config/regions/hillshade-tiles-europe-3.json; then
+            echo "Catalogue unchanged; nothing to commit."
+            exit 0
+          fi
+
+          git commit -m "Update Europe 3 hillshade tile catalogue"
+          git push

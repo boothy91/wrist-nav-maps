@@ -1,0 +1,4111 @@
+{
+  "description": "OSMFR Europe 3 hillshade HGT tile catalogue",
+  "margin_degrees": 0.2,
+  "region_count": 172,
+  "regions": [
+    {
+      "id": "san_marino",
+      "name": "San Marino",
+      "bbox": {
+        "west": 12.199,
+        "south": 43.69,
+        "east": 12.72,
+        "north": 44.196
+      },
+      "tiles": [
+        "N43E012.hgt",
+        "N44E012.hgt"
+      ]
+    },
+    {
+      "id": "vatican_city",
+      "name": "Vatican City",
+      "bbox": {
+        "west": 12.111,
+        "south": 41.527,
+        "east": 12.87,
+        "north": 42.265
+      },
+      "tiles": [
+        "N41E012.hgt",
+        "N42E012.hgt"
+      ]
+    },
+    {
+      "id": "aveiro",
+      "name": "Aveiro",
+      "bbox": {
+        "west": -8.988,
+        "south": 40.075,
+        "east": -7.885,
+        "north": 41.284
+      },
+      "tiles": [
+        "N40W009.hgt",
+        "N40W008.hgt",
+        "N41W009.hgt",
+        "N41W008.hgt"
+      ]
+    },
+    {
+      "id": "azores",
+      "name": "Azores",
+      "bbox": {
+        "west": -31.78,
+        "south": 36.505,
+        "east": -24.31,
+        "north": 40.145
+      },
+      "tiles": [
+        "N36W032.hgt",
+        "N36W031.hgt",
+        "N36W030.hgt",
+        "N36W029.hgt",
+        "N36W028.hgt",
+        "N36W027.hgt",
+        "N36W026.hgt",
+        "N36W025.hgt",
+        "N37W032.hgt",
+        "N37W031.hgt",
+        "N37W030.hgt",
+        "N37W029.hgt",
+        "N37W028.hgt",
+        "N37W027.hgt",
+        "N37W026.hgt",
+        "N37W025.hgt",
+        "N38W032.hgt",
+        "N38W031.hgt",
+        "N38W030.hgt",
+        "N38W029.hgt",
+        "N38W028.hgt",
+        "N38W027.hgt",
+        "N38W026.hgt",
+        "N38W025.hgt",
+        "N39W032.hgt",
+        "N39W031.hgt",
+        "N39W030.hgt",
+        "N39W029.hgt",
+        "N39W028.hgt",
+        "N39W027.hgt",
+        "N39W026.hgt",
+        "N39W025.hgt",
+        "N40W032.hgt",
+        "N40W031.hgt",
+        "N40W030.hgt",
+        "N40W029.hgt",
+        "N40W028.hgt",
+        "N40W027.hgt",
+        "N40W026.hgt",
+        "N40W025.hgt"
+      ]
+    },
+    {
+      "id": "beja",
+      "name": "Beja",
+      "bbox": {
+        "west": -9.04,
+        "south": 37.1,
+        "east": -6.71,
+        "north": 38.55
+      },
+      "tiles": [
+        "N37W010.hgt",
+        "N37W009.hgt",
+        "N37W008.hgt",
+        "N37W007.hgt",
+        "N38W010.hgt",
+        "N38W009.hgt",
+        "N38W008.hgt",
+        "N38W007.hgt"
+      ]
+    },
+    {
+      "id": "braga",
+      "name": "Braga",
+      "bbox": {
+        "west": -9.03,
+        "south": 41.1,
+        "east": -7.59,
+        "north": 42.04
+      },
+      "tiles": [
+        "N41W010.hgt",
+        "N41W009.hgt",
+        "N41W008.hgt",
+        "N42W010.hgt",
+        "N42W009.hgt",
+        "N42W008.hgt"
+      ]
+    },
+    {
+      "id": "braganca",
+      "name": "Braganca",
+      "bbox": {
+        "west": -7.65,
+        "south": 40.805,
+        "east": -5.97,
+        "north": 42.21
+      },
+      "tiles": [
+        "N40W008.hgt",
+        "N40W007.hgt",
+        "N40W006.hgt",
+        "N41W008.hgt",
+        "N41W007.hgt",
+        "N41W006.hgt",
+        "N42W008.hgt",
+        "N42W007.hgt",
+        "N42W006.hgt"
+      ]
+    },
+    {
+      "id": "castelo_branco",
+      "name": "Castelo Branco",
+      "bbox": {
+        "west": -8.515,
+        "south": 39.315,
+        "east": -6.645,
+        "north": 40.635
+      },
+      "tiles": [
+        "N39W009.hgt",
+        "N39W008.hgt",
+        "N39W007.hgt",
+        "N40W009.hgt",
+        "N40W008.hgt",
+        "N40W007.hgt"
+      ]
+    },
+    {
+      "id": "coimbra",
+      "name": "Coimbra",
+      "bbox": {
+        "west": -9.13,
+        "south": 39.705,
+        "east": -7.51,
+        "north": 40.74
+      },
+      "tiles": [
+        "N39W010.hgt",
+        "N39W009.hgt",
+        "N39W008.hgt",
+        "N40W010.hgt",
+        "N40W009.hgt",
+        "N40W008.hgt"
+      ]
+    },
+    {
+      "id": "evora",
+      "name": "Evora",
+      "bbox": {
+        "west": -8.88,
+        "south": 37.935,
+        "east": -6.885,
+        "north": 39.245
+      },
+      "tiles": [
+        "N37W009.hgt",
+        "N37W008.hgt",
+        "N37W007.hgt",
+        "N38W009.hgt",
+        "N38W008.hgt",
+        "N38W007.hgt",
+        "N39W009.hgt",
+        "N39W008.hgt",
+        "N39W007.hgt"
+      ]
+    },
+    {
+      "id": "faro",
+      "name": "Faro",
+      "bbox": {
+        "west": -9.215,
+        "south": 36.74,
+        "east": -7.175,
+        "north": 37.75
+      },
+      "tiles": [
+        "N36W010.hgt",
+        "N36W009.hgt",
+        "N36W008.hgt",
+        "N37W010.hgt",
+        "N37W009.hgt",
+        "N37W008.hgt"
+      ]
+    },
+    {
+      "id": "guarda",
+      "name": "Guarda",
+      "bbox": {
+        "west": -8.07,
+        "south": 40.01,
+        "east": -6.56,
+        "north": 41.4
+      },
+      "tiles": [
+        "N40W009.hgt",
+        "N40W008.hgt",
+        "N40W007.hgt",
+        "N41W009.hgt",
+        "N41W008.hgt",
+        "N41W007.hgt"
+      ]
+    },
+    {
+      "id": "leiria",
+      "name": "Leiria",
+      "bbox": {
+        "west": -9.77,
+        "south": 38.99,
+        "east": -7.89,
+        "north": 40.31
+      },
+      "tiles": [
+        "N38W010.hgt",
+        "N38W009.hgt",
+        "N38W008.hgt",
+        "N39W010.hgt",
+        "N39W009.hgt",
+        "N39W008.hgt",
+        "N40W010.hgt",
+        "N40W009.hgt",
+        "N40W008.hgt"
+      ]
+    },
+    {
+      "id": "lisbon",
+      "name": "Lisbon",
+      "bbox": {
+        "west": -9.705,
+        "south": 38.469,
+        "east": -8.578,
+        "north": 39.522
+      },
+      "tiles": [
+        "N38W010.hgt",
+        "N38W009.hgt",
+        "N39W010.hgt",
+        "N39W009.hgt"
+      ]
+    },
+    {
+      "id": "madeira",
+      "name": "Madeira",
+      "bbox": {
+        "west": -17.725,
+        "south": 29.61,
+        "east": -15.405,
+        "north": 33.545
+      },
+      "tiles": [
+        "N29W018.hgt",
+        "N29W017.hgt",
+        "N29W016.hgt",
+        "N30W018.hgt",
+        "N30W017.hgt",
+        "N30W016.hgt",
+        "N31W018.hgt",
+        "N31W017.hgt",
+        "N31W016.hgt",
+        "N32W018.hgt",
+        "N32W017.hgt",
+        "N32W016.hgt",
+        "N33W018.hgt",
+        "N33W017.hgt",
+        "N33W016.hgt"
+      ]
+    },
+    {
+      "id": "portalegre",
+      "name": "Portalegre",
+      "bbox": {
+        "west": -8.565,
+        "south": 38.53,
+        "east": -6.73,
+        "north": 39.885
+      },
+      "tiles": [
+        "N38W009.hgt",
+        "N38W008.hgt",
+        "N38W007.hgt",
+        "N39W009.hgt",
+        "N39W008.hgt",
+        "N39W007.hgt"
+      ]
+    },
+    {
+      "id": "porto",
+      "name": "Porto",
+      "bbox": {
+        "west": -8.993,
+        "south": 40.797,
+        "east": -7.672,
+        "north": 41.676
+      },
+      "tiles": [
+        "N40W009.hgt",
+        "N40W008.hgt",
+        "N41W009.hgt",
+        "N41W008.hgt"
+      ]
+    },
+    {
+      "id": "santarem",
+      "name": "Santarem",
+      "bbox": {
+        "west": -9.22,
+        "south": 38.51,
+        "east": -7.59,
+        "north": 40.06
+      },
+      "tiles": [
+        "N38W010.hgt",
+        "N38W009.hgt",
+        "N38W008.hgt",
+        "N39W010.hgt",
+        "N39W009.hgt",
+        "N39W008.hgt",
+        "N40W010.hgt",
+        "N40W009.hgt",
+        "N40W008.hgt"
+      ]
+    },
+    {
+      "id": "setubal",
+      "name": "Setubal",
+      "bbox": {
+        "west": -9.485,
+        "south": 37.53,
+        "east": -7.91,
+        "north": 39.065
+      },
+      "tiles": [
+        "N37W010.hgt",
+        "N37W009.hgt",
+        "N37W008.hgt",
+        "N38W010.hgt",
+        "N38W009.hgt",
+        "N38W008.hgt",
+        "N39W010.hgt",
+        "N39W009.hgt",
+        "N39W008.hgt"
+      ]
+    },
+    {
+      "id": "viana_do_castelo",
+      "name": "Viana Do Castelo",
+      "bbox": {
+        "west": -9.085,
+        "south": 41.402,
+        "east": -7.879,
+        "north": 42.358
+      },
+      "tiles": [
+        "N41W010.hgt",
+        "N41W009.hgt",
+        "N41W008.hgt",
+        "N42W010.hgt",
+        "N42W009.hgt",
+        "N42W008.hgt"
+      ]
+    },
+    {
+      "id": "vila_real",
+      "name": "Vila Real",
+      "bbox": {
+        "west": -8.34,
+        "south": 40.9,
+        "east": -6.95,
+        "north": 42.145
+      },
+      "tiles": [
+        "N40W009.hgt",
+        "N40W008.hgt",
+        "N40W007.hgt",
+        "N41W009.hgt",
+        "N41W008.hgt",
+        "N41W007.hgt",
+        "N42W009.hgt",
+        "N42W008.hgt",
+        "N42W007.hgt"
+      ]
+    },
+    {
+      "id": "viseu",
+      "name": "Viseu",
+      "bbox": {
+        "west": -8.58,
+        "south": 40.105,
+        "east": -7.085,
+        "north": 41.435
+      },
+      "tiles": [
+        "N40W009.hgt",
+        "N40W008.hgt",
+        "N41W009.hgt",
+        "N41W008.hgt"
+      ]
+    },
+    {
+      "id": "banskobystricky",
+      "name": "Banskobystricky",
+      "bbox": {
+        "west": 18.26,
+        "south": 47.835,
+        "east": 20.69,
+        "north": 49.165
+      },
+      "tiles": [
+        "N47E018.hgt",
+        "N47E019.hgt",
+        "N47E020.hgt",
+        "N48E018.hgt",
+        "N48E019.hgt",
+        "N48E020.hgt",
+        "N49E018.hgt",
+        "N49E019.hgt",
+        "N49E020.hgt"
+      ]
+    },
+    {
+      "id": "bratislavsky",
+      "name": "Bratislavsky",
+      "bbox": {
+        "west": 16.629,
+        "south": 47.803,
+        "east": 17.733,
+        "north": 48.858
+      },
+      "tiles": [
+        "N47E016.hgt",
+        "N47E017.hgt",
+        "N48E016.hgt",
+        "N48E017.hgt"
+      ]
+    },
+    {
+      "id": "kosicky",
+      "name": "Kosicky",
+      "bbox": {
+        "west": 19.96,
+        "south": 48.115,
+        "east": 22.61,
+        "north": 49.24
+      },
+      "tiles": [
+        "N48E019.hgt",
+        "N48E020.hgt",
+        "N48E021.hgt",
+        "N48E022.hgt",
+        "N49E019.hgt",
+        "N49E020.hgt",
+        "N49E021.hgt",
+        "N49E022.hgt"
+      ]
+    },
+    {
+      "id": "nitriansky",
+      "name": "Nitriansky",
+      "bbox": {
+        "west": 17.485,
+        "south": 47.51,
+        "east": 19.29,
+        "north": 48.935
+      },
+      "tiles": [
+        "N47E017.hgt",
+        "N47E018.hgt",
+        "N47E019.hgt",
+        "N48E017.hgt",
+        "N48E018.hgt",
+        "N48E019.hgt"
+      ]
+    },
+    {
+      "id": "presovsky",
+      "name": "Presovsky",
+      "bbox": {
+        "west": 19.665,
+        "south": 48.545,
+        "east": 22.785,
+        "north": 49.68
+      },
+      "tiles": [
+        "N48E019.hgt",
+        "N48E020.hgt",
+        "N48E021.hgt",
+        "N48E022.hgt",
+        "N49E019.hgt",
+        "N49E020.hgt",
+        "N49E021.hgt",
+        "N49E022.hgt"
+      ]
+    },
+    {
+      "id": "trenciansky",
+      "name": "Trenciansky",
+      "bbox": {
+        "west": 17.135,
+        "south": 48.265,
+        "east": 19.045,
+        "north": 49.54
+      },
+      "tiles": [
+        "N48E017.hgt",
+        "N48E018.hgt",
+        "N48E019.hgt",
+        "N49E017.hgt",
+        "N49E018.hgt",
+        "N49E019.hgt"
+      ]
+    },
+    {
+      "id": "trnavsky",
+      "name": "Trnavsky",
+      "bbox": {
+        "west": 16.715,
+        "south": 47.54,
+        "east": 18.205,
+        "north": 49.1
+      },
+      "tiles": [
+        "N47E016.hgt",
+        "N47E017.hgt",
+        "N47E018.hgt",
+        "N48E016.hgt",
+        "N48E017.hgt",
+        "N48E018.hgt",
+        "N49E016.hgt",
+        "N49E017.hgt",
+        "N49E018.hgt"
+      ]
+    },
+    {
+      "id": "zilinsky",
+      "name": "Zilinsky",
+      "bbox": {
+        "west": 18.105,
+        "south": 48.52,
+        "east": 20.28,
+        "north": 49.835
+      },
+      "tiles": [
+        "N48E018.hgt",
+        "N48E019.hgt",
+        "N48E020.hgt",
+        "N49E018.hgt",
+        "N49E019.hgt",
+        "N49E020.hgt"
+      ]
+    },
+    {
+      "id": "asturias",
+      "name": "Asturias",
+      "bbox": {
+        "west": -7.405,
+        "south": 42.665,
+        "east": -4.29,
+        "north": 43.88
+      },
+      "tiles": [
+        "N42W008.hgt",
+        "N42W007.hgt",
+        "N42W006.hgt",
+        "N42W005.hgt",
+        "N43W008.hgt",
+        "N43W007.hgt",
+        "N43W006.hgt",
+        "N43W005.hgt"
+      ]
+    },
+    {
+      "id": "cantabria",
+      "name": "Cantabria",
+      "bbox": {
+        "west": -5.07,
+        "south": 42.54,
+        "east": -2.93,
+        "north": 43.735
+      },
+      "tiles": [
+        "N42W006.hgt",
+        "N42W005.hgt",
+        "N42W004.hgt",
+        "N42W003.hgt",
+        "N43W006.hgt",
+        "N43W005.hgt",
+        "N43W004.hgt",
+        "N43W003.hgt"
+      ]
+    },
+    {
+      "id": "comunidad_de_madrid",
+      "name": "Comunidad de Madrid",
+      "bbox": {
+        "west": -4.8,
+        "south": 39.665,
+        "east": -2.835,
+        "north": 41.385
+      },
+      "tiles": [
+        "N39W005.hgt",
+        "N39W004.hgt",
+        "N39W003.hgt",
+        "N40W005.hgt",
+        "N40W004.hgt",
+        "N40W003.hgt",
+        "N41W005.hgt",
+        "N41W004.hgt",
+        "N41W003.hgt"
+      ]
+    },
+    {
+      "id": "comunidad_foral_de_navarra",
+      "name": "Comunidad Foral de Navarra",
+      "bbox": {
+        "west": -2.72,
+        "south": 41.69,
+        "east": -0.505,
+        "north": 43.535
+      },
+      "tiles": [
+        "N41W003.hgt",
+        "N41W002.hgt",
+        "N41W001.hgt",
+        "N42W003.hgt",
+        "N42W002.hgt",
+        "N42W001.hgt",
+        "N43W003.hgt",
+        "N43W002.hgt",
+        "N43W001.hgt"
+      ]
+    },
+    {
+      "id": "illes_balears",
+      "name": "Illes Balears",
+      "bbox": {
+        "west": 0.935,
+        "south": 38.42,
+        "east": 4.55,
+        "north": 40.315
+      },
+      "tiles": [
+        "N38E000.hgt",
+        "N38E001.hgt",
+        "N38E002.hgt",
+        "N38E003.hgt",
+        "N38E004.hgt",
+        "N39E000.hgt",
+        "N39E001.hgt",
+        "N39E002.hgt",
+        "N39E003.hgt",
+        "N39E004.hgt",
+        "N40E000.hgt",
+        "N40E001.hgt",
+        "N40E002.hgt",
+        "N40E003.hgt",
+        "N40E004.hgt"
+      ]
+    },
+    {
+      "id": "la_rioja",
+      "name": "La Rioja",
+      "bbox": {
+        "west": -3.355,
+        "south": 41.7,
+        "east": -1.46,
+        "north": 42.86
+      },
+      "tiles": [
+        "N41W004.hgt",
+        "N41W003.hgt",
+        "N41W002.hgt",
+        "N42W004.hgt",
+        "N42W003.hgt",
+        "N42W002.hgt"
+      ]
+    },
+    {
+      "id": "region_de_murcia",
+      "name": "Region de Murcia",
+      "bbox": {
+        "west": -2.565,
+        "south": 37.155,
+        "east": -0.425,
+        "north": 38.975
+      },
+      "tiles": [
+        "N37W003.hgt",
+        "N37W002.hgt",
+        "N37W001.hgt",
+        "N38W003.hgt",
+        "N38W002.hgt",
+        "N38W001.hgt"
+      ]
+    },
+    {
+      "id": "blekinge",
+      "name": "Blekinge",
+      "bbox": {
+        "west": 14.17,
+        "south": 55.525,
+        "east": 16.445,
+        "north": 56.725
+      },
+      "tiles": [
+        "N55E014.hgt",
+        "N55E015.hgt",
+        "N55E016.hgt",
+        "N56E014.hgt",
+        "N56E015.hgt",
+        "N56E016.hgt"
+      ]
+    },
+    {
+      "id": "dalarna",
+      "name": "Dalarna",
+      "bbox": {
+        "west": 11.92,
+        "south": 59.635,
+        "east": 16.925,
+        "north": 62.485
+      },
+      "tiles": [
+        "N59E011.hgt",
+        "N59E012.hgt",
+        "N59E013.hgt",
+        "N59E014.hgt",
+        "N59E015.hgt",
+        "N59E016.hgt",
+        "N60E011.hgt",
+        "N60E012.hgt",
+        "N60E013.hgt",
+        "N60E014.hgt",
+        "N60E015.hgt",
+        "N60E016.hgt",
+        "N61E011.hgt",
+        "N61E012.hgt",
+        "N61E013.hgt",
+        "N61E014.hgt",
+        "N61E015.hgt",
+        "N61E016.hgt",
+        "N62E011.hgt",
+        "N62E012.hgt",
+        "N62E013.hgt",
+        "N62E014.hgt",
+        "N62E015.hgt",
+        "N62E016.hgt"
+      ]
+    },
+    {
+      "id": "gavleborg",
+      "name": "Gavleborg",
+      "bbox": {
+        "west": 14.225,
+        "south": 59.97,
+        "east": 18.345,
+        "north": 62.565
+      },
+      "tiles": [
+        "N59E014.hgt",
+        "N59E015.hgt",
+        "N59E016.hgt",
+        "N59E017.hgt",
+        "N59E018.hgt",
+        "N60E014.hgt",
+        "N60E015.hgt",
+        "N60E016.hgt",
+        "N60E017.hgt",
+        "N60E018.hgt",
+        "N61E014.hgt",
+        "N61E015.hgt",
+        "N61E016.hgt",
+        "N61E017.hgt",
+        "N61E018.hgt",
+        "N62E014.hgt",
+        "N62E015.hgt",
+        "N62E016.hgt",
+        "N62E017.hgt",
+        "N62E018.hgt"
+      ]
+    },
+    {
+      "id": "gotland",
+      "name": "Gotland",
+      "bbox": {
+        "west": 17.365,
+        "south": 56.48,
+        "east": 19.955,
+        "north": 58.82
+      },
+      "tiles": [
+        "N56E017.hgt",
+        "N56E018.hgt",
+        "N56E019.hgt",
+        "N57E017.hgt",
+        "N57E018.hgt",
+        "N57E019.hgt",
+        "N58E017.hgt",
+        "N58E018.hgt",
+        "N58E019.hgt"
+      ]
+    },
+    {
+      "id": "halland",
+      "name": "Halland",
+      "bbox": {
+        "west": 11.14,
+        "south": 56.105,
+        "east": 13.91,
+        "north": 57.815
+      },
+      "tiles": [
+        "N56E011.hgt",
+        "N56E012.hgt",
+        "N56E013.hgt",
+        "N57E011.hgt",
+        "N57E012.hgt",
+        "N57E013.hgt"
+      ]
+    },
+    {
+      "id": "jamtland",
+      "name": "Jamtland",
+      "bbox": {
+        "west": 11.755,
+        "south": 61.345,
+        "east": 17.22,
+        "north": 65.34
+      },
+      "tiles": [
+        "N61E011.hgt",
+        "N61E012.hgt",
+        "N61E013.hgt",
+        "N61E014.hgt",
+        "N61E015.hgt",
+        "N61E016.hgt",
+        "N61E017.hgt",
+        "N62E011.hgt",
+        "N62E012.hgt",
+        "N62E013.hgt",
+        "N62E014.hgt",
+        "N62E015.hgt",
+        "N62E016.hgt",
+        "N62E017.hgt",
+        "N63E011.hgt",
+        "N63E012.hgt",
+        "N63E013.hgt",
+        "N63E014.hgt",
+        "N63E015.hgt",
+        "N63E016.hgt",
+        "N63E017.hgt",
+        "N64E011.hgt",
+        "N64E012.hgt",
+        "N64E013.hgt",
+        "N64E014.hgt",
+        "N64E015.hgt",
+        "N64E016.hgt",
+        "N64E017.hgt",
+        "N65E011.hgt",
+        "N65E012.hgt",
+        "N65E013.hgt",
+        "N65E014.hgt",
+        "N65E015.hgt",
+        "N65E016.hgt",
+        "N65E017.hgt"
+      ]
+    },
+    {
+      "id": "jonkoping",
+      "name": "Jonkoping",
+      "bbox": {
+        "west": 12.855,
+        "south": 56.665,
+        "east": 15.885,
+        "north": 58.41
+      },
+      "tiles": [
+        "N56E012.hgt",
+        "N56E013.hgt",
+        "N56E014.hgt",
+        "N56E015.hgt",
+        "N57E012.hgt",
+        "N57E013.hgt",
+        "N57E014.hgt",
+        "N57E015.hgt",
+        "N58E012.hgt",
+        "N58E013.hgt",
+        "N58E014.hgt",
+        "N58E015.hgt"
+      ]
+    },
+    {
+      "id": "kalmar",
+      "name": "Kalmar",
+      "bbox": {
+        "west": 15.115,
+        "south": 55.695,
+        "east": 17.74,
+        "north": 58.36
+      },
+      "tiles": [
+        "N55E015.hgt",
+        "N55E016.hgt",
+        "N55E017.hgt",
+        "N56E015.hgt",
+        "N56E016.hgt",
+        "N56E017.hgt",
+        "N57E015.hgt",
+        "N57E016.hgt",
+        "N57E017.hgt",
+        "N58E015.hgt",
+        "N58E016.hgt",
+        "N58E017.hgt"
+      ]
+    },
+    {
+      "id": "kronoberg",
+      "name": "Kronoberg",
+      "bbox": {
+        "west": 13.08,
+        "south": 56.14,
+        "east": 16.055,
+        "north": 57.46
+      },
+      "tiles": [
+        "N56E013.hgt",
+        "N56E014.hgt",
+        "N56E015.hgt",
+        "N56E016.hgt",
+        "N57E013.hgt",
+        "N57E014.hgt",
+        "N57E015.hgt",
+        "N57E016.hgt"
+      ]
+    },
+    {
+      "id": "norrbotten",
+      "name": "Norrbotten",
+      "bbox": {
+        "west": 15.155,
+        "south": 64.68,
+        "east": 24.4,
+        "north": 69.28
+      },
+      "tiles": [
+        "N64E015.hgt",
+        "N64E016.hgt",
+        "N64E017.hgt",
+        "N64E018.hgt",
+        "N64E019.hgt",
+        "N64E020.hgt",
+        "N64E021.hgt",
+        "N64E022.hgt",
+        "N64E023.hgt",
+        "N64E024.hgt",
+        "N65E015.hgt",
+        "N65E016.hgt",
+        "N65E017.hgt",
+        "N65E018.hgt",
+        "N65E019.hgt",
+        "N65E020.hgt",
+        "N65E021.hgt",
+        "N65E022.hgt",
+        "N65E023.hgt",
+        "N65E024.hgt",
+        "N66E015.hgt",
+        "N66E016.hgt",
+        "N66E017.hgt",
+        "N66E018.hgt",
+        "N66E019.hgt",
+        "N66E020.hgt",
+        "N66E021.hgt",
+        "N66E022.hgt",
+        "N66E023.hgt",
+        "N66E024.hgt",
+        "N67E015.hgt",
+        "N67E016.hgt",
+        "N67E017.hgt",
+        "N67E018.hgt",
+        "N67E019.hgt",
+        "N67E020.hgt",
+        "N67E021.hgt",
+        "N67E022.hgt",
+        "N67E023.hgt",
+        "N67E024.hgt",
+        "N68E015.hgt",
+        "N68E016.hgt",
+        "N68E017.hgt",
+        "N68E018.hgt",
+        "N68E019.hgt",
+        "N68E020.hgt",
+        "N68E021.hgt",
+        "N68E022.hgt",
+        "N68E023.hgt",
+        "N68E024.hgt",
+        "N69E015.hgt",
+        "N69E016.hgt",
+        "N69E017.hgt",
+        "N69E018.hgt",
+        "N69E019.hgt",
+        "N69E020.hgt",
+        "N69E021.hgt",
+        "N69E022.hgt",
+        "N69E023.hgt",
+        "N69E024.hgt"
+      ]
+    },
+    {
+      "id": "orebro",
+      "name": "Orebro",
+      "bbox": {
+        "west": 14.065,
+        "south": 58.425,
+        "east": 16.02,
+        "north": 60.33
+      },
+      "tiles": [
+        "N58E014.hgt",
+        "N58E015.hgt",
+        "N58E016.hgt",
+        "N59E014.hgt",
+        "N59E015.hgt",
+        "N59E016.hgt",
+        "N60E014.hgt",
+        "N60E015.hgt",
+        "N60E016.hgt"
+      ]
+    },
+    {
+      "id": "ostergotland",
+      "name": "Ostergotland",
+      "bbox": {
+        "west": 14.2,
+        "south": 57.48,
+        "east": 17.795,
+        "north": 59.24
+      },
+      "tiles": [
+        "N57E014.hgt",
+        "N57E015.hgt",
+        "N57E016.hgt",
+        "N57E017.hgt",
+        "N58E014.hgt",
+        "N58E015.hgt",
+        "N58E016.hgt",
+        "N58E017.hgt",
+        "N59E014.hgt",
+        "N59E015.hgt",
+        "N59E016.hgt",
+        "N59E017.hgt"
+      ]
+    },
+    {
+      "id": "skane",
+      "name": "Skane",
+      "bbox": {
+        "west": 11.87,
+        "south": 54.915,
+        "east": 14.94,
+        "north": 56.775
+      },
+      "tiles": [
+        "N54E011.hgt",
+        "N54E012.hgt",
+        "N54E013.hgt",
+        "N54E014.hgt",
+        "N55E011.hgt",
+        "N55E012.hgt",
+        "N55E013.hgt",
+        "N55E014.hgt",
+        "N56E011.hgt",
+        "N56E012.hgt",
+        "N56E013.hgt",
+        "N56E014.hgt"
+      ]
+    },
+    {
+      "id": "sodermanland",
+      "name": "Sodermanland",
+      "bbox": {
+        "west": 15.395,
+        "south": 58.175,
+        "east": 18.325,
+        "north": 59.75
+      },
+      "tiles": [
+        "N58E015.hgt",
+        "N58E016.hgt",
+        "N58E017.hgt",
+        "N58E018.hgt",
+        "N59E015.hgt",
+        "N59E016.hgt",
+        "N59E017.hgt",
+        "N59E018.hgt"
+      ]
+    },
+    {
+      "id": "stockholm",
+      "name": "Stockholm",
+      "bbox": {
+        "west": 17.025,
+        "south": 58.265,
+        "east": 20.235,
+        "north": 60.52
+      },
+      "tiles": [
+        "N58E017.hgt",
+        "N58E018.hgt",
+        "N58E019.hgt",
+        "N58E020.hgt",
+        "N59E017.hgt",
+        "N59E018.hgt",
+        "N59E019.hgt",
+        "N59E020.hgt",
+        "N60E017.hgt",
+        "N60E018.hgt",
+        "N60E019.hgt",
+        "N60E020.hgt"
+      ]
+    },
+    {
+      "id": "uppsala",
+      "name": "Uppsala",
+      "bbox": {
+        "west": 16.47,
+        "south": 59.165,
+        "east": 19.43,
+        "north": 61.16
+      },
+      "tiles": [
+        "N59E016.hgt",
+        "N59E017.hgt",
+        "N59E018.hgt",
+        "N59E019.hgt",
+        "N60E016.hgt",
+        "N60E017.hgt",
+        "N60E018.hgt",
+        "N60E019.hgt",
+        "N61E016.hgt",
+        "N61E017.hgt",
+        "N61E018.hgt",
+        "N61E019.hgt"
+      ]
+    },
+    {
+      "id": "varmland",
+      "name": "Varmland",
+      "bbox": {
+        "west": 11.47,
+        "south": 58.495,
+        "east": 14.695,
+        "north": 61.275
+      },
+      "tiles": [
+        "N58E011.hgt",
+        "N58E012.hgt",
+        "N58E013.hgt",
+        "N58E014.hgt",
+        "N59E011.hgt",
+        "N59E012.hgt",
+        "N59E013.hgt",
+        "N59E014.hgt",
+        "N60E011.hgt",
+        "N60E012.hgt",
+        "N60E013.hgt",
+        "N60E014.hgt",
+        "N61E011.hgt",
+        "N61E012.hgt",
+        "N61E013.hgt",
+        "N61E014.hgt"
+      ]
+    },
+    {
+      "id": "vasterbotten",
+      "name": "Vasterbotten",
+      "bbox": {
+        "west": 14.105,
+        "south": 62.88,
+        "east": 22.31,
+        "north": 66.565
+      },
+      "tiles": [
+        "N62E014.hgt",
+        "N62E015.hgt",
+        "N62E016.hgt",
+        "N62E017.hgt",
+        "N62E018.hgt",
+        "N62E019.hgt",
+        "N62E020.hgt",
+        "N62E021.hgt",
+        "N62E022.hgt",
+        "N63E014.hgt",
+        "N63E015.hgt",
+        "N63E016.hgt",
+        "N63E017.hgt",
+        "N63E018.hgt",
+        "N63E019.hgt",
+        "N63E020.hgt",
+        "N63E021.hgt",
+        "N63E022.hgt",
+        "N64E014.hgt",
+        "N64E015.hgt",
+        "N64E016.hgt",
+        "N64E017.hgt",
+        "N64E018.hgt",
+        "N64E019.hgt",
+        "N64E020.hgt",
+        "N64E021.hgt",
+        "N64E022.hgt",
+        "N65E014.hgt",
+        "N65E015.hgt",
+        "N65E016.hgt",
+        "N65E017.hgt",
+        "N65E018.hgt",
+        "N65E019.hgt",
+        "N65E020.hgt",
+        "N65E021.hgt",
+        "N65E022.hgt",
+        "N66E014.hgt",
+        "N66E015.hgt",
+        "N66E016.hgt",
+        "N66E017.hgt",
+        "N66E018.hgt",
+        "N66E019.hgt",
+        "N66E020.hgt",
+        "N66E021.hgt",
+        "N66E022.hgt"
+      ]
+    },
+    {
+      "id": "vasternorrland",
+      "name": "Vasternorrland",
+      "bbox": {
+        "west": 14.56,
+        "south": 61.865,
+        "east": 19.825,
+        "north": 64.25
+      },
+      "tiles": [
+        "N61E014.hgt",
+        "N61E015.hgt",
+        "N61E016.hgt",
+        "N61E017.hgt",
+        "N61E018.hgt",
+        "N61E019.hgt",
+        "N62E014.hgt",
+        "N62E015.hgt",
+        "N62E016.hgt",
+        "N62E017.hgt",
+        "N62E018.hgt",
+        "N62E019.hgt",
+        "N63E014.hgt",
+        "N63E015.hgt",
+        "N63E016.hgt",
+        "N63E017.hgt",
+        "N63E018.hgt",
+        "N63E019.hgt",
+        "N64E014.hgt",
+        "N64E015.hgt",
+        "N64E016.hgt",
+        "N64E017.hgt",
+        "N64E018.hgt",
+        "N64E019.hgt"
+      ]
+    },
+    {
+      "id": "vastmanland",
+      "name": "Vastmanland",
+      "bbox": {
+        "west": 15.2,
+        "south": 58.98,
+        "east": 17.185,
+        "north": 60.415
+      },
+      "tiles": [
+        "N58E015.hgt",
+        "N58E016.hgt",
+        "N58E017.hgt",
+        "N59E015.hgt",
+        "N59E016.hgt",
+        "N59E017.hgt",
+        "N60E015.hgt",
+        "N60E016.hgt",
+        "N60E017.hgt"
+      ]
+    },
+    {
+      "id": "vastra_gotaland",
+      "name": "Vastra Gotaland",
+      "bbox": {
+        "west": 10.375,
+        "south": 56.925,
+        "east": 15.0,
+        "north": 59.485
+      },
+      "tiles": [
+        "N56E010.hgt",
+        "N56E011.hgt",
+        "N56E012.hgt",
+        "N56E013.hgt",
+        "N56E014.hgt",
+        "N56E015.hgt",
+        "N57E010.hgt",
+        "N57E011.hgt",
+        "N57E012.hgt",
+        "N57E013.hgt",
+        "N57E014.hgt",
+        "N57E015.hgt",
+        "N58E010.hgt",
+        "N58E011.hgt",
+        "N58E012.hgt",
+        "N58E013.hgt",
+        "N58E014.hgt",
+        "N58E015.hgt",
+        "N59E010.hgt",
+        "N59E011.hgt",
+        "N59E012.hgt",
+        "N59E013.hgt",
+        "N59E014.hgt",
+        "N59E015.hgt"
+      ]
+    },
+    {
+      "id": "aargau",
+      "name": "Aargau",
+      "bbox": {
+        "west": 7.51,
+        "south": 46.933,
+        "east": 8.659,
+        "north": 47.825
+      },
+      "tiles": [
+        "N46E007.hgt",
+        "N46E008.hgt",
+        "N47E007.hgt",
+        "N47E008.hgt"
+      ]
+    },
+    {
+      "id": "appenzell_ausserrhoden",
+      "name": "Appenzell Ausserrhoden",
+      "bbox": {
+        "west": 8.987,
+        "south": 47.043,
+        "east": 9.835,
+        "north": 47.673
+      },
+      "tiles": [
+        "N47E008.hgt",
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "appenzell_innerrhoden",
+      "name": "Appenzell Innerrhoden",
+      "bbox": {
+        "west": 9.106,
+        "south": 47.03,
+        "east": 9.822,
+        "north": 47.648
+      },
+      "tiles": [
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "basel_landschaft",
+      "name": "Basel Landschaft",
+      "bbox": {
+        "west": 7.121,
+        "south": 47.134,
+        "east": 8.166,
+        "north": 47.768
+      },
+      "tiles": [
+        "N47E007.hgt",
+        "N47E008.hgt"
+      ]
+    },
+    {
+      "id": "basel_stadt",
+      "name": "Basel Stadt",
+      "bbox": {
+        "west": 7.351,
+        "south": 47.315,
+        "east": 7.898,
+        "north": 47.805
+      },
+      "tiles": [
+        "N47E007.hgt"
+      ]
+    },
+    {
+      "id": "bern",
+      "name": "Bern",
+      "bbox": {
+        "west": 6.64,
+        "south": 46.105,
+        "east": 8.675,
+        "north": 47.565
+      },
+      "tiles": [
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N46E008.hgt",
+        "N47E006.hgt",
+        "N47E007.hgt",
+        "N47E008.hgt"
+      ]
+    },
+    {
+      "id": "fribourg",
+      "name": "Fribourg",
+      "bbox": {
+        "west": 6.538,
+        "south": 46.234,
+        "east": 7.584,
+        "north": 47.211
+      },
+      "tiles": [
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N47E006.hgt",
+        "N47E007.hgt"
+      ]
+    },
+    {
+      "id": "geneva",
+      "name": "Geneva",
+      "bbox": {
+        "west": 5.752,
+        "south": 45.925,
+        "east": 6.514,
+        "north": 46.569
+      },
+      "tiles": [
+        "N45E005.hgt",
+        "N45E006.hgt",
+        "N46E005.hgt",
+        "N46E006.hgt"
+      ]
+    },
+    {
+      "id": "glarus",
+      "name": "Glarus",
+      "bbox": {
+        "west": 8.667,
+        "south": 46.592,
+        "east": 9.457,
+        "north": 47.378
+      },
+      "tiles": [
+        "N46E008.hgt",
+        "N46E009.hgt",
+        "N47E008.hgt",
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "grisons",
+      "name": "Grisons",
+      "bbox": {
+        "west": 8.43,
+        "south": 45.95,
+        "east": 10.71,
+        "north": 47.285
+      },
+      "tiles": [
+        "N45E008.hgt",
+        "N45E009.hgt",
+        "N45E010.hgt",
+        "N46E008.hgt",
+        "N46E009.hgt",
+        "N46E010.hgt",
+        "N47E008.hgt",
+        "N47E009.hgt",
+        "N47E010.hgt"
+      ]
+    },
+    {
+      "id": "jura",
+      "name": "Jura",
+      "bbox": {
+        "west": 6.637,
+        "south": 46.946,
+        "east": 7.762,
+        "north": 47.708
+      },
+      "tiles": [
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N47E006.hgt",
+        "N47E007.hgt"
+      ]
+    },
+    {
+      "id": "lucerne",
+      "name": "Lucerne",
+      "bbox": {
+        "west": 7.632,
+        "south": 46.571,
+        "east": 8.718,
+        "north": 47.491
+      },
+      "tiles": [
+        "N46E007.hgt",
+        "N46E008.hgt",
+        "N47E007.hgt",
+        "N47E008.hgt"
+      ]
+    },
+    {
+      "id": "neuchatel",
+      "name": "Neuchatel",
+      "bbox": {
+        "west": 6.229,
+        "south": 46.643,
+        "east": 7.292,
+        "north": 47.37
+      },
+      "tiles": [
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N47E006.hgt",
+        "N47E007.hgt"
+      ]
+    },
+    {
+      "id": "nidwalden",
+      "name": "Nidwalden",
+      "bbox": {
+        "west": 8.015,
+        "south": 46.568,
+        "east": 8.779,
+        "north": 47.224
+      },
+      "tiles": [
+        "N46E008.hgt",
+        "N47E008.hgt"
+      ]
+    },
+    {
+      "id": "obwalden",
+      "name": "Obwalden",
+      "bbox": {
+        "west": 7.838,
+        "south": 46.549,
+        "east": 8.711,
+        "north": 47.184
+      },
+      "tiles": [
+        "N46E007.hgt",
+        "N46E008.hgt",
+        "N47E007.hgt",
+        "N47E008.hgt"
+      ]
+    },
+    {
+      "id": "saint_gallen",
+      "name": "Saint Gallen",
+      "bbox": {
+        "west": 8.592,
+        "south": 46.669,
+        "east": 9.878,
+        "north": 47.754
+      },
+      "tiles": [
+        "N46E008.hgt",
+        "N46E009.hgt",
+        "N47E008.hgt",
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "schaffhausen",
+      "name": "Schaffhausen",
+      "bbox": {
+        "west": 8.201,
+        "south": 47.348,
+        "east": 9.08,
+        "north": 48.012
+      },
+      "tiles": [
+        "N47E008.hgt",
+        "N47E009.hgt",
+        "N48E008.hgt",
+        "N48E009.hgt"
+      ]
+    },
+    {
+      "id": "schwyz",
+      "name": "Schwyz",
+      "bbox": {
+        "west": 8.185,
+        "south": 46.681,
+        "east": 9.209,
+        "north": 47.427
+      },
+      "tiles": [
+        "N46E008.hgt",
+        "N46E009.hgt",
+        "N47E008.hgt",
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "solothurn",
+      "name": "Solothurn",
+      "bbox": {
+        "west": 7.136,
+        "south": 46.871,
+        "east": 8.235,
+        "north": 47.707
+      },
+      "tiles": [
+        "N46E007.hgt",
+        "N46E008.hgt",
+        "N47E007.hgt",
+        "N47E008.hgt"
+      ]
+    },
+    {
+      "id": "thurgau",
+      "name": "Thurgau",
+      "bbox": {
+        "west": 8.464,
+        "south": 47.172,
+        "east": 9.711,
+        "north": 47.899
+      },
+      "tiles": [
+        "N47E008.hgt",
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "ticino",
+      "name": "Ticino",
+      "bbox": {
+        "west": 8.178,
+        "south": 45.614,
+        "east": 9.364,
+        "north": 46.836
+      },
+      "tiles": [
+        "N45E008.hgt",
+        "N45E009.hgt",
+        "N46E008.hgt",
+        "N46E009.hgt"
+      ]
+    },
+    {
+      "id": "uri",
+      "name": "Uri",
+      "bbox": {
+        "west": 8.193,
+        "south": 46.324,
+        "east": 9.162,
+        "north": 47.197
+      },
+      "tiles": [
+        "N46E008.hgt",
+        "N46E009.hgt",
+        "N47E008.hgt",
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "valais",
+      "name": "Valais",
+      "bbox": {
+        "west": 6.55,
+        "south": 45.64,
+        "east": 8.7,
+        "north": 46.875
+      },
+      "tiles": [
+        "N45E006.hgt",
+        "N45E007.hgt",
+        "N45E008.hgt",
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N46E008.hgt"
+      ]
+    },
+    {
+      "id": "vaud",
+      "name": "Vaud",
+      "bbox": {
+        "west": 5.85,
+        "south": 45.965,
+        "east": 7.47,
+        "north": 47.205
+      },
+      "tiles": [
+        "N45E005.hgt",
+        "N45E006.hgt",
+        "N45E007.hgt",
+        "N46E005.hgt",
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N47E005.hgt",
+        "N47E006.hgt",
+        "N47E007.hgt"
+      ]
+    },
+    {
+      "id": "zug",
+      "name": "Zug",
+      "bbox": {
+        "west": 8.191,
+        "south": 46.877,
+        "east": 8.905,
+        "north": 47.452
+      },
+      "tiles": [
+        "N46E008.hgt",
+        "N47E008.hgt"
+      ]
+    },
+    {
+      "id": "zurich",
+      "name": "Zurich",
+      "bbox": {
+        "west": 8.154,
+        "south": 46.955,
+        "east": 9.189,
+        "north": 47.898
+      },
+      "tiles": [
+        "N46E008.hgt",
+        "N46E009.hgt",
+        "N47E008.hgt",
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "aegean",
+      "name": "Aegean",
+      "bbox": {
+        "west": 25.95,
+        "south": 36.015,
+        "east": 31.95,
+        "north": 40.1
+      },
+      "tiles": [
+        "N36E025.hgt",
+        "N36E026.hgt",
+        "N36E027.hgt",
+        "N36E028.hgt",
+        "N36E029.hgt",
+        "N36E030.hgt",
+        "N36E031.hgt",
+        "N37E025.hgt",
+        "N37E026.hgt",
+        "N37E027.hgt",
+        "N37E028.hgt",
+        "N37E029.hgt",
+        "N37E030.hgt",
+        "N37E031.hgt",
+        "N38E025.hgt",
+        "N38E026.hgt",
+        "N38E027.hgt",
+        "N38E028.hgt",
+        "N38E029.hgt",
+        "N38E030.hgt",
+        "N38E031.hgt",
+        "N39E025.hgt",
+        "N39E026.hgt",
+        "N39E027.hgt",
+        "N39E028.hgt",
+        "N39E029.hgt",
+        "N39E030.hgt",
+        "N39E031.hgt",
+        "N40E025.hgt",
+        "N40E026.hgt",
+        "N40E027.hgt",
+        "N40E028.hgt",
+        "N40E029.hgt",
+        "N40E030.hgt",
+        "N40E031.hgt"
+      ]
+    },
+    {
+      "id": "black_sea",
+      "name": "Black Sea",
+      "bbox": {
+        "west": 30.32,
+        "south": 39.6,
+        "east": 42.83,
+        "north": 42.54
+      },
+      "tiles": [
+        "N39E030.hgt",
+        "N39E031.hgt",
+        "N39E032.hgt",
+        "N39E033.hgt",
+        "N39E034.hgt",
+        "N39E035.hgt",
+        "N39E036.hgt",
+        "N39E037.hgt",
+        "N39E038.hgt",
+        "N39E039.hgt",
+        "N39E040.hgt",
+        "N39E041.hgt",
+        "N39E042.hgt",
+        "N40E030.hgt",
+        "N40E031.hgt",
+        "N40E032.hgt",
+        "N40E033.hgt",
+        "N40E034.hgt",
+        "N40E035.hgt",
+        "N40E036.hgt",
+        "N40E037.hgt",
+        "N40E038.hgt",
+        "N40E039.hgt",
+        "N40E040.hgt",
+        "N40E041.hgt",
+        "N40E042.hgt",
+        "N41E030.hgt",
+        "N41E031.hgt",
+        "N41E032.hgt",
+        "N41E033.hgt",
+        "N41E034.hgt",
+        "N41E035.hgt",
+        "N41E036.hgt",
+        "N41E037.hgt",
+        "N41E038.hgt",
+        "N41E039.hgt",
+        "N41E040.hgt",
+        "N41E041.hgt",
+        "N41E042.hgt",
+        "N42E030.hgt",
+        "N42E031.hgt",
+        "N42E032.hgt",
+        "N42E033.hgt",
+        "N42E034.hgt",
+        "N42E035.hgt",
+        "N42E036.hgt",
+        "N42E037.hgt",
+        "N42E038.hgt",
+        "N42E039.hgt",
+        "N42E040.hgt",
+        "N42E041.hgt",
+        "N42E042.hgt"
+      ]
+    },
+    {
+      "id": "central_anatolia",
+      "name": "Central Anatolia",
+      "bbox": {
+        "west": 29.77,
+        "south": 36.215,
+        "east": 38.99,
+        "north": 41.315
+      },
+      "tiles": [
+        "N36E029.hgt",
+        "N36E030.hgt",
+        "N36E031.hgt",
+        "N36E032.hgt",
+        "N36E033.hgt",
+        "N36E034.hgt",
+        "N36E035.hgt",
+        "N36E036.hgt",
+        "N36E037.hgt",
+        "N36E038.hgt",
+        "N37E029.hgt",
+        "N37E030.hgt",
+        "N37E031.hgt",
+        "N37E032.hgt",
+        "N37E033.hgt",
+        "N37E034.hgt",
+        "N37E035.hgt",
+        "N37E036.hgt",
+        "N37E037.hgt",
+        "N37E038.hgt",
+        "N38E029.hgt",
+        "N38E030.hgt",
+        "N38E031.hgt",
+        "N38E032.hgt",
+        "N38E033.hgt",
+        "N38E034.hgt",
+        "N38E035.hgt",
+        "N38E036.hgt",
+        "N38E037.hgt",
+        "N38E038.hgt",
+        "N39E029.hgt",
+        "N39E030.hgt",
+        "N39E031.hgt",
+        "N39E032.hgt",
+        "N39E033.hgt",
+        "N39E034.hgt",
+        "N39E035.hgt",
+        "N39E036.hgt",
+        "N39E037.hgt",
+        "N39E038.hgt",
+        "N40E029.hgt",
+        "N40E030.hgt",
+        "N40E031.hgt",
+        "N40E032.hgt",
+        "N40E033.hgt",
+        "N40E034.hgt",
+        "N40E035.hgt",
+        "N40E036.hgt",
+        "N40E037.hgt",
+        "N40E038.hgt",
+        "N41E029.hgt",
+        "N41E030.hgt",
+        "N41E031.hgt",
+        "N41E032.hgt",
+        "N41E033.hgt",
+        "N41E034.hgt",
+        "N41E035.hgt",
+        "N41E036.hgt",
+        "N41E037.hgt",
+        "N41E038.hgt"
+      ]
+    },
+    {
+      "id": "eastern_anatolia",
+      "name": "Eastern Anatolia",
+      "bbox": {
+        "west": 37.04,
+        "south": 36.745,
+        "east": 45.04,
+        "north": 41.82
+      },
+      "tiles": [
+        "N36E037.hgt",
+        "N36E038.hgt",
+        "N36E039.hgt",
+        "N36E040.hgt",
+        "N36E041.hgt",
+        "N36E042.hgt",
+        "N36E043.hgt",
+        "N36E044.hgt",
+        "N36E045.hgt",
+        "N37E037.hgt",
+        "N37E038.hgt",
+        "N37E039.hgt",
+        "N37E040.hgt",
+        "N37E041.hgt",
+        "N37E042.hgt",
+        "N37E043.hgt",
+        "N37E044.hgt",
+        "N37E045.hgt",
+        "N38E037.hgt",
+        "N38E038.hgt",
+        "N38E039.hgt",
+        "N38E040.hgt",
+        "N38E041.hgt",
+        "N38E042.hgt",
+        "N38E043.hgt",
+        "N38E044.hgt",
+        "N38E045.hgt",
+        "N39E037.hgt",
+        "N39E038.hgt",
+        "N39E039.hgt",
+        "N39E040.hgt",
+        "N39E041.hgt",
+        "N39E042.hgt",
+        "N39E043.hgt",
+        "N39E044.hgt",
+        "N39E045.hgt",
+        "N40E037.hgt",
+        "N40E038.hgt",
+        "N40E039.hgt",
+        "N40E040.hgt",
+        "N40E041.hgt",
+        "N40E042.hgt",
+        "N40E043.hgt",
+        "N40E044.hgt",
+        "N40E045.hgt",
+        "N41E037.hgt",
+        "N41E038.hgt",
+        "N41E039.hgt",
+        "N41E040.hgt",
+        "N41E041.hgt",
+        "N41E042.hgt",
+        "N41E043.hgt",
+        "N41E044.hgt",
+        "N41E045.hgt"
+      ]
+    },
+    {
+      "id": "marmara",
+      "name": "Marmara",
+      "bbox": {
+        "west": 25.35,
+        "south": 38.85,
+        "east": 31.235,
+        "north": 42.325
+      },
+      "tiles": [
+        "N38E025.hgt",
+        "N38E026.hgt",
+        "N38E027.hgt",
+        "N38E028.hgt",
+        "N38E029.hgt",
+        "N38E030.hgt",
+        "N38E031.hgt",
+        "N39E025.hgt",
+        "N39E026.hgt",
+        "N39E027.hgt",
+        "N39E028.hgt",
+        "N39E029.hgt",
+        "N39E030.hgt",
+        "N39E031.hgt",
+        "N40E025.hgt",
+        "N40E026.hgt",
+        "N40E027.hgt",
+        "N40E028.hgt",
+        "N40E029.hgt",
+        "N40E030.hgt",
+        "N40E031.hgt",
+        "N41E025.hgt",
+        "N41E026.hgt",
+        "N41E027.hgt",
+        "N41E028.hgt",
+        "N41E029.hgt",
+        "N41E030.hgt",
+        "N41E031.hgt",
+        "N42E025.hgt",
+        "N42E026.hgt",
+        "N42E027.hgt",
+        "N42E028.hgt",
+        "N42E029.hgt",
+        "N42E030.hgt",
+        "N42E031.hgt"
+      ]
+    },
+    {
+      "id": "mediterranean",
+      "name": "Mediterranean",
+      "bbox": {
+        "west": 28.97,
+        "south": 35.585,
+        "east": 37.97,
+        "north": 38.83
+      },
+      "tiles": [
+        "N35E028.hgt",
+        "N35E029.hgt",
+        "N35E030.hgt",
+        "N35E031.hgt",
+        "N35E032.hgt",
+        "N35E033.hgt",
+        "N35E034.hgt",
+        "N35E035.hgt",
+        "N35E036.hgt",
+        "N35E037.hgt",
+        "N36E028.hgt",
+        "N36E029.hgt",
+        "N36E030.hgt",
+        "N36E031.hgt",
+        "N36E032.hgt",
+        "N36E033.hgt",
+        "N36E034.hgt",
+        "N36E035.hgt",
+        "N36E036.hgt",
+        "N36E037.hgt",
+        "N37E028.hgt",
+        "N37E029.hgt",
+        "N37E030.hgt",
+        "N37E031.hgt",
+        "N37E032.hgt",
+        "N37E033.hgt",
+        "N37E034.hgt",
+        "N37E035.hgt",
+        "N37E036.hgt",
+        "N37E037.hgt",
+        "N38E028.hgt",
+        "N38E029.hgt",
+        "N38E030.hgt",
+        "N38E031.hgt",
+        "N38E032.hgt",
+        "N38E033.hgt",
+        "N38E034.hgt",
+        "N38E035.hgt",
+        "N38E036.hgt",
+        "N38E037.hgt"
+      ]
+    },
+    {
+      "id": "southeastern_anatolia",
+      "name": "Southeastern Anatolia",
+      "bbox": {
+        "west": 36.225,
+        "south": 36.41,
+        "east": 43.72,
+        "north": 38.935
+      },
+      "tiles": [
+        "N36E036.hgt",
+        "N36E037.hgt",
+        "N36E038.hgt",
+        "N36E039.hgt",
+        "N36E040.hgt",
+        "N36E041.hgt",
+        "N36E042.hgt",
+        "N36E043.hgt",
+        "N37E036.hgt",
+        "N37E037.hgt",
+        "N37E038.hgt",
+        "N37E039.hgt",
+        "N37E040.hgt",
+        "N37E041.hgt",
+        "N37E042.hgt",
+        "N37E043.hgt",
+        "N38E036.hgt",
+        "N38E037.hgt",
+        "N38E038.hgt",
+        "N38E039.hgt",
+        "N38E040.hgt",
+        "N38E041.hgt",
+        "N38E042.hgt",
+        "N38E043.hgt"
+      ]
+    },
+    {
+      "id": "cherkasy_oblast",
+      "name": "Cherkasy Oblast",
+      "bbox": {
+        "west": 29.385,
+        "south": 48.23,
+        "east": 33.115,
+        "north": 50.45
+      },
+      "tiles": [
+        "N48E029.hgt",
+        "N48E030.hgt",
+        "N48E031.hgt",
+        "N48E032.hgt",
+        "N48E033.hgt",
+        "N49E029.hgt",
+        "N49E030.hgt",
+        "N49E031.hgt",
+        "N49E032.hgt",
+        "N49E033.hgt",
+        "N50E029.hgt",
+        "N50E030.hgt",
+        "N50E031.hgt",
+        "N50E032.hgt",
+        "N50E033.hgt"
+      ]
+    },
+    {
+      "id": "chernihiv_oblast",
+      "name": "Chernihiv Oblast",
+      "bbox": {
+        "west": 30.26,
+        "south": 50.125,
+        "east": 33.72,
+        "north": 52.6
+      },
+      "tiles": [
+        "N50E030.hgt",
+        "N50E031.hgt",
+        "N50E032.hgt",
+        "N50E033.hgt",
+        "N51E030.hgt",
+        "N51E031.hgt",
+        "N51E032.hgt",
+        "N51E033.hgt",
+        "N52E030.hgt",
+        "N52E031.hgt",
+        "N52E032.hgt",
+        "N52E033.hgt"
+      ]
+    },
+    {
+      "id": "chernivtsi_oblast",
+      "name": "Chernivtsi Oblast",
+      "bbox": {
+        "west": 24.69,
+        "south": 47.505,
+        "east": 27.755,
+        "north": 48.895
+      },
+      "tiles": [
+        "N47E024.hgt",
+        "N47E025.hgt",
+        "N47E026.hgt",
+        "N47E027.hgt",
+        "N48E024.hgt",
+        "N48E025.hgt",
+        "N48E026.hgt",
+        "N48E027.hgt"
+      ]
+    },
+    {
+      "id": "crimea",
+      "name": "Crimea",
+      "bbox": {
+        "west": 31.98,
+        "south": 43.965,
+        "east": 36.9,
+        "north": 46.45
+      },
+      "tiles": [
+        "N43E031.hgt",
+        "N43E032.hgt",
+        "N43E033.hgt",
+        "N43E034.hgt",
+        "N43E035.hgt",
+        "N43E036.hgt",
+        "N44E031.hgt",
+        "N44E032.hgt",
+        "N44E033.hgt",
+        "N44E034.hgt",
+        "N44E035.hgt",
+        "N44E036.hgt",
+        "N45E031.hgt",
+        "N45E032.hgt",
+        "N45E033.hgt",
+        "N45E034.hgt",
+        "N45E035.hgt",
+        "N45E036.hgt",
+        "N46E031.hgt",
+        "N46E032.hgt",
+        "N46E033.hgt",
+        "N46E034.hgt",
+        "N46E035.hgt",
+        "N46E036.hgt"
+      ]
+    },
+    {
+      "id": "dnipropetrovsk_oblast",
+      "name": "Dnipropetrovsk Oblast",
+      "bbox": {
+        "west": 32.74,
+        "south": 47.235,
+        "east": 37.155,
+        "north": 49.415
+      },
+      "tiles": [
+        "N47E032.hgt",
+        "N47E033.hgt",
+        "N47E034.hgt",
+        "N47E035.hgt",
+        "N47E036.hgt",
+        "N47E037.hgt",
+        "N48E032.hgt",
+        "N48E033.hgt",
+        "N48E034.hgt",
+        "N48E035.hgt",
+        "N48E036.hgt",
+        "N48E037.hgt",
+        "N49E032.hgt",
+        "N49E033.hgt",
+        "N49E034.hgt",
+        "N49E035.hgt",
+        "N49E036.hgt",
+        "N49E037.hgt"
+      ]
+    },
+    {
+      "id": "donetsk_oblast",
+      "name": "Donetsk Oblast",
+      "bbox": {
+        "west": 36.32,
+        "south": 46.47,
+        "east": 39.31,
+        "north": 49.455
+      },
+      "tiles": [
+        "N46E036.hgt",
+        "N46E037.hgt",
+        "N46E038.hgt",
+        "N46E039.hgt",
+        "N47E036.hgt",
+        "N47E037.hgt",
+        "N47E038.hgt",
+        "N47E039.hgt",
+        "N48E036.hgt",
+        "N48E037.hgt",
+        "N48E038.hgt",
+        "N48E039.hgt",
+        "N49E036.hgt",
+        "N49E037.hgt",
+        "N49E038.hgt",
+        "N49E039.hgt"
+      ]
+    },
+    {
+      "id": "ivano-frankivsk_oblast",
+      "name": "Ivano-frankivsk Oblast",
+      "bbox": {
+        "west": 23.325,
+        "south": 47.505,
+        "east": 25.875,
+        "north": 49.77
+      },
+      "tiles": [
+        "N47E023.hgt",
+        "N47E024.hgt",
+        "N47E025.hgt",
+        "N48E023.hgt",
+        "N48E024.hgt",
+        "N48E025.hgt",
+        "N49E023.hgt",
+        "N49E024.hgt",
+        "N49E025.hgt"
+      ]
+    },
+    {
+      "id": "kharkiv_oblast",
+      "name": "Kharkiv Oblast",
+      "bbox": {
+        "west": 34.635,
+        "south": 48.31,
+        "east": 38.315,
+        "north": 50.68
+      },
+      "tiles": [
+        "N48E034.hgt",
+        "N48E035.hgt",
+        "N48E036.hgt",
+        "N48E037.hgt",
+        "N48E038.hgt",
+        "N49E034.hgt",
+        "N49E035.hgt",
+        "N49E036.hgt",
+        "N49E037.hgt",
+        "N49E038.hgt",
+        "N50E034.hgt",
+        "N50E035.hgt",
+        "N50E036.hgt",
+        "N50E037.hgt",
+        "N50E038.hgt"
+      ]
+    },
+    {
+      "id": "kherson_oblast",
+      "name": "Kherson Oblast",
+      "bbox": {
+        "west": 30.94,
+        "south": 45.535,
+        "east": 35.69,
+        "north": 47.82
+      },
+      "tiles": [
+        "N45E030.hgt",
+        "N45E031.hgt",
+        "N45E032.hgt",
+        "N45E033.hgt",
+        "N45E034.hgt",
+        "N45E035.hgt",
+        "N46E030.hgt",
+        "N46E031.hgt",
+        "N46E032.hgt",
+        "N46E033.hgt",
+        "N46E034.hgt",
+        "N46E035.hgt",
+        "N47E030.hgt",
+        "N47E031.hgt",
+        "N47E032.hgt",
+        "N47E033.hgt",
+        "N47E034.hgt",
+        "N47E035.hgt"
+      ]
+    },
+    {
+      "id": "khmelnytskyi_oblast",
+      "name": "Khmelnytskyi Oblast",
+      "bbox": {
+        "west": 25.915,
+        "south": 48.23,
+        "east": 28.12,
+        "north": 50.815
+      },
+      "tiles": [
+        "N48E025.hgt",
+        "N48E026.hgt",
+        "N48E027.hgt",
+        "N48E028.hgt",
+        "N49E025.hgt",
+        "N49E026.hgt",
+        "N49E027.hgt",
+        "N49E028.hgt",
+        "N50E025.hgt",
+        "N50E026.hgt",
+        "N50E027.hgt",
+        "N50E028.hgt"
+      ]
+    },
+    {
+      "id": "kiev",
+      "name": "Kiev",
+      "bbox": {
+        "west": 30.032,
+        "south": 50.009,
+        "east": 31.032,
+        "north": 50.795
+      },
+      "tiles": [
+        "N50E030.hgt",
+        "N50E031.hgt"
+      ]
+    },
+    {
+      "id": "kiev_oblast",
+      "name": "Kiev Oblast",
+      "bbox": {
+        "west": 29.05,
+        "south": 48.96,
+        "east": 32.38,
+        "north": 51.775
+      },
+      "tiles": [
+        "N48E029.hgt",
+        "N48E030.hgt",
+        "N48E031.hgt",
+        "N48E032.hgt",
+        "N49E029.hgt",
+        "N49E030.hgt",
+        "N49E031.hgt",
+        "N49E032.hgt",
+        "N50E029.hgt",
+        "N50E030.hgt",
+        "N50E031.hgt",
+        "N50E032.hgt",
+        "N51E029.hgt",
+        "N51E030.hgt",
+        "N51E031.hgt",
+        "N51E032.hgt"
+      ]
+    },
+    {
+      "id": "kirovohrad_oblast",
+      "name": "Kirovohrad Oblast",
+      "bbox": {
+        "west": 29.53,
+        "south": 47.53,
+        "east": 34.115,
+        "north": 49.465
+      },
+      "tiles": [
+        "N47E029.hgt",
+        "N47E030.hgt",
+        "N47E031.hgt",
+        "N47E032.hgt",
+        "N47E033.hgt",
+        "N47E034.hgt",
+        "N48E029.hgt",
+        "N48E030.hgt",
+        "N48E031.hgt",
+        "N48E032.hgt",
+        "N48E033.hgt",
+        "N48E034.hgt",
+        "N49E029.hgt",
+        "N49E030.hgt",
+        "N49E031.hgt",
+        "N49E032.hgt",
+        "N49E033.hgt",
+        "N49E034.hgt"
+      ]
+    },
+    {
+      "id": "luhansk_oblast",
+      "name": "Luhansk Oblast",
+      "bbox": {
+        "west": 37.62,
+        "south": 47.605,
+        "east": 40.445,
+        "north": 50.31
+      },
+      "tiles": [
+        "N47E037.hgt",
+        "N47E038.hgt",
+        "N47E039.hgt",
+        "N47E040.hgt",
+        "N48E037.hgt",
+        "N48E038.hgt",
+        "N48E039.hgt",
+        "N48E040.hgt",
+        "N49E037.hgt",
+        "N49E038.hgt",
+        "N49E039.hgt",
+        "N49E040.hgt",
+        "N50E037.hgt",
+        "N50E038.hgt",
+        "N50E039.hgt",
+        "N50E040.hgt"
+      ]
+    },
+    {
+      "id": "lviv_oblast",
+      "name": "Lviv Oblast",
+      "bbox": {
+        "west": 22.425,
+        "south": 48.5,
+        "east": 25.645,
+        "north": 50.87
+      },
+      "tiles": [
+        "N48E022.hgt",
+        "N48E023.hgt",
+        "N48E024.hgt",
+        "N48E025.hgt",
+        "N49E022.hgt",
+        "N49E023.hgt",
+        "N49E024.hgt",
+        "N49E025.hgt",
+        "N50E022.hgt",
+        "N50E023.hgt",
+        "N50E024.hgt",
+        "N50E025.hgt"
+      ]
+    },
+    {
+      "id": "mykolaiv_oblast",
+      "name": "Mykolaiv Oblast",
+      "bbox": {
+        "west": 29.985,
+        "south": 46.125,
+        "east": 33.405,
+        "north": 48.45
+      },
+      "tiles": [
+        "N46E029.hgt",
+        "N46E030.hgt",
+        "N46E031.hgt",
+        "N46E032.hgt",
+        "N46E033.hgt",
+        "N47E029.hgt",
+        "N47E030.hgt",
+        "N47E031.hgt",
+        "N47E032.hgt",
+        "N47E033.hgt",
+        "N48E029.hgt",
+        "N48E030.hgt",
+        "N48E031.hgt",
+        "N48E032.hgt",
+        "N48E033.hgt"
+      ]
+    },
+    {
+      "id": "odessa_oblast",
+      "name": "Odessa Oblast",
+      "bbox": {
+        "west": 27.995,
+        "south": 44.835,
+        "east": 31.525,
+        "north": 48.455
+      },
+      "tiles": [
+        "N44E027.hgt",
+        "N44E028.hgt",
+        "N44E029.hgt",
+        "N44E030.hgt",
+        "N44E031.hgt",
+        "N45E027.hgt",
+        "N45E028.hgt",
+        "N45E029.hgt",
+        "N45E030.hgt",
+        "N45E031.hgt",
+        "N46E027.hgt",
+        "N46E028.hgt",
+        "N46E029.hgt",
+        "N46E030.hgt",
+        "N46E031.hgt",
+        "N47E027.hgt",
+        "N47E028.hgt",
+        "N47E029.hgt",
+        "N47E030.hgt",
+        "N47E031.hgt",
+        "N48E027.hgt",
+        "N48E028.hgt",
+        "N48E029.hgt",
+        "N48E030.hgt",
+        "N48E031.hgt"
+      ]
+    },
+    {
+      "id": "poltava_oblast",
+      "name": "Poltava Oblast",
+      "bbox": {
+        "west": 31.865,
+        "south": 48.505,
+        "east": 35.71,
+        "north": 50.775
+      },
+      "tiles": [
+        "N48E031.hgt",
+        "N48E032.hgt",
+        "N48E033.hgt",
+        "N48E034.hgt",
+        "N48E035.hgt",
+        "N49E031.hgt",
+        "N49E032.hgt",
+        "N49E033.hgt",
+        "N49E034.hgt",
+        "N49E035.hgt",
+        "N50E031.hgt",
+        "N50E032.hgt",
+        "N50E033.hgt",
+        "N50E034.hgt",
+        "N50E035.hgt"
+      ]
+    },
+    {
+      "id": "rivne_oblast",
+      "name": "Rivne Oblast",
+      "bbox": {
+        "west": 24.865,
+        "south": 49.785,
+        "east": 27.955,
+        "north": 52.17
+      },
+      "tiles": [
+        "N49E024.hgt",
+        "N49E025.hgt",
+        "N49E026.hgt",
+        "N49E027.hgt",
+        "N50E024.hgt",
+        "N50E025.hgt",
+        "N50E026.hgt",
+        "N50E027.hgt",
+        "N51E024.hgt",
+        "N51E025.hgt",
+        "N51E026.hgt",
+        "N51E027.hgt",
+        "N52E024.hgt",
+        "N52E025.hgt",
+        "N52E026.hgt",
+        "N52E027.hgt"
+      ]
+    },
+    {
+      "id": "sevastopol",
+      "name": "Sevastopol",
+      "bbox": {
+        "west": 32.887,
+        "south": 43.987,
+        "east": 34.129,
+        "north": 45.145
+      },
+      "tiles": [
+        "N43E032.hgt",
+        "N43E033.hgt",
+        "N43E034.hgt",
+        "N44E032.hgt",
+        "N44E033.hgt",
+        "N44E034.hgt",
+        "N45E032.hgt",
+        "N45E033.hgt",
+        "N45E034.hgt"
+      ]
+    },
+    {
+      "id": "sumy_oblast",
+      "name": "Sumy Oblast",
+      "bbox": {
+        "west": 32.725,
+        "south": 49.89,
+        "east": 35.915,
+        "north": 52.585
+      },
+      "tiles": [
+        "N49E032.hgt",
+        "N49E033.hgt",
+        "N49E034.hgt",
+        "N49E035.hgt",
+        "N50E032.hgt",
+        "N50E033.hgt",
+        "N50E034.hgt",
+        "N50E035.hgt",
+        "N51E032.hgt",
+        "N51E033.hgt",
+        "N51E034.hgt",
+        "N51E035.hgt",
+        "N52E032.hgt",
+        "N52E033.hgt",
+        "N52E034.hgt",
+        "N52E035.hgt"
+      ]
+    },
+    {
+      "id": "ternopil_oblast",
+      "name": "Ternopil Oblast",
+      "bbox": {
+        "west": 24.5,
+        "south": 48.285,
+        "east": 26.665,
+        "north": 50.485
+      },
+      "tiles": [
+        "N48E024.hgt",
+        "N48E025.hgt",
+        "N48E026.hgt",
+        "N49E024.hgt",
+        "N49E025.hgt",
+        "N49E026.hgt",
+        "N50E024.hgt",
+        "N50E025.hgt",
+        "N50E026.hgt"
+      ]
+    },
+    {
+      "id": "vinnytsia_oblast",
+      "name": "Vinnytsia Oblast",
+      "bbox": {
+        "west": 27.15,
+        "south": 47.845,
+        "east": 30.24,
+        "north": 50.11
+      },
+      "tiles": [
+        "N47E027.hgt",
+        "N47E028.hgt",
+        "N47E029.hgt",
+        "N47E030.hgt",
+        "N48E027.hgt",
+        "N48E028.hgt",
+        "N48E029.hgt",
+        "N48E030.hgt",
+        "N49E027.hgt",
+        "N49E028.hgt",
+        "N49E029.hgt",
+        "N49E030.hgt",
+        "N50E027.hgt",
+        "N50E028.hgt",
+        "N50E029.hgt",
+        "N50E030.hgt"
+      ]
+    },
+    {
+      "id": "volyn_oblast",
+      "name": "Volyn Oblast",
+      "bbox": {
+        "west": 23.385,
+        "south": 50.065,
+        "east": 26.325,
+        "north": 52.19
+      },
+      "tiles": [
+        "N50E023.hgt",
+        "N50E024.hgt",
+        "N50E025.hgt",
+        "N50E026.hgt",
+        "N51E023.hgt",
+        "N51E024.hgt",
+        "N51E025.hgt",
+        "N51E026.hgt",
+        "N52E023.hgt",
+        "N52E024.hgt",
+        "N52E025.hgt",
+        "N52E026.hgt"
+      ]
+    },
+    {
+      "id": "zakarpattia_oblast",
+      "name": "Zakarpattia Oblast",
+      "bbox": {
+        "west": 21.915,
+        "south": 47.675,
+        "east": 24.845,
+        "north": 49.315
+      },
+      "tiles": [
+        "N47E021.hgt",
+        "N47E022.hgt",
+        "N47E023.hgt",
+        "N47E024.hgt",
+        "N48E021.hgt",
+        "N48E022.hgt",
+        "N48E023.hgt",
+        "N48E024.hgt",
+        "N49E021.hgt",
+        "N49E022.hgt",
+        "N49E023.hgt",
+        "N49E024.hgt"
+      ]
+    },
+    {
+      "id": "zaporizhia_oblast",
+      "name": "Zaporizhia Oblast",
+      "bbox": {
+        "west": 33.92,
+        "south": 45.925,
+        "east": 37.47,
+        "north": 48.365
+      },
+      "tiles": [
+        "N45E033.hgt",
+        "N45E034.hgt",
+        "N45E035.hgt",
+        "N45E036.hgt",
+        "N45E037.hgt",
+        "N46E033.hgt",
+        "N46E034.hgt",
+        "N46E035.hgt",
+        "N46E036.hgt",
+        "N46E037.hgt",
+        "N47E033.hgt",
+        "N47E034.hgt",
+        "N47E035.hgt",
+        "N47E036.hgt",
+        "N47E037.hgt",
+        "N48E033.hgt",
+        "N48E034.hgt",
+        "N48E035.hgt",
+        "N48E036.hgt",
+        "N48E037.hgt"
+      ]
+    },
+    {
+      "id": "zhytomyr_oblast",
+      "name": "Zhytomyr Oblast",
+      "bbox": {
+        "west": 26.97,
+        "south": 49.365,
+        "east": 29.955,
+        "north": 51.9
+      },
+      "tiles": [
+        "N49E026.hgt",
+        "N49E027.hgt",
+        "N49E028.hgt",
+        "N49E029.hgt",
+        "N50E026.hgt",
+        "N50E027.hgt",
+        "N50E028.hgt",
+        "N50E029.hgt",
+        "N51E026.hgt",
+        "N51E027.hgt",
+        "N51E028.hgt",
+        "N51E029.hgt"
+      ]
+    },
+    {
+      "id": "northern_ireland",
+      "name": "Northern Ireland",
+      "bbox": {
+        "west": -8.395,
+        "south": 53.65,
+        "east": -4.86,
+        "north": 55.665
+      },
+      "tiles": [
+        "N53W009.hgt",
+        "N53W008.hgt",
+        "N53W007.hgt",
+        "N53W006.hgt",
+        "N53W005.hgt",
+        "N54W009.hgt",
+        "N54W008.hgt",
+        "N54W007.hgt",
+        "N54W006.hgt",
+        "N54W005.hgt",
+        "N55W009.hgt",
+        "N55W008.hgt",
+        "N55W007.hgt",
+        "N55W006.hgt",
+        "N55W005.hgt"
+      ]
+    },
+    {
+      "id": "almeria",
+      "name": "Almeria",
+      "bbox": {
+        "west": -3.36,
+        "south": 35.72,
+        "east": -1.41,
+        "north": 38.135
+      },
+      "tiles": [
+        "N35W004.hgt",
+        "N35W003.hgt",
+        "N35W002.hgt",
+        "N36W004.hgt",
+        "N36W003.hgt",
+        "N36W002.hgt",
+        "N37W004.hgt",
+        "N37W003.hgt",
+        "N37W002.hgt",
+        "N38W004.hgt",
+        "N38W003.hgt",
+        "N38W002.hgt"
+      ]
+    },
+    {
+      "id": "cadiz",
+      "name": "Cadiz",
+      "bbox": {
+        "west": -6.66,
+        "south": 35.78,
+        "east": -4.865,
+        "north": 37.27
+      },
+      "tiles": [
+        "N35W007.hgt",
+        "N35W006.hgt",
+        "N35W005.hgt",
+        "N36W007.hgt",
+        "N36W006.hgt",
+        "N36W005.hgt",
+        "N37W007.hgt",
+        "N37W006.hgt",
+        "N37W005.hgt"
+      ]
+    },
+    {
+      "id": "cordoba",
+      "name": "Cordoba",
+      "bbox": {
+        "west": -5.805,
+        "south": 36.965,
+        "east": -3.78,
+        "north": 38.95
+      },
+      "tiles": [
+        "N36W006.hgt",
+        "N36W005.hgt",
+        "N36W004.hgt",
+        "N37W006.hgt",
+        "N37W005.hgt",
+        "N37W004.hgt",
+        "N38W006.hgt",
+        "N38W005.hgt",
+        "N38W004.hgt"
+      ]
+    },
+    {
+      "id": "granada",
+      "name": "Granada",
+      "bbox": {
+        "west": -4.55,
+        "south": 36.475,
+        "east": -1.99,
+        "north": 38.305
+      },
+      "tiles": [
+        "N36W005.hgt",
+        "N36W004.hgt",
+        "N36W003.hgt",
+        "N36W002.hgt",
+        "N37W005.hgt",
+        "N37W004.hgt",
+        "N37W003.hgt",
+        "N37W002.hgt",
+        "N38W005.hgt",
+        "N38W004.hgt",
+        "N38W003.hgt",
+        "N38W002.hgt"
+      ]
+    },
+    {
+      "id": "huelva",
+      "name": "Huelva",
+      "bbox": {
+        "west": -7.745,
+        "south": 36.575,
+        "east": -5.9,
+        "north": 38.43
+      },
+      "tiles": [
+        "N36W008.hgt",
+        "N36W007.hgt",
+        "N36W006.hgt",
+        "N37W008.hgt",
+        "N37W007.hgt",
+        "N37W006.hgt",
+        "N38W008.hgt",
+        "N38W007.hgt",
+        "N38W006.hgt"
+      ]
+    },
+    {
+      "id": "jaen",
+      "name": "Jaen",
+      "bbox": {
+        "west": -4.51,
+        "south": 37.16,
+        "east": -2.215,
+        "north": 38.755
+      },
+      "tiles": [
+        "N37W005.hgt",
+        "N37W004.hgt",
+        "N37W003.hgt",
+        "N38W005.hgt",
+        "N38W004.hgt",
+        "N38W003.hgt"
+      ]
+    },
+    {
+      "id": "malaga",
+      "name": "Malaga",
+      "bbox": {
+        "west": -5.83,
+        "south": 36.09,
+        "east": -3.545,
+        "north": 37.5
+      },
+      "tiles": [
+        "N36W006.hgt",
+        "N36W005.hgt",
+        "N36W004.hgt",
+        "N37W006.hgt",
+        "N37W005.hgt",
+        "N37W004.hgt"
+      ]
+    },
+    {
+      "id": "sevilla",
+      "name": "Sevilla",
+      "bbox": {
+        "west": -6.76,
+        "south": 36.62,
+        "east": -4.435,
+        "north": 38.415
+      },
+      "tiles": [
+        "N36W007.hgt",
+        "N36W006.hgt",
+        "N36W005.hgt",
+        "N37W007.hgt",
+        "N37W006.hgt",
+        "N37W005.hgt",
+        "N38W007.hgt",
+        "N38W006.hgt",
+        "N38W005.hgt"
+      ]
+    },
+    {
+      "id": "huesca",
+      "name": "Huesca",
+      "bbox": {
+        "west": -1.155,
+        "south": 41.13,
+        "east": 0.99,
+        "north": 43.145
+      },
+      "tiles": [
+        "N41W002.hgt",
+        "N41W001.hgt",
+        "N41E000.hgt",
+        "N42W002.hgt",
+        "N42W001.hgt",
+        "N42E000.hgt",
+        "N43W002.hgt",
+        "N43W001.hgt",
+        "N43E000.hgt"
+      ]
+    },
+    {
+      "id": "teruel",
+      "name": "Teruel",
+      "bbox": {
+        "west": -2.025,
+        "south": 39.625,
+        "east": 0.515,
+        "north": 41.575
+      },
+      "tiles": [
+        "N39W003.hgt",
+        "N39W002.hgt",
+        "N39W001.hgt",
+        "N39E000.hgt",
+        "N40W003.hgt",
+        "N40W002.hgt",
+        "N40W001.hgt",
+        "N40E000.hgt",
+        "N41W003.hgt",
+        "N41W002.hgt",
+        "N41W001.hgt",
+        "N41E000.hgt"
+      ]
+    },
+    {
+      "id": "zaragoza",
+      "name": "Zaragoza",
+      "bbox": {
+        "west": -2.395,
+        "south": 40.715,
+        "east": 0.605,
+        "north": 42.965
+      },
+      "tiles": [
+        "N40W003.hgt",
+        "N40W002.hgt",
+        "N40W001.hgt",
+        "N40E000.hgt",
+        "N41W003.hgt",
+        "N41W002.hgt",
+        "N41W001.hgt",
+        "N41E000.hgt",
+        "N42W003.hgt",
+        "N42W002.hgt",
+        "N42W001.hgt",
+        "N42E000.hgt"
+      ]
+    },
+    {
+      "id": "albacete",
+      "name": "Albacete",
+      "bbox": {
+        "west": -3.1,
+        "south": 37.8,
+        "east": -0.695,
+        "north": 39.645
+      },
+      "tiles": [
+        "N37W004.hgt",
+        "N37W003.hgt",
+        "N37W002.hgt",
+        "N37W001.hgt",
+        "N38W004.hgt",
+        "N38W003.hgt",
+        "N38W002.hgt",
+        "N38W001.hgt",
+        "N39W004.hgt",
+        "N39W003.hgt",
+        "N39W002.hgt",
+        "N39W001.hgt"
+      ]
+    },
+    {
+      "id": "ciudad_real",
+      "name": "Ciudad Real",
+      "bbox": {
+        "west": -5.265,
+        "south": 38.125,
+        "east": -2.415,
+        "north": 39.795
+      },
+      "tiles": [
+        "N38W006.hgt",
+        "N38W005.hgt",
+        "N38W004.hgt",
+        "N38W003.hgt",
+        "N39W006.hgt",
+        "N39W005.hgt",
+        "N39W004.hgt",
+        "N39W003.hgt"
+      ]
+    },
+    {
+      "id": "cuenca",
+      "name": "Cuenca",
+      "bbox": {
+        "west": -3.39,
+        "south": 39.005,
+        "east": -0.92,
+        "north": 40.88
+      },
+      "tiles": [
+        "N39W004.hgt",
+        "N39W003.hgt",
+        "N39W002.hgt",
+        "N39W001.hgt",
+        "N40W004.hgt",
+        "N40W003.hgt",
+        "N40W002.hgt",
+        "N40W001.hgt"
+      ]
+    },
+    {
+      "id": "guadalajara",
+      "name": "Guadalajara",
+      "bbox": {
+        "west": -3.76,
+        "south": 39.93,
+        "east": -1.315,
+        "north": 41.55
+      },
+      "tiles": [
+        "N39W004.hgt",
+        "N39W003.hgt",
+        "N39W002.hgt",
+        "N40W004.hgt",
+        "N40W003.hgt",
+        "N40W002.hgt",
+        "N41W004.hgt",
+        "N41W003.hgt",
+        "N41W002.hgt"
+      ]
+    },
+    {
+      "id": "toledo",
+      "name": "Toledo",
+      "bbox": {
+        "west": -5.625,
+        "south": 39.04,
+        "east": -2.69,
+        "north": 40.54
+      },
+      "tiles": [
+        "N39W006.hgt",
+        "N39W005.hgt",
+        "N39W004.hgt",
+        "N39W003.hgt",
+        "N40W006.hgt",
+        "N40W005.hgt",
+        "N40W004.hgt",
+        "N40W003.hgt"
+      ]
+    },
+    {
+      "id": "avila",
+      "name": "Avila",
+      "bbox": {
+        "west": -5.96,
+        "south": 39.865,
+        "east": -3.94,
+        "north": 41.385
+      },
+      "tiles": [
+        "N39W006.hgt",
+        "N39W005.hgt",
+        "N39W004.hgt",
+        "N40W006.hgt",
+        "N40W005.hgt",
+        "N40W004.hgt",
+        "N41W006.hgt",
+        "N41W005.hgt",
+        "N41W004.hgt"
+      ]
+    },
+    {
+      "id": "burgos",
+      "name": "Burgos",
+      "bbox": {
+        "west": -4.555,
+        "south": 41.23,
+        "east": -2.3,
+        "north": 43.42
+      },
+      "tiles": [
+        "N41W005.hgt",
+        "N41W004.hgt",
+        "N41W003.hgt",
+        "N42W005.hgt",
+        "N42W004.hgt",
+        "N42W003.hgt",
+        "N43W005.hgt",
+        "N43W004.hgt",
+        "N43W003.hgt"
+      ]
+    },
+    {
+      "id": "leon",
+      "name": "Leon",
+      "bbox": {
+        "west": -7.295,
+        "south": 41.81,
+        "east": -4.51,
+        "north": 43.46
+      },
+      "tiles": [
+        "N41W008.hgt",
+        "N41W007.hgt",
+        "N41W006.hgt",
+        "N41W005.hgt",
+        "N42W008.hgt",
+        "N42W007.hgt",
+        "N42W006.hgt",
+        "N42W005.hgt",
+        "N43W008.hgt",
+        "N43W007.hgt",
+        "N43W006.hgt",
+        "N43W005.hgt"
+      ]
+    },
+    {
+      "id": "palencia",
+      "name": "Palencia",
+      "bbox": {
+        "west": -5.25,
+        "south": 41.54,
+        "east": -3.67,
+        "north": 43.28
+      },
+      "tiles": [
+        "N41W006.hgt",
+        "N41W005.hgt",
+        "N41W004.hgt",
+        "N42W006.hgt",
+        "N42W005.hgt",
+        "N42W004.hgt",
+        "N43W006.hgt",
+        "N43W005.hgt",
+        "N43W004.hgt"
+      ]
+    },
+    {
+      "id": "salamanca",
+      "name": "Salamanca",
+      "bbox": {
+        "west": -7.15,
+        "south": 40.02,
+        "east": -4.87,
+        "north": 41.515
+      },
+      "tiles": [
+        "N40W008.hgt",
+        "N40W007.hgt",
+        "N40W006.hgt",
+        "N40W005.hgt",
+        "N41W008.hgt",
+        "N41W007.hgt",
+        "N41W006.hgt",
+        "N41W005.hgt"
+      ]
+    },
+    {
+      "id": "segovia",
+      "name": "Segovia",
+      "bbox": {
+        "west": -4.945,
+        "south": 40.415,
+        "east": -2.985,
+        "north": 41.805
+      },
+      "tiles": [
+        "N40W005.hgt",
+        "N40W004.hgt",
+        "N40W003.hgt",
+        "N41W005.hgt",
+        "N41W004.hgt",
+        "N41W003.hgt"
+      ]
+    },
+    {
+      "id": "soria",
+      "name": "Soria",
+      "bbox": {
+        "west": -3.77,
+        "south": 40.835,
+        "east": -1.555,
+        "north": 42.365
+      },
+      "tiles": [
+        "N40W004.hgt",
+        "N40W003.hgt",
+        "N40W002.hgt",
+        "N41W004.hgt",
+        "N41W003.hgt",
+        "N41W002.hgt",
+        "N42W004.hgt",
+        "N42W003.hgt",
+        "N42W002.hgt"
+      ]
+    },
+    {
+      "id": "valladolid",
+      "name": "Valladolid",
+      "bbox": {
+        "west": -5.74,
+        "south": 40.875,
+        "east": -3.76,
+        "north": 42.53
+      },
+      "tiles": [
+        "N40W006.hgt",
+        "N40W005.hgt",
+        "N40W004.hgt",
+        "N41W006.hgt",
+        "N41W005.hgt",
+        "N41W004.hgt",
+        "N42W006.hgt",
+        "N42W005.hgt",
+        "N42W004.hgt"
+      ]
+    },
+    {
+      "id": "zamora",
+      "name": "Zamora",
+      "bbox": {
+        "west": -7.255,
+        "south": 40.895,
+        "east": -5.01,
+        "north": 42.475
+      },
+      "tiles": [
+        "N40W008.hgt",
+        "N40W007.hgt",
+        "N40W006.hgt",
+        "N41W008.hgt",
+        "N41W007.hgt",
+        "N41W006.hgt",
+        "N42W008.hgt",
+        "N42W007.hgt",
+        "N42W006.hgt"
+      ]
+    },
+    {
+      "id": "barcelona",
+      "name": "Barcelona",
+      "bbox": {
+        "west": 1.145,
+        "south": 40.975,
+        "east": 3.0,
+        "north": 42.545
+      },
+      "tiles": [
+        "N40E001.hgt",
+        "N40E002.hgt",
+        "N40E003.hgt",
+        "N41E001.hgt",
+        "N41E002.hgt",
+        "N41E003.hgt",
+        "N42E001.hgt",
+        "N42E002.hgt",
+        "N42E003.hgt"
+      ]
+    },
+    {
+      "id": "girona",
+      "name": "Girona",
+      "bbox": {
+        "west": 1.505,
+        "south": 41.43,
+        "east": 3.54,
+        "north": 42.715
+      },
+      "tiles": [
+        "N41E001.hgt",
+        "N41E002.hgt",
+        "N41E003.hgt",
+        "N42E001.hgt",
+        "N42E002.hgt",
+        "N42E003.hgt"
+      ]
+    },
+    {
+      "id": "lleida",
+      "name": "Lleida",
+      "bbox": {
+        "west": 0.1,
+        "south": 41.055,
+        "east": 2.075,
+        "north": 43.08
+      },
+      "tiles": [
+        "N41E000.hgt",
+        "N41E001.hgt",
+        "N41E002.hgt",
+        "N42E000.hgt",
+        "N42E001.hgt",
+        "N42E002.hgt",
+        "N43E000.hgt",
+        "N43E001.hgt",
+        "N43E002.hgt"
+      ]
+    },
+    {
+      "id": "tarragona",
+      "name": "Tarragona",
+      "bbox": {
+        "west": -0.06,
+        "south": 40.305,
+        "east": 1.875,
+        "north": 41.805
+      },
+      "tiles": [
+        "N40W001.hgt",
+        "N40E000.hgt",
+        "N40E001.hgt",
+        "N41W001.hgt",
+        "N41E000.hgt",
+        "N41E001.hgt"
+      ]
+    },
+    {
+      "id": "alicante",
+      "name": "Alicante",
+      "bbox": {
+        "west": -1.315,
+        "south": 37.625,
+        "east": 0.455,
+        "north": 39.105
+      },
+      "tiles": [
+        "N37W002.hgt",
+        "N37W001.hgt",
+        "N37E000.hgt",
+        "N38W002.hgt",
+        "N38W001.hgt",
+        "N38E000.hgt",
+        "N39W002.hgt",
+        "N39W001.hgt",
+        "N39E000.hgt"
+      ]
+    },
+    {
+      "id": "castellon",
+      "name": "Castellon",
+      "bbox": {
+        "west": -1.065,
+        "south": 39.495,
+        "east": 0.91,
+        "north": 41.01
+      },
+      "tiles": [
+        "N39W002.hgt",
+        "N39W001.hgt",
+        "N39E000.hgt",
+        "N40W002.hgt",
+        "N40W001.hgt",
+        "N40E000.hgt",
+        "N41W002.hgt",
+        "N41W001.hgt",
+        "N41E000.hgt"
+      ]
+    },
+    {
+      "id": "valencia",
+      "name": "Valencia",
+      "bbox": {
+        "west": -1.75,
+        "south": 38.465,
+        "east": 0.195,
+        "north": 40.43
+      },
+      "tiles": [
+        "N38W002.hgt",
+        "N38W001.hgt",
+        "N38E000.hgt",
+        "N39W002.hgt",
+        "N39W001.hgt",
+        "N39E000.hgt",
+        "N40W002.hgt",
+        "N40W001.hgt",
+        "N40E000.hgt"
+      ]
+    },
+    {
+      "id": "alava",
+      "name": "Alava",
+      "bbox": {
+        "west": -3.505,
+        "south": 42.25,
+        "east": -2.015,
+        "north": 43.435
+      },
+      "tiles": [
+        "N42W004.hgt",
+        "N42W003.hgt",
+        "N43W004.hgt",
+        "N43W003.hgt"
+      ]
+    },
+    {
+      "id": "guipuzcoa",
+      "name": "Guipuzcoa",
+      "bbox": {
+        "west": -2.807,
+        "south": 42.691,
+        "east": -1.525,
+        "north": 43.6
+      },
+      "tiles": [
+        "N42W003.hgt",
+        "N42W002.hgt",
+        "N43W003.hgt",
+        "N43W002.hgt"
+      ]
+    },
+    {
+      "id": "vizcaya",
+      "name": "Vizcaya",
+      "bbox": {
+        "west": -3.67,
+        "south": 42.75,
+        "east": -2.195,
+        "north": 43.675
+      },
+      "tiles": [
+        "N42W004.hgt",
+        "N42W003.hgt",
+        "N43W004.hgt",
+        "N43W003.hgt"
+      ]
+    },
+    {
+      "id": "badajoz",
+      "name": "Badajoz",
+      "bbox": {
+        "west": -7.555,
+        "south": 37.72,
+        "east": -4.43,
+        "north": 39.67
+      },
+      "tiles": [
+        "N37W008.hgt",
+        "N37W007.hgt",
+        "N37W006.hgt",
+        "N37W005.hgt",
+        "N38W008.hgt",
+        "N38W007.hgt",
+        "N38W006.hgt",
+        "N38W005.hgt",
+        "N39W008.hgt",
+        "N39W007.hgt",
+        "N39W006.hgt",
+        "N39W005.hgt"
+      ]
+    },
+    {
+      "id": "caceres",
+      "name": "Caceres",
+      "bbox": {
+        "west": -7.76,
+        "south": 38.81,
+        "east": -4.735,
+        "north": 40.705
+      },
+      "tiles": [
+        "N38W008.hgt",
+        "N38W007.hgt",
+        "N38W006.hgt",
+        "N38W005.hgt",
+        "N39W008.hgt",
+        "N39W007.hgt",
+        "N39W006.hgt",
+        "N39W005.hgt",
+        "N40W008.hgt",
+        "N40W007.hgt",
+        "N40W006.hgt",
+        "N40W005.hgt"
+      ]
+    },
+    {
+      "id": "la_coruna",
+      "name": "La Coruna",
+      "bbox": {
+        "west": -9.52,
+        "south": 42.245,
+        "east": -7.44,
+        "north": 44.01
+      },
+      "tiles": [
+        "N42W010.hgt",
+        "N42W009.hgt",
+        "N42W008.hgt",
+        "N43W010.hgt",
+        "N43W009.hgt",
+        "N43W008.hgt",
+        "N44W010.hgt",
+        "N44W009.hgt",
+        "N44W008.hgt"
+      ]
+    },
+    {
+      "id": "lugo",
+      "name": "Lugo",
+      "bbox": {
+        "west": -8.22,
+        "south": 42.105,
+        "east": -6.595,
+        "north": 43.98
+      },
+      "tiles": [
+        "N42W009.hgt",
+        "N42W008.hgt",
+        "N42W007.hgt",
+        "N43W009.hgt",
+        "N43W008.hgt",
+        "N43W007.hgt"
+      ]
+    },
+    {
+      "id": "ourense",
+      "name": "Ourense",
+      "bbox": {
+        "west": -8.585,
+        "south": 41.585,
+        "east": -6.515,
+        "north": 42.8
+      },
+      "tiles": [
+        "N41W009.hgt",
+        "N41W008.hgt",
+        "N41W007.hgt",
+        "N42W009.hgt",
+        "N42W008.hgt",
+        "N42W007.hgt"
+      ]
+    },
+    {
+      "id": "pontevedra",
+      "name": "Pontevedra",
+      "bbox": {
+        "west": -9.17,
+        "south": 41.645,
+        "east": -7.64,
+        "north": 43.08
+      },
+      "tiles": [
+        "N41W010.hgt",
+        "N41W009.hgt",
+        "N41W008.hgt",
+        "N42W010.hgt",
+        "N42W009.hgt",
+        "N42W008.hgt",
+        "N43W010.hgt",
+        "N43W009.hgt",
+        "N43W008.hgt"
+      ]
+    },
+    {
+      "id": "east",
+      "name": "East",
+      "bbox": {
+        "west": -0.965,
+        "south": 51.23,
+        "east": 1.99,
+        "north": 53.21
+      },
+      "tiles": [
+        "N51W001.hgt",
+        "N51E000.hgt",
+        "N51E001.hgt",
+        "N52W001.hgt",
+        "N52E000.hgt",
+        "N52E001.hgt",
+        "N53W001.hgt",
+        "N53E000.hgt",
+        "N53E001.hgt"
+      ]
+    },
+    {
+      "id": "east_midlands",
+      "name": "East Midlands",
+      "bbox": {
+        "west": -2.255,
+        "south": 51.755,
+        "east": 0.58,
+        "north": 53.835
+      },
+      "tiles": [
+        "N51W003.hgt",
+        "N51W002.hgt",
+        "N51W001.hgt",
+        "N51E000.hgt",
+        "N52W003.hgt",
+        "N52W002.hgt",
+        "N52W001.hgt",
+        "N52E000.hgt",
+        "N53W003.hgt",
+        "N53W002.hgt",
+        "N53W001.hgt",
+        "N53E000.hgt"
+      ]
+    },
+    {
+      "id": "greater_london",
+      "name": "Greater London",
+      "bbox": {
+        "west": -0.714,
+        "south": 51.083,
+        "east": 0.538,
+        "north": 51.896
+      },
+      "tiles": [
+        "N51W001.hgt",
+        "N51E000.hgt"
+      ]
+    },
+    {
+      "id": "north_east",
+      "name": "North East",
+      "bbox": {
+        "west": -2.91,
+        "south": 54.23,
+        "east": -0.57,
+        "north": 56.03
+      },
+      "tiles": [
+        "N54W003.hgt",
+        "N54W002.hgt",
+        "N54W001.hgt",
+        "N55W003.hgt",
+        "N55W002.hgt",
+        "N55W001.hgt",
+        "N56W003.hgt",
+        "N56W002.hgt",
+        "N56W001.hgt"
+      ]
+    },
+    {
+      "id": "north_west",
+      "name": "North West",
+      "bbox": {
+        "west": -3.86,
+        "south": 52.725,
+        "east": -1.69,
+        "north": 55.41
+      },
+      "tiles": [
+        "N52W004.hgt",
+        "N52W003.hgt",
+        "N52W002.hgt",
+        "N53W004.hgt",
+        "N53W003.hgt",
+        "N53W002.hgt",
+        "N54W004.hgt",
+        "N54W003.hgt",
+        "N54W002.hgt",
+        "N55W004.hgt",
+        "N55W003.hgt",
+        "N55W002.hgt"
+      ]
+    },
+    {
+      "id": "south_east",
+      "name": "South East",
+      "bbox": {
+        "west": -2.175,
+        "south": 50.355,
+        "east": 1.67,
+        "north": 52.415
+      },
+      "tiles": [
+        "N50W003.hgt",
+        "N50W002.hgt",
+        "N50W001.hgt",
+        "N50E000.hgt",
+        "N50E001.hgt",
+        "N51W003.hgt",
+        "N51W002.hgt",
+        "N51W001.hgt",
+        "N51E000.hgt",
+        "N51E001.hgt",
+        "N52W003.hgt",
+        "N52W002.hgt",
+        "N52W001.hgt",
+        "N52E000.hgt",
+        "N52E001.hgt"
+      ]
+    },
+    {
+      "id": "south_west",
+      "name": "South West",
+      "bbox": {
+        "west": -6.665,
+        "south": 49.645,
+        "east": -1.265,
+        "north": 52.33
+      },
+      "tiles": [
+        "N49W007.hgt",
+        "N49W006.hgt",
+        "N49W005.hgt",
+        "N49W004.hgt",
+        "N49W003.hgt",
+        "N49W002.hgt",
+        "N50W007.hgt",
+        "N50W006.hgt",
+        "N50W005.hgt",
+        "N50W004.hgt",
+        "N50W003.hgt",
+        "N50W002.hgt",
+        "N51W007.hgt",
+        "N51W006.hgt",
+        "N51W005.hgt",
+        "N51W004.hgt",
+        "N51W003.hgt",
+        "N51W002.hgt",
+        "N52W007.hgt",
+        "N52W006.hgt",
+        "N52W005.hgt",
+        "N52W004.hgt",
+        "N52W003.hgt",
+        "N52W002.hgt"
+      ]
+    },
+    {
+      "id": "west_midlands",
+      "name": "West Midlands",
+      "bbox": {
+        "west": -3.455,
+        "south": 51.605,
+        "east": -0.95,
+        "north": 53.445
+      },
+      "tiles": [
+        "N51W004.hgt",
+        "N51W003.hgt",
+        "N51W002.hgt",
+        "N51W001.hgt",
+        "N52W004.hgt",
+        "N52W003.hgt",
+        "N52W002.hgt",
+        "N52W001.hgt",
+        "N53W004.hgt",
+        "N53W003.hgt",
+        "N53W002.hgt",
+        "N53W001.hgt"
+      ]
+    },
+    {
+      "id": "yorkshire_and_the_humber",
+      "name": "Yorkshire and the Humber",
+      "bbox": {
+        "west": -2.785,
+        "south": 53.08,
+        "east": 0.37,
+        "north": 54.78
+      },
+      "tiles": [
+        "N53W003.hgt",
+        "N53W002.hgt",
+        "N53W001.hgt",
+        "N53E000.hgt",
+        "N54W003.hgt",
+        "N54W002.hgt",
+        "N54W001.hgt",
+        "N54E000.hgt"
+      ]
+    },
+    {
+      "id": "romania",
+      "name": "Romania",
+      "bbox": {
+        "west": 20.0418,
+        "south": 43.4125,
+        "east": 30.479,
+        "north": 48.4695
+      },
+      "tiles": [
+        "N43E020.hgt",
+        "N43E021.hgt",
+        "N43E022.hgt",
+        "N43E023.hgt",
+        "N43E024.hgt",
+        "N43E025.hgt",
+        "N43E026.hgt",
+        "N43E027.hgt",
+        "N43E028.hgt",
+        "N43E029.hgt",
+        "N43E030.hgt",
+        "N44E020.hgt",
+        "N44E021.hgt",
+        "N44E022.hgt",
+        "N44E023.hgt",
+        "N44E024.hgt",
+        "N44E025.hgt",
+        "N44E026.hgt",
+        "N44E027.hgt",
+        "N44E028.hgt",
+        "N44E029.hgt",
+        "N44E030.hgt",
+        "N45E020.hgt",
+        "N45E021.hgt",
+        "N45E022.hgt",
+        "N45E023.hgt",
+        "N45E024.hgt",
+        "N45E025.hgt",
+        "N45E026.hgt",
+        "N45E027.hgt",
+        "N45E028.hgt",
+        "N45E029.hgt",
+        "N45E030.hgt",
+        "N46E020.hgt",
+        "N46E021.hgt",
+        "N46E022.hgt",
+        "N46E023.hgt",
+        "N46E024.hgt",
+        "N46E025.hgt",
+        "N46E026.hgt",
+        "N46E027.hgt",
+        "N46E028.hgt",
+        "N46E029.hgt",
+        "N46E030.hgt",
+        "N47E020.hgt",
+        "N47E021.hgt",
+        "N47E022.hgt",
+        "N47E023.hgt",
+        "N47E024.hgt",
+        "N47E025.hgt",
+        "N47E026.hgt",
+        "N47E027.hgt",
+        "N47E028.hgt",
+        "N47E029.hgt",
+        "N47E030.hgt",
+        "N48E020.hgt",
+        "N48E021.hgt",
+        "N48E022.hgt",
+        "N48E023.hgt",
+        "N48E024.hgt",
+        "N48E025.hgt",
+        "N48E026.hgt",
+        "N48E027.hgt",
+        "N48E028.hgt",
+        "N48E029.hgt",
+        "N48E030.hgt"
+      ]
+    },
+    {
+      "id": "serbia",
+      "name": "Serbia",
+      "bbox": {
+        "west": 18.6089,
+        "south": 42.0298,
+        "east": 23.2103,
+        "north": 46.3921
+      },
+      "tiles": [
+        "N42E018.hgt",
+        "N42E019.hgt",
+        "N42E020.hgt",
+        "N42E021.hgt",
+        "N42E022.hgt",
+        "N42E023.hgt",
+        "N43E018.hgt",
+        "N43E019.hgt",
+        "N43E020.hgt",
+        "N43E021.hgt",
+        "N43E022.hgt",
+        "N43E023.hgt",
+        "N44E018.hgt",
+        "N44E019.hgt",
+        "N44E020.hgt",
+        "N44E021.hgt",
+        "N44E022.hgt",
+        "N44E023.hgt",
+        "N45E018.hgt",
+        "N45E019.hgt",
+        "N45E020.hgt",
+        "N45E021.hgt",
+        "N45E022.hgt",
+        "N45E023.hgt",
+        "N46E018.hgt",
+        "N46E019.hgt",
+        "N46E020.hgt",
+        "N46E021.hgt",
+        "N46E022.hgt",
+        "N46E023.hgt"
+      ]
+    },
+    {
+      "id": "slovenia",
+      "name": "Slovenia",
+      "bbox": {
+        "west": 13.1051,
+        "south": 45.2208,
+        "east": 16.8003,
+        "north": 47.0796
+      },
+      "tiles": [
+        "N45E013.hgt",
+        "N45E014.hgt",
+        "N45E015.hgt",
+        "N45E016.hgt",
+        "N46E013.hgt",
+        "N46E014.hgt",
+        "N46E015.hgt",
+        "N46E016.hgt",
+        "N47E013.hgt",
+        "N47E014.hgt",
+        "N47E015.hgt",
+        "N47E016.hgt"
+      ]
+    }
+  ]
+}
