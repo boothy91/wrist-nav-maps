@@ -1,0 +1,2558 @@
+{
+  "description": "OSMFR europe-2 hillshade HGT tile catalogue",
+  "catalogue_id": "europe-2",
+  "margin_degrees": 0.2,
+  "region_count": 85,
+  "regions": [
+    {
+      "id": "guernesey",
+      "name": "Guernsey",
+      "bbox": {
+        "west": -3.2401,
+        "south": 49.0,
+        "east": -1.815,
+        "north": 50.1601
+      },
+      "tiles": [
+        "N49W004.hgt",
+        "N49W003.hgt",
+        "N49W002.hgt",
+        "N50W004.hgt",
+        "N50W003.hgt",
+        "N50W002.hgt"
+      ]
+    },
+    {
+      "id": "ireland",
+      "name": "Ireland",
+      "bbox": {
+        "west": -11.235,
+        "south": 51.0,
+        "east": -5.4399,
+        "north": 55.855
+      },
+      "tiles": [
+        "N51W012.hgt",
+        "N51W011.hgt",
+        "N51W010.hgt",
+        "N51W009.hgt",
+        "N51W008.hgt",
+        "N51W007.hgt",
+        "N51W006.hgt",
+        "N52W012.hgt",
+        "N52W011.hgt",
+        "N52W010.hgt",
+        "N52W009.hgt",
+        "N52W008.hgt",
+        "N52W007.hgt",
+        "N52W006.hgt",
+        "N53W012.hgt",
+        "N53W011.hgt",
+        "N53W010.hgt",
+        "N53W009.hgt",
+        "N53W008.hgt",
+        "N53W007.hgt",
+        "N53W006.hgt",
+        "N54W012.hgt",
+        "N54W011.hgt",
+        "N54W010.hgt",
+        "N54W009.hgt",
+        "N54W008.hgt",
+        "N54W007.hgt",
+        "N54W006.hgt",
+        "N55W012.hgt",
+        "N55W011.hgt",
+        "N55W010.hgt",
+        "N55W009.hgt",
+        "N55W008.hgt",
+        "N55W007.hgt",
+        "N55W006.hgt"
+      ]
+    },
+    {
+      "id": "jersey",
+      "name": "Jersey",
+      "bbox": {
+        "west": -2.7631,
+        "south": 48.668,
+        "east": -1.629,
+        "north": 49.664
+      },
+      "tiles": [
+        "N48W003.hgt",
+        "N48W002.hgt",
+        "N49W003.hgt",
+        "N49W002.hgt"
+      ]
+    },
+    {
+      "id": "luxembourg",
+      "name": "Luxembourg",
+      "bbox": {
+        "west": 5.532,
+        "south": 49.244,
+        "east": 6.735,
+        "north": 50.387
+      },
+      "tiles": [
+        "N49E005.hgt",
+        "N49E006.hgt",
+        "N50E005.hgt",
+        "N50E006.hgt"
+      ]
+    },
+    {
+      "id": "monaco",
+      "name": "Monaco",
+      "bbox": {
+        "west": 7.205,
+        "south": 43.312,
+        "east": 7.737,
+        "north": 43.9561
+      },
+      "tiles": [
+        "N43E007.hgt"
+      ]
+    },
+    {
+      "id": "abruzzo",
+      "name": "Abruzzo",
+      "bbox": {
+        "west": 12.8,
+        "south": 41.4599,
+        "east": 15.005,
+        "north": 43.115
+      },
+      "tiles": [
+        "N41E012.hgt",
+        "N41E013.hgt",
+        "N41E014.hgt",
+        "N41E015.hgt",
+        "N42E012.hgt",
+        "N42E013.hgt",
+        "N42E014.hgt",
+        "N42E015.hgt",
+        "N43E012.hgt",
+        "N43E013.hgt",
+        "N43E014.hgt",
+        "N43E015.hgt"
+      ]
+    },
+    {
+      "id": "basilicata",
+      "name": "Basilicata",
+      "bbox": {
+        "west": 15.115,
+        "south": 39.675,
+        "east": 17.085,
+        "north": 41.36
+      },
+      "tiles": [
+        "N39E015.hgt",
+        "N39E016.hgt",
+        "N39E017.hgt",
+        "N40E015.hgt",
+        "N40E016.hgt",
+        "N40E017.hgt",
+        "N41E015.hgt",
+        "N41E016.hgt",
+        "N41E017.hgt"
+      ]
+    },
+    {
+      "id": "calabria",
+      "name": "Calabria",
+      "bbox": {
+        "west": 15.41,
+        "south": 37.695,
+        "east": 17.425,
+        "north": 40.365
+      },
+      "tiles": [
+        "N37E015.hgt",
+        "N37E016.hgt",
+        "N37E017.hgt",
+        "N38E015.hgt",
+        "N38E016.hgt",
+        "N38E017.hgt",
+        "N39E015.hgt",
+        "N39E016.hgt",
+        "N39E017.hgt",
+        "N40E015.hgt",
+        "N40E016.hgt",
+        "N40E017.hgt"
+      ]
+    },
+    {
+      "id": "campania",
+      "name": "Campania",
+      "bbox": {
+        "west": 13.54,
+        "south": 39.7699,
+        "east": 16.025,
+        "north": 41.7301
+      },
+      "tiles": [
+        "N39E013.hgt",
+        "N39E014.hgt",
+        "N39E015.hgt",
+        "N39E016.hgt",
+        "N40E013.hgt",
+        "N40E014.hgt",
+        "N40E015.hgt",
+        "N40E016.hgt",
+        "N41E013.hgt",
+        "N41E014.hgt",
+        "N41E015.hgt",
+        "N41E016.hgt"
+      ]
+    },
+    {
+      "id": "emilia_romagna",
+      "name": "Emilia Romagna",
+      "bbox": {
+        "west": 8.98,
+        "south": 43.51,
+        "east": 12.975,
+        "north": 45.36
+      },
+      "tiles": [
+        "N43E008.hgt",
+        "N43E009.hgt",
+        "N43E010.hgt",
+        "N43E011.hgt",
+        "N43E012.hgt",
+        "N44E008.hgt",
+        "N44E009.hgt",
+        "N44E010.hgt",
+        "N44E011.hgt",
+        "N44E012.hgt",
+        "N45E008.hgt",
+        "N45E009.hgt",
+        "N45E010.hgt",
+        "N45E011.hgt",
+        "N45E012.hgt"
+      ]
+    },
+    {
+      "id": "friuli_venezia_giulia",
+      "name": "Friuli Venezia Giulia",
+      "bbox": {
+        "west": 12.1,
+        "south": 45.36,
+        "east": 14.14,
+        "north": 46.8701
+      },
+      "tiles": [
+        "N45E012.hgt",
+        "N45E013.hgt",
+        "N45E014.hgt",
+        "N46E012.hgt",
+        "N46E013.hgt",
+        "N46E014.hgt"
+      ]
+    },
+    {
+      "id": "lazio",
+      "name": "Lazio",
+      "bbox": {
+        "west": 11.23,
+        "south": 40.565,
+        "east": 14.25,
+        "north": 43.06
+      },
+      "tiles": [
+        "N40E011.hgt",
+        "N40E012.hgt",
+        "N40E013.hgt",
+        "N40E014.hgt",
+        "N41E011.hgt",
+        "N41E012.hgt",
+        "N41E013.hgt",
+        "N41E014.hgt",
+        "N42E011.hgt",
+        "N42E012.hgt",
+        "N42E013.hgt",
+        "N42E014.hgt",
+        "N43E011.hgt",
+        "N43E012.hgt",
+        "N43E013.hgt",
+        "N43E014.hgt"
+      ]
+    },
+    {
+      "id": "liguria",
+      "name": "Liguria",
+      "bbox": {
+        "west": 7.275,
+        "south": 43.555,
+        "east": 10.29,
+        "north": 44.8951
+      },
+      "tiles": [
+        "N43E007.hgt",
+        "N43E008.hgt",
+        "N43E009.hgt",
+        "N43E010.hgt",
+        "N44E007.hgt",
+        "N44E008.hgt",
+        "N44E009.hgt",
+        "N44E010.hgt"
+      ]
+    },
+    {
+      "id": "lombardia",
+      "name": "Lombardia",
+      "bbox": {
+        "west": 8.28,
+        "south": 44.4599,
+        "east": 11.65,
+        "north": 46.8551
+      },
+      "tiles": [
+        "N44E008.hgt",
+        "N44E009.hgt",
+        "N44E010.hgt",
+        "N44E011.hgt",
+        "N45E008.hgt",
+        "N45E009.hgt",
+        "N45E010.hgt",
+        "N45E011.hgt",
+        "N46E008.hgt",
+        "N46E009.hgt",
+        "N46E010.hgt",
+        "N46E011.hgt"
+      ]
+    },
+    {
+      "id": "marche",
+      "name": "Marche",
+      "bbox": {
+        "west": 11.965,
+        "south": 42.4649,
+        "east": 14.135,
+        "north": 44.1901
+      },
+      "tiles": [
+        "N42E011.hgt",
+        "N42E012.hgt",
+        "N42E013.hgt",
+        "N42E014.hgt",
+        "N43E011.hgt",
+        "N43E012.hgt",
+        "N43E013.hgt",
+        "N43E014.hgt",
+        "N44E011.hgt",
+        "N44E012.hgt",
+        "N44E013.hgt",
+        "N44E014.hgt"
+      ]
+    },
+    {
+      "id": "molise",
+      "name": "Molise",
+      "bbox": {
+        "west": 13.72,
+        "south": 41.1449,
+        "east": 15.38,
+        "north": 42.2901
+      },
+      "tiles": [
+        "N41E013.hgt",
+        "N41E014.hgt",
+        "N41E015.hgt",
+        "N42E013.hgt",
+        "N42E014.hgt",
+        "N42E015.hgt"
+      ]
+    },
+    {
+      "id": "piemonte",
+      "name": "Piemonte",
+      "bbox": {
+        "west": 6.405,
+        "south": 43.8399,
+        "east": 9.435,
+        "north": 46.685
+      },
+      "tiles": [
+        "N43E006.hgt",
+        "N43E007.hgt",
+        "N43E008.hgt",
+        "N43E009.hgt",
+        "N44E006.hgt",
+        "N44E007.hgt",
+        "N44E008.hgt",
+        "N44E009.hgt",
+        "N45E006.hgt",
+        "N45E007.hgt",
+        "N45E008.hgt",
+        "N45E009.hgt",
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N46E008.hgt",
+        "N46E009.hgt"
+      ]
+    },
+    {
+      "id": "puglia",
+      "name": "Puglia",
+      "bbox": {
+        "west": 14.715,
+        "south": 39.57,
+        "east": 18.74,
+        "north": 42.445
+      },
+      "tiles": [
+        "N39E014.hgt",
+        "N39E015.hgt",
+        "N39E016.hgt",
+        "N39E017.hgt",
+        "N39E018.hgt",
+        "N40E014.hgt",
+        "N40E015.hgt",
+        "N40E016.hgt",
+        "N40E017.hgt",
+        "N40E018.hgt",
+        "N41E014.hgt",
+        "N41E015.hgt",
+        "N41E016.hgt",
+        "N41E017.hgt",
+        "N41E018.hgt",
+        "N42E014.hgt",
+        "N42E015.hgt",
+        "N42E016.hgt",
+        "N42E017.hgt",
+        "N42E018.hgt"
+      ]
+    },
+    {
+      "id": "sardegna",
+      "name": "Sardegna",
+      "bbox": {
+        "west": 7.9099,
+        "south": 38.64,
+        "east": 10.05,
+        "north": 41.5351
+      },
+      "tiles": [
+        "N38E007.hgt",
+        "N38E008.hgt",
+        "N38E009.hgt",
+        "N38E010.hgt",
+        "N39E007.hgt",
+        "N39E008.hgt",
+        "N39E009.hgt",
+        "N39E010.hgt",
+        "N40E007.hgt",
+        "N40E008.hgt",
+        "N40E009.hgt",
+        "N40E010.hgt",
+        "N41E007.hgt",
+        "N41E008.hgt",
+        "N41E009.hgt",
+        "N41E010.hgt"
+      ]
+    },
+    {
+      "id": "sicilia",
+      "name": "Sicilia",
+      "bbox": {
+        "west": 11.705,
+        "south": 35.275,
+        "east": 15.875,
+        "north": 39.0401
+      },
+      "tiles": [
+        "N35E011.hgt",
+        "N35E012.hgt",
+        "N35E013.hgt",
+        "N35E014.hgt",
+        "N35E015.hgt",
+        "N36E011.hgt",
+        "N36E012.hgt",
+        "N36E013.hgt",
+        "N36E014.hgt",
+        "N36E015.hgt",
+        "N37E011.hgt",
+        "N37E012.hgt",
+        "N37E013.hgt",
+        "N37E014.hgt",
+        "N37E015.hgt",
+        "N38E011.hgt",
+        "N38E012.hgt",
+        "N38E013.hgt",
+        "N38E014.hgt",
+        "N38E015.hgt",
+        "N39E011.hgt",
+        "N39E012.hgt",
+        "N39E013.hgt",
+        "N39E014.hgt",
+        "N39E015.hgt"
+      ]
+    },
+    {
+      "id": "toscana",
+      "name": "Toscana",
+      "bbox": {
+        "west": 9.465,
+        "south": 42.0199,
+        "east": 12.59,
+        "north": 44.695
+      },
+      "tiles": [
+        "N42E009.hgt",
+        "N42E010.hgt",
+        "N42E011.hgt",
+        "N42E012.hgt",
+        "N43E009.hgt",
+        "N43E010.hgt",
+        "N43E011.hgt",
+        "N43E012.hgt",
+        "N44E009.hgt",
+        "N44E010.hgt",
+        "N44E011.hgt",
+        "N44E012.hgt"
+      ]
+    },
+    {
+      "id": "trentino_alto_adige",
+      "name": "Trentino Alto Adige",
+      "bbox": {
+        "west": 10.16,
+        "south": 45.455,
+        "east": 12.7,
+        "north": 47.31
+      },
+      "tiles": [
+        "N45E010.hgt",
+        "N45E011.hgt",
+        "N45E012.hgt",
+        "N46E010.hgt",
+        "N46E011.hgt",
+        "N46E012.hgt",
+        "N47E010.hgt",
+        "N47E011.hgt",
+        "N47E012.hgt"
+      ]
+    },
+    {
+      "id": "umbria",
+      "name": "Umbria",
+      "bbox": {
+        "west": 11.675,
+        "south": 42.1449,
+        "east": 13.485,
+        "north": 43.835
+      },
+      "tiles": [
+        "N42E011.hgt",
+        "N42E012.hgt",
+        "N42E013.hgt",
+        "N43E011.hgt",
+        "N43E012.hgt",
+        "N43E013.hgt"
+      ]
+    },
+    {
+      "id": "valle_aosta",
+      "name": "Valle Aosta",
+      "bbox": {
+        "west": 6.585,
+        "south": 45.245,
+        "east": 8.16,
+        "north": 46.21
+      },
+      "tiles": [
+        "N45E006.hgt",
+        "N45E007.hgt",
+        "N45E008.hgt",
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N46E008.hgt"
+      ]
+    },
+    {
+      "id": "veneto",
+      "name": "Veneto",
+      "bbox": {
+        "west": 10.405,
+        "south": 44.57,
+        "east": 13.32,
+        "north": 46.9001
+      },
+      "tiles": [
+        "N44E010.hgt",
+        "N44E011.hgt",
+        "N44E012.hgt",
+        "N44E013.hgt",
+        "N45E010.hgt",
+        "N45E011.hgt",
+        "N45E012.hgt",
+        "N45E013.hgt",
+        "N46E010.hgt",
+        "N46E011.hgt",
+        "N46E012.hgt",
+        "N46E013.hgt"
+      ]
+    },
+    {
+      "id": "drenthe",
+      "name": "Drenthe",
+      "bbox": {
+        "west": 5.9159,
+        "south": 52.4079,
+        "east": 7.297,
+        "north": 53.408
+      },
+      "tiles": [
+        "N52E005.hgt",
+        "N52E006.hgt",
+        "N52E007.hgt",
+        "N53E005.hgt",
+        "N53E006.hgt",
+        "N53E007.hgt"
+      ]
+    },
+    {
+      "id": "flevoland",
+      "name": "Flevoland",
+      "bbox": {
+        "west": 4.856,
+        "south": 52.046,
+        "east": 6.221,
+        "north": 53.048
+      },
+      "tiles": [
+        "N52E004.hgt",
+        "N52E005.hgt",
+        "N52E006.hgt",
+        "N53E004.hgt",
+        "N53E005.hgt",
+        "N53E006.hgt"
+      ]
+    },
+    {
+      "id": "friesland",
+      "name": "Friesland",
+      "bbox": {
+        "west": 4.6,
+        "south": 52.545,
+        "east": 6.65,
+        "north": 53.76
+      },
+      "tiles": [
+        "N52E004.hgt",
+        "N52E005.hgt",
+        "N52E006.hgt",
+        "N53E004.hgt",
+        "N53E005.hgt",
+        "N53E006.hgt"
+      ]
+    },
+    {
+      "id": "gelderland",
+      "name": "Gelderland",
+      "bbox": {
+        "west": 4.7749,
+        "south": 51.515,
+        "east": 7.055,
+        "north": 52.74
+      },
+      "tiles": [
+        "N51E004.hgt",
+        "N51E005.hgt",
+        "N51E006.hgt",
+        "N51E007.hgt",
+        "N52E004.hgt",
+        "N52E005.hgt",
+        "N52E006.hgt",
+        "N52E007.hgt"
+      ]
+    },
+    {
+      "id": "groningen",
+      "name": "Groningen",
+      "bbox": {
+        "west": 5.95,
+        "south": 52.62,
+        "east": 7.445,
+        "north": 53.795
+      },
+      "tiles": [
+        "N52E005.hgt",
+        "N52E006.hgt",
+        "N52E007.hgt",
+        "N53E005.hgt",
+        "N53E006.hgt",
+        "N53E007.hgt"
+      ]
+    },
+    {
+      "id": "limburg",
+      "name": "Limburg",
+      "bbox": {
+        "west": 5.345,
+        "south": 50.5299,
+        "east": 6.445,
+        "north": 52.0
+      },
+      "tiles": [
+        "N50E005.hgt",
+        "N50E006.hgt",
+        "N51E005.hgt",
+        "N51E006.hgt",
+        "N52E005.hgt",
+        "N52E006.hgt"
+      ]
+    },
+    {
+      "id": "noord_brabant",
+      "name": "Noord Brabant",
+      "bbox": {
+        "west": 3.97,
+        "south": 51.0,
+        "east": 6.2701,
+        "north": 52.0501
+      },
+      "tiles": [
+        "N51E003.hgt",
+        "N51E004.hgt",
+        "N51E005.hgt",
+        "N51E006.hgt",
+        "N52E003.hgt",
+        "N52E004.hgt",
+        "N52E005.hgt",
+        "N52E006.hgt"
+      ]
+    },
+    {
+      "id": "noord_holland",
+      "name": "Noord Holland",
+      "bbox": {
+        "west": 4.26,
+        "south": 51.945,
+        "east": 5.595,
+        "north": 53.435
+      },
+      "tiles": [
+        "N51E004.hgt",
+        "N51E005.hgt",
+        "N52E004.hgt",
+        "N52E005.hgt",
+        "N53E004.hgt",
+        "N53E005.hgt"
+      ]
+    },
+    {
+      "id": "overijssel",
+      "name": "Overijssel",
+      "bbox": {
+        "west": 5.5599,
+        "south": 51.9,
+        "east": 7.295,
+        "north": 53.075
+      },
+      "tiles": [
+        "N51E005.hgt",
+        "N51E006.hgt",
+        "N51E007.hgt",
+        "N52E005.hgt",
+        "N52E006.hgt",
+        "N52E007.hgt",
+        "N53E005.hgt",
+        "N53E006.hgt",
+        "N53E007.hgt"
+      ]
+    },
+    {
+      "id": "utrecht",
+      "name": "Utrecht",
+      "bbox": {
+        "west": 4.588,
+        "south": 51.653,
+        "east": 5.8311,
+        "north": 52.508
+      },
+      "tiles": [
+        "N51E004.hgt",
+        "N51E005.hgt",
+        "N52E004.hgt",
+        "N52E005.hgt"
+      ]
+    },
+    {
+      "id": "zeeland",
+      "name": "Zeeland",
+      "bbox": {
+        "west": 3.1039,
+        "south": 50.9959,
+        "east": 4.481,
+        "north": 51.9861
+      },
+      "tiles": [
+        "N50E003.hgt",
+        "N50E004.hgt",
+        "N51E003.hgt",
+        "N51E004.hgt"
+      ]
+    },
+    {
+      "id": "zuid_holland",
+      "name": "Zuid Holland",
+      "bbox": {
+        "west": 3.555,
+        "south": 51.425,
+        "east": 5.25,
+        "north": 52.55
+      },
+      "tiles": [
+        "N51E003.hgt",
+        "N51E004.hgt",
+        "N51E005.hgt",
+        "N52E003.hgt",
+        "N52E004.hgt",
+        "N52E005.hgt"
+      ]
+    },
+    {
+      "id": "akershus",
+      "name": "Akershus",
+      "bbox": {
+        "west": 9.975,
+        "south": 59.235,
+        "east": 12.165,
+        "north": 60.825
+      },
+      "tiles": [
+        "N59E009.hgt",
+        "N59E010.hgt",
+        "N59E011.hgt",
+        "N59E012.hgt",
+        "N60E009.hgt",
+        "N60E010.hgt",
+        "N60E011.hgt",
+        "N60E012.hgt"
+      ]
+    },
+    {
+      "id": "aust-agder",
+      "name": "Aust-agder",
+      "bbox": {
+        "west": 6.605,
+        "south": 57.695,
+        "east": 9.89,
+        "north": 59.895
+      },
+      "tiles": [
+        "N57E006.hgt",
+        "N57E007.hgt",
+        "N57E008.hgt",
+        "N57E009.hgt",
+        "N58E006.hgt",
+        "N58E007.hgt",
+        "N58E008.hgt",
+        "N58E009.hgt",
+        "N59E006.hgt",
+        "N59E007.hgt",
+        "N59E008.hgt",
+        "N59E009.hgt"
+      ]
+    },
+    {
+      "id": "buskerud",
+      "name": "Buskerud",
+      "bbox": {
+        "west": 7.22,
+        "south": 59.19,
+        "east": 10.855,
+        "north": 61.31
+      },
+      "tiles": [
+        "N59E007.hgt",
+        "N59E008.hgt",
+        "N59E009.hgt",
+        "N59E010.hgt",
+        "N60E007.hgt",
+        "N60E008.hgt",
+        "N60E009.hgt",
+        "N60E010.hgt",
+        "N61E007.hgt",
+        "N61E008.hgt",
+        "N61E009.hgt",
+        "N61E010.hgt"
+      ]
+    },
+    {
+      "id": "finnmark",
+      "name": "Finnmark",
+      "bbox": {
+        "west": 20.24,
+        "south": 68.31,
+        "east": 32.0,
+        "north": 71.62
+      },
+      "tiles": [
+        "N68E020.hgt",
+        "N68E021.hgt",
+        "N68E022.hgt",
+        "N68E023.hgt",
+        "N68E024.hgt",
+        "N68E025.hgt",
+        "N68E026.hgt",
+        "N68E027.hgt",
+        "N68E028.hgt",
+        "N68E029.hgt",
+        "N68E030.hgt",
+        "N68E031.hgt",
+        "N68E032.hgt",
+        "N69E020.hgt",
+        "N69E021.hgt",
+        "N69E022.hgt",
+        "N69E023.hgt",
+        "N69E024.hgt",
+        "N69E025.hgt",
+        "N69E026.hgt",
+        "N69E027.hgt",
+        "N69E028.hgt",
+        "N69E029.hgt",
+        "N69E030.hgt",
+        "N69E031.hgt",
+        "N69E032.hgt",
+        "N70E020.hgt",
+        "N70E021.hgt",
+        "N70E022.hgt",
+        "N70E023.hgt",
+        "N70E024.hgt",
+        "N70E025.hgt",
+        "N70E026.hgt",
+        "N70E027.hgt",
+        "N70E028.hgt",
+        "N70E029.hgt",
+        "N70E030.hgt",
+        "N70E031.hgt",
+        "N70E032.hgt",
+        "N71E020.hgt",
+        "N71E021.hgt",
+        "N71E022.hgt",
+        "N71E023.hgt",
+        "N71E024.hgt",
+        "N71E025.hgt",
+        "N71E026.hgt",
+        "N71E027.hgt",
+        "N71E028.hgt",
+        "N71E029.hgt",
+        "N71E030.hgt",
+        "N71E031.hgt",
+        "N71E032.hgt"
+      ]
+    },
+    {
+      "id": "hedmark",
+      "name": "Hedmark",
+      "bbox": {
+        "west": 9.365,
+        "south": 59.62,
+        "east": 13.09,
+        "north": 62.9151
+      },
+      "tiles": [
+        "N59E009.hgt",
+        "N59E010.hgt",
+        "N59E011.hgt",
+        "N59E012.hgt",
+        "N59E013.hgt",
+        "N60E009.hgt",
+        "N60E010.hgt",
+        "N60E011.hgt",
+        "N60E012.hgt",
+        "N60E013.hgt",
+        "N61E009.hgt",
+        "N61E010.hgt",
+        "N61E011.hgt",
+        "N61E012.hgt",
+        "N61E013.hgt",
+        "N62E009.hgt",
+        "N62E010.hgt",
+        "N62E011.hgt",
+        "N62E012.hgt",
+        "N62E013.hgt"
+      ]
+    },
+    {
+      "id": "hordaland",
+      "name": "Hordaland",
+      "bbox": {
+        "west": 3.965,
+        "south": 59.255,
+        "east": 7.95,
+        "north": 61.255
+      },
+      "tiles": [
+        "N59E003.hgt",
+        "N59E004.hgt",
+        "N59E005.hgt",
+        "N59E006.hgt",
+        "N59E007.hgt",
+        "N60E003.hgt",
+        "N60E004.hgt",
+        "N60E005.hgt",
+        "N60E006.hgt",
+        "N60E007.hgt",
+        "N61E003.hgt",
+        "N61E004.hgt",
+        "N61E005.hgt",
+        "N61E006.hgt",
+        "N61E007.hgt"
+      ]
+    },
+    {
+      "id": "jan_mayen",
+      "name": "Jan Mayen",
+      "bbox": {
+        "west": -9.905,
+        "south": 70.405,
+        "east": -7.095,
+        "north": 71.58
+      },
+      "tiles": [
+        "N70W010.hgt",
+        "N70W009.hgt",
+        "N70W008.hgt",
+        "N71W010.hgt",
+        "N71W009.hgt",
+        "N71W008.hgt"
+      ]
+    },
+    {
+      "id": "moere_og_romsdal",
+      "name": "Moere Og Romsdal",
+      "bbox": {
+        "west": 4.595,
+        "south": 61.705,
+        "east": 9.805,
+        "north": 63.99
+      },
+      "tiles": [
+        "N61E004.hgt",
+        "N61E005.hgt",
+        "N61E006.hgt",
+        "N61E007.hgt",
+        "N61E008.hgt",
+        "N61E009.hgt",
+        "N62E004.hgt",
+        "N62E005.hgt",
+        "N62E006.hgt",
+        "N62E007.hgt",
+        "N62E008.hgt",
+        "N62E009.hgt",
+        "N63E004.hgt",
+        "N63E005.hgt",
+        "N63E006.hgt",
+        "N63E007.hgt",
+        "N63E008.hgt",
+        "N63E009.hgt"
+      ]
+    },
+    {
+      "id": "nordland",
+      "name": "Nordland",
+      "bbox": {
+        "west": 10.36,
+        "south": 64.72,
+        "east": 18.37,
+        "north": 69.815
+      },
+      "tiles": [
+        "N64E010.hgt",
+        "N64E011.hgt",
+        "N64E012.hgt",
+        "N64E013.hgt",
+        "N64E014.hgt",
+        "N64E015.hgt",
+        "N64E016.hgt",
+        "N64E017.hgt",
+        "N64E018.hgt",
+        "N65E010.hgt",
+        "N65E011.hgt",
+        "N65E012.hgt",
+        "N65E013.hgt",
+        "N65E014.hgt",
+        "N65E015.hgt",
+        "N65E016.hgt",
+        "N65E017.hgt",
+        "N65E018.hgt",
+        "N66E010.hgt",
+        "N66E011.hgt",
+        "N66E012.hgt",
+        "N66E013.hgt",
+        "N66E014.hgt",
+        "N66E015.hgt",
+        "N66E016.hgt",
+        "N66E017.hgt",
+        "N66E018.hgt",
+        "N67E010.hgt",
+        "N67E011.hgt",
+        "N67E012.hgt",
+        "N67E013.hgt",
+        "N67E014.hgt",
+        "N67E015.hgt",
+        "N67E016.hgt",
+        "N67E017.hgt",
+        "N67E018.hgt",
+        "N68E010.hgt",
+        "N68E011.hgt",
+        "N68E012.hgt",
+        "N68E013.hgt",
+        "N68E014.hgt",
+        "N68E015.hgt",
+        "N68E016.hgt",
+        "N68E017.hgt",
+        "N68E018.hgt",
+        "N69E010.hgt",
+        "N69E011.hgt",
+        "N69E012.hgt",
+        "N69E013.hgt",
+        "N69E014.hgt",
+        "N69E015.hgt",
+        "N69E016.hgt",
+        "N69E017.hgt",
+        "N69E018.hgt"
+      ]
+    },
+    {
+      "id": "oestfold",
+      "name": "Oestfold",
+      "bbox": {
+        "west": 10.315,
+        "south": 58.54,
+        "east": 12.165,
+        "north": 60.01
+      },
+      "tiles": [
+        "N58E010.hgt",
+        "N58E011.hgt",
+        "N58E012.hgt",
+        "N59E010.hgt",
+        "N59E011.hgt",
+        "N59E012.hgt",
+        "N60E010.hgt",
+        "N60E011.hgt",
+        "N60E012.hgt"
+      ]
+    },
+    {
+      "id": "oppland",
+      "name": "Oppland",
+      "bbox": {
+        "west": 7.125,
+        "south": 59.91,
+        "east": 11.375,
+        "north": 62.6
+      },
+      "tiles": [
+        "N59E007.hgt",
+        "N59E008.hgt",
+        "N59E009.hgt",
+        "N59E010.hgt",
+        "N59E011.hgt",
+        "N60E007.hgt",
+        "N60E008.hgt",
+        "N60E009.hgt",
+        "N60E010.hgt",
+        "N60E011.hgt",
+        "N61E007.hgt",
+        "N61E008.hgt",
+        "N61E009.hgt",
+        "N61E010.hgt",
+        "N61E011.hgt",
+        "N62E007.hgt",
+        "N62E008.hgt",
+        "N62E009.hgt",
+        "N62E010.hgt",
+        "N62E011.hgt"
+      ]
+    },
+    {
+      "id": "oslo",
+      "name": "Oslo",
+      "bbox": {
+        "west": 10.285,
+        "south": 59.605,
+        "east": 11.155,
+        "north": 60.339
+      },
+      "tiles": [
+        "N59E010.hgt",
+        "N59E011.hgt",
+        "N60E010.hgt",
+        "N60E011.hgt"
+      ]
+    },
+    {
+      "id": "rogaland",
+      "name": "Rogaland",
+      "bbox": {
+        "west": 4.2349,
+        "south": 57.81,
+        "east": 7.435,
+        "north": 60.065
+      },
+      "tiles": [
+        "N57E004.hgt",
+        "N57E005.hgt",
+        "N57E006.hgt",
+        "N57E007.hgt",
+        "N58E004.hgt",
+        "N58E005.hgt",
+        "N58E006.hgt",
+        "N58E007.hgt",
+        "N59E004.hgt",
+        "N59E005.hgt",
+        "N59E006.hgt",
+        "N59E007.hgt",
+        "N60E004.hgt",
+        "N60E005.hgt",
+        "N60E006.hgt",
+        "N60E007.hgt"
+      ]
+    },
+    {
+      "id": "sogn_og_fjordane",
+      "name": "Sogn Og Fjordane",
+      "bbox": {
+        "west": 3.87,
+        "south": 60.455,
+        "east": 8.54,
+        "north": 62.6
+      },
+      "tiles": [
+        "N60E003.hgt",
+        "N60E004.hgt",
+        "N60E005.hgt",
+        "N60E006.hgt",
+        "N60E007.hgt",
+        "N60E008.hgt",
+        "N61E003.hgt",
+        "N61E004.hgt",
+        "N61E005.hgt",
+        "N61E006.hgt",
+        "N61E007.hgt",
+        "N61E008.hgt",
+        "N62E003.hgt",
+        "N62E004.hgt",
+        "N62E005.hgt",
+        "N62E006.hgt",
+        "N62E007.hgt",
+        "N62E008.hgt"
+      ]
+    },
+    {
+      "id": "svalbard",
+      "name": "Svalbard",
+      "bbox": {
+        "west": 9.18,
+        "south": 73.8999,
+        "east": 34.93,
+        "north": 81.27
+      },
+      "tiles": [
+        "N73E009.hgt",
+        "N73E010.hgt",
+        "N73E011.hgt",
+        "N73E012.hgt",
+        "N73E013.hgt",
+        "N73E014.hgt",
+        "N73E015.hgt",
+        "N73E016.hgt",
+        "N73E017.hgt",
+        "N73E018.hgt",
+        "N73E019.hgt",
+        "N73E020.hgt",
+        "N73E021.hgt",
+        "N73E022.hgt",
+        "N73E023.hgt",
+        "N73E024.hgt",
+        "N73E025.hgt",
+        "N73E026.hgt",
+        "N73E027.hgt",
+        "N73E028.hgt",
+        "N73E029.hgt",
+        "N73E030.hgt",
+        "N73E031.hgt",
+        "N73E032.hgt",
+        "N73E033.hgt",
+        "N73E034.hgt",
+        "N74E009.hgt",
+        "N74E010.hgt",
+        "N74E011.hgt",
+        "N74E012.hgt",
+        "N74E013.hgt",
+        "N74E014.hgt",
+        "N74E015.hgt",
+        "N74E016.hgt",
+        "N74E017.hgt",
+        "N74E018.hgt",
+        "N74E019.hgt",
+        "N74E020.hgt",
+        "N74E021.hgt",
+        "N74E022.hgt",
+        "N74E023.hgt",
+        "N74E024.hgt",
+        "N74E025.hgt",
+        "N74E026.hgt",
+        "N74E027.hgt",
+        "N74E028.hgt",
+        "N74E029.hgt",
+        "N74E030.hgt",
+        "N74E031.hgt",
+        "N74E032.hgt",
+        "N74E033.hgt",
+        "N74E034.hgt",
+        "N75E009.hgt",
+        "N75E010.hgt",
+        "N75E011.hgt",
+        "N75E012.hgt",
+        "N75E013.hgt",
+        "N75E014.hgt",
+        "N75E015.hgt",
+        "N75E016.hgt",
+        "N75E017.hgt",
+        "N75E018.hgt",
+        "N75E019.hgt",
+        "N75E020.hgt",
+        "N75E021.hgt",
+        "N75E022.hgt",
+        "N75E023.hgt",
+        "N75E024.hgt",
+        "N75E025.hgt",
+        "N75E026.hgt",
+        "N75E027.hgt",
+        "N75E028.hgt",
+        "N75E029.hgt",
+        "N75E030.hgt",
+        "N75E031.hgt",
+        "N75E032.hgt",
+        "N75E033.hgt",
+        "N75E034.hgt",
+        "N76E009.hgt",
+        "N76E010.hgt",
+        "N76E011.hgt",
+        "N76E012.hgt",
+        "N76E013.hgt",
+        "N76E014.hgt",
+        "N76E015.hgt",
+        "N76E016.hgt",
+        "N76E017.hgt",
+        "N76E018.hgt",
+        "N76E019.hgt",
+        "N76E020.hgt",
+        "N76E021.hgt",
+        "N76E022.hgt",
+        "N76E023.hgt",
+        "N76E024.hgt",
+        "N76E025.hgt",
+        "N76E026.hgt",
+        "N76E027.hgt",
+        "N76E028.hgt",
+        "N76E029.hgt",
+        "N76E030.hgt",
+        "N76E031.hgt",
+        "N76E032.hgt",
+        "N76E033.hgt",
+        "N76E034.hgt",
+        "N77E009.hgt",
+        "N77E010.hgt",
+        "N77E011.hgt",
+        "N77E012.hgt",
+        "N77E013.hgt",
+        "N77E014.hgt",
+        "N77E015.hgt",
+        "N77E016.hgt",
+        "N77E017.hgt",
+        "N77E018.hgt",
+        "N77E019.hgt",
+        "N77E020.hgt",
+        "N77E021.hgt",
+        "N77E022.hgt",
+        "N77E023.hgt",
+        "N77E024.hgt",
+        "N77E025.hgt",
+        "N77E026.hgt",
+        "N77E027.hgt",
+        "N77E028.hgt",
+        "N77E029.hgt",
+        "N77E030.hgt",
+        "N77E031.hgt",
+        "N77E032.hgt",
+        "N77E033.hgt",
+        "N77E034.hgt",
+        "N78E009.hgt",
+        "N78E010.hgt",
+        "N78E011.hgt",
+        "N78E012.hgt",
+        "N78E013.hgt",
+        "N78E014.hgt",
+        "N78E015.hgt",
+        "N78E016.hgt",
+        "N78E017.hgt",
+        "N78E018.hgt",
+        "N78E019.hgt",
+        "N78E020.hgt",
+        "N78E021.hgt",
+        "N78E022.hgt",
+        "N78E023.hgt",
+        "N78E024.hgt",
+        "N78E025.hgt",
+        "N78E026.hgt",
+        "N78E027.hgt",
+        "N78E028.hgt",
+        "N78E029.hgt",
+        "N78E030.hgt",
+        "N78E031.hgt",
+        "N78E032.hgt",
+        "N78E033.hgt",
+        "N78E034.hgt",
+        "N79E009.hgt",
+        "N79E010.hgt",
+        "N79E011.hgt",
+        "N79E012.hgt",
+        "N79E013.hgt",
+        "N79E014.hgt",
+        "N79E015.hgt",
+        "N79E016.hgt",
+        "N79E017.hgt",
+        "N79E018.hgt",
+        "N79E019.hgt",
+        "N79E020.hgt",
+        "N79E021.hgt",
+        "N79E022.hgt",
+        "N79E023.hgt",
+        "N79E024.hgt",
+        "N79E025.hgt",
+        "N79E026.hgt",
+        "N79E027.hgt",
+        "N79E028.hgt",
+        "N79E029.hgt",
+        "N79E030.hgt",
+        "N79E031.hgt",
+        "N79E032.hgt",
+        "N79E033.hgt",
+        "N79E034.hgt",
+        "N80E009.hgt",
+        "N80E010.hgt",
+        "N80E011.hgt",
+        "N80E012.hgt",
+        "N80E013.hgt",
+        "N80E014.hgt",
+        "N80E015.hgt",
+        "N80E016.hgt",
+        "N80E017.hgt",
+        "N80E018.hgt",
+        "N80E019.hgt",
+        "N80E020.hgt",
+        "N80E021.hgt",
+        "N80E022.hgt",
+        "N80E023.hgt",
+        "N80E024.hgt",
+        "N80E025.hgt",
+        "N80E026.hgt",
+        "N80E027.hgt",
+        "N80E028.hgt",
+        "N80E029.hgt",
+        "N80E030.hgt",
+        "N80E031.hgt",
+        "N80E032.hgt",
+        "N80E033.hgt",
+        "N80E034.hgt",
+        "N81E009.hgt",
+        "N81E010.hgt",
+        "N81E011.hgt",
+        "N81E012.hgt",
+        "N81E013.hgt",
+        "N81E014.hgt",
+        "N81E015.hgt",
+        "N81E016.hgt",
+        "N81E017.hgt",
+        "N81E018.hgt",
+        "N81E019.hgt",
+        "N81E020.hgt",
+        "N81E021.hgt",
+        "N81E022.hgt",
+        "N81E023.hgt",
+        "N81E024.hgt",
+        "N81E025.hgt",
+        "N81E026.hgt",
+        "N81E027.hgt",
+        "N81E028.hgt",
+        "N81E029.hgt",
+        "N81E030.hgt",
+        "N81E031.hgt",
+        "N81E032.hgt",
+        "N81E033.hgt",
+        "N81E034.hgt"
+      ]
+    },
+    {
+      "id": "telemark",
+      "name": "Telemark",
+      "bbox": {
+        "west": 6.875,
+        "south": 58.385,
+        "east": 10.19,
+        "north": 60.41
+      },
+      "tiles": [
+        "N58E006.hgt",
+        "N58E007.hgt",
+        "N58E008.hgt",
+        "N58E009.hgt",
+        "N58E010.hgt",
+        "N59E006.hgt",
+        "N59E007.hgt",
+        "N59E008.hgt",
+        "N59E009.hgt",
+        "N59E010.hgt",
+        "N60E006.hgt",
+        "N60E007.hgt",
+        "N60E008.hgt",
+        "N60E009.hgt",
+        "N60E010.hgt"
+      ]
+    },
+    {
+      "id": "troendelag",
+      "name": "Troendelag",
+      "bbox": {
+        "west": 7.43,
+        "south": 62.035,
+        "east": 14.545,
+        "north": 65.69
+      },
+      "tiles": [
+        "N62E007.hgt",
+        "N62E008.hgt",
+        "N62E009.hgt",
+        "N62E010.hgt",
+        "N62E011.hgt",
+        "N62E012.hgt",
+        "N62E013.hgt",
+        "N62E014.hgt",
+        "N63E007.hgt",
+        "N63E008.hgt",
+        "N63E009.hgt",
+        "N63E010.hgt",
+        "N63E011.hgt",
+        "N63E012.hgt",
+        "N63E013.hgt",
+        "N63E014.hgt",
+        "N64E007.hgt",
+        "N64E008.hgt",
+        "N64E009.hgt",
+        "N64E010.hgt",
+        "N64E011.hgt",
+        "N64E012.hgt",
+        "N64E013.hgt",
+        "N64E014.hgt",
+        "N65E007.hgt",
+        "N65E008.hgt",
+        "N65E009.hgt",
+        "N65E010.hgt",
+        "N65E011.hgt",
+        "N65E012.hgt",
+        "N65E013.hgt",
+        "N65E014.hgt"
+      ]
+    },
+    {
+      "id": "troms",
+      "name": "Troms",
+      "bbox": {
+        "west": 15.375,
+        "south": 68.1349,
+        "east": 23.115,
+        "north": 70.925
+      },
+      "tiles": [
+        "N68E015.hgt",
+        "N68E016.hgt",
+        "N68E017.hgt",
+        "N68E018.hgt",
+        "N68E019.hgt",
+        "N68E020.hgt",
+        "N68E021.hgt",
+        "N68E022.hgt",
+        "N68E023.hgt",
+        "N69E015.hgt",
+        "N69E016.hgt",
+        "N69E017.hgt",
+        "N69E018.hgt",
+        "N69E019.hgt",
+        "N69E020.hgt",
+        "N69E021.hgt",
+        "N69E022.hgt",
+        "N69E023.hgt",
+        "N70E015.hgt",
+        "N70E016.hgt",
+        "N70E017.hgt",
+        "N70E018.hgt",
+        "N70E019.hgt",
+        "N70E020.hgt",
+        "N70E021.hgt",
+        "N70E022.hgt",
+        "N70E023.hgt"
+      ]
+    },
+    {
+      "id": "vest-agder",
+      "name": "Vest-agder",
+      "bbox": {
+        "west": 5.93,
+        "south": 57.54,
+        "east": 8.59,
+        "north": 59.41
+      },
+      "tiles": [
+        "N57E005.hgt",
+        "N57E006.hgt",
+        "N57E007.hgt",
+        "N57E008.hgt",
+        "N58E005.hgt",
+        "N58E006.hgt",
+        "N58E007.hgt",
+        "N58E008.hgt",
+        "N59E005.hgt",
+        "N59E006.hgt",
+        "N59E007.hgt",
+        "N59E008.hgt"
+      ]
+    },
+    {
+      "id": "vestfold",
+      "name": "Vestfold",
+      "bbox": {
+        "west": 9.535,
+        "south": 58.5,
+        "east": 10.895,
+        "north": 59.92
+      },
+      "tiles": [
+        "N58E009.hgt",
+        "N58E010.hgt",
+        "N59E009.hgt",
+        "N59E010.hgt"
+      ]
+    },
+    {
+      "id": "dolnoslaskie",
+      "name": "Dolnoslaskie",
+      "bbox": {
+        "west": 14.595,
+        "south": 49.875,
+        "east": 18.015,
+        "north": 52.0251
+      },
+      "tiles": [
+        "N49E014.hgt",
+        "N49E015.hgt",
+        "N49E016.hgt",
+        "N49E017.hgt",
+        "N49E018.hgt",
+        "N50E014.hgt",
+        "N50E015.hgt",
+        "N50E016.hgt",
+        "N50E017.hgt",
+        "N50E018.hgt",
+        "N51E014.hgt",
+        "N51E015.hgt",
+        "N51E016.hgt",
+        "N51E017.hgt",
+        "N51E018.hgt",
+        "N52E014.hgt",
+        "N52E015.hgt",
+        "N52E016.hgt",
+        "N52E017.hgt",
+        "N52E018.hgt"
+      ]
+    },
+    {
+      "id": "kujawsko_pomorskie",
+      "name": "Kujawsko Pomorskie",
+      "bbox": {
+        "west": 17.025,
+        "south": 52.11,
+        "east": 19.98,
+        "north": 54.0
+      },
+      "tiles": [
+        "N52E017.hgt",
+        "N52E018.hgt",
+        "N52E019.hgt",
+        "N53E017.hgt",
+        "N53E018.hgt",
+        "N53E019.hgt",
+        "N54E017.hgt",
+        "N54E018.hgt",
+        "N54E019.hgt"
+      ]
+    },
+    {
+      "id": "lodzkie",
+      "name": "Lodzkie",
+      "bbox": {
+        "west": 17.855,
+        "south": 50.625,
+        "east": 20.88,
+        "north": 52.615
+      },
+      "tiles": [
+        "N50E017.hgt",
+        "N50E018.hgt",
+        "N50E019.hgt",
+        "N50E020.hgt",
+        "N51E017.hgt",
+        "N51E018.hgt",
+        "N51E019.hgt",
+        "N51E020.hgt",
+        "N52E017.hgt",
+        "N52E018.hgt",
+        "N52E019.hgt",
+        "N52E020.hgt"
+      ]
+    },
+    {
+      "id": "lubelskie",
+      "name": "Lubelskie",
+      "bbox": {
+        "west": 21.395,
+        "south": 50.0299,
+        "east": 24.365,
+        "north": 52.51
+      },
+      "tiles": [
+        "N50E021.hgt",
+        "N50E022.hgt",
+        "N50E023.hgt",
+        "N50E024.hgt",
+        "N51E021.hgt",
+        "N51E022.hgt",
+        "N51E023.hgt",
+        "N51E024.hgt",
+        "N52E021.hgt",
+        "N52E022.hgt",
+        "N52E023.hgt",
+        "N52E024.hgt"
+      ]
+    },
+    {
+      "id": "lubuskie",
+      "name": "Lubuskie",
+      "bbox": {
+        "west": 14.315,
+        "south": 51.1449,
+        "east": 16.635,
+        "north": 53.3451
+      },
+      "tiles": [
+        "N51E014.hgt",
+        "N51E015.hgt",
+        "N51E016.hgt",
+        "N52E014.hgt",
+        "N52E015.hgt",
+        "N52E016.hgt",
+        "N53E014.hgt",
+        "N53E015.hgt",
+        "N53E016.hgt"
+      ]
+    },
+    {
+      "id": "malopolskie",
+      "name": "Malopolskie",
+      "bbox": {
+        "west": 18.865,
+        "south": 48.9599,
+        "east": 21.64,
+        "north": 50.74
+      },
+      "tiles": [
+        "N48E018.hgt",
+        "N48E019.hgt",
+        "N48E020.hgt",
+        "N48E021.hgt",
+        "N49E018.hgt",
+        "N49E019.hgt",
+        "N49E020.hgt",
+        "N49E021.hgt",
+        "N50E018.hgt",
+        "N50E019.hgt",
+        "N50E020.hgt",
+        "N50E021.hgt"
+      ]
+    },
+    {
+      "id": "mazowieckie",
+      "name": "Mazowieckie",
+      "bbox": {
+        "west": 19.04,
+        "south": 50.7949,
+        "east": 23.35,
+        "north": 53.7
+      },
+      "tiles": [
+        "N50E019.hgt",
+        "N50E020.hgt",
+        "N50E021.hgt",
+        "N50E022.hgt",
+        "N50E023.hgt",
+        "N51E019.hgt",
+        "N51E020.hgt",
+        "N51E021.hgt",
+        "N51E022.hgt",
+        "N51E023.hgt",
+        "N52E019.hgt",
+        "N52E020.hgt",
+        "N52E021.hgt",
+        "N52E022.hgt",
+        "N52E023.hgt",
+        "N53E019.hgt",
+        "N53E020.hgt",
+        "N53E021.hgt",
+        "N53E022.hgt",
+        "N53E023.hgt"
+      ]
+    },
+    {
+      "id": "opolskie",
+      "name": "Opolskie",
+      "bbox": {
+        "west": 16.69,
+        "south": 49.7549,
+        "east": 18.915,
+        "north": 51.4151
+      },
+      "tiles": [
+        "N49E016.hgt",
+        "N49E017.hgt",
+        "N49E018.hgt",
+        "N50E016.hgt",
+        "N50E017.hgt",
+        "N50E018.hgt",
+        "N51E016.hgt",
+        "N51E017.hgt",
+        "N51E018.hgt"
+      ]
+    },
+    {
+      "id": "podkarpackie",
+      "name": "Podkarpackie",
+      "bbox": {
+        "west": 20.92,
+        "south": 48.7799,
+        "east": 23.77,
+        "north": 51.0401
+      },
+      "tiles": [
+        "N48E020.hgt",
+        "N48E021.hgt",
+        "N48E022.hgt",
+        "N48E023.hgt",
+        "N49E020.hgt",
+        "N49E021.hgt",
+        "N49E022.hgt",
+        "N49E023.hgt",
+        "N50E020.hgt",
+        "N50E021.hgt",
+        "N50E022.hgt",
+        "N50E023.hgt",
+        "N51E020.hgt",
+        "N51E021.hgt",
+        "N51E022.hgt",
+        "N51E023.hgt"
+      ]
+    },
+    {
+      "id": "podlaskie",
+      "name": "Podlaskie",
+      "bbox": {
+        "west": 21.375,
+        "south": 52.0599,
+        "east": 24.165,
+        "north": 54.63
+      },
+      "tiles": [
+        "N52E021.hgt",
+        "N52E022.hgt",
+        "N52E023.hgt",
+        "N52E024.hgt",
+        "N53E021.hgt",
+        "N53E022.hgt",
+        "N53E023.hgt",
+        "N53E024.hgt",
+        "N54E021.hgt",
+        "N54E022.hgt",
+        "N54E023.hgt",
+        "N54E024.hgt"
+      ]
+    },
+    {
+      "id": "pomorskie",
+      "name": "Pomorskie",
+      "bbox": {
+        "west": 16.48,
+        "south": 53.27,
+        "east": 19.87,
+        "north": 55.055
+      },
+      "tiles": [
+        "N53E016.hgt",
+        "N53E017.hgt",
+        "N53E018.hgt",
+        "N53E019.hgt",
+        "N54E016.hgt",
+        "N54E017.hgt",
+        "N54E018.hgt",
+        "N54E019.hgt",
+        "N55E016.hgt",
+        "N55E017.hgt",
+        "N55E018.hgt",
+        "N55E019.hgt"
+      ]
+    },
+    {
+      "id": "slaskie",
+      "name": "Slaskie",
+      "bbox": {
+        "west": 17.815,
+        "south": 49.175,
+        "east": 20.195,
+        "north": 51.32
+      },
+      "tiles": [
+        "N49E017.hgt",
+        "N49E018.hgt",
+        "N49E019.hgt",
+        "N49E020.hgt",
+        "N50E017.hgt",
+        "N50E018.hgt",
+        "N50E019.hgt",
+        "N50E020.hgt",
+        "N51E017.hgt",
+        "N51E018.hgt",
+        "N51E019.hgt",
+        "N51E020.hgt"
+      ]
+    },
+    {
+      "id": "swietokrzyskie",
+      "name": "Swietokrzyskie",
+      "bbox": {
+        "west": 19.485,
+        "south": 49.9649,
+        "east": 22.09,
+        "north": 51.56
+      },
+      "tiles": [
+        "N49E019.hgt",
+        "N49E020.hgt",
+        "N49E021.hgt",
+        "N49E022.hgt",
+        "N50E019.hgt",
+        "N50E020.hgt",
+        "N50E021.hgt",
+        "N50E022.hgt",
+        "N51E019.hgt",
+        "N51E020.hgt",
+        "N51E021.hgt",
+        "N51E022.hgt"
+      ]
+    },
+    {
+      "id": "warminsko_mazurskie",
+      "name": "Warminsko Mazurskie",
+      "bbox": {
+        "west": 18.91,
+        "south": 52.92,
+        "east": 23.025,
+        "north": 54.675
+      },
+      "tiles": [
+        "N52E018.hgt",
+        "N52E019.hgt",
+        "N52E020.hgt",
+        "N52E021.hgt",
+        "N52E022.hgt",
+        "N52E023.hgt",
+        "N53E018.hgt",
+        "N53E019.hgt",
+        "N53E020.hgt",
+        "N53E021.hgt",
+        "N53E022.hgt",
+        "N53E023.hgt",
+        "N54E018.hgt",
+        "N54E019.hgt",
+        "N54E020.hgt",
+        "N54E021.hgt",
+        "N54E022.hgt",
+        "N54E023.hgt"
+      ]
+    },
+    {
+      "id": "wielkopolskie",
+      "name": "Wielkopolskie",
+      "bbox": {
+        "west": 15.555,
+        "south": 50.885,
+        "east": 19.325,
+        "north": 53.875
+      },
+      "tiles": [
+        "N50E015.hgt",
+        "N50E016.hgt",
+        "N50E017.hgt",
+        "N50E018.hgt",
+        "N50E019.hgt",
+        "N51E015.hgt",
+        "N51E016.hgt",
+        "N51E017.hgt",
+        "N51E018.hgt",
+        "N51E019.hgt",
+        "N52E015.hgt",
+        "N52E016.hgt",
+        "N52E017.hgt",
+        "N52E018.hgt",
+        "N52E019.hgt",
+        "N53E015.hgt",
+        "N53E016.hgt",
+        "N53E017.hgt",
+        "N53E018.hgt",
+        "N53E019.hgt"
+      ]
+    },
+    {
+      "id": "zachodniopomorskie",
+      "name": "Zachodniopomorskie",
+      "bbox": {
+        "west": 13.905,
+        "south": 52.4049,
+        "east": 17.2,
+        "north": 54.7901
+      },
+      "tiles": [
+        "N52E013.hgt",
+        "N52E014.hgt",
+        "N52E015.hgt",
+        "N52E016.hgt",
+        "N52E017.hgt",
+        "N53E013.hgt",
+        "N53E014.hgt",
+        "N53E015.hgt",
+        "N53E016.hgt",
+        "N53E017.hgt",
+        "N54E013.hgt",
+        "N54E014.hgt",
+        "N54E015.hgt",
+        "N54E016.hgt",
+        "N54E017.hgt"
+      ]
+    },
+    {
+      "id": "greece",
+      "name": "Greece",
+      "bbox": {
+        "west": 18.7706,
+        "south": 34.3911,
+        "east": 29.8569,
+        "north": 41.9496
+      },
+      "tiles": [
+        "N34E018.hgt",
+        "N34E019.hgt",
+        "N34E020.hgt",
+        "N34E021.hgt",
+        "N34E022.hgt",
+        "N34E023.hgt",
+        "N34E024.hgt",
+        "N34E025.hgt",
+        "N34E026.hgt",
+        "N34E027.hgt",
+        "N34E028.hgt",
+        "N34E029.hgt",
+        "N35E018.hgt",
+        "N35E019.hgt",
+        "N35E020.hgt",
+        "N35E021.hgt",
+        "N35E022.hgt",
+        "N35E023.hgt",
+        "N35E024.hgt",
+        "N35E025.hgt",
+        "N35E026.hgt",
+        "N35E027.hgt",
+        "N35E028.hgt",
+        "N35E029.hgt",
+        "N36E018.hgt",
+        "N36E019.hgt",
+        "N36E020.hgt",
+        "N36E021.hgt",
+        "N36E022.hgt",
+        "N36E023.hgt",
+        "N36E024.hgt",
+        "N36E025.hgt",
+        "N36E026.hgt",
+        "N36E027.hgt",
+        "N36E028.hgt",
+        "N36E029.hgt",
+        "N37E018.hgt",
+        "N37E019.hgt",
+        "N37E020.hgt",
+        "N37E021.hgt",
+        "N37E022.hgt",
+        "N37E023.hgt",
+        "N37E024.hgt",
+        "N37E025.hgt",
+        "N37E026.hgt",
+        "N37E027.hgt",
+        "N37E028.hgt",
+        "N37E029.hgt",
+        "N38E018.hgt",
+        "N38E019.hgt",
+        "N38E020.hgt",
+        "N38E021.hgt",
+        "N38E022.hgt",
+        "N38E023.hgt",
+        "N38E024.hgt",
+        "N38E025.hgt",
+        "N38E026.hgt",
+        "N38E027.hgt",
+        "N38E028.hgt",
+        "N38E029.hgt",
+        "N39E018.hgt",
+        "N39E019.hgt",
+        "N39E020.hgt",
+        "N39E021.hgt",
+        "N39E022.hgt",
+        "N39E023.hgt",
+        "N39E024.hgt",
+        "N39E025.hgt",
+        "N39E026.hgt",
+        "N39E027.hgt",
+        "N39E028.hgt",
+        "N39E029.hgt",
+        "N40E018.hgt",
+        "N40E019.hgt",
+        "N40E020.hgt",
+        "N40E021.hgt",
+        "N40E022.hgt",
+        "N40E023.hgt",
+        "N40E024.hgt",
+        "N40E025.hgt",
+        "N40E026.hgt",
+        "N40E027.hgt",
+        "N40E028.hgt",
+        "N40E029.hgt",
+        "N41E018.hgt",
+        "N41E019.hgt",
+        "N41E020.hgt",
+        "N41E021.hgt",
+        "N41E022.hgt",
+        "N41E023.hgt",
+        "N41E024.hgt",
+        "N41E025.hgt",
+        "N41E026.hgt",
+        "N41E027.hgt",
+        "N41E028.hgt",
+        "N41E029.hgt"
+      ]
+    },
+    {
+      "id": "hungary",
+      "name": "Hungary",
+      "bbox": {
+        "west": 15.9084,
+        "south": 45.532,
+        "east": 23.1065,
+        "north": 48.7893
+      },
+      "tiles": [
+        "N45E015.hgt",
+        "N45E016.hgt",
+        "N45E017.hgt",
+        "N45E018.hgt",
+        "N45E019.hgt",
+        "N45E020.hgt",
+        "N45E021.hgt",
+        "N45E022.hgt",
+        "N45E023.hgt",
+        "N46E015.hgt",
+        "N46E016.hgt",
+        "N46E017.hgt",
+        "N46E018.hgt",
+        "N46E019.hgt",
+        "N46E020.hgt",
+        "N46E021.hgt",
+        "N46E022.hgt",
+        "N46E023.hgt",
+        "N47E015.hgt",
+        "N47E016.hgt",
+        "N47E017.hgt",
+        "N47E018.hgt",
+        "N47E019.hgt",
+        "N47E020.hgt",
+        "N47E021.hgt",
+        "N47E022.hgt",
+        "N47E023.hgt",
+        "N48E015.hgt",
+        "N48E016.hgt",
+        "N48E017.hgt",
+        "N48E018.hgt",
+        "N48E019.hgt",
+        "N48E020.hgt",
+        "N48E021.hgt",
+        "N48E022.hgt",
+        "N48E023.hgt"
+      ]
+    },
+    {
+      "id": "iceland",
+      "name": "Iceland",
+      "bbox": {
+        "west": -25.9,
+        "south": 62.6455,
+        "east": -12.217,
+        "north": 67.7009
+      },
+      "tiles": [
+        "N62W026.hgt",
+        "N62W025.hgt",
+        "N62W024.hgt",
+        "N62W023.hgt",
+        "N62W022.hgt",
+        "N62W021.hgt",
+        "N62W020.hgt",
+        "N62W019.hgt",
+        "N62W018.hgt",
+        "N62W017.hgt",
+        "N62W016.hgt",
+        "N62W015.hgt",
+        "N62W014.hgt",
+        "N62W013.hgt",
+        "N63W026.hgt",
+        "N63W025.hgt",
+        "N63W024.hgt",
+        "N63W023.hgt",
+        "N63W022.hgt",
+        "N63W021.hgt",
+        "N63W020.hgt",
+        "N63W019.hgt",
+        "N63W018.hgt",
+        "N63W017.hgt",
+        "N63W016.hgt",
+        "N63W015.hgt",
+        "N63W014.hgt",
+        "N63W013.hgt",
+        "N64W026.hgt",
+        "N64W025.hgt",
+        "N64W024.hgt",
+        "N64W023.hgt",
+        "N64W022.hgt",
+        "N64W021.hgt",
+        "N64W020.hgt",
+        "N64W019.hgt",
+        "N64W018.hgt",
+        "N64W017.hgt",
+        "N64W016.hgt",
+        "N64W015.hgt",
+        "N64W014.hgt",
+        "N64W013.hgt",
+        "N65W026.hgt",
+        "N65W025.hgt",
+        "N65W024.hgt",
+        "N65W023.hgt",
+        "N65W022.hgt",
+        "N65W021.hgt",
+        "N65W020.hgt",
+        "N65W019.hgt",
+        "N65W018.hgt",
+        "N65W017.hgt",
+        "N65W016.hgt",
+        "N65W015.hgt",
+        "N65W014.hgt",
+        "N65W013.hgt",
+        "N66W026.hgt",
+        "N66W025.hgt",
+        "N66W024.hgt",
+        "N66W023.hgt",
+        "N66W022.hgt",
+        "N66W021.hgt",
+        "N66W020.hgt",
+        "N66W019.hgt",
+        "N66W018.hgt",
+        "N66W017.hgt",
+        "N66W016.hgt",
+        "N66W015.hgt",
+        "N66W014.hgt",
+        "N66W013.hgt",
+        "N67W026.hgt",
+        "N67W025.hgt",
+        "N67W024.hgt",
+        "N67W023.hgt",
+        "N67W022.hgt",
+        "N67W021.hgt",
+        "N67W020.hgt",
+        "N67W019.hgt",
+        "N67W018.hgt",
+        "N67W017.hgt",
+        "N67W016.hgt",
+        "N67W015.hgt",
+        "N67W014.hgt",
+        "N67W013.hgt"
+      ]
+    },
+    {
+      "id": "isle-of-man",
+      "name": "Isle of Man",
+      "bbox": {
+        "west": -5.6346,
+        "south": 53.5323,
+        "east": -3.4887,
+        "north": 54.8706
+      },
+      "tiles": [
+        "N53W006.hgt",
+        "N53W005.hgt",
+        "N53W004.hgt",
+        "N54W006.hgt",
+        "N54W005.hgt",
+        "N54W004.hgt"
+      ]
+    },
+    {
+      "id": "kosovo",
+      "name": "Kosovo",
+      "bbox": {
+        "west": 19.8135,
+        "south": 41.654,
+        "east": 21.9933,
+        "north": 43.4776
+      },
+      "tiles": [
+        "N41E019.hgt",
+        "N41E020.hgt",
+        "N41E021.hgt",
+        "N42E019.hgt",
+        "N42E020.hgt",
+        "N42E021.hgt",
+        "N43E019.hgt",
+        "N43E020.hgt",
+        "N43E021.hgt"
+      ]
+    },
+    {
+      "id": "latvia",
+      "name": "Latvia",
+      "bbox": {
+        "west": 19.5334,
+        "south": 55.461,
+        "east": 28.4551,
+        "north": 58.2948
+      },
+      "tiles": [
+        "N55E019.hgt",
+        "N55E020.hgt",
+        "N55E021.hgt",
+        "N55E022.hgt",
+        "N55E023.hgt",
+        "N55E024.hgt",
+        "N55E025.hgt",
+        "N55E026.hgt",
+        "N55E027.hgt",
+        "N55E028.hgt",
+        "N56E019.hgt",
+        "N56E020.hgt",
+        "N56E021.hgt",
+        "N56E022.hgt",
+        "N56E023.hgt",
+        "N56E024.hgt",
+        "N56E025.hgt",
+        "N56E026.hgt",
+        "N56E027.hgt",
+        "N56E028.hgt",
+        "N57E019.hgt",
+        "N57E020.hgt",
+        "N57E021.hgt",
+        "N57E022.hgt",
+        "N57E023.hgt",
+        "N57E024.hgt",
+        "N57E025.hgt",
+        "N57E026.hgt",
+        "N57E027.hgt",
+        "N57E028.hgt",
+        "N58E019.hgt",
+        "N58E020.hgt",
+        "N58E021.hgt",
+        "N58E022.hgt",
+        "N58E023.hgt",
+        "N58E024.hgt",
+        "N58E025.hgt",
+        "N58E026.hgt",
+        "N58E027.hgt",
+        "N58E028.hgt"
+      ]
+    },
+    {
+      "id": "liechtenstein",
+      "name": "Liechtenstein",
+      "bbox": {
+        "west": 9.271,
+        "south": 46.8477,
+        "east": 9.8363,
+        "north": 47.4713
+      },
+      "tiles": [
+        "N46E009.hgt",
+        "N47E009.hgt"
+      ]
+    },
+    {
+      "id": "lithuania",
+      "name": "Lithuania",
+      "bbox": {
+        "west": 20.4185,
+        "south": 53.6922,
+        "east": 27.0388,
+        "north": 56.6533
+      },
+      "tiles": [
+        "N53E020.hgt",
+        "N53E021.hgt",
+        "N53E022.hgt",
+        "N53E023.hgt",
+        "N53E024.hgt",
+        "N53E025.hgt",
+        "N53E026.hgt",
+        "N53E027.hgt",
+        "N54E020.hgt",
+        "N54E021.hgt",
+        "N54E022.hgt",
+        "N54E023.hgt",
+        "N54E024.hgt",
+        "N54E025.hgt",
+        "N54E026.hgt",
+        "N54E027.hgt",
+        "N55E020.hgt",
+        "N55E021.hgt",
+        "N55E022.hgt",
+        "N55E023.hgt",
+        "N55E024.hgt",
+        "N55E025.hgt",
+        "N55E026.hgt",
+        "N55E027.hgt",
+        "N56E020.hgt",
+        "N56E021.hgt",
+        "N56E022.hgt",
+        "N56E023.hgt",
+        "N56E024.hgt",
+        "N56E025.hgt",
+        "N56E026.hgt",
+        "N56E027.hgt"
+      ]
+    },
+    {
+      "id": "macedonia",
+      "name": "Macedonia",
+      "bbox": {
+        "west": 20.2467,
+        "south": 40.6475,
+        "east": 23.2402,
+        "north": 42.5797
+      },
+      "tiles": [
+        "N40E020.hgt",
+        "N40E021.hgt",
+        "N40E022.hgt",
+        "N40E023.hgt",
+        "N41E020.hgt",
+        "N41E021.hgt",
+        "N41E022.hgt",
+        "N41E023.hgt",
+        "N42E020.hgt",
+        "N42E021.hgt",
+        "N42E022.hgt",
+        "N42E023.hgt"
+      ]
+    },
+    {
+      "id": "malta",
+      "name": "Malta",
+      "bbox": {
+        "west": 13.8,
+        "south": 35.3198,
+        "east": 15.0561,
+        "north": 36.533
+      },
+      "tiles": [
+        "N35E013.hgt",
+        "N35E014.hgt",
+        "N35E015.hgt",
+        "N36E013.hgt",
+        "N36E014.hgt",
+        "N36E015.hgt"
+      ]
+    },
+    {
+      "id": "moldova",
+      "name": "Moldova",
+      "bbox": {
+        "west": 26.4123,
+        "south": 45.2616,
+        "east": 30.3925,
+        "north": 48.694
+      },
+      "tiles": [
+        "N45E026.hgt",
+        "N45E027.hgt",
+        "N45E028.hgt",
+        "N45E029.hgt",
+        "N45E030.hgt",
+        "N46E026.hgt",
+        "N46E027.hgt",
+        "N46E028.hgt",
+        "N46E029.hgt",
+        "N46E030.hgt",
+        "N47E026.hgt",
+        "N47E027.hgt",
+        "N47E028.hgt",
+        "N47E029.hgt",
+        "N47E030.hgt",
+        "N48E026.hgt",
+        "N48E027.hgt",
+        "N48E028.hgt",
+        "N48E029.hgt",
+        "N48E030.hgt"
+      ]
+    },
+    {
+      "id": "montenegro",
+      "name": "Montenegro",
+      "bbox": {
+        "west": 17.9728,
+        "south": 41.4162,
+        "east": 20.5589,
+        "north": 43.7622
+      },
+      "tiles": [
+        "N41E017.hgt",
+        "N41E018.hgt",
+        "N41E019.hgt",
+        "N41E020.hgt",
+        "N42E017.hgt",
+        "N42E018.hgt",
+        "N42E019.hgt",
+        "N42E020.hgt",
+        "N43E017.hgt",
+        "N43E018.hgt",
+        "N43E019.hgt",
+        "N43E020.hgt"
+      ]
+    }
+  ]
+}

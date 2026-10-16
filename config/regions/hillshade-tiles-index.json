@@ -1,0 +1,6962 @@
+{
+  "description": "Master index for all OSMFR hillshade HGT tile catalogues",
+  "schema_version": 1,
+  "margin_degrees": 0.2,
+  "catalogues": [
+    {
+      "id": "africa",
+      "file": "hillshade-tiles-africa.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-africa.json",
+      "sha256": "9c1d82933737fee5c861471c085cdc43291f0fddb3a422ff3ef0c74d1e3f0436",
+      "region_count": 98
+    },
+    {
+      "id": "asia",
+      "file": "hillshade-tiles-asia.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-asia.json",
+      "sha256": "e63efdf98f98d4a3f88b321c2c80dccdd9e4e3b92e9543d042aa036ecda99a54",
+      "region_count": 180
+    },
+    {
+      "id": "central-america",
+      "file": "hillshade-tiles-central-america.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-central-america.json",
+      "sha256": "f6fc4eb4c9a9a059ab3d30dc04cd769ee3d22c7fbf090228df0aa45abd336aeb",
+      "region_count": 36
+    },
+    {
+      "id": "europe-1",
+      "file": "hillshade-tiles-europe-1.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-europe-1.json",
+      "sha256": "7c3240701d3fa92cf1da61d10e2bfa8548220479cb715fb668b8d1261b07d5b2",
+      "region_count": 166
+    },
+    {
+      "id": "europe-2",
+      "file": "hillshade-tiles-europe-2.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-europe-2.json",
+      "sha256": "1bad7ada7a8b59feaf636434f50caae4e063a7568140b454785cecd45880bcff",
+      "region_count": 85
+    },
+    {
+      "id": "europe-3",
+      "file": "hillshade-tiles-europe-3.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-europe-3.json",
+      "sha256": "d8c1c8ce971ed374ed553fe11df633a19efa901b0e7ff696c09e6a076fb779ac",
+      "region_count": 172
+    },
+    {
+      "id": "north-america",
+      "file": "hillshade-tiles-north-america.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-north-america.json",
+      "sha256": "1d7767adb6e45045ae62092e4cd21bc5ebc123f1055ebb93a0a7f575ed943b4b",
+      "region_count": 191
+    },
+    {
+      "id": "oceania",
+      "file": "hillshade-tiles-oceania.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-oceania.json",
+      "sha256": "9e5eb5d80b2b60f45426e4b778d650c653b58bd0a735deceb116375f900abf04",
+      "region_count": 55
+    },
+    {
+      "id": "russia",
+      "file": "hillshade-tiles-russia.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-russia.json",
+      "sha256": "f24d736e1b158ae9092f54c278e12ca379abcf39d28fb79faf2621f036d86671",
+      "region_count": 85
+    },
+    {
+      "id": "south-america",
+      "file": "hillshade-tiles-south-america.json",
+      "url": "https://raw.githubusercontent.com/Boothy91/wrist-nav-maps/main/config/regions/hillshade-tiles-south-america.json",
+      "sha256": "64e41a3f1938290ae7b62e13d0cc5eec28757d880882c2ed53593b791be8dc43",
+      "region_count": 79
+    }
+  ],
+  "region_count": 1147,
+  "regions": [
+    {
+      "id": "aargau",
+      "name": "Aargau",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "abitibi_temiscamingue",
+      "name": "Abitibi Temiscamingue",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "abruzzo",
+      "name": "Abruzzo",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "indonesia_aceh",
+      "name": "Aceh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "acre",
+      "name": "Acre",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "adygea_republic",
+      "name": "Adygea Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "aegean",
+      "name": "Aegean",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "afghanistan",
+      "name": "Afghanistan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "aguascalientes",
+      "name": "Aguascalientes",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "ain",
+      "name": "Ain",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "aisne",
+      "name": "Aisne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "akershus",
+      "name": "Akershus",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "alagoas",
+      "name": "Alagoas",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "alameda",
+      "name": "Alameda",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "alava",
+      "name": "Alava",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "albacete",
+      "name": "Albacete",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "albania",
+      "name": "Albania",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "alberta",
+      "name": "Alberta",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "algeria",
+      "name": "Algeria",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "alicante",
+      "name": "Alicante",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "allier",
+      "name": "Allier",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "almeria",
+      "name": "Almeria",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "alpes_de_haute_provence",
+      "name": "Alpes-de-Haute-Provence",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "alpes_maritimes",
+      "name": "Alpes-Maritimes",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "alpine",
+      "name": "Alpine",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "altai_krai",
+      "name": "Altai Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "altai_republic",
+      "name": "Altai Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "amador",
+      "name": "Amador",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "amapa",
+      "name": "Amap\u00e1",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "amazonas",
+      "name": "Amazonas",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "american_samoa",
+      "name": "American Samoa",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "amur_oblast",
+      "name": "Amur Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "india_andaman_and_nicobar_islands",
+      "name": "Andaman and Nicobar Islands",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "india_andhra_pradesh",
+      "name": "Andhra Pradesh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "andorra",
+      "name": "Andorra",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "angola",
+      "name": "Angola",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "anguilla",
+      "name": "Anguilla",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "china_anhui",
+      "name": "Anhui",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "antigua_and_barbuda",
+      "name": "Antigua and Barbuda",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "antofagasta",
+      "name": "Antofagasta",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "antwerp",
+      "name": "Antwerp",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "appenzell_ausserrhoden",
+      "name": "Appenzell Ausserrhoden",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "appenzell_innerrhoden",
+      "name": "Appenzell Innerrhoden",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "appomattox",
+      "name": "Appomattox",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "araucania",
+      "name": "Araucania",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "ardennes",
+      "name": "Ardennes",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "ardeche",
+      "name": "Ard\u00e8che",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "arica_y_parinacota",
+      "name": "Arica Y Parinacota",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "ariege",
+      "name": "Ari\u00e8ge",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "arkhangelsk_oblast",
+      "name": "Arkhangelsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "armenia",
+      "name": "Armenia",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "arnsberg",
+      "name": "Arnsberg",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "aruba",
+      "name": "Aruba",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "india_arunachal_pradesh",
+      "name": "Arunachal Pradesh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "ashmore_and_cartier_islands",
+      "name": "Ashmore and Cartier Islands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "india_assam",
+      "name": "Assam",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "astrakhan_oblast",
+      "name": "Astrakhan Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "asturias",
+      "name": "Asturias",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "atacama",
+      "name": "Atacama",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "aube",
+      "name": "Aube",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "aude",
+      "name": "Aude",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "aust-agder",
+      "name": "Aust-agder",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "australian_capital_territory",
+      "name": "Australian Capital Territory",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "aveiro",
+      "name": "Aveiro",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "aveyron",
+      "name": "Aveyron",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "avila",
+      "name": "Avila",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "aysen",
+      "name": "Aysen",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "azerbaijan",
+      "name": "Azerbaijan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "azores",
+      "name": "Azores",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "badajoz",
+      "name": "Badajoz",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "bahamas",
+      "name": "Bahamas",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "bahia",
+      "name": "Bahia",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "bahrain",
+      "name": "Bahrain",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "baja_california",
+      "name": "Baja California",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "baja_california_sur",
+      "name": "Baja California Sur",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "indonesia_bali",
+      "name": "Bali",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_bangka_belitung_islands",
+      "name": "Bangka Belitung Islands",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "bangladesh",
+      "name": "Bangladesh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "philippines_bangsamoro",
+      "name": "Bangsamoro",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "banskobystricky",
+      "name": "Banskobystricky",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "indonesia_banten",
+      "name": "Banten",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "barbados",
+      "name": "Barbados",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "barcelona",
+      "name": "Barcelona",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "bas_saint_laurent",
+      "name": "Bas Saint Laurent",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "bas_rhin",
+      "name": "Bas-Rhin",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "basel_landschaft",
+      "name": "Basel Landschaft",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "basel_stadt",
+      "name": "Basel Stadt",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "bashkortostan_republic",
+      "name": "Bashkortostan Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "basilicata",
+      "name": "Basilicata",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "china_beijing",
+      "name": "Beijing",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "beja",
+      "name": "Beja",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "belarus",
+      "name": "Belarus",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "belgorod_oblast",
+      "name": "Belgorod Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "belize",
+      "name": "Belize",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "indonesia_bengkulu",
+      "name": "Bengkulu",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "benin",
+      "name": "Benin",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "bermuda",
+      "name": "Bermuda",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "bern",
+      "name": "Bern",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "bhutan",
+      "name": "Bhutan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "philippines_bicol_region",
+      "name": "Bicol Region",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "india_bihar",
+      "name": "Bihar",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "biobio",
+      "name": "Biobio",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "bir_tawil",
+      "name": "Bir Tawil",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "black_sea",
+      "name": "Black Sea",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "blekinge",
+      "name": "Blekinge",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "bolivia",
+      "name": "Bolivia",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "bosnia-herzegovina",
+      "name": "Bosnia-Herzegovina",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "botswana",
+      "name": "Botswana",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "bouches_du_rhone",
+      "name": "Bouches-du-Rh\u00f4ne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "bouvet_island",
+      "name": "Bouvet Island",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "braga",
+      "name": "Braga",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "braganca",
+      "name": "Braganca",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "bratislavsky",
+      "name": "Bratislavsky",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "british_columbia",
+      "name": "British Columbia",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "british_indian_ocean_territory",
+      "name": "British Indian Ocean Territory",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "british_virgin_islands",
+      "name": "British Virgin Islands",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "brunei",
+      "name": "Brunei",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "brussels_capital_region",
+      "name": "Brussels Capital Region",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "bryansk_oblast",
+      "name": "Bryansk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "buenos_aires",
+      "name": "Buenos Aires",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "buenos_aires_city",
+      "name": "Buenos Aires City",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "bulgaria",
+      "name": "Bulgaria",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "burgenland",
+      "name": "Burgenland",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "burgos",
+      "name": "Burgos",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "burkina_faso",
+      "name": "Burkina Faso",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "burundi",
+      "name": "Burundi",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "buryatia_republic",
+      "name": "Buryatia Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "buskerud",
+      "name": "Buskerud",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "butte",
+      "name": "Butte",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "cabo_delgado",
+      "name": "Cabo Delgado",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "caceres",
+      "name": "Caceres",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "cadiz",
+      "name": "Cadiz",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "philippines_cagayan_valley",
+      "name": "Cagayan Valley",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "philippines_calabarzon",
+      "name": "CALABARZON",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "calabria",
+      "name": "Calabria",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "calaveras",
+      "name": "Calaveras",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "calvados",
+      "name": "Calvados",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "cambodia",
+      "name": "Cambodia",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "cameroon",
+      "name": "Cameroon",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "campania",
+      "name": "Campania",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "campeche",
+      "name": "Campeche",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "cantabria",
+      "name": "Cantabria",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "cantal",
+      "name": "Cantal",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "cape_verde",
+      "name": "Cape Verde",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "capital_district",
+      "name": "Capital District",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "capitale_nationale",
+      "name": "Capitale Nationale",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "philippines_caraga",
+      "name": "Caraga",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "caribbean",
+      "name": "Caribbean",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "castellon",
+      "name": "Castellon",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "castelo_branco",
+      "name": "Castelo Branco",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "catamarca",
+      "name": "Catamarca",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "cayman_islands",
+      "name": "Cayman Islands",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "ceara",
+      "name": "Cear\u00e1",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "central",
+      "name": "Central",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "central_1",
+      "name": "Central",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "central",
+      "name": "Central",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "central_1",
+      "name": "Central",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "central_2",
+      "name": "Central",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "central_african_republic",
+      "name": "Central African Republic",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "central_anatolia",
+      "name": "Central Anatolia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "central_finland",
+      "name": "Central Finland",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indonesia_central_java",
+      "name": "Central Java",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_central_kalimantan",
+      "name": "Central Kalimantan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "philippines_central_luzon",
+      "name": "Central Luzon",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "central_new_york",
+      "name": "Central New York",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "central_ontario",
+      "name": "Central Ontario",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "central_ostrobothnia",
+      "name": "Central Ostrobothnia",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indonesia_central_papua",
+      "name": "Central Papua",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_central_sulawesi",
+      "name": "Central Sulawesi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "philippines_central_visayas",
+      "name": "Central Visayas",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "central_west",
+      "name": "Central West",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "centre_du_quebec",
+      "name": "Centre du Quebec",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "ceuta",
+      "name": "Ceuta",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "chaco",
+      "name": "Chaco",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "chad",
+      "name": "Chad",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "india_chandigarh",
+      "name": "Chandigarh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "charente",
+      "name": "Charente",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "charente_maritime",
+      "name": "Charente-Maritime",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "chaudiere_appalaches",
+      "name": "Chaudiere Appalaches",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "chechen_republic",
+      "name": "Chechen Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "chelyabinsk_oblast",
+      "name": "Chelyabinsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "cher",
+      "name": "Cher",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "cherkasy_oblast",
+      "name": "Cherkasy Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "chernihiv_oblast",
+      "name": "Chernihiv Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "chernivtsi_oblast",
+      "name": "Chernivtsi Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "chesapeake",
+      "name": "Chesapeake",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_chhattisgarh",
+      "name": "Chhattisgarh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "chiapas",
+      "name": "Chiapas",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "chihuahua",
+      "name": "Chihuahua",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "china_chongqing",
+      "name": "Chongqing",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "christmas_island",
+      "name": "Christmas Island",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "japan_chubu",
+      "name": "Chubu",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "chubut",
+      "name": "Chubut",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "japan_chugoku",
+      "name": "Chugoku",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "chukotka_autonomous_okrug",
+      "name": "Chukotka Autonomous Okrug",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "chuvash_republic",
+      "name": "Chuvash Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "ciudad_real",
+      "name": "Ciudad Real",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "clipperton",
+      "name": "Clipperton",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "coahuila",
+      "name": "Coahuila",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "coastal",
+      "name": "Coastal",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "cocos_islands",
+      "name": "Cocos Islands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "coimbra",
+      "name": "Coimbra",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "colima",
+      "name": "Colima",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "colombia",
+      "name": "Colombia",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "colusa",
+      "name": "Colusa",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "comoros",
+      "name": "Comoros",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "comunidad_de_madrid",
+      "name": "Comunidad de Madrid",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "comunidad_foral_de_navarra",
+      "name": "Comunidad Foral de Navarra",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "congo_brazzaville",
+      "name": "Congo - Brazzaville",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "congo_kinshasa",
+      "name": "Congo - Kinshasa",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "contra_costa",
+      "name": "Contra Costa",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "cook",
+      "name": "Cook",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "cook_islands",
+      "name": "Cook Islands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "coquimbo",
+      "name": "Coquimbo",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "coral_sea_islands",
+      "name": "Coral Sea Islands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "philippines_cordillera_administrative_region",
+      "name": "Cordillera Administrative Region",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "cordoba",
+      "name": "Cordoba",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "cordoba",
+      "name": "Cordoba",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "corrientes",
+      "name": "Corrientes",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "correze",
+      "name": "Corr\u00e8ze",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "corse_du_sud",
+      "name": "Corse-du-Sud",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "costa_rica",
+      "name": "Costa Rica",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "cote_nord",
+      "name": "Cote Nord",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "creuse",
+      "name": "Creuse",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "crimea",
+      "name": "Crimea",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "crimea_republic",
+      "name": "Crimea Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "croatia",
+      "name": "Croatia",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "cuba",
+      "name": "Cuba",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "cuenca",
+      "name": "Cuenca",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "culpeper",
+      "name": "Culpeper",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "curacao",
+      "name": "Cura\u00e7ao",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "cyprus",
+      "name": "Cyprus",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "cote_d_or",
+      "name": "C\u00f4te-d'Or",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "cotes_d_armor",
+      "name": "C\u00f4tes-d'Armor",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "india_dadra_and_nagar_haveli",
+      "name": "Dadra and Nagar Haveli",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "india_dadra_and_nagar_haveli_and_daman_and_diu",
+      "name": "Dadra and Nagar Haveli and Daman and Diu",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "dagestan_republic",
+      "name": "Dagestan Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "dalarna",
+      "name": "Dalarna",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "india_daman_and_diu",
+      "name": "Daman And Diu",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "philippines_davao_region",
+      "name": "Davao Region",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "del_norte",
+      "name": "Del Norte",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "denver",
+      "name": "Denver",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "detmold",
+      "name": "Detmold",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "detroit_metro",
+      "name": "Detroit Metro",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "deux_sevres",
+      "name": "Deux-S\u00e8vres",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "distrito-federal",
+      "name": "Distrito-federal",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "djibouti",
+      "name": "Djibouti",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "dnipropetrovsk_oblast",
+      "name": "Dnipropetrovsk Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "dolnoslaskie",
+      "name": "Dolnoslaskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "dominica",
+      "name": "Dominica",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "dominican_republic",
+      "name": "Dominican Republic",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "donetsk_oblast",
+      "name": "Donetsk Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "dordogne",
+      "name": "Dordogne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "doubs",
+      "name": "Doubs",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "drenthe",
+      "name": "Drenthe",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "drome",
+      "name": "Dr\u00f4me",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "durango",
+      "name": "Durango",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "dusseldorf",
+      "name": "Dusseldorf",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "east",
+      "name": "East",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "east_central",
+      "name": "East Central",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "east_central_1",
+      "name": "East Central",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "east_flanders",
+      "name": "East Flanders",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indonesia_east_java",
+      "name": "East Java",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_east_kalimantan",
+      "name": "East Kalimantan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "east_midlands",
+      "name": "East Midlands",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "indonesia_east_nusa_tenggara",
+      "name": "East Nusa Tenggara",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "east_timor",
+      "name": "East Timor",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "eastern",
+      "name": "Eastern",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "eastern_anatolia",
+      "name": "Eastern Anatolia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "eastern_cape",
+      "name": "Eastern Cape",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "eastern_ontario",
+      "name": "Eastern Ontario",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "philippines_eastern_visayas",
+      "name": "Eastern Visayas",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "ecuador",
+      "name": "Ecuador",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "egypt",
+      "name": "Egypt",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "el_dorado",
+      "name": "El Dorado",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "el_salvador",
+      "name": "El Salvador",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "emilia_romagna",
+      "name": "Emilia Romagna",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "entre_rios",
+      "name": "Entre Rios",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "equatorial_guinea",
+      "name": "Equatorial Guinea",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "eritrea",
+      "name": "Eritrea",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "espirito-santo",
+      "name": "Espirito-santo",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "essonne",
+      "name": "Essonne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "estonia",
+      "name": "Estonia",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "estrie",
+      "name": "Estrie",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "swaziland",
+      "name": "Eswatini",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "ethiopia",
+      "name": "Ethiopia",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "eure",
+      "name": "Eure",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "eure_et_loir",
+      "name": "Eure-et-Loir",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "evora",
+      "name": "Evora",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "fairfax",
+      "name": "Fairfax",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "falkland",
+      "name": "Falkland Islands",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "far_west",
+      "name": "Far West",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "faro",
+      "name": "Faro",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "faroe-islands",
+      "name": "Faroe Islands",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "fiji",
+      "name": "Fiji",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "fiji_east",
+      "name": "Fiji (East)",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "fiji_west",
+      "name": "Fiji (West)",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "finger_lakes",
+      "name": "Finger Lakes",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "finistere",
+      "name": "Finist\u00e8re",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "finnmark",
+      "name": "Finnmark",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "flemish_brabant",
+      "name": "Flemish Brabant",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "flevoland",
+      "name": "Flevoland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "formosa",
+      "name": "Formosa",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "free_state",
+      "name": "Free State",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "guyane",
+      "name": "French Guiana",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "polynesie",
+      "name": "French Polynesia",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "france_taaf",
+      "name": "French Southern and Antarctic Lands",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "france_taaf",
+      "name": "French Southern and Antarctic Lands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "fresno",
+      "name": "Fresno",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "fribourg",
+      "name": "Fribourg",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "friesland",
+      "name": "Friesland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "friuli_venezia_giulia",
+      "name": "Friuli Venezia Giulia",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "china_fujian",
+      "name": "Fujian",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "gabon",
+      "name": "Gabon",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "gambia",
+      "name": "Gambia",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "china_gansu",
+      "name": "Gansu",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "gard",
+      "name": "Gard",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "gaspesie_iles_de_la_madeleine",
+      "name": "Gaspesie Iles de la Madeleine",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "gatorland",
+      "name": "Gatorland",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "gauteng",
+      "name": "Gauteng",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "gavleborg",
+      "name": "Gavleborg",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "gaza",
+      "name": "Gaza",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "gelderland",
+      "name": "Gelderland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "geneva",
+      "name": "Geneva",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "georgia",
+      "name": "Georgia",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "gers",
+      "name": "Gers",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "ghana",
+      "name": "Ghana",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "gibraltar",
+      "name": "Gibraltar",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "girona",
+      "name": "Girona",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "gironde",
+      "name": "Gironde",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "glarus",
+      "name": "Glarus",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "glenn",
+      "name": "Glenn",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_goa",
+      "name": "Goa",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "goias",
+      "name": "Goi\u00e1s",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "gold_coast",
+      "name": "Gold Coast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "golden_horseshoe",
+      "name": "Golden Horseshoe",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "indonesia_gorontalo",
+      "name": "Gorontalo",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "gotland",
+      "name": "Gotland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "granada",
+      "name": "Granada",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "greater_london",
+      "name": "Greater London",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "greater_metropolitan_newcastle",
+      "name": "Greater Metropolitan Newcastle",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "greater_metropolitan_sydney",
+      "name": "Greater Metropolitan Sydney",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "greece",
+      "name": "Greece",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "greenland",
+      "name": "Greenland",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "grenada",
+      "name": "Grenada",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "grisons",
+      "name": "Grisons",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "groningen",
+      "name": "Groningen",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "guadalajara",
+      "name": "Guadalajara",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "guadeloupe",
+      "name": "Guadeloupe",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "guam",
+      "name": "Guam",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "guanajuato",
+      "name": "Guanajuato",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "china_guangdong",
+      "name": "Guangdong",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_guangxi",
+      "name": "Guangxi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "guarda",
+      "name": "Guarda",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "guatemala",
+      "name": "Guatemala",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "guernesey",
+      "name": "Guernsey",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "guerrero",
+      "name": "Guerrero",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "guinea",
+      "name": "Guinea",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "guinea-bissau",
+      "name": "Guinea-Bissau",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "guipuzcoa",
+      "name": "Guipuzcoa",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "china_guizhou",
+      "name": "Guizhou",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "india_gujarat",
+      "name": "Gujarat",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "guyana",
+      "name": "Guyana",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "china_hainan",
+      "name": "Hainan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "haiti",
+      "name": "Haiti",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "halland",
+      "name": "Halland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "india_haryana",
+      "name": "Haryana",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "haut_rhin",
+      "name": "Haut-Rhin",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "haute_corse",
+      "name": "Haute-Corse",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "haute_garonne",
+      "name": "Haute-Garonne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "haute_loire",
+      "name": "Haute-Loire",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "haute_marne",
+      "name": "Haute-Marne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "haute_savoie",
+      "name": "Haute-Savoie",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "haute_saone",
+      "name": "Haute-Sa\u00f4ne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "haute_vienne",
+      "name": "Haute-Vienne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "hautes_alpes",
+      "name": "Hautes-Alpes",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "hautes_pyrenees",
+      "name": "Hautes-Pyr\u00e9n\u00e9es",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "hauts_de_seine",
+      "name": "Hauts-de-Seine",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "heard_island_and_mcdonald_slands",
+      "name": "Heard Island and Mcdonald Slands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "china_hebei",
+      "name": "Hebei",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "hedmark",
+      "name": "Hedmark",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "china_heilongjiang",
+      "name": "Heilongjiang",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_henan",
+      "name": "Henan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "hidalgo",
+      "name": "Hidalgo",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "indonesia_highland_papua",
+      "name": "Highland Papua",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "india_himachal_pradesh",
+      "name": "Himachal Pradesh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "japan_hokkaido",
+      "name": "Hokkaido",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "honduras",
+      "name": "Honduras",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "china_hong_kong",
+      "name": "Hong Kong",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "hordaland",
+      "name": "Hordaland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "hovedstaden",
+      "name": "Hovedstaden",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "china_hubei",
+      "name": "Hubei",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "hudson_valley",
+      "name": "Hudson Valley",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "huelva",
+      "name": "Huelva",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "huesca",
+      "name": "Huesca",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "humboldt",
+      "name": "Humboldt",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "china_hunan",
+      "name": "Hunan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "hungary",
+      "name": "Hungary",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "herault",
+      "name": "H\u00e9rault",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "iceland",
+      "name": "Iceland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "ilemi",
+      "name": "Ilemi Triangle",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "illawarra",
+      "name": "Illawarra",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "ille_et_vilaine",
+      "name": "Ille-et-Vilaine",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "illes_balears",
+      "name": "Illes Balears",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "philippines_ilocos_region",
+      "name": "Ilocos Region",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "imperial",
+      "name": "Imperial",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "indre",
+      "name": "Indre",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indre_et_loire",
+      "name": "Indre-et-Loire",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "ingushetia_republic",
+      "name": "Ingushetia Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "inhambane",
+      "name": "Inhambane",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "china_inner_mongolia",
+      "name": "Inner Mongolia",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "inyo",
+      "name": "Inyo",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "iran",
+      "name": "Iran",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "iraq",
+      "name": "Iraq",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "ireland",
+      "name": "Ireland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "irkutsk_oblast",
+      "name": "Irkutsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "isle-of-man",
+      "name": "Isle of Man",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "israel",
+      "name": "Israel",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "israel_and_palestine",
+      "name": "Israel and Palestine",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "israel_west_bank",
+      "name": "Israel West Bank",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "isere",
+      "name": "Is\u00e8re",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "ivano-frankivsk_oblast",
+      "name": "Ivano-frankivsk Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "ivanovo_oblast",
+      "name": "Ivanovo Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "ivory_coast",
+      "name": "Ivory Coast",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "jaen",
+      "name": "Jaen",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "indonesia_jakarta",
+      "name": "Jakarta",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "jalisco",
+      "name": "Jalisco",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "jamaica",
+      "name": "Jamaica",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "indonesia_jambi",
+      "name": "Jambi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "india_jammu_and_kashmir",
+      "name": "Jammu And Kashmir",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "jamtland",
+      "name": "Jamtland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "jan_mayen",
+      "name": "Jan Mayen",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "jersey",
+      "name": "Jersey",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "jewish_autonomous_oblast",
+      "name": "Jewish Autonomous Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "india_jharkhand",
+      "name": "Jharkhand",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_jiangsu",
+      "name": "Jiangsu",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_jiangxi",
+      "name": "Jiangxi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "jihomoravsky",
+      "name": "Jihomoravsk\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "jihocesky",
+      "name": "Jiho\u010desk\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "china_jilin",
+      "name": "Jilin",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "jonkoping",
+      "name": "Jonkoping",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "jordan",
+      "name": "Jordan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "jujuy",
+      "name": "Jujuy",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "jura",
+      "name": "Jura",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "jura",
+      "name": "Jura",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "kabardino_balkar_republic",
+      "name": "Kabardino Balkar Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kainuu",
+      "name": "Kainuu",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "kaliningrad_oblast",
+      "name": "Kaliningrad Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kalmar",
+      "name": "Kalmar",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "kalmykia_republic",
+      "name": "Kalmykia Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kaluga_oblast",
+      "name": "Kaluga Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kamchatka_krai",
+      "name": "Kamchatka Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "japan_kansai",
+      "name": "Kansai",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "kanta_hame",
+      "name": "Kanta-H\u00e4me",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "japan_kanto",
+      "name": "Kanto",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "karachay_cherkess_republic",
+      "name": "Karachay Cherkess Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "karelia_republic",
+      "name": "Karelia Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "karlovarsky",
+      "name": "Karlovarsk\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "india_karnataka",
+      "name": "Karnataka",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "kazakhstan",
+      "name": "Kazakhstan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "kemerovo_oblast",
+      "name": "Kemerovo Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kenya",
+      "name": "Kenya",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "india_kerala",
+      "name": "Kerala",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "kern",
+      "name": "Kern",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "khabarovsk_krai",
+      "name": "Khabarovsk Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "khakassia_republic",
+      "name": "Khakassia Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "khanty_mansi_autonomous_okrug",
+      "name": "Khanty Mansi Autonomous Okrug",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kharkiv_oblast",
+      "name": "Kharkiv Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "kherson_oblast",
+      "name": "Kherson Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "khmelnytskyi_oblast",
+      "name": "Khmelnytskyi Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "kiev",
+      "name": "Kiev",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "kiev_oblast",
+      "name": "Kiev Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "kings",
+      "name": "Kings",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "kiribati",
+      "name": "Kiribati",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "kiribati_east",
+      "name": "Kiribati (East)",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "kiribati_west",
+      "name": "Kiribati (West)",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "kirov_oblast",
+      "name": "Kirov Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kirovohrad_oblast",
+      "name": "Kirovohrad Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "koln",
+      "name": "Koln",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "komi_republic",
+      "name": "Komi Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kosicky",
+      "name": "Kosicky",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "kosovo",
+      "name": "Kosovo",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "kostroma_oblast",
+      "name": "Kostroma Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "krasnodar_krai",
+      "name": "Krasnodar Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "krasnoyarsk_krai",
+      "name": "Krasnoyarsk Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kronoberg",
+      "name": "Kronoberg",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "kralovehradecky",
+      "name": "Kr\u00e1lov\u00e9hradeck\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "kujawsko_pomorskie",
+      "name": "Kujawsko Pomorskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "kurgan_oblast",
+      "name": "Kurgan Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kursk_oblast",
+      "name": "Kursk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "kuwait",
+      "name": "Kuwait",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "kwazulu_natal",
+      "name": "KwaZulu-Natal",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "kymenlaakso",
+      "name": "Kymenlaakso",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "kyrgyzstan",
+      "name": "Kyrgyzstan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "japan_kyushu",
+      "name": "Kyushu",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "karnten",
+      "name": "K\u00e4rnten",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "la_coruna",
+      "name": "La Coruna",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "la_pampa",
+      "name": "La Pampa",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "la_rioja",
+      "name": "La Rioja",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "la_rioja",
+      "name": "La Rioja",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "india_ladakh",
+      "name": "Ladakh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "lake",
+      "name": "Lake",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "lake",
+      "name": "Lake",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_lakshadweep",
+      "name": "Lakshadweep",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_lampung",
+      "name": "Lampung",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "lanaudiere",
+      "name": "Lanaudiere",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "landes",
+      "name": "Landes",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "laos",
+      "name": "Laos",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "lapland",
+      "name": "Lapland",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "las_palmas",
+      "name": "Las Palmas",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "lassen",
+      "name": "Lassen",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "latvia",
+      "name": "Latvia",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "laurentides",
+      "name": "Laurentides",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "laval",
+      "name": "Laval",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "lazio",
+      "name": "Lazio",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "lebanon",
+      "name": "Lebanon",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "leiria",
+      "name": "Leiria",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "leningrad_oblast",
+      "name": "Leningrad Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "leon",
+      "name": "Leon",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "lesotho",
+      "name": "Lesotho",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "china_liaoning",
+      "name": "Liaoning",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "liberecky",
+      "name": "Libereck\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "liberia",
+      "name": "Liberia",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "libya",
+      "name": "Libya",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "liechtenstein",
+      "name": "Liechtenstein",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "liguria",
+      "name": "Liguria",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "limburg",
+      "name": "Limburg",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "limburg",
+      "name": "Limburg",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "limpopo",
+      "name": "Limpopo",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "lipetsk_oblast",
+      "name": "Lipetsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "lisbon",
+      "name": "Lisbon",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "lithuania",
+      "name": "Lithuania",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "lleida",
+      "name": "Lleida",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "lodzkie",
+      "name": "Lodzkie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "loir_et_cher",
+      "name": "Loir-et-Cher",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "loire",
+      "name": "Loire",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "loire_atlantique",
+      "name": "Loire-Atlantique",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "loiret",
+      "name": "Loiret",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "lombardia",
+      "name": "Lombardia",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "long_island",
+      "name": "Long Island",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "los_angeles",
+      "name": "Los Angeles",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "los_lagos",
+      "name": "Los Lagos",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "los_rios",
+      "name": "Los Rios",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "lot",
+      "name": "Lot",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "lot_et_garonne",
+      "name": "Lot-et-Garonne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "lozere",
+      "name": "Lozere",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "lubelskie",
+      "name": "Lubelskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "lubuskie",
+      "name": "Lubuskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "lucerne",
+      "name": "Lucerne",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "lugo",
+      "name": "Lugo",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "luhansk_oblast",
+      "name": "Luhansk Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "luxembourg",
+      "name": "Luxembourg",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "lviv_oblast",
+      "name": "Lviv Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "china_macau",
+      "name": "Macau",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "macedonia",
+      "name": "Macedonia",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "madagascar",
+      "name": "Madagascar",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "madeira",
+      "name": "Madeira",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "madera",
+      "name": "Madera",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_madhya_pradesh",
+      "name": "Madhya Pradesh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "magadan_oblast",
+      "name": "Magadan Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "magallanes",
+      "name": "Magallanes",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "india_maharashtra",
+      "name": "Maharashtra",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "maine_et_loire",
+      "name": "Maine-et-Loire",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "malaga",
+      "name": "Malaga",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "malawi",
+      "name": "Malawi",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "malaysia",
+      "name": "Malaysia",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "maldives",
+      "name": "Maldives",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "mali",
+      "name": "Mali",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "malopolskie",
+      "name": "Malopolskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "malta",
+      "name": "Malta",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "indonesia_maluku",
+      "name": "Maluku",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "manche",
+      "name": "Manche",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "manica",
+      "name": "Manica",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "india_manipur",
+      "name": "Manipur",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "manitoba",
+      "name": "Manitoba",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "maputo",
+      "name": "Maputo",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "maputo_city",
+      "name": "Maputo City",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "maranhao",
+      "name": "Maranh\u00e3o",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "marche",
+      "name": "Marche",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "mari_el_republic",
+      "name": "Mari El Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "marin",
+      "name": "Marin",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "mariposa",
+      "name": "Mariposa",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "marmara",
+      "name": "Marmara",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "marne",
+      "name": "Marne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "marshall_islands",
+      "name": "Marshall Islands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "martinique",
+      "name": "Martinique",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "mato-grosso",
+      "name": "Mato-grosso",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "mato-grosso-do-sul",
+      "name": "Mato-grosso-do-sul",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "maule",
+      "name": "Maule",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "mauricie",
+      "name": "Mauricie",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "mauritania",
+      "name": "Mauritania",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "mauritius",
+      "name": "Mauritius",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "mayenne",
+      "name": "Mayenne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "mayotte",
+      "name": "Mayotte",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "mazowieckie",
+      "name": "Mazowieckie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "mediterranean",
+      "name": "Mediterranean",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "india_meghalaya",
+      "name": "Meghalaya",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "melilla",
+      "name": "Melilla",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "mendocino",
+      "name": "Mendocino",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "mendoza",
+      "name": "Mendoza",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "merced",
+      "name": "Merced",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "philippines_metro_manila",
+      "name": "Metro Manila",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "meurthe_et_moselle",
+      "name": "Meurthe-et-Moselle",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "meuse",
+      "name": "Meuse",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "mexico_city",
+      "name": "Mexico City",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "michoacan",
+      "name": "Michoac\u00e1n",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "micronesia",
+      "name": "Micronesia",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "mid_north_coast",
+      "name": "Mid North Coast",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "midtjylland",
+      "name": "Midtjylland",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "philippines_mimaropa",
+      "name": "MIMAROPA",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "minas-gerais",
+      "name": "Minas-gerais",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "misiones",
+      "name": "Misiones",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "india_mizoram",
+      "name": "Mizoram",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "modoc",
+      "name": "Modoc",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "moere_og_romsdal",
+      "name": "Moere Og Romsdal",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "mohawk_valley",
+      "name": "Mohawk Valley",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "moldova",
+      "name": "Moldova",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "molise",
+      "name": "Molise",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "monaco",
+      "name": "Monaco",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "mongolia",
+      "name": "Mongolia",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "mono",
+      "name": "Mono",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "montenegro",
+      "name": "Montenegro",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "monteregie",
+      "name": "Monteregie",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "monterey",
+      "name": "Monterey",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "montreal",
+      "name": "Montreal",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "montserrat",
+      "name": "Montserrat",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "moravskoslezsky",
+      "name": "Moravskoslezsk\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "morbihan",
+      "name": "Morbihan",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "mordovia_republic",
+      "name": "Mordovia Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "morelos",
+      "name": "Morelos",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "morocco",
+      "name": "Morocco",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "moscow",
+      "name": "Moscow",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "moscow_oblast",
+      "name": "Moscow Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "moselle",
+      "name": "Moselle",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "mpumalanga",
+      "name": "Mpumalanga",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "munster",
+      "name": "Munster",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "murmansk_oblast",
+      "name": "Murmansk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "murray",
+      "name": "Murray",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "myanmar",
+      "name": "Myanmar",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "mykolaiv_oblast",
+      "name": "Mykolaiv Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "india_nagaland",
+      "name": "Nagaland",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "namibia",
+      "name": "Namibia",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "nampula",
+      "name": "Nampula",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "napa",
+      "name": "Napa",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_national_capital_territory_of_delhi",
+      "name": "National Capital Territory of Delhi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "nauru",
+      "name": "Nauru",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "nayarit",
+      "name": "Nayarit",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "philippines_negros_island_region",
+      "name": "Negros Island Region",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "nenets_autonomous_okrug",
+      "name": "Nenets Autonomous Okrug",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "nepal",
+      "name": "Nepal",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "neuchatel",
+      "name": "Neuchatel",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "neuquen",
+      "name": "Neuquen",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "nevada",
+      "name": "Nevada",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "new_brunswick",
+      "name": "New Brunswick",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "new_caledonia",
+      "name": "New Caledonia",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "new_york_city",
+      "name": "New York City",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "new_zealand",
+      "name": "New Zealand",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "newfoundland_and_labrador",
+      "name": "Newfoundland and Labrador",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "niassa",
+      "name": "Niassa",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "nicaragua",
+      "name": "Nicaragua",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "nidwalden",
+      "name": "Nidwalden",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "niederosterreich",
+      "name": "Nieder\u00f6sterreich",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "niger",
+      "name": "Niger",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "china_ningxia",
+      "name": "Ningxia",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "nitriansky",
+      "name": "Nitriansky",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "niue",
+      "name": "Niue",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "nizhny_novgorod_oblast",
+      "name": "Nizhny Novgorod Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "nievre",
+      "name": "Ni\u00e8vre",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "noord_brabant",
+      "name": "Noord Brabant",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "noord_holland",
+      "name": "Noord Holland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "nord",
+      "name": "Nord",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "nord_du_quebec",
+      "name": "Nord du Quebec",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "nordjylland",
+      "name": "Nordjylland",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "nordland",
+      "name": "Nordland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "norfolk_island",
+      "name": "Norfolk Island",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "norrbotten",
+      "name": "Norrbotten",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "north",
+      "name": "North",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "north_1",
+      "name": "North",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "north_central",
+      "name": "North Central",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "north_central",
+      "name": "North Central",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "north_country",
+      "name": "North Country",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "north_east",
+      "name": "North East",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "north_east",
+      "name": "North East",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "indonesia_north_kalimantan",
+      "name": "North Kalimantan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "north_karelia",
+      "name": "North Karelia",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "north-korea",
+      "name": "North Korea",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_north_maluku",
+      "name": "North Maluku",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "north_metro",
+      "name": "North Metro",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "north_ossetia_alania_republic",
+      "name": "North Ossetia Alania Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "north_ostrobothnia",
+      "name": "North Ostrobothnia",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "north_savo",
+      "name": "North Savo",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indonesia_north_sulawesi",
+      "name": "North Sulawesi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_north_sumatra",
+      "name": "North Sumatra",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "north_west",
+      "name": "North West",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "north_west_1",
+      "name": "North West",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "north_west",
+      "name": "North West",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "north_western",
+      "name": "North Western",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "northeast",
+      "name": "Northeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northeast_1",
+      "name": "Northeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northeast_2",
+      "name": "Northeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northeast_3",
+      "name": "Northeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northeast_4",
+      "name": "Northeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northeastern_ontario",
+      "name": "Northeastern Ontario",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northern",
+      "name": "Northern",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "northern_1",
+      "name": "Northern",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "northern",
+      "name": "Northern",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "northern_cape",
+      "name": "Northern Cape",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "northern_ireland",
+      "name": "Northern Ireland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "northern_lower",
+      "name": "Northern Lower",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northern_mariana_islands",
+      "name": "Northern Mariana Islands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "philippines_northern_mindanao",
+      "name": "Northern Mindanao",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "northern_territory",
+      "name": "Northern Territory",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "northwest",
+      "name": "Northwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northwest_1",
+      "name": "Northwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northwest_2",
+      "name": "Northwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northwest_3",
+      "name": "Northwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northwest_4",
+      "name": "Northwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northwest_5",
+      "name": "Northwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northwest_territories",
+      "name": "Northwest Territories",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "northwestern_ontario",
+      "name": "Northwestern Ontario",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "nova_scotia",
+      "name": "Nova Scotia",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "novgorod_oblast",
+      "name": "Novgorod Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "novosibirsk_oblast",
+      "name": "Novosibirsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "nuble",
+      "name": "Nuble",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "nuevo_leon",
+      "name": "Nuevo Le\u00f3n",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "nunavut",
+      "name": "Nunavut",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "o_higgins",
+      "name": "O Higgins",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "oaxaca",
+      "name": "Oaxaca",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "oberosterreich",
+      "name": "Ober\u00f6sterreich",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "obwalden",
+      "name": "Obwalden",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "odessa_oblast",
+      "name": "Odessa Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "india_odisha",
+      "name": "Odisha",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "oestfold",
+      "name": "Oestfold",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "oise",
+      "name": "Oise",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "olomoucky",
+      "name": "Olomouck\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "oman",
+      "name": "Oman",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "omsk_oblast",
+      "name": "Omsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "opolskie",
+      "name": "Opolskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "oppland",
+      "name": "Oppland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "orange",
+      "name": "Orange",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "orebro",
+      "name": "Orebro",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "orenburg_oblast",
+      "name": "Orenburg Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "orne",
+      "name": "Orne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "oryol_oblast",
+      "name": "Oryol Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "oslo",
+      "name": "Oslo",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "ostergotland",
+      "name": "Ostergotland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "ostrobothnia",
+      "name": "Ostrobothnia",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "ourense",
+      "name": "Ourense",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "outaouais",
+      "name": "Outaouais",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "overijssel",
+      "name": "Overijssel",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "pakistan",
+      "name": "Pakistan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "palau",
+      "name": "Palau",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "palencia",
+      "name": "Palencia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "palestine",
+      "name": "Palestine",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "panama",
+      "name": "Panama",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "panhandle",
+      "name": "Panhandle",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "indonesia_papua",
+      "name": "Papua",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "papua_new_guinea",
+      "name": "Papua New Guinea",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "paraguay",
+      "name": "Paraguay",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "parana",
+      "name": "Parana",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "paraiba",
+      "name": "Para\u00edba",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "pardubicky",
+      "name": "Pardubick\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "paris",
+      "name": "Paris",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "para",
+      "name": "Par\u00e1",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "pas_de_calais",
+      "name": "Pas-de-Calais",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "penza_oblast",
+      "name": "Penza Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "perm_krai",
+      "name": "Perm Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "pernambuco",
+      "name": "Pernambuco",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "peru",
+      "name": "Peru",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "piaui",
+      "name": "Piau\u00ed",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "piedmont_triad",
+      "name": "Piedmont Triad",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "piemonte",
+      "name": "Piemonte",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "pirkanmaa",
+      "name": "Pirkanmaa",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "pitcairn",
+      "name": "Pitcairn Islands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "placer",
+      "name": "Placer",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "plumas",
+      "name": "Plumas",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "plzensky",
+      "name": "Plze\u0148sk\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "podkarpackie",
+      "name": "Podkarpackie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "podlaskie",
+      "name": "Podlaskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "poltava_oblast",
+      "name": "Poltava Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "pomorskie",
+      "name": "Pomorskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "pontevedra",
+      "name": "Pontevedra",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "portalegre",
+      "name": "Portalegre",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "porto",
+      "name": "Porto",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "praha",
+      "name": "Praha",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "presovsky",
+      "name": "Presovsky",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "primorsky_krai",
+      "name": "Primorsky Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "prince_edward_island",
+      "name": "Prince Edward Island",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "pskov_oblast",
+      "name": "Pskov Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "india_puducherry",
+      "name": "Puducherry",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "puebla",
+      "name": "Puebla",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "puerto_rico",
+      "name": "Puerto Rico",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "puglia",
+      "name": "Puglia",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "india_punjab",
+      "name": "Punjab",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "puy_de_dome",
+      "name": "Puy-de-D\u00f4me",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "pyrenees_atlantiques",
+      "name": "Pyr\u00e9n\u00e9es-Atlantiques",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "pyrenees_orientales",
+      "name": "Pyr\u00e9n\u00e9es-Orientales",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "paijat_hame",
+      "name": "P\u00e4ij\u00e4t-H\u00e4me",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "qatar",
+      "name": "Qatar",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_qinghai",
+      "name": "Qinghai",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "queensland",
+      "name": "Queensland",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "queretaro",
+      "name": "Quer\u00e9taro",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "quintana_roo",
+      "name": "Quintana Roo",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_rajasthan",
+      "name": "Rajasthan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "region_de_murcia",
+      "name": "Region de Murcia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "rhone",
+      "name": "Rh\u00f4ne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indonesia_riau",
+      "name": "Riau",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_riau_islands",
+      "name": "Riau Islands",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "richmond",
+      "name": "Richmond",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "richmond_tweed",
+      "name": "Richmond Tweed",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "rio_negro",
+      "name": "Rio Negro",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "rio-de-janeiro",
+      "name": "Rio-de-janeiro",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "rio-grande-do-norte",
+      "name": "Rio-grande-do-norte",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "rio-grande-do-sul",
+      "name": "Rio-grande-do-sul",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "riverside",
+      "name": "Riverside",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "rivne_oblast",
+      "name": "Rivne Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "rogaland",
+      "name": "Rogaland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "romania",
+      "name": "Romania",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "rondonia",
+      "name": "Rond\u00f4nia",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "roraima",
+      "name": "Roraima",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "rostov_oblast",
+      "name": "Rostov Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "rwanda",
+      "name": "Rwanda",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "ryazan_oblast",
+      "name": "Ryazan Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "reunion",
+      "name": "R\u00e9union",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "sacramento",
+      "name": "Sacramento",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "saguenay_lac_saint_jean",
+      "name": "Saguenay Lac Saint Jean",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "saint_barthelemy",
+      "name": "Saint Barth\u00e9lemy",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "saint_gallen",
+      "name": "Saint Gallen",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "saint_helena_ascension_tristan_da_cunha",
+      "name": "Saint Helena, Ascension and Tristan da Cunha",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "saint_kitts_and_nevis",
+      "name": "Saint Kitts and Nevis",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "saint_lucia",
+      "name": "Saint Lucia",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "saint_martin",
+      "name": "Saint Martin",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "saint_petersburg",
+      "name": "Saint Petersburg",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "saint_pierre_et_miquelon",
+      "name": "Saint Pierre and Miquelon",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "saint_vincent_and_the_grenadines",
+      "name": "Saint Vincent and the Grenadines",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "sakha_republic",
+      "name": "Sakha Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "sakhalin_oblast",
+      "name": "Sakhalin Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "salamanca",
+      "name": "Salamanca",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "salem",
+      "name": "Salem",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "salta",
+      "name": "Salta",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "salzburg",
+      "name": "Salzburg",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "samara_oblast",
+      "name": "Samara Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "samoa",
+      "name": "Samoa",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "san_benito",
+      "name": "San Benito",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "san_bernardino",
+      "name": "San Bernardino",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "san_diego",
+      "name": "San Diego",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "san_francisco",
+      "name": "San Francisco",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "san_joaquin",
+      "name": "San Joaquin",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "san_juan",
+      "name": "San Juan",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "san_luis",
+      "name": "San Luis",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "san_luis_obispo",
+      "name": "San Luis Obispo",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "san_luis_potosi",
+      "name": "San Luis Potos\u00ed",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "san_marino",
+      "name": "San Marino",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "san_mateo",
+      "name": "San Mateo",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "santa_barbara",
+      "name": "Santa Barbara",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "santa_clara",
+      "name": "Santa Clara",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "santa_cruz",
+      "name": "Santa Cruz",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "santa_cruz",
+      "name": "Santa Cruz",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "santa_cruz_de_tenerife",
+      "name": "Santa Cruz de Tenerife",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "santa_fe",
+      "name": "Santa Fe",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "santa-catarina",
+      "name": "Santa-catarina",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "santarem",
+      "name": "Santarem",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "santiago",
+      "name": "Santiago",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "santiago_del_estero",
+      "name": "Santiago del Estero",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "sao-paulo",
+      "name": "Sao-paulo",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "saratov_oblast",
+      "name": "Saratov Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "sardegna",
+      "name": "Sardegna",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "sarthe",
+      "name": "Sarthe",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "saskatchewan",
+      "name": "Saskatchewan",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "satakunta",
+      "name": "Satakunta",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "saudi_arabia",
+      "name": "Saudi Arabia",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "savoie",
+      "name": "Savoie",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "saone_et_loire",
+      "name": "Sa\u00f4ne-et-Loire",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "schaffhausen",
+      "name": "Schaffhausen",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "schwyz",
+      "name": "Schwyz",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "segovia",
+      "name": "Segovia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "seine_et_marne",
+      "name": "Seine-et-Marne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "seine_maritime",
+      "name": "Seine-Maritime",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "seine_saint_denis",
+      "name": "Seine-Saint-Denis",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "senegal",
+      "name": "Senegal",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "serbia",
+      "name": "Serbia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "sergipe",
+      "name": "Sergipe",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "setubal",
+      "name": "Setubal",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "sevastopol",
+      "name": "Sevastopol",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "sevastopol",
+      "name": "Sevastopol",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "sevilla",
+      "name": "Sevilla",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "seychelles",
+      "name": "Seychelles",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "china_shaanxi",
+      "name": "Shaanxi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_shandong",
+      "name": "Shandong",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_shanghai",
+      "name": "Shanghai",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_shanxi",
+      "name": "Shanxi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "shasta",
+      "name": "Shasta",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "japan_shikoku",
+      "name": "Shikoku",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_sichuan",
+      "name": "Sichuan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "sicilia",
+      "name": "Sicilia",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "sierra",
+      "name": "Sierra",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "sierra-leone",
+      "name": "Sierra Leone",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "india_sikkim",
+      "name": "Sikkim",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "sinaloa",
+      "name": "Sinaloa",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "sint_maarten",
+      "name": "Sint Maarten",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "siskiyou",
+      "name": "Siskiyou",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "sjaelland",
+      "name": "Sj\u00e6lland",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "skane",
+      "name": "Skane",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "slaskie",
+      "name": "Slaskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "slovenia",
+      "name": "Slovenia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "smolensk_oblast",
+      "name": "Smolensk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "philippines_soccsksargen",
+      "name": "SOCCSKSARGEN",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "sodermanland",
+      "name": "Sodermanland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "sofala",
+      "name": "Sofala",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "sogn_og_fjordane",
+      "name": "Sogn Og Fjordane",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "solano",
+      "name": "Solano",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "solomon_islands",
+      "name": "Solomon Islands",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "solothurn",
+      "name": "Solothurn",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "somalia",
+      "name": "Somalia",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "somme",
+      "name": "Somme",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "sonoma",
+      "name": "Sonoma",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "sonora",
+      "name": "Sonora",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "soria",
+      "name": "Soria",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "south",
+      "name": "South",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "south_australia",
+      "name": "South Australia",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "south_central",
+      "name": "South Central",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "south_east",
+      "name": "South East",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "south_east",
+      "name": "South East",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "south_east_region",
+      "name": "South East Region",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "south_georgia_and_south_sandwich",
+      "name": "South Georgia and South Sandwich Islands",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "indonesia_south_kalimantan",
+      "name": "South Kalimantan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "south_karelia",
+      "name": "South Karelia",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "south-korea",
+      "name": "South Korea",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "south_ostrobothnia",
+      "name": "South Ostrobothnia",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indonesia_south_papua",
+      "name": "South Papua",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "south_savo",
+      "name": "South Savo",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "south_south",
+      "name": "South South",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "south_sudan",
+      "name": "South Sudan",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "indonesia_south_sulawesi",
+      "name": "South Sulawesi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_south_sumatra",
+      "name": "South Sumatra",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "south_west",
+      "name": "South West",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "south_west",
+      "name": "South West",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "southeast",
+      "name": "Southeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southeast_1",
+      "name": "Southeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southeast_2",
+      "name": "Southeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southeast_3",
+      "name": "Southeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southeast_4",
+      "name": "Southeast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "indonesia_southeast_sulawesi",
+      "name": "Southeast Sulawesi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "southeastern_anatolia",
+      "name": "Southeastern Anatolia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "southern",
+      "name": "Southern",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southern_highlands",
+      "name": "Southern Highlands",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "southern_tier",
+      "name": "Southern Tier",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southwest",
+      "name": "Southwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southwest_1",
+      "name": "Southwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southwest_2",
+      "name": "Southwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southwest_3",
+      "name": "Southwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southwest_4",
+      "name": "Southwest",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "southwest_finland",
+      "name": "Southwest Finland",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indonesia_southwest_papua",
+      "name": "Southwest Papua",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "southwestern_ontario",
+      "name": "Southwestern Ontario",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "sri-lanka",
+      "name": "Sri Lanka",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "stanislaus",
+      "name": "Stanislaus",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "state_of_mexico",
+      "name": "State of Mexico",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "stavropol_krai",
+      "name": "Stavropol Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "steiermark",
+      "name": "Steiermark",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "stockholm",
+      "name": "Stockholm",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "stredocesky",
+      "name": "St\u0159edo\u010desk\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "sudan",
+      "name": "Sudan",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "sumy_oblast",
+      "name": "Sumy Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "suncoast",
+      "name": "Suncoast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "suriname",
+      "name": "Suriname",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "sutter",
+      "name": "Sutter",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "svalbard",
+      "name": "Svalbard",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "sverdlovsk_oblast",
+      "name": "Sverdlovsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "swietokrzyskie",
+      "name": "Swietokrzyskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "syddanmark",
+      "name": "Syddanmark",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "sydney_surrounds",
+      "name": "Sydney Surrounds",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "syria",
+      "name": "Syria",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "sao_tome_and_principe",
+      "name": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "tabasco",
+      "name": "Tabasco",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "taiwan",
+      "name": "Taiwan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "tajikistan",
+      "name": "Tajikistan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "tamaulipas",
+      "name": "Tamaulipas",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "tambov_oblast",
+      "name": "Tambov Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "india_tamil_nadu",
+      "name": "Tamil Nadu",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "tarapaca",
+      "name": "Tarapaca",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "tarn",
+      "name": "Tarn",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "tarn_et_garonne",
+      "name": "Tarn-et-Garonne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "tarragona",
+      "name": "Tarragona",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "tasmania",
+      "name": "Tasmania",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "tatarstan_republic",
+      "name": "Tatarstan Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "tehama",
+      "name": "Tehama",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_telangana",
+      "name": "Telangana",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "telemark",
+      "name": "Telemark",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "ternopil_oblast",
+      "name": "Ternopil Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "territoire_de_belfort",
+      "name": "Territoire de Belfort",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "teruel",
+      "name": "Teruel",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "tete",
+      "name": "Tete",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "thailand",
+      "name": "Thailand",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "the_riverina",
+      "name": "The Riverina",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "thurgau",
+      "name": "Thurgau",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "china_tianjin",
+      "name": "Tianjin",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "china_tibet",
+      "name": "Tibet",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "ticino",
+      "name": "Ticino",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "tierra_del_fuego",
+      "name": "Tierra del Fuego",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "tirol",
+      "name": "Tirol",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "tlaxcala",
+      "name": "Tlaxcala",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "tocantins",
+      "name": "Tocantins",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "togo",
+      "name": "Togo",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "japan_tohoku",
+      "name": "Tohoku",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "tokelau",
+      "name": "Tokelau",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "toledo",
+      "name": "Toledo",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "tomsk_oblast",
+      "name": "Tomsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "tonga",
+      "name": "Tonga",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "toscana",
+      "name": "Toscana",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "treasure_coast",
+      "name": "Treasure Coast",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "trenciansky",
+      "name": "Trenciansky",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "trentino_alto_adige",
+      "name": "Trentino Alto Adige",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "trinidad_and_tobago",
+      "name": "Trinidad and Tobago",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "trinity",
+      "name": "Trinity",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_tripura",
+      "name": "Tripura",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "trnavsky",
+      "name": "Trnavsky",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "troendelag",
+      "name": "Troendelag",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "troms",
+      "name": "Troms",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "tucuman",
+      "name": "Tucuman",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "tula_oblast",
+      "name": "Tula Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "tulare",
+      "name": "Tulare",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "tunisia",
+      "name": "Tunisia",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "tuolumne",
+      "name": "Tuolumne",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "turkmenistan",
+      "name": "Turkmenistan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "turks_and_caicos_islands",
+      "name": "Turks and Caicos Islands",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "tuva_republic",
+      "name": "Tuva Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "tuvalu",
+      "name": "Tuvalu",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "tver_oblast",
+      "name": "Tver Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "tyumen_oblast",
+      "name": "Tyumen Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "udmurt_republic",
+      "name": "Udmurt Republic",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "ulyanovsk_oblast",
+      "name": "Ulyanovsk Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "umbria",
+      "name": "Umbria",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "united_arab_emirates",
+      "name": "United Arab Emirates",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "united_states_virgin_islands",
+      "name": "United States Virgin Islands",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "upper_peninsula",
+      "name": "Upper Peninsula",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "uppsala",
+      "name": "Uppsala",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "uri",
+      "name": "Uri",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "uruguay",
+      "name": "Uruguay",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "usa_virgin_islands",
+      "name": "USA Virgin Islands",
+      "catalogue_id": "central-america",
+      "catalogue_file": "hillshade-tiles-central-america.json"
+    },
+    {
+      "id": "utrecht",
+      "name": "Utrecht",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "india_uttar_pradesh",
+      "name": "Uttar Pradesh",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "india_uttarakhand",
+      "name": "Uttarakhand",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "uusimaa",
+      "name": "Uusimaa",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "uzbekistan",
+      "name": "Uzbekistan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "val_d_oise",
+      "name": "Val-d'Oise",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "val_de_marne",
+      "name": "Val-de-Marne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "valais",
+      "name": "Valais",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "valencia",
+      "name": "Valencia",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "valladolid",
+      "name": "Valladolid",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "valle_aosta",
+      "name": "Valle Aosta",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "valparaiso",
+      "name": "Valparaiso",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "vanuatu",
+      "name": "Vanuatu",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "var",
+      "name": "Var",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "varmland",
+      "name": "Varmland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vasterbotten",
+      "name": "Vasterbotten",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vasternorrland",
+      "name": "Vasternorrland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vastmanland",
+      "name": "Vastmanland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vastra_gotaland",
+      "name": "Vastra Gotaland",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vatican_city",
+      "name": "Vatican City",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vaucluse",
+      "name": "Vaucluse",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "vaud",
+      "name": "Vaud",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vendee",
+      "name": "Vend\u00e9e",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "veneto",
+      "name": "Veneto",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "venezuela",
+      "name": "Venezuela",
+      "catalogue_id": "south-america",
+      "catalogue_file": "hillshade-tiles-south-america.json"
+    },
+    {
+      "id": "ventura",
+      "name": "Ventura",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "veracruz",
+      "name": "Veracruz",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "vest-agder",
+      "name": "Vest-agder",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "vestfold",
+      "name": "Vestfold",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "viana_do_castelo",
+      "name": "Viana Do Castelo",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "victoria",
+      "name": "Victoria",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "vienne",
+      "name": "Vienne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "vietnam",
+      "name": "Vietnam",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "vila_real",
+      "name": "Vila Real",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vinnytsia_oblast",
+      "name": "Vinnytsia Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "viseu",
+      "name": "Viseu",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vizcaya",
+      "name": "Vizcaya",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vladimir_oblast",
+      "name": "Vladimir Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "volgograd_oblast",
+      "name": "Volgograd Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "vologda_oblast",
+      "name": "Vologda Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "volyn_oblast",
+      "name": "Volyn Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "vorarlberg",
+      "name": "Vorarlberg",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "voronezh_oblast",
+      "name": "Voronezh Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "vosges",
+      "name": "Vosges",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "vysocina",
+      "name": "Vyso\u010dina",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "wallis_et_futuna",
+      "name": "Wallis and Futuna",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "wallonia_french_community",
+      "name": "Wallonia (French Community)",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "wallonia_german_community",
+      "name": "Wallonia (German Community)",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "warminsko_mazurskie",
+      "name": "Warminsko Mazurskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "west",
+      "name": "West",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "west_1",
+      "name": "West",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "india_west_bengal",
+      "name": "West Bengal",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "west_flanders",
+      "name": "West Flanders",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "indonesia_west_java",
+      "name": "West Java",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_west_kalimantan",
+      "name": "West Kalimantan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "west_midlands",
+      "name": "West Midlands",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "indonesia_west_nusa_tenggara",
+      "name": "West Nusa Tenggara",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_west_papua",
+      "name": "West Papua",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_west_sulawesi",
+      "name": "West Sulawesi",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_west_sumatra",
+      "name": "West Sumatra",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "western",
+      "name": "Western",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "western_1",
+      "name": "Western",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "western",
+      "name": "Western",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "western_australia",
+      "name": "Western Australia",
+      "catalogue_id": "oceania",
+      "catalogue_file": "hillshade-tiles-oceania.json"
+    },
+    {
+      "id": "western_cape",
+      "name": "Western Cape",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "western_new_york",
+      "name": "Western New York",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "western_sahara",
+      "name": "Western Sahara",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "philippines_western_visayas",
+      "name": "Western Visayas",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "wielkopolskie",
+      "name": "Wielkopolskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "wien",
+      "name": "Wien",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "wytheville",
+      "name": "Wytheville",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "china_xinjiang",
+      "name": "Xinjiang",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "yamalo_nenets_autonomous_okrug",
+      "name": "Yamalo Nenets Autonomous Okrug",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "yaroslavl_oblast",
+      "name": "Yaroslavl Oblast",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "yemen",
+      "name": "Yemen",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "indonesia_yogyakarta",
+      "name": "Yogyakarta",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "yolo",
+      "name": "Yolo",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "yonne",
+      "name": "Yonne",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "yorkshire_and_the_humber",
+      "name": "Yorkshire and the Humber",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "yuba",
+      "name": "Yuba",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "yucatan",
+      "name": "Yucat\u00e1n",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "yukon",
+      "name": "Yukon",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "china_yunnan",
+      "name": "Yunnan",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "yvelines",
+      "name": "Yvelines",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "zabaykalsky_krai",
+      "name": "Zabaykalsky Krai",
+      "catalogue_id": "russia",
+      "catalogue_file": "hillshade-tiles-russia.json"
+    },
+    {
+      "id": "zacatecas",
+      "name": "Zacatecas",
+      "catalogue_id": "north-america",
+      "catalogue_file": "hillshade-tiles-north-america.json"
+    },
+    {
+      "id": "zachodniopomorskie",
+      "name": "Zachodniopomorskie",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "zakarpattia_oblast",
+      "name": "Zakarpattia Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "zambezia",
+      "name": "Zambezia",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "zambia",
+      "name": "Zambia",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "philippines_zamboanga_peninsula",
+      "name": "Zamboanga Peninsula",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "zamora",
+      "name": "Zamora",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "zanzibar",
+      "name": "Zanzibar",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "zaporizhia_oblast",
+      "name": "Zaporizhia Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "zaragoza",
+      "name": "Zaragoza",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "zeeland",
+      "name": "Zeeland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "china_zhejiang",
+      "name": "Zhejiang",
+      "catalogue_id": "asia",
+      "catalogue_file": "hillshade-tiles-asia.json"
+    },
+    {
+      "id": "zhytomyr_oblast",
+      "name": "Zhytomyr Oblast",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "zilinsky",
+      "name": "Zilinsky",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "zimbabwe",
+      "name": "Zimbabwe",
+      "catalogue_id": "africa",
+      "catalogue_file": "hillshade-tiles-africa.json"
+    },
+    {
+      "id": "zlinsky",
+      "name": "Zl\u00ednsk\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "zug",
+      "name": "Zug",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "zuid_holland",
+      "name": "Zuid Holland",
+      "catalogue_id": "europe-2",
+      "catalogue_file": "hillshade-tiles-europe-2.json"
+    },
+    {
+      "id": "zurich",
+      "name": "Zurich",
+      "catalogue_id": "europe-3",
+      "catalogue_file": "hillshade-tiles-europe-3.json"
+    },
+    {
+      "id": "aland",
+      "name": "\u00c5land",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    },
+    {
+      "id": "ustecky",
+      "name": "\u00dasteck\u00fd",
+      "catalogue_id": "europe-1",
+      "catalogue_file": "hillshade-tiles-europe-1.json"
+    }
+  ]
+}

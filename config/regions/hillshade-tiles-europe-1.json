@@ -1,0 +1,3534 @@
+{
+  "description": "OSMFR europe-1 hillshade HGT tile catalogue",
+  "catalogue_id": "europe-1",
+  "margin_degrees": 0.2,
+  "region_count": 166,
+  "regions": [
+    {
+      "id": "andorra",
+      "name": "Andorra",
+      "bbox": {
+        "west": 1.204,
+        "south": 42.225,
+        "east": 1.991,
+        "north": 42.8601
+      },
+      "tiles": [
+        "N42E001.hgt"
+      ]
+    },
+    {
+      "id": "gibraltar",
+      "name": "Gibraltar",
+      "bbox": {
+        "west": -5.6051,
+        "south": 35.8549,
+        "east": -5.0729,
+        "north": 36.362
+      },
+      "tiles": [
+        "N35W006.hgt",
+        "N36W006.hgt"
+      ]
+    },
+    {
+      "id": "burgenland",
+      "name": "Burgenland",
+      "bbox": {
+        "west": 15.775,
+        "south": 46.61,
+        "east": 17.38,
+        "north": 48.3401
+      },
+      "tiles": [
+        "N46E015.hgt",
+        "N46E016.hgt",
+        "N46E017.hgt",
+        "N47E015.hgt",
+        "N47E016.hgt",
+        "N47E017.hgt",
+        "N48E015.hgt",
+        "N48E016.hgt",
+        "N48E017.hgt"
+      ]
+    },
+    {
+      "id": "karnten",
+      "name": "K\u00e4rnten",
+      "bbox": {
+        "west": 12.435,
+        "south": 46.15,
+        "east": 15.285,
+        "north": 47.35
+      },
+      "tiles": [
+        "N46E012.hgt",
+        "N46E013.hgt",
+        "N46E014.hgt",
+        "N46E015.hgt",
+        "N47E012.hgt",
+        "N47E013.hgt",
+        "N47E014.hgt",
+        "N47E015.hgt"
+      ]
+    },
+    {
+      "id": "niederosterreich",
+      "name": "Nieder\u00f6sterreich",
+      "bbox": {
+        "west": 14.235,
+        "south": 47.1999,
+        "east": 17.29,
+        "north": 49.24
+      },
+      "tiles": [
+        "N47E014.hgt",
+        "N47E015.hgt",
+        "N47E016.hgt",
+        "N47E017.hgt",
+        "N48E014.hgt",
+        "N48E015.hgt",
+        "N48E016.hgt",
+        "N48E017.hgt",
+        "N49E014.hgt",
+        "N49E015.hgt",
+        "N49E016.hgt",
+        "N49E017.hgt"
+      ]
+    },
+    {
+      "id": "oberosterreich",
+      "name": "Ober\u00f6sterreich",
+      "bbox": {
+        "west": 12.53,
+        "south": 47.2399,
+        "east": 15.21,
+        "north": 48.9951
+      },
+      "tiles": [
+        "N47E012.hgt",
+        "N47E013.hgt",
+        "N47E014.hgt",
+        "N47E015.hgt",
+        "N48E012.hgt",
+        "N48E013.hgt",
+        "N48E014.hgt",
+        "N48E015.hgt"
+      ]
+    },
+    {
+      "id": "salzburg",
+      "name": "Salzburg",
+      "bbox": {
+        "west": 11.855,
+        "south": 46.7249,
+        "east": 14.215,
+        "north": 48.2601
+      },
+      "tiles": [
+        "N46E011.hgt",
+        "N46E012.hgt",
+        "N46E013.hgt",
+        "N46E014.hgt",
+        "N47E011.hgt",
+        "N47E012.hgt",
+        "N47E013.hgt",
+        "N47E014.hgt",
+        "N48E011.hgt",
+        "N48E012.hgt",
+        "N48E013.hgt",
+        "N48E014.hgt"
+      ]
+    },
+    {
+      "id": "steiermark",
+      "name": "Steiermark",
+      "bbox": {
+        "west": 13.345,
+        "south": 46.39,
+        "east": 16.39,
+        "north": 48.0501
+      },
+      "tiles": [
+        "N46E013.hgt",
+        "N46E014.hgt",
+        "N46E015.hgt",
+        "N46E016.hgt",
+        "N47E013.hgt",
+        "N47E014.hgt",
+        "N47E015.hgt",
+        "N47E016.hgt",
+        "N48E013.hgt",
+        "N48E014.hgt",
+        "N48E015.hgt",
+        "N48E016.hgt"
+      ]
+    },
+    {
+      "id": "tirol",
+      "name": "Tirol",
+      "bbox": {
+        "west": 9.88,
+        "south": 46.43,
+        "east": 13.185,
+        "north": 47.9651
+      },
+      "tiles": [
+        "N46E009.hgt",
+        "N46E010.hgt",
+        "N46E011.hgt",
+        "N46E012.hgt",
+        "N46E013.hgt",
+        "N47E009.hgt",
+        "N47E010.hgt",
+        "N47E011.hgt",
+        "N47E012.hgt",
+        "N47E013.hgt"
+      ]
+    },
+    {
+      "id": "vorarlberg",
+      "name": "Vorarlberg",
+      "bbox": {
+        "west": 9.327,
+        "south": 46.637,
+        "east": 10.441,
+        "north": 47.8001
+      },
+      "tiles": [
+        "N46E009.hgt",
+        "N46E010.hgt",
+        "N47E009.hgt",
+        "N47E010.hgt"
+      ]
+    },
+    {
+      "id": "wien",
+      "name": "Wien",
+      "bbox": {
+        "west": 15.978,
+        "south": 47.9139,
+        "east": 16.782,
+        "north": 48.527
+      },
+      "tiles": [
+        "N47E015.hgt",
+        "N47E016.hgt",
+        "N48E015.hgt",
+        "N48E016.hgt"
+      ]
+    },
+    {
+      "id": "brussels_capital_region",
+      "name": "Brussels Capital Region",
+      "bbox": {
+        "west": 4.04,
+        "south": 50.5599,
+        "east": 4.686,
+        "north": 51.1171
+      },
+      "tiles": [
+        "N50E004.hgt",
+        "N51E004.hgt"
+      ]
+    },
+    {
+      "id": "wallonia_french_community",
+      "name": "Wallonia (French Community)",
+      "bbox": {
+        "west": 2.6199,
+        "south": 49.275,
+        "east": 6.42,
+        "north": 51.03
+      },
+      "tiles": [
+        "N49E002.hgt",
+        "N49E003.hgt",
+        "N49E004.hgt",
+        "N49E005.hgt",
+        "N49E006.hgt",
+        "N50E002.hgt",
+        "N50E003.hgt",
+        "N50E004.hgt",
+        "N50E005.hgt",
+        "N50E006.hgt",
+        "N51E002.hgt",
+        "N51E003.hgt",
+        "N51E004.hgt",
+        "N51E005.hgt",
+        "N51E006.hgt"
+      ]
+    },
+    {
+      "id": "wallonia_german_community",
+      "name": "Wallonia (German Community)",
+      "bbox": {
+        "west": 5.7509,
+        "south": 49.925,
+        "east": 6.612,
+        "north": 50.9581
+      },
+      "tiles": [
+        "N49E005.hgt",
+        "N49E006.hgt",
+        "N50E005.hgt",
+        "N50E006.hgt"
+      ]
+    },
+    {
+      "id": "jihocesky",
+      "name": "Jiho\u010desk\u00fd",
+      "bbox": {
+        "west": 13.315,
+        "south": 48.33,
+        "east": 15.825,
+        "north": 49.8401
+      },
+      "tiles": [
+        "N48E013.hgt",
+        "N48E014.hgt",
+        "N48E015.hgt",
+        "N49E013.hgt",
+        "N49E014.hgt",
+        "N49E015.hgt"
+      ]
+    },
+    {
+      "id": "jihomoravsky",
+      "name": "Jihomoravsk\u00fd",
+      "bbox": {
+        "west": 15.32,
+        "south": 48.3949,
+        "east": 17.865,
+        "north": 49.8551
+      },
+      "tiles": [
+        "N48E015.hgt",
+        "N48E016.hgt",
+        "N48E017.hgt",
+        "N49E015.hgt",
+        "N49E016.hgt",
+        "N49E017.hgt"
+      ]
+    },
+    {
+      "id": "karlovarsky",
+      "name": "Karlovarsk\u00fd",
+      "bbox": {
+        "west": 11.87,
+        "south": 49.6699,
+        "east": 13.52,
+        "north": 50.68
+      },
+      "tiles": [
+        "N49E011.hgt",
+        "N49E012.hgt",
+        "N49E013.hgt",
+        "N50E011.hgt",
+        "N50E012.hgt",
+        "N50E013.hgt"
+      ]
+    },
+    {
+      "id": "kralovehradecky",
+      "name": "Kr\u00e1lov\u00e9hradeck\u00fd",
+      "bbox": {
+        "west": 14.885,
+        "south": 49.82,
+        "east": 16.805,
+        "north": 51.0
+      },
+      "tiles": [
+        "N49E014.hgt",
+        "N49E015.hgt",
+        "N49E016.hgt",
+        "N50E014.hgt",
+        "N50E015.hgt",
+        "N50E016.hgt",
+        "N51E014.hgt",
+        "N51E015.hgt",
+        "N51E016.hgt"
+      ]
+    },
+    {
+      "id": "liberecky",
+      "name": "Libereck\u00fd",
+      "bbox": {
+        "west": 14.125,
+        "south": 50.25,
+        "east": 15.855,
+        "north": 51.2451
+      },
+      "tiles": [
+        "N50E014.hgt",
+        "N50E015.hgt",
+        "N51E014.hgt",
+        "N51E015.hgt"
+      ]
+    },
+    {
+      "id": "moravskoslezsky",
+      "name": "Moravskoslezsk\u00fd",
+      "bbox": {
+        "west": 16.925,
+        "south": 49.175,
+        "east": 19.08,
+        "north": 50.5501
+      },
+      "tiles": [
+        "N49E016.hgt",
+        "N49E017.hgt",
+        "N49E018.hgt",
+        "N49E019.hgt",
+        "N50E016.hgt",
+        "N50E017.hgt",
+        "N50E018.hgt",
+        "N50E019.hgt"
+      ]
+    },
+    {
+      "id": "olomoucky",
+      "name": "Olomouck\u00fd",
+      "bbox": {
+        "west": 16.49,
+        "south": 49.05,
+        "east": 18.14,
+        "north": 50.67
+      },
+      "tiles": [
+        "N49E016.hgt",
+        "N49E017.hgt",
+        "N49E018.hgt",
+        "N50E016.hgt",
+        "N50E017.hgt",
+        "N50E018.hgt"
+      ]
+    },
+    {
+      "id": "pardubicky",
+      "name": "Pardubick\u00fd",
+      "bbox": {
+        "west": 15.145,
+        "south": 49.3499,
+        "east": 17.085,
+        "north": 50.43
+      },
+      "tiles": [
+        "N49E015.hgt",
+        "N49E016.hgt",
+        "N49E017.hgt",
+        "N50E015.hgt",
+        "N50E016.hgt",
+        "N50E017.hgt"
+      ]
+    },
+    {
+      "id": "plzensky",
+      "name": "Plze\u0148sk\u00fd",
+      "bbox": {
+        "west": 12.18,
+        "south": 48.72,
+        "east": 14.06,
+        "north": 50.325
+      },
+      "tiles": [
+        "N48E012.hgt",
+        "N48E013.hgt",
+        "N48E014.hgt",
+        "N49E012.hgt",
+        "N49E013.hgt",
+        "N49E014.hgt",
+        "N50E012.hgt",
+        "N50E013.hgt",
+        "N50E014.hgt"
+      ]
+    },
+    {
+      "id": "praha",
+      "name": "Praha",
+      "bbox": {
+        "west": 14.021,
+        "south": 49.738,
+        "east": 14.911,
+        "north": 50.381
+      },
+      "tiles": [
+        "N49E014.hgt",
+        "N50E014.hgt"
+      ]
+    },
+    {
+      "id": "stredocesky",
+      "name": "St\u0159edo\u010desk\u00fd",
+      "bbox": {
+        "west": 13.175,
+        "south": 49.2799,
+        "east": 15.755,
+        "north": 50.8401
+      },
+      "tiles": [
+        "N49E013.hgt",
+        "N49E014.hgt",
+        "N49E015.hgt",
+        "N50E013.hgt",
+        "N50E014.hgt",
+        "N50E015.hgt"
+      ]
+    },
+    {
+      "id": "ustecky",
+      "name": "\u00dasteck\u00fd",
+      "bbox": {
+        "west": 12.72,
+        "south": 49.8549,
+        "east": 14.875,
+        "north": 51.2751
+      },
+      "tiles": [
+        "N49E012.hgt",
+        "N49E013.hgt",
+        "N49E014.hgt",
+        "N50E012.hgt",
+        "N50E013.hgt",
+        "N50E014.hgt",
+        "N51E012.hgt",
+        "N51E013.hgt",
+        "N51E014.hgt"
+      ]
+    },
+    {
+      "id": "vysocina",
+      "name": "Vyso\u010dina",
+      "bbox": {
+        "west": 14.67,
+        "south": 48.72,
+        "east": 16.64,
+        "north": 50.0801
+      },
+      "tiles": [
+        "N48E014.hgt",
+        "N48E015.hgt",
+        "N48E016.hgt",
+        "N49E014.hgt",
+        "N49E015.hgt",
+        "N49E016.hgt",
+        "N50E014.hgt",
+        "N50E015.hgt",
+        "N50E016.hgt"
+      ]
+    },
+    {
+      "id": "zlinsky",
+      "name": "Zl\u00ednsk\u00fd",
+      "bbox": {
+        "west": 16.89,
+        "south": 48.635,
+        "east": 18.635,
+        "north": 49.7601
+      },
+      "tiles": [
+        "N48E016.hgt",
+        "N48E017.hgt",
+        "N48E018.hgt",
+        "N49E016.hgt",
+        "N49E017.hgt",
+        "N49E018.hgt"
+      ]
+    },
+    {
+      "id": "hovedstaden",
+      "name": "Hovedstaden",
+      "bbox": {
+        "west": 11.46,
+        "south": 54.765,
+        "east": 15.375,
+        "north": 56.425
+      },
+      "tiles": [
+        "N54E011.hgt",
+        "N54E012.hgt",
+        "N54E013.hgt",
+        "N54E014.hgt",
+        "N54E015.hgt",
+        "N55E011.hgt",
+        "N55E012.hgt",
+        "N55E013.hgt",
+        "N55E014.hgt",
+        "N55E015.hgt",
+        "N56E011.hgt",
+        "N56E012.hgt",
+        "N56E013.hgt",
+        "N56E014.hgt",
+        "N56E015.hgt"
+      ]
+    },
+    {
+      "id": "midtjylland",
+      "name": "Midtjylland",
+      "bbox": {
+        "west": 7.88,
+        "south": 55.45,
+        "east": 11.885,
+        "north": 57.065
+      },
+      "tiles": [
+        "N55E007.hgt",
+        "N55E008.hgt",
+        "N55E009.hgt",
+        "N55E010.hgt",
+        "N55E011.hgt",
+        "N56E007.hgt",
+        "N56E008.hgt",
+        "N56E009.hgt",
+        "N56E010.hgt",
+        "N56E011.hgt",
+        "N57E007.hgt",
+        "N57E008.hgt",
+        "N57E009.hgt",
+        "N57E010.hgt",
+        "N57E011.hgt"
+      ]
+    },
+    {
+      "id": "nordjylland",
+      "name": "Nordjylland",
+      "bbox": {
+        "west": 7.9999,
+        "south": 56.33,
+        "east": 11.42,
+        "north": 57.9701
+      },
+      "tiles": [
+        "N56E007.hgt",
+        "N56E008.hgt",
+        "N56E009.hgt",
+        "N56E010.hgt",
+        "N56E011.hgt",
+        "N57E007.hgt",
+        "N57E008.hgt",
+        "N57E009.hgt",
+        "N57E010.hgt",
+        "N57E011.hgt"
+      ]
+    },
+    {
+      "id": "sjaelland",
+      "name": "Sj\u00e6lland",
+      "bbox": {
+        "west": 10.65,
+        "south": 54.34,
+        "east": 12.775,
+        "north": 56.23
+      },
+      "tiles": [
+        "N54E010.hgt",
+        "N54E011.hgt",
+        "N54E012.hgt",
+        "N55E010.hgt",
+        "N55E011.hgt",
+        "N55E012.hgt",
+        "N56E010.hgt",
+        "N56E011.hgt",
+        "N56E012.hgt"
+      ]
+    },
+    {
+      "id": "syddanmark",
+      "name": "Syddanmark",
+      "bbox": {
+        "west": 7.855,
+        "south": 54.5,
+        "east": 11.175,
+        "north": 56.175
+      },
+      "tiles": [
+        "N54E007.hgt",
+        "N54E008.hgt",
+        "N54E009.hgt",
+        "N54E010.hgt",
+        "N54E011.hgt",
+        "N55E007.hgt",
+        "N55E008.hgt",
+        "N55E009.hgt",
+        "N55E010.hgt",
+        "N55E011.hgt",
+        "N56E007.hgt",
+        "N56E008.hgt",
+        "N56E009.hgt",
+        "N56E010.hgt",
+        "N56E011.hgt"
+      ]
+    },
+    {
+      "id": "aland",
+      "name": "\u00c5land",
+      "bbox": {
+        "west": 18.865,
+        "south": 59.235,
+        "east": 21.565,
+        "north": 61.0951
+      },
+      "tiles": [
+        "N59E018.hgt",
+        "N59E019.hgt",
+        "N59E020.hgt",
+        "N59E021.hgt",
+        "N60E018.hgt",
+        "N60E019.hgt",
+        "N60E020.hgt",
+        "N60E021.hgt",
+        "N61E018.hgt",
+        "N61E019.hgt",
+        "N61E020.hgt",
+        "N61E021.hgt"
+      ]
+    },
+    {
+      "id": "central_finland",
+      "name": "Central Finland",
+      "bbox": {
+        "west": 23.795,
+        "south": 61.23,
+        "east": 27.0,
+        "north": 63.83
+      },
+      "tiles": [
+        "N61E023.hgt",
+        "N61E024.hgt",
+        "N61E025.hgt",
+        "N61E026.hgt",
+        "N61E027.hgt",
+        "N62E023.hgt",
+        "N62E024.hgt",
+        "N62E025.hgt",
+        "N62E026.hgt",
+        "N62E027.hgt",
+        "N63E023.hgt",
+        "N63E024.hgt",
+        "N63E025.hgt",
+        "N63E026.hgt",
+        "N63E027.hgt"
+      ]
+    },
+    {
+      "id": "central_ostrobothnia",
+      "name": "Central Ostrobothnia",
+      "bbox": {
+        "west": 22.07,
+        "south": 62.895,
+        "east": 25.255,
+        "north": 64.4
+      },
+      "tiles": [
+        "N62E022.hgt",
+        "N62E023.hgt",
+        "N62E024.hgt",
+        "N62E025.hgt",
+        "N63E022.hgt",
+        "N63E023.hgt",
+        "N63E024.hgt",
+        "N63E025.hgt",
+        "N64E022.hgt",
+        "N64E023.hgt",
+        "N64E024.hgt",
+        "N64E025.hgt"
+      ]
+    },
+    {
+      "id": "kainuu",
+      "name": "Kainuu",
+      "bbox": {
+        "west": 26.07,
+        "south": 63.45,
+        "east": 30.775,
+        "north": 65.7401
+      },
+      "tiles": [
+        "N63E026.hgt",
+        "N63E027.hgt",
+        "N63E028.hgt",
+        "N63E029.hgt",
+        "N63E030.hgt",
+        "N64E026.hgt",
+        "N64E027.hgt",
+        "N64E028.hgt",
+        "N64E029.hgt",
+        "N64E030.hgt",
+        "N65E026.hgt",
+        "N65E027.hgt",
+        "N65E028.hgt",
+        "N65E029.hgt",
+        "N65E030.hgt"
+      ]
+    },
+    {
+      "id": "kanta_hame",
+      "name": "Kanta-H\u00e4me",
+      "bbox": {
+        "west": 22.915,
+        "south": 60.3349,
+        "east": 25.49,
+        "north": 61.545
+      },
+      "tiles": [
+        "N60E022.hgt",
+        "N60E023.hgt",
+        "N60E024.hgt",
+        "N60E025.hgt",
+        "N61E022.hgt",
+        "N61E023.hgt",
+        "N61E024.hgt",
+        "N61E025.hgt"
+      ]
+    },
+    {
+      "id": "kymenlaakso",
+      "name": "Kymenlaakso",
+      "bbox": {
+        "west": 26.015,
+        "south": 59.95,
+        "east": 28.21,
+        "north": 61.515
+      },
+      "tiles": [
+        "N59E026.hgt",
+        "N59E027.hgt",
+        "N59E028.hgt",
+        "N60E026.hgt",
+        "N60E027.hgt",
+        "N60E028.hgt",
+        "N61E026.hgt",
+        "N61E027.hgt",
+        "N61E028.hgt"
+      ]
+    },
+    {
+      "id": "lapland",
+      "name": "Lapland",
+      "bbox": {
+        "west": 20.33,
+        "south": 65.0699,
+        "east": 30.235,
+        "north": 70.31
+      },
+      "tiles": [
+        "N65E020.hgt",
+        "N65E021.hgt",
+        "N65E022.hgt",
+        "N65E023.hgt",
+        "N65E024.hgt",
+        "N65E025.hgt",
+        "N65E026.hgt",
+        "N65E027.hgt",
+        "N65E028.hgt",
+        "N65E029.hgt",
+        "N65E030.hgt",
+        "N66E020.hgt",
+        "N66E021.hgt",
+        "N66E022.hgt",
+        "N66E023.hgt",
+        "N66E024.hgt",
+        "N66E025.hgt",
+        "N66E026.hgt",
+        "N66E027.hgt",
+        "N66E028.hgt",
+        "N66E029.hgt",
+        "N66E030.hgt",
+        "N67E020.hgt",
+        "N67E021.hgt",
+        "N67E022.hgt",
+        "N67E023.hgt",
+        "N67E024.hgt",
+        "N67E025.hgt",
+        "N67E026.hgt",
+        "N67E027.hgt",
+        "N67E028.hgt",
+        "N67E029.hgt",
+        "N67E030.hgt",
+        "N68E020.hgt",
+        "N68E021.hgt",
+        "N68E022.hgt",
+        "N68E023.hgt",
+        "N68E024.hgt",
+        "N68E025.hgt",
+        "N68E026.hgt",
+        "N68E027.hgt",
+        "N68E028.hgt",
+        "N68E029.hgt",
+        "N68E030.hgt",
+        "N69E020.hgt",
+        "N69E021.hgt",
+        "N69E022.hgt",
+        "N69E023.hgt",
+        "N69E024.hgt",
+        "N69E025.hgt",
+        "N69E026.hgt",
+        "N69E027.hgt",
+        "N69E028.hgt",
+        "N69E029.hgt",
+        "N69E030.hgt",
+        "N70E020.hgt",
+        "N70E021.hgt",
+        "N70E022.hgt",
+        "N70E023.hgt",
+        "N70E024.hgt",
+        "N70E025.hgt",
+        "N70E026.hgt",
+        "N70E027.hgt",
+        "N70E028.hgt",
+        "N70E029.hgt",
+        "N70E030.hgt"
+      ]
+    },
+    {
+      "id": "north_karelia",
+      "name": "North Karelia",
+      "bbox": {
+        "west": 28.03,
+        "south": 61.5,
+        "east": 31.805,
+        "north": 64.1
+      },
+      "tiles": [
+        "N61E028.hgt",
+        "N61E029.hgt",
+        "N61E030.hgt",
+        "N61E031.hgt",
+        "N62E028.hgt",
+        "N62E029.hgt",
+        "N62E030.hgt",
+        "N62E031.hgt",
+        "N63E028.hgt",
+        "N63E029.hgt",
+        "N63E030.hgt",
+        "N63E031.hgt",
+        "N64E028.hgt",
+        "N64E029.hgt",
+        "N64E030.hgt",
+        "N64E031.hgt"
+      ]
+    },
+    {
+      "id": "north_ostrobothnia",
+      "name": "North Ostrobothnia",
+      "bbox": {
+        "west": 22.56,
+        "south": 63.2099,
+        "east": 30.36,
+        "north": 66.705
+      },
+      "tiles": [
+        "N63E022.hgt",
+        "N63E023.hgt",
+        "N63E024.hgt",
+        "N63E025.hgt",
+        "N63E026.hgt",
+        "N63E027.hgt",
+        "N63E028.hgt",
+        "N63E029.hgt",
+        "N63E030.hgt",
+        "N64E022.hgt",
+        "N64E023.hgt",
+        "N64E024.hgt",
+        "N64E025.hgt",
+        "N64E026.hgt",
+        "N64E027.hgt",
+        "N64E028.hgt",
+        "N64E029.hgt",
+        "N64E030.hgt",
+        "N65E022.hgt",
+        "N65E023.hgt",
+        "N65E024.hgt",
+        "N65E025.hgt",
+        "N65E026.hgt",
+        "N65E027.hgt",
+        "N65E028.hgt",
+        "N65E029.hgt",
+        "N65E030.hgt",
+        "N66E022.hgt",
+        "N66E023.hgt",
+        "N66E024.hgt",
+        "N66E025.hgt",
+        "N66E026.hgt",
+        "N66E027.hgt",
+        "N66E028.hgt",
+        "N66E029.hgt",
+        "N66E030.hgt"
+      ]
+    },
+    {
+      "id": "north_savo",
+      "name": "North Savo",
+      "bbox": {
+        "west": 25.82,
+        "south": 61.77,
+        "east": 29.32,
+        "north": 64.2551
+      },
+      "tiles": [
+        "N61E025.hgt",
+        "N61E026.hgt",
+        "N61E027.hgt",
+        "N61E028.hgt",
+        "N61E029.hgt",
+        "N62E025.hgt",
+        "N62E026.hgt",
+        "N62E027.hgt",
+        "N62E028.hgt",
+        "N62E029.hgt",
+        "N63E025.hgt",
+        "N63E026.hgt",
+        "N63E027.hgt",
+        "N63E028.hgt",
+        "N63E029.hgt",
+        "N64E025.hgt",
+        "N64E026.hgt",
+        "N64E027.hgt",
+        "N64E028.hgt",
+        "N64E029.hgt"
+      ]
+    },
+    {
+      "id": "ostrobothnia",
+      "name": "Ostrobothnia",
+      "bbox": {
+        "west": 19.945,
+        "south": 61.7,
+        "east": 23.965,
+        "north": 64.23
+      },
+      "tiles": [
+        "N61E019.hgt",
+        "N61E020.hgt",
+        "N61E021.hgt",
+        "N61E022.hgt",
+        "N61E023.hgt",
+        "N62E019.hgt",
+        "N62E020.hgt",
+        "N62E021.hgt",
+        "N62E022.hgt",
+        "N62E023.hgt",
+        "N63E019.hgt",
+        "N63E020.hgt",
+        "N63E021.hgt",
+        "N63E022.hgt",
+        "N63E023.hgt",
+        "N64E019.hgt",
+        "N64E020.hgt",
+        "N64E021.hgt",
+        "N64E022.hgt",
+        "N64E023.hgt"
+      ]
+    },
+    {
+      "id": "paijat_hame",
+      "name": "P\u00e4ij\u00e4t-H\u00e4me",
+      "bbox": {
+        "west": 24.635,
+        "south": 60.45,
+        "east": 26.765,
+        "north": 62.02
+      },
+      "tiles": [
+        "N60E024.hgt",
+        "N60E025.hgt",
+        "N60E026.hgt",
+        "N61E024.hgt",
+        "N61E025.hgt",
+        "N61E026.hgt",
+        "N62E024.hgt",
+        "N62E025.hgt",
+        "N62E026.hgt"
+      ]
+    },
+    {
+      "id": "pirkanmaa",
+      "name": "Pirkanmaa",
+      "bbox": {
+        "west": 22.215,
+        "south": 60.72,
+        "east": 25.755,
+        "north": 62.715
+      },
+      "tiles": [
+        "N60E022.hgt",
+        "N60E023.hgt",
+        "N60E024.hgt",
+        "N60E025.hgt",
+        "N61E022.hgt",
+        "N61E023.hgt",
+        "N61E024.hgt",
+        "N61E025.hgt",
+        "N62E022.hgt",
+        "N62E023.hgt",
+        "N62E024.hgt",
+        "N62E025.hgt"
+      ]
+    },
+    {
+      "id": "satakunta",
+      "name": "Satakunta",
+      "bbox": {
+        "west": 20.555,
+        "south": 60.65,
+        "east": 23.225,
+        "north": 62.53
+      },
+      "tiles": [
+        "N60E020.hgt",
+        "N60E021.hgt",
+        "N60E022.hgt",
+        "N60E023.hgt",
+        "N61E020.hgt",
+        "N61E021.hgt",
+        "N61E022.hgt",
+        "N61E023.hgt",
+        "N62E020.hgt",
+        "N62E021.hgt",
+        "N62E022.hgt",
+        "N62E023.hgt"
+      ]
+    },
+    {
+      "id": "south_karelia",
+      "name": "South Karelia",
+      "bbox": {
+        "west": 26.9,
+        "south": 60.445,
+        "east": 30.365,
+        "north": 62.085
+      },
+      "tiles": [
+        "N60E026.hgt",
+        "N60E027.hgt",
+        "N60E028.hgt",
+        "N60E029.hgt",
+        "N60E030.hgt",
+        "N61E026.hgt",
+        "N61E027.hgt",
+        "N61E028.hgt",
+        "N61E029.hgt",
+        "N61E030.hgt",
+        "N62E026.hgt",
+        "N62E027.hgt",
+        "N62E028.hgt",
+        "N62E029.hgt",
+        "N62E030.hgt"
+      ]
+    },
+    {
+      "id": "south_ostrobothnia",
+      "name": "South Ostrobothnia",
+      "bbox": {
+        "west": 21.295,
+        "south": 61.76,
+        "east": 24.805,
+        "north": 63.7201
+      },
+      "tiles": [
+        "N61E021.hgt",
+        "N61E022.hgt",
+        "N61E023.hgt",
+        "N61E024.hgt",
+        "N62E021.hgt",
+        "N62E022.hgt",
+        "N62E023.hgt",
+        "N62E024.hgt",
+        "N63E021.hgt",
+        "N63E022.hgt",
+        "N63E023.hgt",
+        "N63E024.hgt"
+      ]
+    },
+    {
+      "id": "south_savo",
+      "name": "South Savo",
+      "bbox": {
+        "west": 25.995,
+        "south": 60.93,
+        "east": 29.915,
+        "north": 62.875
+      },
+      "tiles": [
+        "N60E025.hgt",
+        "N60E026.hgt",
+        "N60E027.hgt",
+        "N60E028.hgt",
+        "N60E029.hgt",
+        "N61E025.hgt",
+        "N61E026.hgt",
+        "N61E027.hgt",
+        "N61E028.hgt",
+        "N61E029.hgt",
+        "N62E025.hgt",
+        "N62E026.hgt",
+        "N62E027.hgt",
+        "N62E028.hgt",
+        "N62E029.hgt"
+      ]
+    },
+    {
+      "id": "southwest_finland",
+      "name": "Southwest Finland",
+      "bbox": {
+        "west": 20.16,
+        "south": 59.255,
+        "east": 24.14,
+        "north": 61.355
+      },
+      "tiles": [
+        "N59E020.hgt",
+        "N59E021.hgt",
+        "N59E022.hgt",
+        "N59E023.hgt",
+        "N59E024.hgt",
+        "N60E020.hgt",
+        "N60E021.hgt",
+        "N60E022.hgt",
+        "N60E023.hgt",
+        "N60E024.hgt",
+        "N61E020.hgt",
+        "N61E021.hgt",
+        "N61E022.hgt",
+        "N61E023.hgt",
+        "N61E024.hgt"
+      ]
+    },
+    {
+      "id": "uusimaa",
+      "name": "Uusimaa",
+      "bbox": {
+        "west": 22.44,
+        "south": 59.39,
+        "east": 26.875,
+        "north": 61.06
+      },
+      "tiles": [
+        "N59E022.hgt",
+        "N59E023.hgt",
+        "N59E024.hgt",
+        "N59E025.hgt",
+        "N59E026.hgt",
+        "N60E022.hgt",
+        "N60E023.hgt",
+        "N60E024.hgt",
+        "N60E025.hgt",
+        "N60E026.hgt",
+        "N61E022.hgt",
+        "N61E023.hgt",
+        "N61E024.hgt",
+        "N61E025.hgt",
+        "N61E026.hgt"
+      ]
+    },
+    {
+      "id": "antwerp",
+      "name": "Antwerp",
+      "bbox": {
+        "west": 3.955,
+        "south": 50.7699,
+        "east": 5.4801,
+        "north": 51.725
+      },
+      "tiles": [
+        "N50E003.hgt",
+        "N50E004.hgt",
+        "N50E005.hgt",
+        "N51E003.hgt",
+        "N51E004.hgt",
+        "N51E005.hgt"
+      ]
+    },
+    {
+      "id": "east_flanders",
+      "name": "East Flanders",
+      "bbox": {
+        "west": 3.11,
+        "south": 50.5,
+        "east": 4.575,
+        "north": 51.575
+      },
+      "tiles": [
+        "N50E003.hgt",
+        "N50E004.hgt",
+        "N51E003.hgt",
+        "N51E004.hgt"
+      ]
+    },
+    {
+      "id": "flemish_brabant",
+      "name": "Flemish Brabant",
+      "bbox": {
+        "west": 3.67,
+        "south": 50.4649,
+        "east": 5.41,
+        "north": 51.2701
+      },
+      "tiles": [
+        "N50E003.hgt",
+        "N50E004.hgt",
+        "N50E005.hgt",
+        "N51E003.hgt",
+        "N51E004.hgt",
+        "N51E005.hgt"
+      ]
+    },
+    {
+      "id": "limburg",
+      "name": "Limburg",
+      "bbox": {
+        "west": 4.776,
+        "south": 50.491,
+        "east": 6.115,
+        "north": 51.5041
+      },
+      "tiles": [
+        "N50E004.hgt",
+        "N50E005.hgt",
+        "N50E006.hgt",
+        "N51E004.hgt",
+        "N51E005.hgt",
+        "N51E006.hgt"
+      ]
+    },
+    {
+      "id": "west_flanders",
+      "name": "West Flanders",
+      "bbox": {
+        "west": 2.32,
+        "south": 50.4899,
+        "east": 3.745,
+        "north": 51.5951
+      },
+      "tiles": [
+        "N50E002.hgt",
+        "N50E003.hgt",
+        "N51E002.hgt",
+        "N51E003.hgt"
+      ]
+    },
+    {
+      "id": "bas_rhin",
+      "name": "Bas-Rhin",
+      "bbox": {
+        "west": 6.72,
+        "south": 47.9,
+        "east": 8.455,
+        "north": 49.3001
+      },
+      "tiles": [
+        "N47E006.hgt",
+        "N47E007.hgt",
+        "N47E008.hgt",
+        "N48E006.hgt",
+        "N48E007.hgt",
+        "N48E008.hgt",
+        "N49E006.hgt",
+        "N49E007.hgt",
+        "N49E008.hgt"
+      ]
+    },
+    {
+      "id": "haut_rhin",
+      "name": "Haut-Rhin",
+      "bbox": {
+        "west": 6.637,
+        "south": 47.2159,
+        "east": 7.826,
+        "north": 48.515
+      },
+      "tiles": [
+        "N47E006.hgt",
+        "N47E007.hgt",
+        "N48E006.hgt",
+        "N48E007.hgt"
+      ]
+    },
+    {
+      "id": "dordogne",
+      "name": "Dordogne",
+      "bbox": {
+        "west": -0.26,
+        "south": 44.3499,
+        "east": 1.67,
+        "north": 45.935
+      },
+      "tiles": [
+        "N44W001.hgt",
+        "N44E000.hgt",
+        "N44E001.hgt",
+        "N45W001.hgt",
+        "N45E000.hgt",
+        "N45E001.hgt"
+      ]
+    },
+    {
+      "id": "gironde",
+      "name": "Gironde",
+      "bbox": {
+        "west": -1.485,
+        "south": 43.9749,
+        "east": 0.535,
+        "north": 45.82
+      },
+      "tiles": [
+        "N43W002.hgt",
+        "N43W001.hgt",
+        "N43E000.hgt",
+        "N44W002.hgt",
+        "N44W001.hgt",
+        "N44E000.hgt",
+        "N45W002.hgt",
+        "N45W001.hgt",
+        "N45E000.hgt"
+      ]
+    },
+    {
+      "id": "landes",
+      "name": "Landes",
+      "bbox": {
+        "west": -1.755,
+        "south": 43.2699,
+        "east": 0.355,
+        "north": 44.75
+      },
+      "tiles": [
+        "N43W002.hgt",
+        "N43W001.hgt",
+        "N43E000.hgt",
+        "N44W002.hgt",
+        "N44W001.hgt",
+        "N44E000.hgt"
+      ]
+    },
+    {
+      "id": "lot_et_garonne",
+      "name": "Lot-et-Garonne",
+      "bbox": {
+        "west": -0.36,
+        "south": 43.7549,
+        "east": 1.3,
+        "north": 44.985
+      },
+      "tiles": [
+        "N43W001.hgt",
+        "N43E000.hgt",
+        "N43E001.hgt",
+        "N44W001.hgt",
+        "N44E000.hgt",
+        "N44E001.hgt"
+      ]
+    },
+    {
+      "id": "pyrenees_atlantiques",
+      "name": "Pyr\u00e9n\u00e9es-Atlantiques",
+      "bbox": {
+        "west": -2.0101,
+        "south": 42.5599,
+        "east": 0.25,
+        "north": 43.8151
+      },
+      "tiles": [
+        "N42W003.hgt",
+        "N42W002.hgt",
+        "N42W001.hgt",
+        "N42E000.hgt",
+        "N43W003.hgt",
+        "N43W002.hgt",
+        "N43W001.hgt",
+        "N43E000.hgt"
+      ]
+    },
+    {
+      "id": "allier",
+      "name": "Allier",
+      "bbox": {
+        "west": 2.0549,
+        "south": 45.7099,
+        "east": 4.2251,
+        "north": 47.0251
+      },
+      "tiles": [
+        "N45E002.hgt",
+        "N45E003.hgt",
+        "N45E004.hgt",
+        "N46E002.hgt",
+        "N46E003.hgt",
+        "N46E004.hgt",
+        "N47E002.hgt",
+        "N47E003.hgt",
+        "N47E004.hgt"
+      ]
+    },
+    {
+      "id": "cantal",
+      "name": "Cantal",
+      "bbox": {
+        "west": 1.845,
+        "south": 44.3949,
+        "east": 3.59,
+        "north": 45.7051
+      },
+      "tiles": [
+        "N44E001.hgt",
+        "N44E002.hgt",
+        "N44E003.hgt",
+        "N45E001.hgt",
+        "N45E002.hgt",
+        "N45E003.hgt"
+      ]
+    },
+    {
+      "id": "haute_loire",
+      "name": "Haute-Loire",
+      "bbox": {
+        "west": 2.86,
+        "south": 44.525,
+        "east": 4.71,
+        "north": 45.6501
+      },
+      "tiles": [
+        "N44E002.hgt",
+        "N44E003.hgt",
+        "N44E004.hgt",
+        "N45E002.hgt",
+        "N45E003.hgt",
+        "N45E004.hgt"
+      ]
+    },
+    {
+      "id": "puy_de_dome",
+      "name": "Puy-de-D\u00f4me",
+      "bbox": {
+        "west": 2.17,
+        "south": 45.065,
+        "east": 4.205,
+        "north": 46.4701
+      },
+      "tiles": [
+        "N45E002.hgt",
+        "N45E003.hgt",
+        "N45E004.hgt",
+        "N46E002.hgt",
+        "N46E003.hgt",
+        "N46E004.hgt"
+      ]
+    },
+    {
+      "id": "calvados",
+      "name": "Calvados",
+      "bbox": {
+        "west": -1.38,
+        "south": 48.5299,
+        "east": 0.665,
+        "north": 49.6501
+      },
+      "tiles": [
+        "N48W002.hgt",
+        "N48W001.hgt",
+        "N48E000.hgt",
+        "N49W002.hgt",
+        "N49W001.hgt",
+        "N49E000.hgt"
+      ]
+    },
+    {
+      "id": "manche",
+      "name": "Manche",
+      "bbox": {
+        "west": -2.1751,
+        "south": 48.235,
+        "east": -0.5149,
+        "north": 49.95
+      },
+      "tiles": [
+        "N48W003.hgt",
+        "N48W002.hgt",
+        "N48W001.hgt",
+        "N49W003.hgt",
+        "N49W002.hgt",
+        "N49W001.hgt"
+      ]
+    },
+    {
+      "id": "orne",
+      "name": "Orne",
+      "bbox": {
+        "west": -1.08,
+        "south": 47.9599,
+        "east": 1.195,
+        "north": 49.195
+      },
+      "tiles": [
+        "N47W002.hgt",
+        "N47W001.hgt",
+        "N47E000.hgt",
+        "N47E001.hgt",
+        "N48W002.hgt",
+        "N48W001.hgt",
+        "N48E000.hgt",
+        "N48E001.hgt",
+        "N49W002.hgt",
+        "N49W001.hgt",
+        "N49E000.hgt",
+        "N49E001.hgt"
+      ]
+    },
+    {
+      "id": "cote_d_or",
+      "name": "C\u00f4te-d'Or",
+      "bbox": {
+        "west": 3.845,
+        "south": 46.68,
+        "east": 5.74,
+        "north": 48.25
+      },
+      "tiles": [
+        "N46E003.hgt",
+        "N46E004.hgt",
+        "N46E005.hgt",
+        "N47E003.hgt",
+        "N47E004.hgt",
+        "N47E005.hgt",
+        "N48E003.hgt",
+        "N48E004.hgt",
+        "N48E005.hgt"
+      ]
+    },
+    {
+      "id": "nievre",
+      "name": "Ni\u00e8vre",
+      "bbox": {
+        "west": 2.625,
+        "south": 46.43,
+        "east": 4.45,
+        "north": 47.81
+      },
+      "tiles": [
+        "N46E002.hgt",
+        "N46E003.hgt",
+        "N46E004.hgt",
+        "N47E002.hgt",
+        "N47E003.hgt",
+        "N47E004.hgt"
+      ]
+    },
+    {
+      "id": "saone_et_loire",
+      "name": "Sa\u00f4ne-et-Loire",
+      "bbox": {
+        "west": 3.405,
+        "south": 45.9349,
+        "east": 5.6851,
+        "north": 47.375
+      },
+      "tiles": [
+        "N45E003.hgt",
+        "N45E004.hgt",
+        "N45E005.hgt",
+        "N46E003.hgt",
+        "N46E004.hgt",
+        "N46E005.hgt",
+        "N47E003.hgt",
+        "N47E004.hgt",
+        "N47E005.hgt"
+      ]
+    },
+    {
+      "id": "yonne",
+      "name": "Yonne",
+      "bbox": {
+        "west": 2.63,
+        "south": 47.0899,
+        "east": 4.5601,
+        "north": 48.6201
+      },
+      "tiles": [
+        "N47E002.hgt",
+        "N47E003.hgt",
+        "N47E004.hgt",
+        "N48E002.hgt",
+        "N48E003.hgt",
+        "N48E004.hgt"
+      ]
+    },
+    {
+      "id": "cotes_d_armor",
+      "name": "C\u00f4tes-d'Armor",
+      "bbox": {
+        "west": -3.885,
+        "south": 47.8099,
+        "east": -1.69,
+        "north": 49.335
+      },
+      "tiles": [
+        "N47W004.hgt",
+        "N47W003.hgt",
+        "N47W002.hgt",
+        "N48W004.hgt",
+        "N48W003.hgt",
+        "N48W002.hgt",
+        "N49W004.hgt",
+        "N49W003.hgt",
+        "N49W002.hgt"
+      ]
+    },
+    {
+      "id": "finistere",
+      "name": "Finist\u00e8re",
+      "bbox": {
+        "west": -5.36,
+        "south": 47.4799,
+        "east": -3.165,
+        "north": 48.975
+      },
+      "tiles": [
+        "N47W006.hgt",
+        "N47W005.hgt",
+        "N47W004.hgt",
+        "N48W006.hgt",
+        "N48W005.hgt",
+        "N48W004.hgt"
+      ]
+    },
+    {
+      "id": "ille_et_vilaine",
+      "name": "Ille-et-Vilaine",
+      "bbox": {
+        "west": -2.5101,
+        "south": 47.4099,
+        "east": -0.7949,
+        "north": 48.9401
+      },
+      "tiles": [
+        "N47W003.hgt",
+        "N47W002.hgt",
+        "N47W001.hgt",
+        "N48W003.hgt",
+        "N48W002.hgt",
+        "N48W001.hgt"
+      ]
+    },
+    {
+      "id": "morbihan",
+      "name": "Morbihan",
+      "bbox": {
+        "west": -3.955,
+        "south": 47.0599,
+        "east": -1.815,
+        "north": 48.43
+      },
+      "tiles": [
+        "N47W004.hgt",
+        "N47W003.hgt",
+        "N47W002.hgt",
+        "N48W004.hgt",
+        "N48W003.hgt",
+        "N48W002.hgt"
+      ]
+    },
+    {
+      "id": "cher",
+      "name": "Cher",
+      "bbox": {
+        "west": 1.555,
+        "south": 46.1999,
+        "east": 3.3,
+        "north": 47.85
+      },
+      "tiles": [
+        "N46E001.hgt",
+        "N46E002.hgt",
+        "N46E003.hgt",
+        "N47E001.hgt",
+        "N47E002.hgt",
+        "N47E003.hgt"
+      ]
+    },
+    {
+      "id": "eure_et_loir",
+      "name": "Eure-et-Loir",
+      "bbox": {
+        "west": 0.5349,
+        "south": 47.735,
+        "east": 2.2151,
+        "north": 49.1601
+      },
+      "tiles": [
+        "N47E000.hgt",
+        "N47E001.hgt",
+        "N47E002.hgt",
+        "N48E000.hgt",
+        "N48E001.hgt",
+        "N48E002.hgt",
+        "N49E000.hgt",
+        "N49E001.hgt",
+        "N49E002.hgt"
+      ]
+    },
+    {
+      "id": "indre",
+      "name": "Indre",
+      "bbox": {
+        "west": 0.645,
+        "south": 46.125,
+        "east": 2.4251,
+        "north": 47.4951
+      },
+      "tiles": [
+        "N46E000.hgt",
+        "N46E001.hgt",
+        "N46E002.hgt",
+        "N47E000.hgt",
+        "N47E001.hgt",
+        "N47E002.hgt"
+      ]
+    },
+    {
+      "id": "indre_et_loire",
+      "name": "Indre-et-Loire",
+      "bbox": {
+        "west": -0.165,
+        "south": 46.515,
+        "east": 1.585,
+        "north": 47.93
+      },
+      "tiles": [
+        "N46W001.hgt",
+        "N46E000.hgt",
+        "N46E001.hgt",
+        "N47W001.hgt",
+        "N47E000.hgt",
+        "N47E001.hgt"
+      ]
+    },
+    {
+      "id": "loir_et_cher",
+      "name": "Loir-et-Cher",
+      "bbox": {
+        "west": 0.36,
+        "south": 46.9649,
+        "east": 2.4651,
+        "north": 48.3551
+      },
+      "tiles": [
+        "N46E000.hgt",
+        "N46E001.hgt",
+        "N46E002.hgt",
+        "N47E000.hgt",
+        "N47E001.hgt",
+        "N47E002.hgt",
+        "N48E000.hgt",
+        "N48E001.hgt",
+        "N48E002.hgt"
+      ]
+    },
+    {
+      "id": "loiret",
+      "name": "Loiret",
+      "bbox": {
+        "west": 1.29,
+        "south": 47.265,
+        "east": 3.35,
+        "north": 48.5651
+      },
+      "tiles": [
+        "N47E001.hgt",
+        "N47E002.hgt",
+        "N47E003.hgt",
+        "N48E001.hgt",
+        "N48E002.hgt",
+        "N48E003.hgt"
+      ]
+    },
+    {
+      "id": "ardennes",
+      "name": "Ardennes",
+      "bbox": {
+        "west": 3.805,
+        "south": 49.0049,
+        "east": 5.615,
+        "north": 50.39
+      },
+      "tiles": [
+        "N49E003.hgt",
+        "N49E004.hgt",
+        "N49E005.hgt",
+        "N50E003.hgt",
+        "N50E004.hgt",
+        "N50E005.hgt"
+      ]
+    },
+    {
+      "id": "aube",
+      "name": "Aube",
+      "bbox": {
+        "west": 3.165,
+        "south": 47.705,
+        "east": 5.085,
+        "north": 48.935
+      },
+      "tiles": [
+        "N47E003.hgt",
+        "N47E004.hgt",
+        "N47E005.hgt",
+        "N48E003.hgt",
+        "N48E004.hgt",
+        "N48E005.hgt"
+      ]
+    },
+    {
+      "id": "haute_marne",
+      "name": "Haute-Marne",
+      "bbox": {
+        "west": 4.41,
+        "south": 47.3549,
+        "east": 6.11,
+        "north": 48.9101
+      },
+      "tiles": [
+        "N47E004.hgt",
+        "N47E005.hgt",
+        "N47E006.hgt",
+        "N48E004.hgt",
+        "N48E005.hgt",
+        "N48E006.hgt"
+      ]
+    },
+    {
+      "id": "marne",
+      "name": "Marne",
+      "bbox": {
+        "west": 3.175,
+        "south": 48.2949,
+        "east": 5.26,
+        "north": 49.625
+      },
+      "tiles": [
+        "N48E003.hgt",
+        "N48E004.hgt",
+        "N48E005.hgt",
+        "N49E003.hgt",
+        "N49E004.hgt",
+        "N49E005.hgt"
+      ]
+    },
+    {
+      "id": "corse_du_sud",
+      "name": "Corse-du-Sud",
+      "bbox": {
+        "west": 8.315,
+        "south": 41.1149,
+        "east": 9.63,
+        "north": 42.6
+      },
+      "tiles": [
+        "N41E008.hgt",
+        "N41E009.hgt",
+        "N42E008.hgt",
+        "N42E009.hgt"
+      ]
+    },
+    {
+      "id": "haute_corse",
+      "name": "Haute-Corse",
+      "bbox": {
+        "west": 8.355,
+        "south": 41.61,
+        "east": 9.78,
+        "north": 43.25
+      },
+      "tiles": [
+        "N41E008.hgt",
+        "N41E009.hgt",
+        "N42E008.hgt",
+        "N42E009.hgt",
+        "N43E008.hgt",
+        "N43E009.hgt"
+      ]
+    },
+    {
+      "id": "doubs",
+      "name": "Doubs",
+      "bbox": {
+        "west": 5.4799,
+        "south": 46.3349,
+        "east": 7.28,
+        "north": 47.8001
+      },
+      "tiles": [
+        "N46E005.hgt",
+        "N46E006.hgt",
+        "N46E007.hgt",
+        "N47E005.hgt",
+        "N47E006.hgt",
+        "N47E007.hgt"
+      ]
+    },
+    {
+      "id": "haute_saone",
+      "name": "Haute-Sa\u00f4ne",
+      "bbox": {
+        "west": 5.1449,
+        "south": 47.0349,
+        "east": 7.045,
+        "north": 48.2451
+      },
+      "tiles": [
+        "N47E005.hgt",
+        "N47E006.hgt",
+        "N47E007.hgt",
+        "N48E005.hgt",
+        "N48E006.hgt",
+        "N48E007.hgt"
+      ]
+    },
+    {
+      "id": "jura",
+      "name": "Jura",
+      "bbox": {
+        "west": 5.03,
+        "south": 46.04,
+        "east": 6.425,
+        "north": 47.5251
+      },
+      "tiles": [
+        "N46E005.hgt",
+        "N46E006.hgt",
+        "N47E005.hgt",
+        "N47E006.hgt"
+      ]
+    },
+    {
+      "id": "territoire_de_belfort",
+      "name": "Territoire de Belfort",
+      "bbox": {
+        "west": 6.5519,
+        "south": 47.229,
+        "east": 7.347,
+        "north": 48.0291
+      },
+      "tiles": [
+        "N47E006.hgt",
+        "N47E007.hgt",
+        "N48E006.hgt",
+        "N48E007.hgt"
+      ]
+    },
+    {
+      "id": "eure",
+      "name": "Eure",
+      "bbox": {
+        "west": 0.075,
+        "south": 48.445,
+        "east": 2.025,
+        "north": 49.7051
+      },
+      "tiles": [
+        "N48E000.hgt",
+        "N48E001.hgt",
+        "N48E002.hgt",
+        "N49E000.hgt",
+        "N49E001.hgt",
+        "N49E002.hgt"
+      ]
+    },
+    {
+      "id": "seine_maritime",
+      "name": "Seine-Maritime",
+      "bbox": {
+        "west": -0.1551,
+        "south": 49.0299,
+        "east": 2.0101,
+        "north": 50.295
+      },
+      "tiles": [
+        "N49W001.hgt",
+        "N49E000.hgt",
+        "N49E001.hgt",
+        "N49E002.hgt",
+        "N50W001.hgt",
+        "N50E000.hgt",
+        "N50E001.hgt",
+        "N50E002.hgt"
+      ]
+    },
+    {
+      "id": "essonne",
+      "name": "Essonne",
+      "bbox": {
+        "west": 1.71,
+        "south": 48.0809,
+        "east": 2.789,
+        "north": 48.9801
+      },
+      "tiles": [
+        "N48E001.hgt",
+        "N48E002.hgt"
+      ]
+    },
+    {
+      "id": "hauts_de_seine",
+      "name": "Hauts-de-Seine",
+      "bbox": {
+        "west": 1.942,
+        "south": 48.525,
+        "east": 2.5411,
+        "north": 49.155
+      },
+      "tiles": [
+        "N48E001.hgt",
+        "N48E002.hgt",
+        "N49E001.hgt",
+        "N49E002.hgt"
+      ]
+    },
+    {
+      "id": "paris",
+      "name": "Paris",
+      "bbox": {
+        "west": 2.02,
+        "south": 48.6119,
+        "east": 2.6741,
+        "north": 49.106
+      },
+      "tiles": [
+        "N48E002.hgt",
+        "N49E002.hgt"
+      ]
+    },
+    {
+      "id": "seine_et_marne",
+      "name": "Seine-et-Marne",
+      "bbox": {
+        "west": 2.175,
+        "south": 47.9,
+        "east": 3.78,
+        "north": 49.3401
+      },
+      "tiles": [
+        "N47E002.hgt",
+        "N47E003.hgt",
+        "N48E002.hgt",
+        "N48E003.hgt",
+        "N49E002.hgt",
+        "N49E003.hgt"
+      ]
+    },
+    {
+      "id": "seine_saint_denis",
+      "name": "Seine-Saint-Denis",
+      "bbox": {
+        "west": 2.0839,
+        "south": 48.6029,
+        "east": 2.8071,
+        "north": 49.216
+      },
+      "tiles": [
+        "N48E002.hgt",
+        "N49E002.hgt"
+      ]
+    },
+    {
+      "id": "val_d_oise",
+      "name": "Val-d'Oise",
+      "bbox": {
+        "west": 1.404,
+        "south": 48.705,
+        "east": 2.7991,
+        "north": 49.445
+      },
+      "tiles": [
+        "N48E001.hgt",
+        "N48E002.hgt",
+        "N49E001.hgt",
+        "N49E002.hgt"
+      ]
+    },
+    {
+      "id": "val_de_marne",
+      "name": "Val-de-Marne",
+      "bbox": {
+        "west": 2.105,
+        "south": 48.4839,
+        "east": 2.8201,
+        "north": 49.0651
+      },
+      "tiles": [
+        "N48E002.hgt",
+        "N49E002.hgt"
+      ]
+    },
+    {
+      "id": "yvelines",
+      "name": "Yvelines",
+      "bbox": {
+        "west": 1.242,
+        "south": 48.235,
+        "east": 2.4331,
+        "north": 49.289
+      },
+      "tiles": [
+        "N48E001.hgt",
+        "N48E002.hgt",
+        "N49E001.hgt",
+        "N49E002.hgt"
+      ]
+    },
+    {
+      "id": "aude",
+      "name": "Aude",
+      "bbox": {
+        "west": 1.47,
+        "south": 42.43,
+        "east": 3.46,
+        "north": 43.68
+      },
+      "tiles": [
+        "N42E001.hgt",
+        "N42E002.hgt",
+        "N42E003.hgt",
+        "N43E001.hgt",
+        "N43E002.hgt",
+        "N43E003.hgt"
+      ]
+    },
+    {
+      "id": "gard",
+      "name": "Gard",
+      "bbox": {
+        "west": 3.04,
+        "south": 43.2399,
+        "east": 5.0651,
+        "north": 44.68
+      },
+      "tiles": [
+        "N43E003.hgt",
+        "N43E004.hgt",
+        "N43E005.hgt",
+        "N44E003.hgt",
+        "N44E004.hgt",
+        "N44E005.hgt"
+      ]
+    },
+    {
+      "id": "herault",
+      "name": "H\u00e9rault",
+      "bbox": {
+        "west": 2.32,
+        "south": 42.9899,
+        "east": 4.415,
+        "north": 44.195
+      },
+      "tiles": [
+        "N42E002.hgt",
+        "N42E003.hgt",
+        "N42E004.hgt",
+        "N43E002.hgt",
+        "N43E003.hgt",
+        "N43E004.hgt",
+        "N44E002.hgt",
+        "N44E003.hgt",
+        "N44E004.hgt"
+      ]
+    },
+    {
+      "id": "lozere",
+      "name": "Lozere",
+      "bbox": {
+        "west": 2.7599,
+        "south": 43.89,
+        "east": 4.22,
+        "north": 45.195
+      },
+      "tiles": [
+        "N43E002.hgt",
+        "N43E003.hgt",
+        "N43E004.hgt",
+        "N44E002.hgt",
+        "N44E003.hgt",
+        "N44E004.hgt",
+        "N45E002.hgt",
+        "N45E003.hgt",
+        "N45E004.hgt"
+      ]
+    },
+    {
+      "id": "pyrenees_orientales",
+      "name": "Pyr\u00e9n\u00e9es-Orientales",
+      "bbox": {
+        "west": 1.505,
+        "south": 42.1149,
+        "east": 3.4,
+        "north": 43.14
+      },
+      "tiles": [
+        "N42E001.hgt",
+        "N42E002.hgt",
+        "N42E003.hgt",
+        "N43E001.hgt",
+        "N43E002.hgt",
+        "N43E003.hgt"
+      ]
+    },
+    {
+      "id": "correze",
+      "name": "Corr\u00e8ze",
+      "bbox": {
+        "west": 1.01,
+        "south": 44.6999,
+        "east": 2.75,
+        "north": 45.985
+      },
+      "tiles": [
+        "N44E001.hgt",
+        "N44E002.hgt",
+        "N45E001.hgt",
+        "N45E002.hgt"
+      ]
+    },
+    {
+      "id": "creuse",
+      "name": "Creuse",
+      "bbox": {
+        "west": 1.155,
+        "south": 45.445,
+        "east": 2.83,
+        "north": 46.6751
+      },
+      "tiles": [
+        "N45E001.hgt",
+        "N45E002.hgt",
+        "N46E001.hgt",
+        "N46E002.hgt"
+      ]
+    },
+    {
+      "id": "haute_vienne",
+      "name": "Haute-Vienne",
+      "bbox": {
+        "west": 0.41,
+        "south": 45.2149,
+        "east": 2.13,
+        "north": 46.6201
+      },
+      "tiles": [
+        "N45E000.hgt",
+        "N45E001.hgt",
+        "N45E002.hgt",
+        "N46E000.hgt",
+        "N46E001.hgt",
+        "N46E002.hgt"
+      ]
+    },
+    {
+      "id": "meurthe_et_moselle",
+      "name": "Meurthe-et-Moselle",
+      "bbox": {
+        "west": 5.205,
+        "south": 48.1299,
+        "east": 7.34,
+        "north": 49.7851
+      },
+      "tiles": [
+        "N48E005.hgt",
+        "N48E006.hgt",
+        "N48E007.hgt",
+        "N49E005.hgt",
+        "N49E006.hgt",
+        "N49E007.hgt"
+      ]
+    },
+    {
+      "id": "meuse",
+      "name": "Meuse",
+      "bbox": {
+        "west": 4.67,
+        "south": 48.19,
+        "east": 6.075,
+        "north": 49.835
+      },
+      "tiles": [
+        "N48E004.hgt",
+        "N48E005.hgt",
+        "N48E006.hgt",
+        "N49E004.hgt",
+        "N49E005.hgt",
+        "N49E006.hgt"
+      ]
+    },
+    {
+      "id": "moselle",
+      "name": "Moselle",
+      "bbox": {
+        "west": 5.67,
+        "south": 48.305,
+        "east": 7.86,
+        "north": 49.735
+      },
+      "tiles": [
+        "N48E005.hgt",
+        "N48E006.hgt",
+        "N48E007.hgt",
+        "N49E005.hgt",
+        "N49E006.hgt",
+        "N49E007.hgt"
+      ]
+    },
+    {
+      "id": "vosges",
+      "name": "Vosges",
+      "bbox": {
+        "west": 5.175,
+        "south": 47.595,
+        "east": 7.42,
+        "north": 48.735
+      },
+      "tiles": [
+        "N47E005.hgt",
+        "N47E006.hgt",
+        "N47E007.hgt",
+        "N48E005.hgt",
+        "N48E006.hgt",
+        "N48E007.hgt"
+      ]
+    },
+    {
+      "id": "ariege",
+      "name": "Ari\u00e8ge",
+      "bbox": {
+        "west": 0.605,
+        "south": 42.3549,
+        "east": 2.395,
+        "north": 43.5351
+      },
+      "tiles": [
+        "N42E000.hgt",
+        "N42E001.hgt",
+        "N42E002.hgt",
+        "N43E000.hgt",
+        "N43E001.hgt",
+        "N43E002.hgt"
+      ]
+    },
+    {
+      "id": "aveyron",
+      "name": "Aveyron",
+      "bbox": {
+        "west": 1.62,
+        "south": 43.47,
+        "east": 3.6701,
+        "north": 45.1601
+      },
+      "tiles": [
+        "N43E001.hgt",
+        "N43E002.hgt",
+        "N43E003.hgt",
+        "N44E001.hgt",
+        "N44E002.hgt",
+        "N44E003.hgt",
+        "N45E001.hgt",
+        "N45E002.hgt",
+        "N45E003.hgt"
+      ]
+    },
+    {
+      "id": "gers",
+      "name": "Gers",
+      "bbox": {
+        "west": -0.5,
+        "south": 43.0899,
+        "east": 1.425,
+        "north": 44.3001
+      },
+      "tiles": [
+        "N43W001.hgt",
+        "N43E000.hgt",
+        "N43E001.hgt",
+        "N44W001.hgt",
+        "N44E000.hgt",
+        "N44E001.hgt"
+      ]
+    },
+    {
+      "id": "haute_garonne",
+      "name": "Haute-Garonne",
+      "bbox": {
+        "west": 0.2199,
+        "south": 42.47,
+        "east": 2.27,
+        "north": 44.14
+      },
+      "tiles": [
+        "N42E000.hgt",
+        "N42E001.hgt",
+        "N42E002.hgt",
+        "N43E000.hgt",
+        "N43E001.hgt",
+        "N43E002.hgt",
+        "N44E000.hgt",
+        "N44E001.hgt",
+        "N44E002.hgt"
+      ]
+    },
+    {
+      "id": "hautes_pyrenees",
+      "name": "Hautes-Pyr\u00e9n\u00e9es",
+      "bbox": {
+        "west": -0.55,
+        "south": 42.455,
+        "east": 0.865,
+        "north": 43.835
+      },
+      "tiles": [
+        "N42W001.hgt",
+        "N42E000.hgt",
+        "N43W001.hgt",
+        "N43E000.hgt"
+      ]
+    },
+    {
+      "id": "lot",
+      "name": "Lot",
+      "bbox": {
+        "west": 0.76,
+        "south": 43.985,
+        "east": 2.43,
+        "north": 45.265
+      },
+      "tiles": [
+        "N43E000.hgt",
+        "N43E001.hgt",
+        "N43E002.hgt",
+        "N44E000.hgt",
+        "N44E001.hgt",
+        "N44E002.hgt",
+        "N45E000.hgt",
+        "N45E001.hgt",
+        "N45E002.hgt"
+      ]
+    },
+    {
+      "id": "tarn",
+      "name": "Tarn",
+      "bbox": {
+        "west": 1.315,
+        "south": 43.165,
+        "east": 3.1551,
+        "north": 44.42
+      },
+      "tiles": [
+        "N43E001.hgt",
+        "N43E002.hgt",
+        "N43E003.hgt",
+        "N44E001.hgt",
+        "N44E002.hgt",
+        "N44E003.hgt"
+      ]
+    },
+    {
+      "id": "tarn_et_garonne",
+      "name": "Tarn-et-Garonne",
+      "bbox": {
+        "west": 0.52,
+        "south": 43.55,
+        "east": 2.2201,
+        "north": 44.615
+      },
+      "tiles": [
+        "N43E000.hgt",
+        "N43E001.hgt",
+        "N43E002.hgt",
+        "N44E000.hgt",
+        "N44E001.hgt",
+        "N44E002.hgt"
+      ]
+    },
+    {
+      "id": "nord",
+      "name": "Nord",
+      "bbox": {
+        "west": 1.86,
+        "south": 49.75,
+        "east": 4.45,
+        "north": 51.31
+      },
+      "tiles": [
+        "N49E001.hgt",
+        "N49E002.hgt",
+        "N49E003.hgt",
+        "N49E004.hgt",
+        "N50E001.hgt",
+        "N50E002.hgt",
+        "N50E003.hgt",
+        "N50E004.hgt",
+        "N51E001.hgt",
+        "N51E002.hgt",
+        "N51E003.hgt",
+        "N51E004.hgt"
+      ]
+    },
+    {
+      "id": "pas_de_calais",
+      "name": "Pas-de-Calais",
+      "bbox": {
+        "west": 1.335,
+        "south": 49.8,
+        "east": 3.41,
+        "north": 51.2301
+      },
+      "tiles": [
+        "N49E001.hgt",
+        "N49E002.hgt",
+        "N49E003.hgt",
+        "N50E001.hgt",
+        "N50E002.hgt",
+        "N50E003.hgt",
+        "N51E001.hgt",
+        "N51E002.hgt",
+        "N51E003.hgt"
+      ]
+    },
+    {
+      "id": "loire_atlantique",
+      "name": "Loire-Atlantique",
+      "bbox": {
+        "west": -2.8451,
+        "south": 46.64,
+        "east": -0.725,
+        "north": 48.055
+      },
+      "tiles": [
+        "N46W003.hgt",
+        "N46W002.hgt",
+        "N46W001.hgt",
+        "N47W003.hgt",
+        "N47W002.hgt",
+        "N47W001.hgt",
+        "N48W003.hgt",
+        "N48W002.hgt",
+        "N48W001.hgt"
+      ]
+    },
+    {
+      "id": "maine_et_loire",
+      "name": "Maine-et-Loire",
+      "bbox": {
+        "west": -1.575,
+        "south": 46.75,
+        "east": 0.455,
+        "north": 48.03
+      },
+      "tiles": [
+        "N46W002.hgt",
+        "N46W001.hgt",
+        "N46E000.hgt",
+        "N47W002.hgt",
+        "N47W001.hgt",
+        "N47E000.hgt",
+        "N48W002.hgt",
+        "N48W001.hgt",
+        "N48E000.hgt"
+      ]
+    },
+    {
+      "id": "mayenne",
+      "name": "Mayenne",
+      "bbox": {
+        "west": -1.46,
+        "south": 47.515,
+        "east": 0.1701,
+        "north": 48.7901
+      },
+      "tiles": [
+        "N47W002.hgt",
+        "N47W001.hgt",
+        "N47E000.hgt",
+        "N48W002.hgt",
+        "N48W001.hgt",
+        "N48E000.hgt"
+      ]
+    },
+    {
+      "id": "sarthe",
+      "name": "Sarthe",
+      "bbox": {
+        "west": -0.67,
+        "south": 47.3499,
+        "east": 1.135,
+        "north": 48.7051
+      },
+      "tiles": [
+        "N47W001.hgt",
+        "N47E000.hgt",
+        "N47E001.hgt",
+        "N48W001.hgt",
+        "N48E000.hgt",
+        "N48E001.hgt"
+      ]
+    },
+    {
+      "id": "vendee",
+      "name": "Vend\u00e9e",
+      "bbox": {
+        "west": -2.62,
+        "south": 46.0449,
+        "east": -0.32,
+        "north": 47.305
+      },
+      "tiles": [
+        "N46W003.hgt",
+        "N46W002.hgt",
+        "N46W001.hgt",
+        "N47W003.hgt",
+        "N47W002.hgt",
+        "N47W001.hgt"
+      ]
+    },
+    {
+      "id": "aisne",
+      "name": "Aisne",
+      "bbox": {
+        "west": 2.7399,
+        "south": 48.6149,
+        "east": 4.4751,
+        "north": 50.2901
+      },
+      "tiles": [
+        "N48E002.hgt",
+        "N48E003.hgt",
+        "N48E004.hgt",
+        "N49E002.hgt",
+        "N49E003.hgt",
+        "N49E004.hgt",
+        "N50E002.hgt",
+        "N50E003.hgt",
+        "N50E004.hgt"
+      ]
+    },
+    {
+      "id": "oise",
+      "name": "Oise",
+      "bbox": {
+        "west": 1.47,
+        "south": 48.8399,
+        "east": 3.385,
+        "north": 49.985
+      },
+      "tiles": [
+        "N48E001.hgt",
+        "N48E002.hgt",
+        "N48E003.hgt",
+        "N49E001.hgt",
+        "N49E002.hgt",
+        "N49E003.hgt"
+      ]
+    },
+    {
+      "id": "somme",
+      "name": "Somme",
+      "bbox": {
+        "west": 1.16,
+        "south": 49.3499,
+        "east": 3.425,
+        "north": 50.585
+      },
+      "tiles": [
+        "N49E001.hgt",
+        "N49E002.hgt",
+        "N49E003.hgt",
+        "N50E001.hgt",
+        "N50E002.hgt",
+        "N50E003.hgt"
+      ]
+    },
+    {
+      "id": "charente",
+      "name": "Charente",
+      "bbox": {
+        "west": -0.6851,
+        "south": 44.9749,
+        "east": 1.165,
+        "north": 46.36
+      },
+      "tiles": [
+        "N44W001.hgt",
+        "N44E000.hgt",
+        "N44E001.hgt",
+        "N45W001.hgt",
+        "N45E000.hgt",
+        "N45E001.hgt",
+        "N46W001.hgt",
+        "N46E000.hgt",
+        "N46E001.hgt"
+      ]
+    },
+    {
+      "id": "charente_maritime",
+      "name": "Charente-Maritime",
+      "bbox": {
+        "west": -1.785,
+        "south": 44.87,
+        "east": 0.225,
+        "north": 46.5901
+      },
+      "tiles": [
+        "N44W002.hgt",
+        "N44W001.hgt",
+        "N44E000.hgt",
+        "N45W002.hgt",
+        "N45W001.hgt",
+        "N45E000.hgt",
+        "N46W002.hgt",
+        "N46W001.hgt",
+        "N46E000.hgt"
+      ]
+    },
+    {
+      "id": "deux_sevres",
+      "name": "Deux-S\u00e8vres",
+      "bbox": {
+        "west": -1.125,
+        "south": 45.75,
+        "east": 0.44,
+        "north": 47.3301
+      },
+      "tiles": [
+        "N45W002.hgt",
+        "N45W001.hgt",
+        "N45E000.hgt",
+        "N46W002.hgt",
+        "N46W001.hgt",
+        "N46E000.hgt",
+        "N47W002.hgt",
+        "N47W001.hgt",
+        "N47E000.hgt"
+      ]
+    },
+    {
+      "id": "vienne",
+      "name": "Vienne",
+      "bbox": {
+        "west": -0.325,
+        "south": 45.83,
+        "east": 1.435,
+        "north": 47.3951
+      },
+      "tiles": [
+        "N45W001.hgt",
+        "N45E000.hgt",
+        "N45E001.hgt",
+        "N46W001.hgt",
+        "N46E000.hgt",
+        "N46E001.hgt",
+        "N47W001.hgt",
+        "N47E000.hgt",
+        "N47E001.hgt"
+      ]
+    },
+    {
+      "id": "alpes_de_haute_provence",
+      "name": "Alpes-de-Haute-Provence",
+      "bbox": {
+        "west": 5.28,
+        "south": 43.4499,
+        "east": 7.19,
+        "north": 44.88
+      },
+      "tiles": [
+        "N43E005.hgt",
+        "N43E006.hgt",
+        "N43E007.hgt",
+        "N44E005.hgt",
+        "N44E006.hgt",
+        "N44E007.hgt"
+      ]
+    },
+    {
+      "id": "alpes_maritimes",
+      "name": "Alpes-Maritimes",
+      "bbox": {
+        "west": 6.415,
+        "south": 43.26,
+        "east": 7.94,
+        "north": 44.5801
+      },
+      "tiles": [
+        "N43E006.hgt",
+        "N43E007.hgt",
+        "N44E006.hgt",
+        "N44E007.hgt"
+      ]
+    },
+    {
+      "id": "bouches_du_rhone",
+      "name": "Bouches-du-Rh\u00f4ne",
+      "bbox": {
+        "west": 4.01,
+        "south": 42.9349,
+        "east": 6.035,
+        "north": 44.1451
+      },
+      "tiles": [
+        "N42E004.hgt",
+        "N42E005.hgt",
+        "N42E006.hgt",
+        "N43E004.hgt",
+        "N43E005.hgt",
+        "N43E006.hgt",
+        "N44E004.hgt",
+        "N44E005.hgt",
+        "N44E006.hgt"
+      ]
+    },
+    {
+      "id": "hautes_alpes",
+      "name": "Hautes-Alpes",
+      "bbox": {
+        "west": 5.2,
+        "south": 43.9649,
+        "east": 7.295,
+        "north": 45.3451
+      },
+      "tiles": [
+        "N43E005.hgt",
+        "N43E006.hgt",
+        "N43E007.hgt",
+        "N44E005.hgt",
+        "N44E006.hgt",
+        "N44E007.hgt",
+        "N45E005.hgt",
+        "N45E006.hgt",
+        "N45E007.hgt"
+      ]
+    },
+    {
+      "id": "var",
+      "name": "Var",
+      "bbox": {
+        "west": 5.4349,
+        "south": 42.76,
+        "east": 7.155,
+        "north": 44.03
+      },
+      "tiles": [
+        "N42E005.hgt",
+        "N42E006.hgt",
+        "N42E007.hgt",
+        "N43E005.hgt",
+        "N43E006.hgt",
+        "N43E007.hgt",
+        "N44E005.hgt",
+        "N44E006.hgt",
+        "N44E007.hgt"
+      ]
+    },
+    {
+      "id": "vaucluse",
+      "name": "Vaucluse",
+      "bbox": {
+        "west": 4.43,
+        "south": 43.44,
+        "east": 5.9801,
+        "north": 44.6501
+      },
+      "tiles": [
+        "N43E004.hgt",
+        "N43E005.hgt",
+        "N44E004.hgt",
+        "N44E005.hgt"
+      ]
+    },
+    {
+      "id": "ain",
+      "name": "Ain",
+      "bbox": {
+        "west": 4.51,
+        "south": 45.39,
+        "east": 6.3901,
+        "north": 46.74
+      },
+      "tiles": [
+        "N45E004.hgt",
+        "N45E005.hgt",
+        "N45E006.hgt",
+        "N46E004.hgt",
+        "N46E005.hgt",
+        "N46E006.hgt"
+      ]
+    },
+    {
+      "id": "ardeche",
+      "name": "Ard\u00e8che",
+      "bbox": {
+        "west": 3.64,
+        "south": 44.0449,
+        "east": 5.1051,
+        "north": 45.585
+      },
+      "tiles": [
+        "N44E003.hgt",
+        "N44E004.hgt",
+        "N44E005.hgt",
+        "N45E003.hgt",
+        "N45E004.hgt",
+        "N45E005.hgt"
+      ]
+    },
+    {
+      "id": "drome",
+      "name": "Dr\u00f4me",
+      "bbox": {
+        "west": 4.425,
+        "south": 43.8949,
+        "east": 6.05,
+        "north": 45.5651
+      },
+      "tiles": [
+        "N43E004.hgt",
+        "N43E005.hgt",
+        "N43E006.hgt",
+        "N44E004.hgt",
+        "N44E005.hgt",
+        "N44E006.hgt",
+        "N45E004.hgt",
+        "N45E005.hgt",
+        "N45E006.hgt"
+      ]
+    },
+    {
+      "id": "haute_savoie",
+      "name": "Haute-Savoie",
+      "bbox": {
+        "west": 5.59,
+        "south": 45.4599,
+        "east": 7.265,
+        "north": 46.6751
+      },
+      "tiles": [
+        "N45E005.hgt",
+        "N45E006.hgt",
+        "N45E007.hgt",
+        "N46E005.hgt",
+        "N46E006.hgt",
+        "N46E007.hgt"
+      ]
+    },
+    {
+      "id": "isere",
+      "name": "Is\u00e8re",
+      "bbox": {
+        "west": 4.5199,
+        "south": 44.4749,
+        "east": 6.575,
+        "north": 46.1051
+      },
+      "tiles": [
+        "N44E004.hgt",
+        "N44E005.hgt",
+        "N44E006.hgt",
+        "N45E004.hgt",
+        "N45E005.hgt",
+        "N45E006.hgt",
+        "N46E004.hgt",
+        "N46E005.hgt",
+        "N46E006.hgt"
+      ]
+    },
+    {
+      "id": "loire",
+      "name": "Loire",
+      "bbox": {
+        "west": 3.47,
+        "south": 45.01,
+        "east": 4.9801,
+        "north": 46.4951
+      },
+      "tiles": [
+        "N45E003.hgt",
+        "N45E004.hgt",
+        "N46E003.hgt",
+        "N46E004.hgt"
+      ]
+    },
+    {
+      "id": "rhone",
+      "name": "Rh\u00f4ne",
+      "bbox": {
+        "west": 4.04,
+        "south": 45.25,
+        "east": 5.364,
+        "north": 46.5101
+      },
+      "tiles": [
+        "N45E004.hgt",
+        "N45E005.hgt",
+        "N46E004.hgt",
+        "N46E005.hgt"
+      ]
+    },
+    {
+      "id": "savoie",
+      "name": "Savoie",
+      "bbox": {
+        "west": 5.3999,
+        "south": 44.83,
+        "east": 7.405,
+        "north": 46.1601
+      },
+      "tiles": [
+        "N44E005.hgt",
+        "N44E006.hgt",
+        "N44E007.hgt",
+        "N45E005.hgt",
+        "N45E006.hgt",
+        "N45E007.hgt",
+        "N46E005.hgt",
+        "N46E006.hgt",
+        "N46E007.hgt"
+      ]
+    },
+    {
+      "id": "arnsberg",
+      "name": "Arnsberg",
+      "bbox": {
+        "west": 6.88,
+        "south": 50.4649,
+        "east": 9.19,
+        "north": 51.9651
+      },
+      "tiles": [
+        "N50E006.hgt",
+        "N50E007.hgt",
+        "N50E008.hgt",
+        "N50E009.hgt",
+        "N51E006.hgt",
+        "N51E007.hgt",
+        "N51E008.hgt",
+        "N51E009.hgt"
+      ]
+    },
+    {
+      "id": "detmold",
+      "name": "Detmold",
+      "bbox": {
+        "west": 7.855,
+        "south": 51.22,
+        "east": 9.68,
+        "north": 52.75
+      },
+      "tiles": [
+        "N51E007.hgt",
+        "N51E008.hgt",
+        "N51E009.hgt",
+        "N52E007.hgt",
+        "N52E008.hgt",
+        "N52E009.hgt"
+      ]
+    },
+    {
+      "id": "dusseldorf",
+      "name": "Dusseldorf",
+      "bbox": {
+        "west": 5.725,
+        "south": 50.7949,
+        "east": 7.535,
+        "north": 52.125
+      },
+      "tiles": [
+        "N50E005.hgt",
+        "N50E006.hgt",
+        "N50E007.hgt",
+        "N51E005.hgt",
+        "N51E006.hgt",
+        "N51E007.hgt",
+        "N52E005.hgt",
+        "N52E006.hgt",
+        "N52E007.hgt"
+      ]
+    },
+    {
+      "id": "koln",
+      "name": "Koln",
+      "bbox": {
+        "west": 5.6449,
+        "south": 50.1049,
+        "east": 8.01,
+        "north": 51.4701
+      },
+      "tiles": [
+        "N50E005.hgt",
+        "N50E006.hgt",
+        "N50E007.hgt",
+        "N50E008.hgt",
+        "N51E005.hgt",
+        "N51E006.hgt",
+        "N51E007.hgt",
+        "N51E008.hgt"
+      ]
+    },
+    {
+      "id": "munster",
+      "name": "Munster",
+      "bbox": {
+        "west": 6.165,
+        "south": 51.26,
+        "east": 8.54,
+        "north": 52.695
+      },
+      "tiles": [
+        "N51E006.hgt",
+        "N51E007.hgt",
+        "N51E008.hgt",
+        "N52E006.hgt",
+        "N52E007.hgt",
+        "N52E008.hgt"
+      ]
+    },
+    {
+      "id": "albania",
+      "name": "Albania",
+      "bbox": {
+        "west": 18.6964,
+        "south": 39.4273,
+        "east": 21.2629,
+        "north": 42.8632
+      },
+      "tiles": [
+        "N39E018.hgt",
+        "N39E019.hgt",
+        "N39E020.hgt",
+        "N39E021.hgt",
+        "N40E018.hgt",
+        "N40E019.hgt",
+        "N40E020.hgt",
+        "N40E021.hgt",
+        "N41E018.hgt",
+        "N41E019.hgt",
+        "N41E020.hgt",
+        "N41E021.hgt",
+        "N42E018.hgt",
+        "N42E019.hgt",
+        "N42E020.hgt",
+        "N42E021.hgt"
+      ]
+    },
+    {
+      "id": "belarus",
+      "name": "Belarus",
+      "bbox": {
+        "west": 22.9748,
+        "south": 51.0344,
+        "east": 32.9695,
+        "north": 56.3739
+      },
+      "tiles": [
+        "N51E022.hgt",
+        "N51E023.hgt",
+        "N51E024.hgt",
+        "N51E025.hgt",
+        "N51E026.hgt",
+        "N51E027.hgt",
+        "N51E028.hgt",
+        "N51E029.hgt",
+        "N51E030.hgt",
+        "N51E031.hgt",
+        "N51E032.hgt",
+        "N52E022.hgt",
+        "N52E023.hgt",
+        "N52E024.hgt",
+        "N52E025.hgt",
+        "N52E026.hgt",
+        "N52E027.hgt",
+        "N52E028.hgt",
+        "N52E029.hgt",
+        "N52E030.hgt",
+        "N52E031.hgt",
+        "N52E032.hgt",
+        "N53E022.hgt",
+        "N53E023.hgt",
+        "N53E024.hgt",
+        "N53E025.hgt",
+        "N53E026.hgt",
+        "N53E027.hgt",
+        "N53E028.hgt",
+        "N53E029.hgt",
+        "N53E030.hgt",
+        "N53E031.hgt",
+        "N53E032.hgt",
+        "N54E022.hgt",
+        "N54E023.hgt",
+        "N54E024.hgt",
+        "N54E025.hgt",
+        "N54E026.hgt",
+        "N54E027.hgt",
+        "N54E028.hgt",
+        "N54E029.hgt",
+        "N54E030.hgt",
+        "N54E031.hgt",
+        "N54E032.hgt",
+        "N55E022.hgt",
+        "N55E023.hgt",
+        "N55E024.hgt",
+        "N55E025.hgt",
+        "N55E026.hgt",
+        "N55E027.hgt",
+        "N55E028.hgt",
+        "N55E029.hgt",
+        "N55E030.hgt",
+        "N55E031.hgt",
+        "N55E032.hgt",
+        "N56E022.hgt",
+        "N56E023.hgt",
+        "N56E024.hgt",
+        "N56E025.hgt",
+        "N56E026.hgt",
+        "N56E027.hgt",
+        "N56E028.hgt",
+        "N56E029.hgt",
+        "N56E030.hgt",
+        "N56E031.hgt",
+        "N56E032.hgt"
+      ]
+    },
+    {
+      "id": "bosnia-herzegovina",
+      "name": "Bosnia-Herzegovina",
+      "bbox": {
+        "west": 15.5156,
+        "south": 42.3523,
+        "east": 19.8264,
+        "north": 45.4781
+      },
+      "tiles": [
+        "N42E015.hgt",
+        "N42E016.hgt",
+        "N42E017.hgt",
+        "N42E018.hgt",
+        "N42E019.hgt",
+        "N43E015.hgt",
+        "N43E016.hgt",
+        "N43E017.hgt",
+        "N43E018.hgt",
+        "N43E019.hgt",
+        "N44E015.hgt",
+        "N44E016.hgt",
+        "N44E017.hgt",
+        "N44E018.hgt",
+        "N44E019.hgt",
+        "N45E015.hgt",
+        "N45E016.hgt",
+        "N45E017.hgt",
+        "N45E018.hgt",
+        "N45E019.hgt"
+      ]
+    },
+    {
+      "id": "bulgaria",
+      "name": "Bulgaria",
+      "bbox": {
+        "west": 22.1487,
+        "south": 41.0268,
+        "east": 29.3882,
+        "north": 44.4178
+      },
+      "tiles": [
+        "N41E022.hgt",
+        "N41E023.hgt",
+        "N41E024.hgt",
+        "N41E025.hgt",
+        "N41E026.hgt",
+        "N41E027.hgt",
+        "N41E028.hgt",
+        "N41E029.hgt",
+        "N42E022.hgt",
+        "N42E023.hgt",
+        "N42E024.hgt",
+        "N42E025.hgt",
+        "N42E026.hgt",
+        "N42E027.hgt",
+        "N42E028.hgt",
+        "N42E029.hgt",
+        "N43E022.hgt",
+        "N43E023.hgt",
+        "N43E024.hgt",
+        "N43E025.hgt",
+        "N43E026.hgt",
+        "N43E027.hgt",
+        "N43E028.hgt",
+        "N43E029.hgt",
+        "N44E022.hgt",
+        "N44E023.hgt",
+        "N44E024.hgt",
+        "N44E025.hgt",
+        "N44E026.hgt",
+        "N44E027.hgt",
+        "N44E028.hgt",
+        "N44E029.hgt"
+      ]
+    },
+    {
+      "id": "croatia",
+      "name": "Croatia",
+      "bbox": {
+        "west": 12.8891,
+        "south": 41.9648,
+        "east": 19.66,
+        "north": 46.7576
+      },
+      "tiles": [
+        "N41E012.hgt",
+        "N41E013.hgt",
+        "N41E014.hgt",
+        "N41E015.hgt",
+        "N41E016.hgt",
+        "N41E017.hgt",
+        "N41E018.hgt",
+        "N41E019.hgt",
+        "N42E012.hgt",
+        "N42E013.hgt",
+        "N42E014.hgt",
+        "N42E015.hgt",
+        "N42E016.hgt",
+        "N42E017.hgt",
+        "N42E018.hgt",
+        "N42E019.hgt",
+        "N43E012.hgt",
+        "N43E013.hgt",
+        "N43E014.hgt",
+        "N43E015.hgt",
+        "N43E016.hgt",
+        "N43E017.hgt",
+        "N43E018.hgt",
+        "N43E019.hgt",
+        "N44E012.hgt",
+        "N44E013.hgt",
+        "N44E014.hgt",
+        "N44E015.hgt",
+        "N44E016.hgt",
+        "N44E017.hgt",
+        "N44E018.hgt",
+        "N44E019.hgt",
+        "N45E012.hgt",
+        "N45E013.hgt",
+        "N45E014.hgt",
+        "N45E015.hgt",
+        "N45E016.hgt",
+        "N45E017.hgt",
+        "N45E018.hgt",
+        "N45E019.hgt",
+        "N46E012.hgt",
+        "N46E013.hgt",
+        "N46E014.hgt",
+        "N46E015.hgt",
+        "N46E016.hgt",
+        "N46E017.hgt",
+        "N46E018.hgt",
+        "N46E019.hgt"
+      ]
+    },
+    {
+      "id": "cyprus",
+      "name": "Cyprus",
+      "bbox": {
+        "west": 31.7524,
+        "south": 34.0337,
+        "east": 35.1615,
+        "north": 36.2033
+      },
+      "tiles": [
+        "N34E031.hgt",
+        "N34E032.hgt",
+        "N34E033.hgt",
+        "N34E034.hgt",
+        "N34E035.hgt",
+        "N35E031.hgt",
+        "N35E032.hgt",
+        "N35E033.hgt",
+        "N35E034.hgt",
+        "N35E035.hgt",
+        "N36E031.hgt",
+        "N36E032.hgt",
+        "N36E033.hgt",
+        "N36E034.hgt",
+        "N36E035.hgt"
+      ]
+    },
+    {
+      "id": "estonia",
+      "name": "Estonia",
+      "bbox": {
+        "west": 20.6516,
+        "south": 57.2976,
+        "east": 28.4143,
+        "north": 60.1971
+      },
+      "tiles": [
+        "N57E020.hgt",
+        "N57E021.hgt",
+        "N57E022.hgt",
+        "N57E023.hgt",
+        "N57E024.hgt",
+        "N57E025.hgt",
+        "N57E026.hgt",
+        "N57E027.hgt",
+        "N57E028.hgt",
+        "N58E020.hgt",
+        "N58E021.hgt",
+        "N58E022.hgt",
+        "N58E023.hgt",
+        "N58E024.hgt",
+        "N58E025.hgt",
+        "N58E026.hgt",
+        "N58E027.hgt",
+        "N58E028.hgt",
+        "N59E020.hgt",
+        "N59E021.hgt",
+        "N59E022.hgt",
+        "N59E023.hgt",
+        "N59E024.hgt",
+        "N59E025.hgt",
+        "N59E026.hgt",
+        "N59E027.hgt",
+        "N59E028.hgt",
+        "N60E020.hgt",
+        "N60E021.hgt",
+        "N60E022.hgt",
+        "N60E023.hgt",
+        "N60E024.hgt",
+        "N60E025.hgt",
+        "N60E026.hgt",
+        "N60E027.hgt",
+        "N60E028.hgt"
+      ]
+    },
+    {
+      "id": "faroe-islands",
+      "name": "Faroe Islands",
+      "bbox": {
+        "west": -8.8902,
+        "south": 60.6663,
+        "east": -5.3151,
+        "north": 63.1053
+      },
+      "tiles": [
+        "N60W009.hgt",
+        "N60W008.hgt",
+        "N60W007.hgt",
+        "N60W006.hgt",
+        "N61W009.hgt",
+        "N61W008.hgt",
+        "N61W007.hgt",
+        "N61W006.hgt",
+        "N62W009.hgt",
+        "N62W008.hgt",
+        "N62W007.hgt",
+        "N62W006.hgt",
+        "N63W009.hgt",
+        "N63W008.hgt",
+        "N63W007.hgt",
+        "N63W006.hgt"
+      ]
+    }
+  ]
+}

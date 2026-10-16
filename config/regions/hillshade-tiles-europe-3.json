@@ -1,5 +1,6 @@
 {
-  "description": "OSMFR Europe 3 hillshade HGT tile catalogue",
+  "description": "OSMFR europe-3 hillshade HGT tile catalogue",
+  "catalogue_id": "europe-3",
   "margin_degrees": 0.2,
   "region_count": 172,
   "regions": [
@@ -10,7 +11,7 @@
         "west": 12.199,
         "south": 43.69,
         "east": 12.72,
-        "north": 44.196
+        "north": 44.1961
       },
       "tiles": [
         "N43E012.hgt",
@@ -22,7 +23,7 @@
       "name": "Vatican City",
       "bbox": {
         "west": 12.111,
-        "south": 41.527,
+        "south": 41.5269,
         "east": 12.87,
         "north": 42.265
       },
@@ -36,9 +37,9 @@
       "name": "Aveiro",
       "bbox": {
         "west": -8.988,
-        "south": 40.075,
+        "south": 40.0749,
         "east": -7.885,
-        "north": 41.284
+        "north": 41.2841
       },
       "tiles": [
         "N40W009.hgt",
@@ -52,9 +53,9 @@
       "name": "Azores",
       "bbox": {
         "west": -31.78,
-        "south": 36.505,
+        "south": 36.5049,
         "east": -24.31,
-        "north": 40.145
+        "north": 40.1451
       },
       "tiles": [
         "N36W032.hgt",
@@ -104,9 +105,9 @@
       "name": "Beja",
       "bbox": {
         "west": -9.04,
-        "south": 37.1,
+        "south": 37.0999,
         "east": -6.71,
-        "north": 38.55
+        "north": 38.5501
       },
       "tiles": [
         "N37W010.hgt",
@@ -124,9 +125,9 @@
       "name": "Braga",
       "bbox": {
         "west": -9.03,
-        "south": 41.1,
+        "south": 41.0999,
         "east": -7.59,
-        "north": 42.04
+        "north": 42.0401
       },
       "tiles": [
         "N41W010.hgt",
@@ -165,7 +166,7 @@
         "west": -8.515,
         "south": 39.315,
         "east": -6.645,
-        "north": 40.635
+        "north": 40.6351
       },
       "tiles": [
         "N39W009.hgt",
@@ -199,9 +200,9 @@
       "name": "Evora",
       "bbox": {
         "west": -8.88,
-        "south": 37.935,
+        "south": 37.9349,
         "east": -6.885,
-        "north": 39.245
+        "north": 39.2451
       },
       "tiles": [
         "N37W009.hgt",
@@ -220,7 +221,7 @@
       "name": "Faro",
       "bbox": {
         "west": -9.215,
-        "south": 36.74,
+        "south": 36.7399,
         "east": -7.175,
         "north": 37.75
       },
@@ -240,7 +241,7 @@
         "west": -8.07,
         "south": 40.01,
         "east": -6.56,
-        "north": 41.4
+        "north": 41.4001
       },
       "tiles": [
         "N40W009.hgt",
@@ -256,7 +257,7 @@
       "name": "Leiria",
       "bbox": {
         "west": -9.77,
-        "south": 38.99,
+        "south": 38.9899,
         "east": -7.89,
         "north": 40.31
       },
@@ -277,9 +278,9 @@
       "name": "Lisbon",
       "bbox": {
         "west": -9.705,
-        "south": 38.469,
+        "south": 38.4689,
         "east": -8.578,
-        "north": 39.522
+        "north": 39.5221
       },
       "tiles": [
         "N38W010.hgt",
@@ -320,9 +321,9 @@
       "name": "Portalegre",
       "bbox": {
         "west": -8.565,
-        "south": 38.53,
+        "south": 38.5299,
         "east": -6.73,
-        "north": 39.885
+        "north": 39.8851
       },
       "tiles": [
         "N38W009.hgt",
@@ -338,7 +339,7 @@
       "name": "Porto",
       "bbox": {
         "west": -8.993,
-        "south": 40.797,
+        "south": 40.7969,
         "east": -7.672,
         "north": 41.676
       },
@@ -375,9 +376,9 @@
       "name": "Setubal",
       "bbox": {
         "west": -9.485,
-        "south": 37.53,
-        "east": -7.91,
-        "north": 39.065
+        "south": 37.5299,
+        "east": -7.9099,
+        "north": 39.0651
       },
       "tiles": [
         "N37W010.hgt",
@@ -396,9 +397,9 @@
       "name": "Viana Do Castelo",
       "bbox": {
         "west": -9.085,
-        "south": 41.402,
+        "south": 41.4019,
         "east": -7.879,
-        "north": 42.358
+        "north": 42.3581
       },
       "tiles": [
         "N41W010.hgt",
@@ -416,7 +417,7 @@
         "west": -8.34,
         "south": 40.9,
         "east": -6.95,
-        "north": 42.145
+        "north": 42.1451
       },
       "tiles": [
         "N40W009.hgt",
@@ -435,7 +436,7 @@
       "name": "Viseu",
       "bbox": {
         "west": -8.58,
-        "south": 40.105,
+        "south": 40.1049,
         "east": -7.085,
         "north": 41.435
       },
@@ -451,9 +452,9 @@
       "name": "Banskobystricky",
       "bbox": {
         "west": 18.26,
-        "south": 47.835,
+        "south": 47.8349,
         "east": 20.69,
-        "north": 49.165
+        "north": 49.1651
       },
       "tiles": [
         "N47E018.hgt",
@@ -474,7 +475,7 @@
         "west": 16.629,
         "south": 47.803,
         "east": 17.733,
-        "north": 48.858
+        "north": 48.8581
       },
       "tiles": [
         "N47E016.hgt",
@@ -488,7 +489,7 @@
       "name": "Kosicky",
       "bbox": {
         "west": 19.96,
-        "south": 48.115,
+        "south": 48.1149,
         "east": 22.61,
         "north": 49.24
       },
@@ -526,7 +527,7 @@
       "name": "Presovsky",
       "bbox": {
         "west": 19.665,
-        "south": 48.545,
+        "south": 48.5449,
         "east": 22.785,
         "north": 49.68
       },
@@ -548,7 +549,7 @@
         "west": 17.135,
         "south": 48.265,
         "east": 19.045,
-        "north": 49.54
+        "north": 49.5401
       },
       "tiles": [
         "N48E017.hgt",
@@ -585,7 +586,7 @@
       "name": "Zilinsky",
       "bbox": {
         "west": 18.105,
-        "south": 48.52,
+        "south": 48.5199,
         "east": 20.28,
         "north": 49.835
       },
@@ -624,7 +625,7 @@
       "bbox": {
         "west": -5.07,
         "south": 42.54,
-        "east": -2.93,
+        "east": -2.9299,
         "north": 43.735
       },
       "tiles": [
@@ -645,7 +646,7 @@
         "west": -4.8,
         "south": 39.665,
         "east": -2.835,
-        "north": 41.385
+        "north": 41.3851
       },
       "tiles": [
         "N39W005.hgt",
@@ -663,10 +664,10 @@
       "id": "comunidad_foral_de_navarra",
       "name": "Comunidad Foral de Navarra",
       "bbox": {
-        "west": -2.72,
+        "west": -2.7201,
         "south": 41.69,
-        "east": -0.505,
-        "north": 43.535
+        "east": -0.5049,
+        "north": 43.5351
       },
       "tiles": [
         "N41W003.hgt",
@@ -685,9 +686,9 @@
       "name": "Illes Balears",
       "bbox": {
         "west": 0.935,
-        "south": 38.42,
+        "south": 38.4199,
         "east": 4.55,
-        "north": 40.315
+        "north": 40.3151
       },
       "tiles": [
         "N38E000.hgt",
@@ -712,7 +713,7 @@
       "name": "La Rioja",
       "bbox": {
         "west": -3.355,
-        "south": 41.7,
+        "south": 41.6999,
         "east": -1.46,
         "north": 42.86
       },
@@ -729,8 +730,8 @@
       "id": "region_de_murcia",
       "name": "Region de Murcia",
       "bbox": {
-        "west": -2.565,
-        "south": 37.155,
+        "west": -2.5651,
+        "south": 37.1549,
         "east": -0.425,
         "north": 38.975
       },
@@ -988,7 +989,7 @@
       "name": "Norrbotten",
       "bbox": {
         "west": 15.155,
-        "south": 64.68,
+        "south": 64.6799,
         "east": 24.4,
         "north": 69.28
       },
@@ -1320,7 +1321,7 @@
         "west": 15.2,
         "south": 58.98,
         "east": 17.185,
-        "north": 60.415
+        "north": 60.4151
       },
       "tiles": [
         "N58E015.hgt",
@@ -1405,9 +1406,9 @@
       "name": "Appenzell Innerrhoden",
       "bbox": {
         "west": 9.106,
-        "south": 47.03,
+        "south": 47.0299,
         "east": 9.822,
-        "north": 47.648
+        "north": 47.6481
       },
       "tiles": [
         "N47E009.hgt"
@@ -1445,9 +1446,9 @@
       "name": "Bern",
       "bbox": {
         "west": 6.64,
-        "south": 46.105,
+        "south": 46.1049,
         "east": 8.675,
-        "north": 47.565
+        "north": 47.5651
       },
       "tiles": [
         "N46E006.hgt",
@@ -1463,9 +1464,9 @@
       "name": "Fribourg",
       "bbox": {
         "west": 6.538,
-        "south": 46.234,
+        "south": 46.2339,
         "east": 7.584,
-        "north": 47.211
+        "north": 47.2111
       },
       "tiles": [
         "N46E006.hgt",
@@ -1511,9 +1512,9 @@
       "name": "Grisons",
       "bbox": {
         "west": 8.43,
-        "south": 45.95,
+        "south": 45.9499,
         "east": 10.71,
-        "north": 47.285
+        "north": 47.2851
       },
       "tiles": [
         "N45E008.hgt",
@@ -1534,7 +1535,7 @@
         "west": 6.637,
         "south": 46.946,
         "east": 7.762,
-        "north": 47.708
+        "north": 47.7081
       },
       "tiles": [
         "N46E006.hgt",
@@ -1566,7 +1567,7 @@
         "west": 6.229,
         "south": 46.643,
         "east": 7.292,
-        "north": 47.37
+        "north": 47.3701
       },
       "tiles": [
         "N46E006.hgt",
@@ -1582,7 +1583,7 @@
         "west": 8.015,
         "south": 46.568,
         "east": 8.779,
-        "north": 47.224
+        "north": 47.2241
       },
       "tiles": [
         "N46E008.hgt",
@@ -1596,7 +1597,7 @@
         "west": 7.838,
         "south": 46.549,
         "east": 8.711,
-        "north": 47.184
+        "north": 47.1841
       },
       "tiles": [
         "N46E007.hgt",
@@ -1610,9 +1611,9 @@
       "name": "Saint Gallen",
       "bbox": {
         "west": 8.592,
-        "south": 46.669,
+        "south": 46.6689,
         "east": 9.878,
-        "north": 47.754
+        "north": 47.7541
       },
       "tiles": [
         "N46E008.hgt",
@@ -1658,7 +1659,7 @@
       "name": "Solothurn",
       "bbox": {
         "west": 7.136,
-        "south": 46.871,
+        "south": 46.8709,
         "east": 8.235,
         "north": 47.707
       },
@@ -1674,7 +1675,7 @@
       "name": "Thurgau",
       "bbox": {
         "west": 8.464,
-        "south": 47.172,
+        "south": 47.1719,
         "east": 9.711,
         "north": 47.899
       },
@@ -1690,7 +1691,7 @@
         "west": 8.178,
         "south": 45.614,
         "east": 9.364,
-        "north": 46.836
+        "north": 46.8361
       },
       "tiles": [
         "N45E008.hgt",
@@ -1738,9 +1739,9 @@
       "name": "Vaud",
       "bbox": {
         "west": 5.85,
-        "south": 45.965,
+        "south": 45.9649,
         "east": 7.47,
-        "north": 47.205
+        "north": 47.2051
       },
       "tiles": [
         "N45E005.hgt",
@@ -1759,9 +1760,9 @@
       "name": "Zug",
       "bbox": {
         "west": 8.191,
-        "south": 46.877,
+        "south": 46.8769,
         "east": 8.905,
-        "north": 47.452
+        "north": 47.4521
       },
       "tiles": [
         "N46E008.hgt",
@@ -1775,7 +1776,7 @@
         "west": 8.154,
         "south": 46.955,
         "east": 9.189,
-        "north": 47.898
+        "north": 47.8981
       },
       "tiles": [
         "N46E008.hgt",
@@ -1836,9 +1837,9 @@
       "name": "Black Sea",
       "bbox": {
         "west": 30.32,
-        "south": 39.6,
-        "east": 42.83,
-        "north": 42.54
+        "south": 39.5999,
+        "east": 42.8301,
+        "north": 42.5401
       },
       "tiles": [
         "N39E030.hgt",
@@ -1900,9 +1901,9 @@
       "name": "Central Anatolia",
       "bbox": {
         "west": 29.77,
-        "south": 36.215,
+        "south": 36.2149,
         "east": 38.99,
-        "north": 41.315
+        "north": 41.3151
       },
       "tiles": [
         "N36E029.hgt",
@@ -1973,7 +1974,7 @@
       "bbox": {
         "west": 37.04,
         "south": 36.745,
-        "east": 45.04,
+        "east": 45.0401,
         "north": 41.82
       },
       "tiles": [
@@ -2038,7 +2039,7 @@
       "name": "Marmara",
       "bbox": {
         "west": 25.35,
-        "south": 38.85,
+        "south": 38.8499,
         "east": 31.235,
         "north": 42.325
       },
@@ -2085,9 +2086,9 @@
       "name": "Mediterranean",
       "bbox": {
         "west": 28.97,
-        "south": 35.585,
-        "east": 37.97,
-        "north": 38.83
+        "south": 35.5849,
+        "east": 37.9701,
+        "north": 38.8301
       },
       "tiles": [
         "N35E028.hgt",
@@ -2136,9 +2137,9 @@
       "id": "southeastern_anatolia",
       "name": "Southeastern Anatolia",
       "bbox": {
-        "west": 36.225,
-        "south": 36.41,
-        "east": 43.72,
+        "west": 36.2249,
+        "south": 36.4099,
+        "east": 43.7201,
         "north": 38.935
       },
       "tiles": [
@@ -2173,7 +2174,7 @@
       "name": "Cherkasy Oblast",
       "bbox": {
         "west": 29.385,
-        "south": 48.23,
+        "south": 48.2299,
         "east": 33.115,
         "north": 50.45
       },
@@ -2201,7 +2202,7 @@
       "bbox": {
         "west": 30.26,
         "south": 50.125,
-        "east": 33.72,
+        "east": 33.7201,
         "north": 52.6
       },
       "tiles": [
@@ -2224,9 +2225,9 @@
       "name": "Chernivtsi Oblast",
       "bbox": {
         "west": 24.69,
-        "south": 47.505,
+        "south": 47.5049,
         "east": 27.755,
-        "north": 48.895
+        "north": 48.8951
       },
       "tiles": [
         "N47E024.hgt",
@@ -2244,8 +2245,8 @@
       "name": "Crimea",
       "bbox": {
         "west": 31.98,
-        "south": 43.965,
-        "east": 36.9,
+        "south": 43.9649,
+        "east": 36.9001,
         "north": 46.45
       },
       "tiles": [
@@ -2279,10 +2280,10 @@
       "id": "dnipropetrovsk_oblast",
       "name": "Dnipropetrovsk Oblast",
       "bbox": {
-        "west": 32.74,
+        "west": 32.7399,
         "south": 47.235,
         "east": 37.155,
-        "north": 49.415
+        "north": 49.4151
       },
       "tiles": [
         "N47E032.hgt",
@@ -2312,7 +2313,7 @@
         "west": 36.32,
         "south": 46.47,
         "east": 39.31,
-        "north": 49.455
+        "north": 49.4551
       },
       "tiles": [
         "N46E036.hgt",
@@ -2338,9 +2339,9 @@
       "name": "Ivano-frankivsk Oblast",
       "bbox": {
         "west": 23.325,
-        "south": 47.505,
+        "south": 47.5049,
         "east": 25.875,
-        "north": 49.77
+        "north": 49.7701
       },
       "tiles": [
         "N47E023.hgt",
@@ -2359,8 +2360,8 @@
       "name": "Kharkiv Oblast",
       "bbox": {
         "west": 34.635,
-        "south": 48.31,
-        "east": 38.315,
+        "south": 48.3099,
+        "east": 38.3151,
         "north": 50.68
       },
       "tiles": [
@@ -2386,8 +2387,8 @@
       "name": "Kherson Oblast",
       "bbox": {
         "west": 30.94,
-        "south": 45.535,
-        "east": 35.69,
+        "south": 45.5349,
+        "east": 35.6901,
         "north": 47.82
       },
       "tiles": [
@@ -2416,9 +2417,9 @@
       "name": "Khmelnytskyi Oblast",
       "bbox": {
         "west": 25.915,
-        "south": 48.23,
+        "south": 48.2299,
         "east": 28.12,
-        "north": 50.815
+        "north": 50.8151
       },
       "tiles": [
         "N48E025.hgt",
@@ -2454,9 +2455,9 @@
       "name": "Kiev Oblast",
       "bbox": {
         "west": 29.05,
-        "south": 48.96,
+        "south": 48.9599,
         "east": 32.38,
-        "north": 51.775
+        "north": 51.7751
       },
       "tiles": [
         "N48E029.hgt",
@@ -2482,9 +2483,9 @@
       "name": "Kirovohrad Oblast",
       "bbox": {
         "west": 29.53,
-        "south": 47.53,
+        "south": 47.5299,
         "east": 34.115,
-        "north": 49.465
+        "north": 49.4651
       },
       "tiles": [
         "N47E029.hgt",
@@ -2512,7 +2513,7 @@
       "name": "Luhansk Oblast",
       "bbox": {
         "west": 37.62,
-        "south": 47.605,
+        "south": 47.6049,
         "east": 40.445,
         "north": 50.31
       },
@@ -2542,7 +2543,7 @@
         "west": 22.425,
         "south": 48.5,
         "east": 25.645,
-        "north": 50.87
+        "north": 50.8701
       },
       "tiles": [
         "N48E022.hgt",
@@ -2591,9 +2592,9 @@
       "name": "Odessa Oblast",
       "bbox": {
         "west": 27.995,
-        "south": 44.835,
+        "south": 44.8349,
         "east": 31.525,
-        "north": 48.455
+        "north": 48.4551
       },
       "tiles": [
         "N44E027.hgt",
@@ -2628,9 +2629,9 @@
       "name": "Poltava Oblast",
       "bbox": {
         "west": 31.865,
-        "south": 48.505,
+        "south": 48.5049,
         "east": 35.71,
-        "north": 50.775
+        "north": 50.7751
       },
       "tiles": [
         "N48E031.hgt",
@@ -2655,7 +2656,7 @@
       "name": "Rivne Oblast",
       "bbox": {
         "west": 24.865,
-        "south": 49.785,
+        "south": 49.7849,
         "east": 27.955,
         "north": 52.17
       },
@@ -2683,9 +2684,9 @@
       "name": "Sevastopol",
       "bbox": {
         "west": 32.887,
-        "south": 43.987,
-        "east": 34.129,
-        "north": 45.145
+        "south": 43.9869,
+        "east": 34.1291,
+        "north": 45.1451
       },
       "tiles": [
         "N43E032.hgt",
@@ -2703,9 +2704,9 @@
       "id": "sumy_oblast",
       "name": "Sumy Oblast",
       "bbox": {
-        "west": 32.725,
+        "west": 32.7249,
         "south": 49.89,
-        "east": 35.915,
+        "east": 35.9151,
         "north": 52.585
       },
       "tiles": [
@@ -2732,7 +2733,7 @@
       "name": "Ternopil Oblast",
       "bbox": {
         "west": 24.5,
-        "south": 48.285,
+        "south": 48.2849,
         "east": 26.665,
         "north": 50.485
       },
@@ -2783,7 +2784,7 @@
         "west": 23.385,
         "south": 50.065,
         "east": 26.325,
-        "north": 52.19
+        "north": 52.1901
       },
       "tiles": [
         "N50E023.hgt",
@@ -2807,7 +2808,7 @@
         "west": 21.915,
         "south": 47.675,
         "east": 24.845,
-        "north": 49.315
+        "north": 49.3151
       },
       "tiles": [
         "N47E021.hgt",
@@ -2828,9 +2829,9 @@
       "id": "zaporizhia_oblast",
       "name": "Zaporizhia Oblast",
       "bbox": {
-        "west": 33.92,
+        "west": 33.9199,
         "south": 45.925,
-        "east": 37.47,
+        "east": 37.4701,
         "north": 48.365
       },
       "tiles": [
@@ -2861,9 +2862,9 @@
       "name": "Zhytomyr Oblast",
       "bbox": {
         "west": 26.97,
-        "south": 49.365,
+        "south": 49.3649,
         "east": 29.955,
-        "north": 51.9
+        "north": 51.9001
       },
       "tiles": [
         "N49E026.hgt",
@@ -2886,8 +2887,8 @@
       "bbox": {
         "west": -8.395,
         "south": 53.65,
-        "east": -4.86,
-        "north": 55.665
+        "east": -4.8599,
+        "north": 55.6651
       },
       "tiles": [
         "N53W009.hgt",
@@ -2914,7 +2915,7 @@
         "west": -3.36,
         "south": 35.72,
         "east": -1.41,
-        "north": 38.135
+        "north": 38.1351
       },
       "tiles": [
         "N35W004.hgt",
@@ -2936,9 +2937,9 @@
       "name": "Cadiz",
       "bbox": {
         "west": -6.66,
-        "south": 35.78,
+        "south": 35.7799,
         "east": -4.865,
-        "north": 37.27
+        "north": 37.2701
       },
       "tiles": [
         "N35W007.hgt",
@@ -2956,8 +2957,8 @@
       "id": "cordoba",
       "name": "Cordoba",
       "bbox": {
-        "west": -5.805,
-        "south": 36.965,
+        "west": -5.8051,
+        "south": 36.9649,
         "east": -3.78,
         "north": 38.95
       },
@@ -2978,7 +2979,7 @@
       "name": "Granada",
       "bbox": {
         "west": -4.55,
-        "south": 36.475,
+        "south": 36.4749,
         "east": -1.99,
         "north": 38.305
       },
@@ -3002,8 +3003,8 @@
       "name": "Huelva",
       "bbox": {
         "west": -7.745,
-        "south": 36.575,
-        "east": -5.9,
+        "south": 36.5749,
+        "east": -5.8999,
         "north": 38.43
       },
       "tiles": [
@@ -3023,7 +3024,7 @@
       "name": "Jaen",
       "bbox": {
         "west": -4.51,
-        "south": 37.16,
+        "south": 37.1599,
         "east": -2.215,
         "north": 38.755
       },
@@ -3041,7 +3042,7 @@
       "name": "Malaga",
       "bbox": {
         "west": -5.83,
-        "south": 36.09,
+        "south": 36.0899,
         "east": -3.545,
         "north": 37.5
       },
@@ -3060,8 +3061,8 @@
       "bbox": {
         "west": -6.76,
         "south": 36.62,
-        "east": -4.435,
-        "north": 38.415
+        "east": -4.4349,
+        "north": 38.4151
       },
       "tiles": [
         "N36W007.hgt",
@@ -3080,9 +3081,9 @@
       "name": "Huesca",
       "bbox": {
         "west": -1.155,
-        "south": 41.13,
+        "south": 41.1299,
         "east": 0.99,
-        "north": 43.145
+        "north": 43.1451
       },
       "tiles": [
         "N41W002.hgt",
@@ -3125,9 +3126,9 @@
       "name": "Zaragoza",
       "bbox": {
         "west": -2.395,
-        "south": 40.715,
+        "south": 40.7149,
         "east": 0.605,
-        "north": 42.965
+        "north": 42.9651
       },
       "tiles": [
         "N40W003.hgt",
@@ -3151,7 +3152,7 @@
         "west": -3.1,
         "south": 37.8,
         "east": -0.695,
-        "north": 39.645
+        "north": 39.6451
       },
       "tiles": [
         "N37W004.hgt",
@@ -3172,7 +3173,7 @@
       "id": "ciudad_real",
       "name": "Ciudad Real",
       "bbox": {
-        "west": -5.265,
+        "west": -5.2651,
         "south": 38.125,
         "east": -2.415,
         "north": 39.795
@@ -3193,7 +3194,7 @@
       "name": "Cuenca",
       "bbox": {
         "west": -3.39,
-        "south": 39.005,
+        "south": 39.0049,
         "east": -0.92,
         "north": 40.88
       },
@@ -3215,7 +3216,7 @@
         "west": -3.76,
         "south": 39.93,
         "east": -1.315,
-        "north": 41.55
+        "north": 41.5501
       },
       "tiles": [
         "N39W004.hgt",
@@ -3236,7 +3237,7 @@
         "west": -5.625,
         "south": 39.04,
         "east": -2.69,
-        "north": 40.54
+        "north": 40.5401
       },
       "tiles": [
         "N39W006.hgt",
@@ -3254,9 +3255,9 @@
       "name": "Avila",
       "bbox": {
         "west": -5.96,
-        "south": 39.865,
-        "east": -3.94,
-        "north": 41.385
+        "south": 39.8649,
+        "east": -3.9399,
+        "north": 41.3851
       },
       "tiles": [
         "N39W006.hgt",
@@ -3274,8 +3275,8 @@
       "id": "burgos",
       "name": "Burgos",
       "bbox": {
-        "west": -4.555,
-        "south": 41.23,
+        "west": -4.5551,
+        "south": 41.2299,
         "east": -2.3,
         "north": 43.42
       },
@@ -3296,7 +3297,7 @@
       "name": "Leon",
       "bbox": {
         "west": -7.295,
-        "south": 41.81,
+        "south": 41.8099,
         "east": -4.51,
         "north": 43.46
       },
@@ -3341,7 +3342,7 @@
       "name": "Salamanca",
       "bbox": {
         "west": -7.15,
-        "south": 40.02,
+        "south": 40.0199,
         "east": -4.87,
         "north": 41.515
       },
@@ -3379,7 +3380,7 @@
       "name": "Soria",
       "bbox": {
         "west": -3.77,
-        "south": 40.835,
+        "south": 40.8349,
         "east": -1.555,
         "north": 42.365
       },
@@ -3421,7 +3422,7 @@
       "name": "Zamora",
       "bbox": {
         "west": -7.255,
-        "south": 40.895,
+        "south": 40.8949,
         "east": -5.01,
         "north": 42.475
       },
@@ -3442,7 +3443,7 @@
       "name": "Barcelona",
       "bbox": {
         "west": 1.145,
-        "south": 40.975,
+        "south": 40.9749,
         "east": 3.0,
         "north": 42.545
       },
@@ -3465,7 +3466,7 @@
         "west": 1.505,
         "south": 41.43,
         "east": 3.54,
-        "north": 42.715
+        "north": 42.7151
       },
       "tiles": [
         "N41E001.hgt",
@@ -3480,10 +3481,10 @@
       "id": "lleida",
       "name": "Lleida",
       "bbox": {
-        "west": 0.1,
+        "west": 0.0999,
         "south": 41.055,
         "east": 2.075,
-        "north": 43.08
+        "north": 43.0801
       },
       "tiles": [
         "N41E000.hgt",
@@ -3522,7 +3523,7 @@
         "west": -1.315,
         "south": 37.625,
         "east": 0.455,
-        "north": 39.105
+        "north": 39.1051
       },
       "tiles": [
         "N37W002.hgt",
@@ -3543,7 +3544,7 @@
         "west": -1.065,
         "south": 39.495,
         "east": 0.91,
-        "north": 41.01
+        "north": 41.0101
       },
       "tiles": [
         "N39W002.hgt",
@@ -3562,7 +3563,7 @@
       "name": "Valencia",
       "bbox": {
         "west": -1.75,
-        "south": 38.465,
+        "south": 38.4649,
         "east": 0.195,
         "north": 40.43
       },
@@ -3584,7 +3585,7 @@
       "bbox": {
         "west": -3.505,
         "south": 42.25,
-        "east": -2.015,
+        "east": -2.0149,
         "north": 43.435
       },
       "tiles": [
@@ -3598,8 +3599,8 @@
       "id": "guipuzcoa",
       "name": "Guipuzcoa",
       "bbox": {
-        "west": -2.807,
-        "south": 42.691,
+        "west": -2.8071,
+        "south": 42.6909,
         "east": -1.525,
         "north": 43.6
       },
@@ -3614,10 +3615,10 @@
       "id": "vizcaya",
       "name": "Vizcaya",
       "bbox": {
-        "west": -3.67,
+        "west": -3.6701,
         "south": 42.75,
         "east": -2.195,
-        "north": 43.675
+        "north": 43.6751
       },
       "tiles": [
         "N42W004.hgt",
@@ -3655,9 +3656,9 @@
       "name": "Caceres",
       "bbox": {
         "west": -7.76,
-        "south": 38.81,
-        "east": -4.735,
-        "north": 40.705
+        "south": 38.8099,
+        "east": -4.7349,
+        "north": 40.7051
       },
       "tiles": [
         "N38W008.hgt",
@@ -3681,7 +3682,7 @@
         "west": -9.52,
         "south": 42.245,
         "east": -7.44,
-        "north": 44.01
+        "north": 44.0101
       },
       "tiles": [
         "N42W010.hgt",
@@ -3700,9 +3701,9 @@
       "name": "Lugo",
       "bbox": {
         "west": -8.22,
-        "south": 42.105,
+        "south": 42.1049,
         "east": -6.595,
-        "north": 43.98
+        "north": 43.9801
       },
       "tiles": [
         "N42W009.hgt",
@@ -3718,9 +3719,9 @@
       "name": "Ourense",
       "bbox": {
         "west": -8.585,
-        "south": 41.585,
+        "south": 41.5849,
         "east": -6.515,
-        "north": 42.8
+        "north": 42.8001
       },
       "tiles": [
         "N41W009.hgt",
@@ -3736,9 +3737,9 @@
       "name": "Pontevedra",
       "bbox": {
         "west": -9.17,
-        "south": 41.645,
+        "south": 41.6449,
         "east": -7.64,
-        "north": 43.08
+        "north": 43.0801
       },
       "tiles": [
         "N41W010.hgt",
@@ -3757,7 +3758,7 @@
       "name": "East",
       "bbox": {
         "west": -0.965,
-        "south": 51.23,
+        "south": 51.2299,
         "east": 1.99,
         "north": 53.21
       },
@@ -3777,9 +3778,9 @@
       "id": "east_midlands",
       "name": "East Midlands",
       "bbox": {
-        "west": -2.255,
-        "south": 51.755,
-        "east": 0.58,
+        "west": -2.2551,
+        "south": 51.7549,
+        "east": 0.5801,
         "north": 53.835
       },
       "tiles": [
@@ -3860,10 +3861,10 @@
       "id": "south_east",
       "name": "South East",
       "bbox": {
-        "west": -2.175,
-        "south": 50.355,
+        "west": -2.1751,
+        "south": 50.3549,
         "east": 1.67,
-        "north": 52.415
+        "north": 52.4151
       },
       "tiles": [
         "N50W003.hgt",
@@ -3888,9 +3889,9 @@
       "name": "South West",
       "bbox": {
         "west": -6.665,
-        "south": 49.645,
+        "south": 49.6449,
         "east": -1.265,
-        "north": 52.33
+        "north": 52.3301
       },
       "tiles": [
         "N49W007.hgt",
@@ -3924,7 +3925,7 @@
       "name": "West Midlands",
       "bbox": {
         "west": -3.455,
-        "south": 51.605,
+        "south": 51.6049,
         "east": -0.95,
         "north": 53.445
       },
@@ -3968,7 +3969,7 @@
       "name": "Romania",
       "bbox": {
         "west": 20.0418,
-        "south": 43.4125,
+        "south": 43.4124,
         "east": 30.479,
         "north": 48.4695
       },
@@ -4046,8 +4047,8 @@
       "name": "Serbia",
       "bbox": {
         "west": 18.6089,
-        "south": 42.0298,
-        "east": 23.2103,
+        "south": 42.0297,
+        "east": 23.2104,
         "north": 46.3921
       },
       "tiles": [
@@ -4087,9 +4088,9 @@
       "id": "slovenia",
       "name": "Slovenia",
       "bbox": {
-        "west": 13.1051,
+        "west": 13.105,
         "south": 45.2208,
-        "east": 16.8003,
+        "east": 16.8004,
         "north": 47.0796
       },
       "tiles": [

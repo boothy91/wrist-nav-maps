@@ -1,0 +1,1063 @@
+{
+  "description": "OSMFR central-america hillshade HGT tile catalogue",
+  "catalogue_id": "central-america",
+  "margin_degrees": 0.2,
+  "region_count": 36,
+  "regions": [
+    {
+      "id": "anguilla",
+      "name": "Anguilla",
+      "bbox": {
+        "west": -63.86,
+        "south": 17.84,
+        "east": -62.495,
+        "north": 19.015
+      },
+      "tiles": [
+        "N17W064.hgt",
+        "N17W063.hgt",
+        "N18W064.hgt",
+        "N18W063.hgt",
+        "N19W064.hgt",
+        "N19W063.hgt"
+      ]
+    },
+    {
+      "id": "antigua_and_barbuda",
+      "name": "Antigua and Barbuda",
+      "bbox": {
+        "west": -62.775,
+        "south": 16.535,
+        "east": -61.23,
+        "north": 18.165
+      },
+      "tiles": [
+        "N16W063.hgt",
+        "N16W062.hgt",
+        "N17W063.hgt",
+        "N17W062.hgt",
+        "N18W063.hgt",
+        "N18W062.hgt"
+      ]
+    },
+    {
+      "id": "aruba",
+      "name": "Aruba",
+      "bbox": {
+        "west": -70.474,
+        "south": 12.054,
+        "east": -69.4569,
+        "north": 13.027
+      },
+      "tiles": [
+        "N12W071.hgt",
+        "N12W070.hgt",
+        "N13W071.hgt",
+        "N13W070.hgt"
+      ]
+    },
+    {
+      "id": "bahamas",
+      "name": "Bahamas",
+      "bbox": {
+        "west": -80.92,
+        "south": 20.485,
+        "east": -72.235,
+        "north": 27.695
+      },
+      "tiles": [
+        "N20W081.hgt",
+        "N20W080.hgt",
+        "N20W079.hgt",
+        "N20W078.hgt",
+        "N20W077.hgt",
+        "N20W076.hgt",
+        "N20W075.hgt",
+        "N20W074.hgt",
+        "N20W073.hgt",
+        "N21W081.hgt",
+        "N21W080.hgt",
+        "N21W079.hgt",
+        "N21W078.hgt",
+        "N21W077.hgt",
+        "N21W076.hgt",
+        "N21W075.hgt",
+        "N21W074.hgt",
+        "N21W073.hgt",
+        "N22W081.hgt",
+        "N22W080.hgt",
+        "N22W079.hgt",
+        "N22W078.hgt",
+        "N22W077.hgt",
+        "N22W076.hgt",
+        "N22W075.hgt",
+        "N22W074.hgt",
+        "N22W073.hgt",
+        "N23W081.hgt",
+        "N23W080.hgt",
+        "N23W079.hgt",
+        "N23W078.hgt",
+        "N23W077.hgt",
+        "N23W076.hgt",
+        "N23W075.hgt",
+        "N23W074.hgt",
+        "N23W073.hgt",
+        "N24W081.hgt",
+        "N24W080.hgt",
+        "N24W079.hgt",
+        "N24W078.hgt",
+        "N24W077.hgt",
+        "N24W076.hgt",
+        "N24W075.hgt",
+        "N24W074.hgt",
+        "N24W073.hgt",
+        "N25W081.hgt",
+        "N25W080.hgt",
+        "N25W079.hgt",
+        "N25W078.hgt",
+        "N25W077.hgt",
+        "N25W076.hgt",
+        "N25W075.hgt",
+        "N25W074.hgt",
+        "N25W073.hgt",
+        "N26W081.hgt",
+        "N26W080.hgt",
+        "N26W079.hgt",
+        "N26W078.hgt",
+        "N26W077.hgt",
+        "N26W076.hgt",
+        "N26W075.hgt",
+        "N26W074.hgt",
+        "N26W073.hgt",
+        "N27W081.hgt",
+        "N27W080.hgt",
+        "N27W079.hgt",
+        "N27W078.hgt",
+        "N27W077.hgt",
+        "N27W076.hgt",
+        "N27W075.hgt",
+        "N27W074.hgt",
+        "N27W073.hgt"
+      ]
+    },
+    {
+      "id": "barbados",
+      "name": "Barbados",
+      "bbox": {
+        "west": -60.06,
+        "south": 12.641,
+        "east": -59.011,
+        "north": 13.739
+      },
+      "tiles": [
+        "N12W061.hgt",
+        "N12W060.hgt",
+        "N13W061.hgt",
+        "N13W060.hgt"
+      ]
+    },
+    {
+      "id": "british_virgin_islands",
+      "name": "British Virgin Islands",
+      "bbox": {
+        "west": -65.16,
+        "south": 17.902,
+        "east": -63.856,
+        "north": 19.154
+      },
+      "tiles": [
+        "N17W066.hgt",
+        "N17W065.hgt",
+        "N17W064.hgt",
+        "N18W066.hgt",
+        "N18W065.hgt",
+        "N18W064.hgt",
+        "N19W066.hgt",
+        "N19W065.hgt",
+        "N19W064.hgt"
+      ]
+    },
+    {
+      "id": "caribbean",
+      "name": "Caribbean",
+      "bbox": {
+        "west": -68.845,
+        "south": 11.605,
+        "east": -62.565,
+        "north": 18.07
+      },
+      "tiles": [
+        "N11W069.hgt",
+        "N11W068.hgt",
+        "N11W067.hgt",
+        "N11W066.hgt",
+        "N11W065.hgt",
+        "N11W064.hgt",
+        "N11W063.hgt",
+        "N12W069.hgt",
+        "N12W068.hgt",
+        "N12W067.hgt",
+        "N12W066.hgt",
+        "N12W065.hgt",
+        "N12W064.hgt",
+        "N12W063.hgt",
+        "N13W069.hgt",
+        "N13W068.hgt",
+        "N13W067.hgt",
+        "N13W066.hgt",
+        "N13W065.hgt",
+        "N13W064.hgt",
+        "N13W063.hgt",
+        "N14W069.hgt",
+        "N14W068.hgt",
+        "N14W067.hgt",
+        "N14W066.hgt",
+        "N14W065.hgt",
+        "N14W064.hgt",
+        "N14W063.hgt",
+        "N15W069.hgt",
+        "N15W068.hgt",
+        "N15W067.hgt",
+        "N15W066.hgt",
+        "N15W065.hgt",
+        "N15W064.hgt",
+        "N15W063.hgt",
+        "N16W069.hgt",
+        "N16W068.hgt",
+        "N16W067.hgt",
+        "N16W066.hgt",
+        "N16W065.hgt",
+        "N16W064.hgt",
+        "N16W063.hgt",
+        "N17W069.hgt",
+        "N17W068.hgt",
+        "N17W067.hgt",
+        "N17W066.hgt",
+        "N17W065.hgt",
+        "N17W064.hgt",
+        "N17W063.hgt",
+        "N18W069.hgt",
+        "N18W068.hgt",
+        "N18W067.hgt",
+        "N18W066.hgt",
+        "N18W065.hgt",
+        "N18W064.hgt",
+        "N18W063.hgt"
+      ]
+    },
+    {
+      "id": "cayman_islands",
+      "name": "Cayman Islands",
+      "bbox": {
+        "west": -81.8501,
+        "south": 18.84,
+        "east": -79.2899,
+        "north": 20.175
+      },
+      "tiles": [
+        "N18W082.hgt",
+        "N18W081.hgt",
+        "N18W080.hgt",
+        "N19W082.hgt",
+        "N19W081.hgt",
+        "N19W080.hgt",
+        "N20W082.hgt",
+        "N20W081.hgt",
+        "N20W080.hgt"
+      ]
+    },
+    {
+      "id": "costa_rica",
+      "name": "Costa Rica",
+      "bbox": {
+        "west": -87.515,
+        "south": 5.08,
+        "east": -82.2099,
+        "north": 11.44
+      },
+      "tiles": [
+        "N05W088.hgt",
+        "N05W087.hgt",
+        "N05W086.hgt",
+        "N05W085.hgt",
+        "N05W084.hgt",
+        "N05W083.hgt",
+        "N06W088.hgt",
+        "N06W087.hgt",
+        "N06W086.hgt",
+        "N06W085.hgt",
+        "N06W084.hgt",
+        "N06W083.hgt",
+        "N07W088.hgt",
+        "N07W087.hgt",
+        "N07W086.hgt",
+        "N07W085.hgt",
+        "N07W084.hgt",
+        "N07W083.hgt",
+        "N08W088.hgt",
+        "N08W087.hgt",
+        "N08W086.hgt",
+        "N08W085.hgt",
+        "N08W084.hgt",
+        "N08W083.hgt",
+        "N09W088.hgt",
+        "N09W087.hgt",
+        "N09W086.hgt",
+        "N09W085.hgt",
+        "N09W084.hgt",
+        "N09W083.hgt",
+        "N10W088.hgt",
+        "N10W087.hgt",
+        "N10W086.hgt",
+        "N10W085.hgt",
+        "N10W084.hgt",
+        "N10W083.hgt",
+        "N11W088.hgt",
+        "N11W087.hgt",
+        "N11W086.hgt",
+        "N11W085.hgt",
+        "N11W084.hgt",
+        "N11W083.hgt"
+      ]
+    },
+    {
+      "id": "curacao",
+      "name": "Cura\u00e7ao",
+      "bbox": {
+        "west": -69.5851,
+        "south": 11.555,
+        "east": -68.22,
+        "north": 12.81
+      },
+      "tiles": [
+        "N11W070.hgt",
+        "N11W069.hgt",
+        "N12W070.hgt",
+        "N12W069.hgt"
+      ]
+    },
+    {
+      "id": "dominica",
+      "name": "Dominica",
+      "bbox": {
+        "west": -61.891,
+        "south": 14.803,
+        "east": -60.829,
+        "north": 15.991
+      },
+      "tiles": [
+        "N14W062.hgt",
+        "N14W061.hgt",
+        "N15W062.hgt",
+        "N15W061.hgt"
+      ]
+    },
+    {
+      "id": "dominican_republic",
+      "name": "Dominican Republic",
+      "bbox": {
+        "west": -72.23,
+        "south": 17.15,
+        "east": -67.98,
+        "north": 20.27
+      },
+      "tiles": [
+        "N17W073.hgt",
+        "N17W072.hgt",
+        "N17W071.hgt",
+        "N17W070.hgt",
+        "N17W069.hgt",
+        "N17W068.hgt",
+        "N18W073.hgt",
+        "N18W072.hgt",
+        "N18W071.hgt",
+        "N18W070.hgt",
+        "N18W069.hgt",
+        "N18W068.hgt",
+        "N19W073.hgt",
+        "N19W072.hgt",
+        "N19W071.hgt",
+        "N19W070.hgt",
+        "N19W069.hgt",
+        "N19W068.hgt",
+        "N20W073.hgt",
+        "N20W072.hgt",
+        "N20W071.hgt",
+        "N20W070.hgt",
+        "N20W069.hgt",
+        "N20W068.hgt"
+      ]
+    },
+    {
+      "id": "el_salvador",
+      "name": "El Salvador",
+      "bbox": {
+        "west": -90.4301,
+        "south": 12.73,
+        "east": -87.33,
+        "north": 14.67
+      },
+      "tiles": [
+        "N12W091.hgt",
+        "N12W090.hgt",
+        "N12W089.hgt",
+        "N12W088.hgt",
+        "N13W091.hgt",
+        "N13W090.hgt",
+        "N13W089.hgt",
+        "N13W088.hgt",
+        "N14W091.hgt",
+        "N14W090.hgt",
+        "N14W089.hgt",
+        "N14W088.hgt"
+      ]
+    },
+    {
+      "id": "grenada",
+      "name": "Grenada",
+      "bbox": {
+        "west": -62.225,
+        "south": 11.565,
+        "east": -60.955,
+        "north": 12.815
+      },
+      "tiles": [
+        "N11W063.hgt",
+        "N11W062.hgt",
+        "N11W061.hgt",
+        "N12W063.hgt",
+        "N12W062.hgt",
+        "N12W061.hgt"
+      ]
+    },
+    {
+      "id": "guadeloupe",
+      "name": "Guadeloupe",
+      "bbox": {
+        "west": -62.24,
+        "south": 15.425,
+        "east": -60.57,
+        "north": 16.935
+      },
+      "tiles": [
+        "N15W063.hgt",
+        "N15W062.hgt",
+        "N15W061.hgt",
+        "N16W063.hgt",
+        "N16W062.hgt",
+        "N16W061.hgt"
+      ]
+    },
+    {
+      "id": "haiti",
+      "name": "Haiti",
+      "bbox": {
+        "west": -75.4874,
+        "south": 17.5582,
+        "east": -71.3999,
+        "north": 20.51
+      },
+      "tiles": [
+        "N17W076.hgt",
+        "N17W075.hgt",
+        "N17W074.hgt",
+        "N17W073.hgt",
+        "N17W072.hgt",
+        "N18W076.hgt",
+        "N18W075.hgt",
+        "N18W074.hgt",
+        "N18W073.hgt",
+        "N18W072.hgt",
+        "N19W076.hgt",
+        "N19W075.hgt",
+        "N19W074.hgt",
+        "N19W073.hgt",
+        "N19W072.hgt",
+        "N20W076.hgt",
+        "N20W075.hgt",
+        "N20W074.hgt",
+        "N20W073.hgt",
+        "N20W072.hgt"
+      ]
+    },
+    {
+      "id": "honduras",
+      "name": "Honduras",
+      "bbox": {
+        "west": -89.575,
+        "south": 12.76,
+        "east": -81.9599,
+        "north": 17.86
+      },
+      "tiles": [
+        "N12W090.hgt",
+        "N12W089.hgt",
+        "N12W088.hgt",
+        "N12W087.hgt",
+        "N12W086.hgt",
+        "N12W085.hgt",
+        "N12W084.hgt",
+        "N12W083.hgt",
+        "N12W082.hgt",
+        "N13W090.hgt",
+        "N13W089.hgt",
+        "N13W088.hgt",
+        "N13W087.hgt",
+        "N13W086.hgt",
+        "N13W085.hgt",
+        "N13W084.hgt",
+        "N13W083.hgt",
+        "N13W082.hgt",
+        "N14W090.hgt",
+        "N14W089.hgt",
+        "N14W088.hgt",
+        "N14W087.hgt",
+        "N14W086.hgt",
+        "N14W085.hgt",
+        "N14W084.hgt",
+        "N14W083.hgt",
+        "N14W082.hgt",
+        "N15W090.hgt",
+        "N15W089.hgt",
+        "N15W088.hgt",
+        "N15W087.hgt",
+        "N15W086.hgt",
+        "N15W085.hgt",
+        "N15W084.hgt",
+        "N15W083.hgt",
+        "N15W082.hgt",
+        "N16W090.hgt",
+        "N16W089.hgt",
+        "N16W088.hgt",
+        "N16W087.hgt",
+        "N16W086.hgt",
+        "N16W085.hgt",
+        "N16W084.hgt",
+        "N16W083.hgt",
+        "N16W082.hgt",
+        "N17W090.hgt",
+        "N17W089.hgt",
+        "N17W088.hgt",
+        "N17W087.hgt",
+        "N17W086.hgt",
+        "N17W085.hgt",
+        "N17W084.hgt",
+        "N17W083.hgt",
+        "N17W082.hgt"
+      ]
+    },
+    {
+      "id": "jamaica",
+      "name": "Jamaica",
+      "bbox": {
+        "west": -78.8,
+        "south": 16.37,
+        "east": -75.535,
+        "north": 18.945
+      },
+      "tiles": [
+        "N16W079.hgt",
+        "N16W078.hgt",
+        "N16W077.hgt",
+        "N16W076.hgt",
+        "N17W079.hgt",
+        "N17W078.hgt",
+        "N17W077.hgt",
+        "N17W076.hgt",
+        "N18W079.hgt",
+        "N18W078.hgt",
+        "N18W077.hgt",
+        "N18W076.hgt"
+      ]
+    },
+    {
+      "id": "martinique",
+      "name": "Martinique",
+      "bbox": {
+        "west": -61.64,
+        "south": 14.018,
+        "east": -60.398,
+        "north": 15.283
+      },
+      "tiles": [
+        "N14W062.hgt",
+        "N14W061.hgt",
+        "N15W062.hgt",
+        "N15W061.hgt"
+      ]
+    },
+    {
+      "id": "montserrat",
+      "name": "Montserrat",
+      "bbox": {
+        "west": -62.655,
+        "south": 16.271,
+        "east": -61.731,
+        "north": 17.219
+      },
+      "tiles": [
+        "N16W063.hgt",
+        "N16W062.hgt",
+        "N17W063.hgt",
+        "N17W062.hgt"
+      ]
+    },
+    {
+      "id": "nicaragua",
+      "name": "Nicaragua",
+      "bbox": {
+        "west": -88.1151,
+        "south": 10.485,
+        "east": -82.255,
+        "north": 15.31
+      },
+      "tiles": [
+        "N10W089.hgt",
+        "N10W088.hgt",
+        "N10W087.hgt",
+        "N10W086.hgt",
+        "N10W085.hgt",
+        "N10W084.hgt",
+        "N10W083.hgt",
+        "N11W089.hgt",
+        "N11W088.hgt",
+        "N11W087.hgt",
+        "N11W086.hgt",
+        "N11W085.hgt",
+        "N11W084.hgt",
+        "N11W083.hgt",
+        "N12W089.hgt",
+        "N12W088.hgt",
+        "N12W087.hgt",
+        "N12W086.hgt",
+        "N12W085.hgt",
+        "N12W084.hgt",
+        "N12W083.hgt",
+        "N13W089.hgt",
+        "N13W088.hgt",
+        "N13W087.hgt",
+        "N13W086.hgt",
+        "N13W085.hgt",
+        "N13W084.hgt",
+        "N13W083.hgt",
+        "N14W089.hgt",
+        "N14W088.hgt",
+        "N14W087.hgt",
+        "N14W086.hgt",
+        "N14W085.hgt",
+        "N14W084.hgt",
+        "N14W083.hgt",
+        "N15W089.hgt",
+        "N15W088.hgt",
+        "N15W087.hgt",
+        "N15W086.hgt",
+        "N15W085.hgt",
+        "N15W084.hgt",
+        "N15W083.hgt"
+      ]
+    },
+    {
+      "id": "panama",
+      "name": "Panama",
+      "bbox": {
+        "west": -83.27,
+        "south": 6.785,
+        "east": -76.92,
+        "north": 10.09
+      },
+      "tiles": [
+        "N06W084.hgt",
+        "N06W083.hgt",
+        "N06W082.hgt",
+        "N06W081.hgt",
+        "N06W080.hgt",
+        "N06W079.hgt",
+        "N06W078.hgt",
+        "N06W077.hgt",
+        "N07W084.hgt",
+        "N07W083.hgt",
+        "N07W082.hgt",
+        "N07W081.hgt",
+        "N07W080.hgt",
+        "N07W079.hgt",
+        "N07W078.hgt",
+        "N07W077.hgt",
+        "N08W084.hgt",
+        "N08W083.hgt",
+        "N08W082.hgt",
+        "N08W081.hgt",
+        "N08W080.hgt",
+        "N08W079.hgt",
+        "N08W078.hgt",
+        "N08W077.hgt",
+        "N09W084.hgt",
+        "N09W083.hgt",
+        "N09W082.hgt",
+        "N09W081.hgt",
+        "N09W080.hgt",
+        "N09W079.hgt",
+        "N09W078.hgt",
+        "N09W077.hgt",
+        "N10W084.hgt",
+        "N10W083.hgt",
+        "N10W082.hgt",
+        "N10W081.hgt",
+        "N10W080.hgt",
+        "N10W079.hgt",
+        "N10W078.hgt",
+        "N10W077.hgt"
+      ]
+    },
+    {
+      "id": "puerto_rico",
+      "name": "Puerto Rico",
+      "bbox": {
+        "west": -68.33,
+        "south": 17.51,
+        "east": -64.8699,
+        "north": 18.885
+      },
+      "tiles": [
+        "N17W069.hgt",
+        "N17W068.hgt",
+        "N17W067.hgt",
+        "N17W066.hgt",
+        "N17W065.hgt",
+        "N18W069.hgt",
+        "N18W068.hgt",
+        "N18W067.hgt",
+        "N18W066.hgt",
+        "N18W065.hgt"
+      ]
+    },
+    {
+      "id": "saint_barthelemy",
+      "name": "Saint Barth\u00e9lemy",
+      "bbox": {
+        "west": -63.27,
+        "south": 17.467,
+        "east": -62.375,
+        "north": 18.342
+      },
+      "tiles": [
+        "N17W064.hgt",
+        "N17W063.hgt",
+        "N18W064.hgt",
+        "N18W063.hgt"
+      ]
+    },
+    {
+      "id": "saint_kitts_and_nevis",
+      "name": "Saint Kitts and Nevis",
+      "bbox": {
+        "west": -63.255,
+        "south": 16.691,
+        "east": -62.126,
+        "north": 17.82
+      },
+      "tiles": [
+        "N16W064.hgt",
+        "N16W063.hgt",
+        "N17W064.hgt",
+        "N17W063.hgt"
+      ]
+    },
+    {
+      "id": "saint_lucia",
+      "name": "Saint Lucia",
+      "bbox": {
+        "west": -61.489,
+        "south": 13.304,
+        "east": -60.4629,
+        "north": 14.476
+      },
+      "tiles": [
+        "N13W062.hgt",
+        "N13W061.hgt",
+        "N14W062.hgt",
+        "N14W061.hgt"
+      ]
+    },
+    {
+      "id": "saint_martin",
+      "name": "Saint Martin",
+      "bbox": {
+        "west": -63.567,
+        "south": 17.692,
+        "east": -62.556,
+        "north": 18.394
+      },
+      "tiles": [
+        "N17W064.hgt",
+        "N17W063.hgt",
+        "N18W064.hgt",
+        "N18W063.hgt"
+      ]
+    },
+    {
+      "id": "saint_vincent_and_the_grenadines",
+      "name": "Saint Vincent and the Grenadines",
+      "bbox": {
+        "west": -61.885,
+        "south": 12.18,
+        "east": -60.69,
+        "north": 13.805
+      },
+      "tiles": [
+        "N12W062.hgt",
+        "N12W061.hgt",
+        "N13W062.hgt",
+        "N13W061.hgt"
+      ]
+    },
+    {
+      "id": "sint_maarten",
+      "name": "Sint Maarten",
+      "bbox": {
+        "west": -63.536,
+        "south": 17.602,
+        "east": -62.735,
+        "north": 18.268
+      },
+      "tiles": [
+        "N17W064.hgt",
+        "N17W063.hgt",
+        "N18W064.hgt",
+        "N18W063.hgt"
+      ]
+    },
+    {
+      "id": "trinidad_and_tobago",
+      "name": "Trinidad and Tobago",
+      "bbox": {
+        "west": -62.305,
+        "south": 9.655,
+        "east": -60.07,
+        "north": 11.785
+      },
+      "tiles": [
+        "N09W063.hgt",
+        "N09W062.hgt",
+        "N09W061.hgt",
+        "N10W063.hgt",
+        "N10W062.hgt",
+        "N10W061.hgt",
+        "N11W063.hgt",
+        "N11W062.hgt",
+        "N11W061.hgt"
+      ]
+    },
+    {
+      "id": "turks_and_caicos_islands",
+      "name": "Turks and Caicos Islands",
+      "bbox": {
+        "west": -72.9,
+        "south": 20.735,
+        "east": -70.645,
+        "north": 22.385
+      },
+      "tiles": [
+        "N20W073.hgt",
+        "N20W072.hgt",
+        "N20W071.hgt",
+        "N21W073.hgt",
+        "N21W072.hgt",
+        "N21W071.hgt",
+        "N22W073.hgt",
+        "N22W072.hgt",
+        "N22W071.hgt"
+      ]
+    },
+    {
+      "id": "united_states_virgin_islands",
+      "name": "United States Virgin Islands",
+      "bbox": {
+        "west": -65.363,
+        "south": 17.419,
+        "east": -64.309,
+        "north": 18.669
+      },
+      "tiles": [
+        "N17W066.hgt",
+        "N17W065.hgt",
+        "N18W066.hgt",
+        "N18W065.hgt"
+      ]
+    },
+    {
+      "id": "usa_virgin_islands",
+      "name": "USA Virgin Islands",
+      "bbox": {
+        "west": -65.363,
+        "south": 17.419,
+        "east": -64.309,
+        "north": 18.669
+      },
+      "tiles": [
+        "N17W066.hgt",
+        "N17W065.hgt",
+        "N18W066.hgt",
+        "N18W065.hgt"
+      ]
+    },
+    {
+      "id": "belize",
+      "name": "Belize",
+      "bbox": {
+        "west": -89.429,
+        "south": 15.683,
+        "east": -86.6598,
+        "north": 18.6984
+      },
+      "tiles": [
+        "N15W090.hgt",
+        "N15W089.hgt",
+        "N15W088.hgt",
+        "N15W087.hgt",
+        "N16W090.hgt",
+        "N16W089.hgt",
+        "N16W088.hgt",
+        "N16W087.hgt",
+        "N17W090.hgt",
+        "N17W089.hgt",
+        "N17W088.hgt",
+        "N17W087.hgt",
+        "N18W090.hgt",
+        "N18W089.hgt",
+        "N18W088.hgt",
+        "N18W087.hgt"
+      ]
+    },
+    {
+      "id": "cuba",
+      "name": "Cuba",
+      "bbox": {
+        "west": -85.6242,
+        "south": 19.0533,
+        "east": -73.5083,
+        "north": 23.8043
+      },
+      "tiles": [
+        "N19W086.hgt",
+        "N19W085.hgt",
+        "N19W084.hgt",
+        "N19W083.hgt",
+        "N19W082.hgt",
+        "N19W081.hgt",
+        "N19W080.hgt",
+        "N19W079.hgt",
+        "N19W078.hgt",
+        "N19W077.hgt",
+        "N19W076.hgt",
+        "N19W075.hgt",
+        "N19W074.hgt",
+        "N20W086.hgt",
+        "N20W085.hgt",
+        "N20W084.hgt",
+        "N20W083.hgt",
+        "N20W082.hgt",
+        "N20W081.hgt",
+        "N20W080.hgt",
+        "N20W079.hgt",
+        "N20W078.hgt",
+        "N20W077.hgt",
+        "N20W076.hgt",
+        "N20W075.hgt",
+        "N20W074.hgt",
+        "N21W086.hgt",
+        "N21W085.hgt",
+        "N21W084.hgt",
+        "N21W083.hgt",
+        "N21W082.hgt",
+        "N21W081.hgt",
+        "N21W080.hgt",
+        "N21W079.hgt",
+        "N21W078.hgt",
+        "N21W077.hgt",
+        "N21W076.hgt",
+        "N21W075.hgt",
+        "N21W074.hgt",
+        "N22W086.hgt",
+        "N22W085.hgt",
+        "N22W084.hgt",
+        "N22W083.hgt",
+        "N22W082.hgt",
+        "N22W081.hgt",
+        "N22W080.hgt",
+        "N22W079.hgt",
+        "N22W078.hgt",
+        "N22W077.hgt",
+        "N22W076.hgt",
+        "N22W075.hgt",
+        "N22W074.hgt",
+        "N23W086.hgt",
+        "N23W085.hgt",
+        "N23W084.hgt",
+        "N23W083.hgt",
+        "N23W082.hgt",
+        "N23W081.hgt",
+        "N23W080.hgt",
+        "N23W079.hgt",
+        "N23W078.hgt",
+        "N23W077.hgt",
+        "N23W076.hgt",
+        "N23W075.hgt",
+        "N23W074.hgt"
+      ]
+    },
+    {
+      "id": "guatemala",
+      "name": "Guatemala",
+      "bbox": {
+        "west": -92.9331,
+        "south": 12.5416,
+        "east": -87.7517,
+        "north": 18.0354
+      },
+      "tiles": [
+        "N12W093.hgt",
+        "N12W092.hgt",
+        "N12W091.hgt",
+        "N12W090.hgt",
+        "N12W089.hgt",
+        "N12W088.hgt",
+        "N13W093.hgt",
+        "N13W092.hgt",
+        "N13W091.hgt",
+        "N13W090.hgt",
+        "N13W089.hgt",
+        "N13W088.hgt",
+        "N14W093.hgt",
+        "N14W092.hgt",
+        "N14W091.hgt",
+        "N14W090.hgt",
+        "N14W089.hgt",
+        "N14W088.hgt",
+        "N15W093.hgt",
+        "N15W092.hgt",
+        "N15W091.hgt",
+        "N15W090.hgt",
+        "N15W089.hgt",
+        "N15W088.hgt",
+        "N16W093.hgt",
+        "N16W092.hgt",
+        "N16W091.hgt",
+        "N16W090.hgt",
+        "N16W089.hgt",
+        "N16W088.hgt",
+        "N17W093.hgt",
+        "N17W092.hgt",
+        "N17W091.hgt",
+        "N17W090.hgt",
+        "N17W089.hgt",
+        "N17W088.hgt",
+        "N18W093.hgt",
+        "N18W092.hgt",
+        "N18W091.hgt",
+        "N18W090.hgt",
+        "N18W089.hgt",
+        "N18W088.hgt"
+      ]
+    }
+  ]
+}
