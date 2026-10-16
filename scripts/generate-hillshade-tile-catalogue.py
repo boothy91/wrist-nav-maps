@@ -10,7 +10,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 REGIONS_DIR = ROOT / "config/regions"
-OUTPUT_DIR = REGIONS_DIR
 MARGIN = 0.2
 
 GROUPS = [
@@ -37,7 +36,8 @@ def get_polygon(region):
         .replace("extracts", "polygons", 1)
     )
     request = urllib.request.Request(
-        url, headers={"User-Agent": "wrist-nav-maps-tile-catalogue/1.0"}
+        url,
+        headers={"User-Agent": "wrist-nav-maps-tile-catalogue/1.0"},
     )
     with urllib.request.urlopen(request, timeout=30) as response:
         content = response.read().decode("utf-8")
@@ -56,6 +56,7 @@ def get_polygon(region):
 
     lons = [lon for lon, _ in coords]
     lats = [lat for _, lat in coords]
+
     raw_span = max(lons) - min(lons)
     shifted = [lon + 360 if lon < 0 else lon for lon in lons]
     shifted_span = max(shifted) - min(shifted)
@@ -95,24 +96,25 @@ def get_polygon(region):
 def main():
     catalogues = []
     master_regions = []
-    seen_ids = set()
+    seen_region_keys = set()
 
     for group in GROUPS:
         source = REGIONS_DIR / f"regions-{group}-osmfr.json"
-        output = OUTPUT_DIR / f"hillshade-tiles-{group}.json"
+        output = REGIONS_DIR / f"hillshade-tiles-{group}.json"
+        source_regions = json.loads(source.read_text())
 
-        regions = json.loads(source.read_text())
-        with ThreadPoolExecutor(max_workers=8) as pool:
-            results = list(pool.map(get_polygon, regions))
-
-        ids = [item["id"] for item in results]
-        if len(ids) != len(set(ids)):
+        source_ids = [region["id"] for region in source_regions]
+        if len(source_ids) != len(set(source_ids)):
             raise ValueError(f"Duplicate region IDs in {source.name}")
-        if set(ids) != {item["id"] for item in regions}:
+
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(get_polygon, source_regions))
+
+        result_ids = [region["id"] for region in results]
+        if len(result_ids) != len(set(result_ids)):
+            raise ValueError(f"Duplicate catalogue IDs for {group}")
+        if set(result_ids) != set(source_ids):
             raise ValueError(f"Source/catalogue IDs differ for {group}")
-        if seen_ids.intersection(ids):
-            raise ValueError(f"Region IDs overlap between catalogues: {group}")
-        seen_ids.update(ids)
 
         document = {
             "description": f"OSMFR {group} hillshade HGT tile catalogue",
@@ -121,7 +123,10 @@ def main():
             "region_count": len(results),
             "regions": results,
         }
-        content = (json.dumps(document, indent=2) + "\n").encode("utf-8")
+
+        content = (
+            json.dumps(document, indent=2) + "\n"
+        ).encode("utf-8")
         output.write_bytes(content)
 
         url = (
@@ -137,6 +142,14 @@ def main():
         })
 
         for region in results:
+            # IDs can repeat across catalogues (e.g. Belgian and Dutch
+            # Limburg, or French and Swiss Jura). The catalogue ID forms
+            # part of each region's unique identity.
+            key = (group, region["id"])
+            if key in seen_region_keys:
+                raise ValueError(f"Duplicate region key: {key}")
+            seen_region_keys.add(key)
+
             master_regions.append({
                 "id": region["id"],
                 "name": region["name"],
@@ -146,26 +159,35 @@ def main():
 
         print(f"Wrote {output.name}: {len(results)} regions")
 
+    master_regions.sort(
+        key=lambda item: (
+            item["name"].casefold(),
+            item["catalogue_id"],
+            item["id"],
+        )
+    )
+
     index = {
         "description": "Master index for all OSMFR hillshade HGT tile catalogues",
         "schema_version": 1,
         "margin_degrees": MARGIN,
         "catalogues": catalogues,
         "region_count": len(master_regions),
-        "regions": sorted(
-            master_regions,
-            key=lambda item: (item["name"].casefold(), item["id"]),
-        ),
+        "regions": master_regions,
     }
 
-    index_path = OUTPUT_DIR / "hillshade-tiles-index.json"
+    index_path = REGIONS_DIR / "hillshade-tiles-index.json"
     index_path.write_text(json.dumps(index, indent=2) + "\n")
 
     yorkshire = next(
-        (r for r in master_regions
-         if r["id"] == "yorkshire_and_the_humber"),
+        (
+            region for region in master_regions
+            if region["id"] == "yorkshire_and_the_humber"
+            and region["catalogue_id"] == "europe-3"
+        ),
         None,
     )
+
     print(f"\nWrote {index_path.name}: {len(master_regions)} regions")
     print("Yorkshire lookup:", yorkshire or "NOT FOUND")
 
