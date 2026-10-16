@@ -76,9 +76,11 @@ jobs:
           )
 
           master_regions = index["regions"]
-          master_ids = [r["id"] for r in master_regions]
-          assert len(master_ids) == len(set(master_ids)), (
-              "Duplicate IDs in master index"
+          master_keys = [
+              (r["catalogue_id"], r["id"]) for r in master_regions
+          ]
+          assert len(master_keys) == len(set(master_keys)), (
+              "Duplicate (catalogue_id, id) keys in master index"
           )
           assert len(master_regions) == expected_total
 
