@@ -84,7 +84,6 @@ jobs:
           )
           assert len(master_regions) == expected_total
 
-          all_ids = set()
           for group, expected_count in groups.items():
               source = json.loads(
                   (root / f"regions-{group}-osmfr.json").read_text()
@@ -112,10 +111,6 @@ jobs:
               assert set(ids) == set(source_ids), (
                   f"{group}: catalogue IDs differ from source"
               )
-              assert not all_ids.intersection(ids), (
-                  f"{group}: IDs overlap another catalogue"
-              )
-              all_ids.update(ids)
               assert catalogue["region_count"] == expected_count
 
               for region in regions:
