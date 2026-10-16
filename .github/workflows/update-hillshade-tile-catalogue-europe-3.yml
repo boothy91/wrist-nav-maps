@@ -1,17 +1,26 @@
-name: Update Europe 3 Hillshade Tile Catalogue
+name: Update Hillshade Tile Catalogues
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'config/regions/regions-*-osmfr.json'
+      - 'scripts/generate-hillshade-tile-catalogue.py'
+      - '.github/workflows/update-hillshade-tile-catalogue-europe-3.yml'
+  schedule:
+    - cron: '17 5 * * 1'
 
 permissions:
   contents: write
 
 concurrency:
-  group: update-hillshade-tile-catalogue-europe-3
+  group: update-hillshade-tile-catalogues
   cancel-in-progress: false
 
 jobs:
-  update-catalogue:
+  update-catalogues:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,92 +32,182 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Generate tile catalogue
+      - name: Generate all catalogues and master index
         run: python3 scripts/generate-hillshade-tile-catalogue.py
 
-      - name: Validate generated catalogue
+      - name: Validate all generated catalogues
         run: |
           python3 - <<'PY'
+          import hashlib
           import json
           import math
           import re
           from pathlib import Path
 
-          source_path = Path("config/regions/regions-europe-3-osmfr.json")
-          output_path = Path("config/regions/hillshade-tiles-europe-3.json")
+          root = Path("config/regions")
+          groups = {
+              "africa": 98,
+              "asia": 180,
+              "central-america": 36,
+              "europe-1": 166,
+              "europe-2": 85,
+              "europe-3": 172,
+              "north-america": 191,
+              "oceania": 55,
+              "russia": 85,
+              "south-america": 79,
+          }
+          expected_total = sum(groups.values())
+          index_path = root / "hillshade-tiles-index.json"
+          index = json.loads(index_path.read_text())
 
-          source = json.loads(source_path.read_text())
-          catalogue = json.loads(output_path.read_text())
-          regions = catalogue["regions"]
-
-          source_ids = [item["id"] for item in source]
-          catalogue_ids = [item["id"] for item in regions]
-
-          assert len(source_ids) == 172, (
-              f"Expected 172 source regions, found {len(source_ids)}"
-          )
-          assert len(catalogue_ids) == len(set(catalogue_ids)), (
-              "Duplicate catalogue region IDs"
-          )
-          assert set(catalogue_ids) == set(source_ids), (
-              "Catalogue IDs do not match source region IDs"
-          )
-          assert catalogue["region_count"] == len(regions), (
-              "region_count does not match catalogue"
-          )
-          assert catalogue["margin_degrees"] == 0.2, (
-              "Unexpected margin_degrees"
+          assert index["schema_version"] == 1
+          assert index["margin_degrees"] == 0.2
+          assert index["region_count"] == expected_total, (
+              f"Expected {expected_total} master regions, "
+              f"found {index['region_count']}"
           )
 
-          for region in regions:
-              bbox = region["bbox"]
-              expected = []
+          indexed_catalogues = {
+              item["id"]: item for item in index["catalogues"]
+          }
+          assert set(indexed_catalogues) == set(groups), (
+              "Master index catalogue IDs do not match expected groups"
+          )
 
-              for lat in range(
-                  math.floor(bbox["south"]),
-                  math.floor(bbox["north"]) + 1
-              ):
-                  for lon in range(
-                      math.floor(bbox["west"]),
-                      math.floor(bbox["east"]) + 1
-                  ):
-                      ns = "N" if lat >= 0 else "S"
-                      ew = "E" if lon >= 0 else "W"
-                      expected.append(
-                          f"{ns}{abs(lat):02d}{ew}{abs(lon):03d}.hgt"
-                      )
+          master_regions = index["regions"]
+          master_ids = [r["id"] for r in master_regions]
+          assert len(master_ids) == len(set(master_ids)), (
+              "Duplicate IDs in master index"
+          )
+          assert len(master_regions) == expected_total
 
-              assert region["tiles"] == expected, (
-                  f"Tile list does not match bounding box: {region['id']}"
+          all_ids = set()
+          for group, expected_count in groups.items():
+              source = json.loads(
+                  (root / f"regions-{group}-osmfr.json").read_text()
               )
-              assert all(
-                  re.fullmatch(r"[NS]\d{2}[EW]\d{3}\.hgt", tile)
-                  for tile in region["tiles"]
-              ), f"Invalid tile filename: {region['id']}"
+              filename = f"hillshade-tiles-{group}.json"
+              path = root / filename
+              raw = path.read_bytes()
+              catalogue = json.loads(raw)
+
+              assert catalogue["catalogue_id"] == group
+              assert catalogue["margin_degrees"] == 0.2
+              regions = catalogue["regions"]
+              source_ids = [r["id"] for r in source]
+              ids = [r["id"] for r in regions]
+
+              assert len(source) == expected_count, (
+                  f"{group}: unexpected source count {len(source)}"
+              )
+              assert len(regions) == expected_count, (
+                  f"{group}: unexpected catalogue count {len(regions)}"
+              )
+              assert len(ids) == len(set(ids)), (
+                  f"{group}: duplicate catalogue IDs"
+              )
+              assert set(ids) == set(source_ids), (
+                  f"{group}: catalogue IDs differ from source"
+              )
+              assert not all_ids.intersection(ids), (
+                  f"{group}: IDs overlap another catalogue"
+              )
+              all_ids.update(ids)
+              assert catalogue["region_count"] == expected_count
+
+              for region in regions:
+                  bbox = region["bbox"]
+                  expected_tiles = []
+                  for lat in range(
+                      math.floor(bbox["south"]),
+                      math.floor(bbox["north"]) + 1
+                  ):
+                      for lon in range(
+                          math.floor(bbox["west"]),
+                          math.floor(bbox["east"]) + 1
+                      ):
+                          ns = "N" if lat >= 0 else "S"
+                          ew = "E" if lon >= 0 else "W"
+                          expected_tiles.append(
+                              f"{ns}{abs(lat):02d}{ew}{abs(lon):03d}.hgt"
+                          )
+
+                  assert region["tiles"] == expected_tiles, (
+                      f"{group}/{region['id']}: incorrect tile list"
+                  )
+                  assert all(
+                      re.fullmatch(r"[NS]\d{2}[EW]\d{3}\.hgt", tile)
+                      for tile in region["tiles"]
+                  ), f"{group}/{region['id']}: invalid tile name"
+
+              entry = indexed_catalogues[group]
+              assert entry["file"] == filename
+              assert entry["region_count"] == expected_count
+              assert entry["sha256"] == hashlib.sha256(raw).hexdigest(), (
+                  f"{group}: master index SHA-256 mismatch"
+              )
+              assert entry["url"].endswith(
+                  f"/config/regions/{filename}"
+              )
+              for region in regions:
+                  match = [
+                      item for item in master_regions
+                      if item["id"] == region["id"]
+                  ]
+                  assert len(match) == 1, (
+                      f"{region['id']}: missing or duplicated in master index"
+                  )
+                  assert match[0]["catalogue_id"] == group
+                  assert match[0]["catalogue_file"] == filename
+
+              print(f"Validated {filename}: {len(regions)} regions")
 
           yorkshire = next(
-              r for r in regions
-              if r["id"] == "yorkshire_and_the_humber"
+              (r for r in master_regions
+               if r["id"] == "yorkshire_and_the_humber"),
+              None,
           )
-          print(f"Validation passed: {len(regions)} regions")
-          print(
-              "Total tile entries:",
-              sum(len(r["tiles"]) for r in regions)
+          assert yorkshire is not None, "Yorkshire missing from master index"
+          assert yorkshire["catalogue_id"] == "europe-3"
+          assert yorkshire["catalogue_file"] == (
+              "hillshade-tiles-europe-3.json"
           )
-          print("Yorkshire and the Humber:", ", ".join(yorkshire["tiles"]))
+
+          europe3 = json.loads(
+              (root / "hillshade-tiles-europe-3.json").read_text()
+          )
+          assert any(
+              r["id"] == "yorkshire_and_the_humber"
+              for r in europe3["regions"]
+          )
+
+          print(f"Master index validated: {len(master_regions)} regions")
+          print("Yorkshire and the Humber correctly maps to Europe 3")
           PY
 
-      - name: Commit catalogue if changed
+      - name: Commit catalogues if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -- config/regions/hillshade-tiles-europe-3.json
+          git add -- \
+            config/regions/hillshade-tiles-africa.json \
+            config/regions/hillshade-tiles-asia.json \
+            config/regions/hillshade-tiles-central-america.json \
+            config/regions/hillshade-tiles-europe-1.json \
+            config/regions/hillshade-tiles-europe-2.json \
+            config/regions/hillshade-tiles-europe-3.json \
+            config/regions/hillshade-tiles-north-america.json \
+            config/regions/hillshade-tiles-oceania.json \
+            config/regions/hillshade-tiles-russia.json \
+            config/regions/hillshade-tiles-south-america.json \
+            config/regions/hillshade-tiles-index.json
 
-          if git diff --cached --quiet -- config/regions/hillshade-tiles-europe-3.json; then
-            echo "Catalogue unchanged; nothing to commit."
+          if git diff --cached --quiet; then
+            echo "All catalogues unchanged; nothing to commit."
             exit 0
           fi
 
-          git commit -m "Update Europe 3 hillshade tile catalogue"
+          git commit -m "Update global hillshade tile catalogues"
           git push
