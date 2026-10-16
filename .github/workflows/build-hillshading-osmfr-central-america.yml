@@ -171,88 +171,8 @@ jobs:
           IFS=':' read -r S W N E < "/tmp/${FBASE}.bbox.txt"
           echo "=== ${{ matrix.region.name }} :: bbox $W,$S,$E,$N ==="
 
-          # AWS first: reuse cached tiles, then download missing tiles from AWS.
-          find "$HGT_DIR" -name '*.hgt.zip' -exec unzip -o -q -d "$HGT_DIR" {} \;
-
-          STAGE_DIR="/tmp/hillshade_stage"
-          mkdir -p "$STAGE_DIR"
-
-          TILE_NAMES=$(python3 - "$W" "$S" "$E" "$N" << 'PYEOF'
-          import sys, math
-          w, s, e, n = map(float, sys.argv[1:5])
-          for lat in range(math.floor(s), math.floor(n) + 1):
-              for lon in range(math.floor(w), math.floor(e) + 1):
-                  ns = "N" if lat >= 0 else "S"
-                  ew = "E" if lon >= 0 else "W"
-                  print(f"{ns}{abs(lat):02d}{ew}{abs(lon):03d}.hgt")
-          PYEOF
-          )
-
-          # AWS SRTM first: download required tiles still missing
-          # before trying the Viewfinder sources.
-          AWS_DIR="$HGT_DIR/AWS"
-          mkdir -p "$AWS_DIR"
-
-          while IFS= read -r TILE; do
-            [ -n "$TILE" ] || continue
-
-            if find "$HGT_DIR" -type f -name "$TILE" -print -quit | grep -q .; then
-              continue
-            fi
-
-            LAT_HEMI="${TILE:0:1}"
-            LAT_NUM=$((10#${TILE:1:2}))
-            if { [ "$LAT_HEMI" = "N" ] && [ "$LAT_NUM" -ge 60 ]; } ||
-               { [ "$LAT_HEMI" = "S" ] && [ "$LAT_NUM" -ge 56 ]; }; then
-              echo "AWS SRTM coverage limit: skipping $TILE"
-              continue
-            fi
-
-            LAT_PREFIX="${TILE:0:3}"
-            AWS_URL="https://s3.amazonaws.com/elevation-tiles-prod/skadi/${LAT_PREFIX}/${TILE}.gz"
-            GZ_TMP="$AWS_DIR/$TILE.gz.tmp"
-            HGT_TMP="$AWS_DIR/$TILE.tmp"
-
-            echo "AWS SRTM: trying $TILE"
-            if wget --timeout=30 --tries=2 --waitretry=2 \
-                -O "$GZ_TMP" "$AWS_URL" &&
-               gzip -t "$GZ_TMP" &&
-               gzip -dc "$GZ_TMP" > "$HGT_TMP" &&
-               test -s "$HGT_TMP"; then
-              mv "$HGT_TMP" "$AWS_DIR/$TILE"
-              echo "AWS SRTM downloaded $TILE"
-            else
-              echo "AWS SRTM tile unavailable or invalid: $TILE" >&2
-            fi
-            rm -f "$GZ_TMP" "$HGT_TMP"
-          done <<< "$TILE_NAMES"
-
-          # Try view1 only if AWS did not supply every required tile.
-          NEED_VIEW1=0
-          while IFS= read -r TILE; do
-            [ -n "$TILE" ] || continue
-            if ! find "$HGT_DIR" -type f -name "$TILE" -print -quit | grep -q .; then
-              NEED_VIEW1=1
-              break
-            fi
-          done <<< "$TILE_NAMES"
-
-          if [ "$NEED_VIEW1" -eq 1 ]; then
-            echo "Tiles still missing after AWS; trying view1"
-            if phyghtmap --source=view1 --step=100 --pbf \
-                --hgtdir="$HGT_DIR" --output-prefix=/tmp/hillshade_probe \
-                --jobs="$(nproc)" --area="${W}:${S}:${E}:${N}"; then
-              echo "phyghtmap exited successfully for view1"
-            else
-              echo "phyghtmap returned an error for view1" >&2
-            fi
-            rm -f /tmp/hillshade_probe*.osm.pbf
-            find "$HGT_DIR" -name '*.hgt.zip' -exec unzip -o -q -d "$HGT_DIR" {} \;
-          else
-            echo "All required tiles found from AWS; skipping view1"
-          fi
-
-          # Final fallback: try view3 only for tiles still missing after AWS and view1.
+          # Use view3 as the only elevation source for missing tiles.
+NEED_VIEW3=0
           NEED_VIEW3=0
           while IFS= read -r TILE; do
             [ -n "$TILE" ] || continue
@@ -263,7 +183,7 @@ jobs:
           done <<< "$TILE_NAMES"
 
           if [ "$NEED_VIEW3" -eq 1 ]; then
-            echo "Tiles still missing after AWS and view1; trying view3"
+            echo "Tiles still missing; fetching from view3"
             if phyghtmap --source=view3 --step=100 --pbf \
                 --hgtdir="$HGT_DIR" --output-prefix=/tmp/hillshade_probe \
                 --jobs="$(nproc)" --area="${W}:${S}:${E}:${N}"; then
@@ -273,7 +193,7 @@ jobs:
             fi
             find "$HGT_DIR" -name '*.hgt.zip' -exec unzip -o -q -d "$HGT_DIR" {} \;
           else
-            echo "All required tiles found before view3; skipping view3"
+            echo "All required tiles already available; skipping view3"
           fi
 
           MISSING=0

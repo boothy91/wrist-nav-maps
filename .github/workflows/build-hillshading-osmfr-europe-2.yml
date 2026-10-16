@@ -180,7 +180,7 @@ jobs:
           # NOTE: verify phyghtmap's on-disk cache naming (.hgt vs .hgt.zip)
           # the first time this runs - unzip step below assumes .zip and may
           # need adjusting if phyghtmap already leaves them unzipped.
-          for SOURCE in view1 view3; do
+          for SOURCE in view3; do
             echo "Trying elevation source: $SOURCE"
 
             if phyghtmap --source="$SOURCE" --step=100 --pbf \
