@@ -156,11 +156,11 @@ jobs:
                   match = [
                       item for item in master_regions
                       if item["id"] == region["id"]
+                      and item["catalogue_id"] == group
                   ]
                   assert len(match) == 1, (
-                      f"{region['id']}: missing or duplicated in master index"
+                      f"{group}/{region['id']}: missing or duplicated in master index"
                   )
-                  assert match[0]["catalogue_id"] == group
                   assert match[0]["catalogue_file"] == filename
 
               print(f"Validated {filename}: {len(regions)} regions")
