@@ -68,10 +68,10 @@ def get_polygon(region):
         lons = [lon for lon, _ in main]
         lats = [lat for _, lat in main]
 
-    west = max(min(lons) - MARGIN, -180)
-    south = max(min(lats) - MARGIN, -90)
-    east = min(max(lons) + MARGIN, 180)
-    north = min(max(lats) + MARGIN, 90)
+    west = math.floor(max(min(lons) - MARGIN, -180) * 10000) / 10000
+    south = math.floor(max(min(lats) - MARGIN, -90) * 10000) / 10000
+    east = math.ceil(min(max(lons) + MARGIN, 180) * 10000) / 10000
+    north = math.ceil(min(max(lats) + MARGIN, 90) * 10000) / 10000
 
     tiles = []
     for lat in range(math.floor(south), math.floor(north) + 1):
@@ -84,10 +84,10 @@ def get_polygon(region):
         "id": region["id"],
         "name": region["name"],
         "bbox": {
-            "west": round(west, 4),
-            "south": round(south, 4),
-            "east": round(east, 4),
-            "north": round(north, 4),
+            "west": west,
+            "south": south,
+            "east": east,
+            "north": north,
         },
         "tiles": tiles,
     }
