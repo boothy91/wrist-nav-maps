@@ -1,0 +1,6 @@
+__pycache__/
+*.bak
+*.bak-*
+*.zip
+hillshade-*-backup-*/
+hillshade-americas-fix-*/
