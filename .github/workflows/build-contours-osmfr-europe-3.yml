@@ -266,7 +266,7 @@ jobs:
             rm -f /tmp/contours*.osm.pbf
             local attempt=0
             local ok=0
-            for source in view1 view3 view3; do
+            for source in view3 view3; do
               attempt=$((attempt + 1))
               # Removed --max-nodes-per-way limit to prevent continuous contour ways from chopping mid-flight
               rm -f /tmp/contours*.osm.pbf
