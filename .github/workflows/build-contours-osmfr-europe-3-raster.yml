@@ -49,8 +49,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release view maps-osmfr-europe-3-contours-raster-test &>/dev/null || gh release create maps-osmfr-europe-3-contours-raster-test \
-            --title "Contour overlay .map files - OSMFR Europe 3" \
-            --notes "Standalone contour-only mapsforge .map files, one per region. Contains no base map data (no roads/water/etc) - intended to be added as a second TileRendererLayer stacked on top of the base map layer in the app, not as a replacement map." \
+            --title "Contour overlay PNG tile ZIPs - OSMFR Europe 3" \
+            --notes "Transparent contour-only XYZ PNG tiles (z/x/y.png) zipped per region. Overlay on top of the base map in the app." \
             --latest=false
 
   build-contours:
@@ -131,7 +131,7 @@ jobs:
           OUT_PBF="output/${FBASE}.osm.pbf"
           OUT_BBOX="output/${FBASE}.bbox.txt"
           CONTOURS_ONLY_PBF="output/${FBASE}.contours-only.osm.pbf"
-          CONTOURS_MAP="output/${FBASE}-contours.map"
+          CONTOURS_ZIP="output/${FBASE}-contours.zip"
           HGT_DIR="/tmp/hgt_cache"
           WORKDIR="/tmp/pieces"
 
@@ -359,14 +359,13 @@ jobs:
 
           # Write the standalone contour overlay .map, if we have contours
           if [ -f "$CONTOURS_ONLY_PBF" ]; then
-            "$OSMOSIS_HOME/bin/osmosis" \
-              --read-pbf file="$CONTOURS_ONLY_PBF" \
-              --mapfile-writer \
-                file="$CONTOURS_MAP" \
-                tag-conf-file="$(pwd)/config/tag-mapping-contours.xml" \
-                bbox="$S,$W,$N,$E" \
-                type=hd
-            ls -lh "$CONTOURS_MAP"
+            command -v osmium >/dev/null || sudo apt-get install -y osmium-tool
+            osmium export "$CONTOURS_ONLY_PBF" -f geojsonseq \
+              --geometry-types=linestring -x print_record_separator=false \
+              | python3 scripts/render-contours-raster.py \
+                  --output "$CONTOURS_ZIP" --max-zoom 14
+            rm -rf "${CONTOURS_ZIP%.zip}.tiles"
+            ls -lh "$CONTOURS_ZIP"
           fi
 
           ls -lh "$OUT_PBF"
@@ -374,13 +373,13 @@ jobs:
 
           echo "Uploaded ${FBASE}.osm.pbf and ${FBASE}.bbox.txt"
 
-          if [ -f "$CONTOURS_MAP" ]; then
+          if [ -f "$CONTOURS_ZIP" ]; then
             for attempt in 1 2 3 4 5; do
-              if gh release upload maps-osmfr-europe-3-contours-raster-test "$CONTOURS_MAP" --clobber; then
+              if gh release upload maps-osmfr-europe-3-contours-raster-test "$CONTOURS_ZIP" --clobber; then
                 break
               fi
               echo "Upload attempt $attempt failed, retrying in 30s..." >&2
               sleep 30
             done
-            echo "Uploaded ${FBASE}-contours.map"
+            echo "Uploaded ${FBASE}-contours.zip"
           fi
