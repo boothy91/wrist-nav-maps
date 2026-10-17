@@ -294,7 +294,7 @@ jobs:
               echo "Inner Mongolia: skipping view1; trying view3 twice"
               sources=(view3 view3)
             else
-              sources=(view1 view3 view3)
+              sources=(view3 view3)
             fi
             for source in "${sources[@]}"; do
               attempt=$((attempt + 1))
