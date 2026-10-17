@@ -365,7 +365,9 @@ jobs:
                 tag-conf-file="$(pwd)/config/tag-mapping-contours.xml" \
                 bbox="$S,$W,$N,$E" \
                 type=hd \
-                zoom-interval-conf=14,0,21
+                zoom-interval-conf=14,0,21 \
+                simplification-max-zoom=15 \
+                simplification-factor=20
             ls -lh "$CONTOURS_MAP"
           fi
 
