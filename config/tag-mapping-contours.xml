@@ -4,7 +4,7 @@
              xsi:schemaLocation="http://mapsforge.org/tag-mapping https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/tag-mapping.xsd"
              default-zoom-appear="12">
     <ways>
-        <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" force-polygon-line="true" />
+<!--         <osm-tag key="contour_ext" value="elevation_minor" zoom-appear="15" force-polygon-line="true" /> -->
         <osm-tag key="contour_ext" value="elevation_medium" zoom-appear="14" force-polygon-line="true" />
         <osm-tag key="contour_ext" value="elevation_major" zoom-appear="13" force-polygon-line="true" />
     </ways>
