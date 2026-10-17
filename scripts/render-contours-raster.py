@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw
 
 TILE_SIZE = 256
 MAX_LAT = 85.0511287798066
-CACHE_LIMIT = 128
+CACHE_LIMIT = 2048
 
 STYLES = {
     "elevation_major": (116, 83, 55, 220, 2),
@@ -207,6 +207,8 @@ def main():
                 continue
             try:
                 renderer.add_feature(json.loads(raw))
+                if line_number % 20000 == 0:
+                    print(f'processed {line_number} features', file=sys.stderr, flush=True)
             except json.JSONDecodeError as exc:
                 raise RuntimeError(
                     f"Invalid GeoJSON-sequence record on line {line_number}: {exc}"

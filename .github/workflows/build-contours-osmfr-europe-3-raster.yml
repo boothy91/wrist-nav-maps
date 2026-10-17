@@ -363,7 +363,7 @@ jobs:
             osmium export "$CONTOURS_ONLY_PBF" -f geojsonseq \
               --geometry-types=linestring -x print_record_separator=false \
               | python3 scripts/render-contours-raster.py \
-                  --output "$CONTOURS_ZIP" --max-zoom 14
+                  --output "$CONTOURS_ZIP" --max-zoom 12
             rm -rf "${CONTOURS_ZIP%.zip}.tiles"
             ls -lh "$CONTOURS_ZIP"
           fi
