@@ -291,7 +291,7 @@ jobs:
             local attempt=0
             local ok=0
             if [ "$RID" = "china_inner_mongolia" ]; then
-              echo "Inner Mongolia: skipping view1; trying view3 twice"
+              echo "Inner Mongolia: view3 only"
               sources=(view3 view3)
             else
               sources=(view3 view3)
